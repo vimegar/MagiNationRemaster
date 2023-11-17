@@ -13,9 +13,9 @@
 	BtlRingGive			(EEBIT,98)
 	BtlRingGive			(EEBIT,98)
 	BtlRingGive			(EEBIT,98)
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive         (WEEBO,20)
+	BtlRingGive         (SPHOR,40)
+	BtlRingGive         (SPHOR,27)
+	BtlRingGive         (PLATHEUS,40)
 
 	SetGamecount		(GC_UND_GEYSER)
 

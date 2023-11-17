@@ -11,67 +11,86 @@
 					(_BTL6)
 					(_BTL7)
 					(_BTL8)
+					(_BTL9)
+					(_BTL10)
 
+// All of the following battles had the XP level mistakenly set to 25. Corrected.
+// They also had many of the creatures' levels mistakenly set much higher than makes sense (57-60 rather than just over 40). Also corrected.
 _BTL1
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,60,85,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,41,85,0)
 	BtlAuto		()
 
 _BTL2
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,KARAK,57,78,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,41,78,0)
 	BtlNextTurn	()
 	BtlNextTurn	()
 	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,43,65,1)
 	BtlAuto		()
 
 _BTL3
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,56,82,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,44,82,0)
 	BtlAuto		()
 
 _BTL4
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,44,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,43,65,0)
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,56,82,1)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,44,82,1)
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,KARAK,57,78,1)
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,41,78,1)
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,60,85,1)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,41,85,1)
 	BtlAuto		()
 
 _BTL5
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,KARAK,57,78,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,41,78,0)
 	BtlNextTurn	()
 	BtlNextTurn	()
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,60,85,1)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,41,85,1)
 	BtlAuto		()
 
 _BTL6
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,56,82,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,44,82,0)
 	BtlNextTurn	()
 	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,43,65,1)
 	BtlNextTurn	()
 	BtlAuto		()
 
 _BTL7
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
-	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,60,85,0)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,41,85,0)
 	BtlNextTurn	()
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,43,65,1)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,43,90,1)
 	BtlAuto		()
 
 _BTL8
-	BtlNew		(OROTHE_ARENA1,MAGI_RND1,25,?_BATTLE_FADE_IN)
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,43,65,0)
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,56,82,1)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,44,82,1)
 	BtlNextTurn	()
-	BtlSummonDelay	(BTL_ID_MAGI,KARAK,57,78,1)
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,41,78,1)
 	BtlAuto		()
 
+// Added the following two because Sphor and Platheus were missing encounters
+_BTL9
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHARBLOOT,38,78,1)
+	BtlNextTurn ()
+	BtlSummonDelay  (BTL_ID_MAGI,SHARBLOOT,38,78,1)
+	BtlNextTurn ()
+	BtlSummonDelay  (BTL_ID_MAGI,SPHOR,42,125,1)
+	BtlAuto     ()
+
+_BTL10
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,45,?_BATTLE_FADE_IN)
+	BtlSummonDelay  (BTL_ID_MAGI,PLATHEUS,44,120,1)
+	BtlSummonDelay  (BTL_ID_MAGI,PLATHEUS,44,120,1)
+	BtlAuto    ()

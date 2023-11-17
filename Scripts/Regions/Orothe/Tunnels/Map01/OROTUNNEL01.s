@@ -1,7 +1,7 @@
-;Size:361
+;Size:368
                       
 ;********************************
-; C:\Work\Patrick's Project\scripts\REGIONS\OROTHE\TUNNELS\MAP01\OROTUNNEL01.s
+; C:\Users\vimegar\Documents\Dev\MagiNationSource\SCRIPTS\REGIONS\OROTHE\TUNNELS\MAP01\OROTUNNEL01.s
 ;********************************
 ;	Author:	MGI PARSE
 ;	(c)2000	Interactive Imagination
@@ -253,6 +253,15 @@ _BTL6
 		DB	BWILL
 		DB	$1B
 		DB	$39
+		DB	$01
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	SPHOR
+		DB	$1B
+		DB	$3C
 		DB	$01
 
 	DB	CMD_BTLAUTO

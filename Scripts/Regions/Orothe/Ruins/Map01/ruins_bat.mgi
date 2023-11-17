@@ -11,6 +11,8 @@
 					(_BTL6)
 					(_BTL7)
 					(_BTL8)
+					(_BTL9)
+					(_BTL10)
 
 _BTL1
 	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
@@ -69,6 +71,22 @@ _BTL8
 	BtlNextTurn	()
 	BtlSummonDelay	(BTL_ID_MAGI,KARAK,37,78,1)
 	BtlAuto		()
+
+// Added the following two because Sphor and Platheus were missing encounters
+_BTL9
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHARBLOOT,36,71,1)
+	BtlNextTurn ()
+	BtlSummonDelay  (BTL_ID_MAGI,SHARBLOOT,36,71,1)
+	BtlNextTurn ()
+	BtlSummonDelay  (BTL_ID_MAGI,SPHOR,40,115,1)
+	BtlAuto     ()
+
+_BTL10
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay  (BTL_ID_MAGI,PLATHEUS,40,105,1)
+	BtlSummonDelay  (BTL_ID_MAGI,PLATHEUS,40,105,1)
+	BtlAuto    ()
 
 
 ?_RUINS_MEGATHAN_BAT

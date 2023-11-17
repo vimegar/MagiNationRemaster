@@ -1,7 +1,7 @@
-;Size:515
+;Size:569
                       
 ;********************************
-; C:\Work\Patrick's Project\scripts\REGIONS\OROTHE\RUINS\MAP01\ORORUINS01.s
+; C:\Users\vimegar\Documents\Dev\MagiNationSource\SCRIPTS\REGIONS\OROTHE\RUINS\MAP01\ORORUINS01.s
 ;********************************
 ;	Author:	MGI PARSE
 ;	(c)2000	Interactive Imagination
@@ -84,7 +84,7 @@
 		DB	SONGID_lavavents
 
 	DB	CMD_JUMPRANDOM
-		DB	$08
+		DB	$0A
 		DB	:_BTL1
 		DW	(_BTL1&$FFFF)
 		DB	:_BTL2
@@ -101,6 +101,10 @@
 		DW	(_BTL7&$FFFF)
 		DB	:_BTL8
 		DW	(_BTL8&$FFFF)
+		DB	:_BTL9
+		DW	(_BTL9&$FFFF)
+		DB	:_BTL10
+		DW	(_BTL10&$FFFF)
 
 ;********************************
 _BTL1
@@ -323,6 +327,67 @@ _BTL8
 		DB	KARAK
 		DB	$25
 		DB	$4E
+		DB	$01
+
+	DB	CMD_BTLAUTO
+
+;********************************
+_BTL9
+	DB	CMD_BTLNEW
+		DB	OROTHE_ARENA1
+		DB	MAGI_RND1
+		DB	$28
+		DB	:?_BATTLE_FADE_IN
+		DW	(?_BATTLE_FADE_IN&$FFFF)
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	SHARBLOOT
+		DB	$24
+		DB	$47
+		DB	$01
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	SHARBLOOT
+		DB	$24
+		DB	$47
+		DB	$01
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	SPHOR
+		DB	$28
+		DB	$73
+		DB	$01
+
+	DB	CMD_BTLAUTO
+
+;********************************
+_BTL10
+	DB	CMD_BTLNEW
+		DB	OROTHE_ARENA1
+		DB	MAGI_RND1
+		DB	$28
+		DB	:?_BATTLE_FADE_IN
+		DW	(?_BATTLE_FADE_IN&$FFFF)
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	PLATHEUS
+		DB	$28
+		DB	$69
+		DB	$01
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	PLATHEUS
+		DB	$28
+		DB	$69
 		DB	$01
 
 	DB	CMD_BTLAUTO

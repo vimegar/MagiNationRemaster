@@ -52,6 +52,8 @@ _BTL5
 _BTL6
 	BtlNew		(OROTUNNEL_ARENA1,MAGI_RND1,27,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,BWILL,27,57,1)	
+	BtlNextTurn ()
+	BtlSummonDelay  (BTL_ID_MAGI,SPHOR,27,60,1)
 	BtlAuto		()
 
 _BTL7
