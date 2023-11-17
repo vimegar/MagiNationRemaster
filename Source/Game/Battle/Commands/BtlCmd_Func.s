@@ -1428,6 +1428,16 @@ _TONY_LOOP
 
 	BTL_NORMAL_FIGHTSCENE   ?_ATK_STING
 
+	;Terminates Target (10%)
+
+	RANDVAL	E
+	CP		26
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
 	RET
 
 ;********************************
