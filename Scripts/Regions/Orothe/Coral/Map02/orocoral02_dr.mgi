@@ -1,0 +1,19 @@
+/********************************/
+?_OROCORAL02_DR_1
+		ThatActorInit	(ACTOR02,?TRIGGER_AI,20,15,33,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+		HeroSetDoor		(27,14)
+		Jump			(?_OVRSURFACE04)
+
+?_OROCORAL02_DR_2
+		HeroToDoor	(39,30,0,7)
+		Jump		(?_OROCORAL03)		
+		
+		
+?_OROCORAL02_TR_1
+		TriggerTreasure	(OROCORAL02_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,7,7,40)
+
+?_OROCORAL02_TR_2
+		TriggerTreasure	(OROCORAL02_Chest2,INV_TYPE_ITEM,INV_REMEDY_DRINK,38,13,40)
+		
+?_OROCORAL02_TR_3
+		TriggerTreasure	(OROCORAL02_Chest3,INV_TYPE_ITEM,INV_HASTE_GEM,11,33,40)

@@ -1,0 +1,33 @@
+/********************************/
+?_OROTUNNEL05_DR_1
+		HeroToDoor	(17,19,36,0)
+		Jump		(?_OROTUNNEL02)
+
+?_OROTUNNEL05_DR_2
+//		WHIRLPOOL
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,_TONY_FLUSHED)
+		Delay				(112)
+		HeroSetDoor			(1,7)
+		PalClearBase		(0,15,0,0,0)
+		PalFade				(0,15,16,0)
+		Delay				(96)
+		Jump				(?_OROCORAL06)
+_TONY_FLUSHED
+		ThisActorSetAnimDelay	(?_HERO_TREAD_LEFT_ANIM,16)
+								(?_HERO_TREAD_DOWN_ANIM,16)
+								(?_HERO_TREAD_RIGHT_ANIM,16)
+								(?_HERO_TREAD_UP_ANIM,16)
+								(?_HERO_TREAD_LEFT_ANIM,8)
+								(?_HERO_TREAD_DOWN_ANIM,8)
+								(?_HERO_TREAD_RIGHT_ANIM,8)
+								(?_HERO_TREAD_UP_ANIM,8)
+		ThisActorStop			()
+		End						()
+
+/********************************/
+?_OROTUNNEL05_TR_1
+		TriggerTreasure	(OROTUNNEL05_Chest1,INV_TYPE_ITEM,INV_3_HEADEDCOIN,4,16,24)
+		
+?_OROTUNNEL05_TR_2
+		TriggerTreasure	(OROTUNNEL05_Chest2,INV_TYPE_ITEM,INV_BALANCESCALE,5,16,24)

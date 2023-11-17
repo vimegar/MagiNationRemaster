@@ -1,0 +1,38 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP10\OROGEYSER10_DR.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP10\OROGEYSER10_TXT.MGI
+
+/********************************/
+?_OROGEYSER10
+	SceneNew				()
+	LoadMap					(MAP_OROGEYSER10)
+	LoadHotspots			(HS_OROGEYSER10)
+	LoadTriggers			(TR_OROGEYSER10)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,50,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,20,15,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,38,24,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,52,23,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,32,32,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?ANIM_AI,13,52,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?ANIM_AI,10,58,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?ANIM_AI,38,51,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?ANIM_AI,57,48,50,0,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(64,BIT_WHIRLPOOL,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	SetEncounter			(?_OROGEYSER_RNDBAT_RAILING,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_OROGEYSER10)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_maze)
+	End						()

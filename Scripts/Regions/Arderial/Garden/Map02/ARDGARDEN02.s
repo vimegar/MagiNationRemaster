@@ -1,0 +1,96 @@
+;Size:57
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\ARDERIAL\GARDEN\MAP02\ARDGARDEN02.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_ARDGARDEN02_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$17
+		DB	$00
+		DB	$0A
+		DB	$0A
+
+	DB	CMD_JUMP
+		DB	:?_ARDGARDEN01
+		DW	(?_ARDGARDEN01&$FFFF)
+
+;********************************
+?_ARDGARDEN02_DR_2
+	DB	CMD_HEROTODOOR
+		DB	$00
+		DB	$0F
+		DB	$20
+		DB	$14
+
+	DB	CMD_JUMP
+		DB	:?_ARDGARDEN03
+		DW	(?_ARDGARDEN03&$FFFF)
+
+;********************************
+?_ARDGARDEN02
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$008E)
+		DB	$01
+
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_ARDGARDEN02&$FFFF)
+		DB	:MAP_ARDGARDEN02
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_ARDGARDEN02&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D07D
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_wencetheme
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_ARDGARDEN01
+	GLOBAL	?_ARDGARDEN03
+	GLOBAL	XRAM_SAVEVARS
+	GLOBAL	MAP_ARDGARDEN02
+	GLOBAL	HS_ARDGARDEN02
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+
+;********************************
+	END
+;********************************

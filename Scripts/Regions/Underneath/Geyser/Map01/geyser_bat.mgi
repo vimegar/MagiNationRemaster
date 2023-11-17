@@ -1,0 +1,126 @@
+/**** LEVEL18 ****/
+?_UNDGEYSER_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,18,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,16,33,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,17,33,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,17,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,17,33,1)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,19,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,17,34,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,16,33,1)
+	BtlAuto			()
+
+_BTL4
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,19,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,18,36,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,16,33,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,17,34,1)
+	BtlAuto			()
+
+_BTL5
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,17,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,16,32,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,15,31,1)
+	BtlAuto			()
+
+_BTL6
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,18,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,17,34,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,16,31,1)
+	BtlAuto			()
+
+_BTL7
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,19,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,17,35,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,17,34,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,16,28,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,16,28,1)
+	BtlAuto			()
+
+_BTL8
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,19,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,19,38,1)
+	BtlAuto			()
+
+/********************************/
+?_UNDGEYSER_OGARBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(NRMGEYSER_ARENA1,OGAR,20,?_BATTLE_FADE_IN)
+	BtlNextTurn		()
+	
+//200
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,1)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,44)	
+	
+	ThatActorSetScript	(ACTOR0C,?_OGAR_BATTLE_TAUNT_ANIM)
+	TextOpen		()
+	TextIcon		(ICON_OGAR)
+	TextWrite		("Geh.=")
+					("My kittiesss")
+					("need dinner.")
+					("Heee hee...")
+	TextClose		()	
+	BtlSummonDelay	(BTL_ID_MAGI,CHAOS_JILE,24,50,0)
+	BtlNextTurn		()		
+	
+	TextOpen		()
+	ThatActorSetScript	(ACTOR0C,?_OGAR_BATTLE_TAUNT_ANIM)
+	TextIcon		(ICON_OGAR)
+	TextWrite		("Yesss,=")
+					("more kittiesss")
+					("to play with=")
+					("the child.")
+	TextClose		()
+	BtlSummonDelay	(BTL_ID_MAGI,CHAOS_JILE,17,50,0)
+	BtlNextTurn		()	
+	
+	TextOpen		()
+	TextIcon		(ICON_OGAR)
+	ThatActorSetScript	(ACTOR0C,?_OGAR_BATTLE_TAUNT_ANIM)					  
+	TextWrite		("Isss the kitty")
+					("sssuffering?")
+	TextClose		()
+	
+
+	BtlUseItem		(BTL_ID_MAGI,ITEM_BALOO_SAP,BTLSCR_ENEMYWEAKEST_ABSOLUTE)
+	BtlNextTurn		()	
+	BtlSummonDelay	(BTL_ID_MAGI,CHAOS_JILE,20,50,0)
+	BtlNextTurn		()	
+	BtlNextTurn		()	
+	
+_ORGAR_BIGGIE_LOOP
+	BtlSummonDelay	(BTL_ID_MAGI,CHAOS_JILE,20,50,0)
+	BtlNextTurn		()	
+	BtlNextTurn		()	
+	JumpLocal		(_ORGAR_BIGGIE_LOOP)
+	

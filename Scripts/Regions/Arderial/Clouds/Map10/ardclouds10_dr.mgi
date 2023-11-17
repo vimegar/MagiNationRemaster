@@ -1,0 +1,17 @@
+/********************************/
+?_ARDCLOUDS10_DR_1
+		HeroToDoor	(63,43,1,40)
+		Jump		(?_ARDCLOUDS09)
+
+?_ARDCLOUDS10_DR_2
+		HeroToDoor	(0,49,19,38)
+		Jump		(?_ARDCLOUDS11)
+
+?_ARDCLOUDS10_DR_3
+		HeroToDoor	(10,0,20,35)
+		Jump		(?_ARDCLOUDS13)
+
+?_ARDCLOUDS10_DR_4
+		HeroToDoor	(63,57,1,54)
+		Jump		(?_ARDCLOUDS09)
+

@@ -1,0 +1,9 @@
+/********************************/
+?_OROISLANDS04_DR_1
+	ThatActorInit			(ACTOR01,?TRIGGER_AI,55,45,64,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+		HeroSetDoor		(58,46)
+		Jump			(?_OVRSURFACE01)
+		
+?_OROISLANDS04_DR_2
+		HeroSetDoor		(15,18)
+		Jump			(?_OROISLANDS02)

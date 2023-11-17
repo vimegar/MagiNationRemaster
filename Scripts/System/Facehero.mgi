@@ -1,0 +1,303 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+/********************************/
+//HERO,PRUITT,WENCE,YAKI,ZET,POAD,ORWIN,SALAFY,EVU,EIDON,KORG,TRYN
+?_FACE_HERO
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_PRUITT
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_PRUITT_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_PRUITT_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_PRUITT_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_PRUITT_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_WENCE
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_WENCE_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_WENCE_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_WENCE_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_WENCE_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_YAKI
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_YAKI_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_YAKI_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_YAKI_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_YAKI_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_ZET
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_ZET_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_ZET_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_ZET_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_ZET_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_POAD
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_POAD_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_POAD_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_POAD_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_POAD_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_ORWIN
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_ORWIN_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_ORWIN_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_ORWIN_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_ORWIN_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_SALAFY
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_SALAFY_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_SALAFY_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_SALAFY_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_SALAFY_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_EVU
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_EVU_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_EVU_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_EVU_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_EVU_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_EIDON
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_EIDON_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_EIDON_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_EIDON_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_EIDON_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_KORG
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_KORG_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_KORG_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_KORG_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_KORG_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+/********************************/
+?_FACE_TRYN
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_TRYN_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_TRYN_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_TRYN_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_TRYN_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

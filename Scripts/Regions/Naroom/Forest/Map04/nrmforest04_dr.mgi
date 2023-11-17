@@ -1,0 +1,14 @@
+/********************************/
+?_NRMFOREST04_DR_1
+		HeroToDoor	(37,49,30,0)
+		Jump		(?_NRMFOREST01)
+
+?_NRMFOREST04_DR_2
+		HeroToDoor	(0,8,49,11)
+		Jump		(?_NRMFOREST06)
+
+?_NRMFOREST04_DR_3
+		HeroToDoor	(0,38,29,12)
+		Jump		(?_NRMFOREST05)
+?_NRMFOREST04_TR_1
+		TriggerTreasure	(NRMFOREST04_Chest1,INV_TYPE_ITEM,INV_BALOO_SAP,35,4,50)

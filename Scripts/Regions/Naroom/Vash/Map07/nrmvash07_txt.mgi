@@ -1,0 +1,36 @@
+/********************************/
+//NRMVASH07
+/********************************/
+?_NRMVASH07_GUARD_TXT
+	If					([Sick_Orwin],_SICK)
+	If					([GC = GC_FIND_ORWIN],_FIND_ORWIN)
+	TextOpen			()
+	TextIcon			(ICON_GUARD01)
+	TextWrite			("How can I=")
+						("work this job?")
+						("One day at=")
+						("a time.....")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+_FIND_ORWIN
+	TextOpen			()
+	TextIcon			(ICON_GUARD01)
+	TextWrite			("I don't like=")
+						("this...")
+						("what is=")
+						("happening in")
+						("the glade?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+_SICK
+	TextOpen			()
+	TextIcon			(ICON_GUARD01)
+	TextWrite			("There must be=")
+						("a way to save")
+						("Orwin...")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+

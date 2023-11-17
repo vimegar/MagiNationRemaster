@@ -1,0 +1,18 @@
+/********************************/
+
+?_ARDCLOUDS03_DR_1
+		HeroToDoor	(0,34,62,11)
+		Jump		(?_ARDCLOUDS02)
+		
+?_ARDCLOUDS03_DR_2
+		HeroToDoor	(0,7,62,10)
+		Jump		(?_ARDCLOUDS04)
+
+?_ARDCLOUDS03_DR_3
+		HeroToDoor	(37,0,21,53)
+		Jump		(?_ARDCLOUDS06)
+
+/********************************/
+
+?_ARDCLOUDS03_TR_1
+		TriggerTreasure	(ARDCLOUDS03_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,46,45,64)

@@ -1,0 +1,47 @@
+/********************************/
+// WARP TO VASH04
+/********************************/
+?_HDNFORT04B
+	SongFadeOut				(80)
+	SceneNew				()
+	LoadMap					(MAP_HDNFORT04B)
+	LoadHotspots			(HS_HDNFORT04B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+//	ARRIVAL FROM VASH04
+?_HDNFORT04B_ARRIVAL	
+	SceneNew				()
+	LoadMap					(MAP_HDNFORT04B)
+	LoadHotspots			(HS_HDNFORT04B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,20,0,?_HERO_FROM_WARP,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	WaitEventMaster			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()
+
+?_HERO_FROM_WARP
+	ThisActorSetAnimDelay	(?_HERO_STAND_DOWN_ANIM,24)
+							(?_HERO_STAND_DL_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetEventMaster			(1)
+	End						()
+/********************************/
+// END WARP TO VASH04
+/********************************/
+
+

@@ -1,0 +1,9 @@
+/********************************/
+		FileHotspots	(HS_CREGATE01)
+						(HOTSPOT_TRIGGER_EAST,?_CREGATE01_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_CREGATE01_DR_2)
+						(HOTSPOT_TRIGGER_WEST,?_CREGATE01_DR_3)
+
+		FileTriggers	(TR_CREGATE01)
+						(TRIGGER_NORMAL,?_CREGATE01_TR_1)
+

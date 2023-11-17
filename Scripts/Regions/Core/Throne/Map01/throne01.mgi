@@ -1,0 +1,107 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP01\THRONE01_DR.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP01\THRONE01_TXT.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP01\THRONE_BAT.MGI
+
+/********************************/
+?_THRONE01_FINALCHOICESORTA
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_THRONE01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_THRONE01)
+	ThatActorInit			(HEROACTOR,?HERO_AI,9,14,19,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	HeroFromDoor			()
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,1)
+	End						()
+
+?_THRONE01
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_THRONE01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_THRONE01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,9,14,19,0,?_THRONE01_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,9,9,19,0,?_THRONE01_AGRAM,?_DONT_TALK)
+	LoadVRAMTiles			(71,BIT_AGRAM,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_agramtheme)
+	SceneReady				()
+	End						()
+	
+?_ENDING1_JUMP
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,1)
+	Jump					(?_HMTCAVE01_ENDING_1)
+
+?_THRONE01_TONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,32)
+							(?_HERO_RUN_UP_ANIM,24)
+							(?_HERO_STAND_UP_ANIM,16)
+	ScrollMap				(32,0,-2)
+	SetText					(?_THRONE01_TXT_1)
+	WaitEventText			(1)
+	SetEventMaster			(1)
+	SetText					(?_THRONE01_TXT_2)
+	WaitEventText			(4)
+	SetText					(?_THRONE01_TXT_5)
+	WaitEventText			(5)
+	SetBtlReturn			(?_THRONE01_RETURN)
+	Jump					(?_THRONE01_AGRAM_BATTLE)
+	End						()
+	
+?_THRONE01_AGRAM
+	ThisActorSetAnim		(?_AGRAM_STAND_DR_ANIM)
+	WaitEventMaster			(1)
+	ThisActorSetAnim		(?_AGRAM_STAND_DOWN_ANIM)
+							
+	WaitEventText			(2)
+	ThisActorSetAnim		(?_AGRAM_STAND_DL_ANIM)
+	WaitEventText			(3)
+	ThisActorSetAnim		(?_AGRAM_STAND_DOWN_ANIM)
+	SetText					(?_THRONE01_TXT_4)
+	End						()
+	
+/********************************//********************************/
+//	BOSS DEFEATED
+/********************************//********************************/
+?_THRONE01_RETURN
+	SongFadeOut				(80)
+	SceneNew				()
+	LoadMap					(MAP_THRONE01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_THRONE01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,9,11,19,0,?_THRONE01_TONY_RET,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,9,9,19,0,?_THRONE01_AGRAM_RET,?_DONT_TALK)
+	LoadVRAMTiles			(48,BIT_AGRAMBATTLE,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_destruction)
+	End						()
+
+?_ENDING2_JUMP
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,1)
+	Jump					(?_THRONE05_ENDING1)
+
+?_THRONE01_TONY_RET
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	End						()
+	
+?_THRONE01_AGRAM_RET
+	ThisActorSetAnim		(?_AGRAM_BATTLE_END_ANIM)
+	SetText					(?_THRONE01_TXT_9)
+	WaitEventText			(9)
+	ThisActorSetAnim		(?_AGRAM_BATTLE_GONE_ANIM)
+	Delay					(128)
+	SetText					(?_THRONE01_TXT_10)
+	End						()

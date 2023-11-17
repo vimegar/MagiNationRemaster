@@ -1,0 +1,22 @@
+/********************************/
+// UNDTUNNEL18
+?_UNDTUNNEL18_DR_1
+		HeroToDoor		(0,8,39,9)
+		Jump			(?_UNDTUNNEL16)
+
+?_UNDTUNNEL18_DR_2
+		HeroToDoor		(11,29,6,0)
+		Jump			(?_UNDTUNNEL19)
+
+?_UNDTUNNEL18_DR_3
+		HeroSetDoor		(2,11)
+		Jump			(?_HDNUNDTUN02)
+
+/********************************/
+// HDNUNDTUN02
+?_HDNUNDTUN02_DR_1
+		HeroSetDoor		(8,2)
+		Jump			(?_UNDTUNNEL18)		
+		
+?_HDNUNDTUN02_TR_1
+		TriggerTreasure	(HDNUNDTUN02_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,7,6,12)

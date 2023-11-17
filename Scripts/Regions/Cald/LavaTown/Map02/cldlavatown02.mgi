@@ -1,0 +1,63 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP02\CLDLAVATOWN02_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP02\CLDLAVATOWN02_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP02\CLDLAVATOWN02_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP02\CLDLAVATOWN02_PEOPLE.MGI
+
+/********************************//********************************/
+// GENERIC
+/********************************//********************************/
+?_CLDLAVATOWN02
+	SetXRAMByte				(Exit_Disable,1)
+	Switch					([GAMECOUNT])
+							(GC_CALD_INTRO,?_CLDLAVATOWN02_APOLOGY)
+							(GC_ARBOLL_HUNT,?_CLDLAVATOWN02_ARBOLLQUEST)
+							(GC_LAVA_BRIDGE,?_CLDLAVATOWN02_BESTBRIDGE)
+							(GC_BOOTS_QUEST,?_CLDLAVATOWN02_HURRYUP)
+							(GC_CALD_GEYSER,?_CLDLAVATOWN02_HURRYUP)
+							(GC_TONY_KIDNAPPED,?_CLDLAVATOWN02_PARTY)
+
+	If						([Cold_Shoulder],?_CLDLAVATOWN02_COLDSHOULDER)
+	
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDLAVATOWN02_WARMREUNION
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_REUNION)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_REUNION)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()		
+
+?_CLDTOWN02_GIRL04_REUNION
+	SetText				(?_CLDTOWN02_GIRL04_TXT06)	
+	Jump				(?_FACE_GIRL04)					
+
+?_CLDTOWN02_YOUNGMAN_REUNION
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT06)	
+	Jump				(?_FACE_YOUNGMAN)			
+
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+

@@ -1,0 +1,155 @@
+/********************************//********************************/
+// GIA GAMECOUNT TALKER
+/********************************//********************************/
+?_GAMECOUNT_GIA
+	ThisActorSetAnim		(?_GIA_STAND_DOWN_ANIM)
+	End						()
+
+?_GAMECOUNT_GIA_TALKER
+	SetText					(_TXT_GAMECOUNT)
+	Jump					(?_FACE_GIA)
+
+
+_TXT_GAMECOUNT
+	Switch					([GAMECOUNT])
+							(GC_NAROOM_GEYSER,	_NAROOM_GEYSER)
+							(GC_GLOVES,			_GLOVES)
+							(GC_BOOTS_QUEST,	_CALD_GEYSER)
+							(GC_CALD_GEYSER,	_CALD_GEYSER)
+
+	JumpLocal				(?_WVEGIASHUT01_SAVERTXT)
+
+/********************************/
+// GC_NAROOM_GEYSER
+_NAROOM_GEYSER
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Go now to the=")
+	         			("Shadow Geyser.")
+	TextClose			()
+	JumpLocal			(?_WVEGIASHUT01_SAVERTXT)
+
+/********************************/
+// GC_GLOVES
+_GLOVES
+	Switch				([Blades_State])
+						(0,_NO_BLADES)
+						(1,_GOT_BLADES)
+						(2,?_WVEGIASHUT01_SAVERTXT)
+
+_NO_BLADES
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite 			("Try looking for=")
+	         			("some clue at")
+	         			("the Geyser.")
+	TextClose			()
+	JumpLocal			(?_WVEGIASHUT01_SAVERTXT)
+
+_GOT_BLADES
+	SetXRAMByte			(Blades_State,2)
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Gia! I=")
+						("found some")
+						("weird crystal=")
+						("blades at the")
+						("Geyser.")
+	TextIcon			(ICON_GIA)
+	TextWrite			("Those look like=")
+						("the kind of")
+						("blades used by=")
+						("miners in the")
+						("Underneath.=")
+						("Whoever created")
+						("that Geyser=")
+						("must have taken")
+	         			("an old mine=")
+	         			("shaft...")
+	         			("Eidon can fit=")
+	         			("those blades")
+	         			("into digging=")
+	         			("gloves for you.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Thanks for your=")
+	         			("help.")
+	TextIcon			(ICON_GIA)
+	TextWrite			("Good luck,")
+	         			("Kyros!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/********************************/
+// GC_BOOTS_QUEST
+// GC_CALD_GEYSER
+_CALD_GEYSER
+	If					([GiaScene_CaldGeyser],_CALD_GEYSER_GENERIC)
+
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("KYROS! You=")
+						("escaped! Tell")
+						("me what=")
+						("happened.")
+	TextClose			()
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,4)
+	JumpLocal			(?_WVEGIASHUT02_CALD_GEYSER)
+
+_CALD_GEYSER_GENERIC
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("My grandmother=")
+						("was from")
+						("The Cald...")
+	TextClose			()
+	JumpLocal			(?_WVEGIASHUT01_SAVERTXT)
+
+/********************************/
+// GC_BACK_IN_OROTHE
+_BACK_IN_OROTHE
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Be careful in=")
+						("Orothe.")
+	TextClose			()
+	JumpLocal			(?_WVEGIASHUT01_SAVERTXT)
+
+/********************************/
+// GIA SAVER TEXT
+?_WVEGIASHUT01_SAVERTXT
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Shall I record=")
+						("your journey?")
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Yes=")
+						(" No$")
+	TextMenu			(2)
+						(_WVEGIASHUT01_SAVED_TXT)
+						(_WVEGIASHUT01_NOTSAVED_TXT)
+
+_WVEGIASHUT01_SAVED_TXT
+	TextClear			()
+	TextWrite			("Your journey is=")
+						("now recorded.")
+	TextClose			()
+	SetLoadScript		(?_LOAD_GIASHUT02)
+	SaveGame			(1)
+	SetEventText		(1)
+	End					()
+
+_WVEGIASHUT01_NOTSAVED_TXT
+	TextClear			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Good luck=")
+						("Kyros!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END GIA GAMECOUNT TALKER
+/********************************//********************************/

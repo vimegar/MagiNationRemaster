@@ -1,0 +1,70 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP13\ARDGEYSER13_DR.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP13\ARDGEYSER13_TXT.MGI
+
+/********************************/
+?_ARDGEYSER13
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER13)
+	LoadHotspots		(HS_ARDGEYSER13)
+	LoadTriggers		(TR_ARDGEYSER13)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER13)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	End					()
+	
+?_ARDGEYSER13_TUBE
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER13)
+	LoadHotspots		(HS_ARDGEYSER13)
+	LoadTriggers		(TR_ARDGEYSER13)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,13,21,27,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	SetCamera			(6,4)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(44,0,4)	
+						(28,4,0)
+						(28,0,4)
+	If					([Ardgeyser_Trig1],_RETURN)
+	ThatActorStart		(HEROACTOR)	
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER13)
+	WaitEventMaster		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+_RETURN
+	ScrollMap			(28,0,-4)
+	Jump				(?_ARDGEYSER13_RETURN)
+	
+?_ARDGEYSER13_FROM24
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER13)
+	LoadHotspots		(HS_ARDGEYSER13)
+	LoadTriggers		(TR_ARDGEYSER13)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,13,21,27,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	SetCamera			(20,0)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(44,0,4)
+						(14,-4,0)
+	If					([!Ardgeyser_Trig1],?_ARDGEYSER13_RETURN)
+	ScrollMap			(14,-4,0)
+						(28,0,4)
+	ThatActorStart		(HEROACTOR)	
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER13)
+	WaitEventMaster		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+

@@ -1,0 +1,19 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\WEAVE\PATHVALLEY\MAP09\WVEPATHVALLEY09_DR.MGI
+%INCLUDE			REGIONS\WEAVE\PATHVALLEY\MAP09\WVEPATHVALLEY09_TXT.MGI
+
+/********************************/
+?_WVEPATHVALLEY09
+	SceneNew		()
+	LoadMap			(MAP_FERRY02)
+	LoadPalette		(PAL_HERO)
+	LoadHotspots	(HS_WVEPATHVALLEY09)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SceneReady		()
+	End				()
+
+

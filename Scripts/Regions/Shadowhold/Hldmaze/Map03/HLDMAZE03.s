@@ -1,0 +1,173 @@
+;Size:177
+                      
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\SHADOWHOLD\HLDMAZE\MAP03\HLDMAZE03.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_HLDMAZE03_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$05
+		DB	$17
+		DB	$00
+		DB	$17
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE01
+		DW	(?_HLDMAZE01&$FFFF)
+
+;********************************
+?_HLDMAZE03_DR_2
+	DB	CMD_HEROTODOOR
+		DB	$11
+		DB	$03
+		DB	$17
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE04
+		DW	(?_HLDMAZE04&$FFFF)
+
+;********************************
+?_HLDMAZE03_TR_1
+	DB	CMD_TOGGLEONCE
+		DW	(XRAM_SAVEBITS+$0003)
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	$FA
+		DB	$FB
+		DW	$D0A4
+
+	DB	CMD_END
+
+;********************************
+?_HLDMAZE03_TR_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0E),(?AL+$11),?HURRY
+		DB	(?AL+$03),(?AL+$0E),(?AL+$04),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0D),?WAIT
+		DB	(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$00),?SPCE,(?AL+$0A),(?AL+$04),(?AL+$18),(?AL+$07),(?AL+$0E),(?AL+$0B),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_HLDMAZE03_TR_3
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$13),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$0E),(?AL+$0A),(?AL+$12),?HURRY
+		DB	(?AL+$11),(?AL+$00),(?AL+$03),(?AL+$08),(?AL+$0E),(?AL+$00),(?AL+$02),(?AL+$13),(?AL+$08),(?AL+$15),(?AL+$04),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_HLDMAZE03
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HLDMAZE03&$FFFF)
+		DB	:MAP_HLDMAZE03
+
+	DB	CMD_LOADTRIGGERS
+		DW	(TR_HLDMAZE03&$FFFF)
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HLDMAZE03&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_SONGSTART
+		DB	SONGID_shadowhold
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D07D
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETENCOUNTER
+		DB	:?_HLDMAZE_RNDBAT
+		DW	(?_HLDMAZE_RNDBAT&$FFFF)
+		DW	(ENCOUNTER_FRQ_SLOW&$FFFF)
+
+	DB	CMD_SETBTLRETURN
+		DB	:?_HLDMAZE03
+		DW	(?_HLDMAZE03&$FFFF)
+		DB	(:?_BATTLE_LOST&$FF)
+		DW	(?_BATTLE_LOST&$FFFF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_IF
+		DB	EXPR_NOT
+		DB	EXPR_XRAMBIT
+		DW	(XRAM_SAVEBITS+$0003)&$FFFF
+		DB	$20
+		DB	:_END
+		DW	(_END&$FFFF)
+
+	DB	CMD_COPYTILEBLOCK
+		DW	$D210
+		DB	$02
+		DB	$02
+		DW	$D101
+		DB	$0A
+		DB	$11
+
+;********************************
+_END
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_HLDMAZE01
+	GLOBAL	?_HLDMAZE04
+	GLOBAL	XRAM_SAVEBITS
+	GLOBAL	?_END
+	GLOBAL	MAP_HLDMAZE03
+	GLOBAL	TR_HLDMAZE03
+	GLOBAL	HS_HLDMAZE03
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_HLDMAZE_RNDBAT
+	GLOBAL	ENCOUNTER_FRQ_SLOW
+	GLOBAL	?_BATTLE_LOST
+
+;********************************
+	END
+;********************************

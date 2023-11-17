@@ -1,0 +1,162 @@
+/********************************/
+?_UNDGEYSER09_DR_1
+		HeroToDoor		(14,39,11,0)
+		Jump			(?_UNDGEYSER01)
+
+?_UNDGEYSER09_DR_2
+		HeroToDoor		(39,22,0,9)
+		Jump			(?_UNDGEYSER07)
+
+?_UNDGEYSER09_DR_3
+		HeroSetDoor		(5,38)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,10,0)
+		Jump			(?_UNDGEYSER05)
+
+?_UNDGEYSER09_DR_4
+		HeroSetDoor		(6,8)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,10,0)
+		Jump			(?_UNDGEYSER02)
+
+?_UNDGEYSER09_DR_5
+		HeroSetDoor		(26,9)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,10,0)
+		Jump			(?_UNDGEYSER08)
+
+?_UNDGEYSER09_DR_6
+		HeroSetDoor		(26,41)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,10,0)
+		Jump			(?_UNDGEYSER06)
+
+?_UNDGEYSER09_TR_1
+		TriggerOnce		(Trigger1,_SKIP,250,30,17,40)
+		SFX				(SFXID_TREASURECHEST)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+		CameraSeek		(26,19,2)
+		Delay			(32)
+		Switch			([UndGeyserWall])
+						(0,?_REMOVE_OUTER_WALL)
+						(1,?_REMOVE_SECOND_WALL)
+						(2,?_REMOVE_THIRD_WALL)
+						(3,?_REMOVE_INNER_WALL)
+_SKIP
+		End				()
+
+?_UNDGEYSER09_TR_2
+		TriggerOnce		(Trigger2,_SKIP,250,2,31,40)
+		SFX				(SFXID_TREASURECHEST)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		CameraSeek		(18,25,2)
+		Delay			(32)
+		Switch			([UndGeyserWall])
+						(0,?_REMOVE_OUTER_WALL)
+						(1,?_REMOVE_SECOND_WALL)
+						(2,?_REMOVE_THIRD_WALL)
+						(3,?_REMOVE_INNER_WALL)
+_SKIP
+		End				()
+
+?_UNDGEYSER09_TR_3
+		TriggerOnce		(Trigger3,_SKIP,250,13,6,40)
+		SFX				(SFXID_TREASURECHEST)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		CameraSeek		(18,13,2)
+		Delay			(32)
+		Switch			([UndGeyserWall])
+						(0,?_REMOVE_OUTER_WALL)
+						(1,?_REMOVE_SECOND_WALL)
+						(2,?_REMOVE_THIRD_WALL)
+						(3,?_REMOVE_INNER_WALL)
+_SKIP
+		End				()
+
+?_UNDGEYSER09_TR_4
+		TriggerOnce		(Trigger4,_SKIP,250,2,21,40)
+		SFX				(SFXID_TREASURECHEST)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		CameraSeek		(11,19,2)
+		Delay			(32)
+		Switch			([UndGeyserWall])
+						(0,?_REMOVE_OUTER_WALL)
+						(1,?_REMOVE_SECOND_WALL)
+						(2,?_REMOVE_THIRD_WALL)
+						(3,?_REMOVE_INNER_WALL)
+_SKIP
+		End				()
+
+?_REMOVE_OUTER_WALL
+		SetXRAMByte		(UndGeyserWall,1)
+		SetScroll		(?_WALL_REMOVE_SHAKE)
+		SFX				(SFXID_MISC01)
+		CopyTileBlock	(40,14,26,1,7,27,15)
+		CopyTileBlock	(40,8,26,1,7,10,15)
+		CopyTileBlock	(40,17,26,4,4,17,25)
+		CopyTileBlock	(40,9,32,5,1,16,11)
+		Delay			(48)
+		CameraSeekActor	(HEROACTOR,2)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_REMOVE_SECOND_WALL
+		SetXRAMByte		(UndGeyserWall,2)
+		SetScroll		(?_WALL_REMOVE_SHAKE)
+		SFX				(SFXID_MISC01)
+		CopyTileBlock	(40,13,26,1,7,26,15)
+		CopyTileBlock	(40,9,26,1,7,11,15)
+		CopyTileBlock	(40,17,25,4,4,17,24)
+		CopyTileBlock	(40,21,7,5,1,16,12)
+		Delay			(48)
+		CameraSeekActor	(HEROACTOR,2)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_REMOVE_THIRD_WALL
+		SetXRAMByte		(UndGeyserWall,3)
+		SetScroll		(?_WALL_REMOVE_SHAKE)
+		SFX				(SFXID_MISC01)
+		CopyTileBlock	(40,12,26,1,7,25,15)
+		CopyTileBlock	(40,10,26,1,7,12,15)
+		CopyTileBlock	(40,17,24,4,4,17,23)
+		CopyTileBlock	(40,21,7,5,1,16,13)
+		Delay			(48)
+		CameraSeekActor	(HEROACTOR,2)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_REMOVE_INNER_WALL
+		SetXRAMByte		(UndGeyserWall,4)
+		SetScroll		(?_WALL_REMOVE_SHAKE)
+		SFX				(SFXID_MISC01)
+		CopyTileBlock	(40,11,26,1,7,24,15)
+		CopyTileBlock	(40,14,26,1,7,13,15)
+		CopyTileBlock	(40,17,29,4,4,17,23)
+		CopyTileBlock	(40,12,31,5,3,16,14)
+		Delay			(48)
+		CameraSeekActor	(HEROACTOR,2)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_WALL_REMOVE_SHAKE
+		ScrollMap		(3,0,-3)
+		ScrollMap		(3,0,3)
+		ScrollMap		(3,3,0)
+		ScrollMap		(3,-3,0)
+		ScrollMap		(3,0,-3)
+		ScrollMap		(3,0,3)
+		ScrollMap		(3,3,0)
+		ScrollMap		(3,-3,0)
+		End				()
+
+
+

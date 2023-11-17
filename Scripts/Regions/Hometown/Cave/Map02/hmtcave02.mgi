@@ -1,0 +1,173 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP02\HMTCAVE02_DR.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP02\HMTCAVE02_TXT.MGI
+
+/********************************/
+?_HMTCAVE02
+	If					([Got_Crystal],?_HMTCAVE02_FALL_DOWN)
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HMTCAVE02)
+	LoadHotspots		(HS_HMTCAVE02)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,6,29,20,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_orwin)
+	SceneReady			()
+	End					()
+
+
+?_HMTCAVE02_INIT
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HMTCAVE02)
+	LoadHotspots		(HS_HMTCAVE02)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,14,28,20,0,?_HMTCAVE02_OPENINGTONY,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetCamera			(13,29)
+	SongStart			(SONGID_orwin)
+	SceneReady			()
+	Delay				(32)
+	SetText				(?_HMTCAVE02_HOLDER_1)
+	WaitAnyEventText	()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+
+/********************************/
+?_HMTCAVE02_OPENINGTONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,48)
+							(?_HERO_STAND_DOWN_ANIM,0)	
+	End						()
+
+/********************************//********************************/
+// QUAKE
+/********************************//********************************/
+?_HMTCAVE02_FALL_DOWN
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	SetXRAMByte			(First_Creature,2)
+	LoadMap				(MAP_HMTCAVE02)
+	LoadHotspots		(HS_HMTCAVE02)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?SCROLLER_AI,12,0,20,0,?_HMTCAVE_RUNFORIT,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?RAINDROP_AI,0,0,20,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR01,?RAINDROP_AI,0,0,20,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR02,?RAINDROP_AI,0,0,20,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	LoadVRAMTiles		(16,BIT_FALLINGROCKS,0,0)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR00)
+	ThatActorStart		(ACTOR01)
+	ThatActorStart		(ACTOR02)
+	SongStart			(SONGID_arderial)
+	HeroSetCamera		()
+	SceneReady			()
+	SetScroll			(?_HMTCAVE_QUAKE_LOOP)
+	SetText				(_FLOOR_FALL)
+	End					()
+
+_FLOOR_FALL
+	Delay				(56)
+	CopyTileBlock		(20,0,3,4,4,10,3)
+	SetAnyEventText		()
+	CopyTileBlock		(20,0,21,6,6,11,24)
+	SetAnyEventText		()
+	Delay				(64)
+	CopyTileBlock		(20,0,11,4,7,13,11)
+	SetAnyEventText		()
+	Delay				(198)
+	Jump				(?_HMTCAVE_TIMESUP)
+
+?_HMTCAVE_RUNFORIT
+	ThisActorSetAnim	(?_HERO_RUN_DOWN_ANIM)
+	Delay				(56)
+	ThisActorSetAI		(?HERO_AI)
+	Jump				(?_HERO_STAND_DOWN_ANIM)
+
+?_HMTCAVE_QUAKE_LOOP
+	ScrollMap			(3,-1,0)
+						(3,1,0)
+						(3,0,-1)
+						(3,0,1)
+						(3,-1,0)
+						(3,1,0)	
+						(3,0,-1)
+						(3,0,1)
+	Jump				(?_HMTCAVE_QUAKE_LOOP)
+
+?_HMTCAVE_FALL
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLAILING)
+	WaitAnyEventText	()
+	SetText				(?_END)
+	JumpLocal			(?_HMTCAVE_END)
+
+?_HMTCAVE_TIMESUP
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetText				(?_END)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Oh no! I'm=")
+						("trapped!!")
+	TextClose			()
+
+?_HMTCAVE_END
+	Pass				()
+	PalClearBase		(0,15,0,0,0)
+	PalFade				(0,6,32,0)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FALLING_GOOFILY_1)
+	SetScroll			(_STOP_TONY)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("WAAAAAAAGH!!!")
+	TextClose			()
+
+	PalFade				(7,15,32,0)
+	Jump				(?_HMTCAVE01_KIDS_WAIT)
+
+_STOP_TONY
+	Delay				(200)
+	ThatActorStop		(HEROACTOR)
+	End					()
+
+?_HMTCAVE_ROCKS
+	ThisActorSetAnim	(?_END)
+	ThisActorRaindrop	(COLLCODE_SPACE)
+	JumpRandom			(_ROCKS01)
+						(_ROCKS02)
+						(_ROCKS03)
+						(_ROCKS04)
+						(_ROCKS05)
+						(_ROCKS06)
+_ROCKS01
+	ThisActorSetAnim	(?_FALLING_ROCKS01)
+	Delay				(23)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+_ROCKS02
+	ThisActorSetAnim	(?_FALLING_ROCKS02)
+	Delay				(53)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+_ROCKS03
+	ThisActorSetAnim	(?_FALLING_ROCKS03)
+	Delay				(56)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+_ROCKS04
+	ThisActorSetAnim	(?_FALLING_ROCKS04)
+	Delay				(58)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+_ROCKS05
+	ThisActorSetAnim	(?_FALLING_ROCKS05)
+	Delay				(68)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+_ROCKS06
+	ThisActorSetAnim	(?_FALLING_ROCKS06)
+	Delay				(70)
+	JumpLocal			(?_HMTCAVE_ROCKS)
+/********************************//********************************/
+// END QUAKE
+/********************************//********************************/

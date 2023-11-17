@@ -1,0 +1,289 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_EIDON_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?EIDON_WALK01_BACK)
+					(?EIDON_WALK02_BACK)
+					(?EIDON_WALK03_BACK)
+					(?EIDON_WALK02_BACK)
+					
+	JumpLocal:		(?_EIDON_WALK_UP_ANIM)
+
+/********************************/
+?_EIDON_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?EIDON_WALK01_FRONT)
+					(?EIDON_WALK02_FRONT)
+					(?EIDON_WALK03_FRONT)
+					(?EIDON_WALK02_FRONT)
+					
+	JumpLocal:		(?_EIDON_WALK_DOWN_ANIM)
+
+/********************************/
+?_EIDON_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?EIDON_WALK01_LEFT)
+					(?EIDON_WALK02_LEFT)
+					(?EIDON_WALK03_LEFT)
+					(?EIDON_WALK02_LEFT)
+					
+	JumpLocal:		(?_EIDON_WALK_LEFT_ANIM)
+
+/********************************/
+?_EIDON_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?EIDON_WALK01_RIGHT)
+					(?EIDON_WALK02_RIGHT)
+					(?EIDON_WALK03_RIGHT)
+					(?EIDON_WALK02_RIGHT)
+					
+	JumpLocal:		(?_EIDON_WALK_RIGHT_ANIM)
+
+/********************************/
+?_EIDON_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?EIDON_WALK01_BACK)
+					(?EIDON_WALK02_BACK)
+					(?EIDON_WALK03_BACK)
+					(?EIDON_WALK02_BACK)
+					
+	JumpLocal:		(?_EIDON_RUN_UP_ANIM)
+
+/********************************/
+?_EIDON_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?EIDON_WALK01_FRONT)
+					(?EIDON_WALK02_FRONT)
+					(?EIDON_WALK03_FRONT)
+					(?EIDON_WALK02_FRONT)
+					
+	JumpLocal:		(?_EIDON_RUN_DOWN_ANIM)
+
+/********************************/
+?_EIDON_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?EIDON_WALK01_LEFT)
+					(?EIDON_WALK02_LEFT)
+					(?EIDON_WALK03_LEFT)
+					(?EIDON_WALK02_LEFT)
+					
+	JumpLocal:		(?_EIDON_RUN_LEFT_ANIM)
+
+/********************************/
+?_EIDON_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?EIDON_WALK01_RIGHT)
+					(?EIDON_WALK02_RIGHT)
+					(?EIDON_WALK03_RIGHT)
+					(?EIDON_WALK02_RIGHT)
+					
+	JumpLocal:		(?_EIDON_RUN_RIGHT_ANIM)
+
+/********************************/
+?_EIDON_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?EIDON_WALK02_BACK)
+	
+	JumpLocal:		(?_EIDON_STAND_UP_ANIM)
+
+/********************************/
+?_EIDON_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?EIDON_WALK02_FRONT)
+	
+	JumpLocal:		(?_EIDON_STAND_DOWN_ANIM)
+
+/********************************/
+?_EIDON_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?EIDON_WALK02_LEFT)
+	
+	JumpLocal:		(?_EIDON_STAND_LEFT_ANIM)
+
+/********************************/
+?_EIDON_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?EIDON_WALK02_RIGHT)
+	
+	JumpLocal:		(?_EIDON_STAND_RIGHT_ANIM)
+
+/********************************/
+?_EIDON_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?EIDON_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_EIDON_STAND_UL_ANIM)
+
+/********************************/
+?_EIDON_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?EIDON_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_EIDON_STAND_UR_ANIM)
+
+/********************************/
+?_EIDON_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?EIDON_STAND_LEFT)
+	
+	JumpLocal:		(?_EIDON_STAND_DL_ANIM)
+
+/********************************/
+?_EIDON_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?EIDON_STAND_RIGHT)
+	
+	JumpLocal:		(?_EIDON_STAND_DR_ANIM)
+
+/********************************/
+?_EIDON_HALF_ANIM
+
+	Frame:			(255,0,0,?EIDON_HALF)
+	
+	JumpLocal:		(?_EIDON_HALF_ANIM)
+
+/********************************/
+?_EIDON_WAVING
+
+	Frame:			(1,0,0,?EIDON_WAVE)
+	
+	JumpLocal		(?_EIDON_WAVING)
+
+/********************************/
+?_EIDON_CHARADES
+	
+	Frame:			(4,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(4,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(16,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(4,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(16,0,0,?EIDON_WALK02_FRONT)
+					(16,0,0,?EIDON_WAVE)
+					(4,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(8,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+					(8,0,0,?EIDON_WALK02_FRONT)
+					(4,0,0,?EIDON_WAVE)
+						
+	JumpLocal:		(?_EIDON_CHARADES)
+
+/********************************/
+?_EIDON_CHOP_RIGHT_ANIM
+	
+	Frame:			(16,0,0,?EIDON_WORK2_01_RIGHT)
+					(8,0,0,?EIDON_WORK2_03_RIGHT)
+					(16,0,0,?EIDON_WORK2_02_RIGHT)
+	
+	JumpLocal:		(?_EIDON_CHOP_RIGHT_ANIM)
+
+/********************************/
+?_EIDON_CHOP_LEFT_ANIM
+	
+	Frame:			(16,0,0,?EIDON_WORK2_01_LEFT)
+					(8,0,0,?EIDON_WORK2_03_LEFT)
+					(16,0,0,?EIDON_WORK2_02_LEFT)
+	
+	JumpLocal:		(?_EIDON_CHOP_LEFT_ANIM)
+
+/********************************/
+?_EIDON_CHOP_LEFT_STILL
+	
+	Frame:			(255,0,0,?EIDON_WORK2_01_LEFT)
+	
+	JumpLocal:		(?_EIDON_CHOP_LEFT_STILL)
+
+/********************************/
+?_EIDON_CHOPCHOP_RIGHT_ANIM
+	
+	Frame:			(4,0,0,?EIDON_WORK2_03_RIGHT)
+					(4,0,0,?EIDON_WORK2_02_RIGHT)
+	
+	JumpLocal:		(?_EIDON_CHOPCHOP_RIGHT_ANIM)
+
+/********************************/
+?_EIDON_CHOPCHOP_LEFT_ANIM
+	
+	Frame:			(4,0,0,?EIDON_WORK2_03_LEFT)
+					(4,0,0,?EIDON_WORK2_02_LEFT)
+	
+	JumpLocal:		(?_EIDON_CHOPCHOP_LEFT_ANIM)
+
+/********************************/
+?_EIDON_FALL_LEFT_ANIM
+
+	Frame:			(16,0,0,?EIDONFALL01_LEFT)
+
+?_EIDON_FALLEN_LEFT_ANIM
+
+	Frame:			(1,0,0,?EIDONFALL02_LEFT)
+	
+	JumpLocal		(?_EIDON_FALLEN_LEFT_ANIM)
+
+/********************************/
+?_EIDON_FALL_RIGHT_ANIM
+
+	Frame:			(16,0,0,?EIDONFALL01_RIGHT)
+
+?_EIDON_FALLEN_RIGHT_ANIM
+
+	Frame:			(1,0,0,?EIDONFALL02_RIGHT)
+	
+	JumpLocal		(?_EIDON_FALLEN_RIGHT_ANIM)
+
+/********************************/
+?_EIDONORWIN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?EIDONORWIN01)
+					(?EIDONORWIN02)
+					(?EIDONORWIN03)
+					(?EIDONORWIN02)
+	
+	JumpLocal		(?_EIDONORWIN_ANIM)
+
+/********************************/
+?_EIDONORWIN_STILL
+
+	Frame:			(8,0,0,?EIDONORWIN01)
+	
+	JumpLocal		(?_EIDONORWIN_STILL)
+
+/********************************/
+?_FACE_EIDON
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_EIDON_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_EIDON_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_EIDON_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_EIDON_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

@@ -1,0 +1,132 @@
+/********************************************************/
+// Depending on the TCState, they will say different stuff
+/********************************************************/
+
+?_CLDTOWN08_TC1_TXT01
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN01)
+	TextWrite			("Uh, your name's=")
+						("Joney, right?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("It's Tony.=")
+						("What's yours?")
+	TextIcon			(ICON_TRYNCSN01)
+	TextWrite			("Oh. My name is=")
+						("Karyn, and that")
+						("over there is=")
+						("my sister,")
+						("Eryn. Nice=")
+						("to meet ya!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN08_TC2_TXT01
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN02)
+	TextWrite			("Hey, you're=")
+						("Tony, right?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("That's right.=")
+						("Who are you?")
+	TextIcon			(ICON_TRYNCSN02)
+	TextWrite			("My name is=")
+						("Eryn, and that")
+						("over there is=")
+						("my sister,")
+						("Karyn. Nice=")
+						("to meet ya!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN08_TC1_TXT02
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN01)
+	TextWrite			("Nice place,=")
+						("isn't this?")
+						("It's a little=")
+						("uncomfortable")
+						("and smelly at=")
+						("first, but you")
+						("get used to it.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN08_TC2_TXT02
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN02)
+	TextWrite			("Karyn hated=")
+						("this place at")
+						("first but now=")
+						("she loves it")
+						("here. Isn't=")
+						("she weird?")
+	TextIcon			(ICON_TRYNCSN01)
+	TextWrite			("I heard that!")
+	TextIcon			(ICON_TRYNCSN02)
+	TextWrite			("Tee hee...")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN08_TC1_TXT03
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN01)
+	TextWrite			("We're thinking=")
+						("about visiting")
+						("Vash Naroom for=")
+						("a little while.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN08_TC2_TXT03
+	TextOpen			()
+	TextIcon			(ICON_TRYNCSN02)
+	TextWrite			("I wonder if=")
+						("cousin Tryn")
+						("still has that=")
+						("weird bag?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDTOWN08_BOY_TXT02
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Hey, you're=")
+						("that thief guy,")
+						("aren't you?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDTOWN08_BOY_TXT01
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("What happened=")
+						("to Eryn and")
+						("Karyn? Did=")
+						("they go and")
+						("visit Tryn=")
+						("again?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/

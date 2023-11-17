@@ -1,0 +1,70 @@
+/********************************/
+//?_OROCITY02_TXT
+/********************************/
+?_OROCITY02_INN_TXT
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Welcome to=")
+						("the Oscent")
+						("Mar Inn.=")
+						("Would you like")
+						("to record=")
+						("your journey")
+						("and stay the=")
+						("night?")
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Yes=")
+						(" No$")
+	TextMenu			(2)
+						(_OROTHE_INN_YES)
+						(_OROTHE_INN_NO)
+_OROTHE_INN_YES
+	TextClear			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("You are getting=")
+						("sleepy....")
+	TextClose			()
+	SetLoadScript		(?_LOAD_OROCITY02)
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	SaveGame			(1)
+	Delay				(64)
+	Jump				(?_OROCITY02_TONY_WAKING)
+_OROTHE_INN_NO
+	TextClear			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Enjoy your stay=")
+						("in Oscent Mar!")	
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_OROCITY02_SHOP_TXT
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Welcome to the=")
+						("Oscent Mar")
+						("shop!")
+	TextClose			()
+
+	MenuShop			(_DONE)
+						(INV_BALOO_SAP,35)
+						(INV_BALOO_ROOT,60)
+						(INV_REMEDY_DRINK,20)
+						(INV_POWER_GEM,5)
+						(INV_CRESCENT_GEM,35)
+						(INV_GIBBOUS_GEM,35)
+						(INV_SPECIMEN_JAR,511)
+						
+_DONE
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Have a pleasant=")
+						("day!")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+	

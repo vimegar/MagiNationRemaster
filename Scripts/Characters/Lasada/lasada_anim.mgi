@@ -1,0 +1,48 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_LASADA_MAKE_RING_ANIM
+	
+	Frame:			(4,0,0,?LASADA_RING01)
+					(4,0,0,?LASADA_RING02)
+					(32,0,0,?LASADA_RING03)
+					(32,0,0,?LASADA_RING04)
+					(16,0,0,?LASADA_RING05)
+					(16,0,0,?LASADA_RING06)
+					(8,0,0,?LASADA_RING05)
+					(8,0,0,?LASADA_RING06)
+					(8,0,0,?LASADA_RING05)
+					(8,0,0,?LASADA_RING06)
+					(4,0,0,?LASADA_RING05)
+					(4,0,0,?LASADA_RING06)
+					(4,0,0,?LASADA_RING05)
+					(4,0,0,?LASADA_RING06)
+					(4,0,0,?LASADA_RING05)
+					(4,0,0,?LASADA_RING06)
+					(2,0,0,?LASADA_RING05)
+					(2,0,0,?LASADA_RING06)
+					(2,0,0,?LASADA_RING05)
+					(2,0,0,?LASADA_RING06)
+					(2,0,0,?LASADA_RING05)
+					(2,0,0,?LASADA_RING06)
+					(2,0,0,?LASADA_RING05)
+					(2,0,0,?LASADA_RING06)
+					(2,0,0,?LASADA_RING05)
+					(2,0,0,?LASADA_RING06)
+					(24,0,0,?LASADA_RING04)
+					(4,0,0,?LASADA_RING03)
+
+/********************************/
+?_LASADA_DONE_RING_ANIM
+
+	Frame:			(255,0,0,?LASADA_RING07)
+	
+	JumpLocal:		(?_LASADA_DONE_RING_ANIM)
+
+/********************************/
+?_LASADA_STAND_ANIM
+
+	Frame:			(255,0,0,?LASADA_RING01)
+	
+	JumpLocal:		(?_LASADA_STAND_ANIM)

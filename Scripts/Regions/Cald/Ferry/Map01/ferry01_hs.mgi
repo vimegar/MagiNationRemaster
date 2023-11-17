@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_FERRY01_AT_WEAVE)
+						(HOTSPOT_TRIGGER_WEST,?_FERRY01_WEAVE_DR_1)
+/********************************/
+		FileHotspots	(HS_FERRY01_AT_CALD)
+						(HOTSPOT_TRIGGER_WEST,?_FERRY01_CALD_DR_1)

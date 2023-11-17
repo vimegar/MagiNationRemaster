@@ -1,0 +1,73 @@
+;Size:40
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\WEAVE\PATHVALLEY\MAP09\WVEPATHVALLEY09.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_WVEPATHVALLEY09_DR_1
+	DB	CMD_HEROSETDOOR
+		DB	$14
+		DB	$28
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01
+		DW	(?_OVRSURFACE01&$FFFF)
+
+;********************************
+?_WVEPATHVALLEY09
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_FERRY02&$FFFF)
+		DB	:MAP_FERRY02
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_WVEPATHVALLEY09&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D069
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_OVRSURFACE01
+	GLOBAL	MAP_FERRY02
+	GLOBAL	PAL_HERO
+	GLOBAL	HS_WVEPATHVALLEY09
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,17 @@
+/********************************/
+
+?_ARDCLOUDS06_DR_1
+		HeroToDoor	(21,53,37,0)
+		Jump		(?_ARDCLOUDS03)
+
+?_ARDCLOUDS06_DR_2
+		HeroSetDoor	(22,16)
+		Jump		(?_OVRSURFACE05)
+
+/********************************/
+
+?_ARDCLOUDS06_TR_1
+		TriggerTreasure	(ARDCLOUDS06_Chest1,INV_TYPE_RELIC,INV_PHANTOM_WIND,10,19,50)
+		
+?_ARDCLOUDS06_TR_2
+		TriggerTreasure	(ARDCLOUDS06_Chest2,INV_TYPE_RELIC,INV_SKY_ESSENCE,39,19,50)

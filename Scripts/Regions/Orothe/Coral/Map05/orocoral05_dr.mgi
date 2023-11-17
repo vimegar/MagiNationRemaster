@@ -1,0 +1,14 @@
+/********************************/
+?_OROCORAL05_DR_1
+		HeroToDoor	(31,0,6,39)
+		Jump		(?_OROCORAL04)		
+		
+/********************************/
+?_OROCORAL05_TR_1
+		TriggerTreasure	(OROCORAL05_Chest1,INV_TYPE_RELIC,INV_CORF_PEARL,56,12,70)
+
+?_OROCORAL05_TR_2
+		TriggerTreasure	(OROCORAL05_Chest2,INV_TYPE_RELIC,INV_KARMIC_POWER,28,21,70)
+
+?_OROCORAL05_TR_3
+		TriggerTreasure	(OROCORAL05_Chest3,INV_TYPE_ITEM,INV_RUNEOFPOWER,24,24,70)

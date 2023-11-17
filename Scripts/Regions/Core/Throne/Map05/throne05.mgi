@@ -1,0 +1,52 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP05\THRONE05_DR.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP05\THRONE05_TXT.MGI
+
+?_THRONE05
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_THRONE05)
+	LoadTriggers			(TR_THRONE05)
+	LoadHotspots			(HS_THRONE05)
+	If						([GAMECOUNT != GC_AGRAM_BATTLE],_NO_BATTLES)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,64,0,?_RAINER,?_THRONE_RANDOM_BATTLE)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,64,0,?_RAINER,?_THRONE_RANDOM_BATTLE)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_THRONE05)
+_NO_BATTLES
+	Jump					(?_SCENE_READY)
+
+?_THRONE05_ENDING1
+	SceneNew				()
+	LoadMap					(MAP_THRONE05)
+	SetCamera				(51,34)
+	PalClearAnim			(0,7,31,31,31)
+	SceneReady				()
+	PalFade					(0,7,32,1)
+	PalLoad					(0,7,PAL_FLESHCORE)
+	Delay					(64)
+	PalFade					(0,7,32,3)
+	Jump					(?_THRONE05_ENDING2)
+
+?_THRONE05_ENDING2
+	SceneNew				()
+	LoadMap					(MAP_THRONE05)
+	SetCamera				(11,14)
+	SceneReady				()
+	PalLoad					(0,7,PAL_FLESHCORE)
+	Delay					(64)
+	PalFade					(0,7,32,3)
+	Jump					(?_THRONE05_ENDING3)
+
+?_THRONE05_ENDING3
+	SceneNew				()
+	LoadMap					(MAP_THRONE05)
+	SetCamera				(44,13)
+	SceneReady				()
+	PalLoad					(0,7,PAL_FLESHCORE)
+	Delay					(64)
+	PalFade					(0,7,32,3)
+	Jump					(?_THRONE06_ENDING)

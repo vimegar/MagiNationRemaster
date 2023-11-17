@@ -1,0 +1,19 @@
+?_NRMGLADE06_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_GUARD02)
+	TextWrite			("Be careful in=")
+						("here! It's")
+						("dangerous...")
+	TextClose			()
+	SetEventText		(1)
+	End					()		
+	
+?_NRMGLADE06_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("I think Orwin=")
+						("went up that")
+						("way.")
+	TextClose			()
+	SetEventText		(1)
+	End					()		

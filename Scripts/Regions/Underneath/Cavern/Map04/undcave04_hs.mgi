@@ -1,0 +1,5 @@
+/********************************/
+		FileHotspots	(HS_UNDCAVERN04)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDCAVERN04_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDCAVERN04_DR_2)
+						(HOTSPOT_TRIGGER_EAST,?_UNDCAVERN04_DR_3)

@@ -1,0 +1,128 @@
+/********************************//********************************/
+// PARTY
+/********************************//********************************/
+?_CLDLAVATOWN03_PARTY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN03)
+	LoadHotspots			(HS_CLDLAVATOWN03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,26,19,40,0,?_CLDLVTN03_FIREBREATH,?_CLDLVTN03_FIREBREATH2)
+	ThatActorStart			(ACTOR00)
+	ThatActorInit			(ACTOR01,?ANIM_AI,64,92,40,48,?_CLDLVTN03_FIRE,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,18,19,40,96,?_CLDLVTN03_HANDLED_DUDE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?TALKER_AI,24,19,40,0,?_CLDLVTN03_FIREBREATH3,?_CLDLVTN03_TOLD_HIM)
+	ThatActorInit			(ACTOR04,?TALKER_AI,6,19,40,96,?_CLDLVTN03_HOTSHOT,?_CLDLVTN03_HOTSHOT2)
+	ThatActorInit			(ACTOR05,?TALKER_AI,24,9,40,144,?_CLDLVTN03_GUARD,?_CLDLVTN03_GUARD_TALKS)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,40,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,40,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,40,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	LoadVRAMTiles			(48,BIT_FIREBALL,48,0)
+	LoadVRAMTiles			(48,BIT_YOUNGMAN,96,0)
+	LoadVRAMTiles			(20,BIT_GUARD,144,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,164,0)
+	HeroFromDoor		 	()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+
+	
+?_CLDLVTN03_HOTSHOT
+	ThisActorSetAnim		(?_YOUNGMAN_STAND_RIGHT_ANIM)
+	End						()
+	
+?_CLDLVTN03_HOTSHOT2
+	SetText					(?_CLDLVTN03_HOTSHOT_TXT)
+	Jump					(?_FACE_YOUNGMAN)
+	
+?_CLDLVTN03_TOLD_HIM
+	SetText					(?_CLDLVTN03_TOLD_YA_TXT)
+	Jump					(?_FACE_BOY)
+	
+?_CLDLVTN03_FIREBREATH
+	ThisActorSetAnim		(?_BOY_STAND_LEFT_ANIM)
+	End						()
+	
+?_CLDLVTN03_FIREBREATH2
+	SetText					(?_CLDLAVATOWN03_PARTY_TXT)
+	Jump					(?_FACE_BOY)
+	End						()
+	
+?_CLDLAVATOWN03_FIRE_TJ
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,16)
+							(?_HERO_RUN_UP_ANIM,20)							
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetEventMaster			(1)
+	End						()
+	
+?_CLDLAVATOWN03_FIRE_BOY
+	ThisActorSetAnimDelay	(?_BOY_STAND_LEFT_ANIM,0)
+	ThatActorStart			(ACTOR02)
+	WaitEventMaster			(67)
+	ThisActorSetAnimDelay	(?_BOY_RUN_LEFT_ANIM,8)
+							(?_BOY_RUN_RIGHT_ANIM,8)
+							(?_BOY_RUN_LEFT_ANIM,8)
+							(?_BOY_STAND_LEFT_ANIM,0)
+	SetEventMaster			(13)
+	ThatActorStart			(ACTOR01)
+	Delay					(64)
+	ThisActorStop			()
+	End						()
+	
+?_CLDLVTN03_FIREBREATH3
+	ThisActorSetAnim		(?_BOY_STAND_LEFT_ANIM)
+	ScrollMap				(60,4,0)
+	ThatActorSetScript		(ACTOR01,?_CLDLVTN03_FIRE)
+	ThatActorSetScript		(ACTOR02,?_CLDLVTN03_HANDLED_DUDE)
+	ThisActorSetAnimDelay	(?_BOY_WALK_RIGHT_ANIM,32)
+							(?_BOY_STAND_LEFT_ANIM,0)
+	SetText					(?_CLDLVTN03_TOLD_YOU_TXT)
+	WaitEventText			(1)
+	SetScroll				(?_CLDLVTN_BOY_SETTER)
+	ThisActorRestoreState	()
+	End						()
+	
+?_CLDLVTN_BOY_SETTER	
+	ThatActorSetScript		(ACTOR03,?_CLDLVTN03_FIREBREATH)
+	End						()
+
+?_CLDLVTN03_FIRE
+	ThisActorSetAnimScroll	(?_FIREBALL_LEFT_ANIM,120,-2,0)
+	ThisActorStop			()
+	End						()
+	
+?_CLDLVTN03_MAD_BOY
+	ThisActorSetAnimDelay	(?_BOY_STAND_RIGHT_ANIM,64)
+	ThisActorRestoreState	()
+	End						()
+	
+?_CLDLVTN03_HANDLED_DUDE
+	ThisActorSetAnimDelay	(?_YOUNGMAN_RUN_RIGHT_ANIM,32)
+							(?_YOUNGMAN_STAND_RIGHT_ANIM,0)
+	SetText					(?_YOUNGMAN_WATCHER_TXT)
+	WaitEventText			(12)
+	SetEventMaster			(67)
+	WaitEventMaster			(13)
+	ThisActorSetAnimDelay	(?_YOUNGMAN_RUN_LEFT_ANIM,20)
+	SetText					(?_CLDLVTN03_HANDLED_TXT)
+	ThisActorSetAnimDelay	(?_YOUNGMAN_RUN_LEFT_ANIM,109)
+							(?_YOUNGMAN_STAND_LEFT_ANIM,16)
+							(?_YOUNGMAN_STAND_RIGHT_ANIM,40)
+	SetText					(?_CLDLVTN03_HANDLED_TXT_2)
+	WaitEventText			(55)	
+	ThatActorStart			(ACTOR03)
+	Delay					(8)
+	ThatActorStart			(ACTOR04)
+	Delay					(4)
+	ThisActorStop			()
+	End						()
+/********************************//********************************/
+// END PARTY
+/********************************//********************************/

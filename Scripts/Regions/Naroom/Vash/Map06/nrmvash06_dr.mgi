@@ -1,0 +1,47 @@
+/********************************/
+?_NRMVASH06_DR_1
+		HeroToDoor	(17,7,0,14)
+		Jump		(?_NRMVASH05)
+
+?_NRMVASH06_DR_2
+		HeroToDoor	(11,2,4,17)
+		Jump		(?_NRMVASH14)
+
+?_NRMVASH06_DR_3
+		HeroToDoor	(3,1,5,8)
+		Jump		(?_NRMVASH12)
+
+?_NRMVASH06_DR_1B
+	ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_WALK_LEFT_ANIM)
+	Delay			(8)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STANDL_ANIM)
+	TextOpen		()
+	TextIcon		(ICON_ORLON)
+	TextWrite		("You can't give=")
+					("it up!!")
+	TextClose		()
+	ThatActorSetAI	(HEROACTOR,?HERO_AI)
+	End				()
+
+?_NRMVASH06_DR_2B
+?_NRMVASH06_DR_3B
+	ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+	Delay			(8)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)	
+	TextOpen		()
+	TextIcon		(ICON_ORLON)
+	TextWrite		("You can't give=")
+					("it up!!")
+	TextClose		()
+	ThatActorSetAI	(HEROACTOR,?HERO_AI)
+	End				()
+	
+?_NRMVASH06_TR_1
+		TextOpen	()
+		TextWrite	("Ahhh...=")
+					("potted nature.")
+					("Yeah.")
+		TextClose	()
+		End			()

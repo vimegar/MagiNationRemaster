@@ -1,0 +1,18 @@
+/********************************/
+?_UNDTUNNEL01_DR_1
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+		Jump				(?_WVEPATHVALLEY07_FADEINA)
+
+?_UNDTUNNEL01_DR_2
+		HeroToDoor		(0,10,29,8)
+		Jump			(?_UNDTUNNEL02)
+
+?_UNDTUNNEL01_DR_3
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+		Jump				(?_WVEPATHVALLEY07_FADEINB)

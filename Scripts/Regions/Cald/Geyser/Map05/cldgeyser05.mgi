@@ -1,0 +1,107 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\GEYSER\MAP05\CLDGEYSER05_DR.MGI
+%INCLUDE			REGIONS\CALD\GEYSER\MAP05\CLDGEYSER05_TXT.MGI
+
+/********************************/
+?_CLDGEYSER05
+	SetXRAMByte				(Exit_Disable,0)
+	SetLoadScript			(?_CLDGEYSER05)
+
+	SceneNew				()
+	LoadMap					(MAP_CLDGEYSER05)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_CLDGEYSER05)
+	LoadTriggers			(TR_CLDGEYSER05)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,14,16,30,0,?_CLDGEYSER05_KORREMAR,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,30,41,?_CORE_STONE_ANIM,?_CLDGEYSER05_COREGLYPH)
+	LoadVRAMTiles			(41,BIT_KORREMAR,0,0)
+	LoadVRAMTiles			(8,BIT_CORESTONE,41,0)
+	ThatActorStart			(HEROACTOR)
+	If						([Beat_CldGeyser],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	ThatActorStart			(ACTOR01)
+	SetEncounter			(?_CLDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_CLDGEYSER05)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_maze)
+	SceneReady				()
+	End						()
+	
+?_CLDGEYSER05_BOSSFIGHT
+	SetXRAMByte				(Exit_Disable,1)
+
+	If						([Beat_CldGeyser],?_END)
+	SetXRAMBit				(Beat_CldGeyser,TRUE)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_UP_ANIM)
+	ScrollMap				(32,0,-1)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetText					(?_CLDGEYSER05_TXT_1)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetBtlReturn			(?_CLDGEYSER05_RETURN)
+	Jump					(?_CLDGEYSER_KORREMARBAT)
+
+?_CLDGEYSER05_KORREMAR
+	ThisActorSetAnimDelay	(?_KORREMAR_WALK_RIGHT_ANIM,8)
+	ThisActorSetAnim		(?_KORREMAR_STAND_DOWN_ANIM)
+	End						()	
+	
+?_CLDGEYSER05_COREGLYPH
+	SetXRAMByte				(GS_Glyph_Count,GLYPH_CLD_STONE)
+	SetMaster				(?_CLDGEYSER_BEAT)
+	ThisActorStop			()
+	End						()
+	
+		
+/********************************//********************************/
+//	BOSS DEFEATED
+/********************************//********************************/
+?_CLDGEYSER05_RETURN
+	SetXRAMByte				(Exit_Disable,0)
+	SetLoadScript			(?_CLDGEYSER05_RETURN)
+
+	SceneNew				()
+	LoadMap					(MAP_CLDGEYSER05)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_CLDGEYSER05)
+	LoadTriggers			(TR_CLDGEYSER05)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,15,16,30,0,?_CLDGEYSER05_TONYRET,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,30,41,?_CORE_STONE_ANIM,?_CLDGEYSER05_COREGLYPH)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	SetEncounter			(?_CLDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_CLDGEYSER05)
+	HeroSetCamera			()
+	SongStart				(SONGID_maze)
+	SceneReady				()
+	End						()
+	
+?_CLDGEYSER_BEAT
+	SetScroll				(?_CALD_GEYSER_QUAKE)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	Delay					(16)
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_DOWN_ANIM)
+	Delay					(16)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	SetGamecount			(GC_TONY_KIDNAPPED)
+	HeroSetDoor				(24,18)
+	Jump					(?_CLDLAVAPOOL01_BEAT_GEYSER)
+	
+?_CLDGEYSER05_TONYRET
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(?_CLDGEYSER05_TXT_2)
+	Sync					(2,0)
+	SetScroll				(_FREE)
+	End						()
+_FREE
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End						()

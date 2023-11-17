@@ -1,0 +1,43 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP02\OROISLANDS02_DR.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP02\OROISLANDS02_TXT.MGI
+
+
+/********************************//********************************/
+// GENERIC
+/********************************//********************************/
+?_OROISLANDS02
+	SetXRAMByte				(Exit_Disable,1)
+	If						([Orlons_door],?_OROISLANDS02_GENERIC2)
+?_OROISLANDS02_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS02)
+	LoadHotspots			(HS_OROISLANDS02)
+	LoadTriggers			(TR_OROISLANDS02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_random)
+	SceneReady				()
+	End						()
+
+?_OROISLANDS02_GENERIC2
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS02)
+	LoadHotspots			(HS_OROISLANDS02)
+	LoadTriggers			(TR_OROISLANDS02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	CopyTileBlock			(24,0,0,2,2,10,6)
+	SongStart				(SONGID_random)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END GENERIC
+/********************************//********************************/

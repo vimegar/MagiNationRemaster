@@ -1,0 +1,27 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATUBE\MAP02\CLDLAVATUBE02_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATUBE\MAP02\CLDLAVATUBE02_TXT.MGI
+
+/********************************/
+
+?_CLDLAVATUBE02
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATUBE02)
+	LoadHotspots	(HS_CLDLAVATUBE02)
+	//LoadEncounters	(EN_LAVATUBES,ENCOUNTER_FRQ_NORM,?_CLDLAVATUBE_RE_ENTER)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_LAVATUBE_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_LAVATUBE_RNDBAT)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_CLDLAVATUBE02)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_lavatubes)
+	SceneReady		()
+	End				()
+	

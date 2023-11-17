@@ -1,0 +1,13 @@
+/********************************/
+?_ARDGARDEN08_DR_1
+		HeroSetDoor		(9,15)
+		ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+		Jump			(?_ARDCITY04)
+
+?_ARDGARDEN08_TR_1
+		SetText			(?_ARDGARDEN08_RING_TXT_1)
+		End				()
+
+?_ARDGARDEN08_TR_2
+		SetText			(?_ARDGARDEN08_SHOP_TXT_1)
+		End				()

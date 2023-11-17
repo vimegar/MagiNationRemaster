@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP20\HLDMAZE20_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP20\HLDMAZE20_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE20
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE20)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadTriggers		(TR_HLDMAZE20)
+	LoadHotspots		(HS_HLDMAZE20)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE20)
+	SongStart			(SONGID_shadowhold)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+
+
+	
+	
+		

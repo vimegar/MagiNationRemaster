@@ -1,0 +1,23 @@
+/*************************************/
+
+?_ARDGEYSER24_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(28,0,-4)
+						(67,-4,0)
+						(24,0,4)
+						(27,3,0)
+						(36,0,4)
+						(32,-3,0)
+	Jump				(?_ARDGEYSER20_FROM24_TO_13)
+
+?_ARDGEYSER24_DR_2
+	HeroToDoor			(29,20,0,13)
+	Jump				(?_ARDGEYSER25)	
+	
+/*************************************/
+
+?_ARDGEYSER24_TR_1
+	TriggerTreasure	(ARDGEYSER24_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,4,25,30)

@@ -1,0 +1,162 @@
+/********************************/
+//Training Grounds Battles
+/********************************/
+?_NRMVASH13_TRAININGBTL
+	HeroToDoor			(0,0,0,0)
+//	ExprXRAMByte		(Vash13_Training,[Vash13_Training + 1])
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_lesson)
+	RangeSwitch			([GAMECOUNT])
+						(0,GC_GLOVES,?_NRMVASH13_TRAININGBTL01)
+						(GC_UND_INTRO,GC_UND_WASTED,?_NRMVASH13_TRAININGBTL02)
+						(GC_CALD_INTRO,GC_FALSE_END,?_NRMVASH13_TRAININGBTL03)
+						(GC_ARDERIAL,100,?_NRMVASH13_TRAININGBTL04)
+
+/********************************/
+//	Level 4 Difficulty	(Insane)
+?_NRMVASH13_TRAININGBTL04
+	BtlNew				(NAROOM_ARENA1,SALAFY,99,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,231)
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,3)
+	
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+	TextWrite			("Be warned, this=")
+						("won't be as")
+						("easy as the past=")
+						("few times! Yaki")
+						("has finally let=")
+						("me in on his")
+						("secrets!")
+	TextClose			()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,98,200,0)
+	SetWRAMByte			(BTL_RUN_ENABLE,WRAM_BATTLE,1)
+	SetWRAMByte			(BTL_NO_BOOTY,WRAM_BATTLE,1)
+	BtlNextTurn			()
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+	TextWrite			("Behold!!")
+	TextClose			()	
+
+_SALAFY_SWL
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,98,200,0)
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,98,200,0)
+	BtlNextTurn			()	
+	Jump				(_SALAFY_SWL)
+
+
+//	Level 1 Difficulty (Easy)
+?_NRMVASH13_TRAININGBTL01
+	BtlNew				(NAROOM_ARENA1,SALAFY,8,?_BATTLE_FADE_IN)
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+						//123456789012345
+	TextWrite			("OK! First you=")
+						("should SUMMON a")
+						("creature to=")
+						("face me and my=")
+						("creature.")
+	TextClose			()
+	SetWRAMByte			(BTL_RUN_ENABLE,WRAM_BATTLE,1)
+	SetWRAMByte			(BTL_NO_BOOTY,WRAM_BATTLE,1)
+	BtlNextTurn			()
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,20)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,2,8,0)
+	
+_MORON_LOOP		
+	If					([[:WRAM_BATTLE[TONYS_MENU]] = BTL_CMD_MENU_RING],_HAVE_CREATURE)
+	If					([[:WRAM_BATTLE[BTL_TURN]] > 5],_SUPER_MORON)
+	BtlAttack			(BTL_ID_ENEMY1,ATK_STANDARD,BTLSCR_ME)
+	SetWRAMByte			(BTL_SLOT6_OTHER,WRAM_BATTLE,255)
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+						//123456789012345
+	TextWrite			("Use the SUMMON=")
+						("command on the")
+						("top of your=")
+						("menu, then=")
+						("select a")
+						("creature.")
+	TextClose			()
+	BtlNextTurn			()	
+	Jump				(_MORON_LOOP)
+	
+	
+_HAVE_CREATURE	
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+						//123456789012345
+	TextWrite			("Good! Now,=")
+						("have your")
+						("creature fight=")
+						("with mine.")
+	TextClose			()
+	BtlAttack			(BTL_ID_ENEMY1,ATK_STANDARD,BTLSCR_ME)
+	SetWRAMByte			(BTL_SLOT6_OTHER,WRAM_BATTLE,255)
+	
+_MAIN_LOOP
+	BtlNextTurn			()
+	If					([:WRAM_BATTLE[BTL_SLOT6 != 0]],_MAIN_LOOP)
+	
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+						//123456789012345
+	TextWrite			("Oh no! You got=")
+						("my Weebo! Now")
+						("your creatures=")
+						("can attack me")
+						("directly.")
+	TextClose			()
+	BtlAuto				()	
+	
+_SUPER_MORON
+	SetWRAMByte		(BTL_EXIT_CODE,WRAM_BATTLE,BTL_EXIT_LOSE)
+	TextOpen			()
+	TextIcon			(ICON_SALAFY)					  
+						//123456789012345
+	TextWrite			("Maybe you=")
+						("should ask")
+						("someone for=")
+						("help before you")
+						("go further.")
+	TextClose			()
+	BtlNextTurn			()		
+
+//	Level 2 Difficulty (Moderate)
+?_NRMVASH13_TRAININGBTL02
+	BtlNew				(NAROOM_ARENA1,SALAFY,15,?_BATTLE_FADE_IN)
+	SetWRAMByte			(BTL_RUN_ENABLE,WRAM_BATTLE,1)
+	SetWRAMByte			(BTL_NO_BOOTY,WRAM_BATTLE,1)
+	BtlNextTurn			()
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,70)
+	BtlSummonDelay		(BTL_ID_MAGI,FUROK,5,10,0)
+	BtlNextTurn			()
+	
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,9,20,0)
+	BtlNextTurn			()
+	
+	BtlAuto				()
+	
+//	Level 3 Difficulty (Generic Hard)
+?_NRMVASH13_TRAININGBTL03
+	BtlNew				(NAROOM_ARENA1,SALAFY,32,?_BATTLE_FADE_IN)
+	SetWRAMByte			(BTL_RUN_ENABLE,WRAM_BATTLE,1)
+	SetWRAMByte			(BTL_NO_BOOTY,WRAM_BATTLE,1)
+	BtlNextTurn			()
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,200)
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,30,70,0)
+	BtlNextTurn			()
+	
+	BtlSummonDelay		(BTL_ID_MAGI,TWEE,35,70,0)
+	BtlAuto				()
+
+
+
+	
+	
+	
+	

@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_ARDPALACE01)
+						(HOTSPOT_TRIGGER_SOUTH,?_ARDPALACE01_DR_1)
+/********************************/
+		FileTriggers	(TR_ARDPALACE01)
+						(TRIGGER_NORMAL,?_ARDPALACE01_TR_1)

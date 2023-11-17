@@ -1,0 +1,30 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH02)
+						(HOTSPOT_TRIGGER_WEST,?_NRMVASH02_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH02_DR_2)
+						(HOTSPOT_TRIGGER_EAST,?_NRMVASH02_DR_3)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH02_DR_4)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH02_DR_5)
+		
+		FileTriggers 	(TR_NRMVASH02)
+						(TRIGGER_NORMAL,?_NRMVASH02_TR_1)						
+						
+/********************************/
+//	NRMVASH22
+/********************************/
+		FileHotspots	(HS_NRMVASH02_SCT)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH02_SCT_DR_1)
+						
+		FileTriggers	(TR_NRMVASH02_SCT)
+						(TRIGGER_NORMAL,?_NRMVASH02_SCT_OLDMAN_TALKS)
+						(TRIGGER_NORMAL,?_NRMVASH02_SCT_TR_2)
+						(TRIGGER_NORMAL,?_NRMVASH02_SCT_TR_3)
+						
+/********************************/
+//	HDNROOM05
+/********************************/
+		FileHotspots	(HS_HDNROOM05)
+						(HOTSPOT_TRIGGER_WEST,?_HDNROOM05_DR_1)
+						
+		FileTriggers	(TR_HDNROOM05)
+						(TRIGGER_NORMAL,?_HDNROOM05_TR_1)

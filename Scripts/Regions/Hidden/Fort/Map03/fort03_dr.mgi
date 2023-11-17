@@ -1,0 +1,14 @@
+/********************************/
+
+?_FORT03_DR_1
+		HeroSetDoor	(6,3)
+		Jump		(?_FORT01)
+
+?_FORT03_DR_2
+		HeroSetDoor	(16,14)
+		Jump		(?_FORT02)
+
+/********************************/
+
+?_FORT03_TR_1
+		TriggerTreasure	(FORT03_Chest1,INV_TYPE_ITEM,INV_BALOO_SAP,12,5,20)

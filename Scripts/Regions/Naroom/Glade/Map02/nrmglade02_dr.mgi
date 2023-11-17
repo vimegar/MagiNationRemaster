@@ -1,0 +1,27 @@
+/********************************/
+?_NRMGLADE02_DR_1
+		HeroToDoor	(2,49,9,0)
+		Jump		(?_NRMGLADE01)
+
+?_NRMGLADE02_DR_2
+		HeroSetDoor	(32,16)
+		Jump		(?_OVRSURFACE01)
+
+?_NRMGLADE02_DR_1F
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_UP_ANIM)
+		Delay				(16)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_NRMGLADE02_DR_1F2
+		Jump		(?_NRMGLADE01_FUNERAL)
+
+?_NRMGLADE02_DR_2F
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+		Delay				(16)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()

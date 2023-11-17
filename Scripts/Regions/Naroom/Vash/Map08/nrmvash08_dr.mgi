@@ -1,0 +1,12 @@
+/********************************/
+?_NRMVASH08_DR_1
+		HeroToDoor	(2,9,9,0)
+		Jump		(?_NRMVASH07)
+
+?_NRMVASH08_DR_2
+		HeroToDoor	(6,3,13,9)
+		Jump		(?_NRMVASH15)
+
+?_NRMVASH08_DR_3
+		HeroToDoor	(7,3,13,9)
+		Jump		(?_NRMVASH15)

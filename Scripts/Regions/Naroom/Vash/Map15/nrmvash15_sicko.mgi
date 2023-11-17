@@ -1,0 +1,757 @@
+/********************************//********************************/
+// DIAGNOSIS: ORWIN
+/********************************//********************************/
+?_NRMVASH15_DIAGNOSIS_ORWIN
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadTriggers			(TR_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,4,6,20,0,_TONY,?_END)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,4,20,0,?_ORWIN_INBED,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR01,?ANIM_AI,3,4,20,39,_SEER,?_END)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	LoadVRAMTiles			(44,BIT_SEER,39,0)		
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	SetCamera				(3,5)
+	PalClearAnim			(0,15,31,31,31)
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_UL_ANIM,152)
+							(?_HERO_STAND_UP_ANIM,0)
+	Sync					(3,0)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,12)					
+							(?_HERO_STAND_UR_ANIM,12)
+							(?_HERO_STAND_RIGHT_ANIM,12)
+	SetText					(_TXT_DONT_STRAIN_YOURSELF)
+	End						()
+
+_SEER
+	ThisActorSetAnimDelay	(?_SEER_STAND_LEFT_ANIM,32)
+							(?_SEER_WALK_DOWN_ANIM,16)
+							(?_SEER_STAND_UL_ANIM,32)
+							(?_SEER_WALK_UP_ANIM,16)
+							(?_SEER_STAND_LEFT_ANIM,32)
+							(?_SEER_WALK_DOWN_ANIM,16)
+							(?_SEER_WALK_RIGHT_ANIM,16)
+							(?_SEER_STAND_DOWN_ANIM,0)
+	SetText					(_TXT_ORWIN_IS_SICK)
+	Sync					(3,0)
+	ThisActorSetAnimDelay	(?_SEER_WALK_RIGHT_ANIM,24)
+							(?_SEER_WALK_DOWN_ANIM,32)
+							(?_SEER_WALK_RIGHT_ANIM,48)
+	ThisActorStop			()
+
+_ORWIN_TALKER
+	SetText					(_TXT_PUMPKIN_MELTY)
+	Jump					(?_ORWIN_INBED)
+	
+
+/********************************/
+// TEXT
+_TXT_PUMPKIN_MELTY
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Pumpkin...")
+							("melty...")
+							("......")
+							("...GAHH!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_ORWIN_IS_SICK
+	TextOpen				()
+	TextIcon				(ICON_SEER)
+	TextWrite				("Orwin is=")
+							("sick.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("...uh..")
+							("..yeah..")
+	TextIcon				(ICON_SEER)
+	TextWrite				("I think that=")
+							("his injuries")
+							("are more than=")
+							("just physical.")
+							("He has burns=")
+							("on his hands")
+							("and face, but=")
+							("they are not")
+							("severe enough=")
+							("to weaken ")
+							("him this=")
+							("significantly.")
+							("I think he=")
+							("is poisoned.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Poisoned?!")
+	TextIcon				(ICON_SEER)
+	TextWrite				("You need to=")
+							("find something")
+							("to neutralize=")
+							("the geyser's")
+							("effect.")
+							("I can think=")
+							("of only ")
+							("one item=")
+							("sufficiently")
+							("powerful to=")
+							("cure Orwin's")
+							("ailments.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("What is it?")
+	TextIcon				(ICON_SEER)
+	TextWrite				("It is=")
+							("extremely rare")
+							("and powerful.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Yes,")
+							("But what=")
+							("is it?")
+	TextIcon				(ICON_SEER)
+	TextWrite				("It must be=")
+							("specially ")
+							("prepared into=")
+							("an elixir to")
+							("cure Orwin.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("OKAY!")
+							("What is it?")
+	TextIcon				(ICON_SEER)
+	TextWrite				("It can't be=")
+							("found in any")
+							("stores!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("ARRGH!")
+							("What is it=")
+							("CALLED!")
+	TextIcon				(ICON_SEER)
+	TextWrite				("Oh! ")
+							("A Cloud=")
+							("Frond.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Thanks.")
+	TextIcon				(ICON_SEER)
+	TextWrite				("I will make=")
+							("the Cloud Frond")
+							("Elixir if you=")
+							("can get one.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Where can I=")
+							("find a Cloud")
+							("Frond?")
+	TextIcon				(ICON_SEER)
+	TextWrite				("...Hmmmm")
+							("I must meditate=")
+							("on the subject.")
+							("Why don't you=")
+							("see if you")
+							("can find one=")
+							("on your own,")
+							("and check back=")
+							("with me if")
+							("you need=")
+							("advice.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("....Sure.")
+	TextIcon				(ICON_SEER)
+	TextWrite				("If you need me,=")
+							("I will be back")
+							("at my=")
+							("boathouse,")
+							("meditating.")
+	TextClose				()
+	Sync					(3,0)
+	End						()
+
+_TXT_DONT_STRAIN_YOURSELF
+	TextIcon				(ICON_TONY)
+	TextWrite				("Well, don't=")	
+							("strain ")
+							("yourself!")
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+/********************************//********************************/
+// END DIAGNOSIS: ORWIN
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ORWIN SICK PRE OROTHE
+/********************************//********************************/
+?_NRMVASH15_SICK_PRE_OROTHE
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH15)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,9,20,0,?_HERO_STAND_UP_ANIM,?_END)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,4,20,44,?_ORWIN_INBED,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,5,8,20,83,_WOMAN,_WOMAN_TALKER)
+	LoadVRAMTiles			(39,BIT_ORWIN,44,0)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,83,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+/********************************/
+// ACTORS
+_WOMAN
+	ThisActorSetAnim		(?_OLDLADY02_STAND_UP_ANIM)
+	End						()
+
+_WOMAN_TALKER
+	SetText					(_TXT_NO_ONE)
+	Jump					(?_FACE_OLDLADY02)
+
+_ORWIN_TALKER
+	SetText					(_TXT_ORWIN)
+	Jump					(?_ORWIN_INBED)
+
+/********************************/
+// TEXT
+_TXT_ORWIN
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	If						([GAMECOUNT = GC_QUEST_FOR_GIA],_SEE_GIA)
+
+_SICKER
+	TextWrite				("............")
+	TextIcon				(ICON_TONY)
+	TextWrite				("He's getting=")
+							("worse.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_SEE_GIA
+	TextWrite				("You must.....=")
+							("...find...")
+							("......Gia..")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_NO_ONE
+	TextOpen				()
+	TextIcon				(ICON_OLDWOMAN)
+	TextWrite				("No one in=")
+							("Vash can cure")
+							("Orwin...")
+							("Who can we=")
+							("turn to for")
+							("help?")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+//  END ORWIN SICK PRE OROTHE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ORWIN SICK POST OROTHE
+/********************************//********************************/
+?_NRMVASH15_SICK_POST_OROTHE
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH15)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,9,20,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,4,20,0,?_ORWIN_INBED,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,2,6,20,39,?_EIDON_STAND_UP_ANIM,_EIDON_TALKER)
+	ThatActorInit			(ACTOR03,?TALKER_AI,3,5,20,83,?_GIA_STAND_LEFT_ANIM,_GIA_TALKER)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	LoadVRAMTiles			(44,BIT_EIDON,39,0)
+	LoadVRAMTiles			(34,BIT_GIA,83,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+/********************************/
+// ACTORS
+_EIDON_TALKER
+	SetText					(_TXT_ORWIN_IS_SICK)
+	Jump					(?_FACE_EIDON)
+
+_GIA_TALKER
+	SetText					(_TXT_HELLO_KYROS)
+	Jump					(?_FACE_GIA)
+
+_ORWIN_TALKER
+	SetText					(_TXT_PURPLE_CHEESE_GRATER)
+	Jump					(?_ORWIN_INBED)
+
+/********************************/
+// TEXT
+_TXT_ORWIN_IS_SICK
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Orwin is still=")
+							("very sick.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_HELLO_KYROS
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("Hello, Tony.")
+							("I'm afraid=")
+							("Orwin is very")
+							("sick now.=")
+							("He probably")
+							("does not have=")
+							("much time left.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_PURPLE_CHEESE_GRATER
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("...my...")
+							("purple...")
+							(".....")
+							("cheese...")
+							("...")
+							("...grater...")
+	TextIcon				(ICON_TONY)
+	TextWrite				("This is all=")
+							("my fault.")
+							("I should never=")
+							("have disobeyed")
+							("Orwin.")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END ORWIN SICK POST OROTHE
+/********************************//********************************/
+
+
+/********************************//********************************/
+//  ORWIN HEALING SCENE
+/********************************//********************************/
+?_NRMVASH15_HEALING
+	SceneNew				()
+	InventoryTake			(INV_TYPE_ITEM,INV_CLOUD_FROND,1)
+	LoadMap					(MAP_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadTriggers			(TR_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH15)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,20,0,_TONY,?_END)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,4,20,44,_ORWIN,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR03,?ANIM_AI,3,4,20,0,_SEER,?_END)
+/********************************/
+//	PRE-OROTHE	
+	ThatActorInit			(ACTOR02,?TALKER_AI,5,7,20,83,_WOMAN,_WOMAN_TALKER)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,83,0)
+	If						([GC < GC_BEAT_OROTHE],_PRE_OROTHE)
+
+/********************************/
+//	POST-OROTHE	
+	ThatActorInit			(ACTOR02,?TALKER_AI,2,6,20,131,_GIA,_GIA_TALKER)
+	ThatActorInit			(ACTOR04,?TALKER_AI,6,7,20,83,_EIDON,_EIDON_TALKER)
+	LoadVRAMTiles			(48,BIT_EIDON,83,0)
+	LoadVRAMTiles			(34,BIT_GIA,131,0)
+	ThatActorStart			(ACTOR04)
+	
+_PRE_OROTHE
+	LoadVRAMTiles			(44,BIT_SEER,0,0)
+	LoadVRAMTiles			(39,BIT_ORWIN,44,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	SetCamera				(4,4)
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	SetXRAMBit				(Sick_Orwin,FALSE)
+	End						()
+
+/********************************/
+// ACTORS
+_GIA
+	ThisActorSetAnim		(?_GIA_STAND_UP_ANIM)
+	End						()
+	
+_EIDON
+	ThisActorSetAnim		(?_EIDON_STAND_UL_ANIM)
+	End						()
+
+_TONY
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	End						()
+
+_ORWIN
+	ThisActorSetAnim		(?_ORWIN_INBED)
+	WaitEventText			(3)
+	Delay					(24)
+
+	SetText					(_TXT_AAAAAAGHHH)
+	ThisActorSetAnimDelay	(?_ORWIN_RUN_RIGHT_ANIM,8)
+							(?_ORWIN_STAND_RIGHT_ANIM,20)
+							(?_ORWIN_STAND_DOWN_ANIM,96)
+	WaitEventText			(4)
+
+	SetText					(_TXT_AM_I_ALIVE)
+	End						()
+
+_WOMAN
+	ThisActorSetAnim		(?_OLDLADY02_STAND_UL_ANIM)
+	End						()
+
+_SEER
+	ThisActorSetAnimDelay	(?_SEER_STAND_LEFT_ANIM,72)
+
+	SetText					(_TXT_GIVE_HIM_A_DOSE)
+	WaitEventText			(1)
+	Delay					(144)
+	ThisActorSetAnimDelay	(?_SEER_STAND_DOWN_ANIM,32)
+							(?_SEER_STAND_DR_ANIM,32)
+							(?_SEER_STAND_LEFT_ANIM,0)
+
+	SetText					(_TXT_GIVE_MORE)
+	WaitEventText			(2)
+	Delay					(128)
+
+	SetText					(_TXT_PERHAPS_I_SHOULD)
+	WaitEventText			(3)
+	Delay					(28)
+	ThisActorSetAnimDelay	(?_SEER_RUN_DOWN_ANIM,8)
+							(?_SEER_STAND_UP_ANIM,0)
+	WaitEventText			(5)
+
+	SetText					(_TXT_MY_WORK_IS_DONE)
+	WaitEventText			(6)
+	ThisActorSetAnimDelay	(?_SEER_RUN_DOWN_ANIM,8)
+							(?_SEER_RUN_RIGHT_ANIM,64)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	ThisActorStop			()
+	
+	End						()
+
+_ORWIN_TALKER
+	SetText					(_TXT_THANK_YOU)
+	Jump					(?_FACE_ORWIN)
+
+_WOMAN_TALKER
+	SetText					(_TXT_ORWIN_IS_CURED)
+	Jump					(?_FACE_OLDLADY02)
+
+_GIA_TALKER
+	SetText					(_TXT_GIA)
+	Jump					(?_FACE_GIA)
+	
+_EIDON_TALKER
+	SetText					(_TXT_EIDON)
+	Jump					(?_FACE_EIDON)
+	
+/********************************/
+// TEXT
+_TXT_THANK_YOU
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Thank you lad=")
+							("I owe you my")
+							("life.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_ORWIN_IS_CURED
+	TextOpen				()
+	TextIcon				(ICON_OLDWOMAN)
+	TextWrite				("Orwin's cured!=")
+							("Thank you so")
+							("much!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_GIVE_HIM_A_DOSE
+	TextOpen				()
+	TextIcon				(ICON_SEER)
+	TextWrite				("I've given him=")
+							("a dose. All we")
+							("can do now is=")
+							("wait.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+_TXT_GIVE_MORE
+	TextOpen				()
+	TextIcon				(ICON_SEER)
+	TextWrite				("Hmm.. maybe I=")
+							("should give him")
+							("some more.")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+_TXT_PERHAPS_I_SHOULD
+	TextOpen				()
+	TextIcon				(ICON_SEER)
+	TextWrite				("Hmm.. perhaps I=")
+							("should..=")
+	Delay					(16)
+	TextClose				()
+	SetEventText			(3)
+	End						()
+
+_TXT_AAAAAAGHHH
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("AAAAAAGHHH!!!")
+	TextClose				()
+	SetEventText			(40)
+	TextOpen				()
+	TextWrite				("ORWIN!")
+	TextClose				()
+	SetEventText			(4)
+	End						()
+
+_TXT_AM_I_ALIVE
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Am... I...=")
+							("alive?")
+							("I'm alive!?")
+							("I'M ALIVE!=")
+							("ALIVE!!")
+	TextClose				()
+	TextOpen				()
+	TextWrite				("YAY!")
+	TextClose				()
+	SetEventText			(5)
+	End						()
+
+_TXT_MY_WORK_IS_DONE
+	TextOpen				()
+	TextIcon				(ICON_SEER)
+	TextWrite				("Well...")
+							("My work here=")
+							("is done.")
+	TextClose				()
+	SetEventText			(6)
+	End						()
+_TXT_GIA
+	If						([GC > GC_FALSE_END],_TXT2_GIA)
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("Tony, thank you=")
+							("for saving")
+							("Orwin, but I'm=")
+							("afraid you")
+							("still must=")
+							("leave as soon")
+							("as possible.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+_TXT2_GIA
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("God-speed on=")
+							("your journey.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+_TXT_EIDON
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("I'm sorry Tony.")
+							("I was convinced=")
+							("that you were")
+							("Kyros... this=")
+							("isn't the first")
+							("time that's=")
+							("happened.")
+							("I should have=")
+							("listened to")
+							("Orwin...")
+	TextIcon				(ICON_TONY)
+	TextWrite				("That's okay,=")
+							("Eidon. I never")
+							("really believed=")
+							("it myself.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+/********************************//********************************/
+//  END ORWIN HEAL PRE OROTHE
+/********************************//********************************/
+
+/********************************//********************************/
+//  ORWIN WELL PRE OROTHE
+/********************************//********************************/
+?_NRMVASH15_WELL_PRE_OROTHE
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadTriggers			(TR_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH15)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_UP_ANIM,?_END)
+	ThatActorInit			(ACTOR01,?TALKER_AI,3,4,20,0,?_ORWIN_STAND_DOWN_ANIM,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,5,7,20,39,?_OLDLADY02_STAND_UP_ANIM,_WOMAN_TALKER)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,39,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+/********************************/
+// ACTORS
+_ORWIN_TALKER
+	SetText					(_TXT_THANK_YOU)
+	Jump					(?_FACE_ORWIN)
+
+_WOMAN_TALKER
+	SetText					(_TXT_ORWIN_IS_CURED)
+	Jump					(?_FACE_OLDLADY02)
+
+/********************************/
+// TEXT
+_TXT_THANK_YOU
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Thank you lad,")
+							("I owe you my=")
+							("life.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_ORWIN_IS_CURED
+	TextOpen				()
+	TextIcon				(ICON_OLDWOMAN)
+	TextWrite				("Orwin's cured!=")
+							("Thank you so")
+							("much!")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+//  END ORWIN WELL PRE OROTHE
+/********************************//********************************/	
+
+
+/********************************//********************************/
+// ORWIN WELL POST OROTHE
+/********************************//********************************/
+?_NRMVASH15_WELL_POST_OROTHE
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH15)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_UP_ANIM,?_END)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,7,20,0,?_EIDON_STAND_UP_ANIM,_EIDON_TALKER)
+	ThatActorInit			(ACTOR01,?TALKER_AI,3,4,20,48,?_ORWIN_STAND_DOWN_ANIM,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,2,6,20,97,?_GIA_STAND_UP_ANIM,_GIA_TALKER)
+	LoadVRAMTiles			(48,BIT_EIDON,0,0)
+	LoadVRAMTiles			(39,BIT_ORWIN,48,0)
+	LoadVRAMTiles			(34,BIT_GIA,97,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+/********************************/
+// ACTORS
+_GIA_TALKER
+	SetText					(_TXT_ORWINS_WELL)
+	Jump					(?_FACE_GIA)
+
+_EIDON_TALKER
+	SetText					(_TXT_I_KNEW_YOU_COULD)
+	Jump					(?_FACE_EIDON)
+
+_ORWIN_TALKER
+	SetText					(_TXT_THANK_YOU)
+	Jump					(?_FACE_ORWIN)
+
+/********************************/
+// TEXT
+_TXT_ORWINS_WELL
+	If						([GC > GC_FALSE_END],_TXT2_GIA)
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("Tony, thank you=")
+							("for saving")
+							("Orwin, but I'm=")
+							("afraid you")
+							("still must=")
+							("leave as soon")
+							("as possible.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+_TXT2_GIA
+	TextOpen				()
+	TextWrite				("God-speed on=")
+							("your journey.")
+	TextIcon				(ICON_GIA)
+	SetEventText			(1)
+	End						()
+
+_TXT_I_KNEW_YOU_COULD
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("I'm sorry Tony.")
+							("I was convinced=")
+							("that you were")
+							("Kyros... this=")
+							("isn't the first")
+							("time that's=")
+							("happened.")
+							("I should have=")
+							("listened to")
+							("Orwin...")
+	TextIcon				(ICON_TONY)
+	TextWrite				("That's okay,=")
+							("Eidon. I never")
+							("really believed=")
+							("it myself.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_THANK_YOU
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Thank you lad,")
+							("I owe you my=")
+							("life.")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END ORWIN WELL POST OROTHE
+/********************************//********************************/

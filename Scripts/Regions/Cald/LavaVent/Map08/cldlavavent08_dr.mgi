@@ -1,0 +1,10 @@
+/********************************/
+
+?_CLDLAVAVENT08_DR_1
+		HeroSetDoor	(53,17)
+		Jump		(?_CLDLAVAVENT06)
+
+/********************************/
+
+?_CLDLAVAVENT08_TR_1
+		TriggerTreasure	(CLDLAVAVENT08_Chest1,INV_TYPE_ITEM,INV_RUNEOFFURY,13,14,20)

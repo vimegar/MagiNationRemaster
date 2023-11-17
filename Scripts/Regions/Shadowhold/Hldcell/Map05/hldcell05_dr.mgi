@@ -1,0 +1,41 @@
+/********************************/
+?_HLDCELL05_DR_1
+		HeroToDoor		(26,7,0,7)
+		Jump			(?_HLDCELL04)
+
+?_HLDCELL05_DR_2
+		HeroToDoor		(0,15,26,15)
+		Jump			(?_HLDCELL06)
+		
+?_HLDCELL05_DR_3
+		If				([CellDoor1],_HLDCELL05_DR_3_END)
+		Jump			(?_HLDCELL05_DOOR_LOCKED)
+_HLDCELL05_DR_3_END
+		End				()
+
+?_HLDCELL05_TR_1
+		ToggleOnce		(CellTrigger2,_SWITCH1_FALSE,250,251,13,5,27)
+		SetXRAMBit		(CellSwitch2,FALSE)		
+		Jump			(_END)
+_SWITCH1_FALSE
+		SetXRAMBit		(CellSwitch2,TRUE)
+_END
+		End				()
+
+?_HLDCELL05_TR_2		// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Hard as stone=")
+							("and just as")
+							("cold.")
+		TextClose			()
+		End					()
+
+?_HLDCELL05_TR_3		// TOILET
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Dirty and=")
+							("covered in")
+							("rust.")
+		TextClose			()
+		End					()

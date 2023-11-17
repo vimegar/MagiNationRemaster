@@ -1,0 +1,66 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP02\HDNROOM02_DR.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP02\HDNROOM02_TXT.MGI
+
+/********************************/
+?_HDNROOM02
+	SceneNew		()
+	LoadMap			(MAP_HDNROOM02)
+	LoadHotspots	(HS_HDNROOM02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongFadeOut		(80)
+	SceneReady		()
+	End				()
+
+?_HDNROOM02_FADEIN	
+	SceneNew		()
+	LoadMap			(MAP_HDNROOM02)
+	LoadHotspots	(HS_HDNROOM02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongFadeOut		(80)
+	PalClearAnim	(0,15,31,31,31)
+	SceneReady		()
+	PalFade			(0,15,32,0)
+	End				()
+/********************************//********************************/
+// hidden warp06
+/********************************//********************************/
+
+?_WARP06
+	SceneNew		()
+	LoadMap			(MAP_WARP06)
+	LoadHotspots	(HS_WARP06)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtunnels)
+	SceneReady		()
+	End				()
+	
+?_WARP06_FADEIN
+	SceneNew		()
+	LoadMap			(MAP_WARP06)
+	LoadHotspots	(HS_WARP06)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtunnels)
+	PalClearAnim	(0,15,31,31,31)
+	SceneReady		()
+	PalFade			(0,15,32,0)
+	End				()
+
+

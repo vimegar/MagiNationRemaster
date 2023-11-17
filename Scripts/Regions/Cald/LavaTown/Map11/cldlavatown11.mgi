@@ -1,0 +1,165 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP11\CLDLAVATOWN11_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP11\CLDLAVATOWN11_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP11\CLDLAVATOWN11_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP11\CLDLAVATOWN11_PEOPLE.MGI
+
+/********************************/
+?_LOAD_CLDLAVATOWN11
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,16,12,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	HeroToDoor				(5,16,5,16)
+
+/********************************/
+
+?_CLDLAVATOWN11
+	SetXRAMByte				(Exit_Disable,1)
+	If						([GAMECOUNT = GC_CALD_GEYSER],?_CLDLAVATOWN11_WITH_YAKI)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN11)
+	LoadHotspots			(HS_CLDLAVATOWN11)
+	LoadTriggers			(TR_CLDLAVATOWN11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,13,12,0,?_OLDMAN02_STAND_DOWN_ANIM,?_CLDLVTN11_SAVER)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+	
+?_CLDLAVATOWN11_TONY_WAKING
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN11)
+	LoadHotspots			(HS_CLDLAVATOWN11)
+	LoadTriggers			(TR_CLDLAVATOWN11)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,15,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,3,4,12,0,_TONY_WAKING,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,13,12,0,?_OLDMAN02_STAND_DOWN_ANIM,?_CLDLVTN11_SAVER)
+	ThatActorInit			(ACTOR01,?TALKER_AI,6,3,12,32,?_YAKI_STAND_DL_ANIM,?_CLDLAVATOWN11_YAKI_SPEAKS)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	LoadVRAMTiles			(48,BIT_YAKI,32,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	If						([GAMECOUNT != GC_CALD_GEYSER],_NO_YAKI)
+	ThatActorStart			(ACTOR01)
+	ThatActorSetLoc			(HEROACTOR,4,5,-8,-3,12)
+_NO_YAKI
+	PalFade					(0,15,32,0)
+	Sync					(2,0)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	End						()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_INBED_LEFT_ANIM,64)
+							(?_HERO_INBED_RIGHT_ANIM,32)
+							(?_HERO_OUTTABED_RIGHT,16)
+	Sync					(2,0)
+	End						()
+
+?_CLDLVTN11_SAVER
+	ThisActorSetAnim		(?_OLDMAN02_STAND_DOWN_ANIM)
+	SetText					(?_CLDLAVATOWN11_SAVER_TXT)
+	Jump					(?_FACE_OLDMAN02)
+
+?_CLDLAVATOWN11_FALL_DOWN
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN11)
+	LoadHotspots			(HS_CLDLAVATOWN11)
+	LoadTriggers			(TR_CLDLAVATOWN11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,0,12,0,?_CLDLAVATOWN11_TONY_FALLING,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,13,12,0,?_OLDMAN02_STAND_DOWN_ANIM,?_CLDLVTN11_SPECIAL)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_OLDMAN02,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	Sync					(2,0)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()
+	
+?_CLDLAVATOWN11_TONY_FALLING
+	ThisActorSetAnimDelay	(?_HERO_FALLING_GOOFILY_3,24)
+	ThisActorSetAnimScroll	(?_HERO_FALLING_GOOFILY_3,24,0,3)
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_LEFT,72)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	TextOpen				()
+	TextWrite				("Ouch...")
+	TextClose				()
+	Sync					(2,0)
+	End						()
+
+?_CLDLVTN11_SPECIAL
+	SetText					(?_CLDLVTN11_SPECIAL_TXT)
+	Jump					(?_FACE_OLDMAN02)
+
+
+?_CLDLAVATOWN11_WITH_YAKI
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN11)
+	LoadHotspots			(HS_CLDLAVATOWN11)
+	LoadTriggers			(TR_CLDLAVATOWN11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,13,12,0,?_OLDMAN02_STAND_DOWN_ANIM,?_CLDLVTN11_SAVER)
+	ThatActorInit			(ACTOR01,?TALKER_AI,6,3,12,32,?_YAKI_STAND_DL_ANIM,?_CLDLAVATOWN11_YAKI_SPEAKS)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	LoadVRAMTiles			(48,BIT_YAKI,32,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDLAVATOWN11_YAKI_SPEAKS
+	SetText				(_IN_FROM_NAROOM)
+	Jump				(?_FACE_YAKI)
+_IN_FROM_NAROOM
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Yaki?")
+	TextIcon			(ICON_YAKI)						
+	TextWrite			("OOOHH YEAHH!=")
+						("Hey Brother,")
+						("whatcha doin'=")
+						("in the cald?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I could ask you=")
+						("the same thing.")
+	TextIcon			(ICON_YAKI)						
+	TextWrite			("Training=")
+						("mission,")
+						("brother. DIG IT=")
+						("WOO!")
+						("Salafy'll be=")
+						("running the")
+						("grounds til I=")
+						("get back, so go")
+						("easy on her til=")
+						("I get back,")
+						("brother.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Uhh, sure, see=")
+						("you around.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+
+
+

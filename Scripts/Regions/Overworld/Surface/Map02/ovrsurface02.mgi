@@ -1,0 +1,38 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP02\OVRSURFACE02_DR.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP02\OVRSURFACE02_TXT.MGI
+
+/********************************/
+//Underneath area
+?_OVRSURFACE02_LOAD
+?_OVRSURFACE02
+	SongFadeOut				(30)
+	SceneNew				()
+
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,2)
+
+	LoadMap					(MAP_OVRSURFACE02)
+	LoadHotspots			(HS_OVERSURFACE02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,29,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,7,31,31,31)
+	
+	If						([GC = GC_UND_QUAKE || GC = GC_UND_GEYSER],_GEYSER)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	SongStart				(SONGID_overworld)
+	End						()
+_GEYSER
+	ThatActorInit			(ACTOR00,?ANIM_AI,34,21,29,0,?_OVERWORLD_GEYSER_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,0,0)
+	ThatActorStart			(ACTOR00)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	SongStart				(SONGID_overworld)
+	End						()

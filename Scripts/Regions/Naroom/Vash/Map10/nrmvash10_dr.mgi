@@ -1,0 +1,61 @@
+/********************************/
+?_NRMVASH10_DR_1
+		HeroToDoor		(3,9,13,5)
+		Jump			(?_NRMVASH03)
+
+?_NRMVASH10_DR_2
+		HeroToDoor		(0,2,4,27)
+		Jump			(?_NRMVASH09D)
+
+?_NRMVASH10_TR_1
+		If				([GAMECOUNT < GC_END_FUNERAL],_CONTINUE)
+		End				()
+_CONTINUE
+		SetText			(?_NRMVASH10_TXT_SHOP)
+		End				()
+		
+?_NRMVASH10_TR_2
+		If				([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If				([Worveline_Hiding != 6],_SKIP)
+		TextOpen		()
+		TextIcon		(ICON_WORVELINE)
+		TextWrite		("RARARARARAAA!!!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("AAAAAAAAHH!!!")
+		TextClose		()
+		TextOpen		()
+		TextWrite		("-Worveline=")
+						(" found!-")
+		TextClose		()
+		SetXRAMByte		(Worveline_Hiding,0)
+		SetXRAMBit		(Worveline_Caught,TRUE)
+		End				()
+_SKIP
+		TextOpen		()
+		TextWrite		("Empty! Noooo!")
+		TextClose		()
+		End				()
+		
+?_NRMVASH10_TR_3
+		TextOpen		()
+		TextIcon		(ICON_POLLY)
+		TextWrite		("MOO!")
+		TextClose		()
+		End				()
+		
+?_NRMVASH10_TR_4
+		TextOpen		()
+		TextWrite		("Supernatural=")
+						("Phenomena:")
+						("A mysterious=")
+						("animal is")
+						("showing up=")
+						("in paintings")
+						("all around=")
+						("the world! Is")
+						("it an OMEN?")
+		TextClose		()
+		End				()	
+
+?_NRMVASH10_TR_5
+		TriggerTreasure	(NRMVASH10_Chest1,INV_TYPE_RELIC,INV_HYREN_S_CLAW,1,4,11)

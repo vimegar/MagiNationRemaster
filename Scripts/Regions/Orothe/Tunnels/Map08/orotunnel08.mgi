@@ -1,0 +1,123 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP08\OROTUNNEL08_DR.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP08\OROTUNNEL08_TXT.MGI
+
+/********************************/
+
+?_OROTUNNEL08
+	If				([GAMECOUNT = GC_BOOTS_QUEST],?_ALGAE_IS_ON_THE_WALL)
+	SceneNew		()
+	LoadMap			(MAP_OROTUNNEL08)
+	LoadHotspots	(HS_OROTUNNEL08)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_OROTUNNEL08)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,28,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,28,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,28,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_OROTUNNEL08)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_orotunnels)
+	SceneReady		()
+	End				()
+	
+/********************************/
+?_ALGAE_IS_ON_THE_WALL
+	SceneNew		()
+	LoadMap			(MAP_OROTUNNEL08)
+	LoadHotspots	(HS_OROTUNNEL08)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_OROTUNNEL08)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,28,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,7,4,28,52,?_ALGAE_ANIM,_GOT_ALGAE1)
+	ThatActorInit	(ACTOR01,?TALKER_AI,11,3,28,52,?_ALGAE_ANIM,_GOT_ALGAE2)
+	ThatActorInit	(ACTOR02,?TALKER_AI,15,10,28,52,?_ALGAE_ANIM,_GOT_ALGAE3)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,28,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,28,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	LoadVRAMTiles	(48,BIT_ALGAE,52,0)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_OROTUNNEL08)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_orotunnels)
+	If				([Algae1],_SKIP_ALGAE1)
+	ThatActorStart	(ACTOR00)
+_SKIP_ALGAE1
+	SceneReady		()
+	Delay			(8)
+	If				([Algae2],_SKIP_ALGAE2)
+	ThatActorStart	(ACTOR01)
+_SKIP_ALGAE2
+	Delay			(8)
+	If				([Algae3],_SKIP_ALGAE3)
+	ThatActorStart	(ACTOR02)
+_SKIP_ALGAE3
+	End				()
+
+_GOT_ALGAE1
+	SetScroll		(_GIVE_ALGAE1)
+	ThisActorStop	()
+	End				()
+_GIVE_ALGAE1
+	InventoryGive	(INV_TYPE_ITEM,INV_ALGAE,1)
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+	TextWrite		("%X")
+	TextClose		()
+	SetEventMaster	(1)
+	SetXRAMBit		(Algae1,TRUE)	
+	ThisActorRestoreState	()
+	End				()	
+
+_GOT_ALGAE2
+	SetScroll		(_GIVE_ALGAE2)
+	ThisActorStop	()
+	End				()
+_GIVE_ALGAE2
+	InventoryGive	(INV_TYPE_ITEM,INV_ALGAE,1)
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+	TextWrite		("%X")
+	TextClose		()
+	SetEventMaster	(1)
+	SetXRAMBit		(Algae2,TRUE)	
+	ThisActorRestoreState	()
+	End				()	
+
+_GOT_ALGAE3
+	SetScroll		(_GIVE_ALGAE3)
+	ThisActorStop	()
+	End				()
+_GIVE_ALGAE3
+	InventoryGive	(INV_TYPE_ITEM,INV_ALGAE,1)
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+	TextWrite		("%X")
+	TextClose		()
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Hey, there's=")
+					("something in")
+					("this Algae!")
+	InventoryGive	(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+	TextWrite		("%X")
+	TextClose		()
+	SetEventMaster	(1)
+	SetXRAMBit		(Algae3,TRUE)	
+	ThisActorRestoreState	()
+	End				()	
+

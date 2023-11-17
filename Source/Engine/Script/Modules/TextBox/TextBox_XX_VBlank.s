@@ -1,0 +1,403 @@
+;********************************
+; TEXTBOX_XX_VBLANK.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?TEXTBOX_CLEAR_LINE
+
+	LD		A,TEXT_BOX_BLANK
+
+	LD		(HLI),A		;1
+	LD		(HLI),A		;2
+	LD		(HLI),A		;3
+	LD		(HLI),A		;4
+	LD		(HLI),A		;5
+	LD		(HLI),A		;6
+	LD		(HLI),A		;7
+	LD		(HLI),A		;8
+	LD		(HLI),A		;9
+	LD		(HLI),A		;10
+	LD		(HLI),A		;11
+	LD		(HLI),A		;12
+	LD		(HLI),A		;13
+	LD		(HLI),A		;14
+	LD		(HLI),A		;15
+
+	RET
+
+;********************************
+?TEXTBOX_COPY_LINE
+
+	LD_BCI_HLI		;1
+	LD_BCI_HLI		;2
+	LD_BCI_HLI		;3
+	LD_BCI_HLI		;4
+	LD_BCI_HLI		;5
+	LD_BCI_HLI		;6
+	LD_BCI_HLI		;7
+	LD_BCI_HLI		;8
+	LD_BCI_HLI		;9
+	LD_BCI_HLI		;10
+	LD_BCI_HLI		;11
+	LD_BCI_HLI		;12
+	LD_BCI_HLI		;13
+	LD_BCI_HLI		;14
+	LD_BCI_HLI		;15
+	
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_CLEAR
+
+	XOR		A
+	LD		(VBK),A
+
+	LD		HL,TEXTBOX_LINE_1
+	CALL	?TEXTBOX_CLEAR_LINE
+	
+	LD		HL,TEXTBOX_LINE_3
+	CALL	?TEXTBOX_CLEAR_LINE
+	
+	;LD		HL,TEXTBOX_LINE_0
+	;SET16	H,L,(TEXTBOX_CURSOR)
+	
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_CLEAR2
+
+	XOR		A
+	LD		(VBK),A
+
+	LD		HL,TEXTBOX_LINE_0
+	CALL	?TEXTBOX_CLEAR_LINE
+	
+	LD		HL,TEXTBOX_LINE_2
+	CALL	?TEXTBOX_CLEAR_LINE
+	
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_CLEAR3
+
+	XOR		A
+	LD		(VBK),A
+
+	LD		HL,TEXTBOX_LINE_4
+	CALL	?TEXTBOX_CLEAR_LINE
+	
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_CLEAR_ICON
+
+	XOR		A
+	LD		(VBK),A
+
+	LD		BC,$001B
+	LD		HL,$9C00
+
+	LD		A,TEXT_BOX_BLANK
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	
+;*****
+;exo addon
+;*****
+	LD		A,1
+	LD		(VBK),A
+
+	LD		BC,$001B
+	LD		HL,$9C00
+
+	LD		A,$0F	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	ADD		HL,BC
+
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+;*****
+;exo addon
+;*****
+
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_CURSOR
+
+	RET
+
+	XOR		A
+	LD		(VBK),A
+	
+	LD		HL,$9C93
+	LD		A,(TEXT_CURSOR_BLINK)
+	BIT		7,A
+	;IF UPPER BIT -- SET WE ARE IN CURSOR TILE
+	JR		NZ,_CURSOR_TILE
+	
+_CLEAR_TILE	
+	AND		$7F
+	DEC		A
+	JR		NZ,_STORE_BLINK_CLEAR
+	LD		A,128+20
+_STORE_BLINK_CLEAR	
+	LD		(TEXT_CURSOR_BLINK),A
+	
+	LD		A,$80	;CLEAR TILE
+	LD		(HL),A
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+_CURSOR_TILE	
+	AND		$7F
+	DEC		A
+	JR		NZ,_STORE_BLINK_CURSOR
+	LD		A,20
+	LD		(TEXT_CURSOR_BLINK),A
+	JR		_SKIP	
+_STORE_BLINK_CURSOR
+	SET		7,A	
+	LD		(TEXT_CURSOR_BLINK),A
+
+_SKIP
+	LD		A,$81	;CURSOR TILE
+	LD		(HL),A	
+_SET_ATTRIBUTE	
+	; SET BG TO Y FLIP
+	LD		A,1
+	LD		(VBK),A
+	;EM- CLEAR THE CURSOR ICON BG DATA
+	LD		A,$EF	;CURSOR TILE Y FLIP
+	LD		(HL),A
+	
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_ICON
+
+	XOR		A
+	LD		(VBK),A
+
+	LD		HL,TEXTBOX_ICON_BGOFF
+	LD		A,(TEXTBOX_ICON_TOGG)
+	LD		C,A
+	XOR		A
+	LD		B,A
+	ADD		HL,BC
+	LD		A,(HL)
+	LD		BC,$001B
+	LD		HL,$9C00
+
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A	
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A	
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A	
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A	
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	ADD		HL,BC
+
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A	
+	LD		(HLI),A
+	INC		A
+	LD		(HLI),A
+	INC		A
+	LD		(HL),A
+
+	LD		A,(TEXTBOX_ICON_TOGG)
+	INC		A
+	AND		$01
+	LD		(TEXTBOX_ICON_TOGG),A
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_SCROLL
+
+	XOR		A
+	LD		(VBK),A
+
+	;EM- CLEAR THE BG CURSOR ICON 
+	;LD		HL,$9C93
+	;LD		A,$80	;CLEAR TILE
+	;LD		(HL),A
+
+	LD		HL,TEXTBOX_LINE_2
+	LD		BC,TEXTBOX_LINE_1
+	CALL	?TEXTBOX_COPY_LINE
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_SCROLL2
+
+	XOR		A
+	LD		(VBK),A
+
+	;EM- CLEAR THE BG CURSOR ICON 
+	;LD		HL,$9C93
+	;LD		A,$80	;CLEAR TILE
+	;LD		(HL),A
+
+	LD		HL,TEXTBOX_LINE_3
+	LD		BC,TEXTBOX_LINE_2
+	CALL	?TEXTBOX_COPY_LINE
+
+	LD		HL,TEXTBOX_LINE_4
+	LD		BC,TEXTBOX_LINE_3
+	CALL	?TEXTBOX_COPY_LINE
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_SCROLL3
+
+	XOR		A
+	LD		(VBK),A
+
+	;EM- CLEAR THE BG CURSOR ICON 
+	;LD		HL,$9C93
+	;LD		A,$80	;CLEAR TILE
+	;LD		(HL),A
+
+	LD		HL,TEXTBOX_LINE_2
+	LD		BC,TEXTBOX_LINE_1
+	CALL	?TEXTBOX_COPY_LINE
+
+	LD		HL,TEXTBOX_LINE_3
+	LD		BC,TEXTBOX_LINE_2
+	CALL	?TEXTBOX_COPY_LINE
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+?VBLANK_TEXTBOX_WINDOW
+	LD			A,(TEXTBOX_WX)
+	LDFF_A		WX
+	LD			A,(TEXTBOX_WY)
+	LDFF_A		WY
+	;DEC			A
+	LDFF_A		LYC
+
+	MOVADDR		VBLANK_FUNC,?VBLANK_IDLE
+	RET
+
+;********************************
+	END
+;********************************

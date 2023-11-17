@@ -1,0 +1,19 @@
+/************************/
+
+?_OROGEYSER11_TXT_1
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Well, the old=")
+					("guy said that")
+					("Dispel X can")
+					("break spells...")
+					("Time to see if")
+					("he's right.")
+	TextClose		()
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("BEHOLD!=")
+					("DISPEL X!")
+	TextClose		()
+	SetEventText	(1)
+	End				()

@@ -1,0 +1,198 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP01\NRMGLADE01_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP01\NRMGLADE01_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP01\GLADE_BAT.MGI
+/********************************/
+
+?_NRMGLADE01
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE01)
+	LoadHotspots			(HS_NRMGLADE01)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMGLADE01)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,25,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_glade)
+	SceneReady				()
+	End						()
+	
+?_NRMGLADE01_TONY_NO
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_LEFT_ANIM)
+	Delay					(32)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_NRMGLADE01_TXT_2)
+	WaitEventText			(2)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+?_NRMGLADE01_FUNERAL
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE01)
+	LoadHotspots			(HS_NRMGLADE01F)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMGLADE01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,11,0,25,0,?_NRMGLADE01_TONY_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?BLOCKER_AI,11,4,25,0,?_NRMGLADE01_COFFIN_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?BLOCKER_AI,11,5,25,3,?_NRMGLADE01_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?BLOCKER_AI,11,3,25,3,?_NRMGLADE01_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,9,3,25,51,?_NRMGLADE01_GOGOR_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?TALKER_AI,4,13,25,107,?_VALKAN_STAND_DR_ANIM,?_NRMGLADE01_VALKAN_FUN)
+	ThatActorInit			(ACTOR05,?TALKER_AI,20,17,25,150,?_TRYN_STAND_RIGHT_ANIM,?_NRMGLADE01_TRYN_FUN)
+	ThatActorInit			(ACTOR06,?TALKER_AI,22,16,25,0,?_GIRL03_STAND_DR_ANIM,?_NRMGLADE01_TC1_FUN)
+	ThatActorInit			(ACTOR07,?TALKER_AI,23,16,25,0,?_GIRL03_STAND_DR_ANIM,?_NRMGLADE01_TC2_FUN)
+	LoadVRAMTiles			(3,BIT_COFFIN,0,0)
+	LoadVRAMTiles			(48,BIT_ARDCLOAKMAN,3,0)
+	LoadVRAMTiles			(56,BIT_GOGOR,51,0)
+	LoadVRAMTiles			(43,BIT_VALKAN,107,0)
+	LoadVRAMTiles			(38,BIT_TRYN,150,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+?_NRMGLADE01_TONY_END
+	ThisActorSetAnimDelay	(?_HERO_STAND_DOWN_ANIM,32)
+							(?_HERO_WALK_DOWN_ANIM,32)
+							(?_HERO_STAND_DL_ANIM,8)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	Sync					(2,0)
+	Delay					(64)
+	ThisActorSetAnim		(?_HERO_STAND_DL_ANIM)
+	End						()
+
+?_NRMGLADE01_COFFIN_END
+	ThisActorSetAnimDelay	(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,64)
+							(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+							(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,64)
+	ThisActorStop			()
+
+?_NRMGLADE01_CLOAK_END
+	ThisActorSetAnimDelay	(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,32)
+							(?_CLOAKMAN_SLOWWALK_DL_ANIM,64)
+							(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,32)
+							(?_CLOAKMAN_SLOWWALK_DL_ANIM,32)
+							(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,32)
+							(?_CLOAKMAN_SLOWWALK_DL_ANIM,64)
+	ThisActorStop			()
+
+?_NRMGLADE01_GOGOR_END
+	ThisActorSetAnimDelay	(?_GOGOR_STAND_RIGHT_ANIM,64)
+							(?_GOGOR_WALK_RIGHT_ANIM,16)
+							(?_GOGOR_STAND_DR_ANIM,8)
+							(?_GOGOR_STAND_DOWN_ANIM,0)
+	SetText					(?_NRMGLADE01_GOGOR_FUN_TXT1)
+	WaitEventText			(1)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_GOGOR_STAND_DR_ANIM,32)
+							(?_GOGOR_STAND_RIGHT_ANIM,8)
+							(?_GOGOR_STAND_UR_ANIM,0)
+	SetText					(?_NRMGLADE01_GOGOR_FUN_TXT2)
+	WaitEventText			(2)
+	ThisActorSetAnimDelay	(?_GOGOR_WALK_UP_ANIM,64)
+							(?_GOGOR_STAND_UP_ANIM,0)
+	LoadVRAMTiles			(40,BIT_GIRL03,0,0)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+
+?_NRMGLADE01_VALKAN_FUN
+	SetText					(?_NRMGLADE01_VALKAN_FUN_TXT)
+	Jump					(?_FACE_VALKAN)
+
+?_NRMGLADE01_TRYN_FUN
+	SetText					(?_NRMGLADE01_TRYN_FUN_TXT)
+	Jump					(?_FACE_TRYN)
+
+?_NRMGLADE01_TC1_FUN
+	SetText					(?_NRMGLADE01_TC1_FUN_TXT)
+	Jump					(?_FACE_GIRL03)
+
+?_NRMGLADE01_TC2_FUN
+	SetText					(?_NRMGLADE01_TC2_FUN_TXT)
+	Jump					(?_FACE_GIRL03)
+
+?_NRMGLADE01_GOGOR_FUN_TXT1
+	TextOpen				()
+	TextIcon				(ICON_GOGOR)
+	TextWrite				("Orwin was a=")
+							("manly man...")
+							("He has Gogor's=")
+							("respect.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE01_GOGOR_FUN_TXT2
+	TextOpen				()
+	TextIcon				(ICON_GOGOR)
+	TextWrite				("Oh, it's you.=")
+							("Have you seen")
+							("anyone from=")
+							("the Underneath?")
+							("When I returned=")
+							("there, everyone")
+							("was gone.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("No, sorry but=")
+							("I haven't.")
+	TextIcon				(ICON_GOGOR)
+	TextWrite				("Then I will go=")
+							("into town.")
+							("I will find=")
+							("them.")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+?_NRMGLADE01_VALKAN_FUN_TXT
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("This is not=")
+							("a happy day.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE01_TRYN_FUN_TXT
+	TextOpen				()
+	TextIcon				(ICON_TRYN)
+	TextWrite				("So this means=")
+							("Eidon is the")
+							("new Elder...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE01_TC1_FUN_TXT
+	TextOpen				()
+	TextIcon				(ICON_TRYNCSN01)
+	TextWrite				("Poor Orwin...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE01_TC2_FUN_TXT
+	TextOpen				()
+	TextIcon				(ICON_TRYNCSN02)
+	TextWrite				("Wahh...")
+							("...-sniff-")
+	TextClose				()
+	SetEventText			(1)
+	End						()

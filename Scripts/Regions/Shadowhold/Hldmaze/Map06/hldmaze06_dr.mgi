@@ -1,0 +1,66 @@
+?_HLDMAZE06_DR_1
+		HeroToDoor	(18,23,3,0)
+		Jump		(?_HLDMAZE05)
+
+?_HLDMAZE06_DR_2
+		HeroToDoor	(0,16,49,23)
+		Jump		(?_HLDMAZE14)
+
+?_HLDMAZE06_DR_3
+		If			([DOOR_3],?_HLDMAZE06_DR_3_END)
+		Jump		(?_HLDMAZE06_DOOR3_LOCKED)
+?_HLDMAZE06_DR_3_END
+		End			()
+
+?_HLDMAZE06_DR_4
+		If			([DOOR_4],?_HLDMAZE06_DR_4_END)
+		Jump		(?_HLDMAZE06_DOOR4_LOCKED)
+?_HLDMAZE06_DR_4_END
+		End			()
+
+/********************************/
+//Switches
+/********************************/
+?_HLDMAZE06_TR_1
+		ToggleOnce			(Switch10,?_END,250,251,12,6,30)
+		End					()
+
+?_HLDMAZE06_TR_2
+		ToggleOnce			(Switch8,?_END,250,251,26,14,30)
+		End					()
+
+?_HLDMAZE06_TR_3
+		TriggerTreasure		(HLDMAZE06Chest1,INV_TYPE_ITEM,INV_RUNEOFHOPE,27,14,30)
+
+?_HLDMAZE06_TR_4			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Covered with=")
+						("shredded cloth.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE06_TR_5			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Who could sleep=")
+						("in a place like")
+						("this?")
+		TextClose		()
+		End				()
+
+?_HLDMAZE06_TR_6			// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Clogged with=")
+						("gunk.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE06_TR_7			// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I think I'm=")
+						("gonna be sick!")
+		TextClose		()
+		End				()

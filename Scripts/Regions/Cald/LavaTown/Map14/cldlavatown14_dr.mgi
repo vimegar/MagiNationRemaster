@@ -1,0 +1,73 @@
+?_CLDLAVATOWN14_DR_1
+	HeroSetDoor		(12,12)
+	Jump			(?_CLDLAVATOWN13)
+
+?_CLDLAVATOWN14_TR_1			// COUCH
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("It's welded=")
+						("to the floor.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_2			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Full of random=")
+						("junk.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_3			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Junk occupies=")
+						("this space.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_4			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Progressive=")
+						("Bridge Building")
+						("Techniques")
+						("by Orlon")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_5			// CLOCK
+		TextOpen		()
+		TextIcon		(ICON_DINGO)
+		TextWrite		("MEOW!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("What...?")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_6			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Blankets!?")
+						("Madness!")
+						("You'd roast=")
+						("like a turkey!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_7			// COUCH
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This looks=")
+						("to be melting.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN14_TR_8			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Bridge=")
+						("Building:")
+						("Principle and")
+						("Practice")
+						("by Evu")
+		TextClose		()
+		End				()

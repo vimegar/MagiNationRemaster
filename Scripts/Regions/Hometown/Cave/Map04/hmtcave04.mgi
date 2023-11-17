@@ -1,0 +1,164 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP04\HMTCAVE04_DR.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP04\HMTCAVE04_TXT.MGI
+
+/********************************/
+?_HMTCAVE04
+	If					([Got_Crystal],?_HMTCAVE04_QUAKE)
+	Jump				(?_HMTCAVE04_OPENING)
+
+?_GENERIC_HMTCAVE04 					
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HMTCAVE04)
+	LoadHotspots		(HS_HMTCAVE04)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	SongStart			(SONGID_orwin)
+	HeroSetCamera		()
+	SceneReady			()
+ 	End					()
+ 	
+/********************************/
+?_HMTCAVE04_QUAKE
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HMTCAVE04)
+	LoadHotspots		(HS_HMTCAVE04)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_arderial)
+	SceneReady			()
+	SetScroll			(?_HMTCAVE_QUAKE_LOOP)
+	End					()
+
+/********************************//********************************/
+// QUAKE
+/********************************//********************************/
+?_HMTCAVE04_OPENING
+	SetXRAMByte			(First_Creature,0)
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HMTCAVE04)
+	LoadHotspots		(HS_HMTCAVE04)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,9,29,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?TRIGGER_AI,29,4,35,0,_CRYSTAL,_CRYSTAL_TRIGGER)
+	ThatActorInit		(ACTOR01,?RAINDROP_AI,0,0,35,32,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR02,?RAINDROP_AI,0,0,35,32,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR03,?RAINDROP_AI,0,0,35,32,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	LoadVRAMTiles		(32,BIT_CRYSTAL,0,0)
+	LoadVRAMTiles		(16,BIT_FALLINGROCKS,32,0)
+	ThatActorStart		(ACTOR00)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	SongStart			(SONGID_orwin)
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+
+/********************************/
+// ACTORS
+_CRYSTAL
+	ThisActorSetAnim	(?_CRYSTAL_ANIM)
+	End					()
+
+_CRYSTAL_TRIGGER
+	SFX					(SFXID_TREASURECHEST)
+	ThisActorSetAnim	(?_END)
+	SetXRAMBit			(Got_Crystal,TRUE)
+	SetText				(?_HMTCAVE04_TXT_1)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	WaitEventText		(1)
+	SongStart			(SONGID_arderial)
+	SetScroll			(?_HMTCAVE_QUAKE_LOOP)
+	CopyTileBlock		(35,18,0,5,3,27,2)
+	Delay				(16)
+	ThatActorStart		(ACTOR01)
+	ThatActorStart		(ACTOR02)
+	ThatActorStart		(ACTOR03)
+	ThisActorSetAnim	(?_END)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UL_ANIM)
+	SetText				(?_HMTCAVE04_TXT_2)	
+	WaitEventText		(2)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetText				(_FLOOR_FALL)
+	ThisActorStop		()
+
+_FLOOR_FALL
+	Delay				(64)
+	CopyTileBlock		(35,5,0,7,5,27,2)
+	SetAnyEventText		()
+	Delay				(80)
+	SetAnyEventText		()
+	Delay				(80)
+	CopyTileBlock		(35,32,25,3,5,24,12)
+	SetAnyEventText		()
+	Delay				(64)
+	CopyTileBlock		(35,0,25,3,5,14,18)
+	SetAnyEventText		()
+	Delay				(32)
+	CopyTileBlock		(35,30,27,2,3,18,9)
+	SetAnyEventText		()
+	Delay				(194)
+	Jump				(?_HMTCAVE_TIMESUP)
+/********************************//********************************/
+// END QUAKE
+/********************************//********************************/
+
+/********************************//********************************/
+//  FALSE END
+/********************************//********************************/
+?_HMTCAVE04_FALSE_END
+	SceneNew			()
+	LoadMap				(MAP_HMTCAVE04)
+	LoadHotspots		(HS_HMTCAVE04)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,10,23,35,0,_FALSEEND_TONY,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroSetCamera		()
+	SongPause			()
+	SongStop			()
+	PalClearAnim		(0,15,31,31,31)
+	SceneReady			()
+	PalFade				(0,15,32,0)
+	End					()
+
+/********************************/
+// ACTORS
+_FALSEEND_TONY
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_LEFT,144)
+	ThisActorSetAnimScroll	(?_HERO_WALK_DOWN_ANIM,32,0,1)
+	ThisActorSetAnimDelay	(?_HERO_STAND_DOWN_ANIM,48)
+	SetText					(_FALSEEND_TXT)
+	Sync					(2,0)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,64)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_HMTCAVE01_KZNEWKIDS)
+
+/********************************/
+// TEXT
+_FALSEEND_TXT
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Is this....")
+						("home?")
+	TextClose			()
+	Sync				(2,0)
+	End					()
+/********************************//********************************/
+//  END FALSE END
+/********************************//********************************/
+
+
+

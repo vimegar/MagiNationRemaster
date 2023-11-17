@@ -1,0 +1,104 @@
+?_HLDMAZE16_DR_1
+		HeroToDoor	(1,0,5,39)
+		Jump		(?_HLDMAZE15)
+
+?_HLDMAZE16_DR_2
+		HeroToDoor	(5,38,10,0)
+		Jump		(?_HLDMAZE17)
+
+?_HLDMAZE16_DR_3
+		If			([DOOR_5],?_HLDMAZE16_DR_3_END)
+		Jump		(?_HLDMAZE16_DOOR3_LOCKED)
+?_HLDMAZE16_DR_3_END
+		End			()
+
+?_HLDMAZE16_DR_4
+		If			([DOOR_6],?_HLDMAZE16_DR_4_END)
+		Jump		(?_HLDMAZE16_DOOR4_LOCKED)
+?_HLDMAZE16_DR_4_END
+		End			()
+
+?_HLDMAZE16_DR_5
+		Jump		(?_HLDMAZE16_GRUSOME_D)
+
+
+?_HLDMAZE16_TR_1
+		ToggleOnce			(Switch9,?_END,250,251,40,30,55)
+		End					()
+
+?_HLDMAZE16_TR_2
+		TriggerTreasure	(HLDMAZE16Chest1,INV_TYPE_ITEM,INV_RUNEOFPOWER,36,6,55)
+
+?_HLDMAZE16_TR_3			// FAT GREEN DUDE ON COT
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This one looks=")
+						("ready to pop.")
+						("I'd better get=")
+						("out of here!")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_4			// GREEN DUDE ON FLOOR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Looks like=")
+						("he was trying")
+						("to get back=")
+						("in bed.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_5			// GREEN SKELETON ON COT
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Old bones")
+						("emitting a")
+						("pale greenish")
+						("aura...")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_6		// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Cold as the=")
+						("grave.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_7		// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Someone's=")
+						("final resting")
+						("resting place.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_8		// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("...")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_9		// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("...")
+		TextClose		()
+		End				()
+
+?_HLDMAZE16_TR_10		// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("There's a=")
+						("note here.")
+						("Hmm...")
+						("It's covered=")
+						("in weird")
+						("squiggles and=")
+						("dots.")
+		TextClose		()
+		End				()

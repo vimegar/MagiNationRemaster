@@ -1,0 +1,28 @@
+/********************************/
+?_OVERSURFACE03_DR_1
+		HeroSetDoor		(9,19)
+		Jump			(?_CLDLAVATOWN06)
+
+?_OVERSURFACE03_DR_2
+		HeroSetDoor		(1,9)
+		Jump			(?_CLDLAVATOWN13)
+
+?_OVERSURFACE03_DR_3
+		HeroSetDoor		(10,59)
+		Jump			(?_CLDLAVAVENT07)
+		
+?_OVERSURFACE03_DR_4
+		HeroSetDoor		(20,29)
+		Jump			(?_CLDLAVATUBE18)
+
+?_OVERSURFACE03_DR_5
+		HeroSetDoor		(5,24)
+		Jump			(?_CLDLAVATUBE01)
+
+?_OVERSURFACE03_DR_6
+		HeroSetDoor		(7,9)
+		Jump			(?_UNDTOWN08B)
+
+?_OVERSURFACE03_DR_7
+		HeroSetDoor		(23,14)
+		Jump			(?_CLDHYRENROOM)

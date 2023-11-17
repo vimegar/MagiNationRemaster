@@ -1,0 +1,7 @@
+/********************************/
+?_UNDTUNNEL17_DR_1
+		HeroToDoor	(21,0,16,19)
+		Jump		(?_UNDTUNNEL16)
+
+?_UNDTUNNEL17_TR_1
+		TriggerTreasure	(UNDTUNNEL17_Chest1,INV_TYPE_ITEM,INV_RUNEOFHOPE,23,22,30)

@@ -1,0 +1,25 @@
+/****************************/
+
+?_HDNROOM02_DR_1
+		HeroSetDoor		(8,10)
+		Jump			(?_WVESHORTCUT01)
+		
+?_HDNROOM02_DR_2
+		If				([GS_Glyph_Count < 3],?_END)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		HeroSetDoor		(9,20)
+		Jump			(?_WARP06_FADEIN)
+		
+/****************************/
+
+?_WARP06_DR_1
+		HeroToDoor		(7,0,8,59)
+		Jump			(?_HLDMAZE23)
+
+
+?_WARP06_DR_2
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		HeroSetDoor		(9,15)
+		Jump			(?_HDNROOM02_FADEIN)

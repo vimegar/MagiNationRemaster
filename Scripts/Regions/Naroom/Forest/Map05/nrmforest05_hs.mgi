@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_NRMFOREST05)
+						(HOTSPOT_TRIGGER_EAST,?_NRMFOREST05_DR_1)						
+						
+		FileTriggers	(TR_NRMFOREST05)
+						(TRIGGER_CONFIG,?_NRMFOREST05_TR_1)

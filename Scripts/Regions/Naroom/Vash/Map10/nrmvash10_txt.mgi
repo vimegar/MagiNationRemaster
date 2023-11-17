@@ -1,0 +1,24 @@
+/********************************/
+?_NRMVASH10_TXT_SHOP
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Welcome!")
+	TextClose			()
+
+	MenuShop			(_DONE)
+						(INV_BALOO_LEAF,15)
+								(INV_BALOO_SAP,35)
+								(INV_REMEDY_DRINK,20)
+								(INV_STRENGTH_GEM,5)
+
+_DONE
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Have a good=")
+						("day!")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()

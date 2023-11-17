@@ -1,0 +1,233 @@
+;********************************
+; SCRIPT_00_FIGHTFX.S
+;********************************
+;	Author:	Patrick Meehan, EVG
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?CMD_FIGHTBLOWAWAY
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,16*3
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_BLOWAWAY
+	JP			?MOVE_INIT
+
+;********************************
+;   THIS FUNCTION MUST BE DONE WHILE THE SCREEN IS BLANK
+;   I.E.: BEFORE "?CMD_SCENEREADY"
+; 	Params:
+;	BYTE	Arena
+?CMD_FIGHTLOADARENA
+	;backup arena
+	LD			A,(ARENA_INDEX)
+	LD			E,A
+	PUSH		DE
+	LD			A,(BC)
+	LD			(ARENA_INDEX),A
+	INC			BC
+	SET16		B,C,SCRIPT_WFRAME
+	MOVADDR		SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	;load the arena graphics
+	XCALL		?BTL_LOAD_ARENA		
+	;restore arena
+	POP			DE
+	LD			A,E
+	LD			(ARENA_INDEX),A
+	RET
+
+
+;********************************
+;   THIS FUNCTION MUST BE DONE WHILE THE SCREEN IS BLANK
+;   I.E.: BEFORE "?CMD_SCENEREADY"
+; 	Params:
+;	BYTE	creaturetype, loads into the Attacker side (left) 
+?CMD_FIGHTLOADCREATURE
+	;get creaturetype
+	LD			A,(BC)
+	LD			(TEMP_MISC1),A
+	INC			BC
+	SET16		B,C,SCRIPT_WFRAME
+	MOVADDR		SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	;load the creature into left side
+	XOR		A
+	LD		(TEMP_MISC2),A
+	XCALL	?BTL_LOAD_CREATURE
+	RET
+	
+		
+	
+;********************************
+;Takes 3 parameters:
+;	BYTE	Arena
+;	BYTE	Attacker
+;	BYTE	Defender
+?CMD_FIGHTNEW
+
+	;get arena
+	LD			A,(BC)
+	LD			(ARENA_INDEX),A
+	INC			BC
+	; SET CREATURES TO FIGHT
+	;get attacker
+	LD			A,(BC)
+	LD			(CREATURE_INDEX),A
+	INC			BC
+	;get defender
+	LD			A,(BC)
+	LD			(CREATURE_INDEX+1),A
+	INC			BC
+	LD			A,1
+	LD			(FIGHTSCN_START),A
+	SET16		B,C,SCRIPT_WFRAME
+	
+	MOVADDR				SCRIPT_CURRENT,MASTER_SCRIPT
+	MOVADDR				SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	SCRIPT_CLOSE
+	
+	SCREEN_HIDE
+	TIMER_START
+	INTERPRETER_REINIT
+
+	XCALL				?FIGHTSCENE_INIT
+	CALL				?SCRIPT_SCENE_INIT
+	
+	SCREEN_SHOW
+
+_FIGHTSCENE_LOOP
+	SWITCH_ROM_BANK		FIGHTSCN_BANK
+	CALL				?FIGHTSCENE_CONTROLS	; <-- control pad testing (Debug)
+	CALL				?FIGHTSCENE_UPDATE		; <-- graphical updates for scrolling+scripting goes here
+	JR					_FIGHTSCENE_LOOP
+
+;********************************
+?CMD_FIGHTPAN
+	LD			A,1
+	LDFF_A		SCRIPT_WCOUNT+$01
+	XOR			A
+	LDFF_A		SCRIPT_WCOUNT
+	MOVADDR		SCRIPT_WSTATE,_PAN
+	SET16		B,C,SCRIPT_WFRAME
+	RET
+
+_PAN
+	; get scroll direction
+	LD		A,(BC)
+	LD		(SCROLL_DIRECTION),A
+	INC		BC
+	
+	; store pointer to table 
+	LD		A,(BC)
+	LD		(SCROLL_TABLE_PTR),A
+	INC		BC
+	
+	LD		A,(BC)
+	LD		(SCROLL_TABLE_PTR+1),A
+	INC		BC
+	
+	XCALL	?BTL_PAN_SCENE	
+	RET
+
+
+;********************************
+?CMD_FIGHTREADY
+	LD				A,$01
+	LD				(SCRIPT_SCENE_READY),A
+	MOVADDR			SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	RET
+
+;********************************
+?CMD_FIGHTRECOIL
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,16*3
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_RECOIL
+	JR			?MOVE_INIT
+	
+;********************************
+?CMD_FIGHTRECOILFAST
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,12*3
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_RECOILFAST
+	JR			?MOVE_INIT
+
+;********************************
+?CMD_FIGHTSCROLL
+	;get scroll direction
+	LD			A,(BC)
+	INC			BC
+	LD			(SCROLL_DIRECTION),A
+	;get delta offset(pixels)
+	LD			A,(BC)
+	INC			BC
+	LD			(SCROLL_DELTA),A
+	;get # of iterations
+	LD			A,(BC)
+	INC			BC
+	LDFF_A		SCRIPT_WCOUNT
+	SET16		B,C,SCRIPT_WFRAME
+	MOVADDR		SCRIPT_WSTATE,_DELAY	
+_DELAY
+	LDA_FF		SCRIPT_WCOUNT
+	AND			A
+	JP			Z,?SCRIPT_PLAY_NEXT
+	DEC			A
+	LDFF_A		SCRIPT_WCOUNT
+	XCALL		?BTL_SCROLL_SCENE
+	RET	
+	
+;********************************
+?CMD_FIGHTSHAKE
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,28*3
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_SHAKE
+	JR			?MOVE_INIT
+
+;********************************
+?CMD_FIGHTSINK
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,56*3
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_SINK
+	JR			?MOVE_INIT
+
+;********************************
+?CMD_FIGHTTREMBLE
+	;SET UP VARS FOR MOVING CREATURE1
+	LD			A,8*3+5
+	LD			(MOVE_DELTA_MAXINDEX),A
+	MOVADDR		MOVE_TABLE_PTR,FIGHTFX_TREMBLE
+?MOVE_INIT	
+	XOR			A
+	LD			(MOVE_DELTA_INDEX),A
+	LD			(MOVE_DELAY_COUNT),A
+	LD			(MOVE_DELAY_MAXCOUNT),A
+	SET16		B,C,SCRIPT_WFRAME
+	MOVADDR		SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	RET
+
+;********************************
+?CMD_FIGHTMELTFAST
+	LD			A,8
+	LD			(TILEFX_DESTROY_ITERATION_MAX),A
+	MOVADDR		TILEFX_DESTROY_TABLE_PTR,TILEFX_DESTROY_TABLE_FAST
+	JR			?DISSOLVE_INIT
+	
+;********************************
+?CMD_FIGHTMELTSLOW
+	LD			A,16									
+	LD			(TILEFX_DESTROY_ITERATION_MAX),A
+	MOVADDR		TILEFX_DESTROY_TABLE_PTR,TILEFX_DESTROY_TABLE_DEFAULT	
+?DISSOLVE_INIT	
+	SET16		B,C,SCRIPT_WFRAME
+	MOVADDR		SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	
+	XCALL		?TILEFX_SETUP
+	RET
+	
+	
+;********************************
+	END
+;********************************

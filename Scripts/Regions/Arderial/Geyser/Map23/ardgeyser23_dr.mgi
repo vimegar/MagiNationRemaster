@@ -1,0 +1,32 @@
+/****************************************/
+
+?_ARDGEYSER23_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(16,0,-4)
+	ScrollMap			(20,4,0)
+	ScrollMap			(56,0,4)
+	ScrollMap			(48,-3,0)
+	ScrollMap			(56,0,-4)
+	ScrollMap			(32,-3,0)
+	Jump				(?_ARDGEYSER21_TUBE_RETURN)	
+	
+?_ARDGEYSER23_DR_2
+	HeroToDoor			(0,9,29,10)
+	Jump				(?_ARDGEYSER21)	
+	
+/****************************************/
+
+?_ARDGEYSER23_TR_1
+	TriggerTreasure	(ARDGEYSER23_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,5,17,30)
+
+?_ARDGEYSER23_TR_2
+	TriggerTreasure	(ARDGEYSER23_Chest2,INV_TYPE_ITEM,INV_STAR_KEY,14,19,30)
+
+?_ARDGEYSER23_TR_3
+	TriggerTreasure	(ARDGEYSER23_Chest3,INV_TYPE_ITEM,INV_BALOO_SAP,12,19,30)
+
+?_ARDGEYSER23_TR_4
+	TriggerTreasure	(ARDGEYSER23_Chest4,INV_TYPE_ITEM,INV_BALOO_SAP,16,19,30)

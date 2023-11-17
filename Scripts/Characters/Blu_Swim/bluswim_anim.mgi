@@ -1,0 +1,204 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_BLUSWIM_FLOAT_UP_ANIM
+	
+	FrameBlock		(8,0,0)
+					(?BLU_SWIM01_BACK)
+					(?BLU_SWIM02_BACK)
+	
+	JumpLocal		(?_BLUSWIM_FLOAT_UP_ANIM)
+
+/********************************/
+?_BLUSWIM_FLOAT_DOWN_ANIM
+
+	FrameBlock		(8,0,0)
+					(?BLU_SWIM01_FRONT)
+					(?BLU_SWIM02_FRONT)
+	
+	JumpLocal		(?_BLUSWIM_FLOAT_DOWN_ANIM)
+	
+/********************************/
+?_BLUSWIM_FLOAT_RIGHT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?BLU_SWIM01_RIGHT)
+					(?BLU_SWIM02_RIGHT)
+
+	JumpLocal		(?_BLUSWIM_FLOAT_RIGHT_ANIM)
+		
+/********************************/
+?_BLUSWIM_FLOAT_LEFT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?BLU_SWIM01_LEFT)
+					(?BLU_SWIM02_LEFT)
+	
+	JumpLocal		(?_BLUSWIM_FLOAT_LEFT_ANIM)
+
+/********************************/
+?_BLUSWIM_UP_ANIM
+
+	Frame:			(1,0,-1,?BLU_SWIM01_BACK)
+					(2,0,0,?BLU_SWIM01_BACK)
+					(1,0,-1,?BLU_SWIM01_BACK)
+					(2,0,0,?BLU_SWIM01_BACK)
+					(1,0,-1,?BLU_SWIM01_BACK)
+					(2,0,0,?BLU_SWIM01_BACK)
+					(1,0,-1,?BLU_SWIM01_BACK)
+					(2,0,0,?BLU_SWIM01_BACK)
+					(1,0,-1,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-1,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-2,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-3,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-2,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-1,?BLU_SWIM02_BACK)
+					(1,0,0,?BLU_SWIM02_BACK)
+					(1,0,-1,?BLU_SWIM02_BACK)
+					(2,0,0,?BLU_SWIM02_BACK)
+					(1,0,-1,?BLU_SWIM02_BACK)
+					(2,0,0,?BLU_SWIM02_BACK)
+					
+	JumpLocal		(?_BLUSWIM_UP_ANIM)
+
+/********************************/
+?_BLUSWIM_DOWN_ANIM
+
+	Frame:			(1,0,1,?BLU_SWIM01_FRONT)
+					(2,0,0,?BLU_SWIM01_FRONT)
+					(1,0,1,?BLU_SWIM01_FRONT)
+					(2,0,0,?BLU_SWIM01_FRONT)
+					(1,0,1,?BLU_SWIM01_FRONT)
+					(2,0,0,?BLU_SWIM01_FRONT)
+					(1,0,1,?BLU_SWIM01_FRONT)
+					(2,0,0,?BLU_SWIM01_FRONT)
+					(1,0,1,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,1,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,2,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,3,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,2,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,1,?BLU_SWIM02_FRONT)
+					(1,0,0,?BLU_SWIM02_FRONT)
+					(1,0,1,?BLU_SWIM02_FRONT)
+					(2,0,0,?BLU_SWIM02_FRONT)
+					(1,0,1,?BLU_SWIM02_FRONT)
+					(2,0,0,?BLU_SWIM02_FRONT)
+	
+	JumpLocal		(?_BLUSWIM_DOWN_ANIM)
+
+/********************************/
+?_BLUSWIM_LEFT_ANIM
+
+	Frame:			(1,-1,0,?BLU_SWIM01_LEFT)
+					(2,0,0,?BLU_SWIM01_LEFT)
+					(1,-1,0,?BLU_SWIM01_LEFT)
+					(2,0,0,?BLU_SWIM01_LEFT)
+					(1,-1,0,?BLU_SWIM01_LEFT)
+					(2,0,0,?BLU_SWIM01_LEFT)
+					(1,-1,0,?BLU_SWIM01_LEFT)
+					(2,0,0,?BLU_SWIM01_LEFT)
+					(1,-1,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-1,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-2,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-3,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-2,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-1,0,?BLU_SWIM02_LEFT)
+					(1,0,0,?BLU_SWIM02_LEFT)
+					(1,-1,0,?BLU_SWIM02_LEFT)
+					(2,0,0,?BLU_SWIM02_LEFT)
+					(1,-1,0,?BLU_SWIM02_LEFT)
+					(2,0,0,?BLU_SWIM02_LEFT)
+	
+	JumpLocal		(?_BLUSWIM_LEFT_ANIM)
+
+/********************************/
+?_BLUSWIM_RIGHT_ANIM
+
+	Frame:			(1,1,0,?BLU_SWIM01_RIGHT)
+					(2,0,0,?BLU_SWIM01_RIGHT)
+					(1,1,0,?BLU_SWIM01_RIGHT)
+					(2,0,0,?BLU_SWIM01_RIGHT)
+					(1,1,0,?BLU_SWIM01_RIGHT)
+					(2,0,0,?BLU_SWIM01_RIGHT)
+					(1,1,0,?BLU_SWIM01_RIGHT)
+					(2,0,0,?BLU_SWIM01_RIGHT)
+					(1,1,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,1,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,2,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,3,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,2,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,1,0,?BLU_SWIM02_RIGHT)
+					(1,0,0,?BLU_SWIM02_RIGHT)
+					(1,1,0,?BLU_SWIM02_RIGHT)
+					(2,0,0,?BLU_SWIM02_RIGHT)
+					(1,1,0,?BLU_SWIM02_RIGHT)
+					(2,0,0,?BLU_SWIM02_RIGHT)
+
+	JumpLocal		(?_BLUSWIM_RIGHT_ANIM)
+/********************************/
+?_BLUSWIM_DIVE_LEFT_ANIM
+	
+	Frame			(4,0,0,?BLU_SWIM01_LEFT)
+
+	End				()
+
+/********************************/
+?_BLUSWIM_DIVE_RIGHT_ANIM
+
+	Frame			(4,0,0,?BLU_SWIM01_RIGHT)
+
+	End				()
+
+/********************************/
+?_BLU_UNDFLOAT_RIGHT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?BLU_FLOAT01_RIGHT)
+					(?BLU_FLOAT02_RIGHT)
+					(?BLU_FLOAT03_RIGHT)
+					(?BLU_FLOAT02_RIGHT)
+
+	JumpLocal		(?_BLU_UNDFLOAT_RIGHT_ANIM)
+		
+/********************************/
+?_BLU_UNDFLOAT_LEFT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?BLU_FLOAT01_LEFT)
+					(?BLU_FLOAT02_LEFT)
+					(?BLU_FLOAT03_LEFT)
+					(?BLU_FLOAT02_LEFT)
+	
+	JumpLocal		(?_BLU_UNDFLOAT_LEFT_ANIM)
+
+/********************************/
+?_BLU_UNDSWIM_UP_ANIM
+
+	FrameBlock:			(8,0,-2)
+						(?BLU_UNDSWIM01_UP)
+						(?BLU_UNDSWIM02_UP)
+						(?BLU_UNDSWIM03_UP)
+						(?BLU_UNDSWIM02_UP)
+
+	JumpLocal:			(?_BLU_UNDSWIM_UP_ANIM)

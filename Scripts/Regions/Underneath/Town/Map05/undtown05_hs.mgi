@@ -1,0 +1,8 @@
+/********************************/
+		FileHotspots	(HS_UNDTOWN05)
+						(HOTSPOT_TRIGGER_SOUTH,?_UNDTOWN05_DR_1)
+
+		FileTriggers	(TR_UNDTOWN05)
+						(TRIGGER_NORMAL,?_UNDTOWN05_TR_1)
+						(TRIGGER_NORMAL,?_UNDTOWN05_TR_2)
+						(TRIGGER_NORMAL,?_UNDTOWN05_TR_3)

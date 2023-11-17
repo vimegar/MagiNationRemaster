@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_HLDCELL04)
+						(HOTSPOT_TRIGGER_SOUTH,?_HLDCELL04_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_HLDCELL04_DR_2)
+
+		FileTriggers	(TR_HLDCELL04)
+						(TRIGGER_CONFIG,?_HLDCELL04_TR_1)

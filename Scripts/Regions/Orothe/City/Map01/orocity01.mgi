@@ -1,0 +1,314 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP01\OROCITY01_DR.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP01\OROCITY01_TXT.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP01\CITY_BAT.MGI
+
+/********************************/
+?_OROCITY01
+
+?_GENERIC_OROCITY01	
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,37,35,78,0,?_HERO_UNDTREAD_DOWN_ANIM,?_DONT_TALK)
+	
+	LoadMap					(MAP_OROCITY01)
+	LoadHotspots			(HS_OROCITY01)
+	LoadPalette				(PAL_HERO)
+
+	ThatActorInit			(ACTOR01,?ANIM_AI,6,31,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,16,31,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR03,?ANIM_AI,33,27,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR04,?ANIM_AI,40,27,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR05,?ANIM_AI,31,20,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR06,?ANIM_AI,43,20,78,0,?_AQUABUBBLES_ANIM,?_END)
+
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+
+	LoadVRAMTiles			(3,BIT_AQUARIUMBUBBLES,0,0)
+	
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_ororuins)
+	SceneReady				()
+	End						()
+
+/********************************/
+?_OROCITY01_FROM_PARATHIN
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_OROCITY01)
+	LoadHotspots			(HS_OROCITY01)
+	LoadPalette				(PAL_HERO)
+	
+	ThatActorInit			(ACTOR01,?ANIM_AI,6,31,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,16,31,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR03,?ANIM_AI,33,27,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR04,?ANIM_AI,40,27,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR05,?ANIM_AI,31,20,78,0,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR06,?ANIM_AI,43,20,78,0,?_AQUABUBBLES_ANIM,?_END)
+	
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+
+	LoadVRAMTiles			(3,BIT_AQUARIUMBUBBLES,0,0)
+
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_ororuins)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	End						()
+
+/********************************/
+// Ending 2, 3
+/********************************/
+?_OROCITY01_ENDING
+	SceneNew				()
+	LoadMap					(MAP_OROCITY01B)
+	LoadHotspots			(HS_OROCITY01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,37,31,78,0,?_OROCITY01_BLU_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,37,22,78,48,?_OROCITY01_MOBIS_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,37,22,78,82,?_OROCITY01_OLDLADY_END,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	LoadVRAMTiles			(48,BIT_BLU,0,0)
+	LoadVRAMTiles			(34,BIT_MOBIS,48,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,82,0)
+	HeroSetCamera			()
+	SceneReady				()
+	WaitEventMaster			(1)
+	Jump					(?_ARDCITY01_ENDING)
+	End						()
+
+?_OROCITY01_BLU_END
+	ThisActorSetAnimDelay	(?_BLU_STAND_DOWN_ANIM,96)
+							(?_BLU_STAND_DL_ANIM,4)
+							(?_BLU_STAND_LEFT_ANIM,16)
+							(?_BLU_WALK_LEFT_ANIM,48)
+							(?_BLU_STAND_LEFT_ANIM,16)
+							(?_BLU_STAND_DL_ANIM,4)
+							(?_BLU_STAND_DOWN_ANIM,64)
+							(?_BLU_STAND_DR_ANIM,4)
+							(?_BLU_STAND_RIGHT_ANIM,16)
+							(?_BLU_WALK_RIGHT_ANIM,96)
+							(?_BLU_STAND_RIGHT_ANIM,16)
+							(?_BLU_STAND_DR_ANIM,4)
+							(?_BLU_STAND_DOWN_ANIM,64)
+	SetScroll				(?_PANUP_SLOWLY)
+	ThisActorSetAnimDelay	(?_BLU_STAND_DL_ANIM,4)
+							(?_BLU_STAND_LEFT_ANIM,16)
+							(?_BLU_WALK_LEFT_ANIM,48)
+							(?_BLU_STAND_LEFT_ANIM,16)
+							(?_BLU_STAND_DL_ANIM,4)
+							(?_BLU_STAND_DOWN_ANIM,64)
+	ThatActorStart			(ACTOR00)
+	ThisActorSetAnimDelay	(?_BLU_STAND_DL_ANIM,64)
+	SetScroll				(?_CAMSTOP)
+	ThisActorSetAnimDelay	(?_BLU_STAND_DOWN_ANIM,64)
+							(?_BLU_STAND_DR_ANIM,64)
+							(?_BLU_STAND_DOWN_ANIM,64)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_BLU_STAND_RIGHT_ANIM,8)
+							(?_BLU_STAND_UP_ANIM,32)
+							(?_BLU_WALK_UP_ANIM,48)
+							(?_BLU_STAND_UP_ANIM,44)
+							(?_BLU_STAND_UR_ANIM,16)
+							(?_BLU_WALK_UP_ANIM,16)
+							(?_BLU_STAND_UR_ANIM,4)
+							(?_BLU_STAND_RIGHT_ANIM,64)
+	ThatActorStart			(ACTOR01)
+	Sync					(3,1)
+	ThisActorSetAnimDelay	(?_BLU_STAND_RIGHT_ANIM,32)
+							(?_BLU_STAND_UP_ANIM,16)
+							(?_BLU_STAND_RIGHT_ANIM,32)
+							(?_BLU_RUN_DOWN_ANIM,8)
+							(?_BLU_STAND_UP_ANIM,96)
+							(?_BLU_WALK_UP_ANIM,8)
+							(?_BLU_STAND_UP_ANIM,16)
+							(?_BLU_WALK_UP_ANIM,8)
+							(?_BLU_STAND_UP_ANIM,64)
+							(?_BLU_STAND_UR_ANIM,4)
+							(?_BLU_STAND_RIGHT_ANIM,64)
+							(?_BLU_STAND_UP_ANIM,64)
+	Sync					(2,2)
+	ThisActorSetAnimDelay	(?_BLU_RUN_DOWN_ANIM,8)
+							(?_BLU_RUN_RIGHT_ANIM,8)
+							(?_BLU_RUN_DOWN_ANIM,16)
+							(?_BLU_RUN_LEFT_ANIM,16)
+							(?_BLU_RUN_UP_ANIM,16)
+							(?_BLU_RUN_RIGHT_ANIM,16)
+							(?_BLU_RUN_DOWN_ANIM,16)
+							(?_BLU_RUN_LEFT_ANIM,16)
+							(?_BLU_RUN_UP_ANIM,16)
+							(?_BLU_RUN_RIGHT_ANIM,8)
+							(?_BLU_RUN_DOWN_ANIM,8)
+							(?_BLU_RUN_LEFT_ANIM,8)
+							(?_BLU_RUN_RIGHT_ANIM,16)
+							(?_BLU_RUN_LEFT_ANIM,16)
+							(?_BLU_RUN_RIGHT_ANIM,8)
+	SetEventMaster			(1)
+	End						()
+
+?_OROCITY01_MOBIS_END
+	ThisActorSetAnimDelay	(?_MOBIS_WALK_DOWN_ANIM,16)
+							(?_MOBIS_STAND_DOWN_ANIM,32)
+							(?_MOBIS_STAND_DR_ANIM,4)
+							(?_MOBIS_STAND_RIGHT_ANIM,4)
+							(?_MOBIS_STAND_UR_ANIM,4)
+							(?_MOBIS_STAND_UP_ANIM,32)
+							(?_MOBIS_STAND_RIGHT_ANIM,8)
+							(?_MOBIS_WALK_DOWN_ANIM,64)
+							(?_MOBIS_STAND_DOWN_ANIM,16)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_MOBIS_STAND_DOWN_ANIM,128)
+							(?_MOBIS_WALK_RIGHT_ANIM,16)
+							(?_MOBIS_STAND_UR_ANIM,4)
+							(?_MOBIS_STAND_UP_ANIM,32)
+							(?_MOBIS_STAND_UL_ANIM,4)
+							(?_MOBIS_STAND_LEFT_ANIM,0)
+	Sync					(3,1)
+	ThisActorSetAnimDelay	(?_MOBIS_STAND_LEFT_ANIM,84)
+							(?_MOBIS_STAND_DL_ANIM,124)
+							(?_MOBIS_STAND_LEFT_ANIM,16)
+							(?_MOBIS_STAND_UL_ANIM,32)
+							(?_MOBIS_STAND_LEFT_ANIM,0)
+	Sync					(3,2)
+	ThisActorSetAnimDelay	(?_MOBIS_STAND_DL_ANIM,8)
+							(?_MOBIS_STAND_DOWN_ANIM,24)
+							(?_MOBIS_STAND_DL_ANIM,24)
+							(?_MOBIS_STAND_DOWN_ANIM,24)
+							(?_MOBIS_STAND_DL_ANIM,8)
+							(?_MOBIS_STAND_LEFT_ANIM,8)
+							(?_MOBIS_STAND_UL_ANIM,0)
+	End						()
+
+?_OROCITY01_OLDLADY_END
+	ThisActorSetAnimDelay	(?_OLDLADY04_WALK_DOWN_ANIM,64)
+							(?_OLDLADY04_STAND_DOWN_ANIM,32)
+	Sync					(3,1)
+	Sync					(3,2)
+	ThisActorSetAnimDelay	(?_OLDLADY04_STAND_DOWN_ANIM,96)
+							(?_OLDLADY04_STAND_DR_ANIM,0)
+	End						()
+
+/********************************/
+// END Ending 2, 3
+/********************************/
+
+/********************************/
+// FIRST VISIT
+/********************************/
+?_OROCITY01_FIRST
+	SetXRAMByte				(Exit_Disable,1)
+	SetGamecount			(GC_BACK_IN_OROTHE)
+	SetXRAMByte				(Oro_Plot_Byte,0)
+	SceneNew				()
+	LoadMap					(MAP_OROCITY01)
+	LoadHotspots			(HS_OROCITY01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,38,50,78,0,?_OROCITY01_FIRST_TONY,?_END)
+	ThatActorInit			(ACTOR00,?ANIM_AI,36,50,78,0,?_OROCITY01_FIRST_BLU,?_END)
+
+	ThatActorInit			(ACTOR01,?ANIM_AI,6,31,78,21,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,16,31,78,21,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR03,?ANIM_AI,33,27,78,21,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR04,?ANIM_AI,40,27,78,21,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR05,?ANIM_AI,31,20,78,21,?_AQUABUBBLES_ANIM,?_END)
+	ThatActorInit			(ACTOR06,?ANIM_AI,43,20,78,21,?_AQUABUBBLES_ANIM,?_END)
+
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+
+	LoadVRAMTiles			(21,BIT_BLUUNDERWATER,0,0)
+	LoadVRAMTiles			(3,BIT_AQUARIUMBUBBLES,21,0)
+
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+
+	HeroSetCamera			()
+	SongStart				(SONGID_ororuins)
+	SceneReady				()
+	End						()
+
+?_OROCITY01_FIRST_TONY
+	ThisActorSetAnimDelay	(?_HERO_UNDSWIM_UP_ANIM,24)
+							(?_HERO_UNDTREAD_LEFT_ANIM,0)
+	WaitEventText			(1)
+	Delay					(32)
+	ThisActorSetAnim		(?_HERO_UNDTREAD_UP_ANIM)
+	End						()	
+
+?_OROCITY01_FIRST_BLU
+	ThisActorSetAnimDelay	(?_BLU_UNDSWIM_UP_ANIM,24)
+							(?_BLU_UNDFLOAT_RIGHT_ANIM,24)
+	SetText					(?_OROCITY01_TXT_1)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_BLU_UNDSWIM_UP_ANIM,50)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI_UNDERSWIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_UNDTREAD_UP_ANIM)
+	ThisActorStop			()
+	End						()
+/********************************/
+// END FIRST VISIT
+/********************************/
+
+/********************************/
+// OROCITY LEAVING
+/********************************/
+?_OROCITY01_CITYLEAVE
+	SetGamecount			(GC_OROTHE_GEYSER)
+	SceneNew				()
+	LoadMap					(MAP_OROCITY01)
+	LoadHotspots			(HS_OROCITY01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,65,35,78,0,?_OROCITY01_CITYLEAVE_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,58,42,78,0,?_OROCITY01_CITYLEAVE_BLU,?_DONT_TALK)
+	LoadVRAMTiles			(21,BIT_BLUUNDERWATER,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_ororuins)
+	SceneReady				()
+	End						()
+
+?_OROCITY01_CITYLEAVE_TONY
+	ThisActorSetAnimScroll	(?_HERO_UNDSWIM_DOWN_ANIM,86,0,1)
+	ScrollMap				(10,0,1)
+	ThisActorSetAnimScroll	(?_HERO_UNDSWIM_LEFT_ANIM,45,-1,0)
+							(?_HERO_UNDTREAD_LEFT_ANIM,32,0,0)
+	SetText					(?_OROCITY01_CITYLEAVE_TXT_1)
+	WaitEventText			(2)
+	PalClearBase			(0,7,0,0,10)
+	PalFade					(0,7,32,2)
+	Delay					(32)
+	
+	ThatActorInit			(ACTOR02,?OVERPARA_AI,20,20,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+	HeroSetDoor				(20,20)
+	Jump					(?_OVRSURFACE04_PARATHIN)
+
+?_OROCITY01_CITYLEAVE_BLU
+	ThisActorSetAnim		(?_BLU_UNDFLOAT_RIGHT_ANIM)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_BLU_UNDSWIM_UP_ANIM,64)
+	ThisActorStop			()
+	End						()
+/********************************/
+// END OROCITY LEAVING
+/********************************/
+	

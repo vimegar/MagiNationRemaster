@@ -1,0 +1,54 @@
+/********************************/
+?_WVEPATHVALLEY02_DR_1
+		HeroToDoor	(0,0,15,24)
+		Jump		(?_WVEPATHVALLEY01)
+
+?_WVEPATHVALLEY02_DR_2
+		HeroToDoor	(0,52,29,20)
+		Jump		(?_WVEPATHVALLEY03)
+
+?_WVEPATHVALLEY02_DR_3
+?_WVEPATHVALLEY02_DR_4
+?_WVEPATHVALLEY02_DR_5
+?_WVEPATHVALLEY02_DR_6
+?_WVEPATHVALLEY02_DR_7
+	End				()
+
+?_WVEPATHVALLEY02_DR_8
+	Jump			(?_WVEMAZE_SHORTCUT)
+
+/********************************/
+// (0: No Taunts)(1: Taunt off of HS4)(2: Taunt off of HS5)(3: Taunt off of HS6)(4: Taunt off of HS7)(5: All Taunts Disabled)
+?_WVEPATHVALLEY02_DR_1B
+	HeroToDoor	(0,0,15,24)
+	Jump		(?_WVEPATHVALLEY01)
+
+?_WVEPATHVALLEY02_DR_2B
+	SetXRAMByte	(Gias_Taunt,5)
+	HeroToDoor	(0,52,29,19)
+	Jump		(?_WVEPATHVALLEY03)
+
+?_WVEPATHVALLEY02_DR_3B
+	If				([!Shrub_Insult],?_WVEGIASTAUNTS_05)
+	End				()
+?_WVEPATHVALLEY02_DR_4B
+	If				([Gias_Taunt = 0],?_WVEGIASTAUNTS_01)
+	End				()
+?_WVEPATHVALLEY02_DR_5B
+	If				([Gias_Taunt < 2],?_WVEGIASTAUNTS_02)
+	End				()
+?_WVEPATHVALLEY02_DR_6B
+	If				([Gias_Taunt < 3],?_WVEGIASTAUNTS_03)
+	End				()
+?_WVEPATHVALLEY02_DR_7B
+	If				([Gias_Taunt < 4],?_WVEGIASTAUNTS_04)
+	End				()
+/********************************/
+
+?_WVEPATHVALLEY02_TR_1
+	TriggerTreasure	(WVEPATHVALLEY02_Chest1,INV_TYPE_RELIC,INV_ENERGY_GEM,3,28,30)
+	End				()
+
+?_WVEPATHVALLEY02_TR_2
+	TriggerTreasure	(WVEPATHVALLEY02_Chest2,INV_TYPE_RELIC,INV_ARMOR_ORB,27,13,30)
+	End				()

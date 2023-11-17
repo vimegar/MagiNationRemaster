@@ -1,0 +1,13 @@
+/********************************/
+//NRMGLADE01
+/********************************/
+?_NRMGLADE01_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("If I don't=")
+						("follow him,")
+						("I'll probably=")
+						("get lost....")
+	TextClose			()
+	SetEventText		(2)
+	End					()

@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_ARDGEYSER08)
+						(HOTSPOT_TRIGGER_SOUTH,?_ARDGEYSER08_DR_1)						
+						
+		FileTriggers	(TR_ARDGEYSER08)
+						(TRIGGER_CONFIG,?_ARDGEYSER08_TR_1)

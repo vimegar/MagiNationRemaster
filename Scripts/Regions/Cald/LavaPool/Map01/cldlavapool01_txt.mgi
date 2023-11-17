@@ -1,0 +1,232 @@
+/********************************//********************************/
+// CANT GET ACROSS
+/********************************//********************************/
+?_CLDLAVAPOOL01_TXT_6
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("This is too=")
+						("far to jump")
+						("there must be=")
+						("a better way")
+						("across this...")	
+	TextClose			()
+	SetEventText		(6)
+	End					()
+	
+?_CLDLAVAPOOL01_TXT_7
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Like that!=")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/********************************//********************************/
+// END CANT GET ACROSS
+/********************************//********************************/
+
+
+/********************************//********************************/
+// MORAG MAKES A MESS
+/********************************//********************************/
+?_CLDLAVAPOOL01_TXT_1A
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	TextWrite			("Magnificent.=")
+						("The lava")
+						("flowing around=")
+						("it insures that")
+						("nobody will=")
+						("stop this one!")
+	SetEventText		(1)
+	TextClose			()
+	End					()
+	
+?_CLDLAVAPOOL01_TXT_1B
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	TextWrite			("Not even you,=")
+						("so-called Great")
+						("Magus Kyros!")
+	TextClose			()
+	SetEventText		(2)
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	TextWrite			("You have not=")
+						("been even a")
+						("small challenge=")
+						("for me. Truly")
+						("pathetic.")
+						("But I do so=")
+						("hate to dirty")
+						("my hands with=")
+						("the blood of")
+						("others.")
+						("So rather than=")
+						("blowing you to")
+						("bits, I'll give=")
+						("you a nice, hot")
+						("bath instead.")
+	TextClose			()
+	SetEventText		(3)
+	End					()
+	
+?_CLDLAVAPOOL01_TXT_1C
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("It's stronger=")
+						("in this")
+						("direction!")
+	TextClose			()
+	SetEventText		(4)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_1D
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	TextWrite			("Huh?")
+	TextClose			()
+	SetEventText		(5)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_1E
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	TextWrite			("Damn, I can't=")
+						("let them see me")
+						("now... this is=")
+						("NOT over,")
+						("Kyros.")
+	TextClose			()
+	SetEventText		(6)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_1F
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("That must be=")
+						("what's causing")
+						("it!")
+	TextClose			()
+	SetEventText		(7)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_1G
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)	
+	TextWrite			("What are you=")
+						("doing here?")
+	SetEventText		(8)
+	TextIcon			(ICON_YOUNGMAN)	
+	TextWrite			("Who are you=")
+						("anyway?")
+	TextIcon			(ICON_YOUNGMAN)	
+	TextWrite			("I don't=")
+						("recognize")
+						("him...")
+	SetEventText		(9)
+	TextIcon			(ICON_TONY)
+	TextWrite			("I'm Tony.")
+	TextIcon			(ICON_YOUNGMAN)	
+	TextWrite			("Did you do=")
+						("this?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("No, it was")
+						("Morag! He=")
+						("just...")
+	TextClose			()
+	SetEventText		(10)
+	End					()
+	
+?_CLDLAVAPOOL01_TXT_1H
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Who? I only see=")
+						("you here.")
+	TextIcon			(ICON_YOUNGMAN)	
+	TextWrite			("You liar. You=")
+						("must have done")
+						("it!")
+	SetEventText		(11)
+	TextIcon			(ICON_YOUNGMAN)	
+	TextWrite			("Let's take him=")
+						("back to town.")
+						("The Elder will=")
+						("know what to do")
+						("with him.")
+	TextClose			()
+	SetEventText		(12)
+	End					()
+	
+/********************************//********************************/
+// END MORAG MAKES A MESS
+/********************************//********************************/
+
+
+/********************************//********************************/
+//VALKN'S BRIDGE
+/********************************//********************************/
+?_CLDLAVAPOOL01_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("It looks good,=")
+						("Tony, now you")
+						("can--")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_5
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("Uh Oh...")
+	TextClose			()
+	SetEventText		(5)
+	End					()
+
+
+?_CLDLAVAPOOL01_TXT_4
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("Oops.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("..........=")
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("I'm so=")
+						("embarrassed.")
+						("Here's your=")
+						("ring back.")
+	TextClose			()
+	SetEventText		(4)
+	End					()
+
+?_CLDLAVAPOOL01_TXT_X
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("Tony! Wait!")
+	TextClose			()
+	SetEventText		(13)
+	End					()
+?_CLDLAVAPOOL01_TXT_XX
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("Tony!")
+						("Hold up!")
+	TextClose			()
+	SetEventText		(13)
+	End					()
+/********************************//********************************/
+// END VALKN'S BRIDGE
+/********************************//********************************/
+
+?_CLDLAVAPOOL01_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("You've got=")
+						("the Arbol?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Yup, here=")
+						("you go.")
+	TextClose			()
+	SetEventText		(1)
+	End					()

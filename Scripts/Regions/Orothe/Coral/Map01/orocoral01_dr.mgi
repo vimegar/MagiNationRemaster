@@ -1,0 +1,13 @@
+/********************************/
+?_OROCORAL01_DR_1
+	ThatActorInit			(ACTOR02,?TRIGGER_AI,15,15,33,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+		HeroSetDoor	(13,15)
+		Jump		(?_OVRSURFACE04)
+
+?_OROCORAL01_DR_2
+		HeroToDoor	(0,8,49,39)
+		Jump		(?_OROCORAL02)
+
+?_OROCORAL01_DR_3
+		HeroToDoor	(0,35,49,17)
+		Jump		(?_OROCORAL03)

@@ -1,0 +1,407 @@
+;********************************
+; RELIC_FUNC.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "YouMUSTUseTwoTables" Mayo/Erik "IDidntUseTwoTables" Hutchinson
+;	Author: jOSH "i DON'T KNOW HOW TO USE CAPS-LOCK" lYTLE 
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB		SOURCE\GAME\INVENTORY\RELICS\RELIC_TABLE.S
+
+;********************************
+?RELIC_CMD_NOTHING
+	
+	RET
+
+;********************************
+?RELIC_CMD_ARCHAIC_LEAF
+
+	RAISE_SKILL_STAT	BTL_TARGET,10
+
+	RET
+
+;********************************
+?RELIC_CMD_ARMOR_ORB
+
+	RAISE_DEFENSE_STAT		BTL_TARGET,12
+
+	RET
+
+;********************************
+?RELIC_CMD_BAG_OF_BONES
+
+	RAISE_STR_STAT	BTL_TARGET,08	
+
+	RET
+
+;********************************
+?RELIC_CMD_BARK_THIMBLE
+
+	RAISE_DEFENSE_STAT	BTL_TARGET,04	
+
+	RET
+
+;********************************
+?RELIC_CMD_CHANNELEDGEM
+
+	RAISE_SKILL_STAT	BTL_TARGET,06
+
+	RET
+
+;********************************
+?RELIC_CMD_CORF_PEARL
+
+	RAISE_SKILL_STAT	BTL_TARGET,15
+	RAISE_RESIST_STAT	BTL_TARGET,15
+	LOWER_STR_STAT		BTL_TARGET,15
+
+	RET
+
+;********************************
+?RELIC_CMD_CRIMSON_VOID		
+
+	RAISE_STR_STAT		BTL_TARGET,06
+	RAISE_SKILL_STAT	BTL_TARGET,06
+	RAISE_LUCK_STAT		BTL_TARGET,20
+	LOWER_DEFENSE_STAT	BTL_TARGET,10
+	LOWER_RESIST_STAT	BTL_TARGET,10
+
+	RET
+
+;********************************
+?RELIC_CMD_EARTH_S_AURA
+
+	RELIC_SET_STRONG 		EARTH 
+	RAISE_RESIST_STAT		BTL_TARGET,15
+	RAISE_DEFENSE_STAT		BTL_TARGET,15
+	LOWER_SPEED_STAT		BTL_TARGET,25
+
+	RET
+
+;********************************
+?RELIC_CMD_END_BRINGER
+	
+	RELIC_RAISE_ENERGY 25 
+	RAISE_STR_STAT			BTL_TARGET,25
+	RAISE_DEFENSE_STAT		BTL_TARGET,25
+	RAISE_RESIST_STAT		BTL_TARGET,25
+	RAISE_SKILL_STAT		BTL_TARGET,25
+	RAISE_SPEED_STAT		BTL_TARGET,25
+	
+	LD	A,ERUPT
+	LD	HL,BTL_TARGET_STATUS
+	OR	(HL)
+	LD	(HL),A
+	LD	HL,BTL_TARGET_PERMSTAT
+	OR	(HL)
+	LD	(HL),A
+	LD	HL,BTL_TARGET_COUNTER
+	LD	A,(HL)
+	AND $0F
+	OR	$30
+	LD	(HL),A
+	
+	RET
+
+;********************************
+?RELIC_CMD_ENERGY_GEM
+
+	RELIC_RAISE_ENERGY 6 
+
+	RET
+
+;********************************
+?RELIC_CMD_FLAME_AURA
+
+	RELIC_SET_STRONG FIRE
+	RAISE_SKILL_STAT		BTL_TARGET,15
+	RAISE_STR_STAT			BTL_TARGET,15
+	LOWER_DEFENSE_STAT		BTL_TARGET,15
+	LOWER_RESIST_STAT		BTL_TARGET,15
+
+	RET
+
+;********************************
+?RELIC_CMD_FLAMEESSENCE
+
+	RELIC_SET_STRONG EARTH
+	RELIC_SET_WEAK SHADOW 
+
+	RET
+
+;********************************
+?RELIC_CMD_FLAME_ESSENCE_EXTRA
+
+	LD	HL,BTL_CREATURE_CMDELEM
+	LD	A,FIRE
+	OR	(HL)
+	LD	(HL),A
+	
+	RET
+
+;********************************
+?RELIC_CMD_GEMOFNAROOM
+	
+	RAISE_DEFENSE_STAT		BTL_TARGET,5
+
+	RET
+
+;********************************
+?RELIC_CMD_GOLDENCLOVER
+
+	RAISE_LUCK_STAT			BTL_TARGET,15
+
+	RET
+
+;********************************
+?RELIC_CMD_GRAILOFLIFE
+
+	RELIC_RAISE_ENERGY 4 
+
+	RET
+	
+;********************************
+?RELIC_CMD_HYREN_S_CLAW
+
+	RAISE_STR_STAT		BTL_TARGET,5
+
+	RET
+
+;********************************
+?RELIC_CMD_LEAF_ESSENCE
+
+	RELIC_SET_STRONG SHADOW
+	RELIC_SET_WEAK WATER
+
+	RET
+
+;********************************
+?RELIC_CMD_LEAF_ESSENCE_EXTRA
+
+	LD	HL,BTL_CREATURE_CMDELEM
+	LD	A,LIFE
+	OR	(HL)
+	LD	(HL),A
+	
+	RET
+	
+;********************************
+?RELIC_CMD_LUCENT_BELT
+
+	RAISE_SKILL_STAT		BTL_TARGET,10
+
+	RET
+
+;********************************
+?RELIC_CMD_MAELSTROM
+
+	RAISE_STR_STAT		BTL_TARGET,12
+
+	RET
+	
+;********************************
+?RELIC_CMD_OMBORSAMULET
+
+	RAISE_RESIST_STAT		BTL_TARGET,10
+
+	RET
+
+;********************************
+?RELIC_CMD_PHANTOM_WIND
+
+	RAISE_SPEED_STAT		BTL_TARGET,10
+	RAISE_SKILL_STAT		BTL_TARGET,5
+	RAISE_STR_STAT			BTL_TARGET,10
+	
+	RELIC_SET_PERM HICCUP
+
+	RET
+	
+;********************************
+?RELIC_CMD_PINCHOFLIFE
+
+	RELIC_SET_STRONG LIFE 
+	RELIC_RAISE_ENERGY 15 
+	RAISE_DEFENSE_STAT		BTL_TARGET,15
+	LOWER_STR_STAT			BTL_TARGET,15
+
+	RET
+
+;********************************
+?RELIC_CMD_RABBAGE_FOOT
+
+	XOR		A
+	LD		(BTL_TARGET_LUCK),A
+
+	RET
+
+;********************************
+?RELIC_CMD_RAGE_STONE
+
+	RAISE_STR_STAT			BTL_TARGET,2
+	RAISE_SPEED_STAT		BTL_TARGET,2
+
+	RET
+
+;********************************
+?RELIC_CMD_SHADOW_VEIL
+
+	RAISE_RESIST_STAT		BTL_TARGET,20
+	RAISE_DEFENSE_STAT		BTL_TARGET,20
+	RELIC_SET_PERM CONFUSED 
+
+	RET
+
+;********************************
+?RELIC_CMD_SHIELD_ORB
+
+	RAISE_DEFENSE_STAT	BTL_TARGET,15	
+
+	RET
+
+;********************************
+?RELIC_CMD_SKY_ESSENCE
+
+	RELIC_SET_STRONG 	WATER 
+	RELIC_SET_WEAK 		EARTH 
+	
+	RET
+
+;********************************
+?RELIC_CMD_SKY_ESSENCE_EXTRA
+
+	LD	HL,BTL_CREATURE_CMDELEM
+	LD	A,WIND
+	OR	(HL)
+	LD	(HL),A
+	
+	RET
+
+;********************************
+?RELIC_CMD_SPICEOFLIFE
+
+	RELIC_RAISE_ENERGY 8 
+
+	RET
+
+;********************************
+?RELIC_CMD_STONEOFDOOM
+
+	RELIC_SET_PERM PLAGUE 
+	;IMAGINE AFTER 255 BATTLE, TURNS INTO STONEOFLIFE
+
+	RET
+
+;********************************
+?RELIC_CMD_STONEESSENCE
+
+	RELIC_SET_STRONG WIND
+	RELIC_SET_WEAK FIRE 
+
+	RET
+
+;********************************
+?RELIC_CMD_STONEESSENCE_EXTRA
+
+	LD	HL,BTL_CREATURE_CMDELEM
+	LD	A,EARTH
+	OR	(HL)
+	LD	(HL),A
+	
+	RET
+
+;********************************
+?RELIC_CMD_STONEOFLIFE
+
+	RELIC_RAISE_ENERGY 8 
+	RELIC_SET_IMMUNE $FF
+
+	RET
+
+;********************************
+?RELIC_CMD_SWORDOFWIND
+
+	RAISE_STR_STAT		BTL_TARGET,15
+
+	RET
+
+;********************************
+?RELIC_CMD_TIDE_ESSENCE
+	
+	RELIC_SET_STRONG LIFE
+	RELIC_SET_WEAK WIND 
+	
+	RET
+
+;********************************
+?RELIC_CMD_TIDE_ESSENCE_EXTRA
+
+	LD	HL,BTL_CREATURE_CMDELEM
+	LD	A,WATER
+	OR	(HL)
+	LD	(HL),A
+	
+	RET
+
+;********************************
+?RELIC_CMD_TITAN_RING
+
+	RAISE_STR_STAT	BTL_TARGET,08	
+
+	RET
+
+;********************************
+?RELIC_CMD_WATER_ORB
+
+	RELIC_SET_STRONG WATER
+	RELIC_SET_PERM HICCUP 
+	RAISE_DEFENSE_STAT		BTL_TARGET,5
+	RAISE_STR_STAT			BTL_TARGET,5
+	RAISE_SKILL_STAT		BTL_TARGET,5
+	RAISE_RESIST_STAT		BTL_TARGET,5
+	LOWER_SPEED_STAT		BTL_TARGET,5
+
+	RET
+
+;********************************
+?RELIC_CMD_WISHBONE
+
+	RAISE_LUCK_STAT			BTL_TARGET,5
+
+	RET
+
+;********************************
+?INV_GIVE_RELIC
+
+	LD			HL,XRAM_INVENTORY_RELICS
+	ADD			HL,DE
+	PUSH		HL
+
+	LD			B,E
+	LD			C,RELIC_SIZE
+	CALL		?MULT
+
+	LD			BC,RELIC_TABLE+RELIC_NAME_OFFSET
+	ADD			HL,BC
+	LD			BC,RELIC_NAME_SIZE
+	LD			DE,TEXT_PARAM_BUFFER
+	CALL		?MEM_MOV
+	LD			A,?FORMAT
+	LD			(DE),A
+
+	POP			HL
+
+	JP			?INV_GIVE_GENERIC
+
+;********************************
+?INV_TAKE_RELIC
+
+	LD			HL,XRAM_INVENTORY_RELICS
+	ADD			HL,DE
+
+	JP			?INV_TAKE_GENERIC
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,36 @@
+/********************************/
+?_NRMVASH23_DR_1
+		HeroSetDoor	(15,3)
+		Jump		(?_NRMVASH04)
+
+/********************************/
+?_NRMVASH23_TR_1
+		SetText		(?_CURIO_SHOP_HELLO)
+		End			()
+	
+?_NRMVASH23_TR_2
+		SetText		(?_3_HEADEDTXT)
+		End			()
+
+?_NRMVASH23_TR_3
+		SetText		(?_BUCKET_PINK_TXT)
+		End			()
+
+?_NRMVASH23_TR_4
+		SetText		(?_BLAST_URN_TEXT)
+		End			()
+
+?_NRMVASH23_TR_5
+		SetText		(?_RABBAGE_TXT)
+		End			()
+
+?_NRMVASH23_TR_6
+		SetText		(?_BALANCE_SCALE_TXT)
+		End			()
+
+?_NRMVASH23_TR_7
+		TextOpen	()
+		TextIcon	(ICON_POLLY)
+		TextWrite	("BLEEEARGH!")
+		TextClose	()
+		End			()

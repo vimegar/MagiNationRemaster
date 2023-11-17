@@ -1,0 +1,11 @@
+/********************************/
+		FileHotspots	(HS_CLDLAVATOWN10)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDLAVATOWN10_DR_1)
+
+/********************************/
+		FileTriggers	(TR_CLDLAVATOWN10)
+						(TRIGGER_NORMAL,?_CLDLAVATOWN10_TR_1)
+						(TRIGGER_NORMAL,?_CLDLAVATOWN10_TR_2)
+						(TRIGGER_NORMAL,?_CLDLAVATOWN10_TR_3)
+						(TRIGGER_NORMAL,?_CLDLAVATOWN10_TR_4)
+						(TRIGGER_NORMAL,?_CLDLAVATOWN10_TR_5)

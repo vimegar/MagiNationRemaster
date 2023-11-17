@@ -1,0 +1,8 @@
+/********************************/
+		FileHotspots	(HS_NRMLAKE04)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMLAKE04_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMLAKE04_DR_2)
+						
+/********************************/
+		FileTriggers	(TR_NRMLAKE04)
+						(TRIGGER_CONFIG,?_NRMLAKE04_TR_1)

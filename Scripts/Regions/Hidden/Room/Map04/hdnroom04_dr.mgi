@@ -1,0 +1,26 @@
+/****************************/
+
+?_HDNROOM04_DR_1
+		HeroSetDoor		(6,2)
+		Jump			(?_UNDTUNNEL24)
+		
+?_HDNROOM04_DR_2
+		HeroSetDoor		(21,37)
+		Jump			(?_UNDTUNNEL06)
+
+?_HDNROOM04_TR_1
+		TriggerTreasure	(HDNROOM04_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,6,5,15)
+		
+?_HDNROOM04_TR_2
+		TriggerAlways	(HDNROOM04_Chest2,?_TXT_ITS_EMPTY,255,2,3,15)
+		InitSkip		(_END)
+		SetBtlReturn	(?_HDNROOM04)
+		TextOpen		()
+		TextWrite		("ROOOAR!")
+		TextClose		()
+		Jump			(?_HLDMAZE_JINGJACK_BATTLE)	
+_END
+		End				()
+		
+?_HDNROOM04_TR_3
+		TriggerTreasure	(HDNROOM04_Chest3,INV_TYPE_ITEM,INV_WATER_OF_LIFE,3,3,15)

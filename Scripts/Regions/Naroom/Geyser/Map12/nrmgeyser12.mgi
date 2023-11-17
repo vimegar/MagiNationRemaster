@@ -1,0 +1,35 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GEYSER\MAP12\NRMGEYSER12_DR.MGI
+
+/********************************/
+?_NRMGEYSER12_FADEIN
+	SceneNew				()
+	LoadMap					(MAP_NRMGEYSER12)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,15,31,31,31)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	JumpLocal				(?_NRMGEYSER12_GENERIC)
+
+?_NRMGEYSER12
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+
+?_NRMGEYSER12_BATTLE_RET
+	LoadMap					(MAP_NRMGEYSER12)
+	LoadPalette				(PAL_HERO)
+
+?_NRMGEYSER12_GENERIC
+	LoadHotspots			(HS_NRMGEYSER12)
+	LoadTriggers			(TR_NRMGEYSER12)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter			(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_NRMGEYSER12_BATTLE_RET)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_maze)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	End						()
+	
+

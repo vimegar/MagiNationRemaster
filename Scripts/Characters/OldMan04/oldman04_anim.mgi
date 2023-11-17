@@ -1,0 +1,186 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_OLDMAN04_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?OLDMAN04_WALK01_BACK)
+					(?OLDMAN04_WALK02_BACK)
+					(?OLDMAN04_WALK03_BACK)
+					(?OLDMAN04_WALK02_BACK)
+					
+	JumpLocal:		(?_OLDMAN04_WALK_UP_ANIM)
+
+/********************************/
+?_OLDMAN04_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?OLDMAN04_WALK01_FRONT)
+					(?OLDMAN04_WALK02_FRONT)
+					(?OLDMAN04_WALK03_FRONT)
+					(?OLDMAN04_WALK02_FRONT)
+					
+	JumpLocal:		(?_OLDMAN04_WALK_DOWN_ANIM)
+
+/********************************/
+?_OLDMAN04_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?OLDMAN04_WALK01_LEFT)
+					(?OLDMAN04_WALK02_LEFT)
+					(?OLDMAN04_WALK03_LEFT)
+					(?OLDMAN04_WALK02_LEFT)
+					
+	JumpLocal:		(?_OLDMAN04_WALK_LEFT_ANIM)
+
+/********************************/
+?_OLDMAN04_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?OLDMAN04_WALK01_RIGHT)
+					(?OLDMAN04_WALK02_RIGHT)
+					(?OLDMAN04_WALK03_RIGHT)
+					(?OLDMAN04_WALK02_RIGHT)
+					
+	JumpLocal:		(?_OLDMAN04_WALK_RIGHT_ANIM)
+
+/********************************/
+?_OLDMAN04_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?OLDMAN04_WALK01_BACK)
+					(?OLDMAN04_WALK02_BACK)
+					(?OLDMAN04_WALK03_BACK)
+					(?OLDMAN04_WALK02_BACK)
+					
+	JumpLocal:		(?_OLDMAN04_RUN_UP_ANIM)
+
+/********************************/
+?_OLDMAN04_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?OLDMAN04_WALK01_FRONT)
+					(?OLDMAN04_WALK02_FRONT)
+					(?OLDMAN04_WALK03_FRONT)
+					(?OLDMAN04_WALK02_FRONT)
+					
+	JumpLocal:		(?_OLDMAN04_RUN_DOWN_ANIM)
+
+/********************************/
+?_OLDMAN04_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?OLDMAN04_WALK01_LEFT)
+					(?OLDMAN04_WALK02_LEFT)
+					(?OLDMAN04_WALK03_LEFT)
+					(?OLDMAN04_WALK02_LEFT)
+					
+	JumpLocal:		(?_OLDMAN04_RUN_LEFT_ANIM)
+
+/********************************/
+?_OLDMAN04_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?OLDMAN04_WALK01_RIGHT)
+					(?OLDMAN04_WALK02_RIGHT)
+					(?OLDMAN04_WALK03_RIGHT)
+					(?OLDMAN04_WALK02_RIGHT)
+					
+	JumpLocal:		(?_OLDMAN04_RUN_RIGHT_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_WALK02_BACK)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_UP_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_WALK02_FRONT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_DOWN_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_WALK02_LEFT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_LEFT_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_WALK02_RIGHT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_RIGHT_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_UL_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_UR_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_STAND_LEFT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_DL_ANIM)
+
+/********************************/
+?_OLDMAN04_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?OLDMAN04_STAND_RIGHT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_DR_ANIM)
+
+/********************************/
+?_OLDMAN04_MOVE_LEFT_ANIM
+
+	Frame:			(255,-1,0,?OLDMAN04_WALK02_LEFT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_LEFT_ANIM)
+
+/********************************/
+?_OLDMAN04_MOVE_RIGHT_ANIM
+
+	Frame:			(255,1,0,?OLDMAN04_WALK02_RIGHT)
+	
+	JumpLocal:		(?_OLDMAN04_STAND_RIGHT_ANIM)
+
+/********************************/
+?_FACE_OLDMAN04
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_OLDMAN04_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_OLDMAN04_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_OLDMAN04_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_OLDMAN04_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

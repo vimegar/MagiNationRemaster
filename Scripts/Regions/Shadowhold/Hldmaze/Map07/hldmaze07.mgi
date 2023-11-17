@@ -1,0 +1,157 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP07\HLDMAZE07_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP07\HLDMAZE07_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE07
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE07)
+	LoadTriggers		(TR_HLDMAZE07)
+?_HLDMAZE07_RETURN
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?TRIGGER_AI,17,6,24,0,?_FEATHER_ANIM,?_HLDMAZE07_FEATHER_TALKER)
+	ThatActorInit		(ACTOR01,?ANIM_AI,17,14,24,2,?_CORE07_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR02,?ANIM_AI,20,14,24,47,?_CORE08_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR03,?ANIM_AI,16,6,24,87,?_HLDMAZE07_ARDCLOAKMAN,?_DONT_TALK)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadVRAM			(VRM_HLDMAZE,PAL_HLDMAZE)
+	LoadHotspots		(HS_HLDMAZE07)
+	SongStart			(SONGID_shadowhold)
+	LoadPalette			(PAL_HERO)
+	LoadVRAMTiles		(2,BIT_FEATHER,0,0)
+	LoadVRAMTiles		(45,BIT_CORE07,2,0)
+	LoadVRAMTiles		(40,BIT_CORE08,47,0)
+	LoadVRAMTiles		(27,BIT_ARDCLOAKMAN,87,0)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE07_RETURN)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	If					([HLDMAZE07_Corefight],_NEXT4)
+	ThatActorStart		(ACTOR01)
+	ThatActorStart		(ACTOR02)
+_NEXT4
+	If					([HLDMAZE07_Feather],_NEXT3)
+	ThatActorStart		(ACTOR00)
+_NEXT3
+	If					([!DOOR_7],_NEXT2)
+	CopyTileBlock		(24,0,0,2,2,18,12)
+_NEXT2
+	If					([!Switch7],_NEXT)
+	CopyTileBlock		(24,9,6,2,3,9,3)
+_NEXT
+	If					([Switch11],_END)
+	CopyTileBlock		(24,2,1,6,6,16,14)
+_END
+	SceneReady			()
+	End					()
+
+
+?_HLDMAZE07_FEATHER_TALKER
+	SetXRAMBit				(HLDMAZE07_Feather,TRUE)
+	InventoryGive			(INV_TYPE_ITEM,INV_FEATHER,1)
+	SetText					(?_HLDQONE01_TXT_21)
+	ThisActorStop			()
+	End						()
+
+
+?_HLDMAZE07_ARDCLOAKMAN
+	ThisActorSetAnimDelay	(?_CLOAKMAN_RUN_RIGHT_ANIM,16)
+							(?_CLOAKMAN_RUN_DOWN_ANIM,32)
+	SetBtlReturn			(?_HLDMAZE07_RETURN)
+	ThisActorStop			()
+	End						()
+
+/**********************/
+// the battle at the door to the Arderial.
+/**********************/
+?_HLDMAZE07_BATTLE
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	Delay					(32)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Uh oh.")
+	TextClose				()
+	ThatActorSetScript		(ACTOR01,?_CORE07_WALK_RIGHT_ANIM)
+	Delay					(16)
+	ThatActorSetScript		(ACTOR01,?_CORE07_WALK_DOWN_ANIM)
+	Delay					(16)
+	ThatActorSetScript		(ACTOR01,?_CORE07_RUN_DOWN_ANIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_UP_ANIM)
+	Delay					(4)
+	SetBtlReturn			(?_HLDMAZE07_RETURN2)
+	Jump					(?_HLDMAZE_CORE7_BATTLE)
+
+?_HLDMAZE07_RETURN2
+	LoadVRAM				(VRM_HLDMAZE,PAL_HLDMAZE)
+	LoadHotspots			(HS_HLDMAZE07)
+	SongStart				(SONGID_shadowhold)
+	LoadPalette				(PAL_HERO)
+	LoadVRAMTiles			(2,BIT_FEATHER,0,0)
+	LoadVRAMTiles			(45,BIT_CORE07,2,0)
+	LoadVRAMTiles			(40,BIT_CORE08,47,0)
+	LoadVRAMTiles			(27,BIT_ARDCLOAKMAN,87,0)
+	ThatActorInit			(ACTOR02,?ANIM_AI,20,14,24,47,?_CORE08_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR02)
+	ThatActorSetScript		(HEROACTOR,_TONY_BATTLE2)
+	ThatActorSetScript		(ACTOR02,_CORE08_BATTLE2)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SetBtlReturn			(?_HLDMAZE07_RETURN)
+	SceneReady				()
+	End						()
+
+
+_TONY_BATTLE2
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,56)
+							(?_HERO_RUN_UP_ANIM,4)
+	Jump					(?_HLDMAZE_CORE8_BATTLE)
+	
+_CORE08_BATTLE2
+	ThisActorSetAnimDelay	(?_CORE08_STAND_DOWN_ANIM,32)
+							(?_CORE08_WALK_LEFT_ANIM,16)
+							(?_CORE08_WALK_DOWN_ANIM,8)
+							(?_CORE08_RUN_DOWN_ANIM,0)
+	End						()
+	
+/********************************/
+// DOOR LOCK
+/********************************/
+
+?_HLDMAZE07_DOOR_LOCKED
+	If						([INV_ITEM_Screwdriver],_HLDMAZE07_UNLOCK_DOOR)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetText					(?_HLDMAZE07_TXT1)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+_HLDMAZE07_UNLOCK_DOOR
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetText					(?_HLDMAZE07_TXT2)
+	WaitEventText			(1)
+	CopyTileBlock			(24,0,0,2,2,18,12)
+	ScrollMap				(116,0,-1)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR03)
+	SetText					(?_HLDMAZE07_TXT3)
+	WaitEventText			(2)
+	ScrollMap				(116,0,1)
+	SetXRAMBit				(DOOR_7,TRUE)
+//	ExprXRAMByte			(INV_ITEM_Screwdriver,[INV_ITEM_Screwdriver - 1])
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+
+
+	
+	
+		

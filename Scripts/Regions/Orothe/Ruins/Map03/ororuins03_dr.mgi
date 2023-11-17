@@ -1,0 +1,24 @@
+/********************************/
+?_ORORUINS03_DR_1
+		HeroToDoor	(49,17,0,35)
+		Jump		(?_ORORUINS01)
+
+?_ORORUINS03_DR_2
+		HeroToDoor	(12,0,10,49)
+		Jump		(?_ORORUINS02)
+
+/********************************/
+?_ORORUINS03_TR_1
+		TriggerTreasure	(ORORUINS03_Chest1,INV_TYPE_ITEM,INV_RUNEOFPOWER,10,2,50)
+			
+?_ORORUINS03_TR_2
+		TriggerTreasure	(ORORUINS03_Chest2,INV_TYPE_ITEM,INV_RUNEOFPOWER,2,5,50)
+
+?_ORORUINS03_TR_3
+		TriggerTreasure	(ORORUINS03_Chest3,INV_TYPE_ITEM,INV_KARMIC_POWER,1,30,50)
+		
+?_ORORUINS03_TR_4
+		TriggerTreasure	(ORORUINS03_Chest4,INV_TYPE_ITEM,INV_BALOO_ROOT,35,33,50)
+		
+?_ORORUINS03_TR_5
+		TriggerTreasure	(ORORUINS03_Chest5,INV_TYPE_ITEM,INV_BALOO_ROOT,47,37,50)

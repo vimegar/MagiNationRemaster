@@ -1,0 +1,15 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH20)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH20_DR_1)
+		FileTriggers	(TR_NRMVASH20)
+						(TRIGGER_CONFIG,?_NRMVASH20_TR_1)
+						(TRIGGER_NORMAL,?_NRMVASH20_TR_2)
+						(TRIGGER_NORMAL,?_NRMVASH20_TR_3)
+						(TRIGGER_NORMAL,?_NRMVASH20_TR_4)
+						(TRIGGER_CONFIG,?_NRMVASH20_TR_5)
+						
+						
+/********************************/
+		FileTriggers	(TR_NRMVASH20B)
+						(TRIGGER_NORMAL,?_NRMVASH20B_TR_1)
+						(TRIGGER_NORMAL,?_NRMVASH20B_TR_2)

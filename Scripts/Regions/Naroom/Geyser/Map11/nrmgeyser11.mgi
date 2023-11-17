@@ -1,0 +1,113 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\NAROOM\GEYSER\MAP11\NRMGEYSER11_DR.MGI
+/********************************/
+
+?_NRMGEYSER11						
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,11,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+?_NRMGEYSER11_RETURN
+	SetXRAMByte				(Exit_Disable,1)
+	LoadMap					(MAP_NRMGEYSER11)
+	LoadHotspots			(HS_NRMGEYSER11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,5,5,11,0,?_CORE_STONE_ANIM,?_NRMGEYSER11_SWITCH_GC)
+	ThatActorInit			(ACTOR01,?ANIM_AI,5,11,11,8,?_NRMGEYSER_TOGATH_ACT,?_DONT_TALK)
+	LoadVRAMTiles			(8,BIT_CORESTONE,0,0)
+	LoadVRAMTiles			(40,BIT_TOGATH,8,0)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter			(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_NRMGEYSER11_RETURN)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_maze)
+	SceneReady				()
+	If						([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	If						([GAMECOUNT = GC_NAROOM_GEYSER],?_NRMGEYSER11_SWITCHER)
+	End						()
+
+?_NRMGEYSER11_SWITCHER
+	ThatActorStart			(ACTOR00)
+	End						()
+	
+?_NRMGEYSER11_SWITCH_GC
+	SetGamecount			(GC_GLOVES)
+	SetText					(?_NRMGEYSER11_TXT)
+	WaitAnyEventText		()
+	SetScroll				(?_NRMGEYSER_QUAKIN)
+	ThisActorStop			()
+	End						()
+
+?_NRMGEYSER_QUAKIN
+	ScrollMap				(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+	JumpLocal				(?_NRMGEYSER_QUAKIN)
+
+?_NRMGEYSER_STOP
+	End						()
+
+?_NRMGEYSER_HERO_ACT
+	ThisActorSetAnimDelay	(?_HERO_RUN_UP_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,32)
+							(?_HERO_RUN_UP_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetText					(?_NRMGEYSER12_TXT_1)
+	WaitEventText			(1)
+	SetText					(?_NRMGEYSER12_TXT_2)
+	WaitEventText			(2)
+	SetText					(?_NRMGEYSER12_TXT_3)
+	WaitEventText			(3)
+	Delay					(96)
+	SetText					(?_NRMGEYSER12_TXT_4)
+	WaitEventText			(4)
+	SetBtlReturn			(?_NRMGEYSERTOG_RETURN)
+	Jump					(?_NRMGEYSER_TOGOTHBAT)
+
+?_NRMGEYSER_TOGATH_ACT
+	
+	ThisActorSetAnimDelay	(?_TOGATH_STAND_UP_ANIM,16)
+							(?_TOGATH_WALK_UP_ANIM,56)
+							(?_TOGATH_STAND_UP_ANIM,0)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_TOGATH_STAND_UP_ANIM,16)
+	WaitEventText			(2)
+	ThisActorSetAnimDelay	(?_TOGATH_WALK_DOWN_ANIM,16)
+							(?_TOGATH_STAND_DOWN_ANIM,64)
+							(?_TOGATH_STAND_DR_ANIM,4)
+							(?_TOGATH_STAND_RIGHT_ANIM,4)
+							(?_TOGATH_STAND_UR_ANIM,4)
+							(?_TOGATH_STAND_UP_ANIM,0)
+	WaitEventText			(3)
+	Delay					(96)
+	ThisActorSetAnimDelay	(?_TOGATH_WALK_UP_ANIM,16)
+							(?_TOGATH_STAND_UP_ANIM,0)
+	WaitEventText			(4)
+	ThisActorStop			()
+	End						()
+	
+/********************************//********************************/
+//BOSS DEFEATED
+/********************************//********************************/
+?_NRMGEYSERTOG_RETURN
+	SceneNew				()
+	LoadMap					(MAP_NRMGEYSER11)
+	LoadHotspots			(HS_NRMGEYSER11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,18,0,_NRMGEYSERRET_HERO_ACT,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_maze)
+	SceneReady				()
+	SetScroll				(?_NRMGEYSER_QUAKIN)
+	WaitEventMaster			(1)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_NRMGEYSER12_DR_2)
+	
+_NRMGEYSERRET_HERO_ACT
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,80)
+	SetEventMaster			(1)
+	End						()
+	

@@ -1,0 +1,51 @@
+/********************************/
+
+?_NRMLAKE02_DR_1
+		HeroSetDoor	(18,35)
+		Jump		(?_NRMLAKE01)
+
+/********************************/
+
+?_NRMLAKE02_TR_1
+		InitSkip			(_SKIP)
+		If					([Seer_Byte = 0],_FIRST)
+_SKIP
+		TriggerTreasure		(NRMLAKE02_Chest1,INV_TYPE_SPELL,INV_GROW,6,3,11)
+
+_FIRST
+		If					([GC > GC_SHADOWHOLD_JAIL],_SKIP)
+		SetScroll			(_SHAKE_TREASURE)
+		SetXRAMByte			(Seer_Byte,1)
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_NRMLAKE02_FIRST_MEET)
+		End					()	
+	
+
+_SHAKE_TREASURE
+		ScrollMap			(2,3,0)
+							(2,-3,0)
+							(2,0,3)
+							(2,0,-3)
+							(2,3,3)
+							(2,-3,-3)
+							(2,3,3)
+							(2,-3,-3)
+		PalClearAnim		(0,15,31,31,31)
+		Delay				(12)
+		PalRefresh			(0,15)
+		Delay				(16)
+		PalClearAnim		(0,15,31,31,31)
+		Delay				(12)
+		PalRefresh			(0,15)
+		Delay				(32)
+		PalClearAnim		(0,15,31,31,31)
+		Delay				(12)
+		PalRefresh			(0,15)
+		PalClearBase		(0,6,0,0,0)
+		PalFade				(0,6,32,0)
+		Sync				(2,0)
+	//	PalFadeAnim			(0,6,32,0,0,0,0)
+	//	PalFadeAnim			(8,15,32,0,0,0,0)
+		End					()
+
+			

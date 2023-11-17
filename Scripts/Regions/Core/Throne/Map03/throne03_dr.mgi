@@ -1,0 +1,8 @@
+/********************************/
+?_THRONE03_DR_1
+	HeroSetDoor		(6,4)
+	Jump			(?_THRONE02)
+
+?_THRONE03_DR_2
+	HeroSetDoor		(8,15)
+	Jump			(?_THRONE04)

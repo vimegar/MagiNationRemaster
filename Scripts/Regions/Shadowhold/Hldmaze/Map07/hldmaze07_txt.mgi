@@ -1,0 +1,31 @@
+/********************************/
+//HLDMAZE07 TXT
+/********************************/
+
+?_HLDMAZE07_TXT1
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-THE DOOR IS=")
+						("SCREWED SHUT-")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_HLDMAZE07_TXT2
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-TONY UNSCREWS=")
+						("THE DOOR WITH")
+						("THE=")
+						("SCREWDRIVER-")
+	TextClose			()
+	SetEventText		(1)
+	End					()	
+	
+?_HLDMAZE07_TXT3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("What was that?")
+	TextClose			()
+	SetEventText		(2)
+	End					()

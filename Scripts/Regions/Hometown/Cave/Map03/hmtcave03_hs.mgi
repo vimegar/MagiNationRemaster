@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_HMTCAVE03)
+						(HOTSPOT_TRIGGER_SOUTH,?_HMTCAVE03_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HMTCAVE03_DR_2)
+						(HOTSPOT_TRIGGER_ALL,?_HMTCAVE_FALL)
+						

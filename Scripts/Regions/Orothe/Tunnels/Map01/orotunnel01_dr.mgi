@@ -1,0 +1,17 @@
+/********************************/
+?_OROTUNNEL01_DR_1
+		HeroToDoor	(5,6,9,5)
+		SetXRAMBit	(Orlons_door,TRUE)	
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_UP_ANIM)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		Jump		(?_OROISLANDS02)
+		
+?_OROTUNNEL01_DR_2
+		HeroToDoor	(0,31,13,0)
+		Jump		(?_OROTUNNEL06)
+
+?_OROTUNNEL01_DR_3
+		HeroToDoor	(19,31,9,0)
+		Jump		(?_OROTUNNEL02)

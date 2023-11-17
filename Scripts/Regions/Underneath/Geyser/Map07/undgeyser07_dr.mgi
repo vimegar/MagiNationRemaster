@@ -1,0 +1,10 @@
+/********************************/
+
+?_UNDGEYSER07_DR_1
+		HeroToDoor	(0,9,39,22)
+		Jump		(?_UNDGEYSER09)
+
+/********************************/
+
+?_UNDGEYSER07_TR_1
+	TriggerTreasure	(UNDGEYSER07_Chest1,INV_TYPE_RELIC,INV_TITAN_RING,33,18,45)

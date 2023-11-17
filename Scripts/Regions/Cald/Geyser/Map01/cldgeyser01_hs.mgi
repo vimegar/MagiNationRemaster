@@ -1,0 +1,4 @@
+/********************************/
+		FileHotspots	(HS_CLDGEYSER01)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDGEYSER01_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDGEYSER01_DR_2)

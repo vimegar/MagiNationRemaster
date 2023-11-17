@@ -1,0 +1,144 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_AGOVE_HOVER_LEFT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?AGOVE_FLY01_LEFT)
+					(?AGOVE_FLY02_LEFT)
+					(?AGOVE_FLY03_LEFT)
+					(?AGOVE_FLY02_LEFT)
+
+	JumpLocal		(?_AGOVE_HOVER_LEFT_ANIM)
+
+/********************************/
+?_AGOVE_HOVER_LEFT_STILL
+
+	Frame:			(255,0,0,?AGOVE_FLY01_LEFT)
+
+	JumpLocal		(?_AGOVE_HOVER_LEFT_STILL)
+
+/********************************/
+?_AGOVE_HOVER_RIGHT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?AGOVE_FLY01_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+					(?AGOVE_FLY03_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+
+	JumpLocal		(?_AGOVE_HOVER_RIGHT_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?AGOVE_FLY01_LEFT)
+					(?AGOVE_FLY02_LEFT)
+					(?AGOVE_FLY03_LEFT)
+					(?AGOVE_FLY02_LEFT)
+
+	JumpLocal		(?_AGOVE_MOVE_UP_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?AGOVE_FLY01_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+					(?AGOVE_FLY03_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+
+	JumpLocal		(?_AGOVE_MOVE_DOWN_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?AGOVE_FLY01_LEFT)
+					(?AGOVE_FLY02_LEFT)
+					(?AGOVE_FLY03_LEFT)
+					(?AGOVE_FLY02_LEFT)
+
+	JumpLocal		(?_AGOVE_MOVE_LEFT_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?AGOVE_FLY01_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+					(?AGOVE_FLY03_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+
+	JumpLocal		(?_AGOVE_MOVE_RIGHT_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_UP_FAST_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?AGOVE_FLY01_LEFT)
+					(?AGOVE_FLY02_LEFT)
+					(?AGOVE_FLY03_LEFT)
+					(?AGOVE_FLY02_LEFT)
+
+	JumpLocal		(?_AGOVE_MOVE_UP_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_DOWN_FAST_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?AGOVE_FLY01_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+					(?AGOVE_FLY03_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+
+	JumpLocal		(?_AGOVE_MOVE_DOWN_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_LEFT_FAST_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?AGOVE_FLY01_LEFT)
+					(?AGOVE_FLY02_LEFT)
+					(?AGOVE_FLY03_LEFT)
+					(?AGOVE_FLY02_LEFT)
+
+	JumpLocal		(?_AGOVE_MOVE_LEFT_ANIM)
+
+/********************************/
+?_AGOVE_MOVE_RIGHT_FAST_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?AGOVE_FLY01_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+					(?AGOVE_FLY03_RIGHT)
+					(?AGOVE_FLY02_RIGHT)
+
+	JumpLocal		(?_AGOVE_MOVE_RIGHT_ANIM)
+
+
+/********************************/
+?_AGOVE_EXPLODE_LEFT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?AGOVE_EXPLODE01_LEFT)
+					(?AGOVE_EXPLODE02_LEFT)
+					(?AGOVE_EXPLODE03_LEFT)
+					(?AGOVE_EXPLODE04_LEFT)
+					(?AGOVE_EXPLODE05_LEFT)
+	
+	End				()
+
+/********************************/
+?_AGOVE_EXPLODE_RIGHT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?AGOVE_EXPLODE01_RIGHT)
+					(?AGOVE_EXPLODE02_RIGHT)
+					(?AGOVE_EXPLODE03_RIGHT)
+					(?AGOVE_EXPLODE04_RIGHT)
+					(?AGOVE_EXPLODE05_RIGHT)
+	
+	End				()

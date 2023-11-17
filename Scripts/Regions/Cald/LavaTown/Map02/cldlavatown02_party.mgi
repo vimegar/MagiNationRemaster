@@ -1,0 +1,285 @@
+/********************************//********************************/
+// PARTY
+/********************************//********************************/
+?_CLDLAVATOWN02_PARTY
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATOWN02)
+	LoadHotspots	(HS_CLDLAVATOWN02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR00,?TALKER_AI,14,28,20,0,?_CLDLVTN_MAGICIAN,?_CLDLVTN_MAGIC_SHOW)
+	ThatActorStart	(ACTOR00)
+	ThatActorInit	(ACTOR01,?TALKER_AI,12,28,20,38,?_CLDLVTN_ASSISTANT,?_CLDLVTN_MAGIC_SHOW2)
+	ThatActorStart	(ACTOR01)
+	ThatActorInit	(ACTOR02,?ANIM_AI,12,28,20,82,?_CLDLVTN02_SMOKE,?_DONT_TALK)
+	ThatActorInit	(ACTOR03,?ANIM_AI,12,28,20,97,?_CLDLVTN02_WHOOPS,?_DONT_TALK)
+	ThatActorInit	(ACTOR07,?ANIM_AI,14,28,20,82,?_CLDLVTN02_SMOKE2,?_DONT_TALK)
+	ThatActorInit	(ACTOR08,?ANIM_AI,12,28,20,82,?_CLDLVTN02_SMOKE3,?_DONT_TALK)
+	ThatActorInit	(ACTOR09,?ANIM_AI,14,28,20,82,?_CLDLVTN02_SMOKE4,?_DONT_TALK)
+	ThatActorInit	(ACTOR04,?TALKER_AI,12,19,20,107,?_CLDLVTN02_RANDOM,?_CLDLVTN02_RANDOM_2)
+	ThatActorStart	(ACTOR04)
+	ThatActorInit	(ACTOR05,?TALKER_AI,14,28,20,0,?_CLDLVTN02_MAGICIAN2,?_CLDLVTN02_MAGICIAN222)
+	ThatActorInit	(ACTOR06,?ANIM_AI,12,28,20,38,?_CLDLVTN02_ASSISTANT2,?_DONT_TALK)
+	ThatActorInit	(ACTOR15,?ANIM_AI,14,28,20,150,?_CLDLVTN02_BEANS,?_DONT_TALK)
+	ThatActorInit	(ACTOR1C,?ANIM_AI,10,7,20,82,?_SMOKE_ANIM,?_DONT_TALK)
+	LoadVRAMTiles	(38,BIT_OLDMAN,0,0)
+	LoadVRAMTiles	(44,BIT_GIRL,38,0)
+	LoadVRAMTiles	(15,BIT_SMOKE,82,0)
+	LoadVRAMTiles	(10,BIT_WORVELINE,97,0)
+	LoadVRAMTiles	(43,BIT_MAN04,107,0)
+	LoadVRAMTiles	(1,BIT_JELLYBEANS,150,0)
+	LoadVRAMTiles	(24,BIT_AGOVESMOKE,151,0)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_oroisland)
+	SceneReady		()
+	End				()
+
+
+?_CLDLVTN02_RANDOM
+	ThisActorSetAnimDelay	(?_MAN04_WALK_LEFT_ANIM,64)
+							(?_MAN04_WALK_UP_ANIM,32)
+							(?_MAN04_WALK_RIGHT_ANIM,16)
+							(?_MAN04_WALK_UP_ANIM,40)
+							(?_MAN04_WALK_RIGHT_ANIM,40)
+							(?_MAN04_WALK_DOWN_ANIM,24)
+							(?_MAN04_WALK_RIGHT_ANIM,8)
+							(?_MAN04_WALK_DOWN_ANIM,48)
+	Jump					(?_CLDLVTN02_RANDOM)
+	
+?_CLDLVTN02_RANDOM_2
+	SetText					(?_CLDLVTN02_POINTER_TXT)
+	Jump					(?_FACE_MAN04)
+	
+?_CLDLVTN_MAGICIAN
+	ThisActorSetAnim		(?_OLDMAN_STAND_DOWN_ANIM)
+	End						()
+	
+?_CLDLVTN_MAGIC_SHOW9
+	SetText					(?_CLDLVTN02_RETIRE_TXT)
+	Jump					(?_FACE_OLDMAN)
+	
+?_CLDLVTN_ASSISTANT
+	ThisActorSetAnim		(?_GIRL_STAND_DOWN_ANIM)
+	End						()
+	
+?_CLDLVTN_MAGIC_SHOW
+	SetText					(?_CLDLVTN02_MAGIC_TXT_1)
+	Jump					(?_FACE_OLDMAN)
+?_CLDLVTN_MAGIC_SHOW2
+	SetText					(?_CLDLVTN02_MAGIC_TXT_2)
+	Jump					(?_FACE_GIRL)
+	
+?_CLDLVTN02_MAGIC_TJ
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	WaitAnyEventText		()
+	ThisActorSetAnimScroll	(?_HERO_RUN_DOWN_ANIM,16,0,1)
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_STAND_UP_ANIM,0)
+	Jump					(?_CLDLVTN02_CONTINUE)
+?_CLDLVTN02_MAGIC_TJ_RIGHT
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	WaitAnyEventText		()
+	ThisActorSetAnimScroll	(?_HERO_RUN_DOWN_ANIM,24,0,1)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+?_CLDLVTN02_CONTINUE
+	SetAnyEventText			()
+	WaitEventMaster			(4)
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	WaitEventMaster			(5)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)	
+	WaitEventMaster			(60)
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetEventText			(61)
+	WaitEventText			(62)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	Delay					(48)
+	SetEventMaster			(58)
+	SetEventMaster			(15)
+	WaitEventMaster			(59)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	WaitEventText			(71)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,8)
+							(?_HERO_STAND_UL_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,8)
+							(?_HERO_STAND_DL_ANIM,8)
+							(?_HERO_STAND_DOWN_ANIM,48)
+							(?_HERO_STAND_UP_ANIM,0)
+	End						()
+
+?_CLDLVTN02_ASSISTANT_Q
+	ThisActorSetAnim		(?_GIRL_STAND_RIGHT_ANIM)
+	WaitEventText			(41)
+	SetScroll				(?_SMOKE_SETTER1)
+	ThisActorStop			()
+	End						()
+
+?_CLDLVTN02_MAGICIAN222
+	SetText					(?_CLDLVTN02_MAGIC_TXT_3)
+	Jump					(?_FACE_OLDMAN)
+	
+?_CLDLVTN02_WHOOPS	
+	ThisActorSetAnimDelay	(?_WORVELINE_SUCKIT_LEFT_ANIM,48)
+							(?_WORVELINE_SUCKIT_RIGHT_ANIM,48)
+	SetEventText			(51)
+	WaitEventText			(52)
+	ThisActorSetAnimDelay	(?_WORVELINE_MOVE_RIGHT_ANIM,10)	
+							(?_WORVELINE_HOP_UP_ANIM,36)
+	SetEventMaster			(53)
+	ThisActorSetAnimScroll	(?_WORVELINE_MOVE_DOWN_ANIM,64,0,2)
+							(?_WORVELINE_MOVE_LEFT_ANIM,80,-2,0)
+							(?_WORVELINE_MOVE_DOWN_ANIM,32,0,2)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,32,2,0)
+							(?_WORVELINE_MOVE_UP_ANIM,32,0,-2)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,48,2,0)
+							(?_WORVELINE_MOVE_UP_ANIM,56,0,-2)
+	SetEventMaster			(5)
+	ThisActorSetAnimDelay	(?_WORVELINE_MOVE_UP_ANIM,8)
+							(?_WORVELINE_SUCKIT_LEFT_ANIM,16)
+							(?_WORVELINE_SUCKIT_RIGHT_ANIM,16)
+							(?_WORVELINE_SUCKIT_LEFT_ANIM,16)
+							(?_WORVELINE_SUCKIT_RIGHT_ANIM,16)							
+							(?_WORVELINE_HOP_DOWN_ANIM,36)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_STAND_RIGHT_ANIM,0)
+	ScrollMap				(8,0,2)
+	SetEventText			(55)
+	WaitEventMaster			(58)
+	SetScroll				(?_SMOKE_SETTER2)
+	ThisActorStop			()
+	End						()
+
+?_CLDLVTN02_MAGICIAN_Q
+	ThisActorSetAnim		(?_OLDMAN_STAND_LEFT_ANIM)	
+	WaitEventMaster			(53)
+	ThisActorSetAnimDelay	(?_OLDMAN_RUN_DOWN_ANIM,32)
+	SetEventMaster			(4)
+	ThisActorSetAnimDelay	(?_OLDMAN_RUN_DOWN_ANIM,32)
+							(?_OLDMAN_RUN_LEFT_ANIM,80)
+							(?_OLDMAN_RUN_DOWN_ANIM,32)
+							(?_OLDMAN_RUN_RIGHT_ANIM,32)
+							(?_OLDMAN_RUN_UP_ANIM,32)
+							(?_OLDMAN_RUN_RIGHT_ANIM,48)
+							(?_OLDMAN_RUN_UP_ANIM,64)
+							(?_OLDMAN_STAND_DOWN_ANIM,0)
+	WaitEventText			(56)
+	ThisActorSetAnim		(?_OLDMAN_STAND_LEFT_ANIM)
+	WaitEventText			(57)
+	SetScroll				(?_SMOKE_SETTER3)
+	ThisActorStop			()
+	End						()
+
+?_CLDLVTN02_TJ_FALL
+	ThisActorSetAnimDelay	(?_HERO_STAND_RIGHT_ANIM,40)
+							(?_HERO_STAND_LEFT_ANIM,40)
+							(?_HERO_STAND_UP_ANIM,40)
+							(?_HERO_STAND_DOWN_ANIM,40)
+	SetAnyEventText			()
+	WaitEventText			(23)
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,32)
+	SetAnyEventText			()
+	ThisActorSetAnimDelay	(?_HERO_JUMP_LEFT3_ANIM,18)
+	Jump					(?_CLDLAVATOWN11_FALL_DOWN)
+?_CLDLVTN02_TJ_OUCH
+	Delay					(32)
+	ThisActorSetAnimScroll	(?_HERO_WALK_DOWN_ANIM,48,0,1)
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetAnyEventText			()
+	End						()
+	
+?_CLDLVTN02_BEANS
+	ThisActorSetAnimDelay	(?_JELLYBEANS_ANIM,40)
+	SetEventMaster			(60)
+	WaitEventMaster			(15)
+	SetScroll				(?_SMOKE_SETTER4)
+	ThisActorStop			()
+	End						()	
+	
+?_CLDLVTN02_MAGICIAN2
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_DOWN_ANIM,32)
+							(?_OLDMAN_STAND_LEFT_ANIM,32)
+							(?_OLDMAN_STAND_DOWN_ANIM,32)
+							(?_OLDMAN_STAND_LEFT_ANIM,0)
+	SetText					(?_CLDLVTN02_LEAVE_TXT)
+	WaitEventText			(73)
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_DOWN_ANIM,0)
+	SetScroll				(?_OLDMAN_SETTER)
+	ThisActorRestoreState	()
+	End						()
+
+?_CLDLVTN02_ASSISTANT2
+	ThisActorSetAnimDelay	(?_GIRL_STAND_DOWN_ANIM,32)
+							(?_GIRL_STAND_RIGHT_ANIM,32)
+							(?_GIRL_STAND_DOWN_ANIM,32)
+							(?_GIRL_STAND_RIGHT_ANIM,0)			
+	WaitEventText			(71)
+	ThisActorSetAnimDelay	(?_GIRL_RUN_DOWN_ANIM,60)
+	SetEventText			(72)
+	ThisActorStop			()
+	End						()
+
+?_CLDLVTN_MAGIC_3
+	SetText					(?_CLDLVTN02_MAGIC_TXT_3)
+	Jump					(?_FACE_OLDMAN)	
+
+?_CLDLVTN02_SMOKE
+	ThisActorSetAnimDelay	(?_SMOKE_ANIM,56)
+	SetScroll				(?_WORVELINE_SETTER1)
+	ThisActorStop			()
+	End						()
+
+?_CLDLVTN02_BACK_TJ
+	ThisActorSetAnimScroll	(?_HERO_BACK_DOWN_ANIM,28,0,1)
+							(?_HERO_STAND_UP_ANIM,1,0,0)
+							(?_HERO_BACK_DOWN_ANIM,30,0,1)
+							(?_HERO_BACK_LEFT_ANIM,16,0,0)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	End						()
+
+?_CLDLVTN02_SMOKE2
+	ThisActorSetAnimDelay	(?_SMOKE2_ANIM,56)
+	ThisActorStop			()
+	End						()
+
+	
+?_CLDLVTN02_SMOKE3
+	ThisActorSetAnimDelay	(?_SMOKE2_ANIM,56)
+	SetEventMaster			(59)
+	ThisActorStop			()
+	End						()	
+	
+?_CLDLVTN02_SMOKE4
+	ThisActorSetAnimDelay	(?_SMOKE_ANIM,56)
+	ThatActorStart			(ACTOR15)
+	ThisActorStop			()
+	End						()
+						
+						
+?_SMOKE_SETTER1	
+	ThatActorStart			(ACTOR02)
+	End						()
+	
+?_SMOKE_SETTER2	
+	ThatActorStart			(ACTOR08)
+	End						()
+
+?_SMOKE_SETTER3
+	ThatActorStart			(ACTOR09)
+	End						()
+		
+?_SMOKE_SETTER4
+	ThatActorStart			(ACTOR07)
+	End						()
+
+?_WORVELINE_SETTER1
+	ThatActorStart			(ACTOR03)
+	End						()
+	
+?_OLDMAN_SETTER
+	ThatActorSetScript		(ACTOR05,?_OLDMAN_STAND_DOWN_ANIM)
+	End						()
+/********************************//********************************/
+// END PARTY
+/********************************//********************************/

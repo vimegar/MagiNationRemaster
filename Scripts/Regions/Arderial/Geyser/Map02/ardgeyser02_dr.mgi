@@ -1,0 +1,189 @@
+/********************************/
+//Map Doors
+/********************************/
+
+?_ARDGEYSER02_DR_1
+	HeroToDoor	(26,47,9,0)
+	Jump		(?_ARDGEYSER01)
+
+?_ARDGEYSER02_DR_2
+	HeroToDoor	(36,0,10,26)
+	Jump		(?_ARDGEYSER13)
+
+/********************************/
+//Treasure Chests
+/********************************/
+
+?_ARDGEYSER02_TR_11
+	TriggerTreasure	(ARDGEYSER02_Chest1,INV_TYPE_ITEM,INV_MASTER_RUNE,15,30,48)
+
+?_ARDGEYSER02_TR_12
+	TriggerTreasure	(ARDGEYSER02_Chest2,INV_TYPE_ITEM,INV_REMEDY_DRINK,15,31,48)
+
+?_ARDGEYSER02_TR_13
+	TriggerTreasure	(ARDGEYSER02_Chest3,INV_TYPE_ITEM,INV_BALOO_SAP,26,23,48)
+
+?_ARDGEYSER02_TR_14
+	TriggerTreasure	(ARDGEYSER02_Chest4,INV_TYPE_ITEM,INV_WATER_OF_LIFE,27,23,48)
+
+?_ARDGEYSER02_TR_15
+	TriggerTreasure	(ARDGEYSER02_Chest5,INV_TYPE_ITEM,INV_BALOO_SAP,28,23,48)
+
+?_ARDGEYSER02_TR_16
+	TriggerTreasure	(ARDGEYSER02_Chest6,INV_TYPE_RELIC,INV_SWORDOFWIND,3,11,48)
+
+?_ARDGEYSER02_TR_17
+	TriggerTreasure	(ARDGEYSER02_Chest7,INV_TYPE_ITEM,INV_BALOO_SAP,17,6,48)
+
+?_ARDGEYSER02_TR_18
+	TriggerTreasure	(ARDGEYSER02_Chest8,INV_TYPE_ITEM,INV_BALOO_ROOT,18,6,48)
+
+?_ARDGEYSER02_TR_19
+	TriggerTreasure	(ARDGEYSER02_Chest9,INV_TYPE_ITEM,INV_REMEDY_DRINK,19,6,48)
+
+?_ARDGEYSER02_TR_20
+	TriggerTreasure	(ARDGEYSER02_Chest10,INV_TYPE_ITEM,INV_BALOO_ROOT,20,6,48)
+
+?_ARDGEYSER02_TR_21
+	TriggerTreasure	(ARDGEYSER02_Chest11,INV_TYPE_ITEM,INV_BALOO_SAP,21,6,48)
+
+?_ARDGEYSER02_TR_22
+	TriggerTreasure	(ARDGEYSER02_Chest12,INV_TYPE_ITEM,INV_BALOO_SAP,22,6,48)
+
+/********************************/
+//Locked Doors
+/********************************/
+
+?_ARDGEYSER02_TR_1
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door1,?_END,190,37,39,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,36,37,3,4,36,37)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_2
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door2,?_END,190,17,36,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,16,34,3,4,16,34)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_3
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door3,?_END,190,9,36,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,8,34,3,4,8,34)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_4
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door4,?_END,190,17,28,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,16,26,3,4,16,26)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_5
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door5,?_END,190,27,28,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,26,26,3,4,26,26)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_6
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door6,?_END,190,37,25,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,36,23,3,4,36,23)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_7
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door7,?_END,190,37,18,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,36,16,3,4,36,16)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_8
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door8,?_END,190,39,5,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,38,3,3,4,38,3)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_9
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door9,?_END,190,17,22,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,16,20,3,4,16,20)
+	Jump				(?_SET_BIT)
+
+?_ARDGEYSER02_TR_10
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER02_Door10,?_END,190,9,22,48)
+	LoadSpareMap		(SCR_ARDGEYSER02B,COL_ARDGEYSER02B)
+	CopyTileSpare		(48,8,20,3,4,8,20)
+	Jump				(?_SET_BIT)
+
+?_SET_BIT
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+
+?_ARDGEYSER02_HERO_AI_SET
+	InitSkip					(_INITSKIP)
+	ThatActorSetAI				(HEROACTOR,?HERO_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_UP_ANIM)
+_INITSKIP
+	SetScroll					(?_END)
+	End							()

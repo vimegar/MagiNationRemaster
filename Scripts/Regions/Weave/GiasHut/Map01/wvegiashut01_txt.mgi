@@ -1,0 +1,173 @@
+/********************************//********************************/
+// EIDON GAMECOUNT TALKER
+/********************************//********************************/
+?_GAMECOUNT_EIDON_TALKER
+	SetText					(_TXT_GAMECOUNT)
+	Jump					(?_FACE_EIDON)
+
+_TXT_GAMECOUNT
+	Switch					([GAMECOUNT])
+							(GC_NAROOM_GEYSER,	_NAROOM_GEYSER)
+							(GC_GLOVES,			_GLOVES)
+							(GC_UND_INTRO,		_UND_INTRO)
+							(GC_BOOTS_QUEST,	_CALD_GEYSER)
+							(GC_CALD_GEYSER,	_CALD_GEYSER)
+
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite 				("Gia's waiting=")
+	         				("inside.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+
+/********************************/
+// GC_NAROOM_GEYSER
+_NAROOM_GEYSER
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite 				("Be careful in=")
+	         				("the Shadow")
+	         				("Geyser.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************/
+// GC_GLOVES
+_GLOVES
+	Switch					([Blades_State])
+							(0,_NO_GLOVES)
+							(1,_NO_GLOVES)
+							(2,_MAKE_GLOVES)
+_NO_GLOVES
+	If						([Talked_Eidon_With_Stone],_GIA_INSIDE)
+	SetXRAMBit				(Talked_Eidon_With_Stone,TRUE)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite 				("Hi, Eidon. I=")
+	         				("stopped the")
+	         				("Shadow Geyser!")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Good work,=")
+	         				("Tony.")
+	TextIcon				(ICON_TONY)
+	TextWrite 				("I also found=")
+	         				("this strange")
+	         				("stone inside.=")
+	         				("Do you know")
+	         				("what it is?")
+	TextIcon				(ICON_EIDON)
+	TextWrite 				("Hmmm... I have=")
+	         				("no idea.  You")
+	         				("should show=")
+	         				("that to Gia.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_GIA_INSIDE
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Gia is inside=")
+							("right now.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_MAKE_GLOVES
+	SetGamecount			(GC_UND_INTRO)
+	SetXRAMByte				(GS_Hero_Ability,2)
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite 				("You need some=")
+	         				("Crystal Gloves?")
+	         				("I can make=")
+	         				("you a pair in")
+	         				("hardly no time=")
+	         				("at all!")
+	TextClose				()
+	Delay					(48)
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Here you go,=")
+							("Tony!")
+	TextClose				()
+
+	TextOpen				()
+	SongStart				(SONGID_end)
+	TextWrite				("Tony got the=")
+							("Crystal Gloves!$")
+	Delay					(180)
+	Delay					(180)
+	Delay					(180)
+	SongStart				(SONGID_giahut)
+	TextClose				()
+
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("With these you=")
+							("can dig through")
+							("that softer=")
+							("dirt to the")
+							("Underneath.=")
+							("The entrance")
+							("is just North=")
+							("of here.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Wow! Thanks!")					
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************/
+// GC_UND_INTRO
+_UND_INTRO
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("The Underneath=")
+							("has many")
+							("strange species=")
+							("of fungus.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************/
+// GC_BOOTS_QUEST
+// GC_CALD_GEYSER
+_CALD_GEYSER
+	If						([GiaScene_CaldGeyser],_CALD_GEYSER_GENERIC)
+
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Tony!")
+							("You are safe!")
+							("What happened?")
+	TextIcon				(ICON_TONY)
+	TextWrite				("I will tell")
+							("you and Gia")
+							("all about it.")
+	TextClose				()
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,4)
+	Jump					(?_WVEGIASHUT02_CALD_GEYSER)
+
+_SOAP_GAG
+	TextIcon				(ICON_TONY)
+	TextWrite				("Hey Eidon,=")
+							("guess what?")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("What?")
+	TextClose				()
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	SetXRAMBit				(Soap_Gag,TRUE)
+	Jump					(?_WVEGIASHUT02_RET_SOAPGAG)
+	
+_CALD_GEYSER_GENERIC
+	If						([!Soap_Gag && Orlons_Buddy],_SOAP_GAG)
+	TextIcon				(ICON_EIDON)
+	TextWrite				("I'll never")
+							("understand the")
+							("Caldlings.")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END EIDON GAMECOUNT TALKER
+/********************************//********************************/

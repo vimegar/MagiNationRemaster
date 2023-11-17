@@ -1,0 +1,252 @@
+/********************************/
+//NRMVASH01
+/********************************/
+?_NRMVASH01_QUEST_FOR_GIATXT01
+	TextOpen			()
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("Why are you so=")
+						("persistent?")
+						("Even if he IS=")
+						("the Great Magus")
+						("Kyros, we'd be=")
+						("better off")
+						("sending him=")
+						("back to his")
+						("world!")
+	SetEventText		(1)
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Look! Things=")
+						("have not been")
+						("right lately...=")
+						("The Dream")
+						("Creatures have=")
+						("been acting")
+						("strangely.=")
+						("Don't you")
+						("understand what=")
+						("that means?")
+						("Your=")
+						("stubbornness is")
+						("going to be the=")
+						("end of this")
+						("nation!  We=")
+						("have to tell")
+						("him the truth.")
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("I've heard=")
+						("enough, Eidon.")
+						("I want you to")
+						("leave Vash=")
+						("Naroom until")
+						("all this blows=")
+						("over.")						
+	SetEventText		(21)
+	TextIcon			(ICON_EIDON)
+	TextWrite			("But... I think=")
+						("that Gia would")
+						("want to meet=")
+						("him! She might")
+						("even be able=")
+						("to-")
+	SetEventText		(10)
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("I forbid you to=")
+						("take him from")
+						("this town.=")
+						("Magus or not,")
+						("the kid stays=")
+						("here. My word")
+						("is final.")
+	SetEventText		(1)
+	TextClose			()
+	SetEventText		(11)
+	End					()
+
+?_NRMVASH01_QUEST_FOR_GIATXT03
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Hmmmmm.....")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMVASH01_QUEST_FOR_GIATXT04
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Oh, Tony.  I=")
+						("was just")
+						("leaving for the=")
+						("Weave.  I see")
+						("Pruitt made a=")
+						("fine ring for")
+						("you.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Yeah. She=")
+						("mentioned")
+						("something about=")
+						("Dream Creatures")
+						("and stuff.")
+	TextClose			()
+	SetEventText		(24)
+	End					()
+
+?_NRMVASH01_QUEST_FOR_GIATXT05
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Tony, follow=")
+						("me. There's")
+						("somebody who=")
+						("I want you to")
+						("meet.")
+	TextClose			()
+	SetEventText		(25)
+	End					()
+
+?_NRMVASH01_QUEST_FOR_GIATXT06
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Didn't Orwin=")
+						("say I wasn't")
+						("supposed to=")
+						("leave town?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("This is very=")
+						("important.")
+						("Trust me.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Well, if you=")
+						("say so...")
+	TextClose			()
+	SetEventText		(26)
+	End					()
+
+
+?_NRMVASH01_OPENER_TXT
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Eidon?")
+							("Where'd=")
+							("he go?")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+
+/********************************//********************************/
+// PEOPLE
+/********************************//********************************/
+?_NRMVASH01_TXT_OLDMAN
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+
+	Switch					([GC])
+							(GC_OPENING,_OPENING)
+							(GC_NRM_INTRO,_GET_A_JOB)
+							(GC_FIND_ORWIN,_FIND_ORWIN)
+	If						([Sick_Orwin],_SICK)
+
+_WELL	
+	TextWrite				("We're all very=")
+							("happy you saved")
+							("Orwin. Someone=")
+							("should throw a=")
+							("party.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_SICK
+	If						([Seer_Byte],_GENERIC)
+
+	TextWrite				("Magus, shmagus!")
+							("The whole fool=")
+							("prophecy is a")
+							("pack of lies,=")
+							("I tell you!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_GENERIC
+	TextWrite				("I don't know=")
+							("what's wrong")
+							("with Orwin...")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_OPENING
+	TextWrite				("It looks a=")
+							("little high")
+							("at first, but=")
+							("you get used")
+							("to it quickly.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_GET_A_JOB
+	TextWrite				("Kids like you=")
+							("should stay")
+							("home and do=")
+							("their chores!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_FIND_ORWIN
+	TextWrite				("If you look=")
+							("through those")
+							("branches over=")
+							("there, you can")
+							("see a pillar=")
+							("of darkness")
+							("rising up from=")
+							("the glade!")
+							("What could it=")
+							("be?")
+	TextClose				()
+	ThisActorRestoreState	()
+
+
+?_NRMVASH01_TXT_OLDLADY
+	TextOpen				()
+	TextIcon				(ICON_OLDWOMAN)
+
+	Switch					([GC])
+							(GC_OPENING,_OPENING)
+							(GC_NRM_INTRO,_GENERIC)
+							(GC_FIND_ORWIN,_FIND_ORWIN)
+	If						([Sick_Orwin],_GENERIC)
+
+_WELL	
+	TextWrite				("Word sure does=")
+							("travel fast.")
+							("I've already=")
+							("heard you")
+							("saved Orwin!=")
+							("Thank you.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_GENERIC
+	TextWrite				("It's so=")
+							("peaceful out")
+							("here.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_OPENING
+	TextWrite				("Welcome to=")
+							("Vash Naroom.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_FIND_ORWIN
+	TextWrite				("Why did you=")
+							("leave with")
+							("Eidon even=")
+							("though Orwin")
+							("said not to=")
+							("leave town?")
+							("Shame on you!")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END PEOPLE
+/********************************//********************************/

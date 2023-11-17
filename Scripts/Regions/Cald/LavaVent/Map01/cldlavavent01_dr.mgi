@@ -1,0 +1,50 @@
+/********************************/
+// CLDLAVAVENT01
+?_CLDLAVAVENT01_DR_1
+		HeroToDoor		(26,39,7,0)
+		Jump			(?_CLDLAVAVENT07)
+
+?_CLDLAVAVENT01_DR_2
+		HeroToDoor		(47,0,51,29)
+		Jump			(?_CLDLAVAVENT02)
+
+?_CLDLAVAVENT01_DR_3
+		HeroToDoor		(16,31,5,11)
+		//HeroSetDoor		(5,11)
+		Jump			(?_CLDVENTINT01)
+
+?_CLDLAVAVENT01_DR_4
+		HeroToDoor		(38,28,5,11)
+		//HeroSetDoor		(5,11)
+		Jump			(?_CLDVENTINT02)
+
+/********************************/
+// CLDLAVAVENT01B
+?_CLDLAVAVENT01B_DR_1
+	//	HeroToDoor		(26,39,7,0)
+		Jump			(?_CLDLAVAVENT03_HYRENRET)
+
+
+/********************************/
+// CLDVENTINT01
+?_CLDVENTINT01_DR_1
+		HeroToDoor		(5,11,16,31)
+		Jump			(?_CLDLAVAVENT01)
+		
+?_CLDVENTINT01_TR_1
+		TriggerTreasure	(CLDVENTINT01_Chest1,INV_TYPE_RELIC,INV_RAGE_STONE,6,4,12)
+
+/********************************/
+// CLDVENTINT02
+?_CLDVENTINT02_DR_1
+		HeroToDoor		(5,11,38,28)
+		Jump			(?_CLDLAVAVENT01)
+		
+?_CLDVENTINT02_TR_1
+		TriggerTreasure	(CLDVENTINT02_Chest1,INV_TYPE_ITEM,INV_MASTER_RUNE,6,4,12)
+
+/********************************/
+// CLDHYRENROOM
+?_CLDHYRENROOM_DR_1
+		HeroSetDoor		(5,14)
+		Jump			(?_OVRSURFACE03)

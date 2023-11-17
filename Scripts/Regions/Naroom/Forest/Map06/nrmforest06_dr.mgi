@@ -1,0 +1,11 @@
+/********************************/
+?_NRMFOREST06_DR_1
+		HeroToDoor	(49,11,0,8)
+		Jump		(?_NRMFOREST04)
+		
+?_NRMFOREST06_DR_2
+		HeroToDoor	(9,8,8,19)
+		Jump		(?_NRMFOREST07)		
+		
+?_NRMFOREST06_TR_1
+		TriggerTreasure	(NRMFOREST06_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,16,18,50)

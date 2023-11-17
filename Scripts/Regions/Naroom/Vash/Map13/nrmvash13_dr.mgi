@@ -1,0 +1,155 @@
+/********************************/
+?_NRMVASH13_DR_1
+		HeroToDoor		(0,12,15,10)
+		Jump			(?_NRMGLADE03)
+
+?_NRMVASH13_DR_2
+		If				([Vash13_Door_Open],_RESET_OTHER)
+		If				([GAMECOUNT = GC_AGRAM_BATTLE || GAMECOUNT < GC_FIND_ORWIN],?_END)
+		ExprXRAMByte	(Vash13_Times_Around,[Vash13_Times_Around + 1])
+		If				([Vash13_Times_Around > 5],_RESET)
+		End				()
+_RESET
+		SetXRAMByte		(Vash13_Times_Around,0)
+		End				()
+_RESET_OTHER
+		SetXRAMByte		(Vash13_Times_Backwords,0)
+		End				()		
+		
+?_NRMVASH13_DR_3
+		SetXRAMByte		(Vash13_Times_Around,0)
+		SetXRAMByte		(Vash13_Times_Backwords,0)
+		End				()
+
+
+?_NRMVASH13_DR_4
+		If				([GAMECOUNT = GC_CALD_GEYSER],_YAKI_NOT_THERE)
+		SetMaster		(?_NRMVASH13_YAKI_BOOTS_TONY)
+		SetXRAMBit		(Vash13_Door_Open,FALSE)
+		End				()
+_YAKI_NOT_THERE
+		HeroToDoor		(20,7,4,15)
+		Jump			(?_NRMVASH22)
+		
+?_NRMVASH13_DR_5
+		If				([Vash13_Door_Open],_CLOSE_DOOR_COUNT)
+		SetXRAMByte		(Vash13_Times_Around,0)
+		End				()
+_CLOSE_DOOR_COUNT
+		ExprXRAMByte	(Vash13_Times_Backwords,[Vash13_Times_Backwords + 1])
+		If				([Vash13_Times_Backwords > 5],_RESET)
+		End				()
+_RESET
+		SetXRAMByte		(Vash13_Times_Backwords,0)
+		End				()
+		
+?_NRMVASH13_TR_1
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("This must be=")
+					("where they")
+					("store the=")
+					("training")
+					("equipment.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH13_TR_2
+		SetXRAMByte	(Vash13_Times_Around,0)
+		SetXRAMByte	(Vash13_Times_Backwords,0)
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Scary. And=")
+					("big.")
+		TextClose	()
+		End			()
+
+?_NRMVASH13_TR_3
+		If			([Vash13_Times_Backwords = 5 && Vash13_Door_Open],_CLOSE_DOOR)
+		If			([Vash13_Times_Around = 5],_OPEN_DOOR)
+		SetXRAMByte	(Vash13_Times_Around,0)
+		SetXRAMByte	(Vash13_Times_Backwords,0)
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Scary. And=")
+					("big.")
+		TextClose	()
+		End			()
+_OPEN_DOOR
+		SetXRAMByte		(Vash13_Times_Around,0)
+		SetXRAMBit		(Vash13_Door_Open,TRUE)
+		TextOpen		()
+		TextWrite		("Click!")
+		TextClose		()
+		CopyTileBlock	(25,0,0,2,1,21,5)
+		CopyTileBlock	(25,0,0,2,1,21,6)
+		CopyTileBlock	(25,0,1,2,1,21,7)
+		End				()
+_CLOSE_DOOR
+		SetXRAMByte		(Vash13_Times_Backwords,0)
+		SetXRAMBit		(Vash13_Door_Open,FALSE)
+		TextOpen		()
+		TextWrite		("Click!")
+		TextClose		()
+		CopyTileBlock	(25,0,27,2,3,21,5)
+		End				()
+
+/********************************//********************************/
+// TRAINING GROUNDS BOUNCE DOOR & START QUAKE
+/********************************//********************************/
+?_NRMVASH13_DR_BOUNCE
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	ThatActorSetScript		(ACTOR20,_EIDON_MOVE)
+	End						()
+
+_EIDON_MOVE
+	ThisActorSetAnimDelay	(?_EIDON_WALK_LEFT_ANIM,16)
+							(?_EIDON_STAND_LEFT_ANIM,0)
+	SetText					(_TXT_TRAINED_ENOUGH)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,24)
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	End						()
+
+/********************************/
+// TEXT
+_TXT_TRAINED_ENOUGH
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Are you sure=")
+						("you've trained")
+						("enough?")
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" No=")
+						(" Yes$")
+	TextMenu			(2)
+						(_TRAIN_NO2)
+						(_TRAIN_YES2)
+
+_TRAIN_NO2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Maybe I should=")
+						("train some more.")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Well in that=")
+						("case..")
+	TextClose			()
+	Jump				(?_NRMVASH13_QUAKE)
+
+_TRAIN_YES2
+	TextIcon			(ICON_TONY)
+	TextWrite			("Yep!")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Well in that=")
+						("case..")
+	TextClose			()
+	Jump				(?_NRMVASH13_QUAKE)
+
+/********************************//********************************/
+// END TRAINING GROUNDS BOUNCE DOOR & START QUAKE
+/********************************//********************************/

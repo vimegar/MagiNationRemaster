@@ -1,0 +1,8 @@
+/********************************/
+	FileMapLayout	(MAP_HDNLOAD01,PAL_LOAD,VRM_LOAD,PAT_LOAD,SCR_LOAD01,COL_LOAD01)
+
+/********************************/
+	FileMapLayout	(MAP_HDNLOAD01B,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_LOAD02,COL_LOAD02)
+
+/********************************/
+	FileMapLayout	(MAP_HDNLOAD01C,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_LOAD03,COL_LOAD03)

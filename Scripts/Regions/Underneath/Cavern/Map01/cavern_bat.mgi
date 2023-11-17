@@ -1,0 +1,114 @@
+/**** LEVEL13 ****/
+?_CAVERN_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_dream)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+_BTL1
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,12,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CAVERUDWOT,11,22,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,9,20,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,11,22,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,13,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,AGOVO,10,21,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CAVERUDWOT,11,22,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CAVERUDWOT,10,22,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,11,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,WEEBAT,10,19,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,WEEBAT,10,20,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,13,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,PARMALAG,12,24,1)
+	BtlNextTurn	()
+	BtlNextTurn	()
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PORKUSLIME,6,12,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,12,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,TUSK_BWISP,12,24,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,13,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,13,25,1)
+	BtlNextTurn	()
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,AGOVO,9,19,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,AGOVO,9,19,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,12,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,PARMALAG,12,23,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,12,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CAVERUDWOT,11,22,1)
+	BtlNextTurn	()
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PARMALAG,10,21,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,10,22,1)
+	BtlAuto		()
+
+/********************************/
+?_CAVERN_ORMAGONBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(CAVERNS_ARENA1,MAGI_RND1,99,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORMAGON,99,250,0)
+	BtlAuto			()
+	
+/********************************/
+?_CAVERN_RNDBAT2
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_dream)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					
+_BTL1
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CAVERUDWOT,10,21,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,11,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,AGOVO,11,23,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,12,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GHOSTBWISP,12,25,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CAVERNS_ARENA1,MAGI_RND1,13,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,PARMALAG,13,27,1)
+	BtlAuto		()

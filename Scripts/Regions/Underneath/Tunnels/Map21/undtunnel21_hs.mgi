@@ -1,0 +1,21 @@
+/********************************/
+// UNDTUNNEL21
+		FileHotspots	(HS_UNDTUNNEL21)
+						(HOTSPOT_TRIGGER_EAST,?_UNDTUNNEL21_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_UNDTUNNEL21_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDTUNNEL21_DR_3)
+
+/********************************/
+// HDNUNDTUN03
+		FileHotspots	(HS_HDNUNDTUN03)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNUNDTUN03_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNUNDTUN03_DR_2)
+
+/********************************/
+// HDNUNDTUN04
+		FileHotspots	(HS_HDNUNDTUN04)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNUNDTUN04_DR_1)						
+						
+		FileTriggers	(TR_HDNUNDTUN04)
+						(TRIGGER_CONFIG,?_HDNUNDTUN04_TR_1)
+						(TRIGGER_CONFIG,?_HDNUNDTUN04_TR_2)

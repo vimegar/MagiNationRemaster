@@ -1,0 +1,76 @@
+?_ARDGEYSER21_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(16,0,-4)
+						(16,4,0)
+	If					([!Ardgeyser_Trig3],?_ARDGEYSER21_EXIT_TUBE)
+	ScrollMap			(16,4,0)
+						(16,0,-4)
+	If					([!Ardgeyser_Trig4],?_ARDGEYSER21_GOTO23B)
+	Jump				(?_ARDGEYSER21_GOTO26)
+
+?_ARDGEYSER21_DR_2
+	HeroToDoor			(29,10,0,9)
+	Jump				(?_ARDGEYSER23)
+	
+?_ARDGEYSER21_DR_3
+	HeroToDoor			(0,10,29,9)
+	Jump				(?_ARDGEYSER26)
+	
+/********************************/
+//	TRIGGER 01
+/********************************/
+?_ARDGEYSER21_TR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ToggleAlways		(Ardgeyser_Trig3,_SWITCH,170,172,12,25,30)
+	LoadSpareMap		(SCR_ARDGEYSER21,COL_ARDGEYSER21)
+	CopyTileSpare		(30,12,20,1,5,12,20)
+	CopyTileSpare		(30,13,20,1,5,13,20)
+	CopyTileSpare		(30,14,20,1,5,14,20)
+	CopyTileSpare		(30,15,19,1,6,15,19)
+	CopyTileSpare		(30,16,19,1,6,16,19)
+	CopyTileSpare		(30,17,19,1,6,17,19)
+	CopyTileSpare		(30,18,20,3,5,18,20)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+	
+_SWITCH
+	LoadSpareMap		(SCR_ARDGEYSER21B,COL_ARDGEYSER21B)
+	CopyTileSpare		(30,21,14,3,5,18,20)
+	CopyTileSpare		(30,20,13,1,6,17,19)
+	CopyTileSpare		(30,19,13,1,6,16,19)
+	CopyTileSpare		(30,18,13,1,6,15,19)
+	CopyTileSpare		(30,17,14,1,5,14,20)
+	CopyTileSpare		(30,16,14,1,5,13,20)
+	CopyTileSpare		(30,15,14,1,5,12,20)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+
+/********************************/
+//	TRIGGER 02
+/********************************/
+?_ARDGEYSER21_TR_2
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ToggleAlways		(Ardgeyser_Trig4,_SWITCH,170,172,11,17,30)
+	LoadSpareMap		(SCR_ARDGEYSER21,COL_ARDGEYSER21)
+	CopyTileSpare		(30,12,13,1,5,12,13)
+	CopyTileSpare		(30,13,13,1,5,13,13)
+	CopyTileSpare		(30,14,13,1,5,14,13)
+	CopyTileSpare		(30,15,12,1,6,15,12)
+	CopyTileSpare		(30,16,12,1,6,16,12)
+	CopyTileSpare		(30,17,12,1,6,17,12)
+	CopyTileSpare		(30,18,13,3,5,18,13)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+	
+_SWITCH
+	LoadSpareMap		(SCR_ARDGEYSER21B,COL_ARDGEYSER21B)
+	CopyTileSpare		(30,6,4,3,5,18,13)
+	CopyTileSpare		(30,5,4,1,5,17,13)
+	CopyTileSpare		(30,4,3,1,6,16,12)
+	CopyTileSpare		(30,3,3,1,6,15,12)
+	CopyTileSpare		(30,2,3,1,6,14,12)
+	CopyTileSpare		(30,1,4,1,5,13,13)
+	CopyTileSpare		(30,0,4,1,5,12,13)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)

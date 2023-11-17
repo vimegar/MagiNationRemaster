@@ -1,0 +1,124 @@
+/********************************/
+?_CLDLAVATOWN09_DR_1
+		HeroToDoor	(10,15,23,28)
+		Jump		(?_CLDLAVATOWN01)		
+		
+
+?_CLDLAVATOWN09_DR_1A
+		If					([I_Specialkey],_GOTTHEKEY)
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_UP_ANIM)
+		Delay				(16)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		SetText				(?_CLDLAVATOWN09_NOKEY)
+		WaitEventText		(3)
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		End					()
+
+_GOTTHEKEY
+		HeroToDoor	(10,15,23,28)
+		Jump		(?_CLDLAVATOWN01_VIA_CONTINUE)
+
+?_CLDLAVATOWN09_TR_1
+		If				([I_Specialkey],_ALREADYGOT)
+		SetXRAMBit		(I_Specialkey,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_ASHGARS_KEY,1)
+		SetText			(?_CLDLAVATOWN09_GOTKEY)
+		WaitEventText	(2)
+		End				()
+_ALREADYGOT
+		End				()
+
+?_CLDLAVATOWN09_TR_1A
+		If				([!I_Specialkey],_ALREADYRETURNED)
+		SetText			(?_CLDLAVATOWN09_RETURNKEY)
+		WaitEventText	(2)
+		End				()
+_ALREADYRETURNED
+		SetText			(?_CLDLAVATOWN09_NOWANNADO)
+		WaitEventText	(1)
+		End				()
+
+?_CLDLAVATOWN09_TR_2
+		TriggerTreasure (CLDLAVATOWN09_CHEST1,INV_TYPE_ITEM,INV_BALOO_SAP,1,8,16)
+
+
+/********************************/
+?_CLDLAVATOWN09_TR_3			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A right=")
+						("proper bed.")
+		TextClose		()
+		End				()
+
+
+?_CLDLAVATOWN09_TR_4			// FILING CABINET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Old man=")
+						("things.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_5			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Ugh! The=")
+						("drawers are")
+						("stuck!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_6			// CHAIR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Rickety.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_7			// COUCH
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Looks rough=")
+						("and itchy.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_8			// CHAIR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Melty.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_9			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Lot's of big=")
+						("sulfur spewing")
+						("vents out=")
+						("there.")
+						("Yup.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_10			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Must've gotten=")
+						("a bargain on")
+						("this real=")
+						("estate.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN09_TR_11			// BOOKS
+		TextOpen		()
+		TextWrite		("Lavanetics:")
+						("an odyssey into=")
+						("the mind's hot,")
+						("molten regions.")
+		TextClose		()
+		End				()

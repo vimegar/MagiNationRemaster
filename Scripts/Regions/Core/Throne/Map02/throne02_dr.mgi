@@ -1,0 +1,13 @@
+/********************************/
+?_THRONE02_DR_1
+	HeroSetDoor		(6,6)
+	ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	PalClearBase	(0,15,31,31,31)
+	PalFade			(0,15,32,0)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STAND_RIGHT_ANIM,?_DONT_TALK)
+	Jump			(?_CREGATE01)
+
+?_THRONE02_DR_2
+	HeroSetDoor		(4,28)
+	Jump			(?_THRONE03)

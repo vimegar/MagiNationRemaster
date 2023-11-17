@@ -1,0 +1,75 @@
+/********************************************/
+
+?_ARDGEYSER19_DR_1
+	HeroToDoor					(0,12,47,13)
+	Jump						(?_ARDGEYSER18)
+
+?_ARDGEYSER19_DR_2
+	HeroToDoor					(32,0,9,49)
+	Jump						(?_ARDGEYSER28)
+	
+?_ARDGEYSER19_DR_3
+	HeroToDoor					(63,31,0,10)
+	Jump						(?_ARDGEYSER27)
+
+/********************************************/
+
+?_ARDGEYSER19_TR_1	
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER19_Door1,?_END,190,35,18,64)
+	LoadSpareMap		(SCR_ARDGEYSER19B,COL_ARDGEYSER19B)
+	CopyTileSpare		(64,34,16,3,4,34,16)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+	
+?_ARDGEYSER19_TR_2	
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER19_Door2,?_END,190,51,9,64)
+	LoadSpareMap		(SCR_ARDGEYSER19B,COL_ARDGEYSER19B)
+	CopyTileSpare		(64,50,7,3,4,50,7)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+
+?_ARDGEYSER19_TR_3	
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER19_Door3,?_END,190,35,3,64)
+	LoadSpareMap		(SCR_ARDGEYSER19B,COL_ARDGEYSER19B)
+	CopyTileSpare		(64,34,1,3,4,34,1)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END	
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+	
+?_ARDGEYSER19_TR_4
+	TriggerTreasure	(ARDGEYSER19_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,7,58,64)
+	
+?_ARDGEYSER19_TR_5
+	TriggerTreasure	(ARDGEYSER19_Chest2,INV_TYPE_ITEM,INV_STAR_KEY,41,59,64)
+
+?_ARDGEYSER19_TR_6
+	TriggerTreasure	(ARDGEYSER19_Chest3,INV_TYPE_ITEM,INV_BALOO_ROOT,8,30,64)
+
+?_ARDGEYSER19_TR_7
+	TriggerTreasure	(ARDGEYSER19_Chest4,INV_TYPE_ITEM,INV_BALOO_SAP,10,30,64)
+
+?_ARDGEYSER19_TR_8
+	TriggerTreasure	(ARDGEYSER19_Chest5,INV_TYPE_ITEM,INV_BALOO_SAP,51,5,64)

@@ -1,0 +1,107 @@
+/****************************/
+// hidden room 01
+/****************************/
+
+?_HDNROOM01_DR_1
+		HeroToDoor		(2,29,6,23)
+		Jump			(?_UNDMUSHFARM03)
+
+?_HDNROOM01_DR_2
+		If				([GS_Glyph_Count < 4],?_END)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		HeroSetDoor		(6,19)
+		Jump			(?_WARP07_FADEIN)
+
+/****************************/
+// warp from hidden room 01
+/****************************/
+
+?_WARP07_DR_1
+		HeroToDoor		(5,0,28,59)
+		Jump			(?_HLDMAZE23)
+
+?_WARP07_DR_2
+		If				([GS_Glyph_Count < 4],?_END)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		HeroSetDoor		(11,9)
+		Jump			(?_HDNROOM01_FADEIN)
+/****************************/
+// Shadowhold 23
+/****************************/
+
+?_HLDMAZE23_DR_1
+		HeroToDoor		(28,59,5,0)
+		Jump			(?_WARP07)
+
+?_HLDMAZE23_DR_2
+		HeroToDoor		(8,59,7,0)
+		Jump			(?_WARP06)
+
+?_HLDMAZE23_DR_3
+		HeroToDoor		(14,0,6,23)
+		Jump			(?_HLDMAZE24)
+			
+/****************************/
+
+?_HLDMAZE23_TR_1
+		If				([INV_ITEM_StarKey > 0],_OPEN_DOOR)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This door has=")
+						("a star shaped")
+						("keyhole.")
+						()
+		TextClose		()
+		End				()
+_OPEN_DOOR
+		SetXRAMBit		(Core_Ringsmith_Door,TRUE)
+		InventoryTake	(INV_TYPE_ITEM,INV_STAR_KEY,1)
+		CopyTileBlock	(40,0,0,2,2,19,46)
+		End				()
+		
+?_HLDMAZE23_TR_2
+		TextOpen		()
+		TextWrite		("There's a=")
+						("note:")
+						("Visiting my=")
+						("brother under")
+						("the stone=")
+						("circle.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE23_TR_3
+		TriggerTreasure	(HLDMAZE23_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,18,37,40)
+		
+/****************************/
+// Shadowhold 24
+/****************************/
+?_HLDMAZE24_DR_1
+		HeroToDoor		(6,23,14,0)
+		Jump			(?_HLDMAZE23)
+
+?_HLDMAZE24_DR_2
+		HeroToDoor		(39,20,0,33)
+		Jump			(?_HLDMAZE25)
+
+/****************************/
+// Shadowhold 25
+/****************************/
+
+?_HLDMAZE25_DR_1
+		HeroToDoor		(0,33,39,20)
+		Jump			(?_HLDMAZE24)
+
+?_HLDMAZE25_DR_2
+		HeroToDoor		(6,0,14,19)
+		Jump			(?_HLDMAZE26)
+
+/****************************/
+// Shadowhold 26
+/****************************/
+?_HLDMAZE26_DR_1
+		HeroToDoor		(14,19,6,0)
+		Jump			(?_HLDMAZE25)
+

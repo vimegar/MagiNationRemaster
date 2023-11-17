@@ -1,0 +1,41 @@
+/********************************/
+
+?_ARDGEYSER25_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(16,0,-4)
+						(37,-3,0)
+						(16,0,-4)
+	Jump				(?_ARDGEYSER22_FROM25)
+
+?_ARDGEYSER25_DR_2
+	HeroToDoor			(0,13,29,20)
+	Jump				(?_ARDGEYSER24)
+	
+/********************************/
+
+?_ARDGEYSER25_TR_1
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER25_Door1,?_END,190,25,10,30)
+	LoadSpareMap		(SCR_ARDGEYSER25B,COL_ARDGEYSER25B)
+	CopyTileSpare		(30,24,8,3,4,24,8)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+	
+?_ARDGEYSER25_TR_2
+	TriggerTreasure	(ARDGEYSER25_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,24,4,30)
+
+?_ARDGEYSER25_TR_3
+	TriggerTreasure	(ARDGEYSER25_Chest2,INV_TYPE_RELIC,INV_SWORDOFWIND,25,4,30)
+
+?_ARDGEYSER25_TR_4
+	TriggerTreasure	(ARDGEYSER25_Chest3,INV_TYPE_ITEM,INV_BALOO_ROOT,26,4,30)

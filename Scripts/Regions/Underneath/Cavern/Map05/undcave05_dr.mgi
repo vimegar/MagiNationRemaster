@@ -1,0 +1,12 @@
+/********************************/
+?_UNDCAVERN05_DR_1
+		HeroToDoor		(3,19,24,0)
+		Jump			(?_UNDCAVERN04)
+		
+?_UNDCAVERN05_DR_2
+		SetLoadScript	(?_UNDCAVERN05_DR_2)
+		HeroSetDoor		(33,22)
+		Jump			(?_OVRSURFACE02)
+//		HeroToDoor	(3,0,2,24)
+//		Jump		(?_UNDMUSHFARM01)
+		

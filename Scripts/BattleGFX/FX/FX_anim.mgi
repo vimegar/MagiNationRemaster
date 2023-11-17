@@ -1,0 +1,1241 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_FIREBALL_LEFT_ANIM
+
+	OverlayFrame	(4,0,0,?FIREBALL_LEFT1)
+					(4,0,0,?FIREBALL_LEFT2)
+					(4,0,0,?FIREBALL_LEFT3)
+
+	JumpLocal		(?_FIREBALL_LEFT_ANIM)
+	
+?_FIREBALL_RIGHT_ANIM
+					
+	OverlayFrame	(4,0,0,?FIREBALL_RIGHT1)
+					(4,0,0,?FIREBALL_RIGHT2)
+					(4,0,0,?FIREBALL_RIGHT3)
+
+	JumpLocal		(?_FIREBALL_RIGHT_ANIM)
+
+/********************************/
+?_CLAW_LEFT_ANIM
+
+	OverlayFrame	(4,0,0,?CLAW_LEFT1)
+					(4,0,0,?CLAW_LEFT2)
+					(4,0,0,?CLAW_LEFT3)
+					(4,0,0,?CLAW_LEFT4)
+					(4,0,0,?CLAW_LEFT5)
+					(4,0,0,?CLAW_LEFT6)
+					(4,0,0,?CLAW_LEFT7)
+					(4,0,0,?CLAW_LEFT8)
+
+	End				()
+	
+?_CLAW_RIGHT_ANIM
+
+	OverlayFrame	(4,0,0,?CLAW_RIGHT1)
+					(4,0,0,?CLAW_RIGHT2)
+					(4,0,0,?CLAW_RIGHT3)
+					(4,0,0,?CLAW_RIGHT4)
+					(4,0,0,?CLAW_RIGHT5)
+					(4,0,0,?CLAW_RIGHT6)
+					(4,0,0,?CLAW_RIGHT7)
+
+	End				()
+	
+/********************************/
+?_BUBBLE_ANIM
+
+	OverlayFrame	(4,2,-2,?BUBBLE_1)
+					(4,-2,-2,?BUBBLE_2)
+					(4,2,-2,?BUBBLE_3)
+					(4,-2,-2,?BUBBLE_3)
+					(4,2,-2,?BUBBLE_4)
+					(4,-2,-2,?BUBBLE_4)
+					(4,2,-2,?BUBBLE_4)
+					(4,-2,-2,?BUBBLE_4)
+	SFX				(SFXID_ENEMY_HIT)
+	OverlayFrame	(4,0,0,?BUBBLE_5)
+					
+
+	End				()
+
+/********************************/
+?_IMPACT_LEFT_ANIM
+	
+	OverlayFrame	(4,0,0,?IMPACT_LEFT_1)
+					(4,0,0,?IMPACT_LEFT_2)
+					(4,0,0,?IMPACT_LEFT_3)
+					(4,0,0,?IMPACT_LEFT_4)
+
+	End				()
+
+?_IMPACT_RIGHT_ANIM
+	
+	OverlayFrame	(4,0,0,?IMPACT_RIGHT_1)
+					(4,0,0,?IMPACT_RIGHT_2)
+					(4,0,0,?IMPACT_RIGHT_3)
+					(4,0,0,?IMPACT_RIGHT_4)
+
+	End				()
+
+/********************************/
+?_CRUSHROCK_CW_ANIM
+	
+	OverlayFrame	(4,0,3,?ROCK_CW_1)
+					(4,0,3,?ROCK_CW_2)
+					(4,0,3,?ROCK_CW_3)
+					(4,0,3,?ROCK_CW_4)
+					(4,0,3,?ROCK_CW_5)
+					(4,0,3,?ROCK_CW_6)
+					(4,0,3,?ROCK_CW_7)
+					(4,0,3,?ROCK_CW_8)
+
+	JumpLocal		(?_CRUSHROCK_CW_ANIM)
+
+?_CRUSHROCK_EXPLODE_ANIM
+	
+	OverlayFrame	(4,0,0,?CRUMBLE_1)
+					(4,0,0,?CRUMBLE_2)
+					(4,0,0,?CRUMBLE_3)
+					(4,0,0,?CRUMBLE_4)
+
+	End				()
+
+/********************************/
+?_SONIC_OPEN_RIGHT_ANIM
+	
+	OverlayFrame	(10,1,0,?SONIC_1)
+					(10,2,0,?SONIC_2)
+					(10,3,0,?SONIC_3)
+
+	Jump			(?_SONIC_FULL_RIGHT_ANIM)
+
+?_SONIC_OPEN_STILL_ANIM
+
+	OverlayFrame	(10,0,0,?SONIC_1)
+					(10,0,0,?SONIC_2)
+					(10,0,0,?SONIC_3)
+
+
+?_SONIC_FULL_RIGHT_ANIM
+
+	OverlayFrame	(255,4,0,?SONIC_4)
+	
+	JumpLocal		(?_SONIC_FULL_RIGHT_ANIM)
+
+
+/********************************/
+?_BITE_ANIM
+	
+	OverlayFrame	(4,0,0,?BITE_1)
+					(4,0,0,?BITE_2)
+					(4,0,0,?BITE_3)
+					(4,0,0,?BITE_4)
+
+	End				()
+
+/********************************/
+?_HIT_ANIM
+	
+	OverlayFrame	(4,0,0,?HIT_1)
+					(4,0,0,?HIT_2)
+					(4,0,0,?HIT_3)
+					(4,0,0,?HIT_4)
+					(4,0,0,?HIT_5)
+
+	End				()
+
+/********************************/
+?_CYCLONE_ANIM
+
+	OverlayFrame	(2,1,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_4)
+					(2,1,0,?CYCLONE_S_4)
+
+					(2,1,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_4)
+					(2,1,0,?CYCLONE_S_4)
+
+					(2,2,0,?CYCLONE_M_1)
+					(2,1,0,?CYCLONE_M_1)
+					(2,-1,0,?CYCLONE_M_2)
+					(2,-2,0,?CYCLONE_M_2)
+					(2,-2,0,?CYCLONE_M_3)
+					(2,-1,0,?CYCLONE_M_3)
+					(2,1,0,?CYCLONE_M_4)
+					(2,2,0,?CYCLONE_M_4)
+
+					(2,2,0,?CYCLONE_L_1)
+					(2,1,0,?CYCLONE_L_1)
+					(2,-1,0,?CYCLONE_L_2)
+					(2,-2,0,?CYCLONE_L_2)
+					(2,-2,0,?CYCLONE_L_3)
+					(2,-1,0,?CYCLONE_L_3)
+					(2,1,0,?CYCLONE_L_4)
+					(2,2,0,?CYCLONE_L_4)
+
+					(2,3,0,?CYCLONE_XL_1)
+					(2,2,0,?CYCLONE_XL_1)
+					(2,-2,0,?CYCLONE_XL_2)
+					(2,-3,0,?CYCLONE_XL_2)
+					(2,-3,0,?CYCLONE_XL_3)
+					(2,-2,0,?CYCLONE_XL_3)
+					(2,2,0,?CYCLONE_XL_4)
+					(2,3,0,?CYCLONE_XL_4)
+	
+					(2,2,0,?CYCLONE_L_1)
+					(2,1,0,?CYCLONE_L_1)
+					(2,-1,0,?CYCLONE_L_2)
+					(2,-2,0,?CYCLONE_L_2)
+					(2,-2,0,?CYCLONE_L_3)
+					(2,-1,0,?CYCLONE_L_3)
+					(2,1,0,?CYCLONE_L_4)
+					(2,2,0,?CYCLONE_L_4)
+
+					(2,2,0,?CYCLONE_M_1)
+					(2,1,0,?CYCLONE_M_1)
+					(2,-1,0,?CYCLONE_M_2)
+					(2,-2,0,?CYCLONE_M_2)
+					(2,-2,0,?CYCLONE_M_3)
+					(2,-1,0,?CYCLONE_M_3)
+					(2,1,0,?CYCLONE_M_4)
+					(2,2,0,?CYCLONE_M_4)
+
+					(2,1,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_1)
+					(2,0,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_2)
+					(2,-1,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_3)
+					(2,0,0,?CYCLONE_S_4)
+					(2,1,0,?CYCLONE_S_4)
+
+	End				()
+
+/********************************/
+?_FIRD_ANIM
+	
+	OverlayFrame	(4,3,0,?FIRD_1)
+					(4,3,0,?FIRD_2)
+					(4,3,0,?FIRD_3)
+					(4,3,0,?FIRD_4)
+
+	JumpLocal		(?_FIRD_ANIM)
+
+?_FIRD_UR_ANIM
+	
+	OverlayFrame	(4,3,-3,?FIRD_1)
+					(4,3,-3,?FIRD_2)
+					(4,3,-3,?FIRD_3)
+					(4,3,-3,?FIRD_4)
+
+	JumpLocal		(?_FIRD_UR_ANIM)
+
+?_FIRD_DR_ANIM
+	
+	OverlayFrame	(4,3,3,?FIRD_1)
+					(4,3,3,?FIRD_2)
+					(4,3,3,?FIRD_3)
+					(4,3,3,?FIRD_4)
+
+	JumpLocal		(?_FIRD_DR_ANIM)
+
+/********************************/
+?_BLAST_ANIM
+	
+	OverlayFrame	(4,0,0,?BLAST_1)
+					(4,0,0,?BLAST_2)
+					(4,0,0,?BLAST_3)
+					(4,0,0,?BLAST_4)
+					(4,0,0,?BLAST_5)
+	
+	End				()
+
+?_BLASTWABE_ANIM
+	
+	OverlayFrame	(4,0,0,?BLAST_3)
+					(4,0,0,?BLAST_4)
+					(4,0,0,?BLAST_5)
+	
+	End				()
+
+/********************************/
+?_SWIRLY_ANIM
+	
+	OverlayFrame:	(2,-3,0,?SWIRL_1)
+					(2,-2,0,?SWIRL_1)
+					(2,-1,0,?SWIRL_2)
+					(2,0,0,?SWIRL_2)
+					(2,0,0,?SWIRL_3)
+					(2,1,0,?SWIRL_3)
+					(2,2,0,?SWIRL_4)
+					(2,3,0,?SWIRL_4)
+	
+	JumpLocal		(?_SWIRLY2_ANIM)
+
+?_SWIRLY2_ANIM
+	
+	OverlayFrame:	(2,3,0,?SWIRL_1)
+					(2,2,0,?SWIRL_1)
+					(2,1,0,?SWIRL_2)
+					(2,0,0,?SWIRL_2)
+					(2,0,0,?SWIRL_3)
+					(2,-1,0,?SWIRL_3)
+					(2,-2,0,?SWIRL_4)
+					(2,-3,0,?SWIRL_4)
+	
+	JumpLocal		(?_SWIRLY_ANIM)
+
+/********************************/
+?_LIGHTNINGBOLT_ANIM
+
+	OverlayFrame	(4,0,0,?BOLT_1)
+					(4,0,0,?BOLT_2)
+					(4,0,0,?BOLT_3)
+					
+	End				()
+
+?_RIPPINGBOLT_ANIM
+
+	OverlayFrame	(4,1,0,?BOLT_1)
+					(4,1,0,?BOLT_2)
+					(4,1,0,?BOLT_3)
+					(4,1,0,?BOLT_1)
+					(4,1,0,?BOLT_2)
+					(4,1,0,?BOLT_3)
+					(4,1,0,?BOLT_1)
+					(4,1,0,?BOLT_2)
+					(4,1,0,?BOLT_3)
+					(4,1,0,?BOLT_1)
+					(4,1,0,?BOLT_2)
+					(4,1,0,?BOLT_3)
+					
+	End				()
+
+?_SLINKY_ANIM
+	
+	OverlayFrame	(4,0,0,?SLINKY_1)
+					(4,0,0,?SLINKY_2)
+					(4,0,0,?SLINKY_3)
+					(4,0,0,?SLINKY_4)
+					(4,0,0,?SLINKY_5)
+	
+	End				()
+
+/********************************/
+?_SMOKEBRAST_ANIM
+	
+	OverlayFrame	(4,0,0,?SMOKE_1)
+					(4,0,0,?SMOKE_2)
+					(4,0,0,?SMOKE_3)
+					(4,0,0,?SMOKE_4)
+					(4,0,0,?SMOKE_5)
+	
+	End				()
+
+/********************************/
+?_STAR_ANIM
+
+	OverlayFrame	(4,0,0,?STAR_1)
+					(4,0,0,?STAR_2)
+					(4,0,0,?STAR_3)
+					(4,0,0,?STAR_4)
+					(4,0,0,?STAR_5)
+					(4,0,0,?STAR_6)
+					(4,0,0,?STAR_7)
+	
+	End				()
+
+/********************************/
+?_WIND_ANIM
+
+	OverlayFrame	(4,0,0,?WIND_1)
+					(4,0,0,?WIND_2)
+					(4,0,0,?WIND_3)
+					(4,0,0,?WIND_4)
+					(4,0,0,?WIND_5)
+					(4,0,0,?WIND_6)
+					(4,0,0,?WIND_7)
+
+	End				()
+
+/********************************/
+?_WIND2_ANIM
+
+	OverlayFrame	(4,0,0,?WIND_1)
+					(4,0,0,?WIND_2)
+					(4,0,0,?WIND_3)
+					(4,0,0,?WIND_4)
+					(4,0,0,?WIND_5)
+					(1,4,-8,?WIND_2)
+					(3,0,0,?WIND_2)
+					(4,0,0,?WIND_3)
+					(4,0,0,?WIND_4)
+					(4,0,0,?WIND_5)
+					(1,4,-8,?WIND_2)
+					(3,0,0,?WIND_2)
+					(4,0,0,?WIND_3)
+					(4,0,0,?WIND_4)
+					(4,0,0,?WIND_5)
+					(4,0,0,?WIND_6)
+					(4,0,0,?WIND_7)
+
+	End				()
+
+/********************************/
+?_ICE_BLOCK_ANIM
+
+	OverlayFrame:	(255,0,0,?ICE_CUBE)
+	
+	JumpLocal		(?_ICE_BLOCK_ANIM)
+
+?_ICE_CRUMBLE_ANIM
+
+	OverlayFrame:	(4,0,0,?ICE_BIT_1)
+					(4,0,0,?ICE_BIT_2)
+					(4,0,0,?ICE_BIT_3)
+					(4,0,0,?ICE_BIT_4)
+	
+	JumpLocal		(?_ICE_CRUMBLE_ANIM)
+
+?_ICE_CRUMBLE2_ANIM
+
+	OverlayFrame:	(4,0,0,?ICE_CRUMB_1)
+					(4,0,0,?ICE_CRUMB_2)
+					(4,0,0,?ICE_CRUMB_3)
+					(4,0,0,?ICE_CRUMB_4)
+
+	JumpLocal		(?_ICE_CRUMBLE2_ANIM)
+
+?_ICE_FLAKY_ANIM
+
+	OverlayFrame:	(4,0,0,?SNOW_BIT_1)
+					(4,0,0,?SNOW_BIT_2)
+					(4,0,0,?SNOW_BIT_3)
+					(4,0,0,?SNOW_BIT_4)
+
+	JumpLocal		(?_ICE_FLAKY_ANIM)
+	
+?_ICE_FLAKY2_ANIM
+
+	OverlayFrame:	(4,0,0,?SNOW_CRUMB_1)
+					(4,0,0,?SNOW_CRUMB_2)
+					(4,0,0,?SNOW_CRUMB_3)
+					(4,0,0,?SNOW_CRUMB_4)
+
+	JumpLocal		(?_ICE_FLAKY2_ANIM)
+
+?_ICE_FLAKY_DISSOLVE_ANIM
+
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_1)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_1)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_2)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_2)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_3)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_3)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_4)
+	Pass			(1)
+	OverlayFrame:	(1,0,0,?SNOW_CRUMB_4)
+	Pass			(1)
+
+	JumpLocal		(?_ICE_FLAKY2_ANIM)
+
+/********************************/
+?_BRAMBLE_ANIM
+	OverlayFrame:	(4,0,0,?BRAMBLE_1)
+					(4,0,0,?BRAMBLE_2)
+					(4,0,0,?BRAMBLE_3)
+					(4,0,0,?BRAMBLE_4)
+					(4,0,0,?BRAMBLE_5)
+					(4,0,0,?BRAMBLE_6)
+					(4,0,0,?BRAMBLE_7)
+					(4,0,0,?BRAMBLE_8)
+					(4,0,0,?BRAMBLE_9)
+					(4,0,0,?BRAMBLE_10)
+					(4,0,0,?BRAMBLE_11)
+					(4,0,0,?BRAMBLE_12)
+					(4,0,0,?BRAMBLE_13)
+					(4,0,0,?BRAMBLE_14)
+					(4,0,0,?BRAMBLE_15)
+					(12,0,0,?BRAMBLE_16)
+	End				()
+
+?_BRAMBLE_STAY_ANIM
+
+	OverlayFrame:	(255,0,0,?BRAMBLE_16)
+	
+	JumpLocal		(?_BRAMBLE_STAY_ANIM)
+
+/********************************/
+?_CRACK_ANIM
+	OverlayFrame:	(2,0,0,?CRACK_1)
+					(4,0,0,?CRACK_2)
+					(8,0,0,?CRACK_3)
+					(16,0,0,?CRACK_4)
+					(32,0,0,?CRACK_5)
+					(4,0,0,?CRACK_4)
+					(4,0,0,?CRACK_3)
+					(4,0,0,?CRACK_2)
+					(4,0,0,?CRACK_1)
+	End				()
+
+/********************************/
+?_CURSE_1_ANIM
+	OverlayFrame:	(255,0,0,?SANSKRIT1_1)
+	
+	JumpLocal		(?_CURSE_1_ANIM)
+
+?_CURSE_1_BURN_ANIM
+	OverlayFrame:	(4,0,0,?SANSKRIT1_2)
+					(4,0,0,?SANSKRIT1_3)
+					(4,0,0,?SANSKRIT1_2)
+					(4,0,0,?SANSKRIT1_3)
+	
+	End				()
+
+?_CURSE_2_ANIM
+	OverlayFrame:	(255,0,0,?SANSKRIT2_1)
+	
+	JumpLocal		(?_CURSE_2_ANIM)
+
+?_CURSE_2_BURN_ANIM
+	OverlayFrame:	(4,0,0,?SANSKRIT2_2)
+					(4,0,0,?SANSKRIT2_3)
+					(4,0,0,?SANSKRIT2_2)
+					(4,0,0,?SANSKRIT2_3)
+	
+	End				()
+
+?_CURSE_3_ANIM
+	OverlayFrame:	(255,0,0,?SANSKRIT3_1)
+	
+	JumpLocal		(?_CURSE_3_ANIM)
+
+?_CURSE_3_BURN_ANIM
+	OverlayFrame:	(4,0,0,?SANSKRIT3_2)
+					(4,0,0,?SANSKRIT3_3)
+					(4,0,0,?SANSKRIT3_2)
+					(4,0,0,?SANSKRIT3_3)
+	
+	End				()
+
+?_CURSE_4_ANIM
+	OverlayFrame:	(255,0,0,?SANSKRIT4_1)
+	
+	JumpLocal		(?_CURSE_4_ANIM)
+
+?_CURSE_4_BURN_ANIM
+	OverlayFrame:	(4,0,0,?SANSKRIT4_2)
+					(4,0,0,?SANSKRIT4_3)
+					(4,0,0,?SANSKRIT4_2)
+					(4,0,0,?SANSKRIT4_3)
+	
+	End				()
+
+/********************************/
+?_HAUNT_ANIM
+	OverlayFrame:	(1,0,-1,?HAUNT_1)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_1)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_1)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_1)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_2)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_2)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_2)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_2)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_3)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_3)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_3)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_3)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_4)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_4)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_4)
+	Pass			()
+	OverlayFrame:	(1,0,-1,?HAUNT_4)
+	
+	End				()
+
+/********************************/
+?_MUNCH_ANIM
+	OverlayFrame:	(4,0,0,?MUNCH_1)
+					(4,0,0,?MUNCH_2)
+					(4,0,0,?MUNCH_3)
+					(4,0,0,?MUNCH_4)
+					(4,0,0,?MUNCH_5)
+					(16,0,0,?MUNCH_6)
+	
+	End				()
+
+/********************************/
+?_ROOTS_ANIM
+	OverlayFrame:	(8,0,0,?ROOTS_1)
+					(8,0,0,?ROOTS_2)
+					(8,0,0,?ROOTS_3)
+					(8,0,0,?ROOTS_4)
+					(8,0,0,?ROOTS_5)
+					(8,0,0,?ROOTS_6)
+					(8,0,0,?ROOTS_7)
+					(8,0,0,?ROOTS_8)
+					(8,0,0,?ROOTS_9)
+					(8,0,0,?ROOTS_10)
+					(8,0,0,?ROOTS_11)
+					(8,0,0,?ROOTS_12)
+					(8,0,0,?ROOTS_13)
+					(8,0,0,?ROOTS_14)
+					(8,0,0,?ROOTS_15)
+					(8,0,0,?ROOTS_16)
+_LOOP
+	OverlayFrame	(255,0,0,?ROOTS_17)
+
+	JumpLocal		(_LOOP)
+
+/********************************/
+?_SQUIRT_SHOOT_ANIM
+	OverlayFrame:	(1,0,0,?SQUIRT_1)
+	Pass			()
+	OverlayFrame	(1,0,0,?SQUIRT_2)
+	Pass			()
+	
+	JumpLocal		(?_SQUIRT_SHOOT_ANIM)
+
+?_SQUIRT_SHOOT_RIGHT_ANIM
+	OverlayFrame:	(1,4,0,?SQUIRT_1)
+	Pass			()
+	OverlayFrame	(1,4,0,?SQUIRT_2)
+	Pass			()
+		
+	JumpLocal		(?_SQUIRT_SHOOT_RIGHT_ANIM)
+
+?_SQUIRT_SPLASH_ANIM
+	OverlayFrame:	(1,0,0,?SPLASH_1)
+	Pass			()
+	OverlayFrame:	(1,0,0,?SPLASH_1)
+	Pass			()
+	OverlayFrame:	(1,0,0,?SPLASH_1)
+	Pass			()
+	OverlayFrame:	(1,0,0,?SPLASH_1)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_2)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_2)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_2)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_2)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_3)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_3)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_3)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_3)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_4)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_4)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_4)
+	Pass			()
+	OverlayFrame	(1,0,0,?SPLASH_4)
+	Pass			()
+
+	JumpLocal		(?_SQUIRT_SPLASH_ANIM)
+
+/********************************/
+?_STING_ANIM
+	OverlayFrame:	(4,0,0,?STING_1)
+					(4,0,0,?STING_2)
+					(4,0,0,?STING_3)
+					(4,0,0,?STING_4)
+					(4,0,0,?STING_5)
+	
+	End				()
+
+/********************************/
+?_TERROR_ANIM
+	OverlayFrame:	(16,0,0,?TERROR_4)
+					(16,0,0,?TERROR_3)
+					(16,0,0,?TERROR_2)
+_LOOP
+	OverlayFrame:	(4,0,0,?TERROR_1)
+					(4,0,0,?TERROR_2)
+	JumpLocal		(_LOOP)
+
+?_TERROR_GONE_ANIM
+	OverlayFrame:	(1,0,1,?TERROR_2)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_2)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_2)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_2)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_3)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_3)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_3)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_3)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_4)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_4)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_4)
+	Pass			()
+	OverlayFrame:	(1,0,1,?TERROR_4)
+	
+	End				()
+
+/********************************/
+?_TIMBER_ANIM
+	OverlayFrame:	(18,0,6,?TIMBER_1)
+					(4,0,-3,?TIMBER_1)
+					(4,0,-2,?TIMBER_1)
+					(4,0,-1,?TIMBER_1)
+					(8,0,-0,?TIMBER_1)
+					(4,0,1,?TIMBER_1)
+					(4,0,2,?TIMBER_1)
+					(4,0,3,?TIMBER_1)
+					(2,0,-2,?TIMBER_1)
+					(2,0,-1,?TIMBER_1)
+					(4,0,-0,?TIMBER_1)
+					(2,0,1,?TIMBER_1)
+					(2,0,2,?TIMBER_1)
+_LOOP
+	OverlayFrame:	(255,0,0,?TIMBER_1)
+
+	JumpLocal		(_LOOP)
+
+/********************************/
+?_TINYFIRE_FLAME_ANIM
+	OverlayFrame:	(4,0,0,?DINKYFLAME_1)
+					(4,0,0,?DINKYFLAME_2)
+					(4,0,0,?DINKYFLAME_3)
+					(4,0,0,?DINKYFLAME_4)
+					(4,0,0,?DINKYFLAME_5)
+					(4,0,0,?DINKYFLAME_6)
+					(4,0,0,?DINKYFLAME_7)
+					(4,0,0,?DINKYFLAME_8)
+
+	JumpLocal		(?_TINYFIRE_FLAME_ANIM)
+
+?_TINYFIRE_TRAIL_ANIM
+	OverlayFrame:	(4,0,0,?DINKYTRAIL_1)
+					(4,0,0,?DINKYTRAIL_2)
+					(4,0,0,?DINKYTRAIL_3)
+
+	JumpLocal		(?_TINYFIRE_TRAIL_ANIM)
+
+/********************************/
+?_TORNADO_SLOW_ANIM
+	OverlayFrame:	(8,0,0,?TORNADO_1)
+					(8,0,0,?TORNADO_2)
+					(8,0,0,?TORNADO_3)
+					(8,0,0,?TORNADO_4)
+					(8,0,0,?TORNADO_5)
+	
+	JumpLocal		(?_TORNADO_SLOW_ANIM)
+
+?_TORNADO_NORM_ANIM
+	OverlayFrame:	(4,0,0,?TORNADO_1)
+					(4,0,0,?TORNADO_2)
+					(4,0,0,?TORNADO_3)
+					(4,0,0,?TORNADO_4)
+					(4,0,0,?TORNADO_5)
+	
+	JumpLocal		(?_TORNADO_NORM_ANIM)
+
+?_TORNADO_FAST_ANIM
+	OverlayFrame:	(2,0,0,?TORNADO_1)
+					(2,0,0,?TORNADO_2)
+					(2,0,0,?TORNADO_3)
+					(2,0,0,?TORNADO_4)
+					(2,0,0,?TORNADO_5)
+	
+	JumpLocal		(?_TORNADO_FAST_ANIM)
+/********************************/
+?_INFERNO_ANIM
+
+	OverlayFrame	(3,0,0,?INFERNO_1)
+					(3,0,0,?INFERNO_2)
+					(3,0,0,?INFERNO_3)
+					(3,0,0,?INFERNO_4)
+					(3,0,0,?INFERNO_5)
+
+	End				()
+
+/********************************/
+?_LAVA_ANIM
+
+	OverlayFrame	(4,0,0,?LAVA_1)
+					(4,0,0,?LAVA_2)
+					(4,0,0,?LAVA_3)
+					(4,0,0,?LAVA_4)
+					(4,0,0,?LAVA_5)
+					(4,0,0,?LAVA_6)
+	End				()
+
+/********************************/
+?_MAUL_ANIM
+
+	OverlayFrame	(4,0,0,?MAUL_1)
+					(4,0,0,?MAUL_2)
+					(4,0,0,?MAUL_3)
+					(4,0,0,?MAUL_4)
+	End				()
+
+/********************************/
+?_EXECUTIONER_ANIM
+
+	SFX				(SFXID_DRAIN)
+	Delay			(16)
+	OverlayFrame	(2,0,1,?EXECUTIONER_2)
+	Pass			()
+	OverlayFrame	(2,0,1,?EXECUTIONER_2)
+	Pass			()
+	OverlayFrame	(2,0,1,?EXECUTIONER_2)
+	Pass			()
+	OverlayFrame	(2,0,1,?EXECUTIONER_2)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?EXECUTIONER_1)
+					(2,0,0,?EXECUTIONER_1)
+					(2,0,0,?EXECUTIONER_1)
+					(2,0,0,?EXECUTIONER_1)
+					(2,0,0,?EXECUTIONER_1)
+	SFX				(SFXID_PHYSICAL_ATTACK)
+	OverlayFrame	(4,0,0,?EXECUTIONER_2)
+					(12,0,0,?EXECUTIONER_3)
+	OverlayFrame	(24,0,0,?EXECUTIONER_4)
+	SFX				(SFXID_DRAIN)
+	OverlayFrame	(1,0,-1,?EXECUTIONER_4)
+	Pass			()
+	OverlayFrame	(1,0,-1,?EXECUTIONER_4)
+	Pass			()
+	OverlayFrame	(1,0,-1,?EXECUTIONER_4)
+	Pass			()
+	OverlayFrame	(1,0,-1,?EXECUTIONER_4)
+	End				()
+
+/********************************/
+?_GALE_ANIM
+
+	OverlayFrame	(4,0,0,?GALE_1)
+					(4,0,0,?GALE_2)
+					(4,0,0,?GALE_3)
+					(4,0,0,?GALE_4)
+					(4,0,0,?GALE_5)
+					(4,0,0,?GALE_6)
+	End				()
+
+/********************************/
+?_TIDE_ANIM
+
+	OverlayFrame	(4,0,0,?TSUNAMI_1)
+					(4,0,0,?TSUNAMI_2)
+					(4,0,0,?TSUNAMI_3)
+					(4,0,0,?TSUNAMI_4)
+					(4,0,0,?TSUNAMI_5)
+	End				()
+
+?_TSUNAMI_ANIM
+
+	SFX						(SFXID_CRITICAL_ATTACK)
+
+	OverlayFrame	(1,4,0,?TSUNAMI_1)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_1)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_1)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_1)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_2)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_2)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_2)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_2)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_3)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_3)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_3)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_3)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_4)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_4)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_4)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_4)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_5)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_5)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_5)
+	Pass			()
+	OverlayFrame	(1,4,0,?TSUNAMI_5)
+	Pass			()
+	End				()
+
+/********************************/
+?_JUDGE_ANIM
+
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()				
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()				
+	OverlayFrame	(2,0,0,?JUDGE_1)
+					(2,0,0,?JUDGE_3)
+					(2,0,0,?JUDGE_1)
+					(2,0,0,?JUDGE_3)
+					(16,0,0,?JUDGE_2)
+					(12,0,0,?JUDGE_3)
+					(8,0,0,?JUDGE_4)
+					(12,0,0,?JUDGE_3)
+					(16,0,0,?JUDGE_2)
+					(12,0,0,?JUDGE_3)
+					(8,0,0,?JUDGE_4)
+					(12,0,0,?JUDGE_3)
+					(2,0,0,?JUDGE_1)
+					(2,0,0,?JUDGE_3)
+					(2,0,0,?JUDGE_1)
+					(2,0,0,?JUDGE_3)
+					(2,0,0,?JUDGE_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()				
+	OverlayFrame	(2,0,0,?JUDGE_1)
+	Pass			()				
+	OverlayFrame	(2,0,0,?JUDGE_1)
+					
+	End				()
+	
+/********************************/
+?_GRAVITY_ANIM
+
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_1)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_2)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_3)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_3)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_3)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_3)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_4)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_4)
+	Pass			()
+	OverlayFrame	(1,-2,0,?GRAVITY_4)
+	Pass			()
+	OverlayFrame	(1,2,0,?GRAVITY_4)
+	Pass			()
+	End				()
+	
+	
+/********************************/
+?_LEAF_ANIM
+
+	OverlayFrame	(2,2,0,?LEAF_1)
+					(2,2,0,?LEAF_2)
+					(2,2,0,?LEAF_3)
+					(2,2,0,?LEAF_4)
+					(2,2,0,?LEAF_5)
+					(2,2,0,?LEAF_6)
+					(2,2,0,?LEAF_7)
+					(2,2,0,?LEAF_8)
+
+	JumpLocal		(?_LEAF_ANIM)			
+
+?_LEAF_FAST_ANIM
+
+	OverlayFrame	(2,4,0,?LEAF_1)
+					(2,4,0,?LEAF_2)
+					(2,4,0,?LEAF_3)
+					(2,4,0,?LEAF_4)
+					(2,4,0,?LEAF_5)
+					(2,4,0,?LEAF_6)
+					(2,4,0,?LEAF_7)
+					(2,4,0,?LEAF_8)
+
+	JumpLocal		(?_LEAF_FAST_ANIM)			
+
+/********************************/
+?_THUNDER_ANIM
+
+	OverlayFrame	(4,0,0,?THUNDER_1)
+					(4,0,0,?THUNDER_2)
+					(4,0,0,?THUNDER_3)
+	End				()
+
+/********************************/
+?_MELODY_EIGHTH_ANIM
+
+	OverlayFrame	(24,2,1,?MELODY_8TH)
+					(24,2,-1,?MELODY_8TH)
+
+	JumpLocal		(?_MELODY_EIGHTH_ANIM)
+
+?_MELODY_SHARP_ANIM
+
+	OverlayFrame	(12,2,1,?MELODY_SHARP)
+					(12,2,-1,?MELODY_SHARP)
+
+	JumpLocal		(?_MELODY_SHARP_ANIM)
+
+?_MELODY_WHOLE_ANIM
+
+	OverlayFrame	(24,1,1,?MELODY_WHOLE)
+					(24,3,-1,?MELODY_WHOLE)
+					(24,3,1,?MELODY_WHOLE)
+					(24,1,-1,?MELODY_WHOLE)
+
+	JumpLocal		(?_MELODY_WHOLE_ANIM)
+
+/********************************/
+?_HEARTS_ANIM
+
+	OverlayFrame	(12,2,1,?HEARTS_1)
+	OverlayFrame	(12,2,1,?HEARTS_2)
+	SFX				(SFXID_HEAL)
+	OverlayFrame	(12,2,-1,?HEARTS_1)
+	OverlayFrame	(12,2,-1,?HEARTS_2)
+	SFX				(SFXID_HEAL)
+	
+	JumpLocal		(?_HEARTS_ANIM)
+
+/********************************/
+?_SWARM_ANIM
+
+	OverlayFrame	(4,4,-1,?SWARM)
+					(4,4,0,?SWARM)
+	SFX				(SFXID_JUMP)
+	OverlayFrame	(16,4,2,?SWARM)
+					(4,4,1,?SWARM)
+					(8,4,-1,?SWARM)
+					(8,4,-2,?SWARM)
+	
+	End				()
+
+/********************************/
+?_PACK_FALL_THROUGH_ANIM
+
+	OverlayFrame:	(125,0,3,?PACK)
+
+	End				()				
+
+?_PACK_FALL_DOWN_ANIM
+
+	OverlayFrame:	(18,0,6,?PACK)
+					(4,0,-3,?PACK)
+					(4,0,-2,?PACK)
+					(4,0,-1,?PACK)
+					(8,0,-0,?PACK)
+					(4,0,1,?PACK)
+					(4,0,2,?PACK)
+					(4,0,3,?PACK)
+					(2,0,-2,?PACK)
+					(2,0,-1,?PACK)
+					(4,0,-0,?PACK)
+					(2,0,1,?PACK)
+					(2,0,2,?PACK)
+_LOOP
+	OverlayFrame:	(255,0,0,?PACK)
+
+	JumpLocal		(_LOOP)
+
+
+?_PACK_JUMP_RIGHT_ANIM
+
+	SFX				(SFXID_JUMP)
+	OverlayFrame:	(4,2,-2,?PACK)
+					(4,2,-1,?PACK)
+					(4,1,0,?PACK)
+					(4,2,1,?PACK)
+					(4,2,2,?PACK)
+					(12,2,3,?PACK)					
+					(2,2,-2,?PACK)
+					(2,2,-1,?PACK)
+					(4,2,0,?PACK)
+_LOOP
+	OverlayFrame:	(255,0,0,?PACK)
+
+	JumpLocal		(_LOOP)
+
+
+/********************************/
+?_LAMP_ANIM
+	SFX				(SFXID_HEAL)
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	SFX				(SFXID_HEAL)
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	SFX				(SFXID_HEAL)
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	SFX				(SFXID_HEAL)
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,-1,0,?LAMP)
+	Pass			()
+	SFX				(SFXID_HEAL)
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,2,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	Pass			()
+	OverlayFrame:	(2,1,0,?LAMP)
+	End				()

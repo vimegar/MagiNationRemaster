@@ -1,0 +1,37 @@
+/********************************************/
+
+?_ARDGEYSER15_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(16,0,-4)
+						(24,-4,0)
+						(20,0,-4)
+						(28,4,0)
+						(44,0,-4)
+	Jump				(?_ARDGEYSER26_FROM15)
+	
+?_ARDGEYSER15_DR_2
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(48,0,-4)
+						(32,-4,0)
+	Jump				(?_ARDGEYSER17_FROM15)
+
+?_ARDGEYSER15_DR_3
+	HeroToDoor					(19,29,15,0)
+	Jump						(?_ARDGEYSER16)	
+	
+/********************************************/
+
+?_ARDGEYSER15_TR_1
+	TriggerTreasure	(ARDGEYSER15_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,5,5,30)
+	
+?_ARDGEYSER15_TR_2
+	TriggerTreasure	(ARDGEYSER15_Chest2,INV_TYPE_ITEM,INV_BALOO_ROOT,4,14,30)
+	
+?_ARDGEYSER15_TR_3
+	TriggerTreasure	(ARDGEYSER15_Chest3,INV_TYPE_ITEM,INV_REMEDY_DRINK,25,9,30)

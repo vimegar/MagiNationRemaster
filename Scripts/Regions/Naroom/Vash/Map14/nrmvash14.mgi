@@ -1,0 +1,122 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP14\NRMVASH14_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP14\NRMVASH14_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP14\NRMVASH14_PARTY.MGI
+
+/********************************/
+?_NRMVASH14
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH14_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH14_PARTY)
+	If						([TCState = 5],?_NRMVASH14_NTC)
+	If						([GAMECOUNT>GC_TONY_KIDNAPPED],?_NRMVASH14_TC)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH14)
+	LoadHotspots			(HS_NRMVASH14)
+	LoadTriggers   			(TR_NRMVASH14)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,17,11,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,5,11,0,?_TRYN_STAND_RIGHT_ANIM,?_NRMVASH14_TRYN_SPEAKS)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_TRYN,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+?_NRMVASH14_TC
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH14)
+	LoadHotspots			(HS_NRMVASH14)
+	LoadTriggers   			(TR_NRMVASH14)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,17,11,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,11,11,0,?_TRYN_MOVEMENT,?_NRMVASH14_TRYN_SPEAKS2)
+	ThatActorInit			(ACTOR01,?TALKER_AI,4,13,11,48,?_TC1_MOVEMENT,?_NRMVASH14_TC1_SPEAKS)
+	ThatActorInit			(ACTOR02,?TALKER_AI,6,13,11,48,?_TC2_MOVEMENT,?_NRMVASH14_TC2_SPEAKS)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	LoadVRAMTiles			(48,BIT_TRYN,0,0)
+	LoadVRAMTiles			(48,BIT_GIRL03,48,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+?_TRYN_MOVEMENT
+	ThisActorSetAnimDelay	(?_TRYN_STAND_DOWN_ANIM,64)
+							(?_TRYN_WALK_DOWN_ANIM,16)
+							(?_TRYN_STAND_DL_ANIM,96)
+							(?_TRYN_STAND_DR_ANIM,64)
+							(?_TRYN_WALK_UP_ANIM,16)
+							(?_TRYN_STAND_DOWN_ANIM,32)
+	Jump					(?_TRYN_MOVEMENT)
+
+?_TC1_MOVEMENT
+	ThisActorSetAnimDelay	(?_GIRL03_STAND_UP_ANIM,128)
+							(?_GIRL03_STAND_UR_ANIM,64)
+							(?_GIRL03_STAND_RIGHT_ANIM,64)
+							(?_GIRL03_STAND_UR_ANIM,8)
+							(?_GIRL03_STAND_UP_ANIM,64)
+							(?_GIRL03_STAND_RIGHT_ANIM,16)
+	Jump					(?_TC1_MOVEMENT)
+
+?_TC2_MOVEMENT
+	ThisActorSetAnimDelay	(?_GIRL03_STAND_UP_ANIM,96)
+							(?_GIRL03_STAND_UL_ANIM,64)
+							(?_GIRL03_STAND_LEFT_ANIM,96)
+							(?_GIRL03_STAND_UL_ANIM,8)
+	Jump					(?_TC2_MOVEMENT)
+
+?_NRMVASH14_NTC
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH14)
+	LoadHotspots			(HS_NRMVASH14)
+	LoadTriggers   			(TR_NRMVASH14)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,17,11,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,11,11,0,?_TRYN_STAND_DOWN_ANIM,?_NRMVASH14_TRYN_SPEAKS3)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_TRYN,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+/********************************/
+	
+?_NRMVASH14_TRYN_SPEAKS
+	SetText					(?_NRMVASH14_TXT_1)
+	Jump					(?_FACE_TRYN)
+?_NRMVASH14_TRYN_SPEAKS2
+	SetText					(?_NRMVASH14_TXT_2)
+	Jump					(?_FACE_TRYN)
+
+?_NRMVASH14_TRYN_SPEAKS3
+	SetText					(?_NRMVASH14_TXT_7)
+	Jump					(?_FACE_TRYN)
+
+?_NRMVASH14_TC1_SPEAKS
+	ThisActorSetAnim		(?_GIRL03_STAND_UP_ANIM)
+	If 						([TCState=4],_TC1_GAVEITEM)
+	SetXRAMByte				(TCState,4)
+	SetText					(?_NRMVASH14_TXT_3)
+	Jump					(?_FACE_GIRL03)
+_TC1_GAVEITEM
+	SetText					(?_NRMVASH14_TXT_5)
+	Jump					(?_FACE_GIRL03)
+
+?_NRMVASH14_TC2_SPEAKS
+	ThisActorSetAnim		(?_GIRL03_STAND_UP_ANIM)
+	If 						([TCState=4],_TC2_GAVEITEM)
+	SetXRAMByte				(TCState,4)
+	SetText					(?_NRMVASH14_TXT_4)
+	Jump					(?_FACE_GIRL03)
+_TC2_GAVEITEM
+	SetText					(?_NRMVASH14_TXT_6)
+	Jump					(?_FACE_GIRL03)

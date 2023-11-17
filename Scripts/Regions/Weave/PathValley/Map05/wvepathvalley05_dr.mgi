@@ -1,0 +1,15 @@
+/********************************/
+?_WVEPATHVALLEY05_DR_1
+		HeroToDoor		(51,0,0,34)
+		Jump			(?_WVEPATHVALLEY03)
+
+?_WVEPATHVALLEY05_DR_2
+		HeroSetDoor		(10,30)
+		Jump			(?_OVRSURFACE01)
+
+?_WVEPATHVALLEY05_DR_3
+		HeroToDoor		(7,4,21,29)
+		Jump			(?_WVEPATHVALLEY06)
+
+?_WVEPATHVALLEY05_TR_1
+		TriggerTreasure	(WVEPATHVALLEY05_Chest1,INV_TYPE_ITEM,INV_BALOO_SAP,14,1,60)

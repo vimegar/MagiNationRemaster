@@ -1,0 +1,52 @@
+/********************************/
+?_UNDMUSHFARM02_DR_1
+		HeroSetDoor	(12,10)
+		Jump		(?_UNDMUSHFARM01)
+
+?_UNDMUSHFARM02_DR_2
+		HeroSetDoor	(3,24)
+		Jump		(?_UNDMUSHFARM03)
+
+
+/********************************/
+?_UNDMUSHFARM02_TR_1					// BOOKS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Filled with=")
+					("books on how")
+					("to fight the=")
+					("mortal enemy of")
+					("productivity:=")
+					("sleep.")
+		TextClose	()
+		End			()
+
+?_UNDMUSHFARM02_TR_2					// MUSHDEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("She should=")
+					("clean more")
+					("often.")
+		TextClose	()
+		End			()
+	
+?_UNDMUSHFARM02_TR_3					// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A perfect chair=")
+					("for watching TV")
+					("in.")
+					("Now if only=")
+					("there were a")
+					("TV.")
+		TextClose	()
+		End			()
+
+?_UNDMUSHFARM02_TR_4					// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("I wonder if=")
+					("she grew this,")
+					("too.")
+		TextClose	()
+		End			()

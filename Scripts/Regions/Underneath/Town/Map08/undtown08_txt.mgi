@@ -1,0 +1,86 @@
+/********************************/
+//UNDTOWN08
+/********************************/	
+?_UNDTOWN08_KID01_TXT01
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Would you=")
+						("like to play")
+						("Scrub the Brub?")
+						("It only costs=")
+						("30 Animite.")
+	TextClear			()
+	TextWrite			(" Yes=")
+						(" No$")
+
+	TextMenu			(2)
+						(_YES)
+						(_NO)
+_YES
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	If					([GS_Animite < 30],_POOR)
+	TextWrite			("Do you need=")
+						("to know how")
+						("to play?")
+	TextClear			()
+	TextWrite			(" No=")
+						(" Yes$")
+
+	TextMenu			(2)
+						(_NO2)
+						(_YES2)
+_YES2
+	TextIcon			(ICON_BOY)
+	TextWrite			("Just run over=")
+						("the brubs as")
+						("they appear in=")
+						("the holes in")
+						("the floor.")
+						("A blue brub is=")
+						("worth 1 point")
+						("and a red brub=")
+						("is worth 5")
+						("points.")
+	JumpLocal			(_YES)
+
+_NO2
+	TextIcon			(ICON_BOY)
+	TextWrite			("Right this=")
+						("way...")
+	TextClose			()
+	ExprXRAMWord		(GS_Animite,[GS_Animite - 30])
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	HeroSetDoor			(9,16)
+	Jump				(?_SCRUBABRUB)
+_NO						
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Fine.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_POOR
+	TextWrite			("You don't have=")
+						("30 Animite!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_UNDTOWN08_KID01_TXT02
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("What was that?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_UNDTOWN08_KID01_TXT03
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("How tragic!")
+	TextClose			()
+	SetEventText		(1)
+	End					()

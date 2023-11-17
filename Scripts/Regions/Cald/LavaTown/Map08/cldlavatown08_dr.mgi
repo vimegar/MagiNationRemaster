@@ -1,0 +1,48 @@
+/********************************/
+?_CLDLAVATOWN08_DR_1
+		HeroToDoor	(6,11,12,24)
+		Jump		(?_CLDLAVATOWN01)
+
+?_CLDLAVATOWN08_TR_1			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Birds:")
+						("why we don't=")
+						("see any.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN08_TR_2			// CLOCK
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hypnotic.")
+						("I want to=")
+						("look again.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN08_TR_3			// TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A molten=")
+						("table.")
+						("How very=")
+						("last year.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN08_TR_4			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I wonder=")
+						("what's in -")
+						("OW!!  Hot!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN08_TR_5			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Fire Proofing=")
+						("Your Children.")
+		TextClose		()
+		End				()
+

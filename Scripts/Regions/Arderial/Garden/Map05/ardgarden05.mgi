@@ -1,0 +1,106 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP05\ARDGARDEN05_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP05\ARDGARDEN05_TXT.MGI
+
+/********************************/
+?_LOAD_ARDGARDEN05
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	HeroSetDoor				(13,17)
+
+/********************************/
+?_ARDGARDEN05
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_ARDGARDEN05)
+	LoadHotspots			(HS_ARDGARDEN05)
+	LoadTriggers			(TR_ARDGARDEN05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,10,12,24,0,?_GIRL02_STAND_DOWN_ANIM,_GIRL_SAVE_TXT)
+	LoadVRAMTiles			(39,BIT_GIRL02,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	End						()
+_GIRL_SAVE_TXT
+	SetText					(_TXT_SAVERS)
+	Jump					(?_FACE_GIRL02)
+	
+_TXT_SAVERS
+	TextOpen				()
+	TextIcon				(ICON_GIRL)
+	TextWrite				("Hi! Welcome=")
+							("to the Arderial")
+							("Inn. No beds,=")
+							("but plenty of")
+							("floor! Shall I=")
+							("record your")
+							("journey?")
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Uh...ok.=")
+							(" I'll pass.$")
+	TextMenu				(2)
+							(_SAVE_YES)
+							(_SAVE_NO)
+_SAVE_YES							
+	TextClear		()
+	TextIcon		(ICON_GIRL)
+	TextWrite		("Sleep well and=")
+					("wake.")
+	TextClose		()
+	SetLoadScript	(?_LOAD_ARDGARDEN05)
+	PalClearBase	(0,15,31,31,31)
+	PalFade			(0,15,32,0)
+	SaveGame		(1)
+	Delay			(64)
+	Jump			(_ARDGARDEN05_TONY_WAKING)
+_SAVE_NO
+	TextClear		()
+	TextIcon		(ICON_GIRL)
+	TextWrite		("Have a great=")
+					("day!!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+_ARDGARDEN05_TONY_WAKING
+	SetXRAMByte			(Exit_Disable,1)
+	SceneNew			()
+	LoadMap				(MAP_ARDGARDEN05)
+	LoadHotspots		(HS_ARDGARDEN05)
+	LoadTriggers		(TR_ARDGARDEN05)
+	LoadPalette			(PAL_HERO)
+	PalClearAnim		(0,15,31,31,31)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,17,7,24,0,_TONY_WAKING,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?TALKER_AI,10,12,24,0,?_GIRL02_STAND_DOWN_ANIM,_GIRL_SAVE_TXT)
+	LoadVRAMTiles		(39,BIT_GIRL02,0,0)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR00)
+	HeroSetCamera		()
+	SongStart			(SONGID_orotunnels)
+	SceneReady			()
+	PalFade				(0,15,32,0)
+	Sync				(2,0)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End					()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,24)
+							(?_HERO_STAND_UL_ANIM,4)
+							(?_HERO_STAND_LEFT_ANIM,32)
+	ThisActorSetAnimScroll	(?_HERO_WALK_LEFT_ANIM,32,-1,0)
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,48)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("What kind of=")
+							("inn doesn't")
+							("have beds?")
+	TextClose				()
+	Sync					(2,0)
+	End						()
+

@@ -1,0 +1,65 @@
+/********************************/
+?_NRMVASH04_DR_1
+		HeroToDoor			(0,8,23,7)
+		Jump				(?_NRMVASH02)
+		
+?_NRMVASH04_DR_2
+		HeroToDoor			(4,4,13,17)
+		Jump				(?_NRMVASH19)
+
+?_NRMVASH04_DR_3
+		HeroToDoor			(11,2,7,9)
+		Jump				(?_NRMVASH11)
+		
+?_NRMVASH04_DR_4	
+		HeroToDoor			(10,11,3,1)
+		ThatActorInit		(HEROACTOR,?HERO_AI_FLY_DOWN,5,5,20,0,?_HERO_FLY_DOWN_ANIM,?_DONT_TALK)
+		Jump				(?_NRMVASH04B)
+		
+?_NRMVASH04_DR_5	
+		HeroSetDoor			(3,16)
+		Jump				(?_NRMVASH23)
+		
+?_NRMVASH04_TR_1
+		TextOpen			()
+		TextWrite			("Take the time=")
+							("to care...")
+							("adopt an Eebit=")
+							("today!")
+		TextClose			()
+		End					()
+		
+?_NRMVASH04_TR_2
+		TextOpen			()	
+		TextWrite			("Curio shop-=")
+							("closed until")
+							("further notice.")
+		TextClose			()
+		End					()
+/********************************/
+// MAPS CONNECTING VASH TO ARDERIAL
+/********************************/
+?_NRMVASH04B_DR_1
+		HeroToDoor			(3,0,10,11)
+		ThatActorInit		(HEROACTOR,?HERO_AI_FLY_UP,5,5,20,0,?_HERO_FLY_UP_ANIM,?_DONT_TALK)
+		Jump				(?_NRMVASH04_AIR)
+		
+?_NRMVASH04B_DR_2
+		HeroSetDoor			(7,12)
+		Jump				(?_NRMVASH04C)
+		
+?_NRMVASH04C_DR_1
+		HeroSetDoor			(15,22)
+		Jump				(?_NRMVASH04B_GROUND)
+		
+?_NRMVASH04C_DR_2
+		HeroSetDoor			(7,8)
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+		Jump				(?_HDNFORT04B_ARRIVAL)
+		
+/********************************/
+// END MAPS CONNECTING VASH TO ARDERIAL
+/********************************/

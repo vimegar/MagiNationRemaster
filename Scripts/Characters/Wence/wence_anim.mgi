@@ -1,0 +1,208 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_WENCE_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?WENCE_WALK01_BACK)
+					(?WENCE_WALK02_BACK)
+					(?WENCE_WALK03_BACK)
+					(?WENCE_WALK02_BACK)
+					
+	JumpLocal:		(?_WENCE_WALK_UP_ANIM)
+
+/********************************/
+?_WENCE_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?WENCE_WALK01_FRONT)
+					(?WENCE_WALK02_FRONT)
+					(?WENCE_WALK03_FRONT)
+					(?WENCE_WALK02_FRONT)
+					
+	JumpLocal:		(?_WENCE_WALK_DOWN_ANIM)
+
+/********************************/
+?_WENCE_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?WENCE_WALK01_LEFT)
+					(?WENCE_WALK02_LEFT)
+					(?WENCE_WALK03_LEFT)
+					(?WENCE_WALK02_LEFT)
+					
+	JumpLocal:		(?_WENCE_WALK_LEFT_ANIM)
+
+/********************************/
+?_WENCE_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?WENCE_WALK01_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					(?WENCE_WALK03_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					
+	JumpLocal:		(?_WENCE_WALK_RIGHT_ANIM)
+
+/********************************/
+?_WENCE_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?WENCE_WALK01_BACK)
+					(?WENCE_WALK02_BACK)
+					(?WENCE_WALK03_BACK)
+					(?WENCE_WALK02_BACK)
+					
+	JumpLocal:		(?_WENCE_RUN_UP_ANIM)
+
+/********************************/
+?_WENCE_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?WENCE_WALK01_FRONT)
+					(?WENCE_WALK02_FRONT)
+					(?WENCE_WALK03_FRONT)
+					(?WENCE_WALK02_FRONT)
+					
+	JumpLocal:		(?_WENCE_RUN_DOWN_ANIM)
+
+/********************************/
+?_WENCE_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?WENCE_WALK01_LEFT)
+					(?WENCE_WALK02_LEFT)
+					(?WENCE_WALK03_LEFT)
+					(?WENCE_WALK02_LEFT)
+					
+	JumpLocal:		(?_WENCE_RUN_LEFT_ANIM)
+
+/********************************/
+?_WENCE_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?WENCE_WALK01_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					(?WENCE_WALK03_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					
+	JumpLocal:		(?_WENCE_RUN_RIGHT_ANIM)
+
+/********************************/
+?_WENCE_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?WENCE_WALK02_BACK)
+	
+	JumpLocal:		(?_WENCE_STAND_UP_ANIM)
+
+/********************************/
+?_WENCE_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?WENCE_WALK02_FRONT)
+	
+	JumpLocal:		(?_WENCE_STAND_DOWN_ANIM)
+
+/********************************/
+?_WENCE_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?WENCE_WALK02_LEFT)
+	
+	JumpLocal:		(?_WENCE_STAND_LEFT_ANIM)
+
+/********************************/
+?_WENCE_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?WENCE_WALK02_RIGHT)
+	
+	JumpLocal:		(?_WENCE_STAND_RIGHT_ANIM)
+
+/********************************/
+?_WENCE_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?WENCE_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_WENCE_STAND_UL_ANIM)
+
+/********************************/
+?_WENCE_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?WENCE_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_WENCE_STAND_UR_ANIM)
+
+/********************************/
+?_WENCE_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?WENCE_STAND_LEFT)
+	
+	JumpLocal:		(?_WENCE_STAND_DL_ANIM)
+
+/********************************/
+?_WENCE_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?WENCE_STAND_RIGHT)
+	
+	JumpLocal:		(?_WENCE_STAND_DR_ANIM)
+
+/********************************/
+?_WENCE_BACK_LEFT_ANIM
+
+	FrameBlock:		(4,-1,0)
+					(?WENCE_WALK01_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					(?WENCE_WALK03_RIGHT)
+					(?WENCE_WALK02_RIGHT)
+					
+	JumpLocal:		(?_WENCE_BACK_LEFT_ANIM)
+
+/********************************/
+?_WENCE_BACK_DOWN_ANIM
+
+	FrameBlock:		(4,0,1)
+					(?WENCE_WALK01_BACK)
+					(?WENCE_WALK02_BACK)
+					(?WENCE_WALK03_BACK)
+					(?WENCE_WALK02_BACK)
+					
+	JumpLocal:		(?_WENCE_BACK_DOWN_ANIM)
+
+/********************************/
+?_WENCE_BOW_LEFT_ANIM
+
+	Frame:			(255,0,0,?WENCE_ARROW_LEFT)
+	
+	JumpLocal:		(?_WENCE_BOW_LEFT_ANIM)
+
+/********************************/
+?_WENCE_BOW_RIGHT_ANIM
+
+	Frame:			(255,0,0,?WENCE_ARROW_RIGHT)
+	
+	JumpLocal:		(?_WENCE_BOW_RIGHT_ANIM)
+
+/********************************/
+?_FACE_WENCE
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_WENCE_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_WENCE_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_WENCE_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_WENCE_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

@@ -1,0 +1,10 @@
+/********************************/
+?_UNDGEYSER04_DR_1
+		HeroToDoor	(12,1,7,46)
+		Jump		(?_UNDGEYSER05)
+
+?_UNDGEYSER04_DR_2
+	Jump					(?_UNDGEYSER_FIRST)
+
+?_UNDGEYSER04_DR_3
+	Jump					(?_UNDGEYSER_THIRD)

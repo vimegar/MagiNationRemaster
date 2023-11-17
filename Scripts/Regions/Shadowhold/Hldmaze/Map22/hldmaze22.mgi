@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP22\HLDMAZE22_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP22\HLDMAZE22_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE22
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE22)
+	LoadHotspots		(HS_HLDMAZE22)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadTriggers		(TR_HLDMAZE22)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE22)
+	HeroFromDoor		()
+	SongStart			(SONGID_shadowhold)
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+
+
+	
+	
+		

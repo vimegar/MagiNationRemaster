@@ -1,0 +1,25 @@
+/********************************/
+?_OROTUNNEL09_DR_1
+		HeroToDoor	(0,10,27,52)
+		Jump		(?_OROTUNNEL07)
+		
+?_OROTUNNEL09_DR_2
+		HeroToDoor	(26,2,8,19)
+		Jump		(?_OROTUNNEL10)
+								
+?_OROTUNNEL09_DR_3
+		End			()								
+?_OROTUNNEL09_DR_3B
+		If			([Blu_State = 0 && GC = GC_BOOTS_QUEST],?_OROTUNNEL09_BLU_ENCOUNTER)
+		End			()
+/********************************/
+?_OROTUNNEL09_TR_1
+	If					([Blu_State = 1 && GC = GC_BOOTS_QUEST],_OPEN)
+	End					()
+_OPEN
+	SetXRAMByte				(Blu_State,2)
+	CopyTileBlock		(36,32,27,3,2,26,1)
+	ThatActorSetScript	(ACTOR00,?_OROTUNNEL09_BLU_SUPRISED)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_OROTUNNEL09_TONYSUPRISED)
+	End					()

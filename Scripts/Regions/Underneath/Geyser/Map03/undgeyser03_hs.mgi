@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_UNDGEYSER03)
+						(HOTSPOT_TRIGGER_EAST,?_UNDGEYSER03_DR_1)
+						
+		FileTriggers	(TR_UNDGEYSER03)
+						(TRIGGER_CONFIG,?_UNDGEYSER03_TR_1)

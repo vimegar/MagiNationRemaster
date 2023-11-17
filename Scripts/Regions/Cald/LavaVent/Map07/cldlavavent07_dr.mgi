@@ -1,0 +1,8 @@
+/********************************/
+?_CLDLAVAVENT07_DR_1
+		HeroSetDoor	(23,16)
+		Jump		(?_OVRSURFACE03)
+
+?_CLDLAVAVENT07_DR_2
+		HeroToDoor	(7,0,26,39)
+		Jump		(?_CLDLAVAVENT01)

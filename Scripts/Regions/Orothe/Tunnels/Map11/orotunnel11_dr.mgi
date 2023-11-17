@@ -1,0 +1,10 @@
+/********************************/
+?_OROTUNNEL11_DR_1
+		HeroToDoor		(3,0,15,50)
+//		ThatActorInit	(HEROACTOR,?HERO_AI,15,51,36,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+		Jump			(?_OROTUNNEL04_SWIM)
+
+?_OROTUNNEL11_DR_2
+		ThatActorInit	(ACTOR02,?TRIGGER_AI,16,24,33,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+		HeroSetDoor		(14,25)
+		Jump			(?_OVRSURFACE04)

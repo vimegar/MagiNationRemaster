@@ -1,0 +1,125 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP16\NRMVASH16_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP16\NRMVASH16_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP16\NRMVASH16_PARTY.MGI
+
+/********************************/
+?_NRMVASH16						
+	If						([GC < GC_FIND_ORWIN],?_NRMVASH16_NRM_INTRO)
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH16_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH16_PARTY)
+
+?_NRMVASH16_FIND_ORWIN
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH16)
+	LoadHotspots			(HS_NRMVASH16)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH16)
+	ThatActorInit			(HEROACTOR,?HERO_AI,10,15,14,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+?_NRMVASH16_NRM_INTRO
+	If						([Nrm_Intro_Count = 4],?_NRMVASH16_FIND_ORWIN)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH16)
+	LoadHotspots			(HS_NRMVASH16)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH16)
+	ThatActorInit			(HEROACTOR,?HERO_AI,10,15,14,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,10,14,0,?_ORWIN_STAND_UP_ANIM,?_NRMVASH_ORWIN_TALK)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	End						()
+
+?_NRMVASH_ORWIN_TALK
+	SetText					(?_NRMVASH16_ORWIN_GENERATEXT)
+	Jump					(?_FACE_ORWIN)
+
+/********************************/
+
+?_NRMVASH16_ENDING
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH16)
+	LoadHotspots			(HS_NRMVASH16)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH16)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,7,10,14,0,?_NRMVASH16_EIDON_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,15,14,44,?_NRMVASH16_POAD_END,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	LoadVRAMTiles			(44,BIT_EIDON,0,0)
+	LoadVRAMTiles			(42,BIT_POAD,44,0)
+	SetCamera				(6,5)
+	SceneReady				()
+	Delay					(128)
+	SetScroll				(?_PANDOWN_SLOWLY)
+	Delay					(160)
+	SetScroll				(?_CAMSTOP)
+	WaitEventMaster			(1)
+	Jump					(?_WVEGIASHUT01_ENDING2)
+	End						()
+
+?_NRMVASH16_EIDON_END
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UP_ANIM,192)
+							(?_EIDON_STAND_UL_ANIM,64)
+							(?_EIDON_STAND_UP_ANIM,8)
+							(?_EIDON_STAND_UR_ANIM,64)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,16)
+							(?_EIDON_STAND_UL_ANIM,32)
+							(?_EIDON_WALK_DOWN_ANIM,16)
+							(?_EIDON_WALK_LEFT_ANIM,64)
+							(?_EIDON_STAND_UP_ANIM,0)
+	ThatActorStart			(ACTOR00)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UP_ANIM,16)
+							(?_EIDON_WALK_UP_ANIM,16)
+							(?_EIDON_STAND_UP_ANIM,16)
+							(?_EIDON_STAND_UR_ANIM,64)
+							(?_EIDON_STAND_UP_ANIM,64)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UP_ANIM,16)
+							(?_EIDON_STAND_DR_ANIM,64)
+							(?_EIDON_STAND_RIGHT_ANIM,16)
+							(?_EIDON_STAND_UR_ANIM,8)
+							(?_EIDON_STAND_UP_ANIM,64)
+							(?_EIDON_STAND_RIGHT_ANIM,8)
+							(?_EIDON_WALK_DOWN_ANIM,16)
+	SetScroll				(?_PANUP_SLOWLY)
+	ThisActorSetAnimDelay	(?_EIDON_RUN_RIGHT_ANIM,40)
+							(?_EIDON_RUN_DOWN_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,116)
+	SetScroll				(?_CAMSTOP)
+	Delay					(32)
+	SetEventMaster			(1)
+	End						()
+
+?_NRMVASH16_POAD_END
+	ThisActorSetAnimDelay	(?_POAD_WALK_UP_ANIM,64)
+							(?_POAD_WALK_LEFT_ANIM,64)
+							(?_POAD_STAND_UL_ANIM,96)
+							(?_POAD_STAND_UP_ANIM,96)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_POAD_STAND_UL_ANIM,64)
+							(?_POAD_WALK_RIGHT_ANIM,64)
+							(?_POAD_WALK_DOWN_ANIM,64)
+							(?_POAD_STAND_DOWN_ANIM,0)
+	ThisActorStop			()
+	End						()
+
+?_PANDOWN_SLOWLY
+	ScrollMap				(1,0,1)
+							(1,0,0)
+	
+	JumpLocal				(?_PANDOWN_SLOWLY)

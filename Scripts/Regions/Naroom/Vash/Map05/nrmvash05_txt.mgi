@@ -1,0 +1,183 @@
+/********************************/
+//NRMVASH05
+/********************************/
+?_NRMVASH05_GUARD_TXT
+	TextOpen				()
+	TextIcon				(ICON_GUARD01)
+	If						([GC >= GC_QUEST_FOR_GIA],_ORWIN)
+	TextWrite				("Don't cause me=")
+							("any trouble.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_ORWIN
+	If						([!Sick_Orwin],_SICK)
+	TextWrite				("You shouldn't=")
+							("have disobeyed")
+							("Orwin. You see=")
+							("what happened?")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_SICK
+	TextWrite				("You healed=")
+							("Orwin. Thanks.")
+							("But if you=")
+							("truly are Kyros")
+							("I want you out=")
+							("of this town,")
+							("for all our=")
+							("sakes.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+
+?_NRMVASH05_WOMAN_TXT
+	TextOpen				()
+	TextIcon				(ICON_WOMAN)
+	If						([GC >= GC_QUEST_FOR_GIA],_ORWIN)
+	TextWrite				("I'm the fastest=")
+							("gardener in")
+							("Vash Naroom!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_ORWIN
+	If						([Sick_Orwin],_SICK)
+	TextWrite				("I heard you=")
+							("saved Orwin")
+							("with a Cloud=")
+							("Frond. Do you")
+							("have any extra=")
+							("fronds for my")
+							("garden?")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_SICK
+	TextWrite				("I don't have=")
+							("any plants that")
+							("can cure Orwin.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************/
+//	NRMVASH05 ENDING04
+/********************************/
+?_NRMVASH05_ENDING04TXT1
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("...and do=")
+						("you vow to")
+						("protect this=")
+						("town and all")
+						("of its people=")
+						("with your")
+						("knowledge as=")
+						("well as your")
+						("strength?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("I do.")
+						("It is the=")
+						("vow of an")
+						("elder.")
+	TextIcon			(ICON_GIA)
+	TextWrite			("Then from this=")
+						("day forward,")
+						("you, Eidon,=")
+						("are the elder")
+						("of Vash Naroom.")
+	TextClose			()
+	Sync				(3,0)
+	Delay				(32)
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Long live=")
+						("Eidon!")
+	TextClose			()
+	Sync				(2,2)
+	End					()
+
+?_NRMVASH05_ENDING04TXT2
+	TextOpen			()
+	TextWrite			("LONG LIVE=")
+						("EIDON!")
+	TextClose			()
+	Sync				(4,3)
+	End					()
+	
+?_NRMVASH05_ENDING04TXT3
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Eidon, let's")
+						("go have some=")
+						("lunch at")
+						("Poad's and=")
+						("discuss your")
+						("new responsi-=")
+						("bilities.")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Yes, Gia...")
+	TextClose			()
+	Sync				(3,5)
+	End					()
+	
+?_NRMVASH05_ENDING04TXT4
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Coming Eidon?")
+	TextClose			()
+	Sync				(2,6)
+	Delay				(16)
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Yes, Gia...")
+	TextClose			()
+	Sync				(3,7)
+	End					()
+?_NRMVASH05_GAENDING04TXT
+	TextOpen			()
+	TextIcon			(ICON_GUARD01)
+	TextWrite			("It is going=")
+						("to take me")
+						("a while to=")
+						("get used to")
+						("Eidon as Elder.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMVASH05_GIENDING04TXT
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("It was a moving=")
+						("ceremony...")
+						("Up to that=")
+						("last part.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMVASH05_MNENDING04TXT
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Long live=")
+						("Eidon!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMVASH05_WNENDING04TXT	
+	TextOpen			()
+	TextIcon			(ICON_WOMAN)
+	TextWrite			("Eidon is the=")
+						("man....")
+						("but Gia wears=")
+						("the pants.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/********************************/
+//	END NRMVASH05 ENDING04
+/********************************/

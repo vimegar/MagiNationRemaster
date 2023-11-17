@@ -1,0 +1,414 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP01\HLDCELL01_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP01\HLDCELL01_TXT.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP01\HLDCELL_BAT.MGI
+
+/********************************//********************************/
+// GENERIC
+/********************************//********************************/
+?_HLDCELL01_LOAD
+	HeroSetDoor				(7,21)
+
+?_HLDCELL01
+	SetXRAMByte				(Exit_Disable,0)
+	SetLoadScript			(?_HLDCELL01_LOAD)
+	SceneNew				()
+	LoadMap					(MAP_HLDCELL01)
+
+	LoadVRAM				(VRM_HLDMAZE,PAL_HLDMAZE)
+	LoadTriggers			(TR_HLDCELL01)
+	LoadHotspots			(HS_HLDCELL01)
+	LoadPalette				(PAL_HERO)
+
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,32,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+
+	SongStart				(SONGID_shadowhold)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	CopyTileBlock			(32,30,0,2,2,7,18)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END GENERIC
+/********************************//********************************/
+
+/********************************//********************************/
+// CAPTURED
+/********************************//********************************/
+?_HLDCELL01_CAPTURED
+	SetGamecount			(GC_SHADOWHOLD_JAIL)
+	SetXRAMByte				(Exit_Disable,1)
+	Delay					(60)
+	SetGamecount			()
+	SceneNew				()
+	InventoryTake			(INV_TYPE_ITEM,INV_BALOO_LEAF,255)
+	InventoryTake			(INV_TYPE_ITEM,INV_BALOO_SAP,255)
+	InventoryTake			(INV_TYPE_ITEM,INV_BALOO_ROOT,255)
+	SetXRAMByte				(GS_Hero_Ability,0)
+	LoadMap					(MAP_HLDCELL01)
+	LoadTriggers			(TR_HLDCELL01)
+	LoadHotspots			(HS_HLDCELL01)
+	LoadPalette				(PAL_HERO)
+
+	ThatActorInit			(HEROACTOR,?ANIM_AI,8,21,32,0,_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,32,12,32,2,_ARDCLOAK,?_END)
+
+	OverlayInit				(ACTOR02,72,116,29,?_SMOKEBRAST_ANIM)
+
+	LoadVRAMTiles			(2,BIT_FEATHER,0,0)
+	LoadVRAMTiles			(27,BIT_ARDCLOAKMAN,2,0)
+	LoadVRAMTiles			(56,BIT_SMOKEDEAL,29,0)
+
+	ThatActorStart			(HEROACTOR)
+
+	HeroSetCamera			()
+	PalClearAnim			(0,15,31,31,31)
+
+	SongStart				(SONGID_destruction)
+
+	SceneReady				()
+	PalFade					(0,15,32,0)
+
+	End						()
+
+/********************************/
+// ACTORS
+_FEATHER_TALKER
+	SetText					(_TXT_FEATHER)
+	ThisActorStop			()
+
+_ARDCLOAK
+	CameraSeekActor			(ACTOR01,3)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,8,20,32,0,_TONY_ACTION,?_END)
+	ThatActorStart			(HEROACTOR)
+	Delay					(32)
+
+	ThisActorSetAnimDelay	(?_CLOAKMAN_RUN_LEFT_ANIM,24)
+							(?_CLOAKMAN_STAND_LEFT_ANIM,0)
+	Delay					(32)
+
+	CameraSeekActor			(HEROACTOR,3)
+	ScrollMap				(32,0,3)
+	SetAnyEventMaster		()
+	End						()
+
+
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_LEFT,128)
+							(?_HERO_SLOSHED_RIGHT,32)
+							(?_HERO_SLOSHED_LEFT,64)
+							(?_HERO_STAND_UP_ANIM,0)
+	SetText					(_TXT_OUCH)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,24)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetText					(_TXT_BEEN_CAUGHT)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+	SetText					(_TXT_GOTTA_GET_OUT)
+	WaitAnyEventText		()
+	SetScroll				(_SCROLL_LONG_DELAY)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UP_ANIM)
+
+_TONY_EEEK
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(_TXT_EEEK)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,16)
+	SetText					(_TXT_WHAT_WAS_THAT)
+	WaitAnyEventText		()
+	ThatActorStart			(ACTOR01)
+	End						()	
+
+_TONY_ACTION
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	WaitAnyEventMaster		()
+
+	ThatActorInit			(ACTOR01,?TRIGGER_AI,15,13,32,0,?_FEATHER_ANIM,_FEATHER_TALKER)
+
+	Delay					(32)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(_TXT_QUIET_AGAIN)
+	WaitAnyEventText		()
+	Delay					(64)
+	SetText					(_TXT_I_WONDER)
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,32)
+							(?_HERO_WALK_RIGHT_ANIM,64)
+							(?_HERO_WALK_LEFT_ANIM,64)
+							(?_HERO_WALK_RIGHT_ANIM,64)
+							(?_HERO_WALK_LEFT_ANIM,64)
+							(?_HERO_WALK_RIGHT_ANIM,32)
+							(?_HERO_STAND_UP_ANIM,0)
+	WaitAnyEventText		()
+	SetText					(_TXT_STUCK_HERE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_BACK_DOWN_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+
+
+	SetText					(_TXT_TOAST)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,24)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+							(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+
+	SetText					(_TXT_FAMILIAR)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_BACK_DOWN_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+
+	Delay					(16)
+	SongStop				()
+
+	SetScroll				(_SCROLL_BREAK_DOOR)
+	ThatActorStart			(ACTOR02)
+	CopyTileBlock			(32,30,0,2,2,7,18)
+	End						()
+
+_TONY_ESCAPE
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(_TXT_GEEZ)
+	WaitAnyEventText		()
+	ThisActorSetAI			(?SCROLLER_AI)
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+
+	SetText					(_TXT_HELLO)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,112)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+							(?_HERO_STAND_LEFT_ANIM,24)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+							(?_HERO_STAND_LEFT_ANIM,24)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+
+	SetText					(_TXT_EWW)
+	WaitAnyEventText		()
+
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetText					(_TXT_WELL_WHOEVER)
+	Delay					(16)
+
+	SongStart				(SONGID_shadowhold)
+	
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+
+/********************************/
+// SCROLL
+_SCROLL_LONG_DELAY
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_EEEK)
+	End						()
+
+_SCROLL_BREAK_DOOR
+	SFX						(SFXID_FIRE_ATTACK)
+	ScrollMap				(2,0,4)
+	ScrollMap				(2,0,-4)
+	ScrollMap				(2,4,0)
+	ScrollMap				(2,-4,0)
+	ScrollMap				(2,0,4)
+	ScrollMap				(2,0,-4)
+	ScrollMap				(2,4,0)
+	ScrollMap				(2,-4,0)
+	ThatActorSetScript		(HEROACTOR,_TONY_ESCAPE)
+	End						()
+
+/********************************/
+// TEXT
+_TXT_OUCH
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Ouch...")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_TXT_BEEN_CAUGHT
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I've been=")
+						("caught again.")
+						("This sure isn't=")
+						("helping my")
+						("confidence any.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_TXT_GOTTA_GET_OUT
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I've got to get=")
+						("out of here.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+	
+_TXT_EEEK
+	TextClose			()
+	TextOpen			()
+	TextWrite			("EEEEEEEEEEEK!!!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_TXT_WHAT_WAS_THAT
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("W-What was that=")
+						("noise?")
+	TextClose			()
+	SetEventText		(7)
+	End					()
+_TXT_QUIET_AGAIN
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(".........hmm.=")
+						("It's quiet")
+						("again.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_I_WONDER
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I wonder who=")
+						("this Agram guy")
+						("is?")
+	TextClose			()
+	Delay				(128)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I'd rather not=")
+						("stick around to")
+						("find out...")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_TXT_STUCK_HERE
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("...but it looks=")
+						("like I'll have")
+						("to.")
+	TextClose			()
+	TextOpen			()
+	TextWrite			("Toast!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_TOAST
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("???")
+	TextClose			()
+	TextOpen			()
+	TextWrite			("Toast! Horny=")
+						("toads!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_FAMILIAR
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("This is a=")
+						("familiar")
+						("situation.")
+	TextClose			()
+
+	Delay				(16)
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Oh no! Morag=")
+						("took my")
+						("translation")
+						("bracelet...=")
+						("Who's there? I")
+						("can't see you!")
+	TextClose			()
+	TextOpen			()
+	TextWrite			("Humongous gravy=")
+						("boat...")
+						("felt-tipped=")
+						("pomegranate")
+						("prophecy!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_GEEZ
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("GEEZ! Be=")
+						("careful!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_HELLO
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Hello?")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_EWW
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Eww. I think I=")
+						("liked it better")
+						("in the cell.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_WELL_WHOEVER
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Well, whoever=")
+						("got me out of")
+						("there is gone.=")
+						("Looks like I'll")
+						("have to find=")
+						("the exit")
+						("myself.")
+	TextClose			()
+	SetAnyEventText		()
+	SetLoadScript		(?_HLDCELL01_LOAD)
+	SetXRAMByte			(Exit_Disable,0)
+	End					()
+
+_TXT_FEATHER
+	InventoryGive		(INV_TYPE_ITEM,INV_FEATHER,1)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("A feather. It=")
+						("sure looks out")
+						("of place here.")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End					()
+
+/********************************//********************************/
+// END CAPTURED
+/********************************//********************************/

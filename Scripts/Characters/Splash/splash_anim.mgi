@@ -1,0 +1,14 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+
+?_SPLASH_ANIM
+
+	FrameBlock:	(4,0,0)
+				(?SPLASH01)
+				(?SPLASH02)
+				(?SPLASH01)
+				(?SPLASH03)
+	
+	End			()

@@ -1,0 +1,90 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP08\UNDTOWN08_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP08\UNDTOWN08_TXT.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP08\UNDTOWN08_SCT.MGI
+
+?_UNDTOWN08
+
+/********************************//********************************/
+// INTRO
+/********************************//********************************/
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN08)
+	LoadHotspots			(HS_UNDTOWN08)
+	LoadTriggers			(TR_UNDTOWN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,5,15,0,?_KID01_STAND_DOWN_ANIM,?_UNDTOWN08_BRUB_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(40,BIT_KID01,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+	
+?_UNDTOWN08_BRUB_TALK
+	SetText					(?_UNDTOWN08_KID01_TXT01)
+	Jump					(?_FACE_KID01)
+	
+
+/********************************//********************************/	
+//	BRUB MINI-GAME RETURN	
+/********************************//********************************/		
+?_UNDTOWN08_BRUB_RET
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN08)
+	LoadHotspots			(HS_UNDTOWN08)
+	LoadTriggers			(TR_UNDTOWN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,15,0,_BRUBRET_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,5,15,0,?_KID01_STAND_RIGHT_ANIM,?_UNDTOWN08_BRUB_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(40,BIT_KID01,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	End						()
+
+/********************************/	
+//ACTORS
+
+_BRUBRET_TONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,32)
+	SetText					(_BRUB_RET_TEXT)
+	Sync					(2,0)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+
+
+/********************************/	
+// TEXT
+_BRUB_RET_TEXT
+	TextOpen				()
+	TextIcon				(ICON_BOY)
+	TextByte				(Brub_Byte)
+	TextWrite				("Wow, You=")
+							("got %X points!")
+							("Here you go.")	
+	TextClose				()
+	TextOpen				()
+	TextWrite				("Tony got=")
+							("%X Tickets!")
+	TextClose				()
+	If						([Brub_Byte = 0],_SKIP)
+_LOOP
+	InventoryGive			(INV_TYPE_ITEM,INV_TICKET,1)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte - 1])
+	If						([Brub_Byte > 0],_LOOP)
+_SKIP
+	Sync					(2,0)
+	End						()
+	
+/********************************//********************************/	
+// END BRUB MINI-GAME RETURN	
+/********************************//********************************/		

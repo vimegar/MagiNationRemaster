@@ -1,0 +1,24 @@
+?_NRMGEYSER05_DR_1
+	HeroToDoor		(0,7,25,8)
+	Jump			(?_NRMGEYSER04)
+
+?_NRMGEYSER05_DR_2
+	HeroToDoor		(10,23,6,0)
+	Jump			(?_NRMGEYSER02)
+
+?_NRMGEYSER05_DR_3
+	HeroToDoor		(23,8,0,8)
+	Jump			(?_NRMGEYSER06)
+
+?_NRMGEYSER05_DR_4
+	HeroToDoor		(23,19,0,19)
+	Jump			(?_NRMGEYSER06)
+
+?_NRMGEYSER05_TR_1
+	TriggerAlways		(Nrmgeyser_switch3,?_TXT_WONT_BUDGE,250,5,22,24)
+	InitSkip			(_SKIP)
+	SetScroll			(?_NRMGEYSER_QUAKIN)
+	Delay				(64)
+	SetScroll			(?_NRMGEYSER_STOP)
+_SKIP
+	End					()

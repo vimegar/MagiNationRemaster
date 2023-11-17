@@ -1,0 +1,171 @@
+/********************************/
+//	LOAD SCREEN SECRET
+/********************************/
+?_HDNLOAD01B
+	SceneNew				()
+	SetXRAMByte				(MENU_Disable,1)
+	LoadMap					(MAP_HDNLOAD01B)
+	LoadHotspots			(HS_HDNLOAD01B)
+	LoadTriggers			(TR_HDNLOAD01B)
+	LoadPalette				(PAL_HERO)	
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,4,30,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+/********************************/
+?_HDNLOAD01C
+	SceneNew				()
+	SetXRAMByte				(MENU_Disable,1)
+	LoadMap					(MAP_HDNLOAD01C)
+	LoadHotspots			(HS_HDNLOAD01C)
+	LoadPalette				(PAL_HERO)	
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,4,15,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,6,6,15,0,?_CLOAKMAN_STAND_DOWN_ANIM,_GAME_PLUS_MAN)
+	ThatActorInit			(ACTOR01,?TALKER_AI,8,4,15,27,?_JUKEBOX_ANIM,_JUKEBOX)
+	LoadVRAMTiles			(27,BIT_ARDCLOAKMAN,0,0)
+	LoadVRAMTiles			(9,BIT_JUKEBOX,27,0)
+	ThatActorStart			(HEROACTOR)
+	If						([Newgame_Plus = 0],_SKIP)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+/********************************/
+//	Actors
+_GAME_PLUS_MAN
+	ThisActorSetAnim		(?_CLOAKMAN_STAND_DOWN_ANIM)
+	SetText					(_NEWGAME_TEXT)
+	Jump					(?_FACE_CLOAKMAN)
+
+_JUKEBOX
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)	
+	SetText					(_JUKEBOX_TEXT)
+	ThisActorRestoreState	()
+	End						()
+/********************************/
+//	Text
+_NEWGAME_TEXT
+	If						([Newgame_Plus = 2],_FORMAT)
+	TextOpen				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("Go back to=")
+							("the start")
+							("screen and you=")
+							("will find a")
+							("surprise.")
+	TextClose				()
+	SetXRAMByte				(Newgame_Plus,2)
+	SetEventText			(1)
+	End						()
+
+_FORMAT
+	TextOpen				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("Would you=")
+							("like to format")
+							("your Game Pak?")
+	TextClear				()
+	TextWrite				(" No=")
+							(" Yes$")
+	TextMenu				(2)
+							(_NO)
+							(_YES)
+
+_NO
+	TextClear				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("Very well...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+_YES
+	TextClear				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("You will lose=")
+							("your saved")
+							("game if you=")
+							("do. Still want")
+							("to format?")
+
+	TextClear				()
+	TextWrite				(" No=")
+							(" Yes$")
+
+	TextMenu				(2)
+							(_NO)
+							(_YES2)
+
+_YES2
+	TextClear				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("It is done!")
+	TextClose				()
+	ExprXRAMByte			(Verification_String,[Verification_String + 1])
+	SoftReset				()
+
+_JUKEBOX_TEXT
+	MenuMusic				(SONGID_glade,			"Glade")
+							(SONGID_naroom,			"Vash Naroom")
+							(SONGID_shop,			"Shop")
+							(SONGID_lesson,			"Lesson")
+							(SONGID_random,			"Evu")
+							(SONGID_wencehouse,		"Sanctuary")
+							(SONGID_orwin,			"Orwin")
+							(SONGID_forest,			"Forest")
+					
+							(SONGID_overworld,		"Quest")	
+					
+							(SONGID_orotunnels,		"Weave")
+							(SONGID_giahut,			"Gia")
+					
+							(SONGID_undtunnels,		"Descent")
+							(SONGID_undtown,		"Bogrom")
+							(SONGID_undcaverns,		"Mushroom Farm")
+					
+							(SONGID_lavatubes,		"Cald")
+							(SONGID_caldtown,		"Ashyn")
+					
+							(SONGID_oroisland,		"Orlon")
+							(SONGID_ororuins,		"The Deep")
+							(SONGID_turtleride,		"Parathin")
+					
+							(SONGID_wencetheme,		"Rescue")
+							(SONGID_arderial,		"Arderial")
+					
+						
+							(SONGID_dream,			"DreamCreature")
+							(SONGID_lavavents,		"Danger")
+							(SONGID_battle,			"Core Battle")
+							(SONGID_boss,			"Boss")
+							(SONGID_agrambattle,	"Final Battle")
+					
+							(SONGID_maze,			"Shadow Geyser")
+							(SONGID_shadowhold,		"Shadowhold")
+							(SONGID_destruction,	"Wasteland")
+						
+						
+							(SONGID_korgzet,		"Mischief")
+							(SONGID_kzbattle,		"Villainy")
+							(SONGID_morag,			"Morag")
+							(SONGID_agramtheme,		"Agram")
+							
+							
+							(SONGID_secret,			"Curio")
+						
+							(SONGID_overture1,		"Overture Pt.1")
+							(SONGID_overture2,		"Overture Pt.2")
+							(SONGID_overture3,		"Overture Pt.3")
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)	
+	End						()
+/********************************/
+//	END LOAD SCREEN SECRET
+/********************************/

@@ -1,0 +1,28 @@
+/********************************/
+// JOURNEY TO ARDERIAL
+/********************************/
+?_ARDCLOUDS14_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_ARDGUARD)
+	TextWrite			("The palace is=")
+	Delay				(16)
+	TextWrite			("just up ahead!=")
+	Delay				(32)
+	TextWrite			("The Queen very=")
+	Delay				(16)
+	TextWrite			("much wishes to=")
+	Delay				(32)
+	TextWrite			("meet you.=")
+	Delay				(32)
+	TextIcon			(ICON_TONY)
+	TextWrite			("Queen?=")
+	Delay				(32)
+	TextClose			()
+	SetGamecount		(GC_ARDERIAL)
+	Jump				(?_ARDCITY01_ATTACK)
+
+/********************************/
+// END JOURNEY TO ARDERIAL
+/********************************/
+
+

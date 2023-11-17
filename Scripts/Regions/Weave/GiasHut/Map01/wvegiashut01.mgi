@@ -1,0 +1,717 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\WEAVE\GIASHUT\MAP01\WVEGIASHUT01_DR.MGI
+%INCLUDE			REGIONS\WEAVE\GIASHUT\MAP01\WVEGIASHUT01_TXT.MGI
+%INCLUDE			REGIONS\WEAVE\GIASHUT\MAP01\GIASHUT_BAT.MGI
+
+
+/********************************//********************************/
+// GIA'S HUT
+/********************************//********************************/
+?_WVEGIASHUT01_FADEIN
+	SceneNew				()
+	SongFadeOut				(30)
+	SceneNew				()
+	PalClearAnim			(0,7,31,31,31)
+
+?_WVEGIASHUT01
+	SetXRAMByte				(Exit_Disable,1)
+	Switch					([GAMECOUNT])
+							(GC_CALD_INTRO,			?_WVEGIASHUT01_CALD_INTRO)
+							(GC_ARDERIAL_GEYSER,	?_WVEGIASHUT01_CRAZY_EIDON_MAN)
+	If						([GAMECOUNT >= GC_BEAT_OROTHE],?_WVEGIASHUT01_TRASHED)
+
+?_WVEGIASHUT01_GENERIC
+	SceneNew				()
+	LoadPalette				(PAL_HERO)
+	LoadMap					(MAP_WVEGIASHUT01)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?HERO_AI,23,36,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,40,0,?_END,?_END)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(42,BIT_EIDON,0,0)
+	LoadVRAMTiles			(48,BIT_EIDONWORK,48,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SetScroll				(?_WVEGIASHUT01_EIDON_INIT)
+	SongStart				(SONGID_giahut)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	End						()
+/********************************//********************************/
+// END GIA'S HUT
+/********************************//********************************/
+
+
+/********************************//********************************/
+// EIDON START POSITIONS
+/********************************//********************************/
+?_WVEGIASHUT01_EIDON_INIT
+	Switch					([GAMECOUNT])
+							(GC_QUEST_FOR_GIA,	_AT_WOODPILE)
+							(GC_NAROOM_GEYSER,	_BY_DOOR)
+							(GC_GLOVES,			_GLOVES)
+							(GC_BOOTS_QUEST,	_AT_WOODPILE)
+							(GC_CALD_GEYSER,	_BY_GARDEN)
+
+	ThatActorInit			(ACTOR00,?TALKER_AI,19,23,40,0,?_EIDON_STAND_RIGHT_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	End						()
+
+_GLOVES
+	Switch					([Blades_State])
+							(0,_AT_WOODPILE)
+							(1,_BEHIND_HOUSE)
+							(2,_BY_DOOR)
+
+_AT_WOODPILE
+	ThatActorInit			(ACTOR00,?TALKER_AI,20,26,40,0,?_EIDON_CHOP_LEFT_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	End						()
+_BEHIND_HOUSE
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,17,40,0,?_EIDON_STAND_LEFT_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	End						()
+_BY_DOOR
+	ThatActorInit			(ACTOR00,?TALKER_AI,22,22,40,0,?_EIDON_STAND_DOWN_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	End						()
+_BY_GARDEN
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,25,40,0,?_EIDON_STAND_DOWN_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	End						()
+
+/********************************//********************************/
+// END EIDON START POSITIONS
+/********************************//********************************/
+
+
+/********************************//********************************/
+// EIDON QFG GREET TONY (FROM HOTSPOT)
+/********************************//********************************/
+?_WVEGIASHUT01_QFG_GREET
+	If						([GAMECOUNT != GC_QUEST_FOR_GIA],?_END)
+	If						([Talked_To_Eidon],?_END)
+	SetXRAMBit				(Talked_To_Eidon,TRUE)
+	ThatActorSetScript		(ACTOR00,_EIDON)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UL_ANIM)
+	CameraSeek				(20,26,3)
+	SetText					(_TXT_EIDON)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,48)
+							(?_HERO_WALK_LEFT_ANIM,16)
+							(?_HERO_STAND_UL_ANIM,0)
+	ScrollMap				(16,2,1)
+	SetText					(_TXT_HELLO_TONY)
+	WaitEventText			(2)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UL_ANIM)
+
+_EIDON
+	ThisActorSetAnim		(?_EIDON_CHOP_LEFT_ANIM)
+	WaitEventText			(10)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,24,31,40,0,_TONY,?_END)
+	ThisActorSetAnim		(?_EIDON_STAND_DR_ANIM)
+	WaitEventText			(2)
+	ThisActorSetAnim		(?_EIDON_CHOP_LEFT_ANIM)
+	End						()
+
+/********************************/
+// TEXT
+_TXT_EIDON
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Eidon?")
+	TextClose			()
+	SetEventText		(10)
+	End					()
+
+_TXT_HELLO_TONY
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Oh hello Tony,=")
+	         			("Gia's inside.")
+	TextIcon			(ICON_TONY)
+	TextWrite 			("What are you=")
+	         			("doing here?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Nobody told=")
+	         			("you? I have")
+	         			("been training=")
+	         			("under Gia for")
+	         			("years.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Oh....")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+/********************************//********************************/
+// END EIDON QFG GREET TONY (FROM HOTSPOT)
+/********************************//********************************/
+
+
+/********************************//********************************/
+// GIAS HUT CALD INTRO
+/********************************//********************************/
+?_WVEGIASHUT01_CALD_INTRO
+	SceneNew				()
+	LoadPalette				(PAL_HERO)
+	LoadMap					(MAP_WVEGIASHUT01)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,22,38,40,0,_TONY,?_END)
+	ThatActorInit			(ACTOR00,?ANIM_AI,21,26,40,0,_EIDON,?_END)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(42,BIT_EIDON,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_giahut)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnimScroll	(?_HERO_WALK_UP_ANIM,96,0,-1)
+	Delay					(32)
+	ThisActorSetAnim		(?_HERO_STAND_UL_ANIM)
+	CameraSeek				(22,30,1)
+	WaitEventText			(1)
+	ThisActorSetAnimScroll	(?_HERO_WALK_UP_ANIM,64,0,-1)
+							(?_HERO_WALK_RIGHT_ANIM,16,1,0)
+							(?_HERO_WALK_UP_ANIM,80,0,-1)
+	Jump					(?_WVEGIASHUT02_ABDUCTION)
+
+_EIDON
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UL_ANIM,48)
+							(?_EIDON_STAND_DR_ANIM,16)
+	SetText					(_SOMETHING_AWFUL)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_WALK_UP_ANIM,80)
+	ThisActorStop			()
+	End						()
+
+/********************************/
+// TEXT
+_SOMETHING_AWFUL
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Welcome back,=")
+	         				("Tony.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Something awful=")
+	         				("just happened.")
+	         				("I need to talk=")
+	         				("to Gia.")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Okay,=")
+	         				("follow me.")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+/********************************//********************************/
+// END GIAS HUT CALD INTRO
+/********************************//********************************/
+
+
+/********************************//********************************/
+// GIA'S HUT TRASHED
+/********************************//********************************/
+?_WVEGIASHUT01_TRASHED
+	SceneNew				()
+	LoadPalette				(PAL_HERO)
+	LoadMap					(MAP_WVEGIASHUT01B)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?HERO_AI,23,36,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_destruction)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	End						()
+/********************************//********************************/
+// END GIA'S HUT
+/********************************//********************************/
+
+
+/********************************//********************************/
+// GIA'S HUT DURING ARDERIAL
+/********************************//********************************/
+?_WVEGIASHUT01_CRAZY_EIDON_MAN
+	SceneNew				()
+	LoadMap					(MAP_WVEGIASHUT01B)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?HERO_AI,23,36,40,0,?_HERO_STANDL_ANIM,?_END)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,23,22,40,0,?_EIDON_STAND_UP_ANIM,_EIDON_TALKER)
+	LoadVRAMTiles			(48,BIT_EIDON,0,0)
+	ThatActorStart			(HEROACTOR)
+	If						([GiaEidon_State > 0],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	SongStart				(SONGID_destruction)
+	End						()
+
+/********************************/
+// ACTORS
+_EIDON_TALKER
+	ThisActorSetAnim		(?_EIDON_STAND_UP_ANIM)
+	SetXRAMByte				(GiaEidon_State,1)
+	SetText					(_TXT_UM_EIDON)
+	WaitEventText			(5)
+	Jump					(?_FACE_EIDON)
+
+_EIDON_REMORSE
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UP_ANIM,128)
+	SetText					(_TXT_EIDON_REMORSE)
+	WaitEventText			(5)
+	Jump					(?_FACE_EIDON)
+
+_EIDON_LEAVE
+	ThisActorSetAnim		(?_EIDON_STAND_DOWN_ANIM)
+
+	If						([FACEHERO = FACE_LEFT],_TONY_RIGHT)
+	ThatActorSetScript		(HEROACTOR,_TONY_CONVICTION)
+	JumpLocal				(_LEAVE)
+
+_TONY_RIGHT
+	ThatActorSetScript		(HEROACTOR,_TONY_CONVICTION_RIGHT)
+
+_LEAVE
+	If						([FACEHERO = FACE_DOWN],_LEAVE_DOWN)
+	ThisActorSetAnimDelay	(?_EIDON_WALK_DOWN_ANIM,128)
+	ThisActorStop			()
+_LEAVE_DOWN
+	ThisActorSetAnimDelay	(?_EIDON_WALK_LEFT_ANIM,16)
+							(?_EIDON_WALK_DOWN_ANIM,128)
+	ThisActorStop			()
+
+_TONY_HONOR
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	WaitEventText			(5)
+	Jump					(?_FACE_HERO)
+
+_TONY_CONVICTION
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_DL_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,32)
+	JumpLocal				(_END)
+
+_TONY_CONVICTION_RIGHT
+	ThisActorSetAnimDelay	(?_HERO_STAND_RIGHT_ANIM,16)
+							(?_HERO_STAND_DR_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,32)
+
+_END
+	SetText					(_TXT_SEE_GIA_LATER)
+	WaitEventText			(5)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+
+/********************************/
+// TEXT
+_TXT_UM_EIDON
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Um, Eidon?")
+						("...")
+						("Eidon?")
+	SetEventText		(5)
+	TextIcon			(ICON_EIDON)
+	TextWrite			("...")
+						("...Tony.")
+						("You're alive.=")
+	TextIcon			(ICON_TONY)
+	TextWrite			("What are you=")
+						("doing here?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Something hit=")
+						("me after you=")
+						("were done")
+						("fighting...")
+						("I got kind of=")
+						("disoriented.")
+						("What happened?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I... uh...")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("What?")
+	TextClose			()
+
+	ThatActorSetScript	(HEROACTOR,_TONY_HONOR)
+	Delay				(32)
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Darn. I really=")
+						("shouldn't tell")
+						("him about the=")
+						("Arderials...")
+						("That would be=")
+						("disrespectful")
+						("since they want=")
+						("to stay-")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Tony? What's=")
+						("wrong?")
+	TextClose			()
+	SetEventText		(5)
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("...")
+	TextClose			()
+
+	ThatActorSetScript	(ACTOR00,_EIDON_REMORSE)
+	End					()
+
+_TXT_EIDON_REMORSE
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("It doesn't=")
+						("matter anyway.")
+	TextClose			()
+
+	SetEventText		(5)
+
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("I'm so sorry,=")
+						("Tony.  I really")
+						("feel that this=")
+						("is all my")
+						("fault.")
+						("If I had just")
+						("listened to")
+						("Orwin, you'd")
+						("probably be")
+						("home by now.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("...")
+
+	TextIcon			(ICON_EIDON)
+	TextWrite			("I'll be back")
+						("in Vash Naroom")
+						("if you need me.")
+						("Gia's there,")
+						("too.")
+	TextClose			()
+	ThatActorSetScript	(ACTOR00,_EIDON_LEAVE)
+	End					()
+
+_TXT_SEE_GIA_LATER
+	Delay				(64)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I can see Gia=")
+						("later.")
+						("What I need=")
+						("to do right now")
+						("is stop that")
+						("Arderial Shadow=")
+						("Geyser.")
+	TextClose			()
+	SetEventText		(5)
+	End					()
+/********************************//********************************/
+// END GIA'S HUT DURING ARDERIAL
+/********************************//********************************/
+
+/********************************//********************************/
+// SOAP GAG
+/********************************//********************************/
+?_WVEGIASHUT02_RET_SOAPGAG
+	SceneNew				()
+	LoadPalette				(PAL_HERO)
+	LoadMap					(MAP_WVEGIASHUT01)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,27,27,40,0,?_HERO_STAND_UP_ANIM,?_END)
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,25,40,0,?_EIDON_STAND_DOWN_ANIM,?_GAMECOUNT_EIDON_TALKER)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(42,BIT_EIDON,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_giahut)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	Delay					(32)
+	PalFade					(0,15,32,2)
+	SetText					(_SOAP_GAG)
+	End						()
+
+_SOAP_GAG
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("So that's=")
+							("where soap")
+							("comes from!=")
+							("I've always")
+							("wondered about=")
+							("that.")
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+
+	
+/********************************//********************************/
+// SOAP GAG
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ENDING 2
+/********************************//********************************/
+?_WVEGIASHUT01_ENDING2
+	SceneNew				()
+	LoadMap					(MAP_WVEGIASHUT01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,26,17,40,0,?_WVEGIASHUT01_WENCE_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,23,21,40,41,?_WVEGIASHUT01_GIA_END,?_DONT_TALK)
+	LoadVRAMTiles			(41,BIT_WENCE,0,0)
+	LoadVRAMTiles			(34,BIT_GIA,41,0)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SceneReady				()
+	SetScroll				(?_PANLEFT_SLOWLY)
+	Delay					(128)
+	SetScroll				(?_CAMSTOP)
+	WaitEventMaster			(1)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,2)
+	Jump					(?_HMTCAVE01_ENDING_2_PART_2)
+	End						()
+
+?_WVEGIASHUT01_WENCE_END
+	ThisActorSetAnimDelay	(?_WENCE_STAND_UP_ANIM,64)
+							(?_WENCE_WALK_DOWN_ANIM,16)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UL_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UL_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UL_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,64)
+							(?_WENCE_WALK_LEFT_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UR_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UR_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,32)
+							(?_WENCE_STAND_UR_ANIM,32)
+							(?_WENCE_STAND_UP_ANIM,64)
+							(?_WENCE_STAND_LEFT_ANIM,64)
+							(?_WENCE_STAND_UP_ANIM,64)
+							(?_WENCE_STAND_RIGHT_ANIM,64)
+							(?_WENCE_STAND_UP_ANIM,64)
+							(?_WENCE_STAND_UL_ANIM,16)
+							(?_WENCE_STAND_LEFT_ANIM,8)
+							(?_WENCE_STAND_DL_ANIM,4)
+							(?_WENCE_STAND_DOWN_ANIM,32)
+	ThisActorSetAnimScroll	(?_WENCE_WALK_DOWN_ANIM,16,0,1)
+							(?_WENCE_STAND_DOWN_ANIM,32,0,0)
+							(?_WENCE_RUN_DOWN_ANIM,8,0,2)
+							(?_WENCE_RUN_DOWN_ANIM,8,0,2)
+							(?_WENCE_RUN_DOWN_ANIM,8,0,2)
+							(?_WENCE_STAND_DOWN_ANIM,32,0,0)
+							(?_WENCE_WALK_LEFT_ANIM,16,-1,0)
+							(?_WENCE_STAND_UP_ANIM,16,0,0)
+							(?_WENCE_WALK_UP_ANIM,8,0,0)
+	ThatActorStart			(ACTOR00)
+	ThisActorStop			()
+	ThisActorSetAnimDelay	(?_WENCE_RUN_DOWN_ANIM,4)
+							(?_WENCE_RUN_RIGHT_ANIM,16)
+							(?_WENCE_STAND_UP_ANIM,16)
+							(?_WENCE_RUN_UP_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,16)
+							(?_WENCE_RUN_UP_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,16)
+							(?_WENCE_RUN_UP_ANIM,8)
+							(?_WENCE_RUN_UP_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+	SetEventMaster			(1)
+	ThisActorSetAnimDelay	(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UL_ANIM,8)
+							(?_WENCE_STAND_UP_ANIM,8)
+							(?_WENCE_STAND_UR_ANIM,8)
+	End						()
+
+?_WVEGIASHUT01_GIA_END
+	Delay					(128)
+	ThatActorStart			(HEROACTOR)
+	Delay					(4)
+	ThisActorSetAnimDelay	(?_GIA_RUN_DOWN_ANIM,8)
+							(?_GIA_STAND_RIGHT_ANIM,16)
+							(?_GIA_WALK_DOWN_ANIM,16)
+							(?_GIA_STAND_UR_ANIM,96)
+							(?_GIA_WALK_UP_ANIM,32)
+	ThisActorStop			()
+	End						()
+
+?_PANLEFT_SLOWLY
+	ScrollMap				(1,-1,0)
+							(3,0,0)
+	Jump					(?_PANLEFT_SLOWLY)
+/********************************//********************************/
+// END ENDING 2
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ENDING 3
+/********************************//********************************/
+?_WVEGIASHUT01_ENDING3
+	SceneNew				()
+	LoadMap					(MAP_WVEGIASHUT01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_WVEGIASHUT01)
+	LoadTriggers			(TR_WVEGIASHUT01)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,21,25,40,0,?_WVEGIASHUT01_EIDON_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,23,28,40,68,?_WVEGIASHUT01_GIA_END2,?_DONT_TALK)
+	LoadVRAMTiles			(42,BIT_EIDON,0,0)
+	LoadVRAMTiles			(20,BIT_EIDONWORK,48,0)
+	LoadVRAMTiles			(34,BIT_GIA,68,0)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SceneReady				()
+	WaitEventMaster			(2)
+	Delay					(128)
+	ThatActorStart			(HEROACTOR)
+	Delay					(8)
+	ThatActorStart			(ACTOR00)
+	WaitEventMaster			(1)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,2)
+	Jump					(?_HMTCAVE01_ENDING_2_PART_2)
+	End						()
+
+?_WVEGIASHUT01_EIDON_END
+	ThisActorSetAnimDelay	(?_EIDON_CHOP_LEFT_ANIM,192)
+							(?_EIDON_STAND_DL_ANIM,64)
+							(?_EIDON_STAND_DOWN_ANIM,8)
+							(?_EIDON_STAND_DR_ANIM,8)
+							(?_EIDON_STAND_RIGHT_ANIM,32)
+	ThisActorSetAnimScroll	(?_EIDON_WALK_RIGHT_ANIM,48,1,0)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_RIGHT_ANIM,64)
+							(?_EIDON_WALK_DOWN_ANIM,16)
+							(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,64)
+							(?_EIDON_STAND_UL_ANIM,32)
+							(?_EIDON_WALK_RIGHT_ANIM,16)
+							(?_EIDON_WALK_UP_ANIM,32)
+							(?_EIDON_STAND_LEFT_ANIM,32)
+							(?_EIDON_STAND_UL_ANIM,4)
+							(?_EIDON_STAND_UP_ANIM,64)
+							(?_EIDON_WALK_RIGHT_ANIM,16)
+	ThisActorSetAnimScroll	(?_EIDON_WALK_UP_ANIM,34,0,-1)
+							(?_EIDON_WALK_LEFT_ANIM,48,0,0)
+							(?_EIDON_STAND_UP_ANIM,32,0,0)
+							(?_EIDON_WALK_UP_ANIM,14,0,-1)
+							(?_EIDON_STAND_UP_ANIM,32,0,0)
+							(?_EIDON_WALK_UP_ANIM,16,0,-1)
+							(?_EIDON_STAND_UP_ANIM,32,0,0)
+							(?_EIDON_WALK_UP_ANIM,16,0,-1)
+							(?_EIDON_STAND_UP_ANIM,32,0,0)
+	ThisActorSetAnimDelay	(?_EIDON_WALK_UP_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UL_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UL_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UL_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,64)
+							(?_EIDON_STAND_LEFT_ANIM,64)
+							(?_EIDON_WALK_LEFT_ANIM,48)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UR_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UR_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,32)
+							(?_EIDON_STAND_UR_ANIM,32)
+							(?_EIDON_STAND_UP_ANIM,64)
+							(?_EIDON_STAND_RIGHT_ANIM,64)
+							(?_EIDON_STAND_DOWN_ANIM,32)
+							(?_EIDON_WALK_DOWN_ANIM,32)
+							(?_EIDON_STAND_DOWN_ANIM,16)
+	ThisActorSetAnimScroll	(?_EIDON_RUN_DOWN_ANIM,8,0,2)
+							(?_EIDON_RUN_DOWN_ANIM,8,0,2)
+							(?_EIDON_RUN_DOWN_ANIM,8,0,2)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_DOWN_ANIM,32)
+							(?_EIDON_STAND_RIGHT_ANIM,32)
+							(?_EIDON_WALK_RIGHT_ANIM,16)
+							(?_EIDON_WALK_UP_ANIM,8)
+	ThatActorStart			(ACTOR00)
+	ThisActorStop			()
+	ThisActorSetAnimDelay	(?_EIDON_RUN_DOWN_ANIM,24)
+							(?_EIDON_RUN_LEFT_ANIM,16)
+							(?_EIDON_CHOPCHOP_LEFT_ANIM,196)
+	SetEventMaster			(1)
+	End						()
+
+?_WVEGIASHUT01_GIA_END2
+	Delay					(128)
+	ThisActorSetAnimDelay	(?_GIA_WALK_UP_ANIM,48)
+							(?_GIA_STAND_UP_ANIM,64)
+							(?_GIA_STAND_UL_ANIM,64)
+							(?_GIA_STAND_UR_ANIM,64)
+							(?_GIA_WALK_UP_ANIM,64)
+	SetEventMaster			(2)
+	ThisActorStop			()
+	ThisActorSetAnimDelay	(?_GIA_RUN_DOWN_ANIM,8)
+							(?_GIA_STAND_DOWN_ANIM,128)
+							(?_GIA_STAND_LEFT_ANIM,16)
+							(?_GIA_WALK_UP_ANIM,16)
+	ThisActorStop			()
+	End						()
+/********************************//********************************/
+// END ENDING 3
+/********************************//********************************/

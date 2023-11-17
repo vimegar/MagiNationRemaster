@@ -1,0 +1,16 @@
+/********************************/
+?_FORT01_DR_1
+		HeroSetDoor	(31,36)
+		Jump		(?_OVRSURFACE01)
+
+?_FORT01_DR_2
+		HeroSetDoor	(5,17)
+		Jump		(?_FORT03)
+
+?_FORT01_DR_3
+		HeroSetDoor	(9,15)
+		Jump		(?_FORT02)
+
+?_FORT01_TR_1
+		If			([GAMECOUNT > GC_BOOTS_QUEST && Ormagon_Quest = 1],?_FORT01_HUNTERS_NOTE)
+		End			()

@@ -1,0 +1,158 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP03\UNDCAVE03_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP03\UNDCAVE03_TXT.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP03\UNDCAVE03_SCT.MGI
+
+/********************************/
+?_UNDCAVERN03
+	SceneNew		()
+	LoadMap			(MAP_UNDCAVERN03)
+	//LoadEncounters	(EN_UNDCAVERN,ENCOUNTER_FRQ_NORM,?_UNDCAVERN_RE_ENTER)
+	LoadHotspots	(HS_UNDCAVERN03)
+	LoadTriggers	(TR_UNDCAVERN03)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,60,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_CAVERN_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_CAVERN_RNDBAT)
+
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,50,52,?_END,?_END)
+	LoadVRAMTiles			(21,BIT_EXPLODESHROOM,52,0)
+
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_UNDCAVERN03)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undcaverns)
+	If				([Ormagon_Quest < 2],_DONT_COPY)
+	CopyTileBlock	(60,53,0,7,18,31,0)
+_DONT_COPY
+	If				([!Uncavern03_PoisonedWall],_SKIP_WALL_OPENING)
+	CopyTileBlock	(60,45,41,7,9,31,0)
+_SKIP_WALL_OPENING
+	If				([!Uncavern03_Stairway],_SKIP_STAIRWAY_OPENING)
+	DrawTile		(40,10,60,232,COLLCODE_HS05)
+_SKIP_STAIRWAY_OPENING
+	SceneReady		()
+	End				()
+
+?_UNDCAVERN03_OPENING
+	SetXRAMBit			(Uncavern03_PoisonedWall,TRUE)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	Delay				(32)
+	SetScroll			(_QUAKE)
+	CopyTileBlock		(60,53,41,7,9,31,0)
+	Delay				(64)
+	SetScroll			(_QUAKE)
+	CopyTileBlock		(60,45,41,7,9,31,0)
+	Delay				(64)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()	
+	
+_QUAKE	
+	ScrollMap			(3,-1,0)
+						(3,1,0)
+						(3,0,-1)
+						(3,0,1)
+						(3,-1,0)
+						(3,1,0)	
+						(3,0,-1)
+						(3,0,1)
+	End					()
+
+/********************************/
+?_UNDCAVERN03_MUSHPOP
+	SetXRAMBit				(Uncavern03_Stairway,TRUE)
+	ThatActorSetScript		(ACTOR00,_POP)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+_POP
+	ThisActorLocRelative	(HEROACTOR)
+	ThisActorSetAnim		(?_SHROOM_EXPLODE_ANIM)
+	Delay					(16)
+	DrawTile				(40,10,60,232,COLLCODE_HS05)
+	Delay					(48)
+	ThisActorStop			()
+	
+?_UNDCAVERN03_MUSHPOP_FUN
+	ThatActorSetScript		(ACTOR00,_POP)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+_POP
+	ThisActorLocRelative	(HEROACTOR)
+	ThisActorSetAnim		(?_SHROOM_EXPLODE_ANIM)
+	ThisActorDrawTile		(0,0,50,253,COLLCODE_SPACE)
+	Delay					(64)
+	ThisActorStop			()
+/********************************//********************************/
+// Secret Ormagon Room
+/********************************//********************************/
+	
+	
+?_UNDCAVERN11
+	SceneNew		()
+	LoadMap			(MAP_UNDCAVERN11)
+	//LoadEncounters	(EN_UNDCAVERN,ENCOUNTER_FRQ_NORM,?_UNDCAVERN_RE_ENTER)
+	LoadHotspots	(HS_UNDCAVERN11)
+	LoadPalette		(PAL_HERO)
+	SetItemScript	(_ITEM_SCRIPT)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,20,0,?_RAINER,?_CAVERN_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,20,0,?_RAINER,?_CAVERN_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_UNDCAVERN11)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undcaverns)
+	SceneReady		()
+	End				()
+
+_ITEM_SCRIPT
+	If					([[USEITEM_ID = INV_HOLLOW_STOOL]&&[USEITEM_CollCode = COLLCODE_ITEM01]],_BLOWING_THE_STOOL)
+	End					()
+
+_BLOWING_THE_STOOL
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Tony blows=")
+						("through one")
+						("of the stool's=")
+						("hollow legs.")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	Delay				(100)
+	SetScroll			(_QUAKE)
+	Delay				(100)
+	SetScroll			(_QUAKE)
+	Delay				(100)
+	SetScroll			(_QUAKE)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Uh, oh.")
+	TextClose			()
+	Delay				(32)
+	Jump				(?_CAVERN_ORMAGONBAT)
+	
+_QUAKE	
+	ScrollMap			(3,-1,0)
+						(3,1,0)
+						(3,0,-1)
+						(3,0,1)
+						(3,-1,0)
+						(3,1,0)	
+						(3,0,-1)
+						(3,0,1)
+	End					()
+	

@@ -1,0 +1,51 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\RIVER\MAP03\NRMRIVER03_DR.MGI
+%INCLUDE			REGIONS\NAROOM\RIVER\MAP03\NRMRIVER03_TXT.MGI
+
+/********************************/
+?_WARPPORTAL
+
+	SceneNew			()
+	NewGame				(SCRIPT_NEWGAME_VANILLA)	
+
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive			(EEBIT,98)
+	BtlRingGive         (WEEBO,20)
+
+	SetGamecount		(GC_UND_GEYSER)
+
+	//SetXRAMByte			(ANIMITE_LavaArboll, 20)
+	SetXRAMWord			(GS_Animite,999)
+
+	//SetXRAMByte			(INV_ITEM_CloudFrond,1)
+	//SetXRAMBit			(I_Specialkey,TRUE)
+	SetXRAMBit			(Sick_Orwin,TRUE)
+
+	SetXRAMByte			(GS_Hero_Ability,5)
+
+	//SetXRAMWord			(Ferry_Price,50)
+	//SetXRAMByte			(Ferry_State,3)
+
+	InventoryGive		(INV_TYPE_INFUSED,FUROK,20)
+
+	//HeroSetDoor			(3,14)
+	//Jump				(?_UNDCAVERN08)
+
+	LoadMap				(MAP_NRMRIVER03)
+	LoadHotspots		(HS_NRMRIVER03)
+	LoadPalette			(PAL_HERO)
+
+	ThatActorInit		(HEROACTOR,?HERO_AI,10,11,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroSetCamera		()
+	SceneReady			()
+
+	//MenuRingBank		()
+
+	End					()
+

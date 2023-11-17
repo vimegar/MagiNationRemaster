@@ -1,0 +1,30 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP06\CLDLAVAVENT06_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP06\CLDLAVAVENT06_TXT.MGI
+
+/********************************/
+
+?_CLDLAVAVENT06
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVAVENT06)
+	LoadHotspots	(HS_CLDLAVAVENT06)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,60,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit	(ACTOR1C,?RAINDROP_AI,10,9,60,70,?_SMALLWIRLPOOL_APPEAR,?_CLDLAVAVENT01B)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1C)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles	(16,BIT_SMALLWHIRL,70,0)
+	SetBtlReturn	(?_CLDLAVAVENT06)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_lavatubes)
+	SceneReady		()
+	End				()
+	

@@ -1,0 +1,93 @@
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_CLDVENTINT01
+	SceneNew				()
+	LoadMap					(MAP_CLDVENTINT01)
+	LoadHotspots			(HS_CLDVENTINT01)
+	LoadTriggers			(TR_CLDVENTINT01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/
+
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_CLDVENTINT02
+	SceneNew				()
+	LoadMap					(MAP_CLDVENTINT02)
+	LoadHotspots			(HS_CLDVENTINT02)
+	LoadTriggers			(TR_CLDVENTINT02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/
+
+/********************************//********************************/
+// WHIRLPOOL SECRET
+/********************************//********************************/
+?_CLDLAVAVENT01B
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?ANIM_AI,14,12,30,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	Jump					(?_CLDUNDHYREN_RET)
+?_CLDLAVAVENT01B_RET
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,12,30,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+?_CLDUNDHYREN_RET
+	LoadMap					(MAP_CLDLAVAVENT01B)
+	LoadHotspots			(HS_CLDLAVAVENT01B)
+	LoadPalette				(PAL_HERO)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,30,0,?_RAINER,?_UNDHYREN_RNDBAT)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_CLDLAVAVENT01B_RET)
+//	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	SceneReady				()
+	End						()
+
+
+/********************************//********************************/
+// END WHIRLPOOL SECRET
+/********************************//********************************/
+
+/********************************//********************************/
+// HYREN ROOM
+/********************************//********************************/
+?_CLDHYRENROOM
+	SceneNew				()
+	LoadMap					(MAP_CLDHYRENROOM)
+	LoadHotspots			(HS_CLDHYRENROOM)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,25,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,25,0,?_RAINER,?_CLDHYREN_RNDBAT)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	HeroFromDoor			()
+	SetBtlReturn			(?_CLDHYRENROOM)
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END HYREN ROOM
+/********************************//********************************/

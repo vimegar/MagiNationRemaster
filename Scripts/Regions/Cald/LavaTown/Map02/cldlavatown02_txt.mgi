@@ -1,0 +1,369 @@
+/********************************/
+// PARTY
+/********************************/
+?_CLDLVTN02_POINTER_TXT
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Hey, Tony!=")
+						("Go check out")
+						("the magic show.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDLVTN02_MAGIC_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Welcome to the=")
+						("soon to be")
+						("famous Cald=")
+						("Magic Show!!!")
+						("My lovely=")
+						("assistant and")
+						("I will perform=")
+						("daring feats!")
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Maybe later=")
+						(" See the show$")
+	TextMenu			(2)
+						(_MAGIC_SHOW_NO2)
+						(_MAGIC_SHOW_YES2)
+_MAGIC_SHOW_NO2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Maybe later...")
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Come back=")
+						("anytime!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_MAGIC_SHOW_YES2
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	If					([FACEHERO = FACE_LEFT],_TJ_LEFT)
+	ThatActorSetScript	(HEROACTOR,?_CLDLVTN02_MAGIC_TJ)
+	Jump				(_GO_HERE)
+_TJ_LEFT
+	ThatActorSetScript	(HEROACTOR,?_CLDLVTN02_MAGIC_TJ_RIGHT)
+_GO_HERE
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Okay, I'll=")
+						("watch...")
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("ALRIGHT! Give=")
+						("me a little")
+						("space please.=")
+	Delay				(24)
+	SetAnyEventText		()
+	WaitAnyEventText	()
+	ThatActorSetScript	(ACTOR00,?_OLDMAN_STAND_DOWN_ANIM)
+	TextWrite			("Thank you...")
+						("For my first=")
+						("trick I will")
+						("turn my lovely=")
+						("assistant into")
+						("a ferocious,")
+						("horrible beast!")
+	ThatActorSetScript	(ACTOR01,?_CLDLVTN02_ASSISTANT_Q)					
+	TextIcon			(ICON_GIRL)
+	TextWrite			("WHAT!?!?!=")
+						("That isn't")
+						("what we agreed=")
+						("to!")
+	TextClose			()
+	ThatActorSetScript	(ACTOR00,?_CLDLVTN02_MAGICIAN_Q)
+	Delay				(24)
+	SetEventText		(41)
+	WaitEventText		(51)
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Oops, I did it=")
+						("again!")
+	TextClose			()
+	SetEventText		(52)	
+	WaitEventMaster		(53)
+	Delay				(24)
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("AIAIGGGGHHH!!!=")
+	TextClose			()
+	WaitEventText		(55)
+	TextOpen			()
+	SetEventText		(56)
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Okay, okay,=")
+						("let me try")
+						("to fix things!")
+	TextClose			()
+	Delay				(24)
+	SetEventText		(57)
+	WaitEventText		(61)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("...!?")
+	TextClose			()
+	SetEventText		(62)
+	End					()
+
+?_CLDLVTN02_LEAVE_TXT
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Ah.. that's the=")
+						("right one.")
+	TextIcon			(ICON_GIRL)
+	TextWrite			("I'm out of here=")
+						("you idiot!")
+	TextClose			()	
+	SetEventText		(71)
+	WaitEventText		(72)
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Oh well....")
+	TextClose			()
+	SetEventText		(73)
+	SetEventText		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+
+?_CLDLVTN02_MAGIC_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("This is the=")
+						("first magic")
+						("show we've=")
+						("ever done.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDLVTN02_MAGIC_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("For my next=")
+						("trick I will")
+						("teleport you=")
+						("home!")
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_CLDLVTN02_BACK_TJ)
+	TextIcon			(ICON_TONY)
+	TextWrite			("No, that's okay=")
+						("I'll just....")
+	TextClose			()
+	Delay				(24)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,13,32,20,151,?_BIG_SMOKE_ANIM,?_DONT_TALK)
+	Delay				(72)
+	CameraSeek			(10,7,2)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,10,7,20,82,?_SMOKE2_ANIM,?_DONT_TALK)
+	Delay				(56)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,10,7,20,0,?_CLDLVTN02_TJ_FALL,?_DONT_TALK)
+	WaitAnyEventText	()
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Great... now=")
+						("what am I")
+						("supposed to do?")
+	TextClose			()
+	ThatActorSetScript	(ACTOR05,?_OLDMAN_STAND_UP_ANIM)
+	CameraSeek			(14,28,2)
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Ummmm... jump?")
+	TextClose			()
+	CameraSeekActor		(HEROACTOR,2)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("That is SO=")
+						("comforting...")
+	TextClose			()
+	SetEventText		(23)
+	End					()
+
+?_CLDLVTN02_RETIRE_TXT
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Sorry, but I=")
+						("am retired...")
+	TextClose			()
+	SetEventText		(1)
+	End					()	
+?_CLDLAVATOWN06_CONSCIENCE_TXT
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I'm not going=")
+						("to leave my")
+						("own party!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDLAVATOWN06_PARTY_TXT
+	TextOpen			()
+//	TextIcon			(ICON_MAN03)
+	TextWrite			("Leaving so=")
+						("soon, Tony?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END PARTY
+/********************************//********************************/
+
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT01
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Aren't the=")
+						("lava lamps")
+						("pretty?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT01
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("The people in=")
+						("this town are")
+						("fools.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT02
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Hey, hey, I=")
+						("bet those Lava")
+						("Arbolls love=")
+						("really hot=")
+						("places!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT02
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("It's too hot=")
+						("to move around")
+						("here.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT03
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Leave me alone.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT03
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Hmph.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT04
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Will you stop=")
+						("the geyser?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT04
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("I've never=")
+						("seen a geyser.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT05
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("How is your=")
+						("day today?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT05
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("The bridges=")
+						("here were all")
+						("built by=")
+						("Valkan.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDTOWN02_GIRL04_TXT06
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("What a great=")
+						("day today is.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDTOWN02_YOUNGMAN_TXT06
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("You're still=")
+						("alive?")
+						("Cool!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+

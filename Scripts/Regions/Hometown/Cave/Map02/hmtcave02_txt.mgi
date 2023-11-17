@@ -1,0 +1,9 @@
+?_HMTCAVE02_HOLDER_1
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Well, I guess")
+						("I'd better get=")
+						("this over with.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()

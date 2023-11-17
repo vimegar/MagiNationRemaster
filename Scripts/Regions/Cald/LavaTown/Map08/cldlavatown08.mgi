@@ -1,0 +1,47 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP08\CLDLAVATOWN08_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP08\CLDLAVATOWN08_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP08\CLDLAVATOWN08_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP08\CLDLAVATOWN08_PEOPLE.MGI
+
+/********************************/
+
+?_CLDLAVATOWN08
+	Switch					([GAMECOUNT])
+							(GC_CALD_INTRO,?_CLDLAVATOWN08_TRYNCOUSINS)
+							(GC_ARBOLL_HUNT,?_CLDLAVATOWN08_TRYNCOUSINS)
+							(GC_LAVA_BRIDGE,?_CLDLAVATOWN08_TRYNCOUSINS)
+							(GC_BOOTS_QUEST,?_CLDLAVATOWN08_TRYNCOUSINS)
+							(GC_CALD_GEYSER,?_CLDLAVATOWN08_TRYNCOUSINS)
+
+	If						([Cold_Shoulder],?_CLDLAVATOWN08_COLDSHOULDER)
+	
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDLAVATOWN08_WARMREUNION
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN08)
+	LoadHotspots			(HS_CLDLAVATOWN08)
+	LoadTriggers			(TR_CLDLAVATOWN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,11,4,16,0,?_BOY_STAND_DOWN_ANIM,?_CLDTOWN08_BOY_REUNION)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN08_BOY_REUNION
+	SetText					(?_CLDTOWN08_BOY_TXT01)
+	Jump					(?_FACE_BOY)			
+
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+

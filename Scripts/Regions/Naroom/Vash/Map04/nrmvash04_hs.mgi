@@ -1,0 +1,26 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH04)
+						(HOTSPOT_TRIGGER_WEST,?_NRMVASH04_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04_DR_3)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH04_DR_4)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04_DR_5)
+		
+		FileTriggers	(TR_NRMVASH04)
+						(TRIGGER_NORMAL,?_NRMVASH04_TR_1)
+						(TRIGGER_NORMAL,?_NRMVASH04_TR_2)
+
+/********************************/
+// MAPS CONNECTING VASH TO ARDERIAL
+/********************************/
+		FileHotspots	(HS_NRMVASH04B)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04B_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04B_DR_2)
+
+		FileHotspots	(HS_NRMVASH04C)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH04C_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH04C_DR_2)
+
+/********************************/
+// END MAPS CONNECTING VASH TO ARDERIAL
+/********************************/

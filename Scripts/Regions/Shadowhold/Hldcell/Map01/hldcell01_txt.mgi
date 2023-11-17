@@ -1,0 +1,10 @@
+?_HLDQONE01_TXT_21
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Ooo, a feather.")
+	TextClose			()
+
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End					()

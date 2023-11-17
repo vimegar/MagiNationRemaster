@@ -1,0 +1,19 @@
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_HDNUNDTUN02
+	SceneNew				()
+	LoadMap					(MAP_HDNUNDTUN02)
+	LoadHotspots			(HS_HDNUNDTUN02)
+	LoadTriggers			(TR_HDNUNDTUN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/

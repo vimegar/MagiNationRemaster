@@ -1,0 +1,9 @@
+/********************************/
+?_HMTCAVE03_DR_1
+		HeroToDoor	(11,29,10,0)
+		Jump		(?_HMTCAVE02)
+
+?_HMTCAVE03_DR_2
+		HeroToDoor	(34,0,8,29)
+		Jump		(?_HMTCAVE04)
+

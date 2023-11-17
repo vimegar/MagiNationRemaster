@@ -1,0 +1,8 @@
+?_FORT02_HCG_TXT1
+	TextOpen		()
+	TextIcon		(ICON_GOGOR)
+	TextWrite		("I got tired=")
+					("of waiting.")
+	TextClose		()
+	SetEventText	(1)
+	End				()

@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_NRMRIVER02)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMRIVER02_DR_1)
+		FileTriggers	(TR_NRMRIVER02)
+						(TRIGGER_CONFIG,?_NRMRIVER02_TR_1)
+						(TRIGGER_CONFIG,?_NRMRIVER02_TR_2)

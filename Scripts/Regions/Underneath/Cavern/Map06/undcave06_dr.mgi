@@ -1,0 +1,18 @@
+/********************************/
+?_UNDCAVERN06_DR_1
+?_UNDCAVERN06_DR_2
+?_UNDCAVERN06_DR_3
+?_UNDCAVERN06_DR_4
+		SetLoadScript	(?_UNDCAVERN06_DR_1)
+		HeroSetDoor		(33,21)
+		Jump			(?_OVRSURFACE02)
+
+?_UNDCAVERN06_DR_5
+		SetXRAMByte		(Exit_Disable,0)
+		SetLoadScript	(?_UNDCAVERN06_DR_5)
+		HeroSetDoor		(14,49)
+		Jump			(?_UNDGEYSER01)
+
+	
+
+

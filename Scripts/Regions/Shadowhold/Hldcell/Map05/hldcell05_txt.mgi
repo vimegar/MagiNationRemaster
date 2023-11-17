@@ -1,0 +1,52 @@
+/****************************/
+//HLDCELL05 TEXT
+/****************************/
+
+?_HLDCELL05_TXT1
+	TextOpen			()
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Don't hurt me!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I'm not here to=")
+						("hurt you, I'm")
+						("here to=")
+						("rescue you!")
+	TextIcon			(ICON_GUY01)
+	TextWrite			("THANK YOU!!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("See you later.")
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Wait, there are=")
+						("more prisoners")
+						("trapped in=")
+						("here.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Well, I'll do=")
+						("what I can for")
+						("them.")
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Thanks! Well...")
+						("Bye.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_HLDCELL05_TXT2
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-IT'S LOCKED-")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	
+?_HLDCELL05_TXT3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-TONY UNLOCKS-=")
+						("THE DOOR. THE")
+						("KEY BREAKS IN=")
+						("THE LOCK-")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	

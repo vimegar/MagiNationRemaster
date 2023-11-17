@@ -1,0 +1,8 @@
+	
+?_NRMGLADE09B_TXT_MORAG	
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Who was that?")
+	TextClose			()
+	SetEventText		(1)
+	End					()

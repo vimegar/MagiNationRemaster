@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_HLDMAZE22)
+						(HOTSPOT_TRIGGER_WEST,?_HLDMAZE22_DR_1)
+
+		FileTriggers	(TR_HLDMAZE22)
+						(TRIGGER_CONFIG,?_HLDMAZE22_TR_1)
+						(TRIGGER_CONFIG,?_HLDMAZE22_TR_2)

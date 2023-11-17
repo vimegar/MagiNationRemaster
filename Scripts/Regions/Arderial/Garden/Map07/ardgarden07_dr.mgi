@@ -1,0 +1,57 @@
+/********************************/
+?_ARDGARDEN07_DR_1
+		HeroSetDoor	(12,12)
+		Jump		(?_ARDGARDEN06)
+
+/********************************/
+?_ARDGARDEN07_TR_1
+//		TriggerOnce	(ARDGARDEN07_Chest1,INV_TYPE_ITEM,INV_RUNEOFWILL,8,5,18)
+		If				([ARDGARDEN07_Chest1],_NOTHING_ELSE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hey there's=")
+						("something in")
+						("this plant.")
+		Delay			(48)
+		SetXRAMBit		(ARDGARDEN07_Chest1,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_RUNEOFWILL,1)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got a=")
+		TextWrite		("%X")
+		TextClose		()
+		End				()
+_NOTHING_ELSE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Only plants=")
+						("left here.")
+		TextClose		()
+		End				()
+
+		
+?_ARDGARDEN07_TR_2
+//		TriggerOnce	(ARDGARDEN07_Chest2,INV_TYPE_ITEM,INV_RUNEOFWILL,10,5,18)
+		If				([ARDGARDEN07_Chest2],_NOTHING_ELSE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hey there's=")
+						("something in")
+						("this plant.")
+		Delay			(48)
+		SetXRAMBit		(ARDGARDEN07_Chest2,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_RUNEOFWILL,1)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got a=")
+		TextWrite		("%X")
+		TextClose		()
+		End				()
+_NOTHING_ELSE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Nothing here=")
+						("but water and")
+						("dirt.")
+		TextClose		()
+		End				()

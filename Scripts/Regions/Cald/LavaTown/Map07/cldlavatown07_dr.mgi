@@ -1,0 +1,64 @@
+/********************************/
+?_CLDLAVATOWN07_DR_1
+		HeroToDoor	(6,11,29,18)
+		Jump		(?_CLDLAVATOWN01)
+
+?_CLDLAVATOWN07_TR_1			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Lakes of fire=")
+						("and rock.")
+						("Cozy!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN07_TR_2			// CLOCK
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I'm surprised=")
+						("this thing")
+						("works. It's=")
+						("all melty!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN07_TR_3			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Too hot to=")
+						("nap on.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN07_TR_4			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hmph!=")
+						("Nothing!")
+						("It's hardly=")
+						("worth my effort")
+						("to root around=")
+						("stranger's")
+						("houses.")
+						("Inconsiderate=")
+						("strangers!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN07_TR_5			// COUCH
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I'd sit for=")
+						("a spell...")
+						("But I'm afraid=")
+						("I'd melt.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN07_TR_6			// TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Kidney shaped=")
+						("comfort.")
+		TextClose		()
+		End				()

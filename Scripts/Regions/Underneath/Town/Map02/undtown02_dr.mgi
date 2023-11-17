@@ -1,0 +1,48 @@
+/********************************/
+?_UNDTOWN02_DR_1
+		HeroToDoor	(6,14,8,17)
+		Jump		(?_UNDTOWN01)
+
+?_UNDTOWN02_TR_1		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Comfy.")
+					("For fungus.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN02_TR_2		// BOOKS
+		TextOpen	()
+		TextWrite	("Subterranean=")
+					("Housekeeping:")
+					("How to keep=")
+					("your home fresh")
+					("and juicy.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN02_TR_3		// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("More mushrooms.")
+					("Who would've=")
+					("guessed?")
+		TextClose	()
+		End			()
+
+?_UNDTOWN02_TR_4		// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("These things=")
+					("are everywhere.")
+					("You'd think=")
+					("they were pets.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN02_TR_5		// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Squooshy!")
+		TextClose	()
+		End			()

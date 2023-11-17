@@ -1,0 +1,24 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP08\NRMVASH08_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP08\NRMVASH08_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP08\NRMVASH08_PARTY.MGI
+
+/********************************/
+
+?_NRMVASH08
+	Switch			([GAMECOUNT])
+					(GC_END_FUNERAL,?_NRMVASH08_FUNERAL)
+					(GC_END_PARTY,?_NRMVASH08_PARTY)
+	SceneNew		()
+	LoadMap			(MAP_NRMVASH08)
+	LoadHotspots	(HS_NRMVASH08)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_naroom)
+	SceneReady		()
+	End				()
+	

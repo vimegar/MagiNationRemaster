@@ -1,0 +1,22 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP10\NRMGLADE10_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP10\NRMGLADE10_TXT.MGI
+
+/********************************/
+?_NRMGLADE10_FADEIN
+	SongFadeOut			(30)
+	
+?_NRMGLADE10
+	SceneNew			()
+	LoadMap				(MAP_NRMGLADE10)
+	LoadPalette			(PAL_HERO)
+	LoadHotspots		(HS_NRMGLADE10)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_orotunnels)
+	SceneReady			()
+	End					()
+

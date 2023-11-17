@@ -1,0 +1,169 @@
+;Size:155
+                      
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\SHADOWHOLD\HLDCELL\MAP02\HLDCELL02.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_HLDCELL02_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$00
+		DB	$1F
+		DB	$1B
+		DB	$0F
+
+	DB	CMD_JUMP
+		DB	:?_HLDCELL01
+		DW	(?_HLDCELL01&$FFFF)
+
+;********************************
+?_HLDCELL02_DR_2
+	DB	CMD_HEROTODOOR
+		DB	$08
+		DB	$03
+		DB	$05
+		DB	$17
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE01
+		DW	(?_HLDMAZE01&$FFFF)
+
+;********************************
+?_HLDCELL02_TR_1
+	DB	CMD_TOGGLEONCE
+		DW	(XRAM_SAVEBITS+$0006)
+		DB	$02
+		DB	:_SWITCH1_FALSE
+		DW	(_SWITCH1_FALSE&$FFFF)
+		DB	$FA
+		DB	$FB
+		DW	$D0E1
+
+	DB	CMD_XRAMBITAND
+		DW	(XRAM_SAVEBITS+$0006)
+		DB	$FE
+
+	DB	CMD_END
+
+;********************************
+_SWITCH1_FALSE
+	DB	CMD_XRAMBITOR
+		DW	(XRAM_SAVEBITS+$0006)
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HLDCELL02_TR_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0E),(?AL+$11),?HURRY
+		DB	(?AL+$03),(?AL+$0E),(?AL+$04),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0D),?WAIT
+		DB	(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$00),?SPCE,(?AL+$0A),(?AL+$04),(?AL+$18),(?AL+$07),(?AL+$0E),(?AL+$0B),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_HLDCELL02
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HLDCELL02&$FFFF)
+		DB	:MAP_HLDCELL02
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HLDCELL02&$FFFF)
+
+	DB	CMD_LOADTRIGGERS
+		DW	(TR_HLDCELL02&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_SONGSTART
+		DB	SONGID_shadowhold
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D069
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETENCOUNTER
+		DB	:?_HLDMAZE_RNDBAT
+		DW	(?_HLDMAZE_RNDBAT&$FFFF)
+		DW	(ENCOUNTER_FRQ_SLOW&$FFFF)
+
+	DB	CMD_SETBTLRETURN
+		DB	:?_HLDCELL02
+		DW	(?_HLDCELL02&$FFFF)
+		DB	(:?_BATTLE_LOST&$FF)
+		DW	(?_BATTLE_LOST&$FFFF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_IF
+		DB	EXPR_NOT
+		DB	EXPR_XRAMBIT
+		DW	(XRAM_SAVEBITS+$0006)&$FFFF
+		DB	$08
+		DB	:_END
+		DW	(_END&$FFFF)
+
+	DB	CMD_COPYTILEBLOCK
+		DW	$D000
+		DB	$02
+		DB	$02
+		DW	$D059
+		DB	$04
+		DB	$09
+
+;********************************
+_END
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_HLDCELL01
+	GLOBAL	?_HLDMAZE01
+	GLOBAL	XRAM_SAVEBITS
+	GLOBAL	MAP_HLDCELL02
+	GLOBAL	HS_HLDCELL02
+	GLOBAL	TR_HLDCELL02
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_HLDMAZE_RNDBAT
+	GLOBAL	ENCOUNTER_FRQ_SLOW
+	GLOBAL	?_BATTLE_LOST
+
+;********************************
+	END
+;********************************

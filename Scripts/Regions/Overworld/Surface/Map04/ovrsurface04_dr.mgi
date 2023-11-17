@@ -1,0 +1,67 @@
+/********************************/
+
+?_OVERSURFACE04_DR_1
+		HeroSetDoor				(20,26)
+		Jump					(?_OROTUNNEL11)
+		
+?_OVERSURFACE04_DR_2
+		HeroSetDoor				(20,0)
+		Jump					(?_OROCORAL02)
+
+?_OVERSURFACE04_DR_3
+		HeroSetDoor				(48,41)
+		If						([FACEHERO = FACE_LEFT],_LEFT)
+		Jump					(?_ORORUINS01)
+/********************************/
+// Sets Tony Into ANIM_AI If you Enter Door From RIGHT Side
+_LEFT
+		SceneNew				()
+		SetScroll				(_SET_TONY_ANIM)
+		Jump					(?_ORORUINS_OVER_ENTRY)
+
+_SET_TONY_ANIM	
+		ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript		(HEROACTOR,_TONY)
+		End						()
+
+_TONY
+		ThisActorSetAnimDelay	(?_HERO_UNDSWIM_LEFT_ANIM,16)
+								(?_HERO_UNDTREAD_LEFT_ANIM,0)
+		ThisActorSetAI			(?HERO_AI_UNDERSWIM)
+		Jump					(?_HERO_UNDTREAD_LEFT_ANIM)
+
+?_OVERSURFACE04_DR_4
+		HeroSetDoor				(42,59)
+		Jump					(?_ORODEEP01)
+		
+?_OVERSURFACE04_DR_5
+		If						([GAMECOUNT > GC_BACK_IN_OROTHE],?_END)
+		ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,37,29,78,0,?_HERO_UNDTREAD_DOWN_ANIM,?_DONT_TALK)
+		HeroSetDoor				(37,29)
+		Jump					(?_OROCITY01_FROM_PARATHIN)
+		
+?_OVERSURFACE04_DR_6
+		If						([GAMECOUNT > GC_BACK_IN_OROTHE],?_END)
+		ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,65,42,78,0,?_HERO_UNDTREAD_DOWN_ANIM,?_DONT_TALK)
+		HeroSetDoor				(65,42)
+		Jump					(?_OROCITY01_FROM_PARATHIN)
+
+
+?_OVERSURFACE04_DR_7
+		If						([GAMECOUNT > GC_BACK_IN_OROTHE],?_END)
+		ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,11,42,78,0,?_HERO_UNDTREAD_DOWN_ANIM,?_DONT_TALK)
+		HeroSetDoor				(11,42)
+		Jump					(?_OROCITY01_FROM_PARATHIN)
+
+?_OVERSURFACE04_DR_8
+		If						([GAMECOUNT > GC_OROTHE_GEYSER],?_END)
+
+_LOAD
+		SetLoadScript			(_LOAD)
+		HeroSetDoor				(8,47)
+		Jump					(?_OROGEYSER11)
+
+?_OVERSURFACE04_DR_9
+		HeroSetDoor				(50,0)
+		Jump					(?_ORODEEP01)
+	

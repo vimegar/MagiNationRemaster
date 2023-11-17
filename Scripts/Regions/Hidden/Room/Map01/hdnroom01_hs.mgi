@@ -1,0 +1,37 @@
+/********************************/
+		FileHotspots	(HS_HDNROOM01)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM01_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_HDNROOM01_DR_2)
+
+
+/********************************/
+		FileHotspots	(HS_WARP07)
+						(HOTSPOT_TRIGGER_NORTH,?_WARP07_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_WARP07_DR_2)
+
+
+/********************************/
+		FileHotspots	(HS_HLDMAZE23)
+						(HOTSPOT_TRIGGER_SOUTH,?_HLDMAZE23_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_HLDMAZE23_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_HLDMAZE23_DR_3)
+						(HOTSPOT_TRIGGER_NORTH,?_END)
+
+		FileTriggers	(TR_HLDMAZE23)
+						(TRIGGER_NORMAL,?_HLDMAZE23_TR_1)
+						(TRIGGER_NORMAL,?_HLDMAZE23_TR_2)
+						(TRIGGER_CONFIG,?_HLDMAZE23_TR_3)
+						
+/********************************/
+		FileHotspots	(HS_HLDMAZE24)
+						(HOTSPOT_TRIGGER_SOUTH,?_HLDMAZE24_DR_1)
+						(HOTSPOT_TRIGGER_EAST,?_HLDMAZE24_DR_2)
+						
+/********************************/
+		FileHotspots	(HS_HLDMAZE25)
+						(HOTSPOT_TRIGGER_WEST,?_HLDMAZE25_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HLDMAZE25_DR_2)
+						
+/********************************/
+		FileHotspots	(HS_HLDMAZE26)
+						(HOTSPOT_TRIGGER_SOUTH,?_HLDMAZE26_DR_1)

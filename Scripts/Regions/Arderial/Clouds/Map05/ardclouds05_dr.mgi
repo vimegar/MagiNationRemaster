@@ -1,0 +1,10 @@
+/********************************/
+?_ARDCLOUDS05_DR_1
+		HeroSetDoor	(2,1)
+		Jump		(?_ARDCLOUDS04)
+
+?_ARDCLOUDS05_DR_2
+		HeroSetDoor	(14,6)
+		Jump		(?_ARDGARDEN04)
+
+

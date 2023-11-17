@@ -1,0 +1,128 @@
+/********************************//********************************/
+// RINGSMITH
+/********************************//********************************/
+?_ARDGARDEN08_RING_TXT_1
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_LASADA)
+	TextWrite			("You must be=")
+						("new here.")
+						("I'm Lasada,=")
+						("the Ringsmith.")
+_MAIN_MENU
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Forge  Equip=")
+						(" Power  Done$")
+	
+	TextMenu			(4)
+						(_RINGSMITH)
+						(_UPGRADE)
+						(_RINGBANK)
+						(_END)
+
+_UPGRADE
+	TextClose			()
+	MenuRingUpgrade		(XYX)
+						(VASHP)
+						(AYEBAW)
+						(EPIK)
+						(ALABAN)
+						(VELLUP)
+						(ORISH)
+						(BOLT_HYREN)
+						(THUNDRHYRN)
+						(ORATHAN_F)
+	Jump				(_MAIN_MENU)
+
+_RINGBANK
+	TextClose			()
+	MenuRingBank		()
+	Jump				(_MAIN_MENU)
+
+_RINGSMITH
+	TextIcon			(ICON_LASADA)
+	TextWrite			("What will it=")
+						("be?")
+	TextClose			()
+
+	MenuRingSmith		(_BANK_FULL,_MAIN_MENU)
+						(XYX,150,40,XYX,1,CREATURE_NULL,0)
+						(VASHP,150,40,VASHP,2,LAVA_AQ,1)
+						(AYEBAW,150,40,AYEBAW,3,CREATURE_NULL,0)
+						(EPIK,150,40,EPIK,2,RAXIS,1)
+						(ALABAN,150,43,ALABAN,3,PLATHEUS,1)
+						(VELLUP,15,43,VELLUP,4,AGOVO,1)
+						(ORISH,150,43,ORISH,3,BHATAR,2)
+						(BOLT_HYREN,750,50,BOLT_HYREN,3,XYX,1)
+						(THUNDRHYRN,800,50,THUNDRHYRN,5,VASHP,2)
+						(ORATHAN_F,900,60,ORATHAN_F,1,CREATURE_NULL,0)
+
+_DONE
+
+	ThatActorSetScript	(ACTOR00,?_ARDGARDEN08_MAKE_RING)
+	WaitAnyEventMaster	()
+	
+	TextOpen			()
+	TextIcon			(ICON_LASADA)
+	TextWrite			("Here you go!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Thanks.")
+	JumpLocal			(_MAIN_MENU)
+
+_BANK_FULL
+	TextOpen			()
+	TextIcon			(ICON_LASADA)
+	TextWrite			("Sorry, your=")
+						("Ring Bank is")
+						("full.")
+	JumpLocal			(_MAIN_MENU)
+
+_NO_BUY
+	TextOpen			()
+	TextIcon			(ICON_LASADA)
+	TextWrite			("Come back soon!")
+
+_END
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+/********************************//********************************/
+// END RINGSMITH
+/********************************//********************************/
+?_ARDGARDEN08_SHOP_TXT_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Welcome!")
+	TextClose			()
+
+	MenuShop			(_DONE)
+						(INV_BALOO_ROOT,60)
+						(INV_REMEDY_DRINK,20)
+						(INV_DEFLECT_GEM,5)
+						(INV_3_HEADEDCOIN,10)
+						(INV_BALANCESCALE,10)
+
+_DONE
+	TextOpen			()
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Have a safe=")
+						("journey.")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+/********************************/
+?_OROTUNNEL04_DR_1
+		HeroToDoor	(0,10,35,7)
+		Jump		(?_OROTUNNEL03)
+
+?_OROTUNNEL04_DR_2
+		HeroToDoor	(15,51,3,1)
+		Jump		(?_OROTUNNEL11)
+
+/********************************/
+?_OROTUNNEL04_TR_1
+			TriggerTreasure	(OROTUNNEL04_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,46,48,48)

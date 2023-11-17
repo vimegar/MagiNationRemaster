@@ -1,0 +1,186 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP12\NRMVASH12_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP12\NRMVASH12_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP12\NRMVASH12_PARTY.MGI
+
+/********************************/
+?_NRMVASH12
+//	Switch			([GAMECOUNT])
+//					(GC_NRM_INTRO,?_NRMVASH12_NRM_INTRO)
+/********************************/
+	Switch			([GAMECOUNT])
+					(GC_END_FUNERAL,?_NRMVASH12_FUNERAL)
+					(GC_END_PARTY,?_NRMVASH12_PARTY)
+?_NRMVASH12_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH12)
+	LoadHotspots			(HS_NRMVASH12) 
+	LoadTriggers			(TR_NRMVASH12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,9,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,15,5,20,0,?_EVU_STAND_DOWN_ANIM,?_NRMVASH12_GENERIC_EVUTXT)
+	LoadVRAMTiles			(48,BIT_EVU,0,0)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_random)
+	SceneReady				()
+	End						()
+/********************************/
+?_NRMVASH12_GENERIC_EVUTXT
+	ThisActorSetAnim		(?_EVU_STAND_DOWN_ANIM)
+	Switch					([GC])
+							(GC_OPENING,_EVU_GREET)
+							(GC_NRM_INTRO,_EVUTEST)
+							(GC_FIND_ORWIN,_EVU_QUAKE)
+
+	If						([Sick_Orwin],_SICK)
+							
+_EVUG
+	Jump					(?_HISTORIAN_EVU)
+_EVU0
+	SetText					(?_NRMVASH12_EVUTXT00)
+	Jump					(?_FACE_EVU)
+_EVU1
+	SetText					(?_NRMVASH12_EVUTXT01)
+	Jump					(?_FACE_EVU)
+
+_EVU2
+	SetText					(?_NRMVASH12_EVUTXT02)
+	Jump					(?_FACE_EVU)
+
+_EVU3
+	SetText					(?_NRMVASH12_EVUTXT03)
+	Jump					(?_FACE_EVU)
+	End						()
+
+_EVU_GREET
+	SetText					(?_NRMVASH12_EVU_POINT_TXT)
+	Jump					(?_FACE_EVU)
+
+_EVUTEST
+	Switch					([Nrm_Intro_Count])
+							(0,_EVU0)
+							(1,_EVU1)
+							(2,_EVU2)
+							(3,_EVU3)
+	Jump					(_EVUG)
+	End						()
+_SICK
+	SetText					(?_NRMVASH12_SICK_EVUTXT01)
+	Jump					(?_FACE_EVU)
+	
+_EVU_QUAKE
+	SetText					(?_NRMVASH12_SICK_EVUTXT02)
+	Jump					(?_FACE_EVU)
+
+?_NRMVASH12_SICK_EVUTXT01
+	TextOpen				()
+	TextIcon				(ICON_EVU)
+	If						([Seer_Byte],_SEER_MET)
+	SetXRAMBit				(NRMLAKE01_Door,TRUE)
+	
+	TextWrite				("I can't find=")
+							("anything in the")
+							("history books=")
+							("to help Orwin,")
+							("but maybe the=")
+							("Seer might")
+							("know...")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+_SEER_MET
+	JumpRandom				(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_NORMAL)
+							(_POAD)
+							(_PRUITT)
+							(_EIDON)
+							(_BLASTED_WATTLE)
+
+_NORMAL
+	TextWrite				("Why, hello=")
+							("there, sonny!")
+							("What can I=")
+							("tell you about?")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+_POAD
+	TextWrite				("I'm sorry=")
+							("Poad.  I only")
+							("have one=")
+							("cookie left,")
+							("and I'm saving=")
+							("it for Pruitt!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Erm...")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+_PRUITT
+	TextWrite				("My, Pruitt.=")
+							("You're looking")
+							("fetching today!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Actually...")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+_EIDON
+	TextWrite				("Why, hello=")
+							("there, Eidon!")
+							("My my...")
+							("You shaved=")
+							("your beard.")
+							("And shrank!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("I can't=")
+							("deny it.")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+_BLASTED_WATTLE	
+	TextWrite				("ZZZzzz...")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Hey!  Wake up!")
+	TextIcon				(ICON_EVU)
+	TextWrite				("AAAAH!")
+							("No no!")
+							("Blasted waffle!")
+							("Pickle the pig!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Um...")
+							("Did I come at=")
+							("a bad time?")
+	TextIcon				(ICON_EVU)
+	TextWrite				("Oh...")
+							("My gracious.")
+							("I must have=")
+							("dozed off,")
+							("there, sonny.")
+							("What do you=")
+							("want to know")
+							("about?")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+?_NRMVASH12_SICK_EVUTXT02
+	TextOpen				()
+	TextIcon				(ICON_EVU)
+	TextWrite				("That was the=")
+							("most violent")
+							("earthquake in=")
+							("Naroom recorded")
+							("history.")
+	TextClose				()
+	Jump					(?_HISTORIAN_EVU_TEXT)
+
+	

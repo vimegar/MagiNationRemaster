@@ -1,0 +1,70 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_GUARD_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND_BACK)
+	
+	JumpLocal:		(?_GUARD_STAND_UP_ANIM)
+
+/********************************/
+?_GUARD_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND01_FRONT)
+	
+	JumpLocal:		(?_GUARD_STAND_DOWN_ANIM)
+
+/********************************/
+?_GUARD_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_GUARD_STAND_UL_ANIM)
+
+/********************************/
+?_GUARD_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_GUARD_STAND_UR_ANIM)
+
+/********************************/
+?_GUARD_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND_LEFT)
+	
+	JumpLocal:		(?_GUARD_STAND_DL_ANIM)
+
+/********************************/
+?_GUARD_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?GUARD_STAND_RIGHT)
+	
+	JumpLocal:		(?_GUARD_STAND_DR_ANIM)
+
+/********************************/
+?_FACE_GUARD
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_GUARD_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_GUARD_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_GUARD_STAND_DL_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_GUARD_STAND_DR_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

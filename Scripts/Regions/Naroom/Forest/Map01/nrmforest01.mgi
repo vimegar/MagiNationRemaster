@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\FOREST\MAP01\NRMFOREST01_DR.MGI
+%INCLUDE			REGIONS\NAROOM\FOREST\MAP01\NRMFOREST01_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\FOREST\MAP01\FOREST_BAT.MGI
+
+/********************************/
+?_NRMFOREST01
+
+	SceneNew		()
+	LoadMap			(MAP_NRMFOREST01)
+	LoadHotspots	(HS_NRMFOREST01)
+	//LoadEncounters	(EN_NRMFOREST,ENCOUNTER_FRQ_NORM,?_NRMFOREST_RE_ENTER)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,40,0,?_RAINER,?_FOREST_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,40,0,?_RAINER,?_FOREST_RNDBAT)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_NRMFOREST01)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_forest)
+	SceneReady		()
+	End				()
+	

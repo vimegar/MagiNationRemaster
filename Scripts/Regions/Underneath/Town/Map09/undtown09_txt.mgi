@@ -1,0 +1,33 @@
+/********************************/
+//UNDTOWN09
+/********************************/	
+?_UNDTOWN09_KID01_TXT01
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Would you=")
+						("like to help")
+						("me scrub out=")
+						("the Brubs in")
+						("my basement?")
+	TextClear			()
+	TextWrite			(" Yes=")
+						(" No$")
+
+	TextMenu			(2)
+						(_YES)
+						(_NO)
+_YES
+	TextClear			()
+	TextWrite			("Right this=")
+						("way")
+	TextClose			()
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	HeroSetDoor			(9,16)
+	Jump				(?_SCRUBABRUB)
+_NO						
+	TextClear			()
+	TextWrite			("Fine.")
+	TextClose			()
+	SetEventText		(1)
+	End					()

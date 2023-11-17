@@ -1,0 +1,39 @@
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_HDNUNDTUN03
+	SceneNew				()
+	LoadMap					(MAP_HDNUNDTUN03)
+	LoadHotspots			(HS_HDNUNDTUN03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/
+
+
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_HDNUNDTUN04
+	SceneNew				()
+	LoadMap					(MAP_HDNUNDTUN04)
+	LoadHotspots			(HS_HDNUNDTUN04)
+	LoadTriggers			(TR_HDNUNDTUN04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/

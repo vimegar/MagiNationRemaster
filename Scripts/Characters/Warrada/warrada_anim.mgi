@@ -1,0 +1,239 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_WARRADA_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?WARRADA_WALK01_BACK)
+					(?WARRADA_WALK02_BACK)
+					(?WARRADA_WALK03_BACK)
+					(?WARRADA_WALK02_BACK)
+					
+	JumpLocal:		(?_WARRADA_WALK_UP_ANIM)
+
+/********************************/
+?_WARRADA_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?WARRADA_WALK01_FRONT)
+					(?WARRADA_WALK02_FRONT)
+					(?WARRADA_WALK03_FRONT)
+					(?WARRADA_WALK02_FRONT)
+					
+	JumpLocal:		(?_WARRADA_WALK_DOWN_ANIM)
+
+/********************************/
+?_WARRADA_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?WARRADA_WALK01_LEFT)
+					(?WARRADA_WALK02_LEFT)
+					(?WARRADA_WALK03_LEFT)
+					(?WARRADA_WALK02_LEFT)
+					
+	JumpLocal:		(?_WARRADA_WALK_LEFT_ANIM)
+
+/********************************/
+?_WARRADA_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?WARRADA_WALK01_RIGHT)
+					(?WARRADA_WALK02_RIGHT)
+					(?WARRADA_WALK03_RIGHT)
+					(?WARRADA_WALK02_RIGHT)
+					
+	JumpLocal:		(?_WARRADA_WALK_RIGHT_ANIM)
+
+/********************************/
+?_WARRADA_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?WARRADA_WALK01_BACK)
+					(?WARRADA_WALK02_BACK)
+					(?WARRADA_WALK03_BACK)
+					(?WARRADA_WALK02_BACK)
+					
+	JumpLocal:		(?_WARRADA_RUN_UP_ANIM)
+
+/********************************/
+?_WARRADA_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?WARRADA_WALK01_FRONT)
+					(?WARRADA_WALK02_FRONT)
+					(?WARRADA_WALK03_FRONT)
+					(?WARRADA_WALK02_FRONT)
+					
+	JumpLocal:		(?_WARRADA_RUN_DOWN_ANIM)
+
+/********************************/
+?_WARRADA_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?WARRADA_WALK01_LEFT)
+					(?WARRADA_WALK02_LEFT)
+					(?WARRADA_WALK03_LEFT)
+					(?WARRADA_WALK02_LEFT)
+					
+	JumpLocal:		(?_WARRADA_RUN_LEFT_ANIM)
+
+/********************************/
+?_WARRADA_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?WARRADA_WALK01_RIGHT)
+					(?WARRADA_WALK02_RIGHT)
+					(?WARRADA_WALK03_RIGHT)
+					(?WARRADA_WALK02_RIGHT)
+					
+	JumpLocal:		(?_WARRADA_RUN_RIGHT_ANIM)
+
+/********************************/
+?_WARRADA_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?WARRADA_WALK02_BACK)
+	
+	JumpLocal:		(?_WARRADA_STAND_UP_ANIM)
+
+/********************************/
+?_WARRADA_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?WARRADA_WALK02_FRONT)
+	
+	JumpLocal:		(?_WARRADA_STAND_DOWN_ANIM)
+
+/********************************/
+?_WARRADA_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?WARRADA_WALK02_LEFT)
+	
+	JumpLocal:		(?_WARRADA_STAND_LEFT_ANIM)
+
+/********************************/
+?_WARRADA_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?WARRADA_WALK02_RIGHT)
+	
+	JumpLocal:		(?_WARRADA_STAND_RIGHT_ANIM)
+
+/********************************/
+?_WARRADA_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?WARRADA_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_WARRADA_STAND_UL_ANIM)
+
+/********************************/
+?_WARRADA_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?WARRADA_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_WARRADA_STAND_UR_ANIM)
+
+/********************************/
+?_WARRADA_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?WARRADA_STAND_LEFT)
+	
+	JumpLocal:		(?_WARRADA_STAND_DL_ANIM)
+
+/********************************/
+?_WARRADA_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?WARRADA_STAND_RIGHT)
+	
+	JumpLocal:		(?_WARRADA_STAND_DR_ANIM)
+
+/********************************/
+?_WARRADA_BATTLE_STAND_ANIM
+	
+	Frame:			(160,0,0,?WARRADA_STANDRIGHT)
+					(160,0,0,?WARRADA_STANDRIGHT)
+	
+	JumpLocal		(?_WARRADA_BATTLE_STAND_ANIM)
+	
+/********************************/
+?_WARRADA_BATTLE_TAUNT_ANIM
+
+	FrameBlock:		(16,0,0)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+
+	JumpLocal		(?_WARRADA_BATTLE_TAUNT_ANIM)
+
+/********************************/
+?_WARRADA_BATTLE_SUMMON_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?WARRADA_SUMMON01)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON03)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON01)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON03)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON01)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON03)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON01)
+					(?WARRADA_SUMMON02)
+					(?WARRADA_SUMMON03)
+					(?WARRADA_SUMMON02)
+	Frame:			(32,0,0,?WARRADA_SUMMON01)
+	
+	JumpLocal		(?_WARRADA_BATTLE_STAND_ANIM)
+
+/********************************/
+?_WARRADA_BATTLE_WIN_ANIM
+
+	FrameBlock:		(32,0,0)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+
+	FrameBlock:		(16,0,0)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+					(?WARRADA_WINTAUNT01)
+					(?WARRADA_WINTAUNT02)
+
+	JumpLocal		(?_WARRADA_BATTLE_WIN_ANIM)
+
+/********************************/
+?_WARRADA_BATTLE_LOSE_ANIM
+
+	Frame:		(255,0,0,?WARRADA_LOSE)
+
+	JumpLocal	(?_WARRADA_BATTLE_LOSE_ANIM)
+
+/********************************/
+?_FACE_WARRADA
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_WARRADA_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_WARRADA_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_WARRADA_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_WARRADA_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

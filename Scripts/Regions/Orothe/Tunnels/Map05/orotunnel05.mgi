@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP05\OROTUNNEL05_DR.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP05\OROTUNNEL05_TXT.MGI
+
+/********************************/
+
+?_OROTUNNEL05
+	SceneNew		()
+	LoadMap			(MAP_OROTUNNEL05)
+	LoadHotspots	(HS_OROTUNNEL05)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_OROTUNNEL05)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?ANIM_AI,11,11,40,52,?_WHIRLPOOL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,40,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles	(64,BIT_WHIRLPOOL,52,0)
+	ThatActorStart	(ACTOR00)
+	SetBtlReturn	(?_OROTUNNEL05)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_orotunnels)
+	SceneReady		()
+	End				()

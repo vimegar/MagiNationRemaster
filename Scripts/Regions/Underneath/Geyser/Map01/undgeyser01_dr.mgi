@@ -1,0 +1,25 @@
+/********************************/
+
+?_UNDGEYSER01_DR_1
+		HeroSetDoor		(6,13)
+		Jump			(?_UNDCAVERN06)
+
+?_UNDGEYSER01_DR_2
+		HeroToDoor		(29,31,0,41)
+		Jump			(?_UNDGEYSER08)
+
+?_UNDGEYSER01_DR_3
+		HeroToDoor		(0,31,31,43)
+		Jump			(?_UNDGEYSER02)
+
+?_UNDGEYSER01_DR_4
+		HeroToDoor		(11,0,14,39)
+		Jump			(?_UNDGEYSER09)
+
+?_UNDGEYSER01_DR_5
+		Jump			(?_UNDGEYSER_FIRST)
+
+/********************************/
+
+?_UNDGEYSER01_TR_1
+	TriggerTreasure	(UNDGEYSER01_Chest1,INV_TYPE_SPELL,INV_CAVE_IN,14,31,30)

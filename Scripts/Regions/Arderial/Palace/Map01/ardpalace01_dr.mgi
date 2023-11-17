@@ -1,0 +1,19 @@
+/********************************/
+?_ARDPALACE01_DR_1
+		HeroToDoor	(4,21,6,1)
+		Jump		(?_ARDGARDEN03)
+
+/********************************/
+?_ARDPALACE01_TR_1
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		ScrollMap			(80,0,-1)
+		Delay				(80)
+		ScrollMap			(80,0,1)
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Nice view...")
+		TextClose			()
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		End					()

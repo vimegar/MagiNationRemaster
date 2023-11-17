@@ -1,0 +1,270 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP09\UNDTOWN09_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP09\UNDTOWN09_TXT.MGI
+
+
+/********************************//********************************/
+// BRUB MINIGAME
+/********************************//********************************/
+?_SCRUBABRUB
+	SceneNew				()
+	LoadMap					(MAP_SCRUB)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,10,11,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,20,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,20,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,0,0,20,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,0,0,20,0,?_BRUB_TIMER,?_END)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	LoadVRAMTiles			(18,BIT_BRUBOBJ,0,0)
+	LoadVRAMTiles			(18,BIT_BRUBOBJ,18,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_battle)
+	SetScroll				(?_BRUB_CONTROL01)
+	Sync					(2,0)
+	SetScroll				(?_END)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	Delay					(32)
+	SetText					(?_TIMES_UP_BRUB)
+	SongStart				(SONGID_levelup1)	
+	Sync					(2,1)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	If						([GC > GC_UND_WASTED],?_UNDTOWN08B_BRUB_RET)
+	Jump					(?_UNDTOWN08_BRUB_RET)
+
+/********************************/
+// BRUB COUNTER
+?_TALLY_BRUB
+
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 1])
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	Jump					(?_BRUB_CONTROL01)
+
+?_TALLY_REDBRUB
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 5])
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+
+/********************************/
+// COLUMN ONE ACTOR
+?_BRUB_CONTROL01
+	Delay					(32)
+	JumpRandom				(_BRUB01)
+							(_BRUB02)
+							(_BRUB03)
+							(_BRUB04)
+							(_BRUB05)
+							(_BRUB06)
+							(_BRUB07)
+
+_BRUB01
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB02
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB03
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB04
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,4,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB05
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,8,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB06
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,12,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL02)
+
+_BRUB07
+	JumpRandom				(_RD1)
+							(_RD2)
+							(_RD3)
+_RD1
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,4,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL02)
+_RD2
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,8,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL02)
+_RD3
+	ThatActorInit			(ACTOR00,?TRAP_AI,4,12,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+
+/********************************/
+// COLUMN TWO ACTOR
+?_BRUB_CONTROL02
+	Delay					(32)
+	JumpRandom				(_BRUB01)
+							(_BRUB02)
+							(_BRUB03)
+							(_BRUB04)
+							(_BRUB05)
+							(_BRUB06)
+							(_BRUB07)
+
+_BRUB01
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB02
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB03
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB04
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,4,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB05
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,8,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB06
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,12,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL03)
+
+_BRUB07
+	JumpRandom				(_RD1)
+							(_RD2)
+							(_RD3)
+_RD1
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,4,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL03)
+_RD2
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,8,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL03)
+_RD3
+	ThatActorInit			(ACTOR01,?TRAP_AI,9,12,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+
+/********************************/
+// COLUMN THREE ACTOR
+?_BRUB_CONTROL03
+	Delay					(32)
+	JumpRandom				(_BRUB01)
+							(_BRUB02)
+							(_BRUB03)
+							(_BRUB04)
+							(_BRUB05)
+							(_BRUB06)
+							(_BRUB07)
+
+_BRUB01
+	ThatActorInit			(ACTOR02,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB02
+	ThatActorInit			(ACTOR02,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB03
+	ThatActorInit			(ACTOR02,?ANIM_AI,0,0,20,0,?_END,?_END)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB04
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,4,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB05
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,8,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB06
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,12,20,0,?_BRUB_INHOLE_ANIM,?_BRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+
+_BRUB07
+	JumpRandom				(_RD1)
+							(_RD2)
+							(_RD3)
+_RD1
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,4,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+_RD2
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,8,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+_RD3
+	ThatActorInit			(ACTOR02,?TRAP_AI,14,12,20,0,?_REDBRUB_INHOLE_ANIM,?_REDBRUB_SCROLL_TALLY)
+	SFX						(SFXID_JUMP)
+	Jump					(?_BRUB_CONTROL01)
+
+?_REDBRUB_SCROLL_TALLY
+	ThisActorSetAnim		(?_REDBRUB_SQUISHED_ANIM)
+	SFX						(SFXID_CRITICAL_ATTACK)
+//	SetText					(?_BRUB_GAME_TEXT)
+	SetScroll				(?_TALLY_REDBRUB)
+	End						()
+
+?_BRUB_SCROLL_TALLY
+	ThisActorSetAnim		(?_BRUB_SQUISHED_ANIM)
+	SFX						(SFXID_CRITICAL_ATTACK)
+//	SetText					(?_BRUB_GAME_TEXT)
+	SetScroll				(?_TALLY_BRUB)
+	End						()
+
+/********************************/
+// TIME LIMIT
+?_BRUB_TIMER
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Sync					(2,0)
+	End						()
+
+/********************************/
+// TEXT
+?_BRUB_GAME_TEXT
+	TextOpen				()
+	TextWrite				("ANOTHER BRUB!=")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_TIMES_UP_BRUB
+	TextOpen				()
+	TextWrite				("TIME'S UP!")
+	TextClose				()
+	Sync					(2,1)
+	End						()
+
+/********************************//********************************/
+// END BRUB MINIGAME
+/********************************//********************************/

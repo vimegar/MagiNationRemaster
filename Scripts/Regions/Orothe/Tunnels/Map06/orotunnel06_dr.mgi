@@ -1,0 +1,11 @@
+/********************************/
+?_OROTUNNEL06_DR_1
+		HeroToDoor	(13,0,0,31)
+		Jump		(?_OROTUNNEL01)
+		
+/********************************/
+?_OROTUNNEL06_TR_1
+			TriggerTreasure	(OROTUNNEL06_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,6,17,24)
+
+?_OROTUNNEL06_TR_2
+			TriggerTreasure	(OROTUNNEL06_Chest2,INV_TYPE_ITEM,INV_BALOO_ROOT,4,5,24)

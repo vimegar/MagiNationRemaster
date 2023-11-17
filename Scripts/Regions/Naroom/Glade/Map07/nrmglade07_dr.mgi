@@ -1,0 +1,7 @@
+/********************************/
+?_NRMGLADE07_DR_1
+		HeroToDoor	(49,45,0,9)
+		Jump		(?_NRMGLADE06)
+
+?_NRMGLADE07_TR_1
+		TriggerTreasure	(NRMGLADE07_Chest1,INV_TYPE_ITEM,INV_KARMIC_MIGHT,9,8,50)

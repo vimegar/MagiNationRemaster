@@ -1,0 +1,241 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP08\UNDCAVE08_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP08\UNDCAVE08_TXT.MGI
+
+/********************************/
+?_LOAD_UNDCAVE08
+	HeroSetDoor				(17,12)
+/********************************/
+?_UNDCAVERN08
+	SetXRAMByte				(Exit_Disable,1)
+	If						([Worveline],?_UNDCAVERN08_GENERIC)					
+/********************************//********************************/
+//	WORVELINE SCENE
+/********************************//********************************/
+?_UNDCAVERN08_UNDERNEATH
+	//Prospector garage
+	SceneNew				()
+	LoadMap					(MAP_UNDCAVERN08)
+	LoadHotspots			(HS_UNDCAVERN08)
+	LoadTriggers			(TR_UNDCAVERN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,13,19,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,4,20,0,?_LOGAN_STAND_RIGHT_ANIM,?_UNDCAVERN08_LOGAN)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,6,20,48,?_WORVELINE_ANIM,?_UNDCAVERN08_WORVELINE)
+	ThatActorInit			(ACTOR02,?TALKER_AI,14,4,20,10,?_FOSSIK_STAND_ANIM,?_UNDCAVE08_FOSSIK_RING)
+	ThatActorInit			(ACTOR03,?TALKER_AI,11,11,20,120,?_OLDLADY03_STAND_DOWN_ANIM,?_UNDCAVE08_INNKEEPER)
+	LoadVRAMTiles			(40,BIT_OLDLADY03,120,0)
+	LoadVRAMTiles			(48,BIT_LOGAN,0,0)
+	LoadVRAMTiles			(10,BIT_WORVELINE,48,0)
+	LoadVRAMTiles			(63,BIT_FOSSIKRING,58,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	If						([GC > GC_UND_WASTED],_STARTER)
+	End						()
+_STARTER
+	ThatActorStart			(ACTOR03)	
+	End						()
+	
+?_WORVELINE_ANIM
+	ThisActorSetAnim		(?_WORVELINE_STAND_RIGHT_ANIM)
+	WaitEventMaster			(1)
+	ThisActorSetAnimDelay	(?_WORVELINE_SUCKIT_RIGHT_ANIM,64)
+							(?_WORVELINE_STAND_RIGHT_ANIM,0)
+	SetEventMaster			(2)
+	WaitEventMaster			(3)	
+	ThisActorSetAnimDelay	(?_WORVELINE_MOVE_RIGHT_ANIM,12)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_UP_ANIM,16)
+							(?_WORVELINE_STAND_RIGHT_ANIM,0)
+	SetEventMaster			(4)
+	ThisActorSetAnimDelay	(?_WORVELINE_HOP_UP_ANIM,32)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,25)
+							(?_WORVELINE_MOVE_DOWN_ANIM,16)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_MOVE_RIGHT_ANIM,8)
+							(?_WORVELINE_MOVE_LEFT_ANIM,8)
+							(?_WORVELINE_STAND_LEFT_ANIM,0)
+	WaitEventMaster			(9)
+	ThisActorSetAnimDelay	(?_WORVELINE_HOP_DOWN_ANIM,9)
+							(?_WORVELINE_MOVE_UP_ANIM,0)
+							(?_WORVELINE_MOVE_LEFT_ANIM,30)
+							(?_WORVELINE_STAND_RIGHT_ANIM,0)
+	SetEventMaster			(5)	
+	End						()	
+	
+?_UNDCAVERN08_LOGAN
+	ThisActorSetAnim		(?_LOGAN_STAND_RIGHT_ANIM)
+	If						([Worveline],_LOGAN_TALKS_LESS)					
+	SetXRAMBit				(Worveline,TRUE)
+	SetText					(?_UNDCAVERN08_TXT_1)
+	WaitEventText			(1)
+	SetEventMaster			(1)
+	WaitEventMaster			(2)
+	SetText					(?_UNDCAVERN08_TXT_2)
+	WaitEventText			(2)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_UNDCAVERN08_TONY)	
+	WaitEventMaster			(5)
+	SetText					(?_UNDCAVERN08_TXT_4)
+	WaitEventText			(4)
+	SetEventMaster			(6)
+	WaitEventMaster			(7)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)	
+	Jump					(_RESTORE)
+_LOGAN_TALKS_LESS
+	SetText					(?_UNDCAVERN08_TXT_6)
+	Jump					(?_FACE_LOGAN)
+_RESTORE
+	ThisActorRestoreState	()
+	End						()
+
+?_UNDCAVERN08_TONY
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetEventMaster			(3)
+	ThisActorSetAnim		(?_HERO_STAND_DL_ANIM)
+	WaitEventMaster			(4)
+	Delay					(32)
+	ThisActorSetAnim		(?_HERO_RUN_RIGHT_ANIM)
+	SetText					(?_UNDCAVERN08_TXT_3)
+	Delay					(25)
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,16)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	WaitEventText			(3)
+	SetEventMaster			(9)
+	WaitEventMaster			(6)
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetText					(?_UNDCAVERN08_TXT_5)
+	WaitEventText			(5)
+	SetEventMaster			(7)	
+	End						()	
+
+?_UNDCAVERN08_WORVELINE
+	SetText					(?_UNDCAVERN08_TXT_GRRRR)
+	ThisActorSetAnimDelay	(?_WORVELINE_SUCKIT_RIGHT_ANIM,32)
+							(?_WORVELINE_SUCKIT_RIGHT_ANIM,32)
+							(?_WORVELINE_STAND_RIGHT_ANIM,0)
+	WaitEventText			(7)
+	ThisActorRestoreState	()
+	End						()
+	
+?_UNDCAVE08_FOSSIK_RING
+	ScrollMap				(24,2,0)
+	SetText					(?_UNDCAVERN08_TXT_RINGSMITH)
+	End						()
+
+?_UNDCAVERN08_SMITHY
+	ThisActorSetAnimDelay	(?_FOSSIK_MAKE_RING_ANIM,255)
+	ThisActorSetAnim		(?_FOSSIK_STAND_ANIM)
+	SetAnyEventMaster		()
+	End						()	
+/********************************//********************************/
+//	END WORVELINE SCENE
+/********************************//********************************/
+	
+
+/********************************//********************************/
+//	GENERIC PROSPECTOR GARAGE
+/********************************//********************************/
+?_UNDCAVERN08_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_UNDCAVERN08)
+	LoadHotspots			(HS_UNDCAVERN08)
+	LoadTriggers			(TR_UNDCAVERN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,13,19,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,4,20,0,?_LOGAN_STAND_RIGHT_ANIM,?_UNDCAVERN08_LOGAN)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,6,20,48,?_WORVELINE_ANIM,?_UNDCAVERN08_WORVELINE)
+	ThatActorInit			(ACTOR02,?TALKER_AI,14,4,20,10,?_FOSSIK_STAND_ANIM,?_UNDCAVE08_FOSSIK_RING)
+	ThatActorInit			(ACTOR03,?TALKER_AI,11,11,20,120,?_OLDLADY03_STAND_DOWN_ANIM,?_UNDCAVE08_INNKEEPER)
+	LoadVRAMTiles			(40,BIT_OLDLADY03,120,0)
+	LoadVRAMTiles			(48,BIT_LOGAN,0,0)
+	LoadVRAMTiles			(10,BIT_WORVELINE,48,0)
+	LoadVRAMTiles			(63,BIT_FOSSIKRING,58,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	If						([GC > GC_UND_WASTED],_STARTER)
+	End						()
+_STARTER
+	ThatActorStart			(ACTOR03)	
+	End						()
+
+?_UNDCAVE08_TONY_WAKING
+	SceneNew				()
+	LoadMap					(MAP_UNDCAVERN08)
+	LoadHotspots			(HS_UNDCAVERN08)
+	LoadTriggers			(TR_UNDCAVERN08)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,15,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,14,12,20,0,_TONY_WAKING,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,4,20,0,?_LOGAN_STAND_RIGHT_ANIM,?_UNDCAVERN08_LOGAN)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,6,20,48,?_WORVELINE_ANIM,?_UNDCAVERN08_WORVELINE)
+	ThatActorInit			(ACTOR02,?TALKER_AI,14,4,20,10,?_FOSSIK_STAND_ANIM,?_UNDCAVE08_FOSSIK_RING)
+	ThatActorInit			(ACTOR03,?TALKER_AI,11,11,20,120,?_OLDLADY03_STAND_DOWN_ANIM,?_UNDCAVE08_INNKEEPER)
+	LoadVRAMTiles			(40,BIT_OLDLADY03,120,0)
+	LoadVRAMTiles			(48,BIT_LOGAN,0,0)
+	LoadVRAMTiles			(10,BIT_WORVELINE,48,0)
+	LoadVRAMTiles			(63,BIT_FOSSIKRING,58,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)	
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	Sync					(2,0)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	End						()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_INBED_RIGHT_ANIM,64)
+							(?_HERO_INBED_LEFT_ANIM,32)
+							(?_HERO_OUTTABED_LEFT,16)
+	Sync					(2,0)
+	End						()
+
+?_UNDCAVE08_INNKEEPER
+	ThisActorSetAnim		(?_OLDLADY03_STAND_DOWN_ANIM)
+	SetText					(?_UNDCAVE08_INN_TXT)
+	Jump					(?_FACE_OLDLADY03)
+
+/********************************//********************************/
+//	END GENERIC PROSPECTOR GARAGE
+/********************************//********************************/

@@ -1,0 +1,18 @@
+/********************************/
+// CLDLAVAVENT05
+?_CLDLAVAVENT05_DR_1
+		HeroToDoor		(41,0,40,29)
+		Jump			(?_CLDLAVAVENT04)
+
+?_CLDLAVAVENT05_DR_2
+		HeroToDoor		(11,12,5,11)
+		Jump			(?_CLDVENTINT04)
+
+/********************************/
+// CLDVENTINT04
+?_CLDVENTINT04_DR_1
+		HeroToDoor		(5,11,11,12)
+		Jump			(?_CLDLAVAVENT05)		
+		
+?_CLDVENTINT04_TR_1
+		TriggerTreasure	(CLDVENTINT04_Chest1,INV_TYPE_ITEM,INV_KARMIC_FURY,6,4,12)

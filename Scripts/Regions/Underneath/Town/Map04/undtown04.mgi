@@ -1,0 +1,29 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP04\UNDTOWN04_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP04\UNDTOWN04_TXT.MGI
+
+/********************************//********************************/
+// ALL
+/********************************//********************************/
+?_UNDTOWN04
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN04)
+	LoadHotspots			(HS_UNDTOWN04)
+	LoadTriggers			(TR_UNDTOWN04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,10,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,6,10,0,?_OLDMAN_STAND_RIGHT_ANIM,?_UNDTOWN04_OLDMAN)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(38,BIT_OLDMAN,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+	
+?_UNDTOWN04_OLDMAN
+	SetText					(?_UNDTOWN04_OLDMAN_TXT01)
+	Jump					(?_FACE_OLDMAN)
+

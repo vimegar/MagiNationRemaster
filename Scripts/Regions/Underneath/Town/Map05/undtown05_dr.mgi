@@ -1,0 +1,39 @@
+/********************************/
+
+?_UNDTOWN05_DR_1
+		HeroToDoor	(4,14,43,15)
+		Jump		(?_UNDTOWN01)
+
+
+?_UNDTOWN05_TR_1		// MIRROR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("This=")
+					("mirror looks")
+					("overused.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN05_TR_2		// WEIGHTS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("One of such=")
+					("stature must")
+					("watch his=")
+					("figure.")
+					("Hence heavy=")
+					("objects on")
+					("sticks.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN05_TR_3		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Such a tiny=")
+					("bed for such")
+					("a big head.")
+					("How does he=")
+					("do it?")
+		TextClose	()
+		End			()

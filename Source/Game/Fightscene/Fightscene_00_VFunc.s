@@ -1,0 +1,184 @@
+;********************************
+; FIGHTSCENE_00_VFUNC.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+; BASED ON A/B BUTTONS 
+; TOGGLE THE MONSTER ON EACH SIDE
+
+?FIGHTSCN_VFUNC_OPTIONS
+		
+	; HIDE WINDOW
+	;--------------------------------
+	LD			A,$A7   
+	LDFF_A		WX
+	
+	; SET SCX AND WX
+	;--------------------------------
+	LD			A,(FIGHTSCN_BORDX0)
+	LDFF_A		SCX
+	
+	; SET SCY AND WY
+	;--------------------------------
+	XOR			A
+	LDFF_A		SCY
+	LD			A,(FIGHTSCN_WY)
+	LDFF_A		WY
+
+	; SET LY TO FIGHTSCN_LYC0
+	;--------------------------------
+	LD			A,FIGHTSCN_LYC0
+	LDFF_A		LYC
+	
+_DISSOLVE_FX
+	; this func is placed here to speed up the dissolve
+	SWITCH_ROM_BANK		:TILEFX_DESTROY_TABLE_DEFAULT			;FUNCS() ARE IN SAME BANK AS TABLES
+	FGET16	H,L,TILEFX_DESTROY_BLANK_FUNC
+	PUSH	HL
+	CALL_HL
+	POP		HL
+	;
+	PUSH	HL
+	CALL_HL
+	POP		HL
+	;
+	PUSH	HL
+	CALL_HL
+	POP		HL
+	;
+	PUSH	HL
+	CALL_HL
+	POP		HL
+		
+_TEST_FIGHTSCN_OPTIONS	
+	if 0
+	LD			A,(FIGHTSCN_OPTIONS)
+	AND			A
+	RET			Z
+	XOR			A
+	LD			(FIGHTSCN_OPTIONS),A
+	
+		
+; debug ...
+; do we want to load monster 2 	
+_TEST_A		
+	LD			A,(CNTDOWN)
+	BIT			0,A
+	JR    		Z,_TEST_SWITCH
+_PRESSED_A	
+	; reload creature (RIGHT)
+	
+	SCREEN_HIDE
+	LD			A,(FIGHTSCN_SCX)
+	PUSH		AF
+	XCALL		?FIGHTSCENE_SCX_INIT
+	POP			AF
+	LD			(FIGHTSCN_SCX),A
+	
+	BTL_LOAD_CREATURE	(CREATURE_INDEX+1),1
+	LD					A,$32
+	LD					(TEMP_MISC1),A
+	XCALL		?PALFX_REFRESH_ANIMBUFFER
+	XCALL		?VBLANK_UPDATE_PALETTES
+	SCREEN_SHOW	
+		
+_TEST_SWITCH
+	; if you press (UP/DOWN) 
+;UP
+	LD			A,(CNTDOWN)
+	BIT			6,A
+	JP    		NZ,_RELOAD_CREATURE
+;DOWN	
+	LD			A,(CNTDOWN)
+	BIT			7,A
+	JP    		NZ,_RELOAD_CREATURE
+	JP    		_TEST_START
+_RELOAD_CREATURE	
+		
+	; reload creature (UP/DOWN)
+	SCREEN_HIDE		
+	CALL		?TIMER_START
+	LD			A,(FIGHTSCN_SCX)
+	PUSH		AF
+	XCALL		?FIGHTSCENE_SCX_INIT
+	POP			AF
+	LD			(FIGHTSCN_SCX),A
+	BTL_LOAD_CREATURE	(CREATURE_INDEX),0
+	LD					A,$02
+	LD					(TEMP_MISC1),A
+	XCALL		?PALFX_REFRESH_ANIMBUFFER
+	XCALL		?VBLANK_UPDATE_PALETTES
+	SCREEN_SHOW
+	RET
+	
+_TEST_START	
+	; if you press (START) 
+	LD			A,(CNTDOWN)
+	BIT			3,A
+	JP     		Z,_TEST_SKIP
+_PRESSED_START			
+	; do something here
+	; reload everything parallax (START)
+	if	 1
+	SCREEN_HIDE		
+	CALL		?TIMER_START
+	LD			A,(FIGHTSCN_SCX)
+	PUSH		AF
+	XCALL		?FIGHTSCENE_SCX_INIT
+	POP			AF
+	LD			(FIGHTSCN_SCX),A
+	BTL_LOAD_ARENA	(ARENA_INDEX)
+	BTL_LOAD_CREATURE	(CREATURE_INDEX),0
+	BTL_LOAD_CREATURE	(CREATURE_INDEX+1),1
+	LD			A,$07
+	LD			(TEMP_MISC1),A
+	XCALL		?PALFX_REFRESH_ANIMBUFFER
+	XCALL		?VBLANK_UPDATE_PALETTES
+	SCREEN_SHOW
+	endif
+
+_TEST_SKIP
+	endif
+	RET
+	
+;********************************
+?VBLANK_HANDLER_FIGHTSCENE
+
+	LDA_FF			VBLANK_CONTROL
+	BIT				$00,A
+	JR				Z,_SKIP_GFX
+
+	LD				A,%11100011
+	LD				(LCDC),A
+	
+	CALL			DMASUB				; DMA transfer
+	CALL			?FIGHTSCN_VFUNC_OPTIONS
+
+_SKIP_GFX
+	LDA_FF			VBLANK_CONTROL
+	BIT				$01,A
+	JR				Z,_SKIP_VFUNC
+
+	SWITCH_ROM_BANK		(VBLANK_BANK)
+	GET16			H,L,VBLANK_FUNC		; FX VBlank for Palettes and GFX
+	CALL_HL
+_SKIP_VFUNC
+
+	SOUND_VBLANK
+		
+	; SET HFUNC TO ?FIGHTSCN_HFUNC0
+	;--------------------------------
+	LD			A,?FIGHTSCN_HFUNC0&$00FF
+	LDFF_A		HFUNC
+	LD			A,(?FIGHTSCN_HFUNC0>>$08)&$00FF
+	LDFF_A		HFUNC+$01
+
+	RET
+
+
+;********************************
+	END
+;********************************

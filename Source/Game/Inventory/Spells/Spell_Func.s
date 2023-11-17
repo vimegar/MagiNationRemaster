@@ -1,0 +1,108 @@
+;********************************
+; SPELL_FUNC.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "YouMUSTUseTwoTables" Mayo/Erik "to heck with two tables" Hutchinson
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB		SOURCE\GAME\INVENTORY\SPELLS\SPELL_TABLE.S
+	
+;********************************
+?SPELL_CMD_DIRECT_DAMAGE
+
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		A,(BTL_TABLE_COPY_BUFFER+SPELL_DAMAGE_OFFSET)
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	CALL_FOREIGN		?BTL_MSG_NORM_PARAMS
+	
+	RET
+	
+;********************************
+?SPELL_CMD_EXECUTIONER
+
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	
+	RANDVAL	E
+	LD		C,A
+	LD		B,30
+	CALL	?DIV
+	LD		A,L
+	ADD		A,10
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	
+	CALL_FOREIGN		?BTL_MSG_NORM_PARAMS
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A
+	SCRIPT_SET_VAR		TEXT_SCRIPT,BTL_TABLE_COPY_BUFFER+ITEM_BTL_SCRIPT_FUNC_OFFSET,BTL_TABLE_COPY_BUFFER+ITEM_BTL_SCRIPT_BANK_OFFSET
+	CALL_FOREIGN		?BTL_MSG_NORM_PARAMS
+	
+	RET
+	
+;********************************
+?SPELL_CMD_CUNNING_BLOW
+
+	BTL_KILL_TARGET
+	
+	RANDVAL	E
+	CP		230
+	RET		NC	
+
+	RET
+
+;********************************
+?INV_GIVE_SPELL
+
+	LD			HL,XRAM_INVENTORY_SPELLS
+	ADD			HL,DE
+	PUSH		HL
+
+	LD			B,E
+	LD			C,SPELL_SIZE
+	CALL		?MULT
+
+	LD			BC,SPELL_TABLE+SPELL_NAME_OFFSET
+	ADD			HL,BC
+	LD			BC,SPELL_NAME_SIZE
+	LD			DE,TEXT_PARAM_BUFFER
+	CALL		?MEM_MOV
+	LD			A,?FORMAT
+	LD			(DE),A
+
+	LD			BC,SPELL_COST_OFFSET-SPELL_NAME_OFFSET-SPELL_NAME_SIZE
+	ADD			HL,BC
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD			A,(HL)
+	POP			HL
+	LD			(HL),A
+
+	BATTERY_OFF
+
+	LD			A,$01
+	LD			(INV_ID_SUCCESS),A
+
+	RET
+
+;********************************
+?INV_TAKE_SPELL
+
+	LD			HL,XRAM_INVENTORY_SPELLS
+	ADD			HL,DE
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	XOR			A
+	LD			(HL),A
+
+	BATTERY_OFF
+	RET
+
+;********************************
+	END
+;********************************

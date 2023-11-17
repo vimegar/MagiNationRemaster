@@ -1,0 +1,8 @@
+/********************************/
+?_UNDCAVERN07_DR_1
+		HeroSetDoor	(17,6)
+		Jump		(?_OVRSURFACE02)
+
+?_UNDCAVERN07_DR_2
+		HeroToDoor	(12,13,3,14)
+		Jump		(?_UNDCAVERN08)

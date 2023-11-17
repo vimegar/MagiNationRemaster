@@ -1,0 +1,24 @@
+SELF:
+
+Game: Assign all coll codes				TODO
+Game: Random encounters					TODO
+Scripting: Battle init -> full inf.			TODO
+Tilemap modes: Playfield & Hardware			TODO
+Tilemap delta: Make additive				TODO
+Battle anim screen control				TODO
+Graphics: Draw BGs, normal & flipped			TODO
+Scripting: Cmds to animate battle			TODO
+Scripting: Cmd to draw frame in screen space		TODO
+Scripting: Actor init for screen space			TODO
+Scripting: Audio cmds					TODO
+Actorlist: Y SORT					TODO
+XRAM for inventory, Tony state				TODO
+Scripting: Cmds for full XRAM manipulation		TODO
+Tony Jones:						TODO
+	Jump, Float, Fly, Push
+	Swim, Dive, Climb
+
+OTHER:
+
+Glue menus for Inn, Shop, RingSmith			TODO
+AI for Magi battles					TODO

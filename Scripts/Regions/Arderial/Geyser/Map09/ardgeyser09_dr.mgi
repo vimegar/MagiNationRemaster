@@ -1,0 +1,20 @@
+?_ARDGEYSER09_DR_1
+	HeroToDoor					(23,15,0,16)
+	Jump						(?_ARDGEYSER04)
+
+?_ARDGEYSER09_TR_1
+	TriggerAlways				(Ardgeyser_Trig13,?_ARDGEYSER_FLIPPED,250,19,3,24)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	CopyTileBlock				(24,20,17,1,3,16,18)
+	SetScroll					(?_END)
+	End							()
+
+?_ARDGEYSER09_TR_2
+	TriggerAlways				(Ardgeyser_Trig14,?_ARDGEYSER_FLIPPED,250,2,5,24)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	CopyTileBlock				(24,20,17,1,3,11,14)
+	SetScroll					(?_END)
+	End							()
+
+?_ARDGEYSER09_TR_3
+	TriggerTreasure				(ARDGEYSER09_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,11,12,24)

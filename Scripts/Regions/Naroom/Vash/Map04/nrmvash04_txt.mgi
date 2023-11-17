@@ -1,0 +1,37 @@
+/********************************/
+//NRMVASH04
+/********************************/
+?_NRMVASH04_GIRL_TXT
+	If					([Sick_Orwin],_SICK)
+	If					([GC > GC_SHADOWHOLD_JAIL],_ORWIN_HEALED)
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Pruitt made me=")
+						("a pretty ring!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+_SICK
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("What are all=")
+						("of these people")
+						("so worried=")
+						("about?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+_ORWIN_HEALED
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Don't tell=")
+						("anyone, but I")
+						("heard that=")
+						("the Great")
+						("Magus Kyros=")
+						("is in town.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	

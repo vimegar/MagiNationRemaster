@@ -1,0 +1,25 @@
+/********************************/
+		FileHotspots	(HS_HDNLOAD01)
+						(HOTSPOT_TRIGGER_ALL,?_HDNLOAD01_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_HDNLOAD01_DR_2)
+						(HOTSPOT_TRIGGER_ALL,?_HDNLOAD01_DR_3)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNLOAD01_DR_4)
+
+/********************************/
+//	LOAD SCREEN SECRET
+/********************************/
+		FileHotspots	(HS_HDNLOAD01B)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNLOAD01B_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNLOAD01B_DR_2)
+		
+		FileTriggers	(TR_HDNLOAD01B)
+						(TRIGGER_CONFIG,?_HDNLOAD01B_TR_1)
+
+/********************************/
+		FileHotspots	(HS_HDNLOAD01C)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNLOAD01C_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNLOAD01C_DR_2)
+
+/********************************/
+//	LOAD SCREEN SECRET
+/********************************/

@@ -1,0 +1,11 @@
+/********************************/
+?_ARDGARDEN06_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("I don't live=")
+						("here, I just")
+						("take care of=")
+						("the plants.")
+	TextClose			()
+	SetEventText		(1)
+	End					()

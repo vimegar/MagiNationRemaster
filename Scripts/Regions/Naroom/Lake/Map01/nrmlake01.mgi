@@ -1,0 +1,35 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\LAKE\MAP01\NRMLAKE01_DR.MGI
+%INCLUDE			REGIONS\NAROOM\LAKE\MAP01\NRMLAKE01_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\LAKE\MAP01\LAKE_BAT.MGI
+
+/********************************/
+?_NRMLAKE01
+	SceneNew			()
+	LoadMap				(MAP_NRMLAKE01)
+	LoadHotspots		(HS_NRMLAKE01)
+	LoadTriggers		(TR_NRMLAKE01)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,60,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_NRMLAKE_RNDBAT)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_NRMLAKE_RNDBAT)
+	ThatActorInit		(ACTOR1F,?ANIM_AI,57,48,60,52,?_WHIRLPOOL_ANIM,?_END)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles		(64,BIT_WHIRLPOOL,52,0)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	ThatActorStart		(ACTOR1F)
+	SetBtlReturn		(?_NRMLAKE01)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_oroisland)
+
+	If					([NRMLAKE01_Door],_SKIP)
+	DrawTile			(18,35,60,62,COLLCODE_TR03)
+
+_SKIP
+	SceneReady			()
+	End					()
+	

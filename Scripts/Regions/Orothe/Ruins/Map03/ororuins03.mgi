@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\RUINS\MAP03\ORORUINS03_DR.MGI
+%INCLUDE			REGIONS\OROTHE\RUINS\MAP03\ORORUINS03_TXT.MGI
+
+/********************************/
+
+?_ORORUINS03
+	SceneNew		()
+	LoadMap			(MAP_ORORUINS03)
+	LoadHotspots	(HS_ORORUINS03)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_ORORUINS03)
+	SetItemScript	(?_ORORUINS_BOMB_SUMMON)
+	ThatActorInit	(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,50,0,?_HERO_UNDTREAD_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_RUINS_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_RUINS_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_ORORUINS03)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_ororuins)
+	SceneReady		()
+	End				()

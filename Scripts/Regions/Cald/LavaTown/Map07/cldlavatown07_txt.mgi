@@ -1,0 +1,125 @@
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT01
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Tony! We are=")
+						("in your debt.")
+						("Is there=")
+						("anything I can")
+						("tell you about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT02
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Lava Arbolls=")
+						("are very timid.")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Is there=")
+						("anything else")
+						("you want to=")
+						("konw about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT03
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Nobody wants=")
+						("you here.")
+						("Go away!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT04
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Is there=")
+						("anything you")
+						("want to know=")
+						("about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT05
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Why don't you=")
+						("build a bridge?")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Is there=")
+						("anything you")
+						("want to know=")
+						("about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02_TXT06
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Welcome back=")
+						("Tony.")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Is there=")
+						("anything you")
+						("want to know=")
+						("about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/

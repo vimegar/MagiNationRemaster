@@ -1,0 +1,58 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP10\OROTUNNEL10_DR.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP10\OROTUNNEL10_TXT.MGI
+
+/********************************/
+?_OROTUNNEL10_LOAD
+	HeroSetDoor				(9,14)
+
+?_OROTUNNEL10
+	SetXRAMByte				(Exit_Disable,1)
+	SetLoadScript			(?_OROTUNNEL10_LOAD)
+	If						([GC = GC_BOOTS_QUEST],?_OROTUNNEL10_BOOTS)
+	SceneNew				()
+	LoadMap					(MAP_OROTUNNEL10)
+	LoadHotspots			(HS_OROTUNNEL10)
+	LoadTriggers			(TR_OROTUNNEL10)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	SongStart				(SONGID_orotunnels)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()	
+	
+/********************************//********************************/
+// WANNA BLU MY HORN?
+/********************************//********************************/
+?_OROTUNNEL10_BOOTS
+	SceneNew				()
+	LoadMap					(MAP_OROTUNNEL10)
+	LoadHotspots			(HS_OROTUNNEL10)
+	LoadTriggers			(TR_OROTUNNEL10)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,21,20,0,?_OROTUNNEL10_BOOTS_BLU,?_OROTUNNEL10_BLU_TLK)
+	LoadVRAMTiles			(48,BIT_BLU,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	SongStart				(SONGID_orotunnels)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_OROTUNNEL10_BOOTS_BLU
+	ThisActorSetAnimDelay	(?_BLU_RUN_UP_ANIM,24)
+							(?_BLU_STAND_UP_ANIM,0)
+	ScrollMap				(48,0,1)
+	SetText					(?_OROTUNNEL10_BLUTXT)
+	End						()
+
+?_OROTUNNEL10_BLU_TLK
+	SetText					(?_OROTUNNEL10_BLUTXT2)
+	Jump					(?_FACE_BLU)
+/********************************//********************************/
+// END WANNA BLU MY HORN?
+/********************************//********************************/

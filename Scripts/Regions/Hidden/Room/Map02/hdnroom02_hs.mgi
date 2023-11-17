@@ -1,0 +1,9 @@
+/*********************/
+		FileHotspots	(HS_HDNROOM02)
+						(HOTSPOT_TRIGGER_EAST,?_HDNROOM02_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_HDNROOM02_DR_2)
+
+/*********************/
+		FileHotspots	(HS_WARP06)
+						(HOTSPOT_TRIGGER_NORTH,?_WARP06_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_WARP06_DR_2)

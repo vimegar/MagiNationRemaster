@@ -1,0 +1,3 @@
+/********************************/
+%INCLUDE			INCLUDES\EQUATES_INC.MGI
+%INCLUDE			INCLUDES\GAMESTATE_INC.MGI

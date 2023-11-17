@@ -1,0 +1,137 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP03\OROISLANDS03_DR.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP03\OROISLANDS03_TXT.MGI
+
+/********************************/
+?_OROISLANDS03
+
+/********************************//********************************/
+// ORLON'S BUDDY IN TRANSIT
+/********************************//********************************/
+?_OROISLANDS03_ORLONSBUDDY1
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS03)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,7,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,12,4,23,0,?_OROISLANDS03_TONY_LOOP1,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,4,23,0,?_OROISLANDS03_OLDGUY1,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,11,2,23,38,?_BOAT_NOTMOVING_LEFT_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(21,BIT_BOAT,38,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	SongStart				(SONGID_oroisland)
+	SetCamera				(0,5)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	ScrollMap				(48,1,0)
+	SetText					(?_OROISLANDS03_TXT_1)
+	ScrollMap				(64,1,0)
+	WaitEventText			(10)
+	ThatActorSetScript		(HEROACTOR,?_OROISLANDS03_TONY1)
+	End						()
+
+?_OROISLANDS03_TONY_LOOP1
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,3)
+							(?_HERO_STAND_UP_ANIM,0)
+?_OROISLANDS03_LOOP1
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,48)
+							(?_HERO_STAND_UR_ANIM,96)
+							(?_HERO_STAND_UL_ANIM,112)
+							(?_HERO_STAND_UR_ANIM,64)
+							(?_HERO_STAND_RIGHT_ANIM,192)
+							(?_HERO_STAND_DL_ANIM,64)
+							(?_HERO_STAND_DOWN_ANIM,48)
+							(?_HERO_STAND_DL_ANIM,96)
+							(?_HERO_STAND_DR_ANIM,48)
+							(?_HERO_STAND_DOWN_ANIM,3)
+							(?_HERO_STAND_DL_ANIM,3)
+							(?_HERO_STAND_LEFT_ANIM,112)
+							(?_HERO_STAND_RIGHT_ANIM,96)
+	Jump					(?_OROISLANDS03_LOOP1)
+	
+?_OROISLANDS03_TONY1
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	ScrollMap				(144,1,0)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_OROISLANDS03_ORLONSBUDDY2)
+	End						()
+?_OROISLANDS03_OLDGUY1
+	ThisActorSetAnimDelay	(?_OLDMAN04_RUN_RIGHT_ANIM,4)
+							(?_OLDMAN04_STAND_LEFT_ANIM,0)
+	WaitEventText			(20)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_RIGHT_ANIM)
+	Delay					(160)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_LEFT_ANIM)
+	End						()
+
+?_OROISLANDS03_ORLONSBUDDY2
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS03)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,7,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,12,4,23,0,?_OROISLANDS03_TONY_LOOP2,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,4,23,0,?_OROISLANDS03_OLDGUY2,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,11,2,23,38,?_BOAT_NOTMOVING_LEFT_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(21,BIT_BOAT,38,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	SongStart				(SONGID_oroisland)
+	SetCamera				(0,5)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	ScrollMap				(48,1,0)
+	SetText					(?_OROISLANDS03_TXT_2)
+	ScrollMap				(64,1,0)
+	WaitEventText			(11)
+	ThatActorSetScript		(HEROACTOR,?_OROISLANDS03_TONY2)
+	End						()
+
+?_OROISLANDS03_TONY_LOOP2
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,3)
+							(?_HERO_STAND_UP_ANIM,0)
+?_OROISLANDS03_LOOP2
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,48)
+							(?_HERO_STAND_UR_ANIM,26)
+							(?_HERO_STAND_DR_ANIM,68)
+							(?_HERO_STAND_DOWN_ANIM,144)
+							(?_HERO_STAND_LEFT_ANIM,44)
+							(?_HERO_STAND_RIGHT_ANIM,96)
+							(?_HERO_STAND_DOWN_ANIM,148)
+							(?_HERO_STAND_DL_ANIM,80)
+							(?_HERO_STAND_UR_ANIM,64)
+							(?_HERO_STAND_RIGHT_ANIM,48)
+							(?_HERO_STAND_DL_ANIM,124)
+							(?_HERO_STAND_UL_ANIM,162)
+							(?_HERO_STAND_DL_ANIM,66)
+	Jump					(?_OROISLANDS03_LOOP2)
+
+
+	
+?_OROISLANDS03_TONY2
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(2)
+	ScrollMap				(130,1,0)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_WVEPATHVALLEY09_ARRIVAL)
+	End						()
+
+?_OROISLANDS03_OLDGUY2
+	ThisActorSetAnimDelay	(?_OLDMAN04_RUN_RIGHT_ANIM,4)
+							(?_OLDMAN04_STAND_LEFT_ANIM,0)
+	WaitEventText			(21)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_RIGHT_ANIM)
+	Delay					(160)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_LEFT_ANIM)
+	End						()
+/********************************//********************************/
+// END ORLON'S BUDDY IN TRANSIT
+/********************************//********************************/
+

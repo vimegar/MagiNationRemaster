@@ -1,0 +1,16 @@
+/********************************/
+
+?_OROGEYSER05_DR_1
+	HeroToDoor	(31,15,0,26)
+	Jump		(?_OROGEYSER01)
+
+?_OROGEYSER05_DR_2
+	HeroSetDoor	(3,26)
+	Jump		(?_OROGEYSER10)
+
+?_OROGEYSER05_DR_3
+	If			([Warrada_Scene2],_SKIP)
+	SetXRAMBit	(Warrada_Scene2,TRUE)
+	Jump		(?_OROGEYSER05_WARRADAAGAIN)
+_SKIP
+	End			()

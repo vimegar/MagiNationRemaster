@@ -1,0 +1,20 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP04\HDNROOM04_DR.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP04\HDNROOM04_TXT.MGI
+
+/********************************/
+/********************************/
+?_HDNROOM04
+	SceneNew		()
+	LoadMap			(MAP_HDNROOM04)
+	LoadHotspots	(HS_HDNROOM04)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_HDNROOM04)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongFadeOut		(80)
+	SceneReady		()
+	End				()

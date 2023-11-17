@@ -1,0 +1,208 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP24\NRMVASH24_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP24\NRMVASH24_TXT.MGI
+
+/********************************/
+?_NRMVASH24
+?_AIM_ANIMITE
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH24)
+	LoadHotspots			(HS_NRMVASH24) 
+	LoadTriggers			(TR_NRMVASH24) 
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,10,11,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	
+	ThatActorInit			(ACTOR00,?TRAP_AI,1,5,11,0,_SLOW_BLOCK_ANIM,_HIT_BLOCK_SLOW)
+	ThatActorInit			(ACTOR01,?TRAP_AI,1,4,11,0,_FAST_BLOCK_ANIM,_HIT_BLOCK_FAST)
+	ThatActorInit			(ACTOR02,?TRAP_AI,1,3,11,0,_VERYFAST_BLOCK_ANIM,_HIT_BLOCK_VERYFAST)
+
+	ThatActorInit			(ACTOR03,?ANIM_AI,2,7,11,32,?_END,?_END)
+	ThatActorInit			(ACTOR04,?ANIM_AI,4,7,11,32,?_END,?_END)
+	ThatActorInit			(ACTOR05,?ANIM_AI,6,7,11,32,?_END,?_END)
+	ThatActorInit			(ACTOR06,?ANIM_AI,8,7,11,32,?_END,?_END)
+
+	ThatActorInit			(ACTOR0F,?ANIM_AI,0,0,11,0,?_END,?_END)
+	ThatActorInit			(ACTOR10,?ANIM_AI,0,0,11,0,_RANDOM_GREEN,?_END)
+	ThatActorInit			(ACTOR11,?ANIM_AI,0,0,11,64,?_END,?_END)
+	ThatActorStart			(ACTOR0F)
+	ThatActorStart			(ACTOR10)
+	ThatActorStart			(ACTOR11)
+
+	LoadVRAMTiles			(8,BIT_ANIMITE,64,0)
+	LoadVRAMTiles			(5,BIT_TARGET,0,0)
+	LoadVRAMTiles			(6,BIT_BOWARROW,5,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,15,31,31,31)
+	SongStart				(SONGID_battle)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	SetText					(_TIMES_UP)
+	End						()
+	
+_TIMES_UP
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	Delay					(255)
+	SongStart				(SONGID_levelup1)	
+	TextOpen				()
+	TextWrite				("TIME'S UP!")
+	TextClose				()
+	Delay					(8)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_UNDTOWN08B_BRUB_RET)
+
+/********************************/
+// TIMER
+_RANDOM_GREEN
+	Delay					(80)
+	JumpRandom				(_1)
+							(_2)
+							(_3)
+							(_4)
+							(_5)
+							(_6)
+							(_7)
+							(_8)
+_1
+	ThatActorInit			(ACTOR11,?TRAP_AI,2,2,11,64,?_ANIMITE_GREEN_ANIM,_CAUGHT_GREEN)
+	Delay					(48)
+	JumpLocal				(_RANDOM_GREEN)
+_2
+	ThatActorInit			(ACTOR11,?TRAP_AI,4,2,11,64,?_ANIMITE_GREEN_ANIM,_CAUGHT_GREEN)
+	Delay					(48)
+	JumpLocal				(_RANDOM_GREEN)
+_3
+	ThatActorInit			(ACTOR11,?TRAP_AI,6,2,11,64,?_ANIMITE_GREEN_ANIM,_CAUGHT_GREEN)
+	Delay					(48)
+	JumpLocal				(_RANDOM_GREEN)
+_4
+	ThatActorInit			(ACTOR11,?TRAP_AI,8,2,11,64,?_ANIMITE_GREEN_ANIM,_CAUGHT_GREEN)
+	Delay					(48)
+	JumpLocal				(_RANDOM_GREEN)
+_5
+_6
+_7
+_8
+	ThatActorInit			(ACTOR11,?ANIM_AI,0,0,11,64,?_END,?_END)	
+	JumpLocal				(_RANDOM_GREEN)
+
+/********************************/
+// TARGETS
+_CAUGHT_GREEN
+	ThatActorInit			(HEROACTOR,?ANIM_AI,0,0,11,0,?_END,?_DONT_TALK)
+	ThisActorSetAnim		(?_ANIMITE_GREEN_ANIM)
+	ThatActorSetScript		(ACTOR10,?_END)
+	SetScroll				(_X4)
+	End						()
+_X4
+	ThatActorSetScript		(ACTOR0F,?_AIM_ANIM_HIT_BLOCK)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 5])
+	ScrollMap				(2,2,0)
+	ScrollMap				(2,-2,2)
+	ScrollMap				(2,-2,0)
+	ScrollMap				(2,2,-2)
+	ScrollMap				(1,0,2)
+	ScrollMap				(1,2,0)
+	ScrollMap				(1,0,-2)
+	ScrollMap				(1,-2,0)
+	ThatActorInit			(ACTOR11,?ANIM_AI,0,0,11,64,?_END,?_END)	
+	ThatActorSetScript		(ACTOR10,_RANDOM_GREEN)
+	End						()
+	
+			
+_SLOW_BLOCK_ANIM
+	ThisActorSetAnimDelay	(?_TARGET_RIGHT_SLOW_ANIM,128)
+							(?_TARGET_LEFT_SLOW_ANIM,128)
+	JumpLocal				(_SLOW_BLOCK_ANIM)
+	
+_FAST_BLOCK_ANIM
+	ThisActorSetAnimDelay	(?_TARGET_RIGHT_FAST_ANIM,64)
+							(?_TARGET_LEFT_FAST_ANIM,64)
+	JumpLocal				(_FAST_BLOCK_ANIM)
+
+_VERYFAST_BLOCK_ANIM
+	ThisActorSetAnimDelay	(?_TARGET_RIGHT_VERYFAST_ANIM,42)
+							(?_TARGET_LEFT_VERYFAST_ANIM,42)
+	JumpLocal				(_VERYFAST_BLOCK_ANIM)
+
+/********************************/
+// ARROWS
+_SHOOT_ARROW
+	End						()
+/********************************/
+// REWARDS
+_HIT_BLOCK_SLOW
+	ThatActorInit			(HEROACTOR,?ANIM_AI,0,0,11,0,?_END,?_DONT_TALK)
+	Delay					(8)
+	SFX						(SFXID_DRAIN)
+	ThisActorSetAnim		(?_TARGET_HIT_ANIM)
+	Delay					(24)
+	SetScroll				(_X1)
+	End						()
+_X1
+	ThatActorSetScript		(ACTOR0F,?_AIM_ANIM_HIT_BLOCK)
+	Delay					(10)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 1])
+	ThatActorInit			(ACTOR00,?TRAP_AI,1,5,11,0,_SLOW_BLOCK_ANIM,_HIT_BLOCK_SLOW)
+	End						()
+
+_HIT_BLOCK_FAST
+	ThatActorInit			(HEROACTOR,?ANIM_AI,0,0,11,0,?_END,?_DONT_TALK)
+	Delay					(8)
+	SFX						(SFXID_DRAIN)
+	ThisActorSetAnim		(?_TARGET_HIT_ANIM)
+	Delay					(24)
+	SetScroll				(_X2)
+	End						()
+_X2
+	ThatActorSetScript		(ACTOR0F,?_AIM_ANIM_HIT_BLOCK)
+	Delay					(10)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 2])
+	ThatActorInit			(ACTOR01,?TRAP_AI,1,4,11,0,_FAST_BLOCK_ANIM,_HIT_BLOCK_FAST)
+	End						()
+
+_HIT_BLOCK_VERYFAST
+	ThatActorInit			(HEROACTOR,?ANIM_AI,0,0,11,0,?_END,?_DONT_TALK)
+	Delay					(8)
+	SFX						(SFXID_DRAIN)
+	ThisActorSetAnim		(?_TARGET_HIT_ANIM)
+	Delay					(24)
+	SetScroll				(_X3)
+	End						()
+_X3
+	ThatActorSetScript		(ACTOR0F,?_AIM_ANIM_HIT_BLOCK)
+	Delay					(10)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte + 3])
+	ThatActorInit			(ACTOR02,?TRAP_AI,1,3,11,0,_VERYFAST_BLOCK_ANIM,_HIT_BLOCK_VERYFAST)
+	End						()
+
+?_NRMVASH24_HERO_ARROW_FLIES
+	ThisActorSetAnimDelay	(?_ARROW_FLY_UP,12)
+	ThisActorSetAI			(?ZOMBIE_AI)
+	End						()
+
+?_AIM_ANIM_HIT_BLOCK
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	ThatActorSetVRAMBase	(HEROACTOR,0)
+	ThatActorLocRelative	(HEROACTOR,ACTOR0F)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThisActorSetAnim		(?_END)
+	End						()

@@ -1,0 +1,64 @@
+/********************************/	
+?_HOMETOWN_KORGBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(UNDERNEATH_ARENA1,KORG,40,?_BATTLE_FADE_IN)
+	BtlNextTurn		()
+	
+//900
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,3)	
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,132)		
+	TextOpen		()
+	TextIcon		(ICON_KORG)
+					//123456789012345
+	TextWrite		("Now that I=")
+					("don't have to")
+					("worry about Zet=")
+					("messing up, I")
+					("can crush you!=")					
+	TextClose		()	
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,50,130,2)
+	BtlNextTurn		()
+	
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,50,150,2)	
+	If				([:WRAM_BATTLE[BTL_CMD_VALID = 0]],_NO_GRAX)	
+	BtlNextTurn		()
+	TextOpen		()
+	TextIcon		(ICON_KORG)
+					//123456789012345
+	TextWrite		("Yeah! Go Grax!=")
+	TextClose		()		
+	
+_NO_GRAX
+	BtlNextTurn		()
+	
+	TextOpen		()
+	TextIcon		(ICON_KORG)					
+	TextWrite		("How come your=")
+					("creatures get")
+					("out so fast?")
+	TextClose		()
+	TextOpen		()
+	TextIcon		(ICON_ZET)
+					//123456789012345
+	TextWrite		("Because you're=")
+					("a moron, Korg!")
+	TextClose		()
+	TextOpen		()
+	TextIcon		(ICON_KORG)		
+					//123456789012345			
+	TextWrite		("Shaddup, Zet!=")
+					("my super big")
+					("Grax team will=")
+					("win this! Go")
+					("Grax!")
+	TextClose		()
+	
+_GO_GRAX
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,50,150,2)		
+	BtlNextTurn		()
+	Jump			(_GO_GRAX)
+
+	
+	
+	

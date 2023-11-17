@@ -1,0 +1,27 @@
+?_NRMVASH18_FUNERAL
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH18)
+	LoadTriggers			(TR_NRMVASH18)
+	LoadHotspots			(HS_NRMVASH18)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,17,11,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_giahut)
+	SceneReady				()
+	End						()
+	
+?_NRMVASH18_PARTY
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH18)
+	LoadTriggers			(TR_NRMVASH18)
+	LoadHotspots			(HS_NRMVASH18)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,17,11,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+	
+ 

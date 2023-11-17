@@ -1,0 +1,11 @@
+?_NRMGEYSER01_DR_1
+	HeroToDoor		(0,17,23,13)
+	Jump			(?_NRMGEYSER02)
+
+?_NRMGEYSER01_DR_2
+	HeroToDoor		(8,0,15,23)
+	Jump			(?_NRMGEYSER06)
+
+?_NRMGEYSER01_DR_3
+	HeroToDoor		(8,27,7,0)
+	Jump			(?_NRMGEYSER12)

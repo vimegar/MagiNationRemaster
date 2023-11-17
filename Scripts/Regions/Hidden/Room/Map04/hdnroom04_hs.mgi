@@ -1,0 +1,9 @@
+/********************************/
+		FileHotspots	(HS_HDNROOM04)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM04_DR_1)
+						(HOTSPOT_TRIGGER_EAST,?_HDNROOM04_DR_2)
+
+		FileTriggers		(TR_HDNROOM04)
+						(TRIGGER_CONFIG,?_HDNROOM04_TR_1)
+						(TRIGGER_CONFIG,?_HDNROOM04_TR_2)
+						(TRIGGER_CONFIG,?_HDNROOM04_TR_3)

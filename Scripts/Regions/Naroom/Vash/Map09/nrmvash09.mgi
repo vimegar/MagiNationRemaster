@@ -1,0 +1,226 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP09\NRMVASH09_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP09\NRMVASH09_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP09\NRMVASH09_SCT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP09\NRMVASH09_PARTY.MGI
+
+/********************************/
+?_LOAD_NRMVASH09
+	ThatActorInit		(HEROACTOR,?HERO_AI,15,23,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	HeroToDoor			(15,23,14,5)
+
+/********************************/
+?_NRMVASH09
+	SetXRAMByte			(Exit_Disable,1)
+	Switch				([GAMECOUNT])
+						(GC_NRM_INTRO,?_NRMVASH09_NRM_INTRO)
+						(GC_END_FUNERAL,?_NRMVASH09_FUNERAL)
+						(GC_END_PARTY,?_NRMVASH09_PARTY)
+?_NRMVASH09_GENERIC
+	SceneNew			()
+	LoadMap				(MAP_NRMVASH09)
+	LoadHotspots		(HS_NRMVASH09)
+	LoadTriggers		(TR_NRMVASH09)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,14,17,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR00,?TALKER_AI,7,13,20,0,?_POAD_STAND_DOWN_ANIM,?_NRMVASH09_GENERIC_POADTALKX)
+	ThatActorStart		(ACTOR00)
+	LoadVRAMTiles		(48,BIT_POAD,0,0)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_wencehouse)
+	SceneReady			()
+	End					()
+
+?_NRMVASH09_TONY_WAKING
+	SceneNew			()
+	LoadMap				(MAP_NRMVASH09)
+	LoadHotspots		(HS_NRMVASH09)
+	LoadTriggers		(TR_NRMVASH09)
+	LoadPalette			(PAL_HERO)
+	PalClearAnim		(0,15,31,31,31)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,17,5,20,0,_TONY_WAKING,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR00,?TALKER_AI,7,13,20,0,?_POAD_STAND_DOWN_ANIM,?_NRMVASH09_GENERIC_POADTALKX)
+	ThatActorStart		(ACTOR00)
+	LoadVRAMTiles		(48,BIT_POAD,0,0)
+	HeroSetCamera		()
+	SongStart			(SONGID_wencehouse)
+	SceneReady			()
+	PalFade				(0,15,32,0)
+	Sync				(2,0)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End					()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_INBED_RIGHT_ANIM,64)
+							(?_HERO_INBED_LEFT_ANIM,32)
+							(?_HERO_OUTTABED_LEFT,16)
+	Sync					(2,0)
+	End						()
+
+
+/********************************/
+?_NRMVASH09_GENERIC_POADTALKX	
+	SetText					(_NRMVASH09_TXT_POAD)
+	Jump					(?_FACE_POAD)
+
+_NRMVASH09_TXT_POAD
+	If						([GAMECOUNT < GC_QUEST_FOR_GIA],?_NRMVASH09_GENERIC_POADTALK)
+	If						([Sick_Orwin],_SICK)
+
+_WELL
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("I hear Orwin=")
+							("has his")
+							("appetite back.")
+							("I'll have to=")
+							("cook something")
+							("special!")
+	JumpLocal				(?_NRMVASH09_GENERIC_POADTALK)
+
+_SICK
+	If						([Seer_Byte],_EAT_MORE)
+	SetXRAMBit				(NRMLAKE01_Door,TRUE)
+
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Orwin needs=")
+							("help...")
+							("Maybe the=")
+							("Seer on")
+							("the lake=")
+							("knows a way")
+							("to cure him!")
+	Jump					(?_NRMVASH09_GENERIC_POADTALK)
+
+_EAT_MORE
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Tony!")
+							("You're thin=")
+							("as a rail!")
+							("Why don't you=")
+							("eat more?")
+	TextIcon				(ICON_TONY)
+	TextWrite				("If everyone=")
+							("cooked like")
+							("you, maybe=")
+							("I would.")
+	JumpLocal				(?_NRMVASH09_GENERIC_POADTALK)
+
+/********************************/
+?_NRMVASH09_GENERIC_POADTALK
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Would you like=")
+							("to record your")
+							("journey and=")
+							("recover lost")
+							("energy?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Yes=")
+							(" No$")
+	TextMenu				(2)
+							(_VASH_SAVE)
+							(_VASH_NOSAVE)
+
+_VASH_SAVE
+	SetLoadScript			(?_LOAD_NRMVASH09)
+	TextClear				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Goodnight!")
+	TextClose				()
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	SaveGame				(1)
+	Delay					(64)
+	Jump					(?_NRMVASH09_TONY_WAKING)
+
+_VASH_NOSAVE
+	TextClear				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Have a nice=")
+							("day!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMVASH09_POADTALK_WARNING
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("Don't go in=")
+							("there!")
+	TextClose				()
+	Sync					(2,0)
+	End						()
+
+/********************************/
+?_NRMVASH09_TXT_1
+	If						([Nrm_Intro_Count = 3],?_NRMVASH09_GENERIC_POADTALK)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Are you the=")
+							("innkeeper?")
+	TextIcon				(ICON_POAD)
+	TextWrite				("That's me.=")
+							("Poad's the")
+							("name. You want=")
+							("to stay here?")
+							("All travelers=")
+							("are welcome.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("No thanks.")
+	TextIcon				(ICON_POAD)
+	TextWrite				("Well, at least=")
+							("have some of my")
+							("jellybeans=")
+							("before you go.")
+	TextClose				()
+	TextOpen				()
+	TextWrite				("-Tony got=")
+							("jellybeans!-")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+/********************************/
+?_NRMVASH09_NRM_INTRO
+	If						([Nrm_Intro_Count != 2],?_NRMVASH09_GENERIC)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH09)
+	LoadHotspots			(HS_NRMVASH09)
+	LoadTriggers			(TR_NRMVASH09)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,17,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,13,20,0,?_POAD_STAND_DOWN_ANIM,?_HERO_POAD_ANIM_TALKER)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_POAD,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_wencehouse)
+	SceneReady				()
+	End						()
+	
+	
+?_HERO_POAD_ANIM_TALKER
+	ThisActorSetAnim		(?_POAD_STAND_DOWN_ANIM)
+	SetText					(?_NRMVASH09_TXT_1)
+	Delay					(4)
+	SetXRAMByte				(Nrm_Intro_Count,3)
+	Jump					(?_FACE_POAD)
+	End						()
+	
+?_NRMVASH09_POAD_WARNING
+	CameraSeekActor			(ACTOR00,2)
+	ThatActorSetScript		(ACTOR00,?_POAD_STAND_LEFT_ANIM)
+	SetText					(?_NRMVASH09_POADTALK_WARNING)
+	Sync					(2,0)
+	CameraSeekActor			(HEROACTOR,2)
+	ThatActorSetScript		(ACTOR00,?_POAD_STAND_DOWN_ANIM)
+	End						()

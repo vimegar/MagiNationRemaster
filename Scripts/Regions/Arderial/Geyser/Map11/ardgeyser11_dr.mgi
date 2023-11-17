@@ -1,0 +1,10 @@
+/***********************************/
+
+?_ARDGEYSER11_DR_1
+	HeroToDoor					(0,5,23,20)
+	Jump						(?_ARDGEYSER05)	
+	
+/***********************************/
+
+?_ARDGEYSER11_TR_1
+	TriggerTreasure	(ARDGEYSER11_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,5,17,24)

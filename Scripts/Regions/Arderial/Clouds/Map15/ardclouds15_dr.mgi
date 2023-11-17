@@ -1,0 +1,11 @@
+/********************************/
+?_ARDCLOUDS15_DR_1
+		HeroSetDoor			(22,29)
+		Jump				(?_OVRSURFACE05)
+
+?_ARDCLOUDS15_DR_2
+		ThatActorInit		(HEROACTOR,?HERO_AI_FLY_DOWN,5,5,30,0,?_HERO_FLY_DOWN_ANIM,?_DONT_TALK)
+		HeroSetDoor			(22,1)
+		Jump				(?_ARDCLOUDS16)
+
+

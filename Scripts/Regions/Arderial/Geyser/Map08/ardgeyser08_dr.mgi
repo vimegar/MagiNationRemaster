@@ -1,0 +1,6 @@
+?_ARDGEYSER08_DR_1
+	HeroSetDoor					(8,0)
+	Jump						(?_ARDGEYSER04)	
+	
+?_ARDGEYSER08_TR_1
+	TriggerTreasure				(ARDGEYSER08_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,6,7,24)

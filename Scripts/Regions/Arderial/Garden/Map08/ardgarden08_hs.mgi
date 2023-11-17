@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_ARDGARDEN08)
+						(HOTSPOT_TRIGGER_SOUTH,?_ARDGARDEN08_DR_1)
+
+		FileTriggers	(TR_ARDGARDEN08)
+						(TRIGGER_NORMAL,?_ARDGARDEN08_TR_1)
+						(TRIGGER_NORMAL,?_ARDGARDEN08_TR_2)

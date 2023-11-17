@@ -1,0 +1,122 @@
+/********************************/
+?_NRMVASH20_DR_1
+		HeroToDoor	(5,11,5,3)
+		Jump		(?_NRMVASH05)
+
+?_NRMVASH20_TR_1
+		TriggerAlways	(NRMVASH20_Chest1,?_TXT_MEOW,59,9,2,12)
+		InitSkip		(_SKIP)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got 5=")
+						("Animite")
+		TextClose		()
+		InventoryGive	(INV_TYPE_ANIMITE,INV_TYPE_ANIMITE,5)
+_SKIP
+		End				()
+	
+?_TXT_MEOW
+		TextOpen	()
+		TextIcon	(ICON_POLLY)
+		TextWrite	("Meooow.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH20_TR_2
+		TextOpen	()
+		TextWrite	("So BRIGHT!")
+		TextClose	()
+		End			()
+
+?_NRMVASH20_TR_3
+		If			([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If			([Worveline_Hiding != 1],_SKIP)
+		Pass		()
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("I shouldn't=")
+					("look in...")
+					("huh? The drawer=")
+					("is moving.")
+					("I'll just take=")
+					("a peek...")
+		TextIcon	(ICON_WORVELINE)
+		TextWrite	("GRRRRR!!!!")
+		TextIcon	(ICON_TONY)
+		TextWrite	("AAAAAUGH!!!")
+		TextClose	()
+		TextOpen	()
+		TextWrite	("-Worveline=")
+					(" found!-")
+		TextClose	()
+		SetXRAMByte	(Worveline_Hiding,0)
+		SetXRAMBit	(Worveline_Caught,TRUE)
+		End			()
+_SKIP
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("I shouldn't=")
+					("look in other")
+					("people's=")
+					("dressers...")
+		TextClose	()
+		End			()
+		
+?_NRMVASH20_TR_4
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Caring For=")
+					("Your Dream")
+					("Creature, Vol.=")
+					("1: Basics")
+					("Step 1- Get=")
+					("a Dream")
+					("Creature=")
+					("Step 2- Care.")
+					("Step 3- Done.")
+		TextClose	()
+		End			()	
+	
+?_NRMVASH20_TR_5
+		If				([Ormagon_Quest < 4],?_END)
+		If				([Vash20_Hollow_Stool],_JUST_COPY)
+		InitSkip		(_END)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Looks like the=")
+						("fungus hollowed")
+						("out the legs=")
+						("of this stool.")
+		TextClose		()
+		CopyTileBlock	(12,3,9,1,1,2,9)
+		SetXRAMBit		(Vash20_Hollow_Stool,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_HOLLOW_STOOL,1)
+		TextOpen		()
+		TextWrite		("Tony got a=")
+						("Hollow stool.")
+		TextClose		()
+		End				()
+_JUST_COPY		
+		CopyTileBlock	(12,3,9,1,1,2,9)
+_END
+		End				()
+/********************************/
+
+?_NRMVASH20B_TR_1
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Ooo, squishy.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH20B_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("The fungus has=")
+					("completely")
+					("taken over=")
+					("this stool.")
+		TextClose	()
+		End			()
+		

@@ -1,0 +1,7 @@
+/********************************/
+?_NRMFOREST05_DR_1
+		HeroToDoor	(29,12,0,38)
+		Jump		(?_NRMFOREST04)
+
+?_NRMFOREST05_TR_1
+		TriggerTreasure	(NRMFOREST05_Chest1,INV_TYPE_RELIC,INV_RABBAGE_FOOT,8,3,30)

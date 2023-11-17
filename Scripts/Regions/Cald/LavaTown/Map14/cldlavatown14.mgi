@@ -1,0 +1,339 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP14\CLDLAVATOWN14_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP14\CLDLAVATOWN14_TXT.MGI
+
+/********************************/
+?_CLDLAVATOWN14
+	If				([[!Right_Thing] && [GC = GC_CALD_GEYSER]],?_CLDLAVATOWN14_GENERIC)
+	If 				([GAMECOUNT > GC_TONY_KIDNAPPED],?_CLDLAVATOWN14_GENERIC)
+	Switch			([GAMECOUNT])
+					(GC_CALD_INTRO,?_CLDLAVATOWN14_FOUND)
+					(GC_ARBOLL_HUNT,?_CLDLAVATOWN14_LOOKING)
+					(GC_LAVA_BRIDGE,?_CLDLAVATOWN14_ARBOLL)
+					(GC_BOOTS_QUEST,?_CLDLAVATOWN14_GENERIC)
+	If				([!I_Specialkey],?_CLDLAVATOWN14_GENERIC)
+	Jump			(?_CLDLAVATOWN14_RETURNKEY)
+					
+?_CLDLAVATOWN14_GENERIC
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATOWN14)
+	LoadHotspots	(HS_CLDLAVATOWN14)
+	LoadTriggers	(TR_CLDLAVATOWN14)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_caldtown)
+	SceneReady		()
+	End				()
+	
+/********************************/
+?_CLDLAVATOWN14_GEN_WITH_VALKAN
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATOWN14)
+	LoadHotspots	(HS_CLDLAVATOWN14)
+	LoadTriggers	(TR_CLDLAVATOWN14)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,3,8,13,0,?_VALKAN_STAND_DOWN_ANIM,?_CLDLAVATOWN14_VALGENERIC)
+	LoadVRAMTiles	(43,BIT_VALKAN,0,0)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_caldtown)
+	SceneReady		()
+	End				()
+
+?_CLDLAVATOWN14_VALGENERIC
+	SetText			(?_VALKAN_GENERIC_TXT_1)
+	Jump			(?_FACE_VALKAN)
+	End				()
+	
+
+/*****************************************//*****************************************/
+// FOUND VALKAN
+/*****************************************//*****************************************/
+?_CLDLAVATOWN14_FOUND
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATOWN14)
+	LoadHotspots	(HS_CLDLAVATOWN14)
+	LoadTriggers	(TR_CLDLAVATOWN14)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?ANIM_AI,5,11,13,0,?_CLDLAVATOWN14_FOUNDTONY,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,4,7,13,0,?_CLDLAVATOWN14_VALKFOUND,?_CLDLAVATOWN14_VALKFOUNDTLK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	LoadVRAMTiles	(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles	(15,BIT_SMOKE,43,0)
+	HeroSetCamera	()
+	SongStart		(SONGID_caldtown)
+	SceneReady		()
+	End				()
+	
+?_CLDLAVATOWN14_FOUNDTONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,16)
+							(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_WALK_LEFT_ANIM,16)
+							(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+	SetText					(?_VALKAN_FOUND_TEXT)
+	End						()
+	
+?_CLDLAVATOWN14_VALKFOUND		
+	ThisActorSetAnim		(?_VALKAN_STAND_DOWN_ANIM)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_VALKAN_WALK_DOWN_ANIM,18)
+							(?_VALKAN_STAND_DOWN_ANIM,18)
+							(?_VALKAN_WALK_UP_ANIM,18)
+							(?_VALKAN_STAND_DOWN_ANIM,0)
+	Sync					(2,1)
+	ThisActorSetAnimDelay	(?_VALKAN_WALK_LEFT_ANIM,16)
+							(?_VALKAN_STAND_LEFT_ANIM,24)
+							(?_VALKAN_STAND_UL_ANIM,32)
+							(?_VALKAN_STAND_UP_ANIM,32)
+							(?_VALKAN_STAND_DR_ANIM,16)
+	Sync					(2,2)
+	Sync					(2,3)
+	ThisActorSetAnimDelay	(?_VALKAN_WALK_RIGHT_ANIM,16)
+							(?_VALKAN_STAND_DOWN_ANIM,0)
+	End						()
+	
+?_CLDLAVATOWN14_VALKFOUNDTLK
+	SetText			(?_STILL_LOOKING_TEXT)
+	Jump			(?_FACE_VALKAN)
+/*****************************************//*****************************************/
+// FOUND VALKAN
+/*****************************************//*****************************************/
+
+
+/*****************************************//*****************************************/
+// STILL LOOKING
+/*****************************************//*****************************************/
+?_CLDLAVATOWN14_LOOKING
+	SceneNew		()
+	LoadMap			(MAP_CLDLAVATOWN14)
+	LoadHotspots	(HS_CLDLAVATOWN14)
+	LoadTriggers	(TR_CLDLAVATOWN14)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,3,8,13,0,?_VALKAN_STAND_DOWN_ANIM,?_CLDLAVATOWN14_VALKFOUNDTLK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	LoadVRAMTiles	(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles	(15,BIT_SMOKE,43,0)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_caldtown)
+	SceneReady		()
+	End				()
+	
+/*****************************************//*****************************************/
+// STILL LOOKING
+/*****************************************//*****************************************/
+
+
+/*****************************************//*****************************************/
+//	FOUND ARBOLL 
+/*****************************************//*****************************************/
+?_CLDLAVATOWN14_ARBOLL
+	SceneNew					()
+	LoadMap						(MAP_CLDLAVATOWN14)
+	LoadHotspots				(HS_CLDLAVATOWN14)
+	LoadTriggers				(TR_CLDLAVATOWN14)
+	LoadPalette					(PAL_HERO)
+	ThatActorInit				(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit				(ACTOR00,?TRIGGER_AI,3,8,13,0,?_VALKAN_STAND_DOWN_ANIM,?_CLDLAVATOWN14_VARBTALK)
+	ThatActorStart				(HEROACTOR)
+	ThatActorStart				(ACTOR00)
+	LoadVRAMTiles				(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles				(15,BIT_SMOKE,43,0)
+	HeroFromDoor				()
+	HeroSetCamera				()
+	SongStart					(SONGID_caldtown)
+	SceneReady					()
+	End							()
+	
+?_CLDLAVATOWN14_HEROACTDOWN
+	ThisActorSetAnim			(?_HERO_STAND_DOWN_ANIM)
+	Delay						(16)
+	SetScroll					(?_LAVAFADE)
+	ThisActorSetAnimDelay		(?_HERO_WALK_DOWN_ANIM,48)
+	Jump						(?_CLDLAVAPOOL01_VALKANSBRIDGE)							
+
+?_CLDLAVATOWN14_HEROACTUP
+	ThisActorSetAnim			(?_HERO_STAND_UP_ANIM)
+	ThisActorSetAnimDelay		(?_HERO_WALK_RIGHT_ANIM,16)
+								(?_HERO_STAND_UL_ANIM,24)
+								(?_HERO_STAND_LEFT_ANIM,16)
+								(?_HERO_STAND_DL_ANIM,24)
+	SetScroll					(?_LAVAFADE)
+	ThisActorSetAnimDelay		(?_HERO_STAND_DOWN_ANIM,8)							
+								(?_HERO_WALK_DOWN_ANIM,32)
+	Jump						(?_CLDLAVAPOOL01_VALKANSBRIDGE)							
+
+?_CLDLAVATOWN14_HEROACTRIGHT
+	ThisActorSetAnim			(?_HERO_STAND_RIGHT_ANIM)
+	Delay						(16)
+	SetScroll					(?_LAVAFADE)
+	ThisActorSetAnimDelay		(?_HERO_WALK_RIGHT_ANIM,16)
+								(?_HERO_WALK_DOWN_ANIM,16)
+	Jump						(?_CLDLAVAPOOL01_VALKANSBRIDGE)							
+
+?_CLDLAVATOWN14_HEROACTLEFT
+	ThisActorSetAnim			(?_HERO_STAND_LEFT_ANIM)
+	ThisActorSetAnimDelay		(?_HERO_STAND_LEFT_ANIM,16)
+								(?_HERO_STAND_DL_ANIM,16)
+								(?_HERO_STAND_DOWN_ANIM,16)
+	SetScroll					(?_LAVAFADE)
+	ThisActorSetAnimDelay		(?_HERO_WALK_DOWN_ANIM,16)
+								(?_HERO_WALK_RIGHT_ANIM,16)
+								(?_HERO_WALK_DOWN_ANIM,48)
+	Jump						(?_CLDLAVAPOOL01_VALKANSBRIDGE)							
+
+?_LAVAFADE
+	PalClearBase				(0,15,31,31,31)
+	PalFade						(0,15,32,0)
+	End							()
+	
+?_CLDLAVATOWN14_VARBTALK	
+	ThisActorSetAnim			(?_VALKAN_STAND_DOWN_ANIM)
+	SetText						(?_FOUND_ARBOLL_TEXT01)			
+	Switch						([FACEHERO])
+								(FACE_UP,_UP)
+								(FACE_DOWN,_DOWN)
+								(FACE_RIGHT,_RIGHT)
+								(FACE_LEFT,_LEFT)
+							
+_UP
+	ThisActorSetAnim			(?_VALKAN_STAND_UP_ANIM)
+	Sync						(2,0)
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_CLDLAVATOWN14_HEROACTDOWN)
+	Jump						(_LEAVE)
+_DOWN
+	ThisActorSetAnim			(?_VALKAN_STAND_DOWN_ANIM)
+	Sync						(2,0)
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_CLDLAVATOWN14_HEROACTUP)
+	ThisActorSetAnimDelay		(?_VALKAN_STAND_DOWN_ANIM,8)
+								(?_VALKAN_STAND_DR_ANIM,16)
+	Jump						(_LEAVE)
+_LEFT
+	ThisActorSetAnim			(?_VALKAN_STAND_LEFT_ANIM)
+	Sync						(2,0)
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_CLDLAVATOWN14_HEROACTRIGHT)
+	Jump						(_LEAVE)
+_RIGHT
+	ThisActorSetAnim			(?_VALKAN_STAND_RIGHT_ANIM)
+	Sync						(2,0)
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_CLDLAVATOWN14_HEROACTLEFT)
+_LEAVE	
+	ThisActorSetAnimDelay		(?_VALKAN_WALK_DOWN_ANIM,32)
+								(?_VALKAN_WALK_RIGHT_ANIM,32)
+								(?_VALKAN_WALK_DOWN_ANIM,0)
+	End							()
+/*****************************************//*****************************************/
+//	END FOUND ARBOLL
+/*****************************************//*****************************************/
+
+
+/********************************//********************************/
+//	DO THE RIGHT THING
+/********************************//********************************/
+?_CLDLAVATOWN14_RETURNKEY
+	SceneNew					()
+	LoadMap						(MAP_CLDLAVATOWN14)
+	LoadHotspots				(HS_CLDLAVATOWN14)
+	LoadTriggers				(TR_CLDLAVATOWN14)
+	LoadPalette					(PAL_HERO)
+	ThatActorInit				(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit				(ACTOR00,?TALKER_AI,4,7,13,0,?_VALKAN_STAND_UP_ANIM,?_CLDLAVATOWN14_RK)
+	LoadVRAMTiles				(43,BIT_VALKAN,0,0)
+	ThatActorStart				(HEROACTOR)
+	ThatActorStart				(ACTOR00)
+	HeroFromDoor				()
+	HeroSetCamera				()
+	SongStart					(SONGID_caldtown)
+	SceneReady					()
+	End							()
+
+?_CLDLAVATOWN14_RK
+	ThisActorSetAnim			(?_VALKAN_STAND_UP_ANIM)
+	SetText						(?_CLDLAVATOWN14_RK_TXT_2)
+	WaitEventText				(2)
+	If							([!I_Specialkey],_RK_DONE)
+_RK_CONT
+	SetText						(?_CLDLAVATOWN14_RK_TXT_1)
+	Jump						(?_FACE_VALKAN)
+_RK_DONE
+	ThisActorRestoreState		()
+	
+?_CLDLAVATOWN14_RK_TXT_1
+	TextOpen					()
+	TextIcon					(ICON_VALKAN)
+	TextWrite					("Oh, hi Tony.")
+								("So are you=")
+								("ready to give")
+								("back the key=")
+								("now?")
+	TextClear					()
+	TextWrite					(" Give it now=")
+								(" Give it later$")
+	TextMenu					(2)
+								(_RK_NOW)
+								(_RK_LATER)
+_RK_NOW
+	TextIcon					(ICON_TONY)
+	TextWrite					("Okay, here.")
+	TextClose					()
+	SetXRAMBit					(I_Specialkey,FALSE)
+	InventoryTake				(INV_TYPE_ITEM,INV_ASHGARS_KEY,1)
+	TextOpen					()
+	TextWrite					("Tony lost the=")
+								("Ashgar's Key!")
+	TextIcon					(ICON_VALKAN)
+	TextWrite					("Excellent,=")
+								("excellent.")
+								("I'll take this=")
+								("back to Ashgar")
+								("as soon as I=")
+								("can. I don't")
+								("think he's=")
+								("noticed it's")
+								("missing yet.")
+	TextClose					()
+	SetEventText				(1)
+	End							()
+_RK_LATER
+	TextIcon					(ICON_TONY)
+	TextWrite					("Not yet.")
+	TextIcon					(ICON_VALKAN)
+	TextWrite					("Okay, just let=")
+								("me know when")
+								("you're ready=")
+								("to return it.")
+	TextClose					()
+	SetEventText				(1)
+	End							()
+
+?_CLDLAVATOWN14_RK_TXT_2
+	TextOpen					()
+	TextIcon					(ICON_VALKAN)
+	TextWrite					("Stupid clock!")
+								("Every time I=")
+								("try to fix it,")
+								("it just stops=")
+								("at 11:05!!")
+								("Arrrgh!")
+	TextClose					()
+	SetEventText				(2)
+	End							()
+/********************************//********************************/
+//	END DO THE RIGHT THING
+/********************************//********************************/
+

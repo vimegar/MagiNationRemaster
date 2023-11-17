@@ -1,0 +1,18 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP13\ARDCLOUDS13_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP13\ARDCLOUDS13_TXT.MGI
+
+/********************************/
+?_ARDCLOUDS13
+	SceneNew		()
+	LoadMap			(MAP_ARDCLOUDS13)
+	LoadHotspots	(HS_ARDCLOUDS13)
+	LoadPalette		(PAL_HERO)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_arderial)
+	SceneReady		()
+	End				()
+	

@@ -1,0 +1,49 @@
+?_NRMGEYSER06_DR_1
+	HeroToDoor		(15,23,8,0)
+	Jump			(?_NRMGEYSER01)
+
+?_NRMGEYSER06_DR_2
+	HeroToDoor		(0,8,23,8)
+	Jump			(?_NRMGEYSER05)
+
+?_NRMGEYSER06_DR_3
+	HeroToDoor		(13,0,11,23)
+	Jump			(?_NRMGEYSER07)
+
+?_NRMGEYSER06_DR_4
+	HeroToDoor		(0,19,23,19)
+	Jump			(?_NRMGEYSER05)
+	
+?_NRMGEYSER06_TR_1
+	TriggerAlways		(Nrmgeyser_switch1,?_TXT_WONT_BUDGE,250,9,14,24)
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ScrollMap			(24,2,2)
+	ScrollMap			(24,2,0)
+	Delay				(8)
+	SetScroll			(?_NRMGEYSER_QUAKIN)
+_SKIP
+	CopyTileBlock		(24,16,22,4,1,16,19)
+	CopyTileBlock		(24,16,22,4,1,16,20)
+	CopyTileBlock		(24,16,22,4,1,16,21)
+	InitSkip			(_SKIP2)
+	SetScroll			(?_NRMGEYSER_STOP)
+	Delay				(8)
+	ScrollMap			(48,-1,0)
+	ScrollMap			(48,-1,-1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+_SKIP2
+	End					()
+
+?_NRMGEYSER06_TR_2
+	TriggerAlways		(Nrmgeyser_switch2,?_TXT_WONT_BUDGE,250,16,15,24)
+	InitSkip			(_SKIP)
+	SetScroll			(?_NRMGEYSER_QUAKIN)
+	Delay				(64)
+	SetScroll			(?_NRMGEYSER_STOP)
+_SKIP
+	End					()
+
+?_NRMGEYSER06_TR_3
+	TriggerTreasure		(NRMGEYSER06_Chest1,INV_TYPE_ITEM,INV_REMEDY_DRINK,21,5,24)

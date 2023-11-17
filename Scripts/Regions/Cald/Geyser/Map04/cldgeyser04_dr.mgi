@@ -1,0 +1,75 @@
+/********************************/
+?_CLDGEYSER04_DR_1
+	HeroToDoor			(0,8,63,40)
+	Jump				(?_CLDGEYSER03)
+	
+?_CLDGEYSER04_DR_2
+	SetXRAMBit			(Cldgeyser_Boxxle7,TRUE)
+	End					()
+	
+?_CLDGEYSER04_DR_3
+	HeroToDoor			(0,21,29,7)
+	Jump				(?_CLDGEYSER05)
+	
+?_CLDGEYSER04_DR_4
+	HeroSetDoor			(63,43)
+	Jump				(?_CLDGEYSER03)
+	
+?_CLDGEYSER04_TR_1
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThatActorDrawTile		(ACTOR20,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile		(ACTOR21,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile		(ACTOR22,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile		(ACTOR23,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile		(ACTOR24,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile		(ACTOR25,0,0,30,229,COLLCODE_BOXXLE)
+	If						([!Cldgeyser03_Trig5 || !Cldgeyser03_Trig4],?_CLDGEYSER_CLOSED)
+	ToggleAlways			(Cldgeyser04_Trig1,_FILL,200,184,11,15,30)
+	SetXRAMBit				(Cldgeyser_Boxxle7,FALSE)
+	LoadSpareMap			(SCR_CLDGEYSER04,COL_CLDGEYSER04)
+	SetScroll				(?_CALD_GEYSER_QUAKE)
+	ThatActorDrawTileSpare	(ACTOR20,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTileSpare	(ACTOR21,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTileSpare	(ACTOR22,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTileSpare	(ACTOR23,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTileSpare	(ACTOR24,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTileSpare	(ACTOR25,0,0,30,229,COLLCODE_BOXXLE)
+	CopyTileSpare			(30,6,15,5,2,6,15)
+	CopyTileSpare			(30,6,17,5,7,6,17)
+	CopyTileSpare			(30,11,18,18,6,11,18)
+	CopyTileSpare			(30,16,11,13,8,16,11)
+	Jump					(?_CLDGEYSER_HERO_AI_SET)
+
+_FILL
+	LoadSpareMap			(SCR_CLDGEYSER04B,COL_CLDGEYSER04B)
+	If						([!Cldgeyser_Boxxle7],_SKIP)
+	ThatActorInit			(ACTOR20,?BOXXLE_AI,18,14,30,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR21,?BOXXLE_AI,21,14,30,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR22,?BOXXLE_AI,24,14,30,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR23,?BOXXLE_AI,24,17,30,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR24,?BOXXLE_AI,24,20,30,0,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR25,?BOXXLE_AI,21,20,30,0,?_END,?_DONT_TALK)
+
+_SKIP
+	SetScroll				(?_CALD_GEYSER_QUAKE)
+	ThatActorDrawTileSpare	(ACTOR20,0,0,30,229,COLLCODE_SPACE)
+	ThatActorDrawTileSpare	(ACTOR21,0,0,30,229,COLLCODE_SPACE)
+	ThatActorDrawTileSpare	(ACTOR22,0,0,30,229,COLLCODE_SPACE)
+	ThatActorDrawTileSpare	(ACTOR23,0,0,30,229,COLLCODE_SPACE)
+	ThatActorDrawTileSpare	(ACTOR24,0,0,30,229,COLLCODE_SPACE)
+	ThatActorDrawTileSpare	(ACTOR25,0,0,30,229,COLLCODE_SPACE)
+	CopyTileSpare			(30,4,2,5,2,6,15)
+	CopyTileSpare			(30,6,17,5,7,6,17)
+	CopyTileSpare			(30,11,18,18,6,11,18)
+	CopyTileSpare			(30,16,11,13,8,16,11)
+	Jump					(?_CLDGEYSER_HERO_AI_SET)
+
+?_CLDGEYSER04_TR_2
+	LoadSpareMap			(SCR_CLDGEYSER04B,COL_CLDGEYSER04B)
+	If						([!Cldgeyser03_Trig5 || !Cldgeyser03_Trig4],_END)
+	CopyTileSpare			(30,0,8,11,8,0,8)
+	If						([!Cldgeyser04_Trig1],_END)
+	CopyTileSpare			(30,6,14,5,1,6,15)
+_END
+	End						()

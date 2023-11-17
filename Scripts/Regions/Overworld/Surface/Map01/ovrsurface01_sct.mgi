@@ -1,0 +1,48 @@
+/********************************/
+?_OVRSURFACE01B
+	SceneNew		()
+	LoadMap			(MAP_OVRSURFACE01B)
+	LoadHotspots	(HS_OVRSURFACE01B)
+	LoadTriggers	(TR_OVRSURFACE01B)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,30,0,?_RAINER,?_NRMHYREN_RNDBAT)
+	ThatActorStart	(ACTOR1E)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_OVRSURFACE01B)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_glade)
+	SceneReady		()
+	End				()
+
+/********************************/
+//	HYREN FOR CALD ENCOUNTERS
+?_NRMHYREN_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+
+_BTL1
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,TWEE,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,TIMBERHYRN,60,200,3)
+	BtlSummonDelay	(BTL_ID_MAGI,TWEE,30,60,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,LEAF_HYREN,40,150,1)
+	BtlSummonDelay	(BTL_ID_MAGI,TIMBERHYRN,60,200,2)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLL,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,LEAF_HYREN,40,150,3)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLL,30,60,1)
+	BtlAuto			()

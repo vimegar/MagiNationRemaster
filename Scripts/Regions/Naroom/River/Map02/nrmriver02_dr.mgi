@@ -1,0 +1,11 @@
+/********************************/
+?_NRMRIVER02_DR_1
+		HeroToDoor	(3,11,10,0)
+		Jump		(?_NRMRIVER01)
+
+?_NRMRIVER02_TR_1
+		TriggerTreasure	(NRMRIVER02_Chest1,INV_TYPE_ITEM,INV_RUNEOFMIGHT,5,3,12)
+
+?_NRMRIVER02_TR_2
+		TriggerTreasure	(NRMRIVER02_Chest2,INV_TYPE_RELIC,INV_BARK_THIMBLE,8,5,12)
+		

@@ -1,0 +1,19 @@
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_CLDVENTINT04
+	SceneNew				()
+	LoadMap					(MAP_CLDVENTINT04)
+	LoadHotspots			(HS_CLDVENTINT04)
+	LoadTriggers			(TR_CLDVENTINT04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/

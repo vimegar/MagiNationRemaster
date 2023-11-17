@@ -1,0 +1,30 @@
+?_NRMGLADE05_TXT_1	
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("I'm sure Orwin=")
+						("went this way.")
+						("I hope he's=")
+						("all right!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_NRMGLADE05_TXT_2		
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("I lost track of=")
+						("Orwin. Did you")
+						("see where he=")
+						("went?")
+	TextClose			()
+	SetEventText		(1)
+	End					()	
+	
+?_NRMGLADE05_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("He's not over=")
+						("here...")
+	TextClose			()
+	SetEventText		(1)
+	End					()	

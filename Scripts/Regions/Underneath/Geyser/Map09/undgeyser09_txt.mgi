@@ -1,0 +1,73 @@
+/********************************/
+?_UNDGEYSER09_TXT_1
+	TextOpen			()
+	TextWrite			("-Tony got a=")
+						("Core Stone!-")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_UNDGEYSER09_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_OGAR)
+	TextWrite			("Ook... ah, who=")
+						("isss thisss?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Who are you?")
+	TextIcon			(ICON_OGAR)
+	TextWrite			("I sssee...")
+						("mugh...")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Mugh?")
+	TextIcon			(ICON_OGAR)
+	TextWrite			("Geh... Ogar=")
+						("sssmellsss a")
+						("child... yesss,=")
+						("thisss will be")
+						("a feassst for=")
+						("my petsss...")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I don't suppose=")
+						("you'll just let")
+						("me go?")
+	TextIcon			(ICON_OGAR)
+	TextWrite			("Oogh, Ogar=")
+						("doesssn't let")
+						("her babiesss'=")
+						("dinner get")
+						("away...")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I figured.")
+	TextIcon			(ICON_OGAR)
+	TextWrite			("Hee... hehe...")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+
+?_UNDGEYSER09_TXT_4
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("That's my cue=")
+						("to get out of")
+						("here.")
+	TextClose			()
+	SetEventText		(4)
+	End					()
+
+?_UNDGEYSER09_TXT_5
+	SetScroll			(?_UNDGEYSER_QUAKE)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I better hurry=")
+						("out of here!")
+	TextClose			()
+	SetEventText		(5)
+	End					()
+
+
+
+
+
+
+
+

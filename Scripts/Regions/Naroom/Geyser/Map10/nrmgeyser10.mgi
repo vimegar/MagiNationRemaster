@@ -1,0 +1,54 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GEYSER\MAP10\NRMGEYSER10_DR.MGI
+/********************************/
+
+?_NRMGEYSER10						
+?_NRMGEYSER10_A
+	SceneNew			()
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+?_NRMGEYSER10_RETURN
+	If					([GAMECOUNT = GC_GLOVES],?_NRMGEYSER10_B)
+	If					([Nrmgeyser_switch5 && Final_Door],?_NRMGEYSER10_B)
+	LoadMap				(MAP_NRMGEYSER10)
+	LoadHotspots		(HS_NRMGEYSER10)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	If					([Nrmgeyser_Wall_Fixed],_SKIP)
+	LoadVRAMTiles		(3,BIT_BONE,0,0)
+	ThatActorInit		(ACTOR00,?TALKER_AI,6,15,20,0,?_BONE_ANIM,?_NRMGEYSER10_STICK)
+	ThatActorStart		(ACTOR00)
+_SKIP
+	SetEncounter		(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_NRMGEYSER10_RETURN)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	SongStart			(SONGID_maze)
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+	
+?_NRMGEYSER10_STICK	
+	ThisActorSetAnim	(?_BONE_ANIM)
+	SetText				(?_NRMGEYSER_FIX_WALL_TXT)
+	End					()
+
+
+?_NRMGEYSER10_B
+	SceneNew			()
+	LoadMap				(MAP_NRMGEYSER10)
+	LoadHotspots		(HS_NRMGEYSER10)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	CopyTileBlock		(20,6,16,4,2,6,14)
+	CopyTileBlock		(20,6,16,4,2,6,12)
+	CopyTileBlock		(20,16,0,4,2,6,9)
+	CopyTileBlock		(20,6,17,4,1,6,11)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+
+

@@ -1,0 +1,9 @@
+/********************************/
+?_NRMFOREST02_DR_1
+		HeroToDoor	(49,15,0,12)
+		Jump		(?_NRMFOREST01)
+
+?_NRMFOREST02_DR_2
+		HeroToDoor	(0,11,39,11)
+		Jump		(?_NRMFOREST03)
+

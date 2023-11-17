@@ -1,0 +1,35 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP09\OROGEYSER09_DR.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP09\OROGEYSER09_TXT.MGI
+
+/********************************/
+
+?_OROGEYSER09
+	SceneNew				()
+	LoadMap					(MAP_OROGEYSER09)
+	LoadHotspots			(HS_OROGEYSER09)
+	LoadTriggers			(TR_OROGEYSER09)
+	LoadPalette				(PAL_HERO)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter			(?_OROGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_OROGEYSER09)
+
+	Switch					([Falling_Byte3])
+							(0,_SKIP)
+							(1,_ONE)
+_ONE
+	ThatActorInit			(HEROACTOR,?ANIM_AI,14,1,20,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(14,5)
+	JumpLocal				(_END)
+
+_SKIP
+	ThatActorInit			(HEROACTOR,?HERO_AI,0,0,20,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	HeroFromDoor			()
+	HeroSetCamera			()
+
+_END
+	SetXRAMByte				(Falling_Byte3,0)
+	SceneReady				()
+	SongStart				(SONGID_maze)
+	End						()

@@ -1,0 +1,28 @@
+/**** LEVEL20 ****/
+?_LAVAPOOL_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+_BTL1
+	BtlNew		(CALD_ARENA1,MAGI_RND1,18,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,18,35,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CALD_ARENA1,MAGI_RND1,19,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,DIOBOR,19,38,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CALD_ARENA1,MAGI_RND1,20,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,DRAKAN,20,41,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CALD_ARENA1,MAGI_RND1,21,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GRAW,21,43,1)
+	BtlAuto		()

@@ -1,0 +1,114 @@
+/********************************/	
+?_COREZETBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_kzbattle)
+	BtlNew			(ARDERIAL_ARENA1,ZET,50,?_BATTLE_FADE_IN)
+	BtlNextTurn		()
+	
+//725
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,2)	
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,213)		
+	TextOpen		()
+	TextIcon		(ICON_ZET)
+					//123456789012345
+	TextWrite		("Now you will=")
+					("see the true")
+					("power I hold!")
+	TextClose		()	
+	BtlSummonDelay	(BTL_ID_MAGI,KAZOR,46,135,0)
+	BtlNextTurn		()	
+	
+_ZET_MAINLOOP	
+	SetScroll		(?_ZET_POWERMODE)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+	SetScroll		(?_ZET_MODE1)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()
+	
+	Jump			(_ZET_MAINLOOP)	
+	
+	
+?_ZET_POWERMODE
+	JumpRandom		(?_ZET12)
+					(?_ZET16)
+					(?_ZET16)
+					(?_ZET18)
+	
+?_ZET_MODE1		
+	JumpRandom		(?_ZET11)
+					(?_ZET11)
+					(?_ZET12)
+					(?_ZET13)
+					(?_ZET15)
+					(?_ZET15)
+					(?_ZET17)
+
+?_ZET11
+	BtlSummonDelay	(BTL_ID_MAGI,KAZOR,48,130,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_ZET12	
+	BtlSummonDelay	(BTL_ID_MAGI,KAZOR,40,110,0)
+	If				([:WRAM_BATTLE[BTL_CMD_VALID = 0]],?_ZET13)
+	BtlUseItem		(BTL_ID_MAGI,ITEM_POWER_GEM,BTLSCR_ENEMYSTRONGEST_ABSOLUTE)
+	TextOpen		()
+	TextIcon		(ICON_ZET)
+	TextWrite		("Bet you can't=")
+					("handle this!")
+	TextClose		()	
+	SetAnyEventScroll	()
+	End					()
+
+?_ZET13
+	BtlUseItem		(BTL_ID_MAGI,ITEM_BALOO_ROOT,BTLSCR_ENEMYWEAKEST_PERCENT)
+	SetAnyEventScroll	()
+	End					()
+
+?_ZET14
+	BtlCastSpell		(BTL_ID_MAGI,SPELL_LIGHTNING,BTLSCR_ALLYWEAKEST_ABSOLUTE)
+	SetAnyEventScroll	()
+	End					()
+
+?_ZET15
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,45,115,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_ZET16
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,40,110,0)
+	If				([:WRAM_BATTLE[BTL_CMD_VALID = 0]],?_ZET13)
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_LIGHTNING,BTLSCR_ALLYWEAKEST_ABSOLUTE)
+	ThatActorSetScript	(ACTOR0C,?_ZET_BATTLE_TAUNT_ANIM)
+	TextOpen		()
+	TextIcon		(ICON_ZET)
+	TextWrite		("I perfected=")
+					("this technique")
+					("while under a=")
+					("rock!")
+	TextClose		()	
+	SetAnyEventScroll	()
+	End					()
+	
+?_ZET17
+	BtlUseItem		(BTL_ID_MAGI,ITEM_POWER_GEM,BTLSCR_ENEMYSTRONGEST_ABSOLUTE)
+	SetAnyEventScroll	()
+	End					()
+	
+?_ZET18
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_CUNNING_BLOW,BTLSCR_ALLYSTRONGEST_PERCENT)
+	SetAnyEventScroll	()
+	End					()
+
+
+/********************************//********************************/		
+?_CREGATE_RE_ENTER
+	SceneNew		()
+	LoadVRAM		(VRM_CREGATE,PAL_CREGATE)
+	
+	ThatActorStart	(HEROACTOR)
+	
+	HeroSetCamera	()
+	SceneReady		()
+	End				()

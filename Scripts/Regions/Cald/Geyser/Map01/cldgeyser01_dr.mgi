@@ -1,0 +1,10 @@
+/********************************/
+?_CLDGEYSER01_DR_1
+	SetXRAMByte			(Exit_Disable,1)
+	SetLoadScript		(?_CLDGEYSER01_DR_1)
+	HeroSetDoor			(24,19)
+	Jump				(?_CLDLAVAPOOL01)
+
+?_CLDGEYSER01_DR_2
+	HeroToDoor			(13,2,2,32)
+	Jump				(?_CLDGEYSER02)

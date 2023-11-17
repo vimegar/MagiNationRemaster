@@ -1,0 +1,246 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP23\NRMVASH23_DR.MGI
+
+/********************************//********************************/
+//  CURIO SHOP
+/********************************//********************************/
+?_NRMVASH23
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH23)
+	LoadHotspots			(HS_NRMVASH23)
+	LoadTriggers			(TR_NRMVASH23)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,17,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,2,3,17,0,?_CLOAKMAN_STAND_DOWN_ANIM,?_END)
+
+
+	ThatActorInit			(ACTOR01,?ANIM_AI,6,6,17,27,?_THREEHEADCOIN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,8,6,17,59,?_BUCKETOPINK_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,10,5,17,37,?_URN_STILL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?ANIM_AI,8,10,17,66,?_RABBAGEFOOT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?ANIM_AI,10,10,17,55,?_SCALE_ANIM,?_DONT_TALK)
+
+
+//	Insert Actor Deals Here -- Stuff you can buy
+
+
+	LoadVRAMTiles			(27,BIT_ARDCLOAKMAN,0,0)
+	LoadVRAMTiles			(10,BIT_THREEHEADCOIN,27,0)
+	LoadVRAMTiles			(18,BIT_URN,37,0)
+	LoadVRAMTiles			(4,BIT_SCALE,55,0)
+	LoadVRAMTiles			(7,BIT_BUCKETOPINK,59,0)
+	LoadVRAMTiles			(3,BIT_RABBAGEFOOT,66,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_secret)
+	SceneReady				()
+	End						()
+
+/********************************/
+//  TEXT
+?_CURIO_SHOP_HELLO
+	TextOpen				()
+	TextIcon				(ICON_CLOAK)
+	TextWrite				("You can only=")
+							("buy these")
+							("rare itemsss=")
+							("with your")
+							("ticketsss.")
+							("Yess...")
+							("Sssweet...")
+							("deliciouss...")
+							("ticketsss...")
+	TextClose				()
+	End						()
+
+
+/********************************/
+?_BLAST_URN_TEXT
+	TextOpen				()
+	TextWrite				("Blast Urn=")
+							("costs 10")
+							("Tickets.=")
+							("Buy one?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+	
+_YES
+	TextClear				()
+	If						([INV_ITEM_Tickets < 10],_CLOSED)
+	TextWrite				("Tony got a=")
+							("Blast Urn!")
+	InventoryGive			(INV_TYPE_ITEM,INV_BLAST_URN,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_TICKET,10)
+	TextWrite				("=")
+	Jump					(?_BLAST_URN_TEXT)
+
+_CLOSED
+	TextWrite				("You don't=")
+							("have enough")
+							("Tickets!")
+	TextClose				()
+	End						()
+	
+_NO
+	TextClose				()
+	End						()
+
+/********************************/
+?_3_HEADEDTXT
+	TextOpen				()
+	TextWrite				("3 Headed Coin=")
+							("costs 1")
+							("Ticket.=")
+							("Buy one?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+	
+_YES
+	TextClear				()
+	If						([INV_ITEM_Tickets < 1],_CLOSED)
+	TextWrite				("Tony got a=")
+							("3 Headed Coin!")
+	InventoryGive			(INV_TYPE_ITEM,INV_3_HEADEDCOIN,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_TICKET,1)
+	TextWrite				("=")
+	Jump					(?_3_HEADEDTXT)
+
+_CLOSED
+	TextWrite				("You don't=")
+							("have enough")
+							("Tickets!")
+	TextClose				()
+	End						()
+	
+_NO
+	TextClose				()
+	End						()
+
+/********************************/
+?_BALANCE_SCALE_TXT
+	TextOpen				()
+	TextWrite				("Balance Scale=")
+							("costs 1")
+							("Ticket.=")
+							("Buy one?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+	
+_YES
+	TextClear				()
+	If						([INV_ITEM_Tickets < 1],_CLOSED)
+	TextWrite				("Tony got a=")
+							("Balance Scale!")
+	InventoryGive			(INV_TYPE_ITEM,INV_BALANCESCALE,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_TICKET,1)
+	TextWrite				("=")
+	Jump					(?_BALANCE_SCALE_TXT)
+
+_CLOSED
+	TextWrite				("You don't=")
+							("have enough")
+							("Tickets!")
+	TextClose				()
+	End						()
+	
+_NO
+	TextClose				()
+	End						()
+
+/********************************/
+?_BUCKET_PINK_TXT
+	TextOpen				()
+	
+	TextWrite				("Bucket o' Pink=")
+							("costs 5")
+							("Tickets.=")
+							("Buy one?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+	
+_YES
+	TextClear				()
+	If						([INV_ITEM_Tickets < 5],_CLOSED)
+	TextWrite				("Tony got a=")
+							("Bucket o' Pink!")
+	InventoryGive			(INV_TYPE_ITEM,INV_BUCKETOPINK,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_TICKET,5)
+	TextWrite				("=")
+	Jump					(?_BUCKET_PINK_TXT)
+
+_CLOSED
+	TextWrite				("You don't=")
+							("have enough")
+							("Tickets!")
+	TextClose				()
+	End						()
+	
+_NO
+	TextClose				()
+	End						()
+
+/********************************/
+?_RABBAGE_TXT
+	TextOpen				()
+	
+	TextWrite				("Plod Spnew=")
+							("costs 5")
+							("Tickets.=")
+							("Buy one?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+	
+_YES
+	TextClear				()
+	If						([INV_ITEM_Tickets < 5],_CLOSED)
+	TextWrite				("Tony got a=")
+							("Plod Spnew!")
+	InventoryGive			(INV_TYPE_ITEM,INV_PLOD_SPNEW,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_TICKET,5)
+	TextWrite				("=")
+	Jump					(?_RABBAGE_TXT)
+
+_CLOSED
+	TextWrite				("You don't=")
+							("have enough")
+							("Tickets!")
+	TextClose				()
+	End						()
+	
+_NO
+	TextClose				()
+	End						()
+

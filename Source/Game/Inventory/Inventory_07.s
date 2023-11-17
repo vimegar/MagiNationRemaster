@@ -1,0 +1,241 @@
+;********************************
+; INVENTORY_07.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "Emory Georges" Mayo,Emory Georges
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB		SOURCE\GAME\INVENTORY\INVENTORY_TABLE.S
+
+;********************************
+	LIB		SOURCE\GAME\INVENTORY\ITEMS\ITEM_FUNC.S
+	LIB		SOURCE\GAME\INVENTORY\RELICS\RELIC_FUNC.S
+	LIB		SOURCE\GAME\INVENTORY\SPELLS\SPELL_FUNC.S
+
+;********************************
+; INV_ID_TYPE:		Type of item
+; INV_ID:			Item ID
+; INV_ID_TOTAL:		Quantity
+; INV_ID_SUCCESS:	<-- 1 if OK
+?INVENTORY_GIVE
+	LD			HL,INVENTORY_GIVE_FUNCS
+
+?INVENTORY_GIVE_TAKE
+	LD			A,(INV_ID_TYPE)
+	ADD			A,A
+	LD			E,A
+	LD			D,$00
+	RLC			D
+	ADD			HL,DE
+
+	LD			A,(INV_ID)
+	LD			E,A
+	LD			D,$00
+
+	DEREF_HL
+	JP			(HL)
+
+;********************************
+?INV_GIVE_TAKE_IDLE
+	RET
+
+;********************************
+?INV_GIVE_ANIMITE
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD			A,(INV_ID_TOTAL)
+	LD			E,A
+	LD			D,$00
+	
+	FGET16		H,L,XRAM_INVENTORY_ANIMITE
+	PUSH		HL
+	ADD			HL,DE
+
+	LD			DE,$FC19	; -999
+	
+	PUSH		HL
+	ADD			HL,DE
+	POP			HL
+	
+	JR			NC,_OK
+	LD			HL,$03E7	; 999
+
+_OK
+	SET16		H,L,XRAM_INVENTORY_ANIMITE
+	BATTERY_OFF
+	
+	POP			BC
+	TWOS_COMP	B,C
+	ADD			HL,BC
+	LD			A,L
+	LD			(INV_ID_TOTAL),A
+	
+	RET
+
+;********************************
+?INV_GIVE_HERO_ENERGY
+
+	BATTERY_SET_BANK	RAMB_CREATURES
+	BATTERY_ON
+
+	LD			A,(INV_ID_TOTAL)
+	LD			C,A
+	LD			B,$00
+
+	FGET16		E,D,CREATURETONY_ENGMAXH
+	FGET16		L,H,CREATURETONY_ENGH
+	ADD			HL,BC
+
+	TWOS_COMP	D,E
+	
+	PUSH		HL
+	ADD			HL,DE
+	POP			DE
+	
+	JR			NC,_OK
+	FGET16		E,D,CREATURETONY_ENGMAXH
+
+_OK
+	SET16		E,D,CREATURETONY_ENGH
+
+	BATTERY_OFF
+	RET
+
+;********************************
+?INV_GIVE_HERO_ENERGYMAX
+
+	BATTERY_SET_BANK	RAMB_CREATURES
+	BATTERY_ON
+
+	LD			A,(INV_ID_TOTAL)
+	LD			C,A
+	LD			B,$00
+
+	FGET16		L,H,CREATURETONY_ENGMAXH
+	ADD			HL,BC
+
+	LD			DE,$FC19	; -999
+	
+	PUSH		HL
+	ADD			HL,DE
+	POP			DE
+	
+	JR			NC,_OK
+	LD			DE,$03E7	; 999
+
+_OK
+	SET16		E,D,CREATURETONY_ENGMAXH
+
+	BATTERY_OFF
+	RET
+
+;********************************
+?INV_GIVE_INFUSED
+	LD			HL,XRAM_INVENTORY_INFUSED
+	ADD			HL,DE
+
+	PUSH		HL
+
+	LD			A,E
+	LD			(BTL_NAME_INDEX),A
+
+	LD			HL,TEXT_PARAM_BUFFER
+	LD			A,?INFUSED
+	LD			(HLI),A	
+	SET16		H,L,BTL_TABLE_COPY_TO
+
+	CALL_FOREIGN	?BTL_COPY_CREATURE_NAME
+	LD				A,?FORMAT
+	LD				(BC),A
+
+	POP			HL
+
+?INV_GIVE_GENERIC
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD			A,(HL)
+	LD			C,A
+
+	LD			A,(INV_ID_TOTAL)
+	ADD			A,C
+
+	JR			NC,_OKAY
+	LD			A,$FF
+	LD			(HL),A
+	XOR			A
+	LD			(INV_ID_SUCCESS),A
+	JR			_NO_GIVE
+
+_OKAY
+	LD			(HL),A
+	LD			A,$01
+	LD			(INV_ID_SUCCESS),A
+
+_NO_GIVE
+	BATTERY_OFF
+	RET
+
+;********************************
+; INV_ID_TYPE:		Type of item
+; INV_ID:			Item ID
+; INV_ID_TOTAL:		Quantity
+?INVENTORY_TAKE
+	LD			HL,INVENTORY_TAKE_FUNCS
+	JP			?INVENTORY_GIVE_TAKE
+
+;********************************
+?INV_TAKE_ANIMITE
+	LD			HL,XRAM_INVENTORY_INFUSED
+	ADD			HL,DE
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD			A,(INV_ID_TOTAL)
+	LD			E,A
+	LD			D,$00
+
+	TWOS_COMP	D,E
+
+	FGET16		H,L,XRAM_INVENTORY_ANIMITE
+	ADD			HL,DE
+
+	JR			NC,_OK
+	LD			HL,$0000
+
+_OK
+	SET16		H,L,XRAM_INVENTORY_ANIMITE
+	BATTERY_OFF
+	RET
+
+;********************************
+?INV_TAKE_INFUSED
+	LD			HL,XRAM_INVENTORY_INFUSED
+	ADD			HL,DE
+
+?INV_TAKE_GENERIC
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD			A,(INV_ID_TOTAL)
+	LD			C,A
+
+	LD			A,(HL)
+	SUB			C
+
+	JR			NC,_SKIP
+	XOR			A
+
+_SKIP
+	LD			(HL),A
+	BATTERY_OFF
+	RET
+
+;********************************
+	END
+;********************************

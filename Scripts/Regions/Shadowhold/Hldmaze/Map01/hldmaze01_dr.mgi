@@ -1,0 +1,43 @@
+?_HLDMAZE01_DR_1
+		HeroToDoor	(3,23,8,5)
+		Jump		(?_HLDCELL02)
+		
+?_HLDMAZE01_DR_2
+		HeroToDoor	(23,23,5,0)
+		Jump		(?_HLDMAZE03)
+/*******************************/
+// the door
+/*******************************/
+
+?_HLDMAZE01_DR_3
+		If			([DOOR_1],_HLDMAZE01_DR_3_END)
+		Jump		(?_HLDMAZE01_DOOR_LOCKED)
+_HLDMAZE01_DR_3_END
+		End			()
+
+/*******************************/
+// the switch
+/*******************************/
+
+?_HLDMAZE01_TR_1
+		ToggleOnce	(Switch1,?_END,250,251,29,7,32)
+		End			()
+
+?_HLDMAZE01_TR_2	// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Just springs=")
+							("and a torn")
+							("sheet.")
+		TextClose			()
+		End					()
+
+?_HLDMAZE01_TR_3	// TOILET
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Filled with=")
+							("vile goo.")
+		TextClose			()
+		End					()
+
+/*******************************/

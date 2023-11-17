@@ -1,0 +1,27 @@
+/********************************/
+
+?_FORT02_DR_1
+		HeroToDoor	(9,16,9,11)
+		Jump		(?_FORT01)
+
+?_FORT02_DR_2
+		HeroSetDoor	(16,16)
+		Jump		(?_FORT03)
+
+?_FORT02_DR_1B
+		HeroToDoor	(9,16,9,11)
+		Jump		(?_FORT01_SPECIAL)
+
+?_FORT02_DR_2B
+		HeroSetDoor	(16,16)
+		Jump		(?_FORT03_SPECIAL)
+
+/********************************/
+
+?_FORT02_TR_1
+		TriggerTreasure	(FORT02_Chest1,INV_TYPE_RELIC,INV_EARTH_S_AURA,11,6,20)
+		
+?_FORT02_TR_2
+		SetText		(?_TXT_ITS_EMPTY)
+		End			()
+		

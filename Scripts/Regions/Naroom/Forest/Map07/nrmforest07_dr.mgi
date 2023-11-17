@@ -1,0 +1,18 @@
+/********************************/
+
+?_NRMFOREST07_DR_1
+		SetXRAMByte		(Exit_Disable,0)
+		HeroToDoor		(8,19,9,8)
+		Jump			(?_NRMFOREST06)
+		
+/********************************/
+
+?_NRMFOREST07_TR_1
+	TriggerTreasure	(NRMFOREST07_Chest1,INV_TYPE_RELIC,INV_GEMOFNAROOM,4,8,20)
+?_NRMFOREST07_TR_2
+	TextOpen		()
+	TextIcon		(ICON_POLLY)
+	TextWrite		("=")
+					("          MEOW.")
+	TextClose		()
+	End				()

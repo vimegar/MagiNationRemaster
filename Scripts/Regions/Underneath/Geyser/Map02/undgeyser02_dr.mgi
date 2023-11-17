@@ -1,0 +1,200 @@
+/********************************/
+?_UNDGEYSER02_DR_1
+		HeroToDoor		(31,43,0,31)
+		Jump			(?_UNDGEYSER01)
+
+?_UNDGEYSER02_DR_2
+		HeroToDoor	(22,0,21,46)
+		Jump		(?_UNDGEYSER05)
+
+?_UNDGEYSER02_DR_3
+		HeroToDoor	(0,45,29,28)
+		Jump		(?_UNDGEYSER03)
+
+?_UNDGEYSER02_DR_4
+		HeroSetDoor			(4,8)
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,10,0)
+		Jump				(?_UNDGEYSER09)
+
+?_UNDGEYSER02_DR_5
+	Jump					(?_UNDGEYSER_FULL)
+?_UNDGEYSER02_DR_6
+	Jump					(?_UNDGEYSER_NEW)
+?_UNDGEYSER02_DR_7
+	Jump					(?_UNDGEYSER_FIRST)
+?_UNDGEYSER02_DR_8
+	Jump					(?_UNDGEYSER_THIRD)
+
+/********************************/
+
+?_UNDGEYSER02_TR_1
+	TriggerTreasure	(UNDGEYSER02_Chest1,INV_TYPE_RELIC,INV_STONEESSENCE,17,44,32)
+	
+?_UNDGEYSER02_TR_2
+	TriggerTreasure	(UNDGEYSER02_Chest2,INV_TYPE_ITEM,INV_REMEDY_DRINK,28,30,32)
+	
+?_UNDGEYSER02_TR_3
+	TriggerTreasure	(UNDGEYSER02_Chest3,INV_TYPE_ITEM,INV_KARMIC_HOPE,4,29,32)
+	
+?_UNDGEYSER02_TR_4
+	TriggerTreasure	(UNDGEYSER02_Chest4,INV_TYPE_ITEM,INV_BALOO_SAP,11,18,32)
+	
+?_UNDGEYSER02_TR_5
+	TriggerTreasure	(UNDGEYSER02_Chest5,INV_TYPE_ITEM,INV_BALOO_SAP,11,17,32)
+	
+?_UNDGEYSER02_TR_6
+	TriggerTreasure	(UNDGEYSER02_Chest6,INV_TYPE_ITEM,INV_BALOO_SAP,11,16,32)
+	
+/********************************/
+?_UNDGEYSER_FULL
+	If						([Geyser_State = 3],_UNDGEYSER_FULL_SKIP)
+	SetCollMask				(0,1,1,1)
+	SetXRAMByte				(Geyser_State, 3)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01DOWN,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01DOWN,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+_UNDGEYSER_FULL_SKIP
+	End						()
+
+?_UNDGEYSER_INITFULL
+	SetCollMask				(0,1,1,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01DOWN,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01DOWN,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+	SceneReady				()
+	End						()
+/********************************/
+/********************************/
+?_UNDGEYSER_NEW
+	If						([Geyser_State = 2],_UNDGEYSER_NEW_SKIP)
+	SetCollMask				(1,0,1,1)
+	SetXRAMByte				(Geyser_State, 2)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02DOWN,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02DOWN,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+_UNDGEYSER_NEW_SKIP
+	End						()
+
+?_UNDGEYSER_INITNEW
+	SetCollMask				(1,0,1,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02DOWN,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02DOWN,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+	SceneReady				()
+	End						()
+/********************************/
+/********************************/
+?_UNDGEYSER_FIRST
+	If						([Geyser_State = 1],_UNDGEYSER_FIRST_SKIP)
+	SetCollMask				(1,1,0,1)
+	SetXRAMByte				(Geyser_State, 1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04DOWN,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04DOWN,232,1)
+_UNDGEYSER_FIRST_SKIP
+	End						()
+
+?_UNDGEYSER_INITFIRST
+	SetCollMask				(1,1,0,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03UP,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04DOWN,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03UP,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04DOWN,232,1)
+	SceneReady				()
+	End						()
+/********************************/
+/********************************/
+?_UNDGEYSER_THIRD
+	If						([Geyser_State = 4],_UNDGEYSER_THIRD_SKIP)
+	SetCollMask				(1,1,1,0)
+	SetXRAMByte				(Geyser_State, 4)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03DOWN,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03DOWN,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+_UNDGEYSER_THIRD_SKIP
+	End						()
+
+?_UNDGEYSER_INITTHIRD
+	SetCollMask				(1,1,1,0)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH01UP,240,1)
+	LoadVRAMTiles			(2,BIT_GEYSERSWITCH02UP,242,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH03DOWN,244,1)
+	LoadVRAMTiles			(4,BIT_GEYSERSWITCH04UP,248,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK01UP,224,1)
+	LoadVRAMTiles			(2,BIT_GEYSERBLOCK02UP,226,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK03DOWN,228,1)
+	LoadVRAMTiles			(4,BIT_GEYSERBLOCK04UP,232,1)
+	SceneReady				()
+	End						()
+/********************************/
+/********************************/
+
+?_UNDGEYSER_QUAKE
+	ScrollMap			(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+	JumpLocal			(?_UNDGEYSER_QUAKE)
+	
+?_UNDGEYSER_MINI_QUAKE
+	ScrollMap			(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+						(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+						(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+						(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+						(1,0,2)
+						(1,2,0)
+						(2,0,-1)
+						(2,-1,0)
+	SetEventScroll		(1)
+	End					()
+
+
+

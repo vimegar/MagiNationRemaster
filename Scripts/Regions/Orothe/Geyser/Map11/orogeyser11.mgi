@@ -1,0 +1,52 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP11\OROGEYSER11_DR.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP11\OROGEYSER11_TXT.MGI
+
+/********************************/
+?_OROGEYSER11
+	SceneNew				()
+	SongStart				(SONGID_maze)
+	LoadMap					(MAP_OROGEYSER11)
+	LoadTriggers			(TR_OROGEYSER11)
+	LoadHotspots			(HS_OROGEYSER11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(ACTOR00,?ANIM_AI,8,42,16,0,?_FORCE_FIELD_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(32,BIT_FORCEFIELD,0,0)
+	If						([[GC = GC_OROTHE_GEYSER] && !Forcefield_Dispelled],?_OROGEYSER11_DISPELL)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	If 						([!Forcefield_Dispelled],?_END)
+	ThatActorStop			(ACTOR00)
+	DrawTile				(8,42,16,0,COLLCODE_WATER)
+	DrawTile				(9,42,16,0,COLLCODE_WATER)
+	End						()
+	
+?_OROGEYSER11_DISPELL
+	ThatActorInit			(HEROACTOR,?ANIM_AI,8,47,16,0,?_OROGEYSER11_TONY,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SceneReady				()
+	SetXRAMBit				(Forcefield_Dispelled,TRUE)
+	End						()
+
+?_OROGEYSER11_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,40)
+							(?_HERO_STAND_UP_ANIM,0)
+	SetText					(?_OROGEYSER11_TXT_1)
+	WaitEventText			(1)
+	ThatActorStop			(ACTOR00)
+	DrawTile				(8,42,16,0,COLLCODE_WATER)
+	DrawTile				(9,42,16,0,COLLCODE_WATER)
+	SetScroll				(_FREE)
+	End						()
+_FREE				
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()	

@@ -1,0 +1,75 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_ROCK_STILL_ANIM
+
+	Frame:		(255,0,0,?ROCK01)
+	
+	JumpLocal	(?_ROCK_STILL_ANIM)
+	
+/********************************/
+?_ROCK_FALL_ANIM
+	
+	FrameBlock:	(2,0,4)
+				(?ROCK01)
+				(?ROCK02)
+				(?ROCK03)
+				
+	JumpLocal	(?_ROCK_FALL_ANIM)
+
+/********************************/
+?_ROCK_MOVE_UP_ANIM
+
+	Frame:		(1,0,-2,?ROCK02)
+	
+	JumpLocal	(?_ROCK_MOVE_UP_ANIM)
+
+/********************************/
+?_ROCK_MOVE_DOWN_ANIM
+
+	Frame:		(1,0,2,?ROCK02)
+	
+	JumpLocal	(?_ROCK_MOVE_DOWN_ANIM)
+
+/********************************/
+?_ROCK_MOVE_RIGHT_ANIM
+
+	Frame:		(1,2,0,?ROCK03)
+	
+	JumpLocal	(?_ROCK_MOVE_RIGHT_ANIM)
+
+/********************************/
+?_ROCK_MOVE_LEFT_ANIM
+
+	Frame:		(1,-2,0,?ROCK03)
+	
+	JumpLocal	(?_ROCK_MOVE_LEFT_ANIM)
+
+/********************************/
+?_ROCK_MOVE_UP2_ANIM
+
+	Frame:		(1,0,-4,?ROCK02)
+	
+	JumpLocal	(?_ROCK_MOVE_UP2_ANIM)
+
+/********************************/
+?_ROCK_MOVE_DOWN2_ANIM
+
+	Frame:		(1,0,4,?ROCK02)
+	
+	JumpLocal	(?_ROCK_MOVE_DOWN2_ANIM)
+
+/********************************/
+?_ROCK_MOVE_RIGHT2_ANIM
+
+	Frame:		(1,4,0,?ROCK03)
+	
+	JumpLocal	(?_ROCK_MOVE_RIGHT2_ANIM)
+
+/********************************/
+?_ROCK_MOVE_LEFT2_ANIM
+
+	Frame:		(1,-4,0,?ROCK03)
+	
+	JumpLocal	(?_ROCK_MOVE_LEFT2_ANIM)

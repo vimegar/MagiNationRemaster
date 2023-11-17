@@ -1,0 +1,45 @@
+/****************************/
+
+?_HDNROOM03_DR_1
+		HeroSetDoor		(6,17)
+		Jump			(?_UNDTUNNEL03)
+		
+?_HDNROOM03_DR_2
+		HeroToDoor		(4,14,17,4)
+		Jump			(?_CLDLAVATUBE13)
+
+?_HDNROOM03_DR_3
+		HeroSetDoor		(8,62)
+		Jump			(?_HDNROOM03B)
+
+?_HDNROOM03_TR_1
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This wall=")
+						("looks unstable.")
+		TextClose		()
+		End				()
+/********************************/
+//	ROUTE TO HYREN'S GLADE
+/********************************/
+
+?_HDNROOM03B_DR_1
+		HeroSetDoor		(9,4)
+		Jump			(?_HDNROOM03)
+		
+?_HDNROOM03B_DR_2
+		HeroSetDoor		(4,9)
+		Jump			(?_HDNROOM03C)
+
+/********************************/
+?_HDNROOM03C_DR_1
+		HeroSetDoor		(6,1)
+		Jump			(?_HDNROOM03B)
+		
+?_HDNROOM03C_DR_2
+		HeroSetDoor		(6,6)
+		Jump			(?_OVRSURFACE01)
+
+/********************************/
+//	END ROUTE TO HYREN'S GLADE
+/********************************/

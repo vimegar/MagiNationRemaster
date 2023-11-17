@@ -1,0 +1,586 @@
+/********************************/
+?_CLDLAVATOWN01_DR_1
+		If					([GAMECOUNT = GC_TONY_KIDNAPPED],_TONY_CANT_LEAVE)
+		HeroToDoor			(13,0,38,59)
+		Jump				(?_CLDLAVAPOOL01)
+_TONY_CANT_LEAVE
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_RUN_DOWN_ANIM)
+		Delay				(8)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("I can't leave=")
+							("my own party!")
+		TextClose			()
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		End					()
+?_CLDLAVATOWN01_DR_2
+		HeroToDoor			(0,16,19,18)
+		Jump				(?_CLDLAVATOWN02)
+?_CLDLAVATOWN01_DR_3
+		HeroToDoor			(0,31,19,33)
+		Jump				(?_CLDLAVATOWN02)
+?_CLDLAVATOWN01_DR_4
+		If					([GAMECOUNT = GC_TONY_KIDNAPPED],_TONY_CANT_LEAVE)
+		HeroToDoor			(27,44,8,0)
+		Jump				(?_CLDLAVATOWN06)
+_TONY_CANT_LEAVE
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_RUN_UP_ANIM)
+		Delay				(8)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("I can't leave=")
+							("my own party!")
+		TextClose			()
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		End					()
+?_CLDLAVATOWN01_DR_5
+		HeroToDoor			(39,21,0,21)
+		Jump				(?_CLDLAVATOWN03)
+?_CLDLAVATOWN01_DR_6
+		HeroToDoor			(12,24,6,11)
+		Jump				(?_CLDLAVATOWN08)
+?_CLDLAVATOWN01_DR_7
+		HeroToDoor			(23,28,10,15)
+		Jump				(?_CLDLAVATOWN09)
+?_CLDLAVATOWN01_DR_8
+		HeroToDoor			(29,18,6,11)
+		Jump				(?_CLDLAVATOWN07)
+
+/********************************//********************************/
+// CALD TOWN DOOR 1 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE01
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	If						([Cald_Cowardice = 4],_COWARD)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+
+_COWARD
+	ThatActorInit			(ACTOR01,?SCROLLER_AI,14,10,40,0,_WORST_NIGHTMARE,?_END)
+	ThatActorSetScript		(HEROACTOR,_TONY_COWARD)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+
+_TONY_COWARD
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	End						()
+
+_WORST_NIGHTMARE
+	ThisActorSetAnim		(?_CORE03_STAND_UP_ANIM)
+	CameraSeekActor			(ACTOR01,1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_UP_ANIM,48)
+							(?_CORE03_STAND_UP_ANIM,1)
+	SetText					(?_TXT_CLDLAVATOWN01_NIGHTMARE)
+	WaitAnyEventText		()
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT03)
+/********************************//********************************/
+// END CALD TOWN DOOR 1 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// END CALD TOWN DOOR 2 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE02
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+
+	If						([Cald_Cowardice = 4],_COWARD)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+
+_COWARD
+	ThatActorInit			(ACTOR01,?SCROLLER_AI,11,15,40,0,_WORST_NIGHTMARE,?_END)
+	ThatActorSetScript		(HEROACTOR,_TONY_COWARD)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_RIGHT_ANIM)
+
+_TONY_COWARD
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,0)
+	End						()
+
+_WORST_NIGHTMARE
+	ThisActorSetAnim		(?_CORE03_STAND_LEFT_ANIM)
+	CameraSeekActor			(ACTOR01,1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_LEFT_ANIM,48)
+							(?_CORE03_STAND_LEFT_ANIM,1)
+	SetText					(?_TXT_CLDLAVATOWN01_NIGHTMARE)
+	WaitAnyEventText		()
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT03)
+/********************************//********************************/
+// END CALD TOWN DOOR 2 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// END CALD TOWN DOOR 3 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE03
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+
+	If						([Cald_Cowardice = 4],_COWARD)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+
+_COWARD
+	ThatActorInit			(ACTOR01,?SCROLLER_AI,11,30,40,0,_WORST_NIGHTMARE,?_END)
+	ThatActorSetScript		(HEROACTOR,_TONY_COWARD)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_RIGHT_ANIM)
+
+_TONY_COWARD
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,0)
+	End						()
+
+_WORST_NIGHTMARE
+	ThisActorSetAnim		(?_CORE03_STAND_LEFT_ANIM)
+	CameraSeekActor			(ACTOR01,1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_LEFT_ANIM,48)
+							(?_CORE03_STAND_LEFT_ANIM,1)
+	SetText					(?_TXT_CLDLAVATOWN01_NIGHTMARE)
+	WaitAnyEventText		()
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT03)
+/********************************//********************************/
+// END CALD TOWN DOOR 3 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// END CALD TOWN DOOR 4 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE04
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	If						([Cald_Cowardice = 4],_COWARD)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+
+_COWARD
+	ThatActorInit			(ACTOR01,?SCROLLER_AI,28,34,40,0,_WORST_NIGHTMARE,?_END)
+	ThatActorSetScript		(HEROACTOR,_TONY_COWARD)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UP_ANIM)
+
+_TONY_COWARD
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+	End						()
+
+_WORST_NIGHTMARE
+	ThisActorSetAnim		(?_CORE03_STAND_DOWN_ANIM)
+	CameraSeekActor			(ACTOR01,1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_DOWN_ANIM,48)
+							(?_CORE03_STAND_DOWN_ANIM,1)					
+	SetText					(?_TXT_CLDLAVATOWN01_NIGHTMARE)
+	WaitAnyEventText		()
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT03)
+/********************************//********************************/
+// END CALD TOWN DOOR 4 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// END CALD TOWN DOOR 5 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE05
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+
+	If						([Cald_Cowardice = 4],_COWARD)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+_COWARD
+	ThatActorInit			(ACTOR01,?SCROLLER_AI,28,20,40,0,_WORST_NIGHTMARE,?_END)
+	ThatActorSetScript		(HEROACTOR,_TONY_COWARD)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_LEFT_ANIM)
+
+_TONY_COWARD
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_COWARDICE)
+	WaitAnyEventText		()
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	End						()
+
+_WORST_NIGHTMARE
+	ThisActorSetAnim		(?_CORE03_STAND_RIGHT_ANIM)
+	CameraSeekActor			(ACTOR01,1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_RIGHT_ANIM,48)
+							(?_CORE03_STAND_RIGHT_ANIM,1)					
+
+	SetText					(?_TXT_CLDLAVATOWN01_NIGHTMARE)
+	WaitAnyEventText		()
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT03)
+/********************************//********************************/
+// END CALD TOWN DOOR 5 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN DOOR 6 & 7 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE06
+?_CLDLAVATOWN01_DR_BOUNCE07
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOUNCE)
+	End						()
+
+_TONY_BOUNCE
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(?_TXT_CLDLAVATOWN01_GET_OUT)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+/********************************//********************************/
+// END CALD TOWN DOOR 6 & 7 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN DOOR 8 BOUNCE
+/********************************//********************************/
+?_CLDLAVATOWN01_DR_BOUNCE08
+	SetText					(?_TXT_CLDLAVATOWN01_HOUSE_BATTLE)
+	WaitAnyEventText		()
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE03)
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	Jump					(?_CLDLAVATOWN_BAT06)
+/********************************//********************************/
+// END CALD TOWN DOOR 8 BOUNCE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE 09
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE09
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+
+	ThatActorInit			(ACTOR01,?ANIM_AI,14,11,40,81,_OPPONENT,?_END)	//81
+	ThatActorStart			(ACTOR01)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE02)
+	End						()
+
+_OPPONENT
+	ThisActorSetAnim		(?_CORE01_STAND_UP_ANIM)
+	SetText					(_TXT_ROAR)
+	WaitAnyEventText			()
+	ThisActorSetAnimDelay	(?_CORE01_RUN_UP_ANIM,32)
+							(?_CORE01_STAND_UP_ANIM,0)
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE02)
+	Jump					(?_CLDLAVATOWN_BAT01)
+
+/********************************/
+// TEXT
+_TXT_ROAR
+	TextOpen				()
+	TextWrite				("ROAR!!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE 09
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE 10
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE10
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+
+	LoadVRAMTiles			(42,BIT_CORE04,39,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,18,30,40,39,_OPPONENT,?_END)	//39
+	ThatActorStart			(ACTOR01)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	End						()
+	
+_OPPONENT
+	ThisActorSetAnim		(?_CORE04_STAND_UP_ANIM)
+	SetText					(_TXT_BLEEEARGH)
+	WaitAnyEventText			()
+	ThisActorSetAnimDelay	(?_CORE04_RUN_UP_ANIM,32)
+							(?_CORE04_STAND_UP_ANIM,0)
+	ScrollMap				(16,0,2)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	Jump					(?_CLDLAVATOWN_BAT04)
+
+/********************************/
+// TEXT
+_TXT_BLEEEARGH
+	TextOpen				()
+	TextWrite				("BLEEEARGH!!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE 10
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE 11
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE11
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+
+	LoadVRAMTiles			(42,BIT_CORE04,39,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,3,15,40,39,_OPPONENT,?_END)	//39
+	ThatActorStart			(ACTOR01)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	End						()
+
+_OPPONENT
+	ThisActorSetAnim		(?_CORE04_STAND_RIGHT_ANIM)
+	SetText					(_TXT_MRYUUUGH)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_CORE04_RUN_RIGHT_ANIM,32)
+							(?_CORE04_STAND_DR_ANIM,0)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	Jump					(?_CLDLAVATOWN_BAT04)
+
+/********************************/
+// TEXT
+_TXT_MRYUUUGH
+	TextOpen				()
+	TextWrite				("MRYUUUUUK!!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE 11
+/********************************//********************************/
+
+/********************************//********************************/
+// CALD TOWN BATTLE 12 (FINAL BATTLE)
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE12
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+
+	LoadVRAMTiles			(39,BIT_CORE03,0,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,34,20,40,0,_OFFICER,?_END)	//0
+	ThatActorInit			(ACTOR02,?ANIM_AI,23,30,40,117,_FLUNKY1,?_END)	//117
+	ThatActorInit			(ACTOR03,?ANIM_AI,35,33,40,161,_FLUNKY2,?_END)	//161
+	ThatActorStart			(ACTOR01)
+
+	CameraSeekActor			(ACTOR01,4)	
+	WaitAnyEventText		()
+	ThatActorInit			(HEROACTOR,?ANIM_AI,32,27,40,0,_CLDLAVATOWN01_TONY,?_DONT_TALK)
+	CameraSeekActor			(HEROACTOR,3)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_VICTORY)
+	End						()
+
+_CLDLAVATOWN01_TONY
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,32)
+							(?_HERO_STAND_DL_ANIM,32)
+							(?_HERO_STAND_DR_ANIM,32)
+							(?_HERO_STAND_UP_ANIM,0)
+	End						()
+
+_OFFICER
+	ThisActorSetAnim		(?_CORE03_STAND_UP_ANIM)
+	LoadVRAMTiles			(39,BIT_CORE03,0,0)
+	ThisActorSetAnim		(?_CORE03_STAND_DOWN_ANIM)
+	LoadVRAMTiles			(42,BIT_CORE04,39,0)
+	SetText					(_TXT_GET_HIM)
+	WaitAnyEventText		()
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_LEFT_ANIM,8)
+							(?_CORE03_RUN_DOWN_ANIM,36)							
+							(?_CORE03_STAND_DOWN_ANIM,32)
+	SetEventMaster			(1)
+	ThisActorSetAnimDelay	(?_CORE03_RUN_LEFT_ANIM,8)
+							(?_CORE03_RUN_DOWN_ANIM,8)				
+							(?_CORE03_STAND_DOWN_ANIM,0)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_VICTORY)
+	Jump					(?_CLDLAVATOWN_BAT03)
+	
+_FLUNKY1
+	ThisActorSetAnimDelay	(?_CORE02_RUN_RIGHT_ANIM,32)	
+							(?_CORE02_RUN_UP_ANIM,16)
+							(?_CORE02_RUN_RIGHT_ANIM,24)
+							(?_CORE02_STAND_UR_ANIM,0)	
+	End						()
+
+_FLUNKY2
+	ThisActorSetAnimDelay	(?_CORE05_RUN_UP_ANIM,40)	
+							(?_CORE05_STAND_UL_ANIM,0)
+	End						()
+
+/********************************/
+// TEXT
+_TXT_GET_HIM
+	TextOpen				()
+	TextWrite				("GET HIM!!!")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE 12 (FINAL BATTLE)
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE 13
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE13
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+
+	LoadVRAMTiles			(42,BIT_CORE04,39,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,35,20,40,39,_OPPONENT,?_END)		//39
+	ThatActorStart			(ACTOR01)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	End						()
+
+_OPPONENT
+	ThisActorSetAnim		(?_CORE04_STAND_LEFT_ANIM)
+	SetText					(_TXT_WWOOAARG)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_CORE04_RUN_LEFT_ANIM,32)
+							(?_CORE04_STAND_LEFT_ANIM,0)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	Jump					(?_CLDLAVATOWN_BAT04)
+
+/********************************/
+// TEXT
+_TXT_WWOOAARG
+	TextOpen				()
+	TextWrite				("WWOOAARG!!!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+/********************************//********************************/
+// END CALD TOWN BATTLE 13
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE 14
+/********************************//********************************/
+?_CLDLAVATOWN01_BATTLE14
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DR_ANIM)
+
+	LoadVRAMTiles			(42,BIT_CORE04,39,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,35,16,40,39,_OPPONENT,?_DONT_TALK)	//39
+	
+	SetText					(_TXT_TOAST)
+	WaitAnyEventText		()
+
+	ThatActorStart			(ACTOR01)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	End						()
+
+_OPPONENT
+	ThisActorSetAnimDelay	(?_CORE04_RUN_UP_ANIM,40)
+							(?_CORE04_STAND_UL_ANIM,0)
+
+	SetBtlReturn			(?_CLDLAVATOWN01_PHASE03)
+	Jump					(?_CLDLAVATOWN_BAT04)
+
+/********************************/
+// TEXT
+_TXT_TOAST
+	TextOpen				()
+	TextWrite				("TOAST!!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+/********************************//********************************/
+// END CALD TOWN BATTLE 14
+/********************************//********************************/

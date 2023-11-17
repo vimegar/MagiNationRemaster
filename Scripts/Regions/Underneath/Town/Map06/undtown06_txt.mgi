@@ -1,0 +1,33 @@
+/********************************/
+//UNDTOWN06
+/********************************/
+?_UNDTOWN06_OLDLADY05_TXT01
+	If						([GC = GC_UND_GEYSER],_GEYSER)
+	If						([Kidnapping > 2],_WORRY)
+
+	TextOpen				()
+	TextIcon				(ICON_MOTASH)
+	TextWrite				("I am Motash,=")
+							("Elder of this")
+							("beautiful town.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_WORRY
+	TextOpen				()
+	TextIcon				(ICON_MOTASH)
+	TextWrite				("I'm sure Gogor=")
+							("will return")
+							("victorious.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_GEYSER
+	TextOpen				()
+	TextIcon				(ICON_MOTASH)
+	TextWrite				("Please hurry=")
+							("and collapse")
+							("the Shadow=")
+							("Geyser!")
+	TextClose				()
+	ThisActorRestoreState	()

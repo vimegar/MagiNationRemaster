@@ -1,0 +1,71 @@
+/********************************/
+?_NRMVASH19_DR_1
+		HeroToDoor	(13,17,4,4)
+		Jump		(?_NRMVASH04)
+
+?_NRMVASH19_TR_1
+		TriggerTreasure	(NRMVASH19_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,3,5,20)
+
+?_NRMVASH19_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Some burnt=")
+					("books...")
+		TextClose	()
+		End			()
+		
+?_NRMVASH19_TR_3
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("This chair has=")
+					("burn marks...")
+		TextClose	()
+		End			()
+		
+?_NRMVASH19_TR_4
+		If			([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If			([Worveline_Hiding != 2],_SKIP)
+		If			([FACEHERO != FACE_RIGHT],_GOONNOW)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+_GOONNOW
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Hmmm....")
+					("...")
+					("...")
+					("What's that=")
+					("on the bottom")
+					("shelf?...")
+		TextIcon	(ICON_WORVELINE)
+		TextWrite	("GRR!!! GRRR!!!!")
+		TextIcon	(ICON_TONY)
+		TextWrite	("AAAAAUUUGH!!!")
+		TextClose	()
+		TextOpen	()
+		TextWrite	("-Worveline=")
+					(" found!-")
+		TextClose	()
+		SetXRAMByte	(Worveline_Hiding,0)
+		SetXRAMBit	(Worveline_Caught,TRUE)
+		End			()
+_SKIP
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Hmmm....")
+					("...")
+					("...")
+					("It's...")
+					("a bookcase.")
+					("...")
+					("...")
+					("And...")
+					("it's empty.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH19_TR_5
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Sooty.")
+		TextClose	()
+		End			()

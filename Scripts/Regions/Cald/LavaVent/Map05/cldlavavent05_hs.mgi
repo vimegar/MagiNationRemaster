@@ -1,0 +1,13 @@
+/********************************/
+// CLDLAVAVENT05
+		FileHotspots	(HS_CLDLAVAVENT05)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT05_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT05_DR_2)
+
+/********************************/
+// CLDVENTINT04
+		FileHotspots	(HS_CLDVENTINT04)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDVENTINT04_DR_1)						
+						
+		FileTriggers	(TR_CLDVENTINT04)
+						(TRIGGER_CONFIG,?_CLDVENTINT04_TR_1)

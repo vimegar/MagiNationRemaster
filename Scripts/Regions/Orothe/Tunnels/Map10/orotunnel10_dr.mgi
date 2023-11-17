@@ -1,0 +1,39 @@
+/********************************/
+?_OROTUNNEL10_DR_1
+		If			([Blu_State = 4 && GC = GC_BOOTS_QUEST],?_OROTUNNEL09_FINAL_BLU)
+		HeroToDoor	(8,19,26,2)
+		Jump		(?_OROTUNNEL09)
+		
+?_OROTUNNEL10_DR_2
+		If			([Blu_State = 3  && GC = GC_BOOTS_QUEST],_BLU)
+		End			()
+_BLU
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		ThatActorStart		(ACTOR00)
+		End					()
+
+/********************************/
+?_OROTUNNEL10_TR_1
+		TriggerAlways		(Vault_Chest,?_TXT_ITS_EMPTY,255,10,5,20)
+		InitSkip			(_SKIP)
+
+		TextOpen			()
+		SongStart			(SONGID_end)
+		TextWrite			("Tony got=")
+							("Agadon's Boots!$")
+		Delay				(180)
+		Delay				(180)
+		Delay				(180)
+		SongStart			(SONGID_orotunnels)
+		TextClose			()
+
+		SetXRAMByte			(Blu_State,3)
+		SetXRAMByte			(GS_Hero_Ability,3)
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+_SKIP
+		End					()
+
+?_OROTUNNEL10_TR_2
+		TriggerTreasure	(OROTUNNEL10_Chest2,INV_TYPE_RELIC,INV_WATER_ORB,5,12,20)

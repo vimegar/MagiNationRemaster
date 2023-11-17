@@ -1,0 +1,59 @@
+/********************************/
+?_UNDCAVERN08_DR_1
+		HeroToDoor	(3,14,12,13)
+		Jump		(?_UNDCAVERN07)
+?_UNDCAVERN08_TR_1
+		Jump		(?_UNDCAVE08_FOSSIK_RING)
+
+?_UNDCAVERN08_TR_2			// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Possibly a=")
+					("complex")
+					("instrument=")
+					("for mining.")
+					("Or a bed.")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN08_TR_3			// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A real miner's=")
+					("bed.")
+					("Soft as a big=")
+					("ol' slab of")
+					("stone!")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN08_TR_4			// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("This chair=")
+					("has scratches")
+					("on it.")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN08_TR_5			// COUCH
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("This chair=")
+					("has scratches")
+					("AND bite marks.")
+					("Scary.")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN08_TR_6			// TABLES
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Looks like this=")
+					("this thing has")
+					("served as a=")
+					("scratching post")
+					("for quite a=")
+					("while.")
+		TextClose	()
+		End			()

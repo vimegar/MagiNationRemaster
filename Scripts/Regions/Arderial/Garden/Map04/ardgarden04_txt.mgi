@@ -1,0 +1,27 @@
+/********************************/
+?_ARDGARDEN04_TXT_1
+	TextOpen		()
+	TextIcon		(ICON_GUY02)
+	TextWrite		("You are the=")
+					("one who freed")
+					("me. Thank you.=")
+					("As a token of")
+					("my appreciation=")
+					("take this.")
+	InventoryGive	(INV_TYPE_ITEM,INV_MASTER_RUNE,1)
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+					("%X")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+?_ARDGARDEN04_TXT_2
+	TextOpen		()
+	TextIcon		(ICON_GUY02)
+	TextWrite		("Thanks again=")
+					("for freeing me!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+

@@ -1,0 +1,52 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\WEAVE\PATHVALLEY\MAP06\WVEPATHVALLEY06_DR.MGI
+%INCLUDE			REGIONS\WEAVE\PATHVALLEY\MAP06\WVEPATHVALLEY06_TXT.MGI
+
+/********************************/
+?_WVEPATHVALLEY06
+//	Switch			([GAMECOUNT])
+//					(GC_UNDERNEATH,?_WVEPATHVALLEY06_UNDERNEATH)
+
+?_WVEPATHVALLEY06_UNDERNEATH
+	SceneNew		()
+	LoadMap			(MAP_WVEPATHVALLEY06)
+	LoadHotspots	(HS_WVEPATHVALLEY06)
+	LoadTriggers	(TR_WVEPATHVALLEY06)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SetBtlReturn	(?_WVEPATHVALLEY06)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_orotunnels)
+	SceneReady		()
+	End				()
+
+?_WVEPATHVALLEY06_DOOR1
+	ThatActorStop		(HEROACTOR)
+	ThatActorInit		(HEROACTOR,?HERO_AI,16,20,40,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	CameraSeek			(16,20,2)
+	ThatActorStart		(HEROACTOR)
+	End					()
+
+?_WVEPATHVALLEY06_DOOR2
+	ThatActorStop		(HEROACTOR)
+	ThatActorInit		(HEROACTOR,?HERO_AI,25,20,40,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	CameraSeek			(25,20,2)
+	ThatActorStart		(HEROACTOR)
+	End					()
+
+?_WVEPATHVALLEY06_DOOR3
+	ThatActorStop		(HEROACTOR)
+	ThatActorInit		(HEROACTOR,?HERO_AI,16,26,40,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	CameraSeek			(16,26,2)
+	ThatActorStart		(HEROACTOR)
+	End					()
+
+?_WVEPATHVALLEY06_DOOR4
+	ThatActorStop		(HEROACTOR)
+	ThatActorInit		(HEROACTOR,?HERO_AI,25,26,40,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	CameraSeek			(25,26,2)
+	ThatActorStart		(HEROACTOR)
+	End					()

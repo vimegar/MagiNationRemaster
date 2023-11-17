@@ -1,0 +1,23 @@
+/********************************/
+?_WVEPATHVALLEY07_DR_1
+		HeroSetDoor	(17,32)
+		Jump		(?_OVRSURFACE01)
+
+//		HeroToDoor	(10,47,4,17)
+//		Jump		(?_WVEPATHVALLEY06)
+
+?_WVEPATHVALLEY07_DR_2
+		SetScroll		(?_SEE_THE_FACE)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_UP_ANIM)
+		PalClearBase	(8,15,3,3,3)
+		PalFade			(8,15,32,0)
+		ThatActorStop	(HEROACTOR)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		HeroToDoor		(8,5,12,39)
+		Jump			(?_UNDTUNNEL01_FADEIN)
+
+?_SEE_THE_FACE
+		ScrollMap	(32,0,-1)
+		End			()

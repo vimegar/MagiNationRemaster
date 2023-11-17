@@ -1,0 +1,130 @@
+;Size:85
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\SHADOWHOLD\HLDMAZE\MAP12\HLDMAZE12.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_HLDMAZE12_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$00
+		DB	$17
+		DB	$0F
+		DB	$0A
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE10
+		DW	(?_HLDMAZE10&$FFFF)
+
+;********************************
+?_HLDMAZE12_DR_2
+	DB	CMD_HEROTODOOR
+		DB	$0B
+		DB	$0B
+		DB	$00
+		DB	$18
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE14
+		DW	(?_HLDMAZE14&$FFFF)
+
+;********************************
+?_HLDMAZE12_DR_3
+	DB	CMD_HEROTODOOR
+		DB	$0A
+		DB	$12
+		DB	$18
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE13
+		DW	(?_HLDMAZE13&$FFFF)
+
+;********************************
+?_HLDMAZE12_DR_4
+	DB	CMD_HEROTODOOR
+		DB	$00
+		DB	$01
+		DB	$00
+		DB	$18
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE14
+		DW	(?_HLDMAZE14&$FFFF)
+
+;********************************
+?_HLDMAZE12
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HLDMAZE12&$FFFF)
+		DB	:MAP_HLDMAZE12
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HLDMAZE12&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D082
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_SONGSTART
+		DB	SONGID_shadowhold
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETENCOUNTER
+		DB	:?_HLDMAZE_RNDBAT
+		DW	(?_HLDMAZE_RNDBAT&$FFFF)
+		DW	(ENCOUNTER_FRQ_SLOW&$FFFF)
+
+	DB	CMD_SETBTLRETURN
+		DB	:?_HLDMAZE12
+		DW	(?_HLDMAZE12&$FFFF)
+		DB	(:?_BATTLE_LOST&$FF)
+		DW	(?_BATTLE_LOST&$FFFF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_HLDMAZE10
+	GLOBAL	?_HLDMAZE14
+	GLOBAL	?_HLDMAZE13
+	GLOBAL	MAP_HLDMAZE12
+	GLOBAL	HS_HLDMAZE12
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_HLDMAZE_RNDBAT
+	GLOBAL	ENCOUNTER_FRQ_SLOW
+	GLOBAL	?_BATTLE_LOST
+
+;********************************
+	END
+;********************************

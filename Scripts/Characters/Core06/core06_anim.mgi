@@ -1,0 +1,261 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_CORE06_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?CORE06_WALK01_BACK)
+					(?CORE06_WALK02_BACK)
+					(?CORE06_WALK03_BACK)
+					(?CORE06_WALK02_BACK)
+					
+	JumpLocal:		(?_CORE06_WALK_UP_ANIM)
+
+/********************************/
+?_CORE06_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?CORE06_WALK01_FRONT)
+					(?CORE06_WALK02_FRONT)
+					(?CORE06_WALK03_FRONT)
+					(?CORE06_WALK02_FRONT)
+					
+	JumpLocal:		(?_CORE06_WALK_DOWN_ANIM)
+
+/********************************/
+?_CORE06_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?CORE06_WALK01_LEFT)
+					(?CORE06_WALK02_LEFT)
+					(?CORE06_WALK03_LEFT)
+					(?CORE06_WALK02_LEFT)
+					
+	JumpLocal:		(?_CORE06_WALK_LEFT_ANIM)
+
+/********************************/
+?_CORE06_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?CORE06_WALK01_RIGHT)
+					(?CORE06_WALK02_RIGHT)
+					(?CORE06_WALK03_RIGHT)
+					(?CORE06_WALK02_RIGHT)
+					
+	JumpLocal:		(?_CORE06_WALK_RIGHT_ANIM)
+
+/********************************/
+?_CORE06_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?CORE06_WALK01_BACK)
+					(?CORE06_WALK02_BACK)
+					(?CORE06_WALK03_BACK)
+					(?CORE06_WALK02_BACK)
+					
+	JumpLocal:		(?_CORE06_RUN_UP_ANIM)
+
+/********************************/
+?_CORE06_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?CORE06_WALK01_FRONT)
+					(?CORE06_WALK02_FRONT)
+					(?CORE06_WALK03_FRONT)
+					(?CORE06_WALK02_FRONT)
+					
+	JumpLocal:		(?_CORE06_RUN_DOWN_ANIM)
+
+/********************************/
+?_CORE06_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?CORE06_WALK01_LEFT)
+					(?CORE06_WALK02_LEFT)
+					(?CORE06_WALK03_LEFT)
+					(?CORE06_WALK02_LEFT)
+					
+	JumpLocal:		(?_CORE06_RUN_LEFT_ANIM)
+
+/********************************/
+?_CORE06_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?CORE06_WALK01_RIGHT)
+					(?CORE06_WALK02_RIGHT)
+					(?CORE06_WALK03_RIGHT)
+					(?CORE06_WALK02_RIGHT)
+					
+	JumpLocal:		(?_CORE06_RUN_RIGHT_ANIM)
+
+/********************************/
+?_CORE06_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?CORE06_WALK02_BACK)
+	
+	JumpLocal:		(?_CORE06_STAND_UP_ANIM)
+
+/********************************/
+?_CORE06_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?CORE06_WALK02_FRONT)
+	
+	JumpLocal:		(?_CORE06_STAND_DOWN_ANIM)
+
+/********************************/
+?_CORE06_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?CORE06_WALK02_LEFT)
+	
+	JumpLocal:		(?_CORE06_STAND_LEFT_ANIM)
+
+/********************************/
+?_CORE06_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?CORE06_WALK02_RIGHT)
+	
+	JumpLocal:		(?_CORE06_STAND_RIGHT_ANIM)
+
+/********************************/
+?_CORE06_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?CORE06_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_CORE06_STAND_UL_ANIM)
+
+/********************************/
+?_CORE06_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?CORE06_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_CORE06_STAND_UR_ANIM)
+
+/********************************/
+?_CORE06_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?CORE06_STAND_LEFT)
+	
+	JumpLocal:		(?_CORE06_STAND_DL_ANIM)
+
+/********************************/
+?_CORE06_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?CORE06_STAND_RIGHT)
+	
+	JumpLocal:		(?_CORE06_STAND_DR_ANIM)
+
+/********************************/
+?_CORE06_BATTLE_STAND_ANIM
+
+	Frame:			(255,0,0,?CORE06_STAND)
+	
+	JumpLocal		(?_CORE06_BATTLE_STAND_ANIM)
+
+/********************************/
+?_CORE06_BATTLE_TAUNT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?CORE06_TAUNTWIN01)
+					(?CORE06_TAUNTWIN02)
+					(?CORE06_STAND)
+	
+	JumpLocal		(?_CORE06_BATTLE_TAUNT_ANIM)
+
+/********************************/
+?_CORE06_BATTLE_SUMMON_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?CORE06_SUMMON01)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON03)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON01)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON03)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON01)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON03)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON01)
+					(?CORE06_SUMMON02)
+					(?CORE06_SUMMON03)
+					(?CORE06_SUMMON02)
+	Frame:			(32,0,0,?CORE06_SUMMON02)
+
+	JumpLocal		(?_CORE06_BATTLE_STAND_ANIM)
+	
+/********************************/
+?_CORE06_BATTLE_WIN_ANIM
+
+	Frame:			(2,0,-4,?CORE06_STAND)
+					(2,0,-3,?CORE06_STAND)
+					(2,0,-2,?CORE06_STAND)
+					(2,0,-1,?CORE06_STAND)
+					(2,0,0,?CORE06_TAUNTWIN01)
+					(2,0,1,?CORE06_TAUNTWIN01)
+					(2,0,2,?CORE06_TAUNTWIN01)
+					(2,0,3,?CORE06_TAUNTWIN01)
+					(2,0,4,?CORE06_TAUNTWIN01)
+_WIN
+	FrameBlock:		(8,0,0)
+					(?CORE06_TAUNTWIN01)
+					(?CORE06_TAUNTWIN02)
+	
+	JumpLocal		(_WIN)
+
+/********************************/
+?_CORE06_BATTLE_LOSE_ANIM
+
+	Frame:			(2,-1,-4,?CORE06_LOSE01)
+					(2,-1,-3,?CORE06_LOSE02)
+					(2,-1,-2,?CORE06_LOSE01)
+					(2,-1,-1,?CORE06_LOSE02)
+					(2,-1,0,?CORE06_LOSE01)
+					(2,-1,1,?CORE06_LOSE02)
+					(2,-1,2,?CORE06_LOSE01)
+					(2,-1,3,?CORE06_LOSE02)
+					(2,-1,4,?CORE06_LOSE01)
+					(1,-1,-4,?CORE06_LOSE01)
+					(1,-1,-3,?CORE06_LOSE01)
+					(1,-1,-2,?CORE06_LOSE02)
+					(1,-1,-1,?CORE06_LOSE02)
+					(1,-1,0,?CORE06_LOSE01)
+					(1,-1,1,?CORE06_LOSE01)
+					(1,-1,2,?CORE06_LOSE02)
+					(1,-1,3,?CORE06_LOSE02)
+					(1,-1,4,?CORE06_LOSE01)
+					(1,-1,-1,?CORE06_LOSE01)
+					(1,-1,0,?CORE06_LOSE02)
+					(1,-1,1,?CORE06_LOSE02)
+_LOSE
+	Frame:			(255,0,0,?CORE06_LOSE01)
+
+	JumpLocal		(_LOSE)
+
+/********************************/
+?_FACE_CORE06
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_CORE06_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_CORE06_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_CORE06_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_CORE06_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

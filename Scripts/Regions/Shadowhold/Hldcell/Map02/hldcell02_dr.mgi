@@ -1,0 +1,25 @@
+/********************************/
+?_HLDCELL02_DR_1
+		HeroToDoor	(0,27,31,15)
+		Jump		(?_HLDCELL01)
+
+?_HLDCELL02_DR_2
+		HeroToDoor	(8,5,3,23)
+		Jump		(?_HLDMAZE01)
+		
+?_HLDCELL02_TR_1
+		ToggleOnce		(CellTrigger1,_SWITCH1_FALSE,250,251,5,11,20)
+		SetXRAMBit		(CellSwitch1,FALSE)		
+		End				()
+_SWITCH1_FALSE
+		SetXRAMBit		(CellSwitch1,TRUE)
+		End				()
+
+?_HLDCELL02_TR_2
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This door=")
+						("doesn't even")
+						("have a keyhole!")
+		TextClose		()
+		End				()

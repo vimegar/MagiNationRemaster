@@ -1,0 +1,8 @@
+/********************************/
+?_ARDGARDEN03_DR_1
+		HeroToDoor	(15,20,0,32)
+		Jump		(?_ARDGARDEN02)
+
+?_ARDGARDEN03_DR_2
+		HeroToDoor	(6,1,4,21)
+		Jump		(?_ARDPALACE01)

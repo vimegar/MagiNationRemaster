@@ -1,0 +1,4348 @@
+;Size:6733
+                     
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\HOMETOWN\CAVE\MAP01\HMTCAVE01.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_HMTCAVE01_DR_1
+	DB	CMD_JUMP
+		DB	:?_TONY_ENTERS_CAVE
+		DW	(?_TONY_ENTERS_CAVE&$FFFF)
+
+;********************************
+?_HMTCAVE01_DR_2
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE01_TAUNT01
+		DW	(?_HMTCAVE01_TAUNT01&$FFFF)
+
+;********************************
+?_HMTCAVE01_DR_3
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE01_TAUNT02
+		DW	(?_HMTCAVE01_TAUNT02&$FFFF)
+
+;********************************
+?_HMTCAVE01_DR_4
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE01_TAUNT03
+		DW	(?_HMTCAVE01_TAUNT03&$FFFF)
+
+;********************************
+?_HMTCAVE01_DR_1B
+	DB	CMD_HEROTODOOR
+		DB	$04
+		DB	$0D
+		DB	$02
+		DB	$1D
+
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE02
+		DW	(?_HMTCAVE02&$FFFF)
+
+;********************************
+?_HMTCAVE01_TXT_1
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$03),(?AL+$14),(?AL+$03),(?AL+$04),?COMM,?SPCE,(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?HURRY
+		DB	(?AL+$0F),(?AL+$0B),(?AL+$00),(?AL+$02),(?AL+$04),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$13),?WAIT
+		DB	(?AL+$12),(?AL+$00),(?AL+$05),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$05),(?AL+$08),(?AL+$0D),(?AL+$04),?EXCL,?HURRY
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$12),(?AL+$0E),?SPCE,(?AL+$01),(?AL+$00),(?AL+$03),?WAIT
+		DB	(?AL+$00),(?AL+$01),(?AL+$0E),(?AL+$14),(?AL+$13),?SPCE,(?AL+$08),(?AL+$13),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0B
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$05),?SPCE,(?AL+$08),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$12),(?AL+$0E),?HURRY
+		DB	(?AL+$12),(?AL+$00),(?AL+$05),(?AL+$04),?COMM,?SPCE,(?AL+$16),(?AL+$07),(?AL+$18),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$06),(?AL+$0E),?SPCE,(?AL+$08),(?AL+$0D),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0C
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$04),(?AL+$18),?EXCL,?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$02),(?AL+$07),(?AL+$00),(?AL+$0D),(?AL+$06),(?AL+$04),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$12),(?AL+$14),(?AL+$01),(?AL+$09),(?AL+$04),(?AL+$02),(?AL+$13),?EXCL,?SPCE,(?AU+$18),(?AL+$0E),(?AL+$14),?APST,(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$0E),(?AL+$0D),(?AL+$04),?SPCE,(?AL+$16),(?AL+$07),(?AL+$0E),?APST,(?AL+$12),?WAIT
+		DB	(?AL+$12),?APST,(?AL+$0F),(?AL+$0E),(?AL+$12),(?AL+$04),(?AL+$03),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$06),(?AL+$0E),?HURRY
+		DB	(?AL+$08),(?AL+$0D),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?SPCE,(?AL+$16),(?AL+$00),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$08),(?AL+$0D),(?AL+$04),?COMM,?SPCE,(?AL+$0B),(?AL+$04),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?HURRY
+		DB	(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$03),(?AL+$0E),?SPCE,(?AL+$08),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$4E
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$04),(?AL+$00),(?AL+$07),?COMM,?SPCE,(?AL+$07),(?AL+$04),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$03),(?AL+$0E),?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$18),(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$0D),(?AL+$06),?EXCL,?SPCE,(?AU+$07),(?AL+$04),(?AL+$18),?WAIT
+		DB	(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?COMM,?SPCE,(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$0D),(?AL+$00),?SPCE,(?AL+$06),(?AL+$0E),?HURRY
+		DB	(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?SPCE,(?AL+$16),(?AL+$00),(?AL+$18),?SPCE,(?AU+$08),?APST,(?AL+$0C),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$4F
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),?COMM,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$13),(?AL+$0E),(?AL+$0B),(?AL+$03),?SPCE,(?AL+$01),(?AL+$18),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$13),(?AL+$13),(?AL+$0B),(?AL+$04),?HURRY
+		DB	(?AL+$01),(?AL+$11),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$50
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$07),(?AL+$14),(?AL+$13),?SPCE,(?AL+$14),(?AL+$0F),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?COMM,?HURRY
+		DB	(?AL+$06),(?AL+$14),(?AL+$18),(?AL+$12),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$0E),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$07),(?AL+$04),(?AL+$02),(?AL+$0A),?HURRY
+		DB	(?AL+$00),(?AL+$11),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0C),(?AL+$18),?SPCE,(?AL+$0D),(?AL+$00),(?AL+$0C),(?AL+$04),?APST,(?AL+$12),?SPCE,(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?PERD,?HURRY
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$12),?PERD,?SPCE,(?AU+$08),?WAIT
+		DB	(?AL+$0C),(?AL+$0E),(?AL+$15),(?AL+$04),(?AL+$03),?SPCE,(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$05),(?AL+$04),(?AL+$16),?SPCE,(?AL+$03),(?AL+$00),(?AL+$18),(?AL+$12),?SPCE,(?AL+$00),(?AL+$06),(?AL+$0E),?PERD,?WAIT
+		DB	(?AU+$16),(?AL+$07),(?AL+$0E),?SPCE,(?AL+$00),(?AL+$11),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0D
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$00),(?AL+$16),?EXCL,?SPCE,(?AU+$03),(?AL+$08),(?AL+$03),(?AL+$09),(?AL+$00),?HURRY
+		DB	(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$11),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?COMM,?SPCE,(?AU+$12),(?AL+$0B),(?AL+$18),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0E
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$04),(?AL+$00),(?AL+$07),?EXCL,?SPCE,(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$12),(?AL+$13),(?AL+$0E),(?AL+$0E),(?AL+$0F),(?AL+$08),(?AL+$03),?SPCE,(?AL+$0D),(?AL+$00),(?AL+$0C),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0F
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$12),?SPCE,(?AL+$08),(?AL+$12),?HURRY
+		DB	(?AL+$0C),(?AL+$0E),(?AL+$11),(?AL+$04),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$10
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?PERD,?PERD,?PERD,(?AL+$0D),(?AL+$0E),?PERD,?PERD,?PERD,(?AL+$08),(?AL+$13),?APST,(?AL+$12),?HURRY
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$12),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$0D),(?AL+$04),(?AL+$16),?SPCE,(?AL+$0D),(?AL+$00),(?AL+$0C),(?AL+$04),?QUST,?WAIT
+		DB	(?AU+$03),(?AL+$04),(?AL+$00),(?AL+$0B),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$04),(?AL+$18),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$12),(?AL+$07),?PERD,?PERD,?PERD,?HURRY
+		DB	(?AL+$02),?APST,(?AL+$0C),(?AL+$04),(?AL+$11),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$02
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_HOLDER_1
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	?DASH,(?AL+$16),(?AL+$07),(?AL+$08),(?AL+$12),(?AL+$0F),(?AL+$04),(?AL+$11),?DASH,?HURRY
+		DB	?DASH,(?AL+$16),(?AL+$07),(?AL+$08),(?AL+$12),(?AL+$0F),(?AL+$04),(?AL+$11),?DASH,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETANYEVENTTEXT
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_3
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$0A),(?AL+$00),(?AL+$18),?COMM,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?SPCE,(?AU+$08),(?AL+$05),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$0D),(?AL+$04),(?AL+$16),?SPCE,(?AL+$0D),(?AL+$00),(?AL+$0C),(?AL+$04),?COMM,?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?WAIT
+		DB	(?AL+$04),(?AL+$00),(?AL+$11),(?AL+$0D),?SPCE,(?AL+$01),(?AL+$00),(?AL+$02),(?AL+$0A),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?HURRY
+		DB	(?AL+$0E),(?AL+$0B),(?AL+$03),?SPCE,(?AL+$0E),(?AL+$0D),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$11),?PERD,?SPCE,(?AU+$07),(?AL+$0E),(?AL+$16),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$06),(?AL+$0E),?SPCE,(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$14),(?AL+$12),?SPCE,(?AL+$00),?WAIT
+		DB	(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?PERD,?HURRY
+		DB	(?AU+$0E),(?AL+$05),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$14),(?AL+$11),(?AL+$12),(?AL+$04),?COMM,?SPCE,(?AL+$08),(?AL+$05),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?APST,(?AL+$11),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),(?AL+$0E),?HURRY
+		DB	(?AL+$02),(?AL+$07),(?AL+$08),(?AL+$02),(?AL+$0A),(?AL+$04),(?AL+$0D),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$08),(?AL+$0D),(?AL+$04),?PERD,?SPCE,(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$01),(?AL+$04),?HURRY
+		DB	(?AL+$01),(?AL+$00),(?AL+$02),(?AL+$0A),?SPCE,(?AL+$12),(?AL+$07),(?AL+$0E),(?AL+$11),(?AL+$13),(?AL+$0B),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$03
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_4
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$0E),(?AL+$0E),(?AL+$0E),(?AL+$07),?EXCL,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$00),?SPCE,(?AL+$13),(?AL+$0E),(?AL+$14),(?AL+$06),(?AL+$07),?SPCE,(?AL+$06),(?AL+$14),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$04
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_6
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$03),(?AL+$08),(?AL+$03),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$11),?HURRY
+		DB	(?AL+$12),(?AL+$0E),(?AL+$0C),(?AL+$04),(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$0D),(?AL+$06),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETSCROLL
+		DB	:?_HMT01_QUAKE_PERM
+		DW	(?_HMT01_QUAKE_PERM&$FFFF)
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$08),(?AL+$0D),(?AL+$06),?HURRY
+		DB	(?AL+$0E),(?AL+$0D),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$14),(?AL+$07),(?AL+$07),(?AL+$07),(?AL+$07),(?AL+$07),(?AL+$07),?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$06
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_7
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$14),(?AL+$11),(?AL+$11),(?AL+$18),?SPCE,(?AL+$14),(?AL+$0F),?COMM,?HURRY
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$12),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_8
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$04),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?HURRY
+		DB	(?AL+$00),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$03),(?AL+$00),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_9
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_10
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0A
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT_11
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$08),(?AL+$0D),(?AL+$06),?QUST,?SPCE,(?AU+$00),(?AL+$11),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?WAIT
+		DB	(?AU+$02),(?AL+$07),(?AL+$08),(?AL+$02),(?AL+$0A),(?AL+$04),(?AL+$0D),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0B
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT2_01
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$0E),(?AL+$00),?EXCL,?SPCE,(?AU+$07),(?AL+$04),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$00),(?AL+$0B),(?AL+$08),(?AL+$15),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$01),(?AL+$04),(?AL+$0B),(?AL+$08),(?AL+$04),(?AL+$15),(?AL+$04),?HURRY
+		DB	(?AL+$08),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0A
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$12),(?AL+$07),(?AL+$14),(?AL+$13),?HURRY
+		DB	(?AL+$14),(?AL+$0F),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$03),(?AL+$18),?COMM,?WAIT
+		DB	(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?QUST,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0B
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0C
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$00),?SPCE,(?AL+$07),(?AL+$00),?SPCE,(?AL+$07),(?AL+$00),?PERD,?PERD,?PERD,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$13),(?AL+$0E),(?AL+$0B),(?AL+$03),?WAIT
+		DB	(?AL+$00),(?AL+$06),(?AL+$00),(?AL+$08),(?AL+$0D),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0D
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$00),(?AL+$0D),(?AL+$18),(?AL+$16),(?AL+$00),(?AL+$18),?COMM,?SPCE,(?AL+$16),(?AL+$04),?SPCE,(?AL+$12),(?AL+$00),(?AL+$16),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?DASH,(?AL+$08),(?AL+$0D),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0E
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$03),(?AL+$08),(?AL+$03),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?HURRY
+		DB	(?AL+$0E),(?AL+$14),(?AL+$13),?SPCE,(?AL+$0E),(?AL+$05),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0F
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$13),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$04),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$0C),(?AL+$00),(?AL+$13),(?AL+$13),(?AL+$04),(?AL+$11),?PERD,?SPCE,(?AU+$12),(?AL+$04),(?AL+$04),?COMM,?SPCE,(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$04),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$07),?SPCE,(?AL+$16),(?AL+$04),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$11),(?AL+$06),(?AL+$04),(?AL+$13),?HURRY
+		DB	(?AL+$08),(?AL+$13),?PERD,?SPCE,(?AU+$00),(?AL+$0D),(?AL+$18),(?AL+$0E),(?AL+$0D),(?AL+$04),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?WAIT
+		DB	(?AL+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$12),(?AL+$14),(?AL+$11),(?AL+$15),(?AL+$08),(?AL+$15),(?AL+$04),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?DASH,(?AL+$08),(?AL+$0D),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$16),(?AL+$0E),(?AL+$11),(?AL+$13),(?AL+$07),?SPCE,(?AL+$0A),(?AL+$04),(?AL+$04),(?AL+$0F),(?AL+$08),(?AL+$0D),(?AL+$06),?HURRY
+		DB	(?AL+$00),(?AL+$11),(?AL+$0E),(?AL+$14),(?AL+$0D),(?AL+$03),?PERD,?SPCE,(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?WAIT
+		DB	(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$0D),(?AL+$00),(?AL+$0C),(?AL+$04),?HURRY
+		DB	(?AL+$01),(?AL+$00),(?AL+$02),(?AL+$0A),?COMM,?SPCE,(?AL+$0A),(?AL+$08),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$0A),(?AL+$00),(?AL+$18),?COMM,?SPCE,(?AL+$05),(?AL+$08),(?AL+$0D),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0B),(?AL+$04),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$12),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$10
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$07),?SPCE,(?AL+$18),(?AL+$04),(?AL+$00),(?AL+$07),?PERD,?SPCE,(?AU+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$12),(?AL+$07),(?AL+$0E),(?AL+$14),(?AL+$0B),(?AL+$03),?SPCE,(?AL+$01),(?AL+$04),?WAIT
+		DB	(?AL+$08),(?AL+$0D),(?AL+$13),(?AL+$11),(?AL+$0E),(?AL+$03),(?AL+$14),(?AL+$02),(?AL+$04),(?AL+$03),?SPCE,(?AL+$13),(?AL+$0E),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$0C),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$11
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT2_02
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$05),(?AL+$11),(?AL+$08),(?AL+$04),(?AL+$0D),(?AL+$03),(?AL+$12),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$13
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT2_03
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0A),(?AL+$0E),(?AL+$11),(?AL+$06),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$32
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$45
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_ZET
+
+	DB	CMD_TEXTWRITE
+		DB	?PERD,?PERD,?PERD,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AU+$19),(?AL+$04),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$33
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT2_04
+
+	DB	CMD_TEXTICON
+		DW	ICON_ZET
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0B),(?AL+$04),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$06),(?AL+$0E),?COMM,?SPCE,(?AU+$0A),(?AL+$0E),(?AL+$11),(?AL+$06),?EXCL,?HURRY
+		DB	(?AU+$16),(?AL+$04),?APST,(?AL+$15),(?AL+$04),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$07),(?AL+$08),(?AL+$0C),?WAIT
+		DB	(?AL+$0D),(?AL+$0E),(?AL+$16),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$14),(?AL+$13),?SPCE,(?AL+$0E),(?AL+$05),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$16),(?AL+$00),(?AL+$18),?COMM,?HURRY
+		DB	(?AU+$19),(?AL+$04),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$17
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TXT2_05
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$13),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$0C),(?AL+$04),(?AL+$12),(?AL+$12),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$08),(?AL+$13),?WAIT
+		DB	(?AL+$14),(?AL+$0F),?SPCE,(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$13),(?AL+$08),(?AL+$0C),(?AL+$04),?EXCL,?HURRY
+		DB	(?AU+$08),?APST,(?AL+$0C),?SPCE,(?AL+$07),(?AL+$00),(?AL+$0D),(?AL+$03),(?AL+$0B),(?AL+$08),(?AL+$0D),(?AL+$06),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$0C),(?AL+$18),(?AL+$12),(?AL+$04),(?AL+$0B),(?AL+$05),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_ZET
+
+	DB	CMD_TEXTWRITE
+		DB	?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$18
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_TXT_1
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?APST,(?AL+$12),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),?SPCE,(?AU+$02),(?AU+$11),(?AU+$18),(?AU+$12),(?AU+$13),(?AU+$00),(?AU+$0B),?EXCL,?HURRY
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$12),(?AL+$0F),(?AL+$00),(?AL+$11),(?AL+$0A),(?AL+$0B),(?AL+$18),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$16),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),(?AL+$0B),(?AL+$03),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),?SPCE,(?AL+$03),(?AL+$08),(?AL+$03),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$08),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$18),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$13),?QUST,?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?DASH,(?AL+$08),(?AL+$0D),?PERD,?PERD,?PERD,?SPCE,(?AU+$08),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$0D),(?AL+$0A),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?QUST,?SPCE,(?AU+$0D),(?AL+$0E),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?EXCL,?SPCE,(?AU+$16),(?AL+$04),?SPCE,(?AL+$16),(?AL+$04),(?AL+$11),(?AL+$04),?WAIT
+		DB	(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0D),(?AL+$03),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$0E),(?AL+$14),(?AL+$13),?HURRY
+		DB	(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$16),(?AL+$07),(?AL+$0E),(?AL+$0B),(?AL+$04),?WAIT
+		DB	(?AL+$13),(?AL+$08),(?AL+$0C),(?AL+$04),?EXCL,?SPCE,(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$16),(?AL+$04),(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$08),(?AL+$0D),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),?PERD,?PERD,?PERD,?PERD,?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$11),(?AL+$04),(?AL+$0C),(?AL+$04),(?AL+$0C),(?AL+$01),(?AL+$04),(?AL+$11),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$04),(?AL+$0B),(?AL+$0B),?COMM,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$05),(?AL+$00),(?AL+$08),(?AL+$0B),?PERD,?HURRY
+		DB	(?AU+$16),(?AL+$04),(?AL+$0B),(?AL+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$13),(?AL+$0E),(?AL+$16),(?AL+$0D),?COMM,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?HURRY
+		DB	(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$07),(?AL+$14),(?AL+$13),?SPCE,(?AL+$14),(?AL+$0F),?COMM,?SPCE,(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$08),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$05),(?AL+$14),(?AL+$0D),(?AL+$0D),(?AL+$18),?WAIT
+		DB	(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$0D),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$12),(?AL+$00),(?AL+$18),?HURRY
+		DB	(?AL+$08),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_SETEVENTTEXT
+		DB	$15
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?SPCE,(?AL+$16),(?AL+$00),(?AL+$18),?SPCE,(?AL+$0C),(?AL+$00),(?AL+$0D),?EXCL,?HURRY
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$07),(?AL+$14),(?AL+$13),?SPCE,(?AL+$14),(?AL+$0F),?EXCL,?SPCE,(?AU+$13),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$0D),(?AL+$0E),(?AL+$18),(?AL+$08),(?AL+$0D),(?AL+$06),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_SETEVENTTEXT
+		DB	$16
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$07),?COMM,?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$08),(?AL+$13),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$05),(?AL+$14),(?AL+$0D),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$0D),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?WAIT
+		DB	(?AL+$03),(?AL+$0E),?SPCE,(?AL+$08),(?AL+$13),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_TXT_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),?EXCL,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?HURRY
+		DB	(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?WAIT
+		DB	(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?HURRY
+		DB	(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),(?AU+$07),(?AU+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AU+$07),(?AU+$14),(?AU+$13),?SPCE,(?AU+$14),(?AU+$0F),?EXCL,?EXCL,?EXCL,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$02
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_TXT_3
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?EXCL,?SPCE,(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$03
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_TXT_4
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$13),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$01),(?AL+$04),?SPCE,(?AL+$06),(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$13),?HURRY
+		DB	(?AL+$0B),(?AL+$08),(?AL+$15),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$04
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_TXT_1
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$07),?SPCE,(?AL+$0C),(?AL+$00),(?AL+$0D),?COMM,?SPCE,(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$0D),?HURRY
+		DB	(?AL+$0C),(?AL+$0E),(?AL+$0C),?SPCE,(?AL+$05),(?AL+$08),(?AL+$0D),(?AL+$03),(?AL+$12),?SPCE,(?AL+$0E),(?AL+$14),(?AL+$13),?WAIT
+		DB	(?AU+$08),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$0D),(?AL+$04),(?AL+$16),?HURRY
+		DB	(?AL+$0A),(?AL+$08),(?AL+$03),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$0D),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?COMM,?SPCE,(?AL+$12),(?AL+$07),(?AL+$04),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$0D),(?AL+$0D),(?AL+$00),?SPCE,(?AL+$05),(?AL+$0B),(?AL+$08),(?AL+$0F),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$00),(?AL+$07),(?AL+$00),?COMM,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?APST,(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$0D),(?AL+$0D),(?AL+$00),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?WAIT
+		DB	(?AL+$06),(?AL+$11),(?AL+$0E),(?AL+$14),(?AL+$0D),(?AL+$03),(?AL+$04),(?AL+$03),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$11),?HURRY
+		DB	(?AL+$00),?SPCE,(?AL+$0C),(?AL+$0E),(?AL+$0D),(?AL+$13),(?AL+$07),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_SETANYEVENTTEXT
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$07),(?AL+$14),(?AL+$13),?SPCE,(?AL+$14),(?AL+$0F),?SPCE,(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_TXT_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0F),(?AL+$07),(?AL+$04),(?AL+$16),?EXCL,?SPCE,(?AU+$08),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$0E),(?AL+$03),?HURRY
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$01),(?AL+$04),?SPCE,(?AL+$07),(?AL+$0E),(?AL+$0C),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$32
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?QUST,?EXCL,?QUST,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID03_STAND_DOWN_ANIM
+		DW	(?_KID03_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$03),(?AL+$00),(?AL+$11),(?AL+$0D),?COMM,?SPCE,(?AU+$08),?SPCE,(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$13),(?AL+$04),(?AL+$03),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$08),(?AL+$0D),?WAIT
+		DB	(?AL+$13),(?AL+$11),(?AL+$0E),(?AL+$14),(?AL+$01),(?AL+$0B),(?AL+$04),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$12),(?AL+$07),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$10),(?AL+$14),(?AL+$08),(?AL+$04),(?AL+$13),?SPCE,(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID03_STAND_UR_ANIM
+		DW	(?_KID03_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$01),(?AL+$0E),(?AL+$18),?COMM,?SPCE,(?AL+$00),(?AL+$0C),?SPCE,(?AU+$08),?SPCE,(?AL+$06),(?AL+$0B),(?AL+$00),(?AL+$03),?WAIT
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$12),(?AL+$04),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?EXCL,?HURRY
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$07),(?AL+$00),(?AL+$0F),(?AL+$0F),(?AL+$04),(?AL+$0D),(?AL+$04),(?AL+$03),?WAIT
+		DB	(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?QUST,?SPCE,(?AU+$00),(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$0E),(?AL+$0A),(?AL+$00),(?AL+$18),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?DASH,(?AL+$08),(?AL+$0D),?COMM,?SPCE,(?AU+$08),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$13),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?COMM,?HURRY
+		DB	(?AL+$01),(?AL+$14),(?AL+$13),?SPCE,(?AU+$08),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$13),?WAIT
+		DB	(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$02),(?AL+$00),(?AL+$15),(?AL+$04),?DASH,(?AL+$08),(?AL+$0D),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?QUST,?SPCE,(?AU+$0D),(?AL+$0E),?HURRY
+		DB	(?AL+$02),(?AL+$11),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$0B),?COMM,?SPCE,(?AL+$07),(?AL+$14),(?AL+$07),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_UL_ANIM
+		DW	(?_KID02_STAND_UL_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$11),(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$08),(?AL+$13),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$12),(?AL+$07),?COMM,?HURRY
+		DB	(?AL+$08),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$0E),(?AL+$0B),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HMTCAVE01_ENDING2_M_DANCE
+		DW	(?_HMTCAVE01_ENDING2_M_DANCE&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?HURRY
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$11),?HURRY
+		DB	(?AL+$01),(?AL+$04),?SPCE,(?AL+$10),(?AL+$14),(?AL+$08),(?AL+$04),(?AL+$13),?SPCE,(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_UR_ANIM
+		DW	(?_KID02_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$00),(?AL+$0D),(?AL+$18),(?AL+$16),(?AL+$00),(?AL+$18),?COMM,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$0D),(?AL+$00),?SPCE,(?AL+$07),(?AL+$00),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$0E),(?AL+$14),(?AL+$13),?WAIT
+		DB	(?AL+$16),(?AL+$08),(?AL+$13),(?AL+$07),?SPCE,(?AL+$14),(?AL+$12),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$14),(?AL+$11),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HMTCAVE01_ENDING2_M_DANCE2
+		DW	(?_HMTCAVE01_ENDING2_M_DANCE2&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$05),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AU+$01),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID02
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$0C),(?AL+$00),(?AL+$0A),(?AL+$04),?HURRY
+		DB	(?AL+$07),(?AL+$08),(?AL+$0C),?SPCE,(?AL+$12),(?AL+$13),(?AL+$0E),(?AL+$0F),?SPCE,(?AU+$09),(?AL+$0E),(?AL+$12),(?AL+$07),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$01),(?AL+$04),(?AL+$0D),(?AL+$0D),(?AL+$18),?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	(?AU+$12),(?AU+$07),(?AU+$14),(?AU+$13),?PERD,?PERD,?PERD,?HURRY
+		DB	(?AU+$14),(?AU+$0F),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),?EXCL,?SPCE,(?AU+$07),(?AL+$04),(?AL+$07),(?AL+$04),(?AL+$07),(?AL+$04),(?AL+$07),(?AL+$04),(?AL+$07),?EXCL,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID01_PREPARE_TO_RUN
+		DW	(?_KID01_PREPARE_TO_RUN&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_DOWN_ANIM
+		DW	(?_KID02_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTTEXT
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KID01
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$18),?COMM,?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$0C
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_END_CREDITS
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AU+$07),(?AU+$04),?SPCE,(?AU+$04),(?AU+$0D),(?AU+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_HOMETOWN_KORGBAT
+	DB	CMD_HEROTODOOR
+		DB	$00
+		DB	$00
+		DB	$00
+		DB	$00
+
+	DB	CMD_SCREENWIPE
+		DW	(?DO_SCREENFX_SWIRL&$FFFF)
+		DB	SONGID_boss
+
+	DB	CMD_BTLNEW
+		DB	UNDERNEATH_ARENA1
+		DB	KORG
+		DB	$28
+		DB	:?_BATTLE_FADE_IN
+		DW	(?_BATTLE_FADE_IN&$FFFF)
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_SETWRAMBYTE
+		DW	(BTL_ENEMY_ENGH+$0000)
+		DB	WRAM_BATTLE
+		DB	$03
+
+	DB	CMD_SETWRAMBYTE
+		DW	(BTL_ENEMY_ENGL+$0000)
+		DB	WRAM_BATTLE
+		DB	$84
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AU+$08),?HURRY
+		DB	(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?WAIT
+		DB	(?AL+$16),(?AL+$0E),(?AL+$11),(?AL+$11),(?AL+$18),?SPCE,(?AL+$00),(?AL+$01),(?AL+$0E),(?AL+$14),(?AL+$13),?SPCE,(?AU+$19),(?AL+$04),(?AL+$13),?HURRY
+		DB	(?AL+$0C),(?AL+$04),(?AL+$12),(?AL+$12),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$14),(?AL+$0F),?COMM,?SPCE,(?AU+$08),?WAIT
+		DB	(?AL+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$02),(?AL+$11),(?AL+$14),(?AL+$12),(?AL+$07),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?EXCL,?HURRY
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	BLACKAGOVO
+		DB	$32
+		DB	$82
+		DB	$02
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	GRAX
+		DB	$32
+		DB	$96
+		DB	$02
+
+	DB	CMD_IF
+		DB	EXPR_WBANK
+		DB	WRAM_BATTLE
+		DB	EXPR_EQU
+		DB	EXPR_XRAMBYTE
+		DW	(BTL_CMD_VALID+$0000)&$FFFF
+		DB	EXPR_BYTECONST,$00
+		DB	:_NO_GRAX
+		DW	(_NO_GRAX&$FFFF)
+
+	DB	CMD_BTLNEXTTURN
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$04),(?AL+$00),(?AL+$07),?EXCL,?SPCE,(?AU+$06),(?AL+$0E),?SPCE,(?AU+$06),(?AL+$11),(?AL+$00),(?AL+$17),?EXCL,?HURRY
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+;********************************
+_NO_GRAX
+	DB	CMD_BTLNEXTTURN
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?HURRY
+		DB	(?AL+$02),(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$13),(?AL+$14),(?AL+$11),(?AL+$04),(?AL+$12),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?WAIT
+		DB	(?AL+$0E),(?AL+$14),(?AL+$13),?SPCE,(?AL+$12),(?AL+$0E),?SPCE,(?AL+$05),(?AL+$00),(?AL+$12),(?AL+$13),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_ZET
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$01),(?AL+$04),(?AL+$02),(?AL+$00),(?AL+$14),(?AL+$12),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?APST,(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$00),?SPCE,(?AL+$0C),(?AL+$0E),(?AL+$11),(?AL+$0E),(?AL+$0D),?COMM,?SPCE,(?AU+$0A),(?AL+$0E),(?AL+$11),(?AL+$06),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_KORG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$12),(?AL+$07),(?AL+$00),(?AL+$03),(?AL+$03),(?AL+$14),(?AL+$0F),?COMM,?SPCE,(?AU+$19),(?AL+$04),(?AL+$13),?EXCL,?HURRY
+		DB	(?AL+$0C),(?AL+$18),?SPCE,(?AL+$12),(?AL+$14),(?AL+$0F),(?AL+$04),(?AL+$11),?SPCE,(?AL+$01),(?AL+$08),(?AL+$06),?WAIT
+		DB	(?AU+$06),(?AL+$11),(?AL+$00),(?AL+$17),?SPCE,(?AL+$13),(?AL+$04),(?AL+$00),(?AL+$0C),?SPCE,(?AL+$16),(?AL+$08),(?AL+$0B),(?AL+$0B),?HURRY
+		DB	(?AL+$16),(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?EXCL,?SPCE,(?AU+$06),(?AL+$0E),?WAIT
+		DB	(?AU+$06),(?AL+$11),(?AL+$00),(?AL+$17),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+;********************************
+_GO_GRAX
+	DB	CMD_BTLSUMMONDELAY
+		DB	BTL_ID_MAGI
+		DB	GRAX
+		DB	$32
+		DB	$96
+		DB	$02
+
+	DB	CMD_BTLNEXTTURN
+
+	DB	CMD_JUMP
+		DB	:_GO_GRAX
+		DW	(_GO_GRAX&$FFFF)
+
+;********************************
+?_HMTCAVE01
+	DB	CMD_SWITCH
+		DB	EXPR_GAMECOUNT
+		DB	:?_HMTCAVE01_OPENING
+		DW	$0001
+		DW	(?_HMTCAVE01_OPENING&$FFFF)
+		DB	$FF
+
+;********************************
+?_HMTCAVE01_GENERIC
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$07
+		DB	$0D
+		DW	$D0A3
+		DB	$00
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_OPENING
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$008E)
+		DB	$01
+
+	DB	CMD_SCENENEW
+
+	DB	CMD_SETGAMECOUNT
+		DW	$0001
+
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_HERO_ABILITY+$0000)
+		DB	$00
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$0E
+		DW	$D0AE
+		DB	$00
+		DB	:?_HMTCAVE01_TONY
+		DW	(?_HMTCAVE01_TONY&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?TALKER_AI&$FFFF)
+		DB	$05
+		DB	$0C
+		DW	$D095
+		DB	$00
+		DB	:?_HMTCAVE01_KID01
+		DW	(?_HMTCAVE01_KID01&$FFFF)
+		DB	:?_HMTCAVE01_KID01_TALKER
+		DW	(?_HMTCAVE01_KID01_TALKER&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?TALKER_AI&$FFFF)
+		DB	$07
+		DB	$0C
+		DW	$D097
+		DB	$30
+		DB	:?_HMTCAVE01_KID02
+		DW	(?_HMTCAVE01_KID02&$FFFF)
+		DB	:?_HMTCAVE01_KID02_TALKER
+		DW	(?_HMTCAVE01_KID02_TALKER&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?TALKER_AI&$FFFF)
+		DB	$06
+		DB	$08
+		DW	$D066
+		DB	$60
+		DB	:?_HMTCAVE01_KID03
+		DW	(?_HMTCAVE01_KID03&$FFFF)
+		DB	:?_HMTCAVE01_KID03_TALKER
+		DW	(?_HMTCAVE01_KID03_TALKER&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_SETCAMERA
+		DB	$07
+		DB	$08
+
+	DB	CMD_SONGPAUSE
+
+	DB	CMD_PALCLEARANIM
+		DB	$06
+		DW	$0040
+
+	DB	CMD_PALCLEARANIM
+		DB	$87
+		DW	$0040
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_SETXRAMBYTE
+		DW	(TEXTBOX_SOUND_ENABLE+$0000)
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$3C
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$00),(?AL+$15),(?AL+$04),(?AL+$0B),?SPCE,(?AU+$06),(?AL+$0E),(?AL+$11),(?AL+$06),(?AL+$04),?HURRY
+		DB	?EOF
+
+	DB	CMD_DELAY
+		DB	$3C
+
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_TEXTWRITE
+		DB	(?0+$05),?COLN,(?0+$03),(?0+$02),(?AL+$0F),(?AL+$0C),?HURRY
+		DB	?EOF
+
+	DB	CMD_DELAY
+		DB	$3C
+
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$14),(?AL+$04),(?AL+$12),(?AL+$03),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_DELAY
+		DB	$3C
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETXRAMBYTE
+		DW	(TEXTBOX_SOUND_ENABLE+$0000)
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$24
+
+	DB	CMD_PALFADE
+		DB	$A0
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID01
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_UP_ANIM
+		DW	(?_KID01_WALK_UP_ANIM&$FFFF)
+		DB	$60
+		DB	$00
+
+	DB	CMD_THISACTORSETANIMSCROLL
+		DB	:?_KID01_WALK_UP_ANIM
+		DW	(?_KID01_WALK_UP_ANIM&$FFFF)
+		DB	$30
+		DB	$00
+		DB	$FF
+		DB	$00
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$55
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$50
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$37
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0D
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0F
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$12
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_HOLDER_1
+		DW	(?_HMTCAVE01_HOLDER_1&$FFFF)
+
+	DB	CMD_WAITANYEVENTTEXT
+
+	DB	CMD_SETEVENTMASTER
+		DB	$03
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$12
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_3
+		DW	(?_HMTCAVE01_TXT_3&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$03
+
+	DB	CMD_SETSCROLL
+		DB	:?_TONY_ENTERS_CAVE
+		DW	(?_TONY_ENTERS_CAVE&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$14
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID02
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_WALK_UP_ANIM
+		DW	(?_KID02_WALK_UP_ANIM&$FFFF)
+		DB	$60
+		DB	:?_KID02_WALK_UP_ANIM
+		DW	(?_KID02_WALK_UP_ANIM&$FFFF)
+		DB	$30
+		DB	:?_KID02_STAND_UL_ANIM
+		DW	(?_KID02_STAND_UL_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_1
+		DW	(?_HMTCAVE01_TXT_1&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0C
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$4E
+
+	DB	CMD_DELAY
+		DB	$01
+
+	DB	CMD_SETEVENTMASTER
+		DB	$55
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_DL_ANIM
+		DW	(?_KID02_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$4F
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$01
+
+	DB	CMD_SETEVENTMASTER
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$24
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_DL_ANIM
+		DW	(?_KID02_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0E
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$10
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_DL_ANIM
+		DW	(?_KID02_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$02
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$03
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_DL_ANIM
+		DW	(?_KID02_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$14
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID03
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_WALK_UP_ANIM
+		DW	(?_KID03_WALK_UP_ANIM&$FFFF)
+		DB	$30
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$01
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_DOWN_ANIM
+		DW	(?_KID03_STAND_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_RUN_UP_ANIM
+		DW	(?_KID03_RUN_UP_ANIM&$FFFF)
+		DB	$06
+		DB	:?_KID03_STAND_DR_ANIM
+		DW	(?_KID03_STAND_DR_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$37
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_DR_ANIM
+		DW	(?_KID03_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$62
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$32
+
+	DB	CMD_SETEVENTMASTER
+		DB	$14
+
+	DB	CMD_DELAY
+		DB	$32
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_4
+		DW	(?_HMTCAVE01_TXT_4&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$04
+
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE02_INIT
+		DW	(?_HMTCAVE02_INIT&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY
+	DB	CMD_WAITEVENTMASTER
+		DB	$01
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_UP_ANIM
+		DW	(?_HERO_WALK_UP_ANIM&$FFFF)
+		DB	$92
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_2
+		DW	(?_HMTCAVE01_TXT_2&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$02
+
+	DB	CMD_SETEVENTMASTER
+		DB	$02
+
+	DB	CMD_END
+
+;********************************
+?_TONY_ENTERS_CAVE
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HMTCAVE01_TONY_ENTERS
+		DW	(?_HMTCAVE01_TONY_ENTERS&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY_ENTERS
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_UP_ANIM
+		DW	(?_HERO_WALK_UP_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$62
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID01_TALKER
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_7
+		DW	(?_HMTCAVE01_TXT_7&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_KID01
+		DW	(?_FACE_KID01&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID02_TALKER
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_8
+		DW	(?_HMTCAVE01_TXT_8&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_KID02
+		DW	(?_FACE_KID02&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID03_TALKER
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_9
+		DW	(?_HMTCAVE01_TXT_9&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_KID03
+		DW	(?_FACE_KID03&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TAUNT01
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_WALK_RIGHT_ANIM
+		DW	(?_HERO_WALK_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_11
+		DW	(?_HMTCAVE01_TXT_11&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TAUNT02
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_WALK_UP_ANIM
+		DW	(?_HERO_WALK_UP_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_11
+		DW	(?_HMTCAVE01_TXT_11&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TAUNT03
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_WALK_LEFT_ANIM
+		DW	(?_HERO_WALK_LEFT_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_11
+		DW	(?_HMTCAVE01_TXT_11&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KIDS_WAIT
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$03
+		DW	$D029
+		DB	$00
+		DB	:?_HMTCAVE01_WAIT_KID01
+		DW	(?_HMTCAVE01_WAIT_KID01&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$03
+		DW	$D02B
+		DB	$30
+		DB	:?_HMTCAVE01_WAIT_KID02
+		DW	(?_HMTCAVE01_WAIT_KID02&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$05
+		DW	$D042
+		DB	$60
+		DB	:?_HMTCAVE01_WAIT_KID03
+		DW	(?_HMTCAVE01_WAIT_KID03&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$06
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_EARTHQUAKE
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_WAIT_KID01
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_6
+		DW	(?_HMTCAVE01_TXT_6&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$06
+
+	DB	CMD_SETEVENTMASTER
+		DB	$50
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	$30
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_WAIT_KID02
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$50
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+		DB	$30
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+		DB	$20
+		DB	$00
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_FADEOUTSONG
+		DB	$50
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$87
+
+	DB	CMD_DELAY
+		DB	$50
+
+	DB	CMD_SFX
+		DB	SFXID_EARTHQUAKE_END
+
+	DB	CMD_JUMP
+		DB	:?_NRMRIVER01_OPENING
+		DW	(?_NRMRIVER01_OPENING&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_WAIT_KID03
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMT01_QUAKE_PERM
+	DB	CMD_SCROLLMAP
+		DB	$03
+		DB	$FF
+		DB	$00
+		DB	$03
+		DB	$01
+		DB	$00
+		DB	$03
+		DB	$00
+		DB	$FF
+		DB	$03
+		DB	$00
+		DB	$01
+		DB	$03
+		DB	$FF
+		DB	$00
+		DB	$03
+		DB	$01
+		DB	$00
+		DB	$03
+		DB	$00
+		DB	$FF
+		DB	$03
+		DB	$00
+		DB	$01
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_HMT01_QUAKE_PERM
+		DW	(?_HMT01_QUAKE_PERM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KIDS_STAND
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01B&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$03
+		DW	$D029
+		DB	$00
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$03
+		DW	$D02B
+		DB	$30
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$04
+		DW	$D036
+		DB	$60
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$02
+		DW	$D01E
+		DB	$00
+		DB	:?_HMTCAVE01_TONY_AGAIN
+		DW	(?_HMTCAVE01_TONY_AGAIN&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY_AGAIN
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT_10
+		DW	(?_HMTCAVE01_TXT_10&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0A
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_UP_ANIM
+		DW	(?_HERO_WALK_UP_ANIM&$FFFF)
+		DB	$12
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_HMTCAVE01_DR_1B
+		DW	(?_HMTCAVE01_DR_1B&$FFFF)
+
+;********************************
+?_HMTCAVE01_KZNEWKIDS
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$06
+		DW	$D04D
+		DB	$00
+		DB	:?_HMTCAVE01_KID012
+		DW	(?_HMTCAVE01_KID012&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$02
+		DW	$D01E
+		DB	$00
+		DB	:?_HMTCAVE01_TONY2
+		DW	(?_HMTCAVE01_TONY2&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$05
+		DW	$D042
+		DB	$28
+		DB	:?_HMTCAVE01_KID022
+		DW	(?_HMTCAVE01_KID022&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$06
+		DW	$D04F
+		DB	$4E
+		DB	:?_HMTCAVE01_KID032
+		DW	(?_HMTCAVE01_KID032&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$0A
+		DW	$D07D
+		DB	$7E
+		DB	:?_HMTCAVE01_KORG_BLAND
+		DW	(?_HMTCAVE01_KORG_BLAND&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$0A
+		DW	$D07F
+		DB	$AE
+		DB	:?_HMTCAVE01_ZET_BLAND
+		DW	(?_HMTCAVE01_ZET_BLAND&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$04
+		DW	$D035
+		DB	$DA
+		DB	:?_SMOKE_ANIM
+		DW	(?_SMOKE_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$04
+		DW	$D037
+		DB	$DA
+		DB	:?_SMOKE_ANIM
+		DW	(?_SMOKE_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$28
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$26
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8280
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$84E0
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_BOY
+		DW	(BIT_BOY&$FFFF)
+		DW	$87E0
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2C
+		DB	:BIT_GIRL
+		DW	(BIT_GIRL&$FFFF)
+		DW	$8AE0
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0F
+		DB	:BIT_SMOKE
+		DW	(BIT_SMOKE&$FFFF)
+		DW	$8DA0
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$06
+		DB	$06
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID012
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$0A
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_LEFT_ANIM
+		DW	(?_KID01_RUN_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID01_RUN_UP_ANIM
+		DW	(?_KID01_RUN_UP_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0A
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0D
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SYNC
+		DB	$00
+		DB	$03
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_DOWN_ANIM
+		DW	(?_KID01_WALK_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_STAND_DOWN_ANIM
+		DW	(?_KID01_STAND_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$13
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_FLOATBACK_ANIM
+		DW	(?_KID01_FLOATBACK_ANIM&$FFFF)
+
+	DB	CMD_PALCLEARBASE
+		DB	$06
+		DW	$0842
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_PALFADE
+		DB	$9F
+		DB	$06
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_FLOATBACK_ANIM
+		DW	(?_KID01_FLOATBACK_ANIM&$FFFF)
+		DB	$80
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$14
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID022
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_DOWN_ANIM
+		DW	(?_KID02_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$0A
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0C
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0E
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SYNC
+		DB	$00
+		DB	$03
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_WALK_DOWN_ANIM
+		DW	(?_KID02_WALK_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID02_STAND_DOWN_ANIM
+		DW	(?_KID02_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$13
+
+	DB	CMD_SYNC
+		DB	$01
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_FLOATBACK_ANIM
+		DW	(?_KID02_FLOATBACK_ANIM&$FFFF)
+		DB	$C4
+		DB	$00
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KID032
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_LEFT_ANIM
+		DW	(?_KID03_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$0A
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_RIGHT_ANIM
+		DW	(?_KID03_RUN_RIGHT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT2_01
+		DW	(?_HMTCAVE01_TXT2_01&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0F
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$10
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_DOWN_ANIM
+		DW	(?_KID03_RUN_DOWN_ANIM&$FFFF)
+		DB	$50
+		DB	$00
+
+	DB	CMD_SYNC
+		DB	$00
+		DB	$03
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY2
+	DB	CMD_THISACTORSETANIMSCROLL
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$FF
+		DB	$00
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$08
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+		DB	$04
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$08
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DR_ANIM
+		DW	(?_HERO_STAND_DR_ANIM&$FFFF)
+		DB	$04
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$0A
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$11
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SCROLLMAP
+		DB	$40
+		DB	$00
+		DB	$01
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$0C
+
+	DB	CMD_SYNC
+		DB	$01
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$40
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$08
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SYNC
+		DB	$02
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_STAND_DR_ANIM
+		DW	(?_HERO_STAND_DR_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_BACK_UP_ANIM
+		DW	(?_HERO_BACK_UP_ANIM&$FFFF)
+		DB	$08
+		DB	:?_HERO_STAND_DR_ANIM
+		DW	(?_HERO_STAND_DR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DR_ANIM
+		DW	(?_HERO_STAND_DR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+		DB	$10
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KORG
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KORG_STAND_UP_ANIM
+		DW	(?_KORG_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT2_03
+		DW	(?_HMTCAVE01_TXT2_03&$FFFF)
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$1E
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$04
+		DW	$D037
+		DB	$7E
+		DB	:?_HMTCAVE01_ZET
+		DW	(?_HMTCAVE01_ZET&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_ZET
+		DW	(BIT_ZET&$FFFF)
+		DW	$87E0
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$33
+
+	DB	CMD_DELAY
+		DB	$30
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT2_04
+		DW	(?_HMTCAVE01_TXT2_04&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$17
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KORG_RUN_RIGHT_ANIM
+		DW	(?_KORG_RUN_RIGHT_ANIM&$FFFF)
+		DB	$03
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_MISC05
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KORG_RUN_RIGHT_ANIM
+		DW	(?_KORG_RUN_RIGHT_ANIM&$FFFF)
+		DB	$05
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$28
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KORG_STAND_UP_ANIM
+		DW	(?_KORG_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT2_05
+		DW	(?_HMTCAVE01_TXT2_05&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$18
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KORG_RUN_UP_ANIM
+		DW	(?_KORG_RUN_UP_ANIM&$FFFF)
+		DB	$08
+		DB	$00
+
+	DB	CMD_SETBTLRETURN
+		DB	:?_CREGATE01_KZDIE
+		DW	(?_CREGATE01_KZDIE&$FFFF)
+		DB	(:?_BATTLE_LOST&$FF)
+		DW	(?_BATTLE_LOST&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_HOMETOWN_KORGBAT
+		DW	(?_HOMETOWN_KORGBAT&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ZET
+	DB	CMD_THISACTORSETANIM
+		DB	:?_ZET_STAND_UP_ANIM
+		DW	(?_ZET_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SYNC
+		DB	$02
+		DB	$02
+
+	DB	CMD_SETEVENTMASTER
+		DB	$45
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$28
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_ZET_KNOCKED_RIGHT_ANIM
+		DW	(?_ZET_KNOCKED_RIGHT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_ZET_BEAT_RIGHT_ANIM
+		DW	(?_ZET_BEAT_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_KORG_BLAND
+	DB	CMD_WAITEVENTMASTER
+		DB	$0C
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_BOY_WALK_UP_ANIM
+		DW	(?_BOY_WALK_UP_ANIM&$FFFF)
+		DB	$60
+		DB	:?_BOY_STAND_UP_ANIM
+		DW	(?_BOY_STAND_UP_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$13
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$14
+
+	DB	CMD_SETSCROLL
+		DB	:?_KORG_TRANSFORM
+		DW	(?_KORG_TRANSFORM&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_KORG_TRANSFORM
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$04
+		DW	$D035
+		DB	$00
+		DB	:?_HMTCAVE01_KORG
+		DW	(?_HMTCAVE01_KORG&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2A
+		DB	:BIT_KORG
+		DW	(BIT_KORG&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ZET_BLAND
+	DB	CMD_WAITEVENTMASTER
+		DB	$0C
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THISACTORSETANIMSCROLL
+		DB	:?_GIRL_WALK_UP_ANIM
+		DW	(?_GIRL_WALK_UP_ANIM&$FFFF)
+		DB	$60
+		DB	$00
+		DB	$FF
+		DB	$00
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_GIRL_STAND_UP_ANIM
+		DW	(?_GIRL_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_TXT2_02
+		DW	(?_HMTCAVE01_TXT2_02&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$32
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_DELAY
+		DB	$01
+
+	DB	CMD_SETEVENTMASTER
+		DB	$1E
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_1
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01B&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$03
+		DW	$D029
+		DB	$00
+		DB	:?_HMTCAVE01_ENDING1_KID01
+		DW	(?_HMTCAVE01_ENDING1_KID01&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$03
+		DW	$D02B
+		DB	$30
+		DB	:?_HMTCAVE01_ENDING1_KID02
+		DW	(?_HMTCAVE01_ENDING1_KID02&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$04
+		DW	$D036
+		DB	$60
+		DB	:?_HMTCAVE01_ENDING1_KID03
+		DW	(?_HMTCAVE01_ENDING1_KID03&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$02
+		DW	$D01E
+		DB	$00
+		DB	:?_HMTCAVE01_TONY_ENDING_1
+		DW	(?_HMTCAVE01_TONY_ENDING_1&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY_ENDING_1
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING_TXT_1
+		DW	(?_HMTCAVE01_ENDING_TXT_1&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING1_KID01
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING1_KID02
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING1_KID03
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$15
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_UR_ANIM
+		DW	(?_KID03_STAND_UR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$10
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$16
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UR_ANIM
+		DW	(?_KID03_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$01
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING_TXT_2
+		DW	(?_HMTCAVE01_ENDING_TXT_2&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMSCROLL
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$10
+		DB	$FE
+		DB	$00
+		DB	$00
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HMTCAVE01_KID01_CHASE
+		DW	(?_HMTCAVE01_KID01_CHASE&$FFFF)
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_RIGHT_ANIM
+		DW	(?_KID03_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING_TXT_3
+		DW	(?_HMTCAVE01_ENDING_TXT_3&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$03
+
+	DB	CMD_SETSCROLL
+		DB	:?_HTMCAVE01_END_SCROLL
+		DW	(?_HTMCAVE01_END_SCROLL&$FFFF)
+
+;********************************
+_KID03_LOOP
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_DOWN_ANIM
+		DW	(?_KID03_RUN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID03_RUN_RIGHT_ANIM
+		DW	(?_KID03_RUN_RIGHT_ANIM&$FFFF)
+		DB	$18
+		DB	:?_KID03_RUN_UP_ANIM
+		DW	(?_KID03_RUN_UP_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$18
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:_KID03_LOOP
+		DW	(_KID03_LOOP&$FFFF)
+
+;********************************
+?_HMTCAVE01_KID01_CHASE
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_DOWN_ANIM
+		DW	(?_KID01_RUN_DOWN_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID01_STAND_LEFT_ANIM
+		DW	(?_KID01_STAND_LEFT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$03
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_LEFT_ANIM
+		DW	(?_KID01_RUN_LEFT_ANIM&$FFFF)
+		DB	$18
+		DB	$00
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HMTCAVE01_ENDING_TJ_LEAVES
+		DW	(?_HMTCAVE01_ENDING_TJ_LEAVES&$FFFF)
+
+;********************************
+_KID01_LOOP
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_DOWN_ANIM
+		DW	(?_KID01_RUN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_RUN_RIGHT_ANIM
+		DW	(?_KID01_RUN_RIGHT_ANIM&$FFFF)
+		DB	$18
+		DB	:?_KID01_RUN_UP_ANIM
+		DW	(?_KID01_RUN_UP_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_RUN_LEFT_ANIM
+		DW	(?_KID01_RUN_LEFT_ANIM&$FFFF)
+		DB	$18
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:_KID01_LOOP
+		DW	(_KID01_LOOP&$FFFF)
+
+;********************************
+?_HMTCAVE01_ENDING_TJ_LEAVES
+	DB	CMD_THISACTORSETANIM
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$FA
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING_TXT_4
+		DW	(?_HMTCAVE01_ENDING_TXT_4&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$04
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$60
+		DB	:?_HERO_STAND_UL_ANIM
+		DW	(?_HERO_STAND_UL_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$38
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_DELAY
+		DB	$38
+
+	DB	CMD_JUMP
+		DB	:?_MAIN_TITLES
+		DW	(?_MAIN_TITLES&$FFFF)
+
+;********************************
+?_HTMCAVE01_END_SCROLL
+	DB	CMD_SCROLLMAP
+		DB	$30
+		DB	$FF
+		DB	$01
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_2
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01B&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$02
+		DB	$05
+		DW	$D03E
+		DB	$00
+		DB	:?_HMTCAVE01_ENDING2_KID01
+		DW	(?_HMTCAVE01_ENDING2_KID01&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$06
+		DW	$D04D
+		DB	$30
+		DB	:?_HMTCAVE01_ENDING2_KID02
+		DW	(?_HMTCAVE01_ENDING2_KID02&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$04
+		DB	$04
+		DW	$D034
+		DB	$60
+		DB	:?_HMTCAVE01_ENDING2_KID03
+		DW	(?_HMTCAVE01_ENDING2_KID03&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$02
+		DW	$D01E
+		DB	$00
+		DB	:?_HMTCAVE01_TONY_ENDING_2
+		DW	(?_HMTCAVE01_TONY_ENDING_2&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$04
+		DB	$09
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$63
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALFADE
+		DB	$E0
+		DB	$0F
+
+	DB	CMD_IF
+		DB	EXPR_NOT
+		DB	EXPR_XRAMBIT
+		DW	(XRAM_SAVEBITS+$0080)&$FFFF
+		DB	$02
+		DB	:_ENDING3
+		DW	(_ENDING3&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_NRMGLADE02_ENDING
+		DW	(?_NRMGLADE02_ENDING&$FFFF)
+
+;********************************
+_ENDING3
+	DB	CMD_JUMP
+		DB	:?_NRMVASH05_ENDING03
+		DW	(?_NRMVASH05_ENDING03&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_M_DANCE
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_LEFT_ANIM
+		DW	(?_KID03_STAND_LEFT_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_RIGHT_ANIM
+		DW	(?_KID03_STAND_RIGHT_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_DOWN_ANIM
+		DW	(?_KID03_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_M_DANCE2
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_DL_ANIM
+		DW	(?_KID03_STAND_DL_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_UR_ANIM
+		DW	(?_KID03_STAND_UR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_DR_ANIM
+		DW	(?_KID03_STAND_DR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID03_STAND_DOWN_ANIM
+		DW	(?_KID03_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0B
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_DOWN_ANIM
+		DW	(?_KID03_RUN_DOWN_ANIM&$FFFF)
+		DB	$08
+		DB	$00
+
+	DB	CMD_SETANYEVENTTEXT
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_DOWN_ANIM
+		DW	(?_KID03_RUN_DOWN_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY_ENDING_2
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING2_TXT_2
+		DW	(?_HMTCAVE01_ENDING2_TXT_2&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_KID01
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_HMTCAVE01_ENDING2_TXT_1
+		DW	(?_HMTCAVE01_ENDING2_TXT_1&$FFFF)
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITANYEVENTTEXT
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_RIGHT_ANIM
+		DW	(?_KID01_WALK_RIGHT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID01_STAND_RIGHT_ANIM
+		DW	(?_KID01_STAND_RIGHT_ANIM&$FFFF)
+		DB	$18
+		DB	$00
+
+	DB	CMD_WAITANYEVENTTEXT
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0C
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_DOWN_ANIM
+		DW	(?_KID01_RUN_DOWN_ANIM&$FFFF)
+		DB	$40
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_KID02
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_LEFT_ANIM
+		DW	(?_KID02_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$32
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID02_STAND_UR_ANIM
+		DW	(?_KID02_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2_KID03
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_DL_ANIM
+		DW	(?_KID03_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$32
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID03_STAND_UR_ANIM
+		DW	(?_KID03_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_KID01_PREPARE_TO_RUN
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DOWN_ANIM
+		DW	(?_KID01_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$0C
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_DOWN_ANIM
+		DW	(?_KID01_RUN_DOWN_ANIM&$FFFF)
+		DB	$38
+		DB	:?_KID01_STAND_DOWN_ANIM
+		DW	(?_KID01_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_UR_ANIM
+		DW	(?_KID02_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_DOWN_ANIM
+		DW	(?_KID02_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_STAND_UR_ANIM
+		DW	(?_KID02_STAND_UR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_RUN_DOWN_ANIM
+		DW	(?_HERO_RUN_DOWN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_KID02_RUN_DOWN_ANIM
+		DW	(?_KID02_RUN_DOWN_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$58
+
+	DB	CMD_SETEVENTMASTER
+		DB	$63
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING_2_PART_2
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HMTCAVE01&$FFFF)
+		DB	:MAP_HMTCAVE01
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HMTCAVE01B&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$07
+		DW	$D05F
+		DB	$00
+		DB	:?_HMTCAVE01_TONY_ENDING_2B
+		DW	(?_HMTCAVE01_TONY_ENDING_2B&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$06
+		DW	$D053
+		DB	$00
+		DB	:?_HMTCAVE01_ENDING2B_KID01
+		DW	(?_HMTCAVE01_ENDING2B_KID01&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$07
+		DW	$D05F
+		DB	$30
+		DB	:?_HMTCAVE01_ENDING2B_KID02
+		DW	(?_HMTCAVE01_ENDING2B_KID02&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$07
+		DW	$D05F
+		DB	$60
+		DB	:?_HMTCAVE01_ENDING2B_KID03
+		DW	(?_HMTCAVE01_ENDING2B_KID03&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID01
+		DW	(BIT_KID01&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID02
+		DW	(BIT_KID02&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_KID03
+		DW	(BIT_KID03&$FFFF)
+		DW	$8600
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_WAITEVENTMASTER
+		DB	$3C
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_FADEOUTSONG
+		DB	$40
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$0000
+
+	DB	CMD_PALFADE
+		DB	$E0
+		DB	$0F
+
+	DB	CMD_JUMP
+		DB	:?_CREDITS
+		DW	(?_CREDITS&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_TONY_ENDING_2B
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_WALK_LEFT_ANIM
+		DW	(?_HERO_WALK_LEFT_ANIM&$FFFF)
+		DB	$50
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$28
+		DB	:?_HERO_WALK_UP_ANIM
+		DW	(?_HERO_WALK_UP_ANIM&$FFFF)
+		DB	$28
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$48
+		DB	$00
+
+	DB	CMD_SETANYEVENTMASTER
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_HERO_STAND_DL_ANIM
+		DW	(?_HERO_STAND_DL_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_DELAY
+		DB	$28
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$40
+		DB	:?_HERO_WALK_DOWN_ANIM
+		DW	(?_HERO_WALK_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_WALK_LEFT_ANIM
+		DW	(?_HERO_WALK_LEFT_ANIM&$FFFF)
+		DB	$30
+		DB	:?_HERO_STAND_UR_ANIM
+		DW	(?_HERO_STAND_UR_ANIM&$FFFF)
+		DB	$A0
+		DB	$00
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_RUN_LEFT_ANIM
+		DW	(?_HERO_RUN_LEFT_ANIM&$FFFF)
+		DB	$40
+		DB	$00
+
+	DB	CMD_SETEVENTMASTER
+		DB	$3C
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2B_KID01
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_WALK_LEFT_ANIM
+		DW	(?_KID01_WALK_LEFT_ANIM&$FFFF)
+		DB	$60
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_STAND_UP_ANIM
+		DW	(?_KID01_STAND_UP_ANIM&$FFFF)
+		DB	$10
+		DB	:?_KID01_STAND_UR_ANIM
+		DW	(?_KID01_STAND_UR_ANIM&$FFFF)
+		DB	$10
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_LEFT_ANIM
+		DW	(?_KID01_STAND_LEFT_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIM
+		DB	:?_KID01_STAND_DR_ANIM
+		DW	(?_KID01_STAND_DR_ANIM&$FFFF)
+
+	DB	CMD_WAITANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID01_RUN_LEFT_ANIM
+		DW	(?_KID01_RUN_LEFT_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2B_KID02
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_RUN_LEFT_ANIM
+		DW	(?_KID02_RUN_LEFT_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_SETANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_STAND_UL_ANIM
+		DW	(?_KID02_STAND_UL_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID02_STAND_UP_ANIM
+		DW	(?_KID02_STAND_UP_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID02_RUN_LEFT_ANIM
+		DW	(?_KID02_RUN_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	$00
+
+	DB	CMD_SETANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID02_RUN_LEFT_ANIM
+		DW	(?_KID02_RUN_LEFT_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_HMTCAVE01_ENDING2B_KID03
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_SETANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$08
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_STAND_UP_ANIM
+		DW	(?_KID03_STAND_UP_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID03_STAND_UL_ANIM
+		DW	(?_KID03_STAND_UL_ANIM&$FFFF)
+		DB	$08
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	$00
+
+	DB	CMD_SETANYEVENTMASTER
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_KID03_RUN_LEFT_ANIM
+		DW	(?_KID03_RUN_LEFT_ANIM&$FFFF)
+		DB	$28
+		DB	$00
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_HMTCAVE02
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?_HERO_STAND_LEFT_ANIM
+	GLOBAL	?_HERO_STAND_RIGHT_ANIM
+	GLOBAL	?_HERO_STAND_DOWN_ANIM
+	GLOBAL	ACTOR00
+	GLOBAL	?_KID01_STAND_DR_ANIM
+	GLOBAL	ACTOR02
+	GLOBAL	?_KID03_STAND_DOWN_ANIM
+	GLOBAL	?_KID01_STAND_UP_ANIM
+	GLOBAL	?_KID01_STAND_UR_ANIM
+	GLOBAL	?_KID03_STAND_UR_ANIM
+	GLOBAL	ACTOR01
+	GLOBAL	?_KID02_STAND_UL_ANIM
+	GLOBAL	?_KID02_STAND_UR_ANIM
+	GLOBAL	?_KID02_STAND_LEFT_ANIM
+	GLOBAL	?_KID02_STAND_DOWN_ANIM
+	GLOBAL	?DO_SCREENFX_SWIRL
+	GLOBAL	?_BATTLE_FADE_IN
+	GLOBAL	BTL_ENEMY_ENGH
+	GLOBAL	BTL_ENEMY_ENGL
+	GLOBAL	BTL_CMD_VALID
+	GLOBAL	MAP_HMTCAVE01
+	GLOBAL	HS_HMTCAVE01
+	GLOBAL	PAL_HERO
+	GLOBAL	?HERO_AI
+	GLOBAL	?_DONT_TALK
+	GLOBAL	XRAM_SAVEVARS
+	GLOBAL	XRAM_HERO_ABILITY
+	GLOBAL	?ANIM_AI
+	GLOBAL	?TALKER_AI
+	GLOBAL	BIT_KID01
+	GLOBAL	BIT_KID02
+	GLOBAL	BIT_KID03
+	GLOBAL	TEXTBOX_SOUND_ENABLE
+	GLOBAL	?_KID01_WALK_UP_ANIM
+	GLOBAL	?_KID01_STAND_RIGHT_ANIM
+	GLOBAL	?_KID01_WALK_RIGHT_ANIM
+	GLOBAL	?_KID01_WALK_LEFT_ANIM
+	GLOBAL	?_KID02_WALK_UP_ANIM
+	GLOBAL	?_KID02_STAND_DL_ANIM
+	GLOBAL	?_KID02_STAND_UP_ANIM
+	GLOBAL	?_KID03_STAND_UP_ANIM
+	GLOBAL	?_KID03_WALK_UP_ANIM
+	GLOBAL	?_KID03_RUN_LEFT_ANIM
+	GLOBAL	?_KID03_RUN_UP_ANIM
+	GLOBAL	?_KID03_STAND_DR_ANIM
+	GLOBAL	?_HMTCAVE02_INIT
+	GLOBAL	?_HERO_WALK_UP_ANIM
+	GLOBAL	?_HERO_STAND_UP_ANIM
+	GLOBAL	?_FACE_KID01
+	GLOBAL	?_FACE_KID02
+	GLOBAL	?_FACE_KID03
+	GLOBAL	?_HERO_WALK_RIGHT_ANIM
+	GLOBAL	?_HERO_WALK_LEFT_ANIM
+	GLOBAL	?_NRMRIVER01_OPENING
+	GLOBAL	HS_HMTCAVE01B
+	GLOBAL	?_HERO_WALK_DOWN_ANIM
+	GLOBAL	ACTOR03
+	GLOBAL	ACTOR06
+	GLOBAL	ACTOR07
+	GLOBAL	?_SMOKE_ANIM
+	GLOBAL	ACTOR08
+	GLOBAL	BIT_BOY
+	GLOBAL	BIT_GIRL
+	GLOBAL	BIT_SMOKE
+	GLOBAL	?_KID01_RUN_LEFT_ANIM
+	GLOBAL	?_KID01_RUN_UP_ANIM
+	GLOBAL	?_KID01_WALK_DOWN_ANIM
+	GLOBAL	?_KID01_STAND_DOWN_ANIM
+	GLOBAL	?_KID01_FLOATBACK_ANIM
+	GLOBAL	?_KID02_WALK_DOWN_ANIM
+	GLOBAL	?_KID02_FLOATBACK_ANIM
+	GLOBAL	?_KID03_STAND_LEFT_ANIM
+	GLOBAL	?_KID03_RUN_RIGHT_ANIM
+	GLOBAL	?_KID03_STAND_UL_ANIM
+	GLOBAL	?_KID03_RUN_DOWN_ANIM
+	GLOBAL	?_HERO_STAND_DL_ANIM
+	GLOBAL	?_HERO_STAND_DR_ANIM
+	GLOBAL	?_HERO_BACK_UP_ANIM
+	GLOBAL	?_KORG_STAND_UP_ANIM
+	GLOBAL	ACTOR05
+	GLOBAL	BIT_ZET
+	GLOBAL	?_KORG_RUN_RIGHT_ANIM
+	GLOBAL	?_KORG_RUN_UP_ANIM
+	GLOBAL	?_BATTLE_LOST
+	GLOBAL	?_CREGATE01_KZDIE
+	GLOBAL	?_ZET_STAND_UP_ANIM
+	GLOBAL	?_ZET_KNOCKED_RIGHT_ANIM
+	GLOBAL	?_ZET_BEAT_RIGHT_ANIM
+	GLOBAL	?_BOY_WALK_UP_ANIM
+	GLOBAL	?_BOY_STAND_UP_ANIM
+	GLOBAL	ACTOR04
+	GLOBAL	BIT_KORG
+	GLOBAL	?_GIRL_WALK_UP_ANIM
+	GLOBAL	?_GIRL_STAND_UP_ANIM
+	GLOBAL	?_KID03_STAND_RIGHT_ANIM
+	GLOBAL	?_KID01_RUN_DOWN_ANIM
+	GLOBAL	?_KID01_STAND_LEFT_ANIM
+	GLOBAL	?_KID01_RUN_RIGHT_ANIM
+	GLOBAL	?_HERO_STAND_UL_ANIM
+	GLOBAL	?_MAIN_TITLES
+	GLOBAL	XRAM_SAVEBITS
+	GLOBAL	?_NRMGLADE02_ENDING
+	GLOBAL	?_NRMVASH05_ENDING03
+	GLOBAL	?_KID03_STAND_DL_ANIM
+	GLOBAL	?_HERO_RUN_DOWN_ANIM
+	GLOBAL	?_KID02_RUN_DOWN_ANIM
+	GLOBAL	?_CREDITS
+	GLOBAL	?_HERO_STAND_UR_ANIM
+	GLOBAL	?_HERO_RUN_LEFT_ANIM
+	GLOBAL	?_KID02_RUN_LEFT_ANIM
+
+;********************************
+	END
+;********************************

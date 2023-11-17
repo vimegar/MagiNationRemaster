@@ -1,0 +1,10 @@
+/********************************/
+?_ARDGARDEN06_DR_1
+		HeroSetDoor		(9,17)
+		ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+		Jump			(?_ARDCITY03)
+
+?_ARDGARDEN06_DR_2
+		HeroSetDoor	(0,8)
+		Jump		(?_ARDGARDEN07)
+

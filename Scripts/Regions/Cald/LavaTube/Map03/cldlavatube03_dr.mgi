@@ -1,0 +1,15 @@
+/********************************/
+?_CLDLAVATUBE03_DR_1
+		HeroToDoor	(0,7,49,10)
+		Jump		(?_CLDLAVATUBE02)
+
+?_CLDLAVATUBE03_DR_2
+		HeroToDoor	(39,6,0,7)
+		Jump		(?_CLDLAVATUBE04)
+
+?_CLDLAVATUBE03_DR_3
+		HeroToDoor	(30,49,3,0)
+		Jump		(?_CLDLAVATUBE07)		
+		
+?_CLDLAVATUBE03_TR_1
+		TriggerTreasure (CLDLAVATUBE03_CHEST1,INV_TYPE_ITEM,INV_KARMIC_FURY,13,35,40)

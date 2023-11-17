@@ -1,0 +1,107 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP18\ARDGEYSER18_DR.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP18\ARDGEYSER18_TXT.MGI
+
+/********************************/
+?_ARDGEYSER18
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER18)
+	LoadHotspots		(HS_ARDGEYSER18)
+	LoadTriggers		(TR_ARDGEYSER18)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,48,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?ANIM_AI,42,9,48,0,?_ARDGEYSER18_WARRADA,?_DONT_TALK)
+	LoadVRAMTiles		(48,BIT_WARRADA,0,0)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER18)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	SceneReady			()
+	SetScroll			(?_WARRADBAT_INIT)
+	End					()
+
+?_ARDGEYSER18_FROM17
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER18)
+	LoadHotspots		(HS_ARDGEYSER18)
+	LoadTriggers		(TR_ARDGEYSER18)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,30,22,48,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?ANIM_AI,42,9,48,0,?_ARDGEYSER18_WARRADA,?_DONT_TALK)
+	LoadVRAMTiles		(48,BIT_WARRADA,0,0)
+	SetCamera			(6,29)
+	SceneReady			()
+	ScrollMap			(42,0,-4)
+						(43,3,0)
+						(44,0,4)
+						(43,3,0)
+						(48,0,-4)
+						(37,3,0)
+						(40,0,4)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER18)
+	WaitEventMaster		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)					
+	SetScroll			(?_WARRADBAT_INIT)
+	End					()
+
+?_WARRADBAT_INIT
+	WaitEventMaster		(2)
+	SetBtlReturn		(?_ARDGEYSER18)
+	Jump				(?_ARDGEYSER_WARRADABAT)
+
+?_ARDGEYSER18_WARRADA_FINAL
+	SongStart			(SONGID_ororuins)
+	ThatActorStart		(ACTOR00)
+	PalClearAnim		(15,15,0,0,0)
+	PalFade				(15,15,32,0)
+	End					()
+
+?_ARDGEYSER18_WARRADA
+	ThisActorSetAnimDelay	(?_WARRADA_STAND_DOWN_ANIM,16)
+							(?_WARRADA_RUN_DOWN_ANIM,16)
+							(?_WARRADA_STAND_DR_ANIM,0)
+	SetText					(?_ARDGEYSER18_TXT_01)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_WARRADA_WALK_RIGHT_ANIM,8)
+							(?_WARRADA_WALK_UP_ANIM,16)
+							(?_WARRADA_STAND_UP_ANIM,0)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_WARRADA_STAND_UP_ANIM,32)
+							(?_WARRADA_STAND_LEFT_ANIM,8)
+							(?_WARRADA_STAND_DOWN_ANIM,0)
+	SetText					(?_ARDGEYSER18_TXT_02)
+	WaitEventText			(2)
+	SetText					(?_ARDGEYSER18_TXT_03)
+	WaitEventText			(3)
+	ThisActorSetAnimDelay	(?_WARRADA_RUN_DOWN_ANIM,8)
+							(?_WARRADA_STAND_DOWN_ANIM,0)
+	SetEventMaster			(2)
+	End						()
+
+?_ARDGEYSER18_HERO
+	ThisActorSetAnimDelay	(?_HERO_BACK_DOWN_ANIM,16)
+							(?_HERO_RUN_DOWN_ANIM,8)
+							(?_HERO_STAND_UL_ANIM,0)
+	Sync					(2,0)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	End						()
+
+?_ARDGEYSER18_HERO2
+	ThisActorSetAnimDelay	(?_HERO_BACK_DOWN_ANIM,16)
+							(?_HERO_STAND_UL_ANIM,0)
+	Sync					(2,0)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	End						()
+
+?_ARDGEYSER18_HERO3
+	ThisActorSetAnimDelay	(?_HERO_STAND_RIGHT_ANIM,8)
+							(?_HERO_STAND_UL_ANIM,0)
+	Sync					(2,0)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	End						()

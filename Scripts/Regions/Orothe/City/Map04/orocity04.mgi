@@ -1,0 +1,100 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP04\OROCITY04_DR.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP04\OROCITY04_TXT.MGI
+
+/********************************//********************************/
+//OROCITY04 
+/********************************//********************************/
+?_OROCITY04
+	SceneNew		()
+	LoadMap			(MAP_OROCITY04)
+	LoadHotspots	(HS_OROCITY04)
+	LoadTriggers	(TR_OROCITY04)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,6,4,20,96,?_OLDMAN05_STAND_UP_ANIM,_OROCITY04_HISTORIAN)
+	ThatActorInit	(ACTOR01,?TALKER_AI,16,12,20,0,?_ORLON_STAND_DL_ANIM,_OROCITY04_ORLON)
+	ThatActorInit	(ACTOR02,?ANIM_AI,14,19,20,128,?_OROCITY04_BLU,?_DONT_TALK)
+	LoadVRAMTiles	(32,BIT_OLDMAN05,96,0)
+	LoadVRAMTiles	(48,BIT_ORLON,0,0)
+	LoadVRAMTiles	(40,BIT_ORLONRING,48,0)
+	LoadVRAMTiles	(48,BIT_BLU,128,0)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	If				([Oro_Plot_Byte < 1],_SKIP)
+	ThatActorStart	(ACTOR01)
+
+_SKIP	
+	HeroFromDoor	()
+	SongStart		(SONGID_ororuins)
+	HeroSetCamera	()
+	SceneReady		()
+	End				()
+
+_OROCITY04_HISTORIAN
+	SetText				(?_OROCITY04_HISTORIAN_TXT)
+	Jump				(?_FACE_OLDMAN05)
+
+_OROCITY04_ORLON
+	SetText			(?_OROCITY04_ORLON_TXT)
+	Jump			(?_FACE_ORLON)
+/********************************//********************************/
+//OROCITY04 END INTRO
+/********************************//********************************/
+
+
+/********************************//********************************/
+//OROCITY04 BLU SCENE:  blu leaves.
+/********************************//********************************/
+?_OROCITY04_CITYLEAVE
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_OROCITY04_CITYLEAVE_TONY)
+	ThatActorSetScript		(ACTOR01,?_OROCITY04_CITYLEAVE_ORLON)
+	ThatActorStart			(ACTOR02)
+	End						()
+
+?_OROCITY04_CITYLEAVE_TONY
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	Delay					(16)
+	SetText					(?_OROCITY04_CITYLEAVE_TXT_1)
+	ThisActorSetAnimScroll	(?_HERO_RUN_UP_ANIM,16,0,-2)
+							(?_HERO_STAND_RIGHT_ANIM,64,0,0)
+							(?_HERO_WALK_UP_ANIM,24,0,0)
+							(?_HERO_STAND_RIGHT_ANIM,0,0,0)
+	Sync					(3,0)
+	SetText					(?_OROCITY04_CITYLEAVE_TXT_2)
+	Sync					(3,2)
+	ThisActorSetAnim		(?_HERO_STAND_DOWN_ANIM)
+	Sync					(2,3)
+	SetText					(?_OROCITY04_CITYLEAVE_TXT_3)						
+	WaitEventText			(1)
+	Delay					(80)
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,64)
+	PalClearBase			(0,7,31,31,31)
+	PalFade					(0,7,32,0)
+	Jump					(?_OROCITY01_CITYLEAVE)
+
+?_OROCITY04_CITYLEAVE_ORLON
+	ThisActorSetAnim		(?_ORLON_STAND_DL_ANIM)
+	Sync					(2,1)
+	ThisActorSetAnimDelay	(?_ORLON_WALK_DOWN_ANIM,32)
+	Sync					(3,2)
+	ThisActorSetAnimDelay	(?_ORLON_WALK_LEFT_ANIM,32)
+							(?_ORLON_WALK_DOWN_ANIM,32)
+	Sync					(2,3)						
+	End						()	
+?_OROCITY04_BLU
+	ThisActorSetAnimDelay	(?_BLU_WALK_UP_ANIM,64)
+							(?_BLU_WALK_RIGHT_ANIM,16)
+							(?_BLU_WALK_UP_ANIM,24)
+							(?_BLU_STAND_UP_ANIM,0)
+	Sync					(3,0)
+	Sync					(3,2)
+	ThisActorSetAnim		(?_BLU_STAND_DL_ANIM)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_BLU_WALK_DOWN_ANIM,24)
+							(?_BLU_WALK_LEFT_ANIM,16)
+							(?_BLU_WALK_DOWN_ANIM,64)
+	ThisActorStop			()
+	End						()

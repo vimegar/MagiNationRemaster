@@ -1,0 +1,24 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GEYSER\MAP03\NRMGEYSER03_DR.MGI
+/********************************/
+
+?_NRMGEYSER03						
+	SceneNew			()
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+?_NRMGEYSER03_RETURN
+	LoadMap				(MAP_NRMGEYSER03)
+	LoadHotspots		(HS_NRMGEYSER03)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_NORM,?_NRMGEYSER_RE_ENTER)
+	LoadTriggers		(TR_NRMGEYSER03)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_NRMGEYSER03_RETURN)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	SongStart			(SONGID_maze)
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+

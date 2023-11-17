@@ -1,0 +1,248 @@
+/**** LEVEL40 ****/
+?_OROGEYSER_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+
+_BTL1
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,41,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,76,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,38,77,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,DRYTEFIEND,37,75,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,DRYTEFIEND,42,85,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,40,80,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,42,83,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,39,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,77,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,38,76,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,76,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,37,75,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,41,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,42,84,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,38,77,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew			(OROGEYSER_ARENA1,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,41,82,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(OROGEYSER_ARENA1,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,40,79,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,39,76,1)
+	BtlAuto		()
+
+/********************************/
+?_OROGEYSER_RNDBAT_RAILING
+
+HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+
+_BTL1
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,41,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,76,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,38,77,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,DRYTEFIEND,37,75,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,DRYTEFIEND,42,85,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,40,80,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,42,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,42,83,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,39,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,77,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,38,76,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,38,76,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,37,75,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,41,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,42,84,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,38,77,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew			(OROGEYSER_ARENA2,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,41,82,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,40,80,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(OROGEYSER_ARENA2,MAGI_RND1,40,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,40,79,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,39,76,1)
+	BtlAuto		()
+	
+/********************************/
+?_OROGEYSER_WARRADABAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(OROGEYSER_ARENA2,WARRADA,42,?_BATTLE_FADE_IN)
+	BtlNextTurn		()
+	
+//650 ENERGY
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,2)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,138)
+	TextOpen		()
+	TextIcon		(ICON_WARRADA)
+	TextWrite		("How pitiful.")
+	TextClose		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,35,90,0)
+	BtlNextTurn		()	
+	
+	SetScroll		(?_WARRADA_MODE_CREATURE)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+		
+	SetScroll		(?_WARRADA_MODE_CREATURE)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+	
+	SetScroll		(?_WARRADA_MODE1)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()
+	
+_SARBIL
+	BtlSummonDelay	(BTL_ID_MAGI,SARBIL,42,130,0)
+	If				([:WRAM_BATTLE[BTL_CMD_VALID = 0]],_NO_SARBIL)	
+	TextOpen		()
+	TextIcon		(ICON_WARRADA)
+	TextWrite		("Ahh, Sarbil,")
+					("please show our")
+					("guest the door.")
+	TextClose		()
+	BtlNextTurn		()	
+	Jump			(_ENDLOOP)	
+	
+_NO_SARBIL
+	BtlUseItem		(BTL_ID_MAGI,ITEM_BALOO_ROOT,BTLSCR_ME)
+	BtlNextTurn		()	
+	Jump			(_SARBIL)	
+
+_ENDLOOP		
+	SetScroll		(?_WARRADA_MODESARBIL)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+	Jump			(_ENDLOOP)	
+	
+?_WARRADA_MODE_CREATURE
+	JumpRandom		(?_WARRADA11)	
+					(?_WARRADA12)		
+
+	
+?_WARRADA_MODE1
+	JumpRandom		(?_WARRADA11)	
+					(?_WARRADA11)
+					(?_WARRADA12)
+					(?_WARRADA12)
+					(?_WARRADA13)
+					(?_WARRADA14)
+					
+?_WARRADA_MODESARBIL
+	JumpRandom		(?_WARRADA11)	
+					(?_WARRADA11)
+					(?_WARRADA12)
+					(?_WARRADA12)
+					(?_WARRADA13)
+					(?_WARRADA14)
+					(?_WARRADA14)
+					(?_WARRADA15)
+					(?_WARRADA15)
+
+?_WARRADA11
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,40,90,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_WARRADA12
+	BtlSummonDelay	(BTL_ID_MAGI,SPINDLE,40,100,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_WARRADA13
+	BtlUseItem		(BTL_ID_MAGI,ITEM_BALOO_ROOT,BTLSCR_ENEMYWEAKEST_PERCENT)
+	SetAnyEventScroll	()
+	End					()
+	
+?_WARRADA14
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_FLOOD,BTLSCR_ALLYSTRONGEST_PERCENT)
+	SetAnyEventScroll	()
+	End					()
+
+?_WARRADA15
+	BtlSummonDelay	(BTL_ID_MAGI,SARBIL,42,100,0)
+	SetAnyEventScroll	()
+	End					()
+

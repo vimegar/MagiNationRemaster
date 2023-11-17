@@ -1,0 +1,10 @@
+/********************************/
+?_UNDTUNNEL20_DR_1
+		HeroToDoor	(0,11,19,34)
+		Jump		(?_UNDTUNNEL19)
+
+?_UNDTUNNEL20_TR_1
+		TriggerTreasure	(UNDTUNNEL20_Chest1,INV_TYPE_ITEM,INV_RUNEOFHOPE,29,3,40)
+
+?_UNDTUNNEL20_TR_2
+		TriggerTreasure	(UNDTUNNEL20_Chest2,INV_TYPE_ITEM,INV_RUNEOFHOPE,35,22,40)

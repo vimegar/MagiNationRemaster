@@ -1,0 +1,42 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GEYSER\MAP22\ARDGEYSER22_DR.MGI
+
+/********************************/
+?_ARDGEYSER22
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER22)
+	LoadHotspots	(HS_ARDGEYSER22)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER22)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	End				()
+	
+?_ARDGEYSER22_FROM_21
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER22)
+	SetCamera		(7,13)
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	ScrollMap		(20,0,-4)
+					(196,4,0)
+					(24,0,4)
+	Jump			(?_ARDGEYSER25_FROM22)
+
+?_ARDGEYSER22_FROM25
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER22)
+	SetCamera		(57,13)
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	ScrollMap		(24,0,-4)
+					(196,-4,0)
+					(20,0,4)
+	Jump			(?_ARDGEYSER21_FROM22)
+

@@ -1,0 +1,45 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP11\NRMVASH11_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP11\NRMVASH11_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP11\NRMVASH11_PARTY.MGI
+
+/********************************/
+?_NRMVASH11
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH11_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH11_PARTY)
+?_NRMVASH11_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH11)
+	LoadHotspots			(HS_NRMVASH11)
+	LoadTriggers			(TR_NRMVASH11)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,8,13,14,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR01,?ANIM_AI,10,8,14,0,?_PRUITT_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,10,9,14,80,?_NRMVASH11_CRYSTAL,?_DONT_TALK)
+	LoadVRAMTiles			(48,BIT_PRUITT,0,0)
+	LoadVRAMTiles			(32,BIT_PRUITTRING,48,0)
+	LoadVRAMTiles			(32,BIT_CRYSTAL,80,0)
+	ThatActorStart			(ACTOR01)
+	HeroSetCamera			()
+	SongStart				(SONGID_shop)
+	SceneReady				()
+	End						()
+
+?_NRMVASH11_CRYSTAL
+	ThisActorSetAnimDelay	(?_CRYSTAL_RISE_ANIM,10)
+							(?_CRYSTAL_ANIM,0)
+	End						()
+
+/********************************/
+?_NRMVASH11_PRUITT_MAKE_RING
+	ThisActorSetAnimDelay	(?_PRUITT_WALK_UP_ANIM,40)
+							(?_PRUITT_WALK_RIGHT_ANIM,18)
+							(?_PRUITT_MAKE_RING_ANIM,224)
+							(?_PRUITT_WALK_LEFT_ANIM,18)
+							(?_PRUITT_WALK_DOWN_ANIM,40)
+							(?_PRUITT_DONE_RING_ANIM,0)
+	SetAnyEventMaster		()
+	End						()

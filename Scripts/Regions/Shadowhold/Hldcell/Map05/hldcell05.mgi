@@ -1,0 +1,103 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP05\HLDCELL05_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP05\HLDCELL05_TXT.MGI
+
+/********************************/
+/********************************/
+?_HLDCELL05
+	SceneNew				()
+	LoadMap					(MAP_HLDCELL05)
+	LoadHotspots			(HS_HLDCELL05)
+	//LoadEncounters		(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDCELL05_RE_ENTER)
+	LoadTriggers			(TR_HLDCELL05)
+	LoadPalette				(PAL_HERO)
+	SongStart				(SONGID_shadowhold)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_HLDCELL05)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	If						([!CellDoor1],_SKIP)
+	CopyTileBlock			(27,26,14,1,2,11,9)
+	CopyTileBlock			(27,26,16,1,2,10,9)
+_SKIP
+	If						([HldPrisoner1],_HLDCELL05_END)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,10,4,27,0,?_MAN02_STAND_DOWN_ANIM,?_HLDCELL05_PRISONER_FREE)
+	LoadVRAMTiles			(48,BIT_MAN02,0,0)
+	ThatActorStart			(ACTOR00)
+_HLDCELL05_END
+	SceneReady				()
+	End						()
+
+?_HLDCELL05_PRISONER_FREE
+	SetXRAMBit				(HldPrisoner1,TRUE)
+	SetText					(?_HLDCELL05_TXT1)
+	Switch					([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+
+_UP
+	ThisActorSetAnim		(?_MAN02_STAND_UP_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_DOWN
+	ThisActorSetAnim		(?_MAN02_STAND_DOWN_ANIM)
+	WaitEventText			(1)
+	Jump					(_GO_AROUND)
+_LEFT
+	ThisActorSetAnim		(?_MAN02_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_RIGHT
+	ThisActorSetAnim		(?_MAN02_STAND_RIGHT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+
+_MOVE_IT
+	ThisActorSetAnim		(?_MAN02_RUN_DOWN_ANIM)
+	Delay					(24)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+_GO_AROUND
+	ThisActorSetAnim		(?_MAN02_RUN_RIGHT_ANIM)
+	Delay					(8)
+	ThisActorSetAnim		(?_MAN02_RUN_DOWN_ANIM)
+	Delay					(24)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+
+/****************************/
+//HLDCELL05 LOCKED DOOR
+/****************************/
+
+?_HLDCELL05_DOOR_LOCKED
+	If						([INV_ITEM_ShadowKey > 0],?_HLDCELL05_UNLOCK_DOOR)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetText					(?_HLDCELL05_TXT2)
+	WaitEventText			(2)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	Jump					(?_HLDCELL05_DOOR_LOCKED_END)
+?_HLDCELL05_UNLOCK_DOOR
+	SetText					(?_HLDCELL05_TXT3)
+	WaitEventText			(2)
+	CopyTileBlock			(27,26,14,1,2,11,9)
+	CopyTileBlock			(27,26,16,1,2,10,9)
+	ExprXRAMByte			(INV_ITEM_ShadowKey,[INV_ITEM_ShadowKey - 1])
+	SetXRAMBit				(CellDoor1,TRUE)
+?_HLDCELL05_DOOR_LOCKED_END
+	End						()
+
+
+

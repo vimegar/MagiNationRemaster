@@ -1,0 +1,52 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_MAGAM_MAKE_RING_ANIM
+
+	Frame:			(4,0,0,?MAGAM_RING03)
+					(4,0,0,?MAGAM_RING04)
+					(4,0,0,?MAGAM_RING05)
+					(4,0,0,?MAGAM_RING06)
+					(8,0,0,?MAGAM_RING07)
+					(1,0,0,?MAGAM_RING08)
+					(8,0,0,?MAGAM_RING09)
+					(1,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING09)
+					(4,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING09)
+					(4,0,0,?MAGAM_RING08)
+					(8,0,0,?MAGAM_RING07)
+					(16,0,0,?MAGAM_RING08)
+					(8,0,0,?MAGAM_RING09)
+					(16,0,0,?MAGAM_RING08)
+					(8,0,0,?MAGAM_RING07)
+					(4,0,0,?MAGAM_RING08)
+					(8,0,0,?MAGAM_RING09)
+					(4,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING07)
+					(1,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING09)
+					(1,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING07)
+					(4,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING07)
+					(4,0,0,?MAGAM_RING08)
+					(4,0,0,?MAGAM_RING06)
+					(4,0,0,?MAGAM_RING05)
+					(4,0,0,?MAGAM_RING04)
+					(4,0,0,?MAGAM_RING02)
+
+/********************************/
+?_MAGAM_DONE_RING_ANIM
+
+	Frame:			(255,0,0,?MAGAM_RING10)
+	
+	JumpLocal:		(?_MAGAM_DONE_RING_ANIM)
+
+/********************************/
+?_MAGAM_STAND_ANIM
+
+	Frame:			(255,0,0,?MAGAM_RING01)
+	
+	JumpLocal:		(?_MAGAM_STAND_ANIM)

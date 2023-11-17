@@ -1,0 +1,216 @@
+/*********************************************************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP02\NRMGLADE02_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP02\NRMGLADE02_TXT.MGI
+/*********************************************************************/
+
+
+?_NRMGLADE02_FADEIN
+	SongFadeOut				(30)
+?_NRMGLADE02
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE02)
+	LoadPalette				(PAL_HERO)
+
+?_NRMGLADE02_GENERIC
+	LoadHotspots			(HS_NRMGLADE02)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,49,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_glade)
+	End						()
+
+?_NRMGLADE02_ENDING
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,8,4,15,0,?_NRMGLADE02_COFFIN_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,8,5,15,3,?_NRMGLADE02_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,8,3,15,3,?_NRMGLADE02_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,3,4,15,51,?_PRUITT_STAND_DR_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,10,7,15,99,?_NRMGLADE02_POAD_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?ANIM_AI,10,15,15,147,?_NRMGLADE02_EVU_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?ANIM_AI,2,20,15,51,?_NRMGLADE02_TRYN_END,?_DONT_TALK)
+	LoadVRAMTiles			(3,BIT_COFFIN,0,0)
+	LoadVRAMTiles			(48,BIT_ARDCLOAKMAN,3,0)
+	LoadVRAMTiles			(48,BIT_PRUITT,51,0)
+	LoadVRAMTiles			(48,BIT_POAD,99,0)
+	LoadVRAMTiles			(48,BIT_EVU,147,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	SetCamera				(6,6)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,1)
+	SongStart				(SONGID_orwin)
+	SetScroll				(?_PANDOWN_SLOWLY)
+	Delay					(128)
+	LoadVRAMTiles			(48,BIT_TRYN,51,0)
+	WaitEventMaster			(1)
+	Jump					(?_UNDTOWN01_ENDING)
+	End						()
+
+?_NRMGLADE02_COFFIN_END
+	ThisActorSetAnimDelay	(?_COFFIN_DOWN_ANIM,160)
+							(?_COFFIN_DOWN_ANIM,192)
+							(?_COFFIN_DL_ANIM,96)
+							(?_COFFIN_DOWN_ANIM,160)
+							(?_COFFIN_DOWN_ANIM,160)
+	SetEventMaster			(1)
+	End						()
+
+?_NRMGLADE02_CLOAK_END
+	ThisActorSetAnimDelay	(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,160)
+							(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,192)
+							(?_CLOAKMAN_SLOWWALK_DL_ANIM,96)
+							(?_CLOAKMAN_SLOWWALK_DOWN_ANIM,0)
+	End						()
+
+?_NRMGLADE02_POAD_END
+	ThisActorSetAnimDelay	(?_POAD_STAND_UL_ANIM,96)
+							(?_POAD_STAND_LEFT_ANIM,48)
+							(?_POAD_STAND_DL_ANIM,0)
+	End						()
+
+?_NRMGLADE02_EVU_END
+	ThisActorSetAnimDelay	(?_EVU_STAND_UL_ANIM,200)
+							(?_EVU_STAND_UL_ANIM,152)
+							(?_EVU_STAND_LEFT_ANIM,48)
+							(?_EVU_STAND_DL_ANIM,0)
+	End						()
+
+?_NRMGLADE02_TRYN_END
+	ThisActorSetAnimDelay	(?_TRYN_STAND_UR_ANIM,200)
+							(?_TRYN_STAND_UR_ANIM,200)
+							(?_TRYN_STAND_UR_ANIM,112)
+							(?_TRYN_STAND_RIGHT_ANIM,48)
+							(?_TRYN_STAND_DR_ANIM,0)
+	End						()
+
+?_NRMGLADE02_FUNERAL
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE02)
+	LoadHotspots			(HS_NRMGLADE02F)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,4,0,15,0,?_FUNERAL_START_HERO,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?BLOCKER_AI,8,4,15,0,?_NRMGLADE02_COFFIN_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?BLOCKER_AI,8,5,15,3,?_NRMGLADE02_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?BLOCKER_AI,8,3,15,3,?_NRMGLADE02_CLOAK_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?TALKER_AI,2,33,15,51,?_NRMGLADE02_PRUITT_END,?_NRMGLADE02_FUN_PRUITT)
+	ThatActorInit			(ACTOR04,?TALKER_AI,10,7,15,88,?_NRMGLADE02_POAD_END,?_NRMGLADE02_FUN_POAD)
+	ThatActorInit			(ACTOR05,?TALKER_AI,10,15,15,130,?_NRMGLADE02_EVU_END,?_NRMGLADE02_FUN_EVU)
+	ThatActorInit			(ACTOR06,?TALKER_AI,2,20,15,166,?_NRMGLADE02_YAKI_END,?_NRMGLADE02_FUN_YAKI)
+	LoadVRAMTiles			(3,BIT_COFFIN,0,0)
+	LoadVRAMTiles			(48,BIT_ARDCLOAKMAN,3,0)
+	LoadVRAMTiles			(37,BIT_PRUITT,51,0)
+	LoadVRAMTiles			(42,BIT_POAD,88,0)
+	LoadVRAMTiles			(36,BIT_EVU,130,0)
+	LoadVRAMTiles			(41,BIT_YAKI,166,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_orwin)
+	Delay					(48)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	WaitEventMaster			(1)
+	Delay					(200)
+	Delay					(200)
+	Delay					(200)
+	Delay					(128)
+	LoadHotspots			(HS_NRMGLADE02FA)
+	End						()
+
+?_FUNERAL_START_HERO
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,48)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	End						()
+
+?_NRMGLADE02_PRUITT_END
+	ThisActorSetAnimDelay	(?_PRUITT_STAND_UR_ANIM,200)
+							(?_PRUITT_STAND_UR_ANIM,200)
+							(?_PRUITT_STAND_UR_ANIM,200)
+							(?_PRUITT_STAND_UR_ANIM,200)
+							(?_PRUITT_STAND_UR_ANIM,120)
+							(?_PRUITT_STAND_RIGHT_ANIM,48)
+							(?_PRUITT_STAND_DR_ANIM,0)
+	End						()
+
+?_NRMGLADE02_YAKI_END
+	ThisActorSetAnimDelay	(?_YAKI_STAND_UR_ANIM,200)
+							(?_YAKI_STAND_UR_ANIM,200)
+							(?_YAKI_STAND_UR_ANIM,112)
+							(?_YAKI_STAND_RIGHT_ANIM,48)
+							(?_YAKI_STAND_DR_ANIM,0)
+	End						()
+
+?_NRMGLADE02_FUN_PRUITT
+	SetText					(?_NRMGLADE02_FUN_PRUITT_TXT)
+	Jump					(?_FACE_PRUITT)
+
+?_NRMGLADE02_FUN_POAD
+	SetText					(?_NRMGLADE02_FUN_POAD_TXT)
+	Jump					(?_FACE_POAD)
+
+?_NRMGLADE02_FUN_EVU
+	SetText					(?_NRMGLADE02_FUN_EVU_TXT)
+	Jump					(?_FACE_EVU)
+
+?_NRMGLADE02_FUN_YAKI
+	SetText					(?_NRMGLADE02_FUN_YAKI_TXT)
+	Jump					(?_FACE_YAKI)
+
+?_NRMGLADE02_FUN_PRUITT_TXT
+	TextOpen				()
+	TextIcon				(ICON_PRUITT)
+	TextWrite				("Orwin...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE02_FUN_POAD_TXT
+	TextOpen				()
+	TextIcon				(ICON_POAD)
+	TextWrite				("I think I've=")
+							("lost my")
+							("appetite...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE02_FUN_EVU_TXT
+	TextOpen				()
+	TextIcon				(ICON_EVU)
+	TextWrite				("Orwin always=")
+							("had the best")
+							("jellybeans...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMGLADE02_FUN_YAKI_TXT
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("Orwin, I'm=")
+							("gonna honor")
+							("your memory=")
+							("for life,")
+							("brother!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+

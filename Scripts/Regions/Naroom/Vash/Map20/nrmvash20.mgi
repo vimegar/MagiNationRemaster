@@ -1,0 +1,276 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP20\NRMVASH20_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP20\NRMVASH20_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP20\NRMVASH20_PARTY.MGI
+
+/********************************/
+?_NRMVASH20
+	If						([Ormagon_Quest = 3 && GAMECOUNT = GC_AGRAM_BATTLE],?_NRMVASH20_FULL_OF_FUNGUS)
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH20_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH20_PARTY)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH20)
+	LoadHotspots			(HS_NRMVASH20) 
+	LoadTriggers			(TR_NRMVASH20)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,11,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,6,3,12,0,?_NRMVASH20_BOY,?_NRMVASH20_BOY_TALKER)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+?_NRMVASH20_FUNGUS_DIED
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH20)
+	LoadHotspots			(HS_NRMVASH20) 
+	LoadTriggers			(TR_NRMVASH20)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,8,12,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,6,3,12,0,?_NRMVASH20_BOY,?_NRMVASH20_BOY_TALKER)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	HeroFromDoor			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	SetText					(?_YAKI_KEEPS_GOOD_STUFF)
+	End						()
+
+?_NRMVASH20_BOY
+	ThisActorSetAnim		(?_BOY_STAND_DOWN_ANIM)
+	End						()
+	
+	
+?_NRMVASH20_BOY_TALKER
+	If						([GC = GC_FIND_ORWIN],_QUAKE)
+	SetText					(?_NRMVASH20_TXT1)
+	Jump					(?_FACE_BOY)
+	End						()		
+
+_QUAKE
+	SetText					(?_NRMVASH20_TXT2)
+	Jump					(?_FACE_BOY)
+	
+?_NRMVASH20_TXT2
+	TextOpen				()
+	TextIcon				(ICON_BOY)
+	TextWrite				("What's=")
+							("happening?!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+	
+?_NRMVASH20_TXT1
+	TextOpen				()
+	TextIcon				(ICON_BOY)
+	TextWrite				("I like to=")
+							("collect spooky")
+							("plants.")
+	TextIcon				(ICON_TONY)
+	TextWrite				("........?")
+	Switch					([Ormagon_Quest])
+							(2,_GIVING_BOY_FUNGUS)
+							(3,_THANKYOU)
+							(4,_WOW_FUNGICIDE)
+	TextClose				()
+	SetEventText			(1)
+	End						()	
+_WOW_FUNGICIDE
+	TextIcon				(ICON_BOY)
+	TextWrite				("Wow, that=")
+							("fungicide was")
+							("really strong.")
+	Jump					(_END)
+_THANKYOU
+	TextIcon				(ICON_BOY)
+	TextWrite				("THANKYOU!")
+	Jump					(_END)
+_GIVING_BOY_FUNGUS	
+	TextIcon				(ICON_BOY)
+	TextWrite				("You have any?")
+	If						([INV_ITEM_Fungus < 1],_NOPE_SORRY)
+	TextIcon				(ICON_TONY)
+	TextWrite				("I have this=")
+							("fungus in a")
+							("jar. You want=")
+							("it?")
+	TextIcon				(ICON_BOY)
+	TextWrite				("Sure.")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Give fungus=")
+							(" Don't give$")
+	TextMenu				(2)
+							(_GIVE_FUNGUS)
+							(_DONT_GIVE_FUNGUS)
+_GIVE_FUNGUS
+//	InventoryTake			(INV_TYPE_ITEM,INV_SPECIMEN_JAR,1)
+	InventoryTake			(INV_TYPE_ITEM,INV_FUNGUS,1)
+	If						([GAMECOUNT > GC_OROTHE_GEYSER],_DONT_ADVANCE_QUEST_BIT)
+	SetXRAMByte				(Ormagon_Quest,3)
+_DONT_ADVANCE_QUEST_BIT
+	TextClear				()
+	TextWrite				("Here you go.")
+	Jump					(_THANKYOU)	
+_DONT_GIVE_FUNGUS
+	TextClear				()
+	TextWrite				("Sorry, you=")
+							("can't have it.")
+	TextIcon				(ICON_BOY)
+	TextWrite				(".........")
+	Jump					(_END)
+_NOPE_SORRY
+	TextIcon				(ICON_TONY)
+	TextWrite				("Nope, sorry.")
+_END
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_YAKI_KEEPS_GOOD_STUFF
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("That was=")
+							("powerful")
+							("fungicide.")
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()
+	
+	
+/********************************/
+// FULL OF FUNGUS
+/********************************/
+
+?_NRMVASH20_FULL_OF_FUNGUS
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH20B)
+	LoadHotspots			(HS_NRMVASH20) 
+	LoadTriggers			(TR_NRMVASH20B)
+	LoadPalette				(PAL_HERO)
+	SetItemScript			(_ITEM_SCRIPT)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,11,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,6,4,12,0,_FUNGUS_BOY,_FUNGUS_BOY_TALKER)
+	ThatActorInit			(ACTOR01,?ANIM_AI,5,6,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,3,7,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,7,9,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?ANIM_AI,8,4,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?ANIM_AI,6,10,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?ANIM_AI,4,6,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?ANIM_AI,2,10,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?ANIM_AI,5,5,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR09,?ANIM_AI,1,8,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR0A,?ANIM_AI,7,9,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR0B,?ANIM_AI,4,6,12,48,_SMOKE,?_DONT_TALK)
+	ThatActorInit			(ACTOR0C,?ANIM_AI,4,11,12,48,_SMOKE,?_DONT_TALK)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	LoadVRAMTiles			(24,BIT_AGOVESMOKE,48,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+_FUNGUS_BOY
+	ThisActorSetAnim		(?_BOY_STAND_DOWN_ANIM)
+	End						()
+
+_FUNGUS_BOY_TALKER
+	SetText					(_WHAT_HAPPENED)
+	Jump					(?_FACE_BOY)	
+	
+	
+_ITEM_SCRIPT
+	If						([[USEITEM_ID = INV_FUNGICIDE]&&[USEITEM_CollCode = COLLCODE_ITEM01]],_USING_THE_FUNGUCIDE)
+	End						()
+
+_SMOKE
+	ThisActorSetAnim		(?_BIG_SMOKE_ANIM)
+	Delay					(64)
+	ThisActorStop			()
+	End						()
+	
+_USING_THE_FUNGUCIDE
+	SetXRAMByte				(Ormagon_Quest,4)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetText					(_HOPE_THIS_WORKS)
+	WaitEventText			(1)
+	PalClearBase			(0,6,0,0,0)
+	PalFade					(0,6,32,0)
+	Delay					(50)
+	ThatActorStart			(ACTOR01)
+	Delay					(10)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	ThatActorStart			(ACTOR02)
+	Delay					(10)
+	ThatActorStart			(ACTOR03)
+	Delay					(20)
+	ThatActorStart			(ACTOR04)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	Delay					(20)
+	ThatActorStart			(ACTOR05)
+	Delay					(20)
+	ThatActorStart			(ACTOR06)
+	Delay					(20)
+	ThatActorStart			(ACTOR07)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	Delay					(20)
+	ThatActorStart			(ACTOR08)
+	Delay					(20)
+	ThatActorStart			(ACTOR09)
+	Delay					(20)
+	ThatActorStart			(ACTOR0A)
+	Delay					(20)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	ThatActorStart			(ACTOR0B)
+	Delay					(20)
+	ThatActorStart			(ACTOR0C)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	Delay					(50)
+	PalClearBase			(0,15,0,0,0)
+	PalFade					(0,15,32,0)
+	HeroToDoor				(0,0,0,0)
+	Jump					(?_NRMVASH20_FUNGUS_DIED)
+	
+_WHAT_HAPPENED
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("What happened=")
+							("here?")
+	TextIcon				(ICON_BOY)
+	TextWrite				("The fungus you=")
+							("gave me sort of")
+							("got out of=")
+							("hand. Can you")
+							("help me?")
+	TextClose				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Oh, sure. All=")
+							("this needs is a")
+							("little=")
+							("fungicide.")
+	TextClose				()
+	SetEventText			(1)
+	End						()	
+
+_HOPE_THIS_WORKS
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I sure hope=")
+							("this stuff")
+							("works.")
+	TextClose				()
+	SetEventText			(1)
+	End						()	
+	
+

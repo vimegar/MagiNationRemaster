@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_CLDLAVAVENT08)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT08_DR_1)
+						
+		FileTriggers	(TR_CLDLAVAVENT08)
+						(TRIGGER_CONFIG,?_CLDLAVAVENT08_TR_1)

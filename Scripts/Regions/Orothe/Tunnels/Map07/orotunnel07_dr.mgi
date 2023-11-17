@@ -1,0 +1,13 @@
+/********************************/
+?_OROTUNNEL07_DR_1
+		HeroToDoor	(0,9,47,9)
+		Jump		(?_OROTUNNEL02)
+		
+?_OROTUNNEL07_DR_2
+		HeroToDoor	(27,12,0,9)
+		Jump		(?_OROTUNNEL08)
+		
+?_OROTUNNEL07_DR_3
+		HeroToDoor	(27,52,0,10)
+		Jump		(?_OROTUNNEL09)
+		

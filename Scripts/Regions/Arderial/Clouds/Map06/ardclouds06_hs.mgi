@@ -1,0 +1,8 @@
+/********************************/
+		FileHotspots	(HS_ARDCLOUDS06)
+						(HOTSPOT_TRIGGER_SOUTH,?_ARDCLOUDS06_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_ARDCLOUDS06_DR_2)
+						
+		FileTriggers	(TR_ARDCLOUDS06)
+						(TRIGGER_CONFIG,?_ARDCLOUDS06_TR_1)
+						(TRIGGER_CONFIG,?_ARDCLOUDS06_TR_2)

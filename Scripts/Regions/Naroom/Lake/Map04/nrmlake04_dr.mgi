@@ -1,0 +1,12 @@
+/********************************/
+?_NRMLAKE04_DR_1
+		HeroToDoor	(17,39,3,0)
+		Jump		(?_NRMLAKE06)
+
+?_NRMLAKE04_DR_2
+		HeroToDoor	(0,0,17,39)
+		Jump		(?_NRMLAKE05)
+
+/********************************/
+?_NRMLAKE04_TR_1
+		TriggerTreasure	(NRMLAKE04_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,18,20,30)

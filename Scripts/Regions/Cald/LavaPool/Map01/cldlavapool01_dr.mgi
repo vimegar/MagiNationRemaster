@@ -1,0 +1,14 @@
+/********************************/
+?_CLDLAVAPOOL01_DR_1
+		HeroToDoor	 	(38,59,13,0)
+		Jump		 	(?_CLDLAVATOWN01)
+
+?_CLDLAVAPOOL01_DR_2
+		Jump		 	(?_CLDLAVAPOOL_TONY_REJECT)
+
+?_CLDLAVAPOOL01_DR_3
+		SetXRAMByte		(Exit_Disable,0)
+		SetLoadScript	(?_CLDLAVAPOOL01_DR_3)
+		SetGamecount 	(GC_CALD_GEYSER)
+		HeroSetDoor	 	(14,28)
+		Jump		 	(?_CLDGEYSER01)

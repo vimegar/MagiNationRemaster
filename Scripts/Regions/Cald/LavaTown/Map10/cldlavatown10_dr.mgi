@@ -1,0 +1,59 @@
+/********************************/
+?_CLDLAVATOWN10_DR_1
+		HeroSetDoor	(19,17)
+		Jump		(?_CLDLAVATOWN03)
+
+
+/********************************/
+?_CLDLAVATOWN10_TR_1			// CLOCK
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("11:05.")
+						("But is it=")
+						("AM or PM?")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN10_TR_2			// FILING CABINET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Clothing...=")
+						("Colorful.")
+						("Striking.=")
+						("Sleeveless.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN10_TR_3			// BOOKS
+		TextOpen		()
+		TextWrite		("Chisel your=")
+						("way to a new")
+						("living room=")
+						("with only a")
+						("chisel!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("Wow!")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN10_TR_4			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Seems nice.=")
+						("'Cept for the")
+						("fire and all.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN10_TR_5			// FILING CABINET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Filled to the=")
+						("brim.")
+						("Good thing it's=")
+						("melting.")
+						("Otherwise, it'd=")
+						("never stay")
+						("closed.")
+		TextClose		()
+		End				()

@@ -1,0 +1,35 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP07\NRMVASH07_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP07\NRMVASH07_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP07\NRMVASH07_PARTY.MGI
+
+/********************************/
+?_NRMVASH07
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH07_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH07_PARTY)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH07)
+	LoadHotspots			(HS_NRMVASH07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,13,15,0,?_NRMVASH07_GUARD,?_NRMVASH07_GUARD_TALKS)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_GUARD,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+
+?_NRMVASH07_GUARD
+	ThisActorSetAnimDelay	(?_GUARD_STAND_DOWN_ANIM,200)
+							(?_GUARD_STAND_UR_ANIM,200)
+	Jump					(?_NRMVASH07_GUARD)
+	
+?_NRMVASH07_GUARD_TALKS
+	SetText					(?_NRMVASH07_GUARD_TXT)
+	Jump					(?_FACE_GUARD)

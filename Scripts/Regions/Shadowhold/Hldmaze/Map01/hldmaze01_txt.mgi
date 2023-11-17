@@ -1,0 +1,50 @@
+/********************************/
+//HLDMAZE01 TXT
+/********************************/
+
+?_HLDMAZE01_TXT1
+	TextOpen			()
+	TextIcon			(ICON_GUY02)
+	TextWrite			("Don't hurt me!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("I'm not here to=")
+						("hurt you, I'm")
+						("here to=")
+						("rescue you!")
+	TextIcon			(ICON_GUY02)
+	TextWrite			("THANKYOU!!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("What's that=")
+						("switch over")
+						("there for?")
+	TextIcon			(ICON_GUY02)
+	TextWrite			("I don't know,=")
+						("but they told")
+						("me not to=")
+						("touch it.")
+						("Well... Bye.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_HLDMAZE01_TXT2
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-IT'S LOCKED-")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	
+?_HLDMAZE01_TXT3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-TONY UNLOCKS=")
+						("THE DOOR. THE")
+						("KEY JAMS AND=")
+						("BREAKS IN THE")
+						("LOCK-")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetEventText		(1)
+	End					()	

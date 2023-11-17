@@ -1,0 +1,40 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_JELLYBEANS_ANIM
+
+	Frame:			(96,0,0,?JELLYBEANS01)
+	FrameBlock:		(2,0,0)
+					(?JELLYBEANS02)
+					(?JELLYBEANS03)
+					(?JELLYBEANS04)
+					(?JELLYBEANS05)
+					(?JELLYBEANS04)
+					(?JELLYBEANS03)
+					(?JELLYBEANS02)
+
+	JumpLocal		(?_JELLYBEANS_ANIM)
+
+?_JELLYBEANS_FLY_UP_ANIM
+
+	Frame:			(96,0,-3,?JELLYBEANS01)
+
+	JumpLocal		(?_JELLYBEANS_FLY_UP_ANIM)
+
+?_JELLYBEANS_THROW_ANIM
+	
+	Frame:			(10,-4,0,?JELLYBEANS01)
+					(2,-3,0,?JELLYBEANS01)
+					(2,-3,1,?JELLYBEANS01)
+					(2,-2,1,?JELLYBEANS01)
+					(2,-1,1,?JELLYBEANS01)
+					(2,-1,2,?JELLYBEANS01)
+					(2,0,3,?JELLYBEANS01)
+					(2,-1,-2,?JELLYBEANS01)
+					(2,-1,-1,?JELLYBEANS01)
+					(2,-1,1,?JELLYBEANS01)
+					(2,-1,2,?JELLYBEANS01)
+					(2,-1,3,?JELLYBEANS01)
+	
+	JumpLocal		(?_JELLYBEANS_ANIM)

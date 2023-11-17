@@ -1,0 +1,209 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_VALKAN_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?VALKAN_WALK01_BACK)
+					(?VALKAN_WALK02_BACK)
+					(?VALKAN_WALK03_BACK)
+					(?VALKAN_WALK02_BACK)
+					
+	JumpLocal:		(?_VALKAN_WALK_UP_ANIM)
+
+/********************************/
+?_VALKAN_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?VALKAN_WALK01_FRONT)
+					(?VALKAN_WALK02_FRONT)
+					(?VALKAN_WALK03_FRONT)
+					(?VALKAN_WALK02_FRONT)
+					
+	JumpLocal:		(?_VALKAN_WALK_DOWN_ANIM)
+
+/********************************/
+?_VALKAN_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?VALKAN_WALK01_LEFT)
+					(?VALKAN_WALK02_LEFT)
+					(?VALKAN_WALK03_LEFT)
+					(?VALKAN_WALK02_LEFT)
+					
+	JumpLocal:		(?_VALKAN_WALK_LEFT_ANIM)
+
+/********************************/
+?_VALKAN_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?VALKAN_WALK01_RIGHT)
+					(?VALKAN_WALK02_RIGHT)
+					(?VALKAN_WALK03_RIGHT)
+					(?VALKAN_WALK02_RIGHT)
+					
+	JumpLocal:		(?_VALKAN_WALK_RIGHT_ANIM)
+
+/********************************/
+?_VALKAN_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?VALKAN_WALK01_BACK)
+					(?VALKAN_WALK02_BACK)
+					(?VALKAN_WALK03_BACK)
+					(?VALKAN_WALK02_BACK)
+					
+	JumpLocal:		(?_VALKAN_RUN_UP_ANIM)
+
+/********************************/
+?_VALKAN_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?VALKAN_WALK01_FRONT)
+					(?VALKAN_WALK02_FRONT)
+					(?VALKAN_WALK03_FRONT)
+					(?VALKAN_WALK02_FRONT)
+					
+	JumpLocal:		(?_VALKAN_RUN_DOWN_ANIM)
+
+/********************************/
+?_VALKAN_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?VALKAN_WALK01_LEFT)
+					(?VALKAN_WALK02_LEFT)
+					(?VALKAN_WALK03_LEFT)
+					(?VALKAN_WALK02_LEFT)
+					
+	JumpLocal:		(?_VALKAN_RUN_LEFT_ANIM)
+
+/********************************/
+?_VALKAN_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?VALKAN_WALK01_RIGHT)
+					(?VALKAN_WALK02_RIGHT)
+					(?VALKAN_WALK03_RIGHT)
+					(?VALKAN_WALK02_RIGHT)
+					
+	JumpLocal:		(?_VALKAN_RUN_RIGHT_ANIM)
+
+/********************************/
+?_VALKAN_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?VALKAN_WALK02_BACK)
+	
+	JumpLocal:		(?_VALKAN_STAND_UP_ANIM)
+
+/********************************/
+?_VALKAN_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?VALKAN_WALK02_FRONT)
+	
+	JumpLocal:		(?_VALKAN_STAND_DOWN_ANIM)
+
+/********************************/
+?_VALKAN_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?VALKAN_WALK02_LEFT)
+	
+	JumpLocal:		(?_VALKAN_STAND_LEFT_ANIM)
+
+/********************************/
+?_VALKAN_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?VALKAN_WALK02_RIGHT)
+	
+	JumpLocal:		(?_VALKAN_STAND_RIGHT_ANIM)
+
+/********************************/
+?_VALKAN_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?VALKAN_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_VALKAN_STAND_UL_ANIM)
+
+/********************************/
+?_VALKAN_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?VALKAN_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_VALKAN_STAND_UR_ANIM)
+
+/********************************/
+?_VALKAN_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?VALKAN_STAND_LEFT)
+	
+	JumpLocal:		(?_VALKAN_STAND_DL_ANIM)
+
+/********************************/
+?_VALKAN_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?VALKAN_STAND_RIGHT)
+	
+	JumpLocal:		(?_VALKAN_STAND_DR_ANIM)
+
+/********************************/
+?_VALKAN_BLINK_UP_ANIM
+
+	Frame:			(1,0,0,?VALKAN_WALK02_BACK)
+	Pass			()
+
+	JumpLocal:		(?_VALKAN_BLINK_UP_ANIM)
+
+/********************************/
+?_VALKAN_SLIDE_DOWN_ANIM
+
+	Frame:			(1,0,1,?VALKAN_WALK02_BACK)
+	
+	JumpLocal:		(?_VALKAN_SLIDE_DOWN_ANIM)
+
+/********************************/
+?_VALKAN_SPEAR_LEFT_ANIM
+
+	Frame:			(4,0,0,?SPEAR01_LEFT)
+
+?_VALKAN_SPEARING_LEFT_ANIM
+
+	Frame:			(1,-2,0,?SPEAR02_LEFT)
+
+	JumpLocal:		(?_VALKAN_SPEARING_LEFT_ANIM)
+
+/********************************/
+?_VALKAN_SPEAR_RIGHT_ANIM
+
+	Frame:			(4,0,0,?SPEAR01_RIGHT)
+
+?_VALKAN_SPEARING_RIGHT_ANIM
+
+	Frame:			(1,2,0,?SPEAR02_RIGHT)
+
+	JumpLocal:		(?_VALKAN_SPEARING_RIGHT_ANIM)
+
+/********************************/
+?_FACE_VALKAN
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_VALKAN_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_VALKAN_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_VALKAN_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_VALKAN_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

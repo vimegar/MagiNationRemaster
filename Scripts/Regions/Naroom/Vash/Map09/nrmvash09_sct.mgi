@@ -1,0 +1,51 @@
+/****************************************/
+//	SECRET PASSAGEWAY FROM POAD'S TO SHOP
+/****************************************/
+//	From Poad's
+?_NRMVASH09B
+	SceneNew			()
+	LoadMap				(MAP_NRMVASH09B)
+	LoadHotspots		(HS_NRMVASH09B)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,14,17,11,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_wencehouse)
+	SceneReady			()
+	End					()
+
+/****************************************/
+//	Connector
+?_NRMVASH09C
+	SceneNew			()
+	LoadMap				(MAP_NRMVASH09C)
+	LoadHotspots		(HS_NRMVASH09C)
+//	LoadTriggers		(TR_NRMVASH09C)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,14,17,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_wencehouse)
+	SceneReady			()
+	End					()
+
+/****************************************/
+//	From Shop
+?_NRMVASH09D
+	SceneNew			()
+	LoadMap				(MAP_NRMVASH09B)
+	LoadHotspots		(HS_NRMVASH09D)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,14,17,11,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_wencehouse)
+	SceneReady			()
+	End					()
+
+/****************************************/
+//	END SECRET PASSAGEWAY FROM POAD'S TO SHOP
+/****************************************/

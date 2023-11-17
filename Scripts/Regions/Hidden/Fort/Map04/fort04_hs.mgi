@@ -1,0 +1,15 @@
+/********************************/
+		FileHotspots	(HS_HDNFORT04)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNFORT04_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_HDNFORT04_DR_2)
+
+/********************************/
+// WARP TO VASH FROM ARDERIAL
+/********************************/
+		FileHotspots	(HS_HDNFORT04B)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNFORT04B_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNFORT04B_DR_2)
+
+/********************************/
+// WARP TO VASH FROM ARDERIAL
+/********************************/

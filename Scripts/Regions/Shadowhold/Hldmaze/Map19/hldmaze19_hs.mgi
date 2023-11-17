@@ -1,0 +1,5 @@
+/********************************/
+		FileHotspots	(HS_HLDMAZE19)
+						(HOTSPOT_TRIGGER_NORTH,?_HLDMAZE19_DR_1)
+						(HOTSPOT_TRIGGER_EAST,?_HLDMAZE19_DR_2)
+						(HOTSPOT_TRIGGER_EAST,?_HLDMAZE19_DR_3)

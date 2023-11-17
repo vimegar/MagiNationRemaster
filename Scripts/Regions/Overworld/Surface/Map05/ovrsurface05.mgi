@@ -1,0 +1,67 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\OVERWORLD\SURFACE\MAP05\OVRSURFACE05_DR.MGI
+%INCLUDE					REGIONS\OVERWORLD\SURFACE\MAP05\OVRSURFACE05_TXT.MGI
+
+/********************************/
+//Arderial area
+?_OVRSURFACE05_LOAD
+?_OVRSURFACE05
+	SongFadeOut				(30)
+	SceneNew				()
+
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,5)
+
+	SetEncounter			(?_OROFLYER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_OVRSURFACE05)	
+
+	LoadMap					(MAP_OVRSURFACE05)
+	LoadHotspots			(HS_OVERSURFACE05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,35,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TRAP_AI,16,8,35,0,?_OVERWORLD_GEYSER_ANIM,?_ARD_GEYSER_ENTER)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,0,0)
+	ThatActorStart			(HEROACTOR)
+	If						([GC != GC_ARDERIAL_GEYSER],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,7,31,31,31)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	SongStart				(SONGID_overworld)
+	End						()
+
+?_ARD_GEYSER_ENTER
+	SetLoadScript			(?_ARD_GEYSER_ENTER)
+	HeroSetDoor				(11,23)
+	Jump					(?_ARDGEYSER01)
+
+/********************************//********************************/
+//	OROTHAN FLYER RANDOM BATTLES
+/********************************//********************************/
+?_OROFLYER_RNDBAT
+
+	JumpRandom				(_BTL1)
+							(_BTL2)
+							(_BTL3)
+							(_BTL4)
+
+_BTL1
+	HeroToDoor				(0,0,0,0)
+	ScreenWipe				(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+	BtlNew					(ARDERIAL_ARENA1,MAGI_RND1,43,?_BATTLE_FADE_IN)
+	BtlSummonDelay			(BTL_ID_MAGI,ORATHAN_F,60,255,1)
+	BtlAuto					()
+
+_BTL2
+_BTL3
+_BTL4
+	End						()
+
+/********************************//********************************/
+//	END OROTHAN FLYER RANDOM BATTLES
+/********************************//********************************/

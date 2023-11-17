@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP08\NRMGLADE08_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP08\NRMGLADE08_TXT.MGI
+
+/********************************/
+?_NRMGLADE08
+	SceneNew			()
+	LoadMap				(MAP_NRMGLADE08)
+	LoadHotspots		(HS_NRMGLADE08)
+	SetBtlReturn		(?_NRMGLADE08)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,12,0,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart		(ACTOR1E)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	HeroFromDoor		()
+	HeroSetCamera		()
+
+	If					([GAMECOUNT=GC_FIND_ORWIN],_SKIP)
+	SongStart			(SONGID_glade)
+	SceneReady			()
+	End					()
+_SKIP
+	SongStart			(SONGID_forest)
+	SceneReady			()
+	End					()

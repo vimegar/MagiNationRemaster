@@ -1,0 +1,89 @@
+/********************************//********************************/
+// TRYN'S COUSINS
+/********************************//********************************/
+?_CLDLAVATOWN08_TRYNCOUSINS
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN08)
+	LoadHotspots			(HS_CLDLAVATOWN08)
+	LoadTriggers			(TR_CLDLAVATOWN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,5,16,0,?_GIRL03_STAND_UR_ANIM,?_CLDTOWN08_TC1_INTRO)
+	ThatActorInit			(ACTOR01,?TALKER_AI,3,7,16,0,?_GIRL03_STAND_DOWN_ANIM,?_CLDTOWN08_TC2_INTRO)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	LoadVRAMTiles			(48,BIT_GIRL03,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+
+?_CLDTOWN08_TC1_INTRO
+	ThisActorSetAnim	(?_GIRL03_STAND_UR_ANIM)
+	Switch				([TCState])
+						(0,_TC1_TXT1)
+						(1,_TC1_TXT2)
+						(2,_TC1_TXT3)
+_TC1_TXT1
+	SetXRAMByte			(TCState,1)
+	SetText				(?_CLDTOWN08_TC1_TXT01)
+	Jump				(?_FACE_GIRL03)
+_TC1_TXT2
+	SetXRAMByte			(TCState,2)
+	SetText				(?_CLDTOWN08_TC1_TXT02)
+	Jump				(?_FACE_GIRL03)
+_TC1_TXT3
+	SetText				(?_CLDTOWN08_TC1_TXT03)
+	Jump				(?_FACE_GIRL03)
+
+?_CLDTOWN08_TC2_INTRO
+	ThisActorSetAnim	(?_GIRL03_STAND_DOWN_ANIM)
+	Switch				([TCState])
+						(0,_TC2_TXT1)
+						(1,_TC2_TXT2)
+						(2,_TC2_TXT3)
+_TC2_TXT1
+	SetXRAMByte			(TCState,1)
+	SetText				(?_CLDTOWN08_TC2_TXT01)
+	Jump				(?_FACE_GIRL03)
+_TC2_TXT2
+	SetXRAMByte			(TCState,2)
+	SetText				(?_CLDTOWN08_TC2_TXT02)
+	Jump				(?_FACE_GIRL03)
+_TC2_TXT3
+	SetText				(?_CLDTOWN08_TC2_TXT03)
+	Jump				(?_FACE_GIRL03)
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDLAVATOWN08_COLDSHOULDER
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN08)
+	LoadHotspots			(HS_CLDLAVATOWN08)
+	LoadTriggers			(TR_CLDLAVATOWN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,11,4,16,0,?_BOY_STAND_DOWN_ANIM,?_CLDTOWN08_BOY_CHILL)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN08_BOY_CHILL
+	SetText				(?_CLDTOWN08_BOY_TXT02)
+	Jump				(?_FACE_BOY)			
+	
+
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+

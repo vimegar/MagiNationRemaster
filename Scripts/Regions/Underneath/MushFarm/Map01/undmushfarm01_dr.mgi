@@ -1,0 +1,10 @@
+/********************************/
+?_UNDMUSHFARM01_DR_1
+		SetLoadScript	(?_UNDMUSHFARM01_DR_1)
+		HeroSetDoor		(33,21)
+		Jump			(?_OVRSURFACE02)
+
+?_UNDMUSHFARM01_DR_2
+		HeroToDoor		(11,9,9,19)
+		Jump			(?_UNDMUSHFARM02)
+		End				()

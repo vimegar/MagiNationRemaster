@@ -1,0 +1,199 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP16\HLDMAZE16_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP16\HLDMAZE16_TXT.MGI
+
+/********************************/
+// OCCUPIED CELLS: Tony frees the prisoners
+/********************************/
+
+?_HLDMAZE16
+	SceneNew				()
+	LoadMap					(MAP_HLDMAZE16)
+	LoadHotspots			(HS_HLDMAZE16)
+	//LoadEncounters		(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE16_RE_ENTER)
+	LoadTriggers			(TR_HLDMAZE16)
+?_HLDMAZE16_RETURN
+	LoadVRAM				(VRM_HLDMAZE,PAL_HLDMAZE)
+	SongStart				(SONGID_shadowhold)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,55,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter			(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_HLDMAZE16_RETURN)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	If						([!DOOR_5],_SKIP1)
+	CopyTileBlock			(55,31,27,2,2,16,27)
+_SKIP1
+	If						([!DOOR_6],_SKIP2)
+	CopyTileBlock			(55,31,27,2,2,44,27)
+_SKIP2
+	If						([HldPrisoner6],_HLDMAZE16_NEXT)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,16,31,55,0,?_MAN03_STAND_UP_ANIM,?_HLDMAZE16_PRISONER_FREE1)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_MAN03,0,0)
+_HLDMAZE16_NEXT
+	If						([HldPrisoner7],_HLDMAZE16_NEXT_END)
+	ThatActorInit			(ACTOR01,?TRIGGER_AI,45,31,55,48,?_MAN04_STAND_UP_ANIM,?_HLDMAZE16_PRISONER_FREE2)
+	ThatActorStart			(ACTOR01)
+	LoadVRAMTiles			(48,BIT_MAN04,48,0)
+_HLDMAZE16_NEXT_END
+	SceneReady				()
+	End						()
+
+?_HLDMAZE16_PRISONER_FREE1
+	SetXRAMBit				(HldPrisoner6,TRUE)
+	SetText					(?_HLDMAZE16_TXT1)
+	Switch					([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+
+_UP
+	ThisActorSetAnim		(?_MAN03_STAND_UP_ANIM)
+	WaitEventText			(1)
+	Jump					(_GO_AROUND)
+_DOWN
+	ThisActorSetAnim		(?_MAN03_STAND_DOWN_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_LEFT
+	ThisActorSetAnim		(?_MAN03_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_RIGHT
+	ThisActorSetAnim		(?_MAN03_STAND_RIGHT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+
+_MOVE_IT
+	ThisActorSetAnimDelay	(?_MAN03_RUN_UP_ANIM,32)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+_GO_AROUND
+	ThisActorSetAnimDelay	(?_MAN03_RUN_RIGHT_ANIM,8)
+							(?_MAN03_RUN_UP_ANIM,24)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+
+?_HLDMAZE16_PRISONER_FREE2
+	SetXRAMBit				(HldPrisoner7,TRUE)
+	SetText					(?_HLDMAZE16_TXT2)
+	Switch					([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+
+_UP
+	ThisActorSetAnim		(?_MAN04_STAND_UP_ANIM)
+	WaitEventText			(1)
+	Jump					(_GO_AROUND)
+_DOWN
+	ThisActorSetAnim		(?_MAN04_STAND_DOWN_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_LEFT
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+_RIGHT
+	ThisActorSetAnim		(?_MAN04_STAND_RIGHT_ANIM)
+	WaitEventText			(1)
+	Jump					(_MOVE_IT)
+
+_MOVE_IT
+	ThisActorSetAnimDelay	(?_MAN04_RUN_UP_ANIM,32)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+_GO_AROUND
+	ThisActorSetAnimDelay	(?_MAN04_RUN_LEFT_ANIM,8)
+							(?_MAN04_RUN_UP_ANIM,24)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+
+/********************************/
+// END OCCUPIED CELLS
+/********************************/
+
+/********************************/
+// LOCKING/UNLOCKING DOOR 5 (BIT)
+/********************************/
+
+?_HLDMAZE16_DOOR3_LOCKED
+	If						([INV_ITEM_ShadowKey > 0],?_HLDMAZE16_UNLOCK_DOOR3)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_UP_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetText					(?_HLDMAZE16_TXT3)
+	WaitEventText			(3)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	Jump					(?_HLDMAZE16_DOOR3_LOCKED_END)
+?_HLDMAZE16_UNLOCK_DOOR3
+	SetText					(?_HLDMAZE16_TXT4)
+	WaitEventText			(1)
+	CopyTileBlock			(55,31,27,2,2,16,27)
+	ExprXRAMByte			(INV_ITEM_ShadowKey,[INV_ITEM_ShadowKey - 1])
+	SetXRAMBit				(DOOR_5,TRUE)
+?_HLDMAZE16_DOOR3_LOCKED_END
+	End						()
+
+/********************************/
+// LOCKING/UNLOCKING DOOR 6	(BIT)
+/********************************/
+
+?_HLDMAZE16_DOOR4_LOCKED
+	If						([INV_ITEM_ShadowKey > 0],?_HLDMAZE16_UNLOCK_DOOR4)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_UP_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	SetText					(?_HLDMAZE16_TXT3)
+	WaitEventText			(3)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	Jump					(?_HLDMAZE16_DOOR4_LOCKED_END)
+?_HLDMAZE16_UNLOCK_DOOR4
+	SetText					(?_HLDMAZE16_TXT4)
+	WaitEventText			(1)
+	CopyTileBlock			(55,31,27,2,2,44,27)
+	ExprXRAMByte			(INV_ITEM_ShadowKey,[INV_ITEM_ShadowKey - 1])
+	SetXRAMBit				(DOOR_6,TRUE)
+?_HLDMAZE16_DOOR4_LOCKED_END
+	End						()
+	
+/********************************/
+// SCROLL TO WIERD THING (when walking on the door)
+/********************************/
+	
+?_HLDMAZE16_GRUSOME_D
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	Delay					(64)
+	ScrollMap				(116,0,-1)
+							(48,0,0)
+							(48,1,0)
+							(48,0,0)
+							(48,-1,0)
+							(116,0,1)
+	SetText					(?_HLDMAZE16_TXT5)
+	WaitEventText			(5)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+	
+	

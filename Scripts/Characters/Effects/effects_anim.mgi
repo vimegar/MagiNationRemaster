@@ -1,0 +1,128 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_HEADSPIN_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?HEADSPIN01)
+					(?HEADSPIN02)
+	
+	JumpLocal		(?_HEADSPIN_ANIM)
+
+?_HEADSPIN_UP_ANIM
+
+	FrameBlock:		(4,0,-2)
+					(?HEADSPIN01)
+					(?HEADSPIN02)
+	
+	JumpLocal		(?_HEADSPIN_UP_ANIM)
+
+
+?_HEADSPIN_DOWN_ANIM
+
+	FrameBlock:		(4,0,2)
+					(?HEADSPIN01)
+					(?HEADSPIN02)
+	
+	JumpLocal		(?_HEADSPIN_DOWN_ANIM)
+
+
+?_HEADSPIN_LEFT_ANIM
+
+	FrameBlock:		(4,-2,0)
+					(?HEADSPIN01)
+					(?HEADSPIN02)
+	
+	JumpLocal		(?_HEADSPIN_LEFT_ANIM)
+
+
+?_HEADSPIN_RIGHT_ANIM
+
+	FrameBlock:		(4,2,0)
+					(?HEADSPIN01)
+					(?HEADSPIN02)
+	
+	JumpLocal		(?_HEADSPIN_RIGHT_ANIM)
+
+/********************************/
+?_SMOKE_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?SMOKE01)
+					(?SMOKE02)
+					(?SMOKE03)
+					(?SMOKE04)
+					(?SMOKE05)
+					(?SMOKE06)
+					(?SMOKE07)
+					(?SMOKE08)
+	
+	End				()
+	
+/********************************/
+?_SMOKE2_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?SMOKE01B)
+					(?SMOKE02B)
+					(?SMOKE03B)
+					(?SMOKE04B)
+					(?SMOKE05B)
+					(?SMOKE06B)
+					(?SMOKE07B)
+					(?SMOKE08B)
+	
+	End				()
+
+/********************************/
+?_BIG_SMOKE_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?SMOKE_01)
+					(?SMOKE_02)
+					(?SMOKE_03)
+					(?SMOKE_04)
+					(?SMOKE_05)
+					(?SMOKE_06)
+					(?SMOKE_07)
+					(?SMOKE_08)
+					(?SMOKE_09)
+	
+	End				()
+
+/********************************/
+?_BLAST_LEFT_ANIM
+	
+	FrameBlock		(4,-2,0)
+					(?MORAG_BLAST01LEFT)
+					(?MORAG_BLAST02LEFT)
+	
+	JumpLocal		(?_BLAST_LEFT_ANIM)
+
+/********************************/
+?_BLAST_RIGHT_ANIM
+
+	FrameBlock		(4,2,0)
+					(?MORAG_BLAST01RIGHT)
+					(?MORAG_BLAST02RIGHT)
+
+	JumpLocal		(?_BLAST_RIGHT_ANIM)
+
+/********************************/
+?_BLAST_UP_ANIM
+
+	FrameBlock		(4,0,-2)
+					(?MORAG_BLASTBACK01)
+					(?MORAG_BLASTBACK02)
+
+	JumpLocal		(?_BLAST_UP_ANIM)
+
+/********************************/
+?_BLAST_DOWN_ANIM
+
+	FrameBlock		(4,0,2)
+					(?MORAG_BLASTFRONT01)
+					(?MORAG_BLASTFRONT02)
+
+	JumpLocal		(?_BLAST_DOWN_ANIM)

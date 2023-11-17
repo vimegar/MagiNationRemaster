@@ -1,0 +1,4308 @@
+;Size:4009
+                     
+;********************************
+; C:\Work\Patrick's Project\scripts\BATTLEGFX\FX\FX_ANIM.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_FIREBALL_LEFT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_LEFT1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_LEFT2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_LEFT3&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FIREBALL_LEFT_ANIM&$FFFF)
+
+;********************************
+?_FIREBALL_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_RIGHT1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_RIGHT2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?FIREBALL_RIGHT3&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FIREBALL_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_CLAW_LEFT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT7&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_LEFT8&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CLAW_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CLAW_RIGHT7&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_BUBBLE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$02
+		DB	$FE
+		DW	(?BUBBLE_1&$FFFF)
+		DB	$04
+		DB	$FE
+		DB	$FE
+		DW	(?BUBBLE_2&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$FE
+		DW	(?BUBBLE_3&$FFFF)
+		DB	$04
+		DB	$FE
+		DB	$FE
+		DW	(?BUBBLE_3&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$FE
+		DW	(?BUBBLE_4&$FFFF)
+		DB	$04
+		DB	$FE
+		DB	$FE
+		DW	(?BUBBLE_4&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$FE
+		DW	(?BUBBLE_4&$FFFF)
+		DB	$04
+		DB	$FE
+		DB	$FE
+		DW	(?BUBBLE_4&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BUBBLE_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_IMPACT_LEFT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_LEFT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_LEFT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_LEFT_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_LEFT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_IMPACT_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_RIGHT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_RIGHT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_RIGHT_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?IMPACT_RIGHT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CRUSHROCK_CW_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_7&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?ROCK_CW_8&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+;********************************
+?_CRUSHROCK_EXPLODE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRUMBLE_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRUMBLE_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRUMBLE_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRUMBLE_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_SONIC_OPEN_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$0A
+		DB	$01
+		DB	$00
+		DW	(?SONIC_1&$FFFF)
+		DB	$0A
+		DB	$02
+		DB	$00
+		DW	(?SONIC_2&$FFFF)
+		DB	$0A
+		DB	$03
+		DB	$00
+		DW	(?SONIC_3&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_SONIC_FULL_RIGHT_ANIM
+		DW	(?_SONIC_FULL_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_SONIC_OPEN_STILL_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$0A
+		DB	$00
+		DB	$00
+		DW	(?SONIC_1&$FFFF)
+		DB	$0A
+		DB	$00
+		DB	$00
+		DW	(?SONIC_2&$FFFF)
+		DB	$0A
+		DB	$00
+		DB	$00
+		DW	(?SONIC_3&$FFFF)
+		DB	$00
+
+;********************************
+?_SONIC_FULL_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$04
+		DB	$00
+		DW	(?SONIC_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SONIC_FULL_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_BITE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BITE_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BITE_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BITE_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BITE_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HIT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?HIT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?HIT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?HIT_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?HIT_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?HIT_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CYCLONE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_M_1&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_M_1&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_M_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_M_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_M_3&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_M_3&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_M_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_M_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_L_1&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_L_1&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_L_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_L_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_L_3&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_L_3&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_L_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_L_4&$FFFF)
+		DB	$02
+		DB	$03
+		DB	$00
+		DW	(?CYCLONE_XL_1&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_XL_1&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_XL_2&$FFFF)
+		DB	$02
+		DB	$FD
+		DB	$00
+		DW	(?CYCLONE_XL_2&$FFFF)
+		DB	$02
+		DB	$FD
+		DB	$00
+		DW	(?CYCLONE_XL_3&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_XL_3&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_XL_4&$FFFF)
+		DB	$02
+		DB	$03
+		DB	$00
+		DW	(?CYCLONE_XL_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_L_1&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_L_1&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_L_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_L_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_L_3&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_L_3&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_L_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_L_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_M_1&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_M_1&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_M_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_M_2&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?CYCLONE_M_3&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_M_3&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_M_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?CYCLONE_M_4&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_2&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?CYCLONE_S_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_FIRD_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$03
+		DB	$00
+		DW	(?FIRD_1&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$00
+		DW	(?FIRD_2&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$00
+		DW	(?FIRD_3&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$00
+		DW	(?FIRD_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FIRD_ANIM&$FFFF)
+
+;********************************
+?_FIRD_UR_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$03
+		DB	$FD
+		DW	(?FIRD_1&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$FD
+		DW	(?FIRD_2&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$FD
+		DW	(?FIRD_3&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$FD
+		DW	(?FIRD_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FIRD_UR_ANIM&$FFFF)
+
+;********************************
+?_FIRD_DR_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$03
+		DB	$03
+		DW	(?FIRD_1&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$03
+		DW	(?FIRD_2&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$03
+		DW	(?FIRD_3&$FFFF)
+		DB	$04
+		DB	$03
+		DB	$03
+		DW	(?FIRD_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+;********************************
+?_BLAST_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_BLASTWABE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BLAST_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_SWIRLY_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FD
+		DB	$00
+		DW	(?SWIRL_1&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?SWIRL_1&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?SWIRL_2&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?SWIRL_2&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?SWIRL_3&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?SWIRL_3&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?SWIRL_4&$FFFF)
+		DB	$02
+		DB	$03
+		DB	$00
+		DW	(?SWIRL_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SWIRLY2_ANIM&$FFFF)
+
+;********************************
+?_SWIRLY2_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$03
+		DB	$00
+		DW	(?SWIRL_1&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?SWIRL_1&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?SWIRL_2&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?SWIRL_2&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?SWIRL_3&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?SWIRL_3&$FFFF)
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?SWIRL_4&$FFFF)
+		DB	$02
+		DB	$FD
+		DB	$00
+		DW	(?SWIRL_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SWIRLY_ANIM&$FFFF)
+
+;********************************
+?_LIGHTNINGBOLT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BOLT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BOLT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BOLT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_RIPPINGBOLT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_1&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_2&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_3&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_1&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_2&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_3&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_1&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_2&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_3&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_1&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_2&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?BOLT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_SLINKY_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SLINKY_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SLINKY_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SLINKY_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SLINKY_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SLINKY_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_SMOKEBRAST_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SMOKE_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SMOKE_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SMOKE_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SMOKE_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SMOKE_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_STAR_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STAR_7&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_WIND_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_7&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_WIND2_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_5&$FFFF)
+		DB	$01
+		DB	$04
+		DB	$F8
+		DW	(?WIND_2&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?WIND_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_5&$FFFF)
+		DB	$01
+		DB	$04
+		DB	$F8
+		DW	(?WIND_2&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?WIND_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?WIND_7&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_ICE_BLOCK_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?ICE_CUBE&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_BLOCK_ANIM&$FFFF)
+
+;********************************
+?_ICE_CRUMBLE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_BIT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_BIT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_BIT_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_BIT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_CRUMBLE_ANIM&$FFFF)
+
+;********************************
+?_ICE_CRUMBLE2_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_CRUMB_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_CRUMB_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_CRUMB_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?ICE_CRUMB_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_CRUMBLE2_ANIM&$FFFF)
+
+;********************************
+?_ICE_FLAKY_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_BIT_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_BIT_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_BIT_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_BIT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_FLAKY_ANIM&$FFFF)
+
+;********************************
+?_ICE_FLAKY2_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_4&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_FLAKY2_ANIM&$FFFF)
+
+;********************************
+?_ICE_FLAKY_DISSOLVE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SNOW_CRUMB_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_ICE_FLAKY2_ANIM&$FFFF)
+
+;********************************
+?_BRAMBLE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_7&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_8&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_9&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_10&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_11&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_12&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_13&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_14&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_15&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_16&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_BRAMBLE_STAY_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?BRAMBLE_16&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_BRAMBLE_STAY_ANIM&$FFFF)
+
+;********************************
+?_CRACK_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?CRACK_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRACK_2&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?CRACK_3&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?CRACK_4&$FFFF)
+		DB	$20
+		DB	$00
+		DB	$00
+		DW	(?CRACK_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRACK_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRACK_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRACK_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?CRACK_1&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CURSE_1_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT1_1&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_CURSE_1_ANIM&$FFFF)
+
+;********************************
+?_CURSE_1_BURN_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT1_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT1_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT1_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT1_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CURSE_2_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT2_1&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_CURSE_2_ANIM&$FFFF)
+
+;********************************
+?_CURSE_2_BURN_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT2_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT2_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT2_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT2_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CURSE_3_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT3_1&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_CURSE_3_ANIM&$FFFF)
+
+;********************************
+?_CURSE_3_BURN_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT3_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT3_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT3_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT3_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_CURSE_4_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT4_1&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_CURSE_4_ANIM&$FFFF)
+
+;********************************
+?_CURSE_4_BURN_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT4_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT4_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT4_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?SANSKRIT4_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_HAUNT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?HAUNT_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_MUNCH_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_5&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?MUNCH_6&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_ROOTS_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_1&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_2&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_3&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_4&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_5&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_6&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_7&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_8&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_9&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_10&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_11&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_12&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_13&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_14&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_15&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_16&$FFFF)
+		DB	$00
+
+;********************************
+_LOOP
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?ROOTS_17&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(_LOOP&$FFFF)
+
+;********************************
+?_SQUIRT_SHOOT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SQUIRT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SQUIRT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+;********************************
+?_SQUIRT_SHOOT_RIGHT_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?SQUIRT_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?SQUIRT_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_SQUIRT_SPLASH_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$00
+		DW	(?SPLASH_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_SQUIRT_SPLASH_ANIM&$FFFF)
+
+;********************************
+?_STING_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STING_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STING_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STING_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STING_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?STING_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_TERROR_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?TERROR_4&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?TERROR_3&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+;********************************
+_LOOP
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TERROR_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(_LOOP&$FFFF)
+
+;********************************
+?_TERROR_GONE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$01
+		DW	(?TERROR_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_TIMBER_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$12
+		DB	$00
+		DB	$06
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FD
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FE
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FF
+		DW	(?TIMBER_1&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$01
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$02
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?TIMBER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$FE
+		DW	(?TIMBER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$FF
+		DW	(?TIMBER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TIMBER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?TIMBER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$02
+		DW	(?TIMBER_1&$FFFF)
+		DB	$00
+
+;********************************
+_LOOP
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?TIMBER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(_LOOP&$FFFF)
+
+;********************************
+?_TINYFIRE_FLAME_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_6&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_7&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYFLAME_8&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TINYFIRE_FLAME_ANIM&$FFFF)
+
+;********************************
+?_TINYFIRE_TRAIL_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYTRAIL_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYTRAIL_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?DINKYTRAIL_3&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TINYFIRE_TRAIL_ANIM&$FFFF)
+
+;********************************
+?_TORNADO_SLOW_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_1&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_2&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_3&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_4&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_5&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TORNADO_SLOW_ANIM&$FFFF)
+
+;********************************
+?_TORNADO_NORM_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_5&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TORNADO_NORM_ANIM&$FFFF)
+
+;********************************
+?_TORNADO_FAST_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_2&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_4&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?TORNADO_5&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TORNADO_FAST_ANIM&$FFFF)
+
+;********************************
+?_INFERNO_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?INFERNO_1&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?INFERNO_2&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?INFERNO_3&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?INFERNO_4&$FFFF)
+		DB	$03
+		DB	$00
+		DB	$00
+		DW	(?INFERNO_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_LAVA_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?LAVA_6&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_MAUL_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MAUL_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MAUL_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MAUL_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?MAUL_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_EXECUTIONER_ANIM
+	DB	CMD_SFX
+		DB	SFXID_DRAIN
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?EXECUTIONER_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?EXECUTIONER_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?EXECUTIONER_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?EXECUTIONER_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_1&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_2&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_3&$FFFF)
+		DB	$00
+
+	DB	CMD_OVERLAYFRAME
+		DB	$18
+		DB	$00
+		DB	$00
+		DW	(?EXECUTIONER_4&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_DRAIN
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?EXECUTIONER_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?EXECUTIONER_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?EXECUTIONER_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$00
+		DB	$FF
+		DW	(?EXECUTIONER_4&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_GALE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_5&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?GALE_6&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_TIDE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TSUNAMI_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TSUNAMI_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TSUNAMI_3&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TSUNAMI_4&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?TSUNAMI_5&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_TSUNAMI_ANIM
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_5&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_5&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_5&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$04
+		DB	$00
+		DW	(?TSUNAMI_5&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_END
+
+;********************************
+?_JUDGE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_2&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_4&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_2&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_4&$FFFF)
+		DB	$0C
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_3&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$00
+		DB	$00
+		DW	(?JUDGE_1&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_GRAVITY_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_1&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_2&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_3&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$FE
+		DB	$00
+		DW	(?GRAVITY_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$01
+		DB	$02
+		DB	$00
+		DW	(?GRAVITY_4&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_END
+
+;********************************
+?_LEAF_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_1&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_2&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_3&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_4&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_5&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_6&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_7&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LEAF_8&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_LEAF_ANIM&$FFFF)
+
+;********************************
+?_LEAF_FAST_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_1&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_2&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_3&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_4&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_5&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_6&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_7&$FFFF)
+		DB	$02
+		DB	$04
+		DB	$00
+		DW	(?LEAF_8&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_LEAF_FAST_ANIM&$FFFF)
+
+;********************************
+?_THUNDER_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?THUNDER_1&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?THUNDER_2&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?THUNDER_3&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_MELODY_EIGHTH_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$18
+		DB	$02
+		DB	$01
+		DW	(?MELODY_8TH&$FFFF)
+		DB	$18
+		DB	$02
+		DB	$FF
+		DW	(?MELODY_8TH&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_MELODY_EIGHTH_ANIM&$FFFF)
+
+;********************************
+?_MELODY_SHARP_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$0C
+		DB	$02
+		DB	$01
+		DW	(?MELODY_SHARP&$FFFF)
+		DB	$0C
+		DB	$02
+		DB	$FF
+		DW	(?MELODY_SHARP&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_MELODY_SHARP_ANIM&$FFFF)
+
+;********************************
+?_MELODY_WHOLE_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$18
+		DB	$01
+		DB	$01
+		DW	(?MELODY_WHOLE&$FFFF)
+		DB	$18
+		DB	$03
+		DB	$FF
+		DW	(?MELODY_WHOLE&$FFFF)
+		DB	$18
+		DB	$03
+		DB	$01
+		DW	(?MELODY_WHOLE&$FFFF)
+		DB	$18
+		DB	$01
+		DB	$FF
+		DW	(?MELODY_WHOLE&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_MELODY_WHOLE_ANIM&$FFFF)
+
+;********************************
+?_HEARTS_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$0C
+		DB	$02
+		DB	$01
+		DW	(?HEARTS_1&$FFFF)
+		DB	$00
+
+	DB	CMD_OVERLAYFRAME
+		DB	$0C
+		DB	$02
+		DB	$01
+		DW	(?HEARTS_2&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$0C
+		DB	$02
+		DB	$FF
+		DW	(?HEARTS_1&$FFFF)
+		DB	$00
+
+	DB	CMD_OVERLAYFRAME
+		DB	$0C
+		DB	$02
+		DB	$FF
+		DW	(?HEARTS_2&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_HEARTS_ANIM&$FFFF)
+
+;********************************
+?_SWARM_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$04
+		DB	$FF
+		DW	(?SWARM&$FFFF)
+		DB	$04
+		DB	$04
+		DB	$00
+		DW	(?SWARM&$FFFF)
+		DB	$00
+
+	DB	CMD_SFX
+		DB	SFXID_JUMP
+
+	DB	CMD_OVERLAYFRAME
+		DB	$10
+		DB	$04
+		DB	$02
+		DW	(?SWARM&$FFFF)
+		DB	$04
+		DB	$04
+		DB	$01
+		DW	(?SWARM&$FFFF)
+		DB	$08
+		DB	$04
+		DB	$FF
+		DW	(?SWARM&$FFFF)
+		DB	$08
+		DB	$04
+		DB	$FE
+		DW	(?SWARM&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_PACK_FALL_THROUGH_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$7D
+		DB	$00
+		DB	$03
+		DW	(?PACK&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_PACK_FALL_DOWN_ANIM
+	DB	CMD_OVERLAYFRAME
+		DB	$12
+		DB	$00
+		DB	$06
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FD
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FE
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$FF
+		DW	(?PACK&$FFFF)
+		DB	$08
+		DB	$00
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$01
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$02
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$03
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$FE
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$FF
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$00
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$01
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$00
+		DB	$02
+		DW	(?PACK&$FFFF)
+		DB	$00
+
+;********************************
+_LOOP
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(_LOOP&$FFFF)
+
+;********************************
+?_PACK_JUMP_RIGHT_ANIM
+	DB	CMD_SFX
+		DB	SFXID_JUMP
+
+	DB	CMD_OVERLAYFRAME
+		DB	$04
+		DB	$02
+		DB	$FE
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$FF
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$01
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$01
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$02
+		DW	(?PACK&$FFFF)
+		DB	$0C
+		DB	$02
+		DB	$03
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$FE
+		DW	(?PACK&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$FF
+		DW	(?PACK&$FFFF)
+		DB	$04
+		DB	$02
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$00
+
+;********************************
+_LOOP
+	DB	CMD_OVERLAYFRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?PACK&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(_LOOP&$FFFF)
+
+;********************************
+?_LAMP_ANIM
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$FF
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYFRAME
+		DB	$02
+		DB	$01
+		DB	$00
+		DW	(?LAMP&$FFFF)
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?FIREBALL_LEFT1
+	GLOBAL	?FIREBALL_LEFT2
+	GLOBAL	?FIREBALL_LEFT3
+	GLOBAL	?FIREBALL_RIGHT1
+	GLOBAL	?FIREBALL_RIGHT2
+	GLOBAL	?FIREBALL_RIGHT3
+	GLOBAL	?CLAW_LEFT1
+	GLOBAL	?CLAW_LEFT2
+	GLOBAL	?CLAW_LEFT3
+	GLOBAL	?CLAW_LEFT4
+	GLOBAL	?CLAW_LEFT5
+	GLOBAL	?CLAW_LEFT6
+	GLOBAL	?CLAW_LEFT7
+	GLOBAL	?CLAW_LEFT8
+	GLOBAL	?CLAW_RIGHT1
+	GLOBAL	?CLAW_RIGHT2
+	GLOBAL	?CLAW_RIGHT3
+	GLOBAL	?CLAW_RIGHT4
+	GLOBAL	?CLAW_RIGHT5
+	GLOBAL	?CLAW_RIGHT6
+	GLOBAL	?CLAW_RIGHT7
+	GLOBAL	?BUBBLE_1
+	GLOBAL	?BUBBLE_2
+	GLOBAL	?BUBBLE_3
+	GLOBAL	?BUBBLE_4
+	GLOBAL	?BUBBLE_5
+	GLOBAL	?IMPACT_LEFT_1
+	GLOBAL	?IMPACT_LEFT_2
+	GLOBAL	?IMPACT_LEFT_3
+	GLOBAL	?IMPACT_LEFT_4
+	GLOBAL	?IMPACT_RIGHT_1
+	GLOBAL	?IMPACT_RIGHT_2
+	GLOBAL	?IMPACT_RIGHT_3
+	GLOBAL	?IMPACT_RIGHT_4
+	GLOBAL	?ROCK_CW_1
+	GLOBAL	?ROCK_CW_2
+	GLOBAL	?ROCK_CW_3
+	GLOBAL	?ROCK_CW_4
+	GLOBAL	?ROCK_CW_5
+	GLOBAL	?ROCK_CW_6
+	GLOBAL	?ROCK_CW_7
+	GLOBAL	?ROCK_CW_8
+	GLOBAL	?CRUMBLE_1
+	GLOBAL	?CRUMBLE_2
+	GLOBAL	?CRUMBLE_3
+	GLOBAL	?CRUMBLE_4
+	GLOBAL	?SONIC_1
+	GLOBAL	?SONIC_2
+	GLOBAL	?SONIC_3
+	GLOBAL	?SONIC_4
+	GLOBAL	?BITE_1
+	GLOBAL	?BITE_2
+	GLOBAL	?BITE_3
+	GLOBAL	?BITE_4
+	GLOBAL	?HIT_1
+	GLOBAL	?HIT_2
+	GLOBAL	?HIT_3
+	GLOBAL	?HIT_4
+	GLOBAL	?HIT_5
+	GLOBAL	?CYCLONE_S_1
+	GLOBAL	?CYCLONE_S_2
+	GLOBAL	?CYCLONE_S_3
+	GLOBAL	?CYCLONE_S_4
+	GLOBAL	?CYCLONE_M_1
+	GLOBAL	?CYCLONE_M_2
+	GLOBAL	?CYCLONE_M_3
+	GLOBAL	?CYCLONE_M_4
+	GLOBAL	?CYCLONE_L_1
+	GLOBAL	?CYCLONE_L_2
+	GLOBAL	?CYCLONE_L_3
+	GLOBAL	?CYCLONE_L_4
+	GLOBAL	?CYCLONE_XL_1
+	GLOBAL	?CYCLONE_XL_2
+	GLOBAL	?CYCLONE_XL_3
+	GLOBAL	?CYCLONE_XL_4
+	GLOBAL	?FIRD_1
+	GLOBAL	?FIRD_2
+	GLOBAL	?FIRD_3
+	GLOBAL	?FIRD_4
+	GLOBAL	?BLAST_1
+	GLOBAL	?BLAST_2
+	GLOBAL	?BLAST_3
+	GLOBAL	?BLAST_4
+	GLOBAL	?BLAST_5
+	GLOBAL	?SWIRL_1
+	GLOBAL	?SWIRL_2
+	GLOBAL	?SWIRL_3
+	GLOBAL	?SWIRL_4
+	GLOBAL	?BOLT_1
+	GLOBAL	?BOLT_2
+	GLOBAL	?BOLT_3
+	GLOBAL	?SLINKY_1
+	GLOBAL	?SLINKY_2
+	GLOBAL	?SLINKY_3
+	GLOBAL	?SLINKY_4
+	GLOBAL	?SLINKY_5
+	GLOBAL	?SMOKE_1
+	GLOBAL	?SMOKE_2
+	GLOBAL	?SMOKE_3
+	GLOBAL	?SMOKE_4
+	GLOBAL	?SMOKE_5
+	GLOBAL	?STAR_1
+	GLOBAL	?STAR_2
+	GLOBAL	?STAR_3
+	GLOBAL	?STAR_4
+	GLOBAL	?STAR_5
+	GLOBAL	?STAR_6
+	GLOBAL	?STAR_7
+	GLOBAL	?WIND_1
+	GLOBAL	?WIND_2
+	GLOBAL	?WIND_3
+	GLOBAL	?WIND_4
+	GLOBAL	?WIND_5
+	GLOBAL	?WIND_6
+	GLOBAL	?WIND_7
+	GLOBAL	?ICE_CUBE
+	GLOBAL	?ICE_BIT_1
+	GLOBAL	?ICE_BIT_2
+	GLOBAL	?ICE_BIT_3
+	GLOBAL	?ICE_BIT_4
+	GLOBAL	?ICE_CRUMB_1
+	GLOBAL	?ICE_CRUMB_2
+	GLOBAL	?ICE_CRUMB_3
+	GLOBAL	?ICE_CRUMB_4
+	GLOBAL	?SNOW_BIT_1
+	GLOBAL	?SNOW_BIT_2
+	GLOBAL	?SNOW_BIT_3
+	GLOBAL	?SNOW_BIT_4
+	GLOBAL	?SNOW_CRUMB_1
+	GLOBAL	?SNOW_CRUMB_2
+	GLOBAL	?SNOW_CRUMB_3
+	GLOBAL	?SNOW_CRUMB_4
+	GLOBAL	?BRAMBLE_1
+	GLOBAL	?BRAMBLE_2
+	GLOBAL	?BRAMBLE_3
+	GLOBAL	?BRAMBLE_4
+	GLOBAL	?BRAMBLE_5
+	GLOBAL	?BRAMBLE_6
+	GLOBAL	?BRAMBLE_7
+	GLOBAL	?BRAMBLE_8
+	GLOBAL	?BRAMBLE_9
+	GLOBAL	?BRAMBLE_10
+	GLOBAL	?BRAMBLE_11
+	GLOBAL	?BRAMBLE_12
+	GLOBAL	?BRAMBLE_13
+	GLOBAL	?BRAMBLE_14
+	GLOBAL	?BRAMBLE_15
+	GLOBAL	?BRAMBLE_16
+	GLOBAL	?CRACK_1
+	GLOBAL	?CRACK_2
+	GLOBAL	?CRACK_3
+	GLOBAL	?CRACK_4
+	GLOBAL	?CRACK_5
+	GLOBAL	?SANSKRIT1_1
+	GLOBAL	?SANSKRIT1_2
+	GLOBAL	?SANSKRIT1_3
+	GLOBAL	?SANSKRIT2_1
+	GLOBAL	?SANSKRIT2_2
+	GLOBAL	?SANSKRIT2_3
+	GLOBAL	?SANSKRIT3_1
+	GLOBAL	?SANSKRIT3_2
+	GLOBAL	?SANSKRIT3_3
+	GLOBAL	?SANSKRIT4_1
+	GLOBAL	?SANSKRIT4_2
+	GLOBAL	?SANSKRIT4_3
+	GLOBAL	?HAUNT_1
+	GLOBAL	?HAUNT_2
+	GLOBAL	?HAUNT_3
+	GLOBAL	?HAUNT_4
+	GLOBAL	?MUNCH_1
+	GLOBAL	?MUNCH_2
+	GLOBAL	?MUNCH_3
+	GLOBAL	?MUNCH_4
+	GLOBAL	?MUNCH_5
+	GLOBAL	?MUNCH_6
+	GLOBAL	?ROOTS_1
+	GLOBAL	?ROOTS_2
+	GLOBAL	?ROOTS_3
+	GLOBAL	?ROOTS_4
+	GLOBAL	?ROOTS_5
+	GLOBAL	?ROOTS_6
+	GLOBAL	?ROOTS_7
+	GLOBAL	?ROOTS_8
+	GLOBAL	?ROOTS_9
+	GLOBAL	?ROOTS_10
+	GLOBAL	?ROOTS_11
+	GLOBAL	?ROOTS_12
+	GLOBAL	?ROOTS_13
+	GLOBAL	?ROOTS_14
+	GLOBAL	?ROOTS_15
+	GLOBAL	?ROOTS_16
+	GLOBAL	?ROOTS_17
+	GLOBAL	?SQUIRT_1
+	GLOBAL	?SQUIRT_2
+	GLOBAL	?SPLASH_1
+	GLOBAL	?SPLASH_2
+	GLOBAL	?SPLASH_3
+	GLOBAL	?SPLASH_4
+	GLOBAL	?STING_1
+	GLOBAL	?STING_2
+	GLOBAL	?STING_3
+	GLOBAL	?STING_4
+	GLOBAL	?STING_5
+	GLOBAL	?TERROR_4
+	GLOBAL	?TERROR_3
+	GLOBAL	?TERROR_2
+	GLOBAL	?TERROR_1
+	GLOBAL	?TIMBER_1
+	GLOBAL	?DINKYFLAME_1
+	GLOBAL	?DINKYFLAME_2
+	GLOBAL	?DINKYFLAME_3
+	GLOBAL	?DINKYFLAME_4
+	GLOBAL	?DINKYFLAME_5
+	GLOBAL	?DINKYFLAME_6
+	GLOBAL	?DINKYFLAME_7
+	GLOBAL	?DINKYFLAME_8
+	GLOBAL	?DINKYTRAIL_1
+	GLOBAL	?DINKYTRAIL_2
+	GLOBAL	?DINKYTRAIL_3
+	GLOBAL	?TORNADO_1
+	GLOBAL	?TORNADO_2
+	GLOBAL	?TORNADO_3
+	GLOBAL	?TORNADO_4
+	GLOBAL	?TORNADO_5
+	GLOBAL	?INFERNO_1
+	GLOBAL	?INFERNO_2
+	GLOBAL	?INFERNO_3
+	GLOBAL	?INFERNO_4
+	GLOBAL	?INFERNO_5
+	GLOBAL	?LAVA_1
+	GLOBAL	?LAVA_2
+	GLOBAL	?LAVA_3
+	GLOBAL	?LAVA_4
+	GLOBAL	?LAVA_5
+	GLOBAL	?LAVA_6
+	GLOBAL	?MAUL_1
+	GLOBAL	?MAUL_2
+	GLOBAL	?MAUL_3
+	GLOBAL	?MAUL_4
+	GLOBAL	?EXECUTIONER_2
+	GLOBAL	?EXECUTIONER_1
+	GLOBAL	?EXECUTIONER_3
+	GLOBAL	?EXECUTIONER_4
+	GLOBAL	?GALE_1
+	GLOBAL	?GALE_2
+	GLOBAL	?GALE_3
+	GLOBAL	?GALE_4
+	GLOBAL	?GALE_5
+	GLOBAL	?GALE_6
+	GLOBAL	?TSUNAMI_1
+	GLOBAL	?TSUNAMI_2
+	GLOBAL	?TSUNAMI_3
+	GLOBAL	?TSUNAMI_4
+	GLOBAL	?TSUNAMI_5
+	GLOBAL	?JUDGE_1
+	GLOBAL	?JUDGE_3
+	GLOBAL	?JUDGE_2
+	GLOBAL	?JUDGE_4
+	GLOBAL	?GRAVITY_1
+	GLOBAL	?GRAVITY_2
+	GLOBAL	?GRAVITY_3
+	GLOBAL	?GRAVITY_4
+	GLOBAL	?LEAF_1
+	GLOBAL	?LEAF_2
+	GLOBAL	?LEAF_3
+	GLOBAL	?LEAF_4
+	GLOBAL	?LEAF_5
+	GLOBAL	?LEAF_6
+	GLOBAL	?LEAF_7
+	GLOBAL	?LEAF_8
+	GLOBAL	?THUNDER_1
+	GLOBAL	?THUNDER_2
+	GLOBAL	?THUNDER_3
+	GLOBAL	?MELODY_8TH
+	GLOBAL	?MELODY_SHARP
+	GLOBAL	?MELODY_WHOLE
+	GLOBAL	?HEARTS_1
+	GLOBAL	?HEARTS_2
+	GLOBAL	?SWARM
+	GLOBAL	?PACK
+	GLOBAL	?LAMP
+
+;********************************
+	END
+;********************************

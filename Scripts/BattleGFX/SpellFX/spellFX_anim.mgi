@@ -1,0 +1,212 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_BOX_ANIM
+
+	Frame			(255,0,0,?BOX)
+	
+	JumpLocal		(?_BOX_ANIM)
+
+/********************************/
+?_STATUS_CONFUSED_ANIM
+
+	Frame:			(15,0,0,?CONFUSED01)
+					(1,0,1,?CONFUSED01)
+					(15,0,0,?CONFUSED01)
+					(1,0,-1,?CONFUSED01)
+	
+	JumpLocal		(?_STATUS_CONFUSED_ANIM)
+
+/********************************/
+?_STATUS_DIVERT_ANIM
+	
+	FrameBlock		(8,0,0)
+					(?DIVERT01)
+					(?DIVERT02)
+					(?DIVERT03)
+					(?DIVERT02)
+	
+	JumpLocal		(?_STATUS_DIVERT_ANIM)
+
+/********************************/
+?_STATUS_ERRUPT_ANIM
+	
+	Frame:			(16,0,0,?ERRUPT01)
+					(4,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(1,0,0,?ERRUPT02)
+					(1,0,0,?ERRUPT03)
+					(4,0,0,?ERRUPT02)
+	
+	JumpLocal		(?_STATUS_ERRUPT_ANIM)
+
+/********************************/
+?_FLAME_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?FLAME01)
+					(?FLAME02)
+					(?FLAME03)
+					(?FLAME04)
+					(?FLAME05)
+					(?FLAME06)
+					(?FLAME07)
+					(?FLAME08)
+					(?FLAME09)
+					(?FLAME10)
+					(?FLAME11)
+					(?FLAME12)
+					(?FLAME13)
+					(?FLAME14)
+					(?FLAME15)
+					(?FLAME16)
+	
+	SetXRAMByte		(BTL_ANIM_DONE,1)
+	
+	End				()
+
+/********************************/
+?_HAND_OF_FATE_ANIM
+
+	OverlayFrame:	(1,0,-4,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,-3,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,-2,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,-1,?HAND01)
+					(3,0,0,?HAND01)
+					(1,0,1,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,2,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,3,?HAND01)
+					(1,0,0,?HAND01)
+					(1,0,4,?HAND01)
+					(1,0,0,?HAND01)
+
+	JumpLocal		(?_HAND_OF_FATE_ANIM)
+
+/********************************/
+?_HEALING_ANIM
+	
+	FrameBlock:		(4,0,0)
+					(?HEALING01)
+					(?HEALING02)
+					(?HEALING03)
+					(?HEALING04)
+					(?HEALING05)
+					(?HEALING06)
+					(?HEALING07)
+					(?HEALING08)
+					(?HEALING09)
+					(?HEALING10)
+	
+	End				()
+
+/********************************/
+?_STATUS_HICCUP_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?HICCUP01)
+					(?HICCUP02)
+					(?HICCUP03)
+					(?HICCUP04)
+					(?HICCUP05)
+					(?HICCUP06)
+					(?HICCUP07)
+
+	Frame:			(16,0,0,?HICCUP08)
+					(4,0,0,?HICCUP09)
+
+	Pass			()
+	Delay			(64)
+
+	JumpLocal		(?_STATUS_HICCUP_ANIM)
+
+/********************************/
+?_STATUS_HIDDEN_ANIM
+
+	Frame:			(32,0,0,?HIDDEN01)
+					(8,0,0,?HIDDEN02)
+					(4,0,0,?HIDDEN03)
+					(96,0,0,?HIDDEN04)
+	
+	JumpLocal		(?_STATUS_HIDDEN_ANIM)
+
+/********************************/
+?_STATUS_MIRROR_ANIM
+	
+	Frame:			(80,0,0,?MIRROR01)
+					(4,0,0,?MIRROR02)
+					(4,0,0,?MIRROR03)
+					(16,0,0,?MIRROR04)
+					(4,0,0,?MIRROR03)
+					(4,0,0,?MIRROR02)
+					
+	JumpLocal		(?_STATUS_MIRROR_ANIM)
+	
+/********************************/
+?_NUMBERBOUNCE_ANIM
+	
+	FrameBlock:		(4,0,0)
+					(?BOUNCE01)
+					(?BOUNCE02)
+					(?BOUNCE03)
+					(?BOUNCE04)
+					(?BOUNCE05)
+					(?BOUNCE06)
+					(?BOUNCE07)
+					(?BOUNCE08)
+					(?BOUNCE09)
+					(?BOUNCE10)
+					(?BOUNCE11)
+					(?BOUNCE12)
+					(?BOUNCE13)
+					(?BOUNCE14)
+					(?BOUNCE15)
+					(?BOUNCE16)
+	Frame:			(64,0,0,?BOUNCE15)
+
+	SetXRAMByte		(BTL_ANIM_DONE,1)
+	
+	End				()
+
+/********************************/
+?_STATUS_PLAGUE_ANIM
+	
+	Frame:			(7,0,0,?PLAGUE01)
+					(1,1,0,?PLAGUE01)
+					(15,0,0,?PLAGUE01)
+					(1,-1,-1,?PLAGUE01)
+					(7,0,0,?PLAGUE01)
+					(1,-1,0,?PLAGUE01)
+					(15,0,0,?PLAGUE01)
+					(1,1,1,?PLAGUE01)
+
+	JumpLocal		(?_STATUS_PLAGUE_ANIM)
+
+/********************************/
+?_STATUS_STONED_ANIM
+
+	Frame:			(96,0,0,?STONE01)
+					(8,0,0,?STONE02)
+					(8,0,0,?STONE03)
+					(8,0,0,?STONE04)
+
+	JumpLocal		(?_STATUS_STONED_ANIM)

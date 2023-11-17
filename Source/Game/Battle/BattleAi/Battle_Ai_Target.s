@@ -1,0 +1,415 @@
+;********************************
+; BATTLE_AI_TARGET.S
+;********************************
+;	Author:	Dylan "Merrow Merrow *pbbth*" Mayo
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+;********************************
+
+;********************************
+?BTL_AI_ADJUST_FOR_MYTEAM
+
+	LD		A,(BTL_CREATURE_TARGET)
+	AND		A
+	JR		Z,_MAGI
+	
+	ADD		A,4
+	LD		(BTL_CREATURE_TARGET),A
+	RET
+	
+_MAGI
+	LD		A,BTL_ID_MAGI
+	LD		(BTL_CREATURE_TARGET),A
+
+	RET
+
+;********************************
+?BTL_AI_FIND_STRONGEST
+
+	LD		DE,BTL_AI_ENERGIES
+	LD		A,4
+	LD		(BTL_COUNTER),A
+	
+_INIT_LOOP
+	LD		A,(DE)
+	INC		DE
+	LD		H,A
+	LD		A,(DE)
+	INC		DE
+	LD		L,A
+	OR		H
+	JR		NZ,_READY
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A
+	JR		NZ,_INIT_LOOP
+	JR		_EMPTY
+	
+_READY
+	LD		A,(BTL_COUNTER)
+	LD		B,A
+	LD		A,5
+	SUB		B
+	LD		(BTL_AI_BEST_CREATURE),A
+	
+_COMP_LOOP
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A	
+	JR		Z,_DONE
+	LD		A,(DE)
+	INC		DE
+	LD		B,A	
+	LD		A,(DE)
+	INC		DE
+	LD		C,A
+	OR		B
+	JR		Z,_COMP_LOOP	;IF 0, SKIP THE CHECK
+	TWOS_COMP	B,C
+	PUSH	HL
+	ADD		HL,BC	
+	POP		HL
+	JR		C,_COMP_LOOP	;IF LESS, SKIP THE UPDATE
+	TWOS_COMP	B,C
+	LD		H,B
+	LD		L,C
+	JR		_READY			;SET NEW BEST, CONTINUE W/ LOOP	
+	
+_EMPTY
+	LD		A,BTL_ID_HERO
+	LD		(BTL_CREATURE_TARGET),A
+	RET	
+	
+_DONE
+	LD		A,(BTL_AI_BEST_CREATURE)
+	LD		(BTL_CREATURE_TARGET),A
+	RET	
+
+;********************************	
+?BTL_AI_FIND_WEAKEST	
+
+	LD		DE,BTL_AI_ENERGIES
+	LD		A,4
+	LD		(BTL_COUNTER),A
+	
+_INIT_LOOP
+	LD		A,(DE)
+	INC		DE
+	LD		H,A
+	LD		A,(DE)
+	INC		DE
+	LD		L,A
+	OR		H
+	JR		NZ,_READY
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A
+	JR		NZ,_INIT_LOOP
+	JR		_EMPTY
+	
+_READY
+	LD		A,(BTL_COUNTER)
+	LD		B,A
+	LD		A,5
+	SUB		B
+	LD		(BTL_AI_BEST_CREATURE),A
+	
+_COMP_LOOP
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A	
+	JR		Z,_DONE
+	LD		A,(DE)
+	INC		DE
+	LD		B,A	
+	LD		A,(DE)
+	INC		DE
+	LD		C,A
+	OR		B
+	JR		Z,_COMP_LOOP	;IF 0, SKIP THE CHECK
+	TWOS_COMP	B,C
+	PUSH	HL
+	ADD		HL,BC	
+	POP		HL
+	JR		NC,_COMP_LOOP	;IF GREATER, SKIP THE UPDATE
+	TWOS_COMP	B,C
+	LD		H,B
+	LD		L,C
+	JR		_READY			;SET NEW BEST, CONTINUE W/ LOOP	
+	
+_EMPTY
+	LD		A,BTL_ID_HERO
+	LD		(BTL_CREATURE_TARGET),A
+	RET	
+	
+_DONE
+	LD		A,(BTL_AI_BEST_CREATURE)
+	LD		(BTL_CREATURE_TARGET),A
+	RET	
+
+;********************************
+;HL:  PTR TO TOP OF ARRAY
+;A <- OFFSET TO TARGET, $FF IF MAGI
+?BTL_AI_RANDOM_PICK
+
+	RANDVAL		E
+	PUSH		AF
+	AND			$03
+	LD			C,A
+	LD			B,0
+	LD			D,4
+	POP			AF
+	PUSH		HL
+	BIT			7,A
+	JR			Z,_COUNT_UP_LOOP
+
+_COUNT_DOWN_LOOP
+	POP		HL
+	PUSH	HL
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	JR		NZ,_DONE
+	DEC		BC
+	LD		A,$FF
+	CP		C
+	JR		NZ,_NO_ROLL_DOWN
+	LD		BC,3
+_NO_ROLL_DOWN
+	DEC		D
+	JR		Z,_EMPTY
+	JR		_COUNT_DOWN_LOOP
+	
+_COUNT_UP_LOOP
+	POP		HL
+	PUSH	HL
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	JR		NZ,_DONE
+	INC		BC
+	LD		A,4
+	CP		C
+	JR		NZ,_NO_ROLL_UP
+	LD		BC,0
+_NO_ROLL_UP
+	DEC		D
+	JR		NZ,_COUNT_UP_LOOP
+
+_EMPTY
+	LD		C,$FF
+
+_DONE
+	LD		A,C
+	POP		HL
+	RET
+
+;********************************
+;HL : PTR TO FIRST CREATURE ON RELEVANT TEAM
+?BTL_AI_REPORT_PERCENT
+
+	LD		BC,CREATURE_ENGH
+	ADD		HL,BC	
+	LD		BC,BTL_AI_ENERGIES
+	LD		A,4
+	LD		(BTL_COUNTER),A	
+
+_LOOP
+	PUSH	BC
+	LD		A,(HLI)
+	LD		E,(HL)
+	INC		HL
+	LD		D,A
+	LD		A,(HLI)
+	LD		C,(HL)
+	INC		HL
+	LD		B,A
+	PUSH	HL
+	CALL	?CALC_PERCENT	
+	POP		HL
+	POP		BC	
+	LD		(BC),A
+	INC		BC
+	XOR		A
+	LD		(BC),A
+	INC		BC	
+	LD		DE,CREATURE_BTL_SIZE-4
+	ADD		HL,DE
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A
+	JR		NZ,_LOOP	
+
+	RET
+
+;********************************
+;HL : PTR TO FIRST CREATURE ON RELEVANT TEAM
+?BTL_AI_REPORT_ABSOLUTE				
+
+	LD		DE,CREATURE_BTL_SIZE-2
+	LD		BC,CREATURE_ENGH
+	ADD		HL,BC	
+	LD		BC,BTL_AI_ENERGIES
+	LD		A,4
+	LD		(BTL_COUNTER),A	
+
+_LOOP
+	LD_BCI_HLI
+	LD_BCI_HLI
+	ADD		HL,DE
+	LD		A,(BTL_COUNTER)
+	DEC		A
+	LD		(BTL_COUNTER),A
+	JR		NZ,_LOOP	
+
+	RET
+
+;********************************
+?BTL_AI_TALLY_R				
+
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ALLY0
+	CALL	?BTL_AI_RANDOM_PICK
+	CP		$FF
+	JR		Z,_MAGI
+	ADD		A,BTL_ID_ALLY0
+	JR		_HAVE_TARGET
+	
+_MAGI
+	XOR		A
+	
+_HAVE_TARGET
+	LD		(BTL_CREATURE_TARGET),A
+
+	RET
+
+;********************************
+?BTL_AI_TALLYSTRONG_A
+
+	LD		HL,BTL_ALLY0
+	CALL	?BTL_AI_REPORT_ABSOLUTE	
+	CALL	?BTL_AI_FIND_STRONGEST
+	
+	RET	
+
+;********************************
+?BTL_AI_TALLYSTRONG_P	
+
+	LD		HL,BTL_ALLY0
+	CALL	?BTL_AI_REPORT_PERCENT
+	CALL	?BTL_AI_FIND_STRONGEST
+	
+	RET
+	
+;********************************
+?BTL_AI_TALLYWEAK_A	
+
+	LD		HL,BTL_ALLY0
+	CALL	?BTL_AI_REPORT_ABSOLUTE	
+	CALL	?BTL_AI_FIND_WEAKEST
+
+	RET
+
+;********************************
+?BTL_AI_TALLYWEAK_P	
+
+	LD		HL,BTL_ALLY0
+	CALL	?BTL_AI_REPORT_PERCENT	
+	CALL	?BTL_AI_FIND_WEAKEST	
+
+	RET
+
+;********************************
+?BTL_AI_TME	
+	
+	LD		A,(BTL_SCRIPT_BUFFER)
+	LD		(BTL_CREATURE_TARGET),A					
+
+	RET
+
+;********************************
+?BTL_AI_TENEMY_R
+
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ENEMY0
+	CALL	?BTL_AI_RANDOM_PICK
+	CP		$FF
+	JR		Z,_MAGI
+	ADD		A,BTL_ID_ENEMY0
+	JR		_HAVE_TARGET
+	
+_MAGI
+	LD		A,BTL_ID_MAGI
+	
+_HAVE_TARGET
+	LD		(BTL_CREATURE_TARGET),A
+
+	RET
+
+;********************************
+?BTL_AI_TENEMYSTRONG_A	
+
+	LD		HL,BTL_ENEMY0
+	CALL	?BTL_AI_REPORT_ABSOLUTE	
+	CALL	?BTL_AI_FIND_STRONGEST
+	CALL	?BTL_AI_ADJUST_FOR_MYTEAM	
+	
+	RET
+
+;********************************
+?BTL_AI_TENEMYSTRONG_P
+
+	LD		HL,BTL_ENEMY0
+	CALL	?BTL_AI_REPORT_PERCENT	
+	CALL	?BTL_AI_FIND_STRONGEST
+	CALL	?BTL_AI_ADJUST_FOR_MYTEAM
+
+	RET
+
+;********************************
+?BTL_AI_TENEMYMYWEAK_A
+
+	LD		HL,BTL_ENEMY0
+	CALL	?BTL_AI_REPORT_ABSOLUTE	
+	CALL	?BTL_AI_FIND_WEAKEST
+	CALL	?BTL_AI_ADJUST_FOR_MYTEAM		
+
+	RET
+
+;********************************
+?BTL_AI_TENEMYWEAK_P
+
+	LD		HL,BTL_ENEMY0
+	CALL	?BTL_AI_REPORT_PERCENT	
+	CALL	?BTL_AI_FIND_WEAKEST
+	CALL	?BTL_AI_ADJUST_FOR_MYTEAM	
+
+	RET
+
+;********************************
+?BTL_AI_TTONY_ALWAYS
+
+	XOR		A
+	LD		(BTL_CREATURE_TARGET),A		
+
+	RET
+
+;********************************
+?BTL_AI_TTONY_IF_UNBLOCKED		
+
+	LD		HL,BTL_CREATURE_SLOTS+1
+	LD		A,(HLI)
+	LD		D,3
+	
+_LOOP
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP
+	
+	AND		A
+	JR		Z,?BTL_AI_TTONY_ALWAYS
+	
+	JP		?BTL_AI_TALLY_R
+
+;********************************
+	END
+;********************************

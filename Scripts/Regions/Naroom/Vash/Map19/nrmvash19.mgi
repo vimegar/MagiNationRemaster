@@ -1,0 +1,23 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP19\NRMVASH19_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP19\NRMVASH19_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP19\NRMVASH19_PARTY.MGI
+
+/********************************/
+?_NRMVASH19
+	Switch			([GAMECOUNT])
+					(GC_END_FUNERAL,?_NRMVASH19_FUNERAL)
+					(GC_END_PARTY,?_NRMVASH19_PARTY)
+	SceneNew		()
+	LoadMap			(MAP_NRMVASH19)
+	LoadHotspots	(HS_NRMVASH19)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_NRMVASH19)
+	ThatActorInit	(HEROACTOR,?HERO_AI,15,17,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroSetCamera	()
+	SongStart		(SONGID_naroom)
+	SceneReady		()
+	End				()
+	

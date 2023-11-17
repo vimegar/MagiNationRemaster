@@ -1,0 +1,29 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\LAKE\MAP05\NRMLAKE05_DR.MGI
+%INCLUDE			REGIONS\NAROOM\LAKE\MAP05\NRMLAKE05_TXT.MGI
+
+/********************************/
+?_NRMLAKE05
+	SceneNew		()
+	LoadMap			(MAP_NRMLAKE05)
+	LoadHotspots	(HS_NRMLAKE05)
+	//LoadEncounters	(EN_NRMLAKE,ENCOUNTER_FRQ_NORM,?_NRMLAKE_RE_ENTER)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,30,0,?_HERO_UNDTREAD_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,30,0,?_RAINER,?_OROHYREN_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,30,0,?_RAINER,?_OROHYREN_RNDBAT)
+	ThatActorInit	(ACTOR1F,?ANIM_AI,12,19,30,52,?_WHIRLPOOL_ANIM,?_END)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	ThatActorStart	(ACTOR1F)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles	(64,BIT_WHIRLPOOL,52,0)
+	SetBtlReturn	(?_NRMLAKE05)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_oroisland)
+	SceneReady		()
+	End				()
+	

@@ -1,0 +1,11 @@
+/********************************/
+?_NRMGLADE04_DR_1
+		HeroSetDoor	(36,13)
+		Jump		(?_OVRSURFACE01)
+
+?_NRMGLADE04_DR_2
+		HeroToDoor	(29,14,0,24)
+		Jump		(?_NRMGLADE05)
+
+?_NRMGLADE04_TR_1
+		TriggerTreasure	(NRMGLADE04_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,28,23,30)

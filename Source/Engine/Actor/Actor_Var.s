@@ -1,0 +1,88 @@
+;********************************
+; ACTOR_VAR.S
+;********************************
+;	Author: Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB		SOURCE\ENGINE\ACTOR\LIST\ACTORLIST_VAR.S
+
+;********************************
+ACTOR_SWAP					DS		$02
+ACTOR_SWAP_STATE			DS		$02
+
+ACTOR_SWAP_BANK0			DS		$01
+ACTOR_SWAP_FRAME0			DS		$02
+ACTOR_SWAP_STATE0			DS		$02
+ACTOR_SWAP_COUNT0			DS		$02
+
+ACTOR_SWAP_BANK1			DS		$01
+ACTOR_SWAP_FRAME1			DS		$02
+ACTOR_SWAP_STATE1			DS		$02
+ACTOR_SWAP_COUNT1			DS		$02
+
+;********************************
+ACTOR_NEWSTATE				DS		$02
+ACTOR_RESTORE_FLAG			DS		$01
+
+;********************************
+; CAST OF ACTORS
+;********************************
+ACTOR_RAM	ACTOR		HEROACTOR
+			ACTOR		SAVEACTOR
+
+			ACTOR		ACTOR00
+			ACTOR		ACTOR01
+			ACTOR		ACTOR02
+			ACTOR		ACTOR03
+			ACTOR		ACTOR04
+			ACTOR		ACTOR05
+			ACTOR		ACTOR06
+			ACTOR		ACTOR07
+			ACTOR		ACTOR08
+			ACTOR		ACTOR09
+			ACTOR		ACTOR0A
+			ACTOR		ACTOR0B
+			ACTOR		ACTOR0C
+			ACTOR		ACTOR0D
+			ACTOR		ACTOR0E
+			ACTOR		ACTOR0F
+
+			ACTOR		ACTOR10
+			ACTOR		ACTOR11
+			ACTOR		ACTOR12
+			ACTOR		ACTOR13
+			ACTOR		ACTOR14
+			ACTOR		ACTOR15
+			ACTOR		ACTOR16
+			ACTOR		ACTOR17
+			ACTOR		ACTOR18
+			ACTOR		ACTOR19
+			ACTOR		ACTOR1A
+			ACTOR		ACTOR1B
+			ACTOR		ACTOR1C
+			ACTOR		ACTOR1D
+			ACTOR		ACTOR1E
+			ACTOR		ACTOR1F
+
+			ACTOR		ACTOR20
+			ACTOR		ACTOR21
+			ACTOR		ACTOR22
+			ACTOR		ACTOR23
+			ACTOR		ACTOR24
+			ACTOR		ACTOR25
+			ACTOR		ACTOR26
+			ACTOR		ACTOR27
+			ACTOR		ACTOR28
+			ACTOR		ACTOR29
+			ACTOR		ACTOR2A
+			ACTOR		ACTOR2B
+			ACTOR		ACTOR2C
+			ACTOR		ACTOR2D
+			ACTOR		ACTOR2E
+			ACTOR		ACTOR2F
+
+;********************************
+	END
+;********************************

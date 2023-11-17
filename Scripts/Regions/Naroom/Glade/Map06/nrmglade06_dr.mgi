@@ -1,0 +1,12 @@
+/********************************/
+?_NRMGLADE06_DR_1
+		HeroToDoor	(10,29,15,0)
+		Jump		(?_NRMGLADE05)
+
+?_NRMGLADE06_DR_2
+		HeroToDoor	(0,9,49,45)
+		Jump		(?_NRMGLADE07)
+
+?_NRMGLADE06_DR_3
+		HeroToDoor	(19,0,3,19)
+		Jump		(?_NRMGLADE08)

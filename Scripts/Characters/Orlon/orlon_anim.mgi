@@ -1,0 +1,239 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_ORLON_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?ORLON_WALK01_BACK)
+					(?ORLON_WALK02_BACK)
+					(?ORLON_WALK03_BACK)
+					(?ORLON_WALK02_BACK)
+					
+	JumpLocal:		(?_ORLON_WALK_UP_ANIM)
+
+/********************************/
+?_ORLON_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?ORLON_WALK01_FRONT)
+					(?ORLON_WALK02_FRONT)
+					(?ORLON_WALK03_FRONT)
+					(?ORLON_WALK02_FRONT)
+					
+	JumpLocal:		(?_ORLON_WALK_DOWN_ANIM)
+
+/********************************/
+?_ORLON_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?ORLON_WALK01_LEFT)
+					(?ORLON_WALK02_LEFT)
+					(?ORLON_WALK03_LEFT)
+					(?ORLON_WALK02_LEFT)
+					
+	JumpLocal:		(?_ORLON_WALK_LEFT_ANIM)
+
+/********************************/
+?_ORLON_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?ORLON_WALK01_RIGHT)
+					(?ORLON_WALK02_RIGHT)
+					(?ORLON_WALK03_RIGHT)
+					(?ORLON_WALK02_RIGHT)
+					
+	JumpLocal:		(?_ORLON_WALK_RIGHT_ANIM)
+
+/********************************/
+?_ORLON_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?ORLON_WALK01_BACK)
+					(?ORLON_WALK02_BACK)
+					(?ORLON_WALK03_BACK)
+					(?ORLON_WALK02_BACK)
+					
+	JumpLocal:		(?_ORLON_RUN_UP_ANIM)
+
+/********************************/
+?_ORLON_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?ORLON_WALK01_FRONT)
+					(?ORLON_WALK02_FRONT)
+					(?ORLON_WALK03_FRONT)
+					(?ORLON_WALK02_FRONT)
+					
+	JumpLocal:		(?_ORLON_RUN_DOWN_ANIM)
+
+/********************************/
+?_ORLON_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?ORLON_WALK01_LEFT)
+					(?ORLON_WALK02_LEFT)
+					(?ORLON_WALK03_LEFT)
+					(?ORLON_WALK02_LEFT)
+					
+	JumpLocal:		(?_ORLON_RUN_LEFT_ANIM)
+
+/********************************/
+?_ORLON_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?ORLON_WALK01_RIGHT)
+					(?ORLON_WALK02_RIGHT)
+					(?ORLON_WALK03_RIGHT)
+					(?ORLON_WALK02_RIGHT)
+					
+	JumpLocal:		(?_ORLON_RUN_RIGHT_ANIM)
+
+/********************************/
+?_ORLON_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?ORLON_WALK02_BACK)
+	
+	JumpLocal:		(?_ORLON_STAND_UP_ANIM)
+
+/********************************/
+?_ORLON_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?ORLON_WALK02_FRONT)
+	
+	JumpLocal:		(?_ORLON_STAND_DOWN_ANIM)
+
+/********************************/
+?_ORLON_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?ORLON_WALK02_LEFT)
+	
+	JumpLocal:		(?_ORLON_STAND_LEFT_ANIM)
+
+/********************************/
+?_ORLON_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?ORLON_WALK02_RIGHT)
+	
+	JumpLocal:		(?_ORLON_STAND_RIGHT_ANIM)
+
+/********************************/
+?_ORLON_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?ORLON_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_ORLON_STAND_UL_ANIM)
+
+/********************************/
+?_ORLON_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?ORLON_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_ORLON_STAND_UR_ANIM)
+
+/********************************/
+?_ORLON_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?ORLON_STAND_LEFT)
+	
+	JumpLocal:		(?_ORLON_STAND_DL_ANIM)
+
+/********************************/
+?_ORLON_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?ORLON_STAND_RIGHT)
+	
+	JumpLocal:		(?_ORLON_STAND_DR_ANIM)
+
+/********************************/
+?_ORLON_MAKE_RING_ANIM
+	
+	Frame:			(8,0,0,?ORLON_RING02)
+					(4,0,0,?ORLON_RING04)
+					(8,0,0,?ORLON_RING05)
+					(32,0,0,?ORLON_RING06)
+					(16,0,0,?ORLON_RING07)
+					(8,0,0,?ORLON_RING08)
+					(4,0,0,?ORLON_RING09)
+					(8,0,0,?ORLON_RING10)
+	SetScroll:		(?_ORLON_RS_SCROLL)
+	Frame:			(16,0,0,?ORLON_RING11)
+					(4,0,0,?ORLON_RING09)
+					(8,0,0,?ORLON_RING10)
+	SetScroll:		(?_ORLON_RS_SCROLL)
+	Frame:			(16,0,0,?ORLON_RING11)
+					(4,0,0,?ORLON_RING09)
+					(8,0,0,?ORLON_RING10)
+	SetScroll:		(?_ORLON_RS_SCROLL)
+	Frame:			(16,0,0,?ORLON_RING11)
+					(4,0,0,?ORLON_RING09)
+					(4,0,0,?ORLON_RING08)
+					(4,0,0,?ORLON_RING07)
+					(4,0,0,?ORLON_RING06)
+					(4,0,0,?ORLON_RING05)
+					(8,0,0,?ORLON_RING04)
+					(4,0,0,?ORLON_RING02)
+
+/********************************/
+?_ORLON_DONE_RING_ANIM
+
+	Frame:			(255,0,0,?ORLON_RING03)
+
+	JumpLocal:		(?_ORLON_DONE_RING_ANIM)
+	
+/********************************/
+?_ORLON_STAND_ANIM
+
+	Frame:			(255,0,0,?ORLON_RING01)
+	
+	JumpLocal:		(?_ORLON_STAND_ANIM)
+
+/********************************/
+?_ORLON_RS_SCROLL
+	
+	ScrollMap		(1,0,2)
+					(1,0,-3)
+					(1,0,3)
+					(1,0,-3)
+					(1,0,3)
+					(1,0,-2)
+					(1,0,2)
+					(1,0,-2)
+					(1,0,2)
+					(1,0,-2)
+					(1,0,1)
+					(1,0,-1)
+					(1,0,1)
+					(1,0,-1)
+					(1,0,1)
+					(1,0,-1)
+					(1,0,1)
+					(1,0,-1)
+	
+	End				()
+	
+/********************************/
+?_FACE_ORLON
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_ORLON_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_ORLON_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_ORLON_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

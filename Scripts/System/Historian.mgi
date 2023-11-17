@@ -1,0 +1,936 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/*********************************/
+?_HISTORIAN_EVU
+	SetText						(?_HISTORIAN_EVU_TEXT)
+	Jump						(?_FACE_EVU)
+
+?_HISTORIAN_EVU_TEXT
+	SetXRAMByte					(Which_Historian_Menu,0)
+
+	TextOpen					()
+	TextIcon					(ICON_EVU)
+	TextWrite					("Go ahead.=")
+								("Ask me")
+								("anything.")		
+	TextClose					()
+
+?_HISTORIAN_EVU_RETURN
+	MenuHistorian				()
+
+	TextOpen					()
+	TextIcon					(ICON_EVU)
+
+	Switch						([SYS_Historian_Type])
+								(INV_TYPE_ITEM,?_TYPE_ITEM)
+								(INV_TYPE_RELIC,?_TYPE_RELIC)
+								(INV_TYPE_SPELL,?_TYPE_SPELL)
+
+	TextWrite					("ZZZzzz...")
+	TextIcon					(ICON_TONY)
+	TextWrite					("He's fallen=")
+								("asleep.")
+	TextClose					()
+	ThisActorRestoreState		()
+/*********************************/
+?_HISTORIAN_CALD_TEXT
+	SetXRAMByte					(Which_Historian_Menu,2)
+	MenuHistorian				()
+
+	TextOpen					()
+	TextIcon					(ICON_OLDMAN)
+
+	Switch						([SYS_Historian_Type])
+								(INV_TYPE_ITEM,?_TYPE_ITEM)
+								(INV_TYPE_RELIC,?_TYPE_RELIC)
+								(INV_TYPE_SPELL,?_TYPE_SPELL)
+	
+	TextWrite					("Nice talking=")
+								("to you.")
+	TextClose					()
+	SetEventText				(1)
+	End							()
+/*********************************/
+?_HISTORIAN_OROTHE_TEXT
+	SetXRAMByte					(Which_Historian_Menu,1)
+	MenuHistorian				()
+
+	TextOpen					()
+	TextIcon					(ICON_OLDMAN)
+
+	Switch						([SYS_Historian_Type])
+								(INV_TYPE_ITEM,_CHECK_BLURRY)
+								(INV_TYPE_RELIC,?_TYPE_RELIC)
+								(INV_TYPE_SPELL,?_TYPE_SPELL)
+
+	TextWrite					("Well...")
+								("Good-bye.")
+	TextClose					()
+	ThisActorRestoreState		()
+
+_CHECK_BLURRY
+	If							([SYS_Historian_Item = INV_BLURRY_SCROLL],?_OROCITY04_DISPELL_X_TXT)
+	JumpLocal					(?_TYPE_ITEM)
+
+/*********************************/
+?_HISTORIAN_WHICH_ONE
+	Switch						([Which_Historian_Menu])
+								(0,_EVU)
+								(1,_OLMAN_IN_OROTHE)
+								(2,_OLDMAND_IN_CALD)
+	Jump						(?_HISTORIAN_OROTHE_TEXT)
+
+_EVU
+	Jump						(?_HISTORIAN_EVU_RETURN)
+_OLMAN_IN_OROTHE
+	Jump						(?_HISTORIAN_OROTHE_TEXT)
+_OLDMAND_IN_CALD
+	Jump						(?_HISTORIAN_CALD_TEXT)
+	
+/*********************************/
+?_HISTORIAN_DONT_KNOW
+	TextWrite					("I don't know=")
+								("about that one.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+/*********************************/
+?_TYPE_ITEM
+	Switch						([SYS_Historian_Item])
+								(INV_BLURRY_SCROLL,_BLURRY_SCROLL)
+								(INV_BALOO_LEAF,_BALOO_LEAF)
+								(INV_BALOO_SAP,_BALOO_SAP)
+								(INV_BALOO_ROOT,_BALOO_ROOT)
+								(INV_3_HEADEDCOIN,_3_HEADEDCOIN)
+								(INV_BALANCESCALE,_BALANCESCALE)
+								(INV_STRENGTH_GEM,_STRENGTH_GEM)
+								(INV_GUARD_GEM,_GUARD_GEM)
+								(INV_POWER_GEM,_POWER_GEM)
+								(INV_DEFLECT_GEM,_DEFLECT_GEM)
+								(INV_HASTE_GEM,_HASTE_GEM)
+								(INV_REMEDY_DRINK,_REMEDY_DRINK)
+								(INV_CRESCENT_GEM,_CRESCENT_GEM)
+								(INV_GIBBOUS_GEM,_GIBBOUS_GEM)
+								(INV_RUNEOFMIGHT,_RUNEOFMIGHT)
+								(INV_RUNEOFHOPE,_RUNEOFHOPE)
+								(INV_RUNEOFPOWER,_RUNEOFPOWER)
+								(INV_RUNEOFWILL,_RUNEOFWILL)
+								(INV_RUNEOFFURY,_RUNEOFFURY)
+								(INV_MASTER_RUNE,_MASTER_RUNE)
+								(INV_KARMIC_MIGHT,_KARMIC_MIGHT)
+								(INV_KARMIC_HOPE,_KARMIC_HOPE)
+								(INV_KARMIC_POWER,_KARMIC_POWER)
+								(INV_KARMIC_WILL,_KARMIC_WILL)
+								(INV_KARMIC_FURY,_KARMIC_FURY)
+								(INV_CLOUD_FROND,_CLOUD_FROND)
+								(INV_SHADOW_KEY,_SHADOW_KEY)
+								(INV_STAR_KEY,_SHADOW_KEY)
+								(INV_WATER_OF_LIFE,_WATER_OF_LIFE)
+								(INV_PLOD_SPNEW,_PLOD_SPNEW)
+								(INV_BUCKETOPINK,_BUCKETOPINK)
+								(INV_TICKET,_TICKET)
+								(INV_ELDRITCH_AWL,_ELDRITCH_AWL)
+								(INV_BLAST_URN,_BLAST_URN)
+	JumpLocal					(?_HISTORIAN_DONT_KNOW)
+
+_BLAST_URN
+	TextWrite					("Hmmm... It's an=")
+								("explosive vase.")
+								("You can use=")
+								("it to break")
+								("certain walls.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_ELDRITCH_AWL
+	TextWrite					("This item will=")
+								("sometimes take")
+								("you back to a=")
+								("safe location.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_PLOD_SPNEW
+	TextWrite					("Plod Spnew=")
+								("raises a")
+								("creature's Luck=")
+								("a lot.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BUCKETOPINK
+	TextWrite					("Bucket O' Pink=")
+								("lowers a")
+								("creature's Luck=")
+								("a lot.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_TICKET
+	TextWrite					("That's a=")
+								("ticket!")
+								("You can use=")
+								("that in the")
+								("Naroom=")
+								("curio shop.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BLURRY_SCROLL
+	TextWrite					("Hmmmm...")
+								("It looks like=")
+								("some kind of a")
+								("blurry scroll!")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+
+_BALOO_LEAF						// 10 Energy
+	TextWrite					("Baloo Leaf=")		
+								("restores a")
+								("little of your=")
+								("your energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BALOO_SAP						// 30 Energy
+	TextWrite					("Baloo Sap=")
+								("restores your")
+								("energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BALOO_ROOT						// 65 Energy
+	TextWrite					("Baloo Root=")
+								("restores a lot")
+								("of your energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_3_HEADEDCOIN
+	TextWrite					("3-HeadedCoin=")
+								("raises a")
+								("creature's Luck=")
+								("a little.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BALANCESCALE
+	TextWrite					("BalanceScale=")
+								("lowers a")
+								("creature's Luck=")
+								("a little.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_STRENGTH_GEM
+	TextWrite					("Strength Gem=")
+								("raises a")
+								("creature's=")
+								("Attack during")
+								("one battle.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GUARD_GEM
+	TextWrite					("Guard Gem=")
+								("raises a")
+								("creature's=")
+								("Defense during")
+								("one battle.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_POWER_GEM
+	TextWrite					("Power Gem=")
+								("raises a")
+								("creature's=")
+								("Magic Attack")
+								("during one=")
+								("battle.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_DEFLECT_GEM
+	TextWrite					("Deflect Gem=")
+								("raises a")
+								("creature's=")
+								("Magic Defense")
+								("during one=")
+								("battle.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_HASTE_GEM
+	TextWrite					("Haste Gem=")
+								("raises a")
+								("creature's=")
+								("Speed during")
+								("one battle.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_REMEDY_DRINK
+	TextWrite					("Remedy Drink=")
+								("cures all of a")
+								("creature's=")
+								("ailments.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CRESCENT_GEM
+	TextWrite					("Crescent Gem=")
+								("robustly")
+								("modifies a=")
+								("creature's")
+								("ailments.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GIBBOUS_GEM
+	TextWrite					("Gibbous Gem=")
+								("ornately")
+								("modifies a=")
+								("creature's")
+								("ailments.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RUNEOFMIGHT
+	TextWrite					("RuneOfMight=")
+								("raises a")
+								("creature's=")
+								("Attack.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RUNEOFHOPE
+	TextWrite					("RuneOfHope=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RUNEOFPOWER
+	TextWrite					("RuneOfPower=")
+								("raises a")
+								("creature's=")
+								("Magic Attack.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RUNEOFWILL
+	TextWrite					("RuneOfWill=")
+								("raises a")
+								("creature's=")
+								("Magic Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RUNEOFFURY
+	TextWrite					("RuneOfFury=")
+								("raises a")
+								("creature's=")
+								("Speed.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_MASTER_RUNE
+	TextWrite					("Master Rune=")
+								("raises all of a")
+								("creature's=")
+								("stats.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_KARMIC_MIGHT
+	TextWrite					("Karmic Might=")
+								("raises a")
+								("creature's=")
+								("Attack a lot,")
+								("but lowers=")
+								("something else.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_KARMIC_HOPE
+	TextWrite					("Karmic Hope=")
+								("raises a")
+								("creature's=")
+								("Defense a lot,")
+								("but lowers=")
+								("something else.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_KARMIC_POWER
+	TextWrite					("Karmic Power=")
+								("raises a")
+								("creature's=")
+								("Magic Attack a")
+								("lot, but lowers=")
+								("something else.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_KARMIC_WILL
+	TextWrite					("Karmic Will=")
+								("raises a")
+								("creature's=")
+								("Magic Defense a")
+								("lot, but lowers=")
+								("something else.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_KARMIC_FURY
+	TextWrite					("Karmic Fury=")
+								("raises a")
+								("creature's=")
+								("Speed a lot,")
+								("but lowers=")
+								("something else.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CLOUD_FROND
+	TextWrite					("Oh, I see you=")
+								("have a Cloud")
+								("Frond...very=")
+								("rare indeed. ")
+								("It has the=")
+								("power to heal")
+								("any wound, no=")
+								("matter how")
+								("severe.  I=")
+								("would use that")
+								("wisely!")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SHADOW_KEY	
+	TextWrite					("A strange=")
+								("key...I do not")
+								("know where you=")
+								("can use this.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_WATER_OF_LIFE
+	TextWrite					("Water of Life=")
+								("permanently")
+								("raises your=")
+								("energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+	
+
+/*********************************/
+?_TYPE_RELIC
+
+	Switch						([SYS_Historian_Item])
+								(INV_ARCHAIC_LEAF,_ARCHAIC_LEAF)	
+								(INV_ARMOR_ORB,_ARMOR_ORB)
+								(INV_BAG_OF_BONES,_BAG_OF_BONES)	
+								(INV_BARK_THIMBLE,_BARK_THIMBLE)
+								(INV_CHANNELEDGEM,_CHANNELEDGEM)
+								(INV_CORF_PEARL,_CORF_PEARL)
+								(INV_CRIMSON_VOID,_CRIMSON_VOID)	
+								(INV_EARTH_S_AURA,_EARTH_S_AURA)	
+								(INV_END_BRINGER,_END_BRINGER)
+								(INV_ENERGY_GEM,_ENERGY_GEM)
+								(INV_FLAME_AURA,_FLAME_AURA)
+								(INV_FLAMEESSENCE,_FLAMEESSENCE)
+								(INV_GEMOFNAROOM,_GEMOFNAROOM)		
+								(INV_GOLDENCLOVER,_GOLDENCLOVER)
+								(INV_GRAILOFLIFE,_GRAILOFLIFE)
+								(INV_HYREN_S_CLAW,_HYREN_S_CLAW)
+								(INV_LEAF_ESSENCE,_LEAF_ESSENCE)
+								(INV_LUCENT_BELT,_LUCENT_BELT)
+								(INV_OMBORSAMULET,_OMBORSAMULET)
+								(INV_PINCHOFLIFE,_PINCHOFLIFE)	
+								(INV_RABBAGE_FOOT,_RABBAGE_FOOT)
+								(INV_RAGE_STONE,_RAGE_STONE)
+								(INV_SHADOW_VEIL,_SHADOW_VEIL)
+								(INV_SHIELD_ORB,_SHIELD_ORB)
+								(INV_SKY_ESSENCE,_SKY_ESSENCE)	
+								(INV_SPICEOFLIFE,_SPICEOFLIFE)
+								(INV_STONEESSENCE,_STONEESSENCE)	
+								(INV_STONEOFDOOM,_STONEOFDOOM)	
+								(INV_STONEOFLIFE,_STONEOFLIFE)
+								(INV_SWORDOFWIND,_SWORDOFWIND)
+								(INV_TIDE_ESSENCE,_TIDE_ESSENCE)	
+								(INV_TITAN_RING,_TITAN_RING)
+								(INV_WATER_ORB,_WATER_ORB)
+								(INV_WISHBONE,_WISHBONE)
+								
+	JumpLocal					(?_HISTORIAN_DONT_KNOW)
+
+_ARCHAIC_LEAF		
+
+	TextWrite					("Archaic Leaf=")
+								("raises a")
+								("creature's=")
+								("Skill.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_ARMOR_ORB	
+
+	TextWrite					("Armor Orb=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BAG_OF_BONES		
+
+	TextWrite					("Bag of Bones=")
+								("raises a")
+								("creature's=")
+								("Strength.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BARK_THIMBLE	
+
+	TextWrite					("Bark Thimble=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CHANNELEDGEM	
+
+	TextWrite					("ChanneledGem=")
+								("raises a")
+								("creature's=")
+								("Skill.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CORF_PEARL		
+
+	TextWrite					("Corf Pearl=")
+								("raises a")
+								("creature's=")
+								("Resist")
+								("and Skill, but")
+								("lowers Attack.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CRIMSON_VOID		
+
+	TextWrite					("Crimson Void=")
+								("raises your")
+								("creature's=")
+								("power, but")
+								("lowers its=")
+								("defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_EARTH_S_AURA		
+
+	TextWrite					("Earth's Aura=")
+								("makes your")
+								("creature=")
+								("strong against")
+								("Earth, but=")
+								("also makes it")
+								("slower and=")
+								("defensive.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_END_BRINGER		
+
+	TextWrite					("End Bringer=")
+								("raises all your ")
+								("creature's=")
+								("stats a lot,")
+								("but causes=")
+								("Erupt.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_ENERGY_GEM		
+
+	TextWrite					("Energy Gem=")
+								("raises a")
+								("creature's=")
+								("Energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_FLAME_AURA	
+
+	TextWrite					("Flame Aura=")
+								("makes your")
+								("creature more=")
+								("aggressive and")
+								("strong against=")
+								("Fire, but")
+								("lowers its=")
+								("defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_FLAMEESSENCE	
+
+	TextWrite					("FlameEssence=")
+								("makes your")
+								("creature strong=")
+								("against Earth,")
+								("but weak=")
+								("against Shadow.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GEMOFNAROOM			
+
+	TextWrite					("GemOfNaroom=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GOLDENCLOVER	
+
+	TextWrite					("GoldenClover=")
+								("raises a")
+								("creature's=")
+								("Luck.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GRAILOFLIFE		
+
+	TextWrite					("GrailOfLife=")
+								("raises a")
+								("creature's=")
+								("Energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_HYREN_S_CLAW	
+
+	TextWrite					("Hyren's Claw=")
+								("raises a")
+								("creature's=")
+								("Strength.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_LEAF_ESSENCE			
+
+	TextWrite					("Leaf Essence=")
+								("makes your")
+								("creature strong=")
+								("against Shadow,")
+								("but weak=")
+								("against Water.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_LUCENT_BELT	
+
+	TextWrite					("Lucent Belt=")
+								("raises a")
+								("creature's=")
+								("Skill.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_OMBORSAMULET	
+
+	TextWrite					("OmborsAmulet=")
+								("raises a")
+								("creature's=")
+								("Resist.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_PINCHOFLIFE		
+
+	TextWrite					("PinchOfLife=")
+								("makes your")
+								("creature more=")
+								("defensive and")
+								("strong against=")
+								("Life, but")
+								("lowers its=")
+								("Attack.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RABBAGE_FOOT	
+
+	TextWrite					("Rabbage Foot=")
+								("gets rid of a")
+								("creature's=")
+								("Luck.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_RAGE_STONE		
+
+	TextWrite					("Rage Stone=")
+								("makes a")
+								("creature=")
+								("stronger and")
+								("faster.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SHADOW_VEIL	
+
+	TextWrite					("Shadow Veil=")
+								("makes a")
+								("creature very=")
+								("defensive, but")
+								("causes Confuse.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SHIELD_ORB		
+
+	TextWrite					("Shield Orb=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SKY_ESSENCE		
+
+	TextWrite					("Leaf Essence=")
+								("makes your")
+								("creature strong=")
+								("against Water,")
+								("but weak=")
+								("against Earth.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SPICEOFLIFE		
+
+	TextWrite					("SpiceOfLife=")
+								("raises a")
+								("creature's=")
+								("Energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_STONEESSENCE		
+
+	TextWrite					("StoneEssence=")
+								("makes your")
+								("creature strong=")
+								("against Wind,")
+								("but weak=")
+								("against Fire.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_STONEOFDOOM	
+
+	TextWrite					("StoneOfDoom=")
+								("causes Plague")
+								("on your=")
+								("creature.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_STONEOFLIFE		
+
+	TextWrite					("StoneOfLife=")
+								("raises your")
+								("creatures=")
+								("Energy, and")
+								("your creature=")
+								("is immune to")
+								("ailments.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_SWORDOFWIND	
+
+	TextWrite					("SwordOfWind=")
+								("raises a")
+								("creature's=")
+								("Strength.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_TIDE_ESSENCE		
+
+	TextWrite					("Tide Essence=")
+								("makes your")
+								("creature strong=")
+								("against Shadow,")
+								("but weak=")
+								("against Water.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_TITAN_RING	
+
+	TextWrite					("Titan Ring=")
+								("raises a")
+								("creature's=")
+								("Strength.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_WATER_ORB			
+
+	TextWrite					("Water Orb=")
+								("makes your")
+								("creature=")
+								("strong against")
+								("Water, raises=")
+								("all your")
+								("creature's=")
+								("stats, but")
+								("causes Hiccups.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_WISHBONE		
+
+	TextWrite					("Wishbone=")
+								("raises a")
+								("creature's=")
+								("Luck.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+/*********************************/
+?_TYPE_SPELL
+	
+	Switch						([SYS_Historian_Item])
+								(INV_LEAF_CUT,_LEAF_CUT)
+								(INV_GROW,_GROW)
+								(INV_BURROW,_BURROW)
+								(INV_CAVE_IN,_CAVE_IN)
+								(INV_THUNDERQUAKE,_THUNDERQUAKE)
+								(INV_FIREBALL,_FIREBALL)
+								(INV_FLAME_GEYSER,_FLAME_GEYSER)
+								(INV_ENTANGLE,_ENTANGLE)
+								(INV_TIDAL_WAVE,_TIDAL_WAVE)
+								(INV_DISPELX,_DISPELX)
+								(INV_UPDRAFT,_UPDRAFT)
+								(INV_LIGHTNING,_LIGHTNING)
+	JumpLocal					(?_HISTORIAN_DONT_KNOW)
+
+_LEAF_CUT
+
+	TextWrite					("Leaf Cut=")
+								("deals a little")
+								("damage to an=")
+								("enemy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_GROW
+
+	TextWrite					("Grow lets=")
+								("you give a")
+								("creature=")
+								("energy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_BURROW
+
+	TextWrite					("Burrow=")
+								("raises a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_CAVE_IN
+
+	TextWrite					("Cave In=")
+								("lowers a")
+								("creature's=")
+								("Defense.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_THUNDERQUAKE
+
+	TextWrite					("Thunderquake=")
+								("deals damage")
+								("to all=")
+								("creatures.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_FIREBALL
+
+	TextWrite					("Fireball=")
+								("deals damage=")
+								("to an enemy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_FLAME_GEYSER
+
+	TextWrite					("Flame Geyser=")
+								("deals damage")
+								("to everything.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_ENTANGLE
+
+	TextWrite					("Entangle=")
+								("lowers a")
+								("creature's=")
+								("Speed.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_TIDAL_WAVE
+
+	TextWrite					("Tidal Wave=")
+								("deals damage")
+								("to all enemies.=")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_DISPELX
+
+	TextWrite					("Dispel X=")
+								("cures all your")
+								("creatures'=")
+								("ailments.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_UPDRAFT
+
+	TextWrite					("Updraft=")
+								("raises all")
+								("your creatures'=")
+								("Speed.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)
+
+_LIGHTNING
+
+	TextWrite					("Lightning=")
+								("deals a lot of")
+								("damage to an=")
+								("enemy.")
+	TextClose					()
+	Jump						(?_HISTORIAN_WHICH_ONE)

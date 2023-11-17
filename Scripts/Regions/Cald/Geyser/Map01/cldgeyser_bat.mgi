@@ -1,0 +1,197 @@
+/**** LEVEL35 ****/
+?_CLDGEYSER_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,35,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,33,65,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,31,62,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,31,60,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,34,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,33,66,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,32,63,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,36,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,36,72,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,33,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,32,64,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,30,60,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,34,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,32,64,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,30,62,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,35,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,33,65,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,32,63,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,31,60,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,33,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,32,64,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,32,63,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(CLDGEYSER_ARENA1,MAGI_RND1,35,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,33,66,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,32,64,1)
+	BtlAuto		()
+
+/********************************/
+?_CLDGEYSER_WARRADABAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(CLDGEYSER_ARENA1,WARRADA,8,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,255)
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,155)	
+	TextOpen		()
+	TextIcon		(ICON_WARRADA)
+	TextWrite		("Hmmmm...")
+	TextClose		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,8,21,0)
+	
+_LOOP
+	BtlNextTurn			()
+	If					([:WRAM_BATTLE[BTL_SLOT6 != 0]],_LOOP)
+	
+	SetWRAMByte		(BTL_EXIT_CODE,WRAM_BATTLE,BTL_EXIT_DRAW)
+	ThatActorSetScript	(ACTOR0C,?_WARRADA_BATTLE_TAUNT_ANIM)
+	TextOpen		()
+	TextIcon		(ICON_WARRADA)
+	TextWrite		("...I see.")
+					("So that's how=")
+					("it is.")
+	TextClose		()	
+	BtlAuto			()
+
+/********************************/
+?_CLDGEYSER_KORREMARBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(CLDGEYSER_ARENA1,KORREMAR,37,?_BATTLE_FADE_IN)
+
+//550
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,2)	
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,38)	
+	
+	TextOpen		()
+	TextIcon		(ICON_KORREMAR)	
+					//123456789012345				
+	TextWrite		("This is for=")				
+	TextWrite		("Togoth!")
+	TextClose		()
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,30,90,0)
+	BtlNextTurn			()	
+	
+	ThatActorSetScript	(ACTOR0C,?_KORREMAR_BATTLE_TAUNT_ANIM)
+	TextOpen		()
+	TextIcon		(ICON_KORREMAR)					
+	TextWrite		("I will avenge=")
+					("the loss of the")
+					("other Core=")
+					("Gates.")
+	TextClose		()
+	SetScroll		(?_KORREMAR_MODE_CREATURE)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()
+	
+	SetScroll		(?_KORREMAR_MODE_CREATURE)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()
+
+	TextOpen		()
+	TextIcon		(ICON_KORREMAR)	
+					//123456789012345				
+	TextWrite		("Togoth has been=")
+					("a friend of")
+					("mine for many=")
+					("years. You will")
+					("not be allowed=")
+					("to continue.")
+	TextClose		()
+	
+_KORREMAR_LOOP
+	SetScroll		(?_KORREMAR_MODE1)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+	JumpLocal		(_KORREMAR_LOOP)
+	
+
+?_KORREMAR_MODE_CREATURE
+	JumpRandom		(?_KORREMAR11)
+					(?_KORREMAR14)
+					(?_KORREMAR15)
+					(?_KORREMAR14)
+					(?_KORREMAR15)
+
+	
+?_KORREMAR_MODE1
+	JumpRandom		(?_KORREMAR11)
+					(?_KORREMAR12)
+					(?_KORREMAR13)
+					(?_KORREMAR14)
+					(?_KORREMAR14)
+					(?_KORREMAR15)
+					(?_KORREMAR15)
+					
+?_KORREMAR11	
+	BtlSummonDelay		(BTL_ID_MAGI,BORGOR,34,91,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_KORREMAR12
+	BtlUseItem			(BTL_ID_MAGI,ITEM_DEFLECT_GEM,BTLSCR_ENEMYWEAKEST_PERCENT)
+	If					([:WRAM_BATTLE[BTL_CMD_VALID = 0]],?_KORREMAR14)
+	SetAnyEventScroll	()
+	End					()
+
+?_KORREMAR13
+	BtlCastSpell		(BTL_ID_MAGI,SPELL_CAVE_IN,BTLSCR_ALLYSTRONGEST_PERCENT)
+	SetAnyEventScroll	()
+	End					()
+
+?_KORREMAR14
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,33,93,0)
+	SetAnyEventScroll	()
+	End					()
+
+?_KORREMAR15
+	BtlSummonDelay		(BTL_ID_MAGI,KAZOR,33,100,0)
+	SetAnyEventScroll	()
+	End					()
+	

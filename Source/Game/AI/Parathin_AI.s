@@ -1,0 +1,298 @@
+;********************************
+; PARATHIN_AI.S
+;********************************
+;	Author:	Patrick Meehan/Erik Hutchinson
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?PARATHIN_AI
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD					A,(XRAM_HERO_ABILITY)
+	LD					(HERO_ABILITY),A
+
+	BATTERY_OFF
+	JP					?PARATHIN_AI_SWIM_START
+
+;********************************
+;	BC:		Ptr to gob
+?PARATHIN_AI_FLOAT
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	MOVADDR_FF	ACTOR_STATE,?PARATHIN_AI_SWIM_START
+	JP			?HERO_AI_CLOSE
+
+?PARATHIN_AI_SWIM_START
+	CALL		?HERO_AI_OPEN
+	
+	LD			A,(AI_CNT1)
+	BIT			BitRight,A
+	JP			NZ,?PARATHIN_AI_SWIM_RIGHT
+	BIT			BitLeft,A
+	JP			NZ,?PARATHIN_AI_SWIM_LEFT
+	BIT			BitUp,A
+	JP			NZ,?PARATHIN_AI_SWIM_UP
+	BIT			BitDown,A
+	JP			NZ,?PARATHIN_AI_SWIM_DOWN
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	LD			A,(AI_CNTDOWN)
+	BIT			BitA,A
+	CALL		NZ,?PARATHIN_ACTION_FLOAT
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+?PARATHIN_ACTION_FLOAT
+
+	LDA_FF		ACTOR_FLAGS
+	AND			$03
+
+	CP			ACTOR_FACING_UP
+	JR			Z,_UP
+	CP			ACTOR_FACING_DOWN
+	JR			Z,_DOWN
+	CP			ACTOR_FACING_LEFT
+	JR			Z,_LEFT
+	CP			ACTOR_FACING_RIGHT
+	JR			Z,_RIGHT
+
+_UP
+	JP			?HERO_CHECK_ACTION_UP
+_DOWN
+	JP			?HERO_CHECK_ACTION_DOWN
+_LEFT
+	JP			?HERO_CHECK_ACTION_LEFT
+_RIGHT
+	JP			?HERO_CHECK_ACTION_RIGHT
+
+	RET
+
+;********************************
+;	BC:		Ptr to gob
+?PARATHIN_AI_SWIM_DOWN
+	LD			A,%00000011
+	LDFF_A		ACTOR_FLAGS
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	LD			A,:?_PARATHIN_MOVE_DOWN_ANIM
+	LDFF_A		SCRIPT_WBANK
+	MOVADDR_FF	SCRIPT_WFRAME,?_PARATHIN_MOVE_DOWN_ANIM
+	MOVADDR_FF	ACTOR_STATE,_AI
+	JP			?HERO_AI_CLOSE
+
+_AI
+
+	CALL		?HERO_AI_OPEN
+
+	; CHECK DIRECTION
+	;--------------------------------
+	LD			A,(AI_CNT1)
+	BIT			BitDown,A
+	JP			NZ,_DOWN
+	MOVADDR		SCRIPT_WFRAME,?_PARATHIN_STAY_DOWN_ANIM
+	JP			?PARATHIN_AI_FLOAT
+	
+_DOWN
+	BIT			BitLeft,A
+	JR			Z,_NO_LEFT
+	JP			?PARATHIN_AI_SWIM_LEFT
+	
+_NO_LEFT
+	BIT			BitRight,A
+	JR			Z,_NO_RIGHT
+	JP			?PARATHIN_AI_SWIM_RIGHT
+
+_NO_RIGHT
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	LD			A,(COLL_YMOVE)
+	AND			A
+	CALL		Z,?HERO_CHECK_ACTION_DOWN
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+;	BC:		Ptr to gob
+?PARATHIN_AI_SWIM_LEFT
+	LD			A,%00000001
+	LDFF_A		ACTOR_FLAGS
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	LD			A,:?_PARATHIN_MOVE_LEFT_ANIM
+	LDFF_A		SCRIPT_WBANK
+	MOVADDR_FF	SCRIPT_WFRAME,?_PARATHIN_MOVE_LEFT_ANIM
+	MOVADDR_FF	ACTOR_STATE,_AI
+	JP			?HERO_AI_CLOSE
+
+_AI
+
+	CALL		?HERO_AI_OPEN
+
+	; CHECK DIRECTION
+	;--------------------------------
+	LD			A,(AI_CNT1)
+	BIT			BitLeft,A
+	JR			NZ,_LEFT
+	MOVADDR		SCRIPT_WFRAME,?_PARATHIN_STAY_LEFT_ANIM
+	JP			?PARATHIN_AI_FLOAT
+	
+_LEFT
+	LDA_FF		TICKER
+	AND			$01
+	JP			Z,_NO_DOWN
+
+	LD			A,(AI_CNT1)
+	BIT			BitUp,A
+	JR			Z,_NO_UP
+	LD			A,-$01
+	LD			(COLL_YMOVE),A
+	JR			_NO_DOWN
+	
+_NO_UP
+	BIT			BitDown,A
+	JR			Z,_NO_DOWN
+	LD			A,$01
+	LD			(COLL_YMOVE),A
+	
+_NO_DOWN
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	LD			A,(COLL_XMOVE)
+	AND			A
+	CALL		Z,?HERO_CHECK_ACTION_LEFT
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+;	BC:		Ptr to gob
+?PARATHIN_AI_SWIM_RIGHT
+	LD			A,%00000010
+	LDFF_A		ACTOR_FLAGS
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	LD			A,:?_PARATHIN_MOVE_RIGHT_ANIM
+	LDFF_A		SCRIPT_WBANK
+	MOVADDR_FF	SCRIPT_WFRAME,?_PARATHIN_MOVE_RIGHT_ANIM
+	MOVADDR_FF	ACTOR_STATE,_AI
+	JP			?HERO_AI_CLOSE
+
+_AI
+
+	CALL		?HERO_AI_OPEN
+
+	; CHECK DIRECTION
+	;--------------------------------
+	LD			A,(AI_CNT1)
+	BIT			BitRight,A
+	JR			NZ,_RIGHT
+	MOVADDR		SCRIPT_WFRAME,?_PARATHIN_STAY_RIGHT_ANIM
+	JP			?PARATHIN_AI_FLOAT
+	
+_RIGHT
+	LDA_FF		TICKER
+	AND			$01
+	JP			Z,_NO_DOWN
+
+	LD			A,(AI_CNT1)
+	BIT			BitUp,A
+	JR			Z,_NO_UP
+	LD			A,-$01
+	LD			(COLL_YMOVE),A
+	JR			_NO_DOWN
+	
+_NO_UP
+	BIT			BitDown,A
+	JR			Z,_NO_DOWN
+	LD			A,$01
+	LD			(COLL_YMOVE),A
+	
+_NO_DOWN
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	LD			A,(COLL_XMOVE)
+	AND			A
+	CALL		Z,?HERO_CHECK_ACTION_RIGHT
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+;	BC:		Ptr to gob
+?PARATHIN_AI_SWIM_UP
+	LD			A,%00000000
+	LDFF_A		ACTOR_FLAGS
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	LD			A,:?_PARATHIN_MOVE_UP_ANIM
+	LDFF_A		SCRIPT_WBANK
+	MOVADDR_FF	SCRIPT_WFRAME,?_PARATHIN_MOVE_UP_ANIM
+	MOVADDR_FF	ACTOR_STATE,_AI
+	JP			?HERO_AI_CLOSE
+
+_AI
+
+	CALL		?HERO_AI_OPEN
+
+	; CHECK DIRECTION
+	;--------------------------------
+	LD			A,(AI_CNT1)
+	BIT			BitUp,A
+	JR			NZ,_UP
+	MOVADDR		SCRIPT_WFRAME,?_PARATHIN_STAY_UP_ANIM
+	JP			?PARATHIN_AI_FLOAT
+	
+_UP
+	BIT			BitLeft,A
+	JR			Z,_NO_LEFT
+	JP			?PARATHIN_AI_SWIM_LEFT
+	
+_NO_LEFT
+	BIT			BitRight,A
+	JR			Z,_NO_RIGHT
+	JP			?PARATHIN_AI_SWIM_RIGHT
+
+_NO_RIGHT
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	LD			A,(COLL_YMOVE)
+	AND			A
+	CALL		Z,?HERO_CHECK_ACTION_UP
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,845 @@
+/*****************************************************************************/
+//	BATTLE ENGINE BYTES
+/*****************************************************************************/
+%BYTE	BTL_ANIM_DONE			BTL_ANIM_DONE 0
+%BYTE	BTL_ENEMY_ENGL			BTL_ENEMY_ENGL 0
+%BYTE	BTL_ENEMY_ENGH			BTL_ENEMY_ENGH 0
+%BYTE	BTL_SLOT1				BTL_CREATURE_SLOTS 1
+%BYTE	BTL_SLOT2				BTL_CREATURE_SLOTS 2
+%BYTE	BTL_SLOT3				BTL_CREATURE_SLOTS 3
+%BYTE	BTL_SLOT4				BTL_CREATURE_SLOTS 4
+%BYTE	BTL_SLOT5				BTL_CREATURE_SLOTS 5
+%BYTE	BTL_SLOT6				BTL_CREATURE_SLOTS 6
+%BYTE	BTL_SLOT7				BTL_CREATURE_SLOTS 7
+%BYTE	BTL_SLOT8				BTL_CREATURE_SLOTS 8
+%BYTE	BTL_EXIT_CODE			BTL_EXIT_CODE 0
+%BYTE	BTL_CMD_VALID			BTL_CMD_VALID 0
+%BYTE	BTL_RUN_ENABLE			BTL_RUN_FLAG 0
+%BYTE	BTL_SCRIPT_SWITCH		BTL_SCRIPT_SWITCH 0
+%BYTE	BTL_SLOT6_OTHER			BTL_ENEMY1_OTHER 0
+%WORD	BTL_TURN				BTL_ENGINE_TURN 0
+%BYTE	TONYS_MENU				BTL_HERO_MENU 0
+%BYTE	BTL_NO_BOOTY			BTL_NO_BOOTY 0
+/*****************************************************************************/
+//	SYSTEM_VARIABLES			
+/*****************************************************************************/
+%BYTE	Verification_String		XRAM_VERIFY0 0
+%BYTE	MENU_SaveEnable			MENU_SAVE_ENABLE 0			// Toggles main menu save/exit option
+%BYTE	MENU_RingMade			SCRIPT_RINGMADE 0			// ID of creature made by Ringsmith
+%BYTE	MENU_Disable			MENU_DISABLE_MAIN 0			// Set after SceneNew() to prevent menu access
+%BYTE	USEITEM_ID				SCRIPT_USED_ID 0			// ID of item used
+%BYTE	USEITEM_CollCode		SCRIPT_COLLISION_CODE 0		// Collision tile on which item was used
+%BYTE	GS_Hero_Ability			XRAM_HERO_ABILITY 0			// (0: WEAK!)(1: Boxxle)(2: Dig)(3: Long jump)(4: Swim)(5: Fly)
+%BYTE	GS_Glyph_Count			XRAM_GLYPH_COUNT 0			// (0: No Glyph)(1: Empty Glyph)(2: Gem 1) (3: Gem 2)(4: Gem 3)(5: Gem 4)(6: Gem 5)
+%BYTE	SYS_Historian_Type		MENU_HISTORIAN_TYPE 0
+%BYTE	SYS_Historian_Item		MENU_HISTORIAN_TYPE_NUMBER 0
+%BYTE	SYS_TextSoundEnable		TEXTBOX_SOUND_ENABLE 0
+%BYTE	Newgame_Plus			XRAM_NEWGAME_PLUS 0
+%BYTE	Game_Saved				XRAM_GAME_SAVED 0
+
+%BIT	SYS_ContDown_A			CNTDOWN 0^0
+%BIT	SYS_ContDown_B			CNTDOWN 0^1
+%BIT	SYS_ContDown_Select		CNTDOWN 0^2
+%BIT	SYS_ContDown_Start		CNTDOWN 0^3
+%BIT	SYS_ContDown_Right		CNTDOWN 0^4
+%BIT	SYS_ContDown_Left		CNTDOWN 0^5
+%BIT	SYS_ContDown_Up			CNTDOWN 0^6
+%BIT	SYS_ContDown_Down		CNTDOWN 0^7
+
+
+/*****************************************************************************/
+//	INVENTORY
+/*****************************************************************************/
+%WORD	GS_Animite				XRAM_INVENTORY_ANIMITE 0
+%BYTE	ANIMITE_LavaArboll		XRAM_INVENTORY_INFUSED 33	// Total Lava Arboll animite
+
+%BYTE	INV_ITEM_CloudFrond		XRAM_INVENTORY_ITEMS 27
+%BYTE	INV_ITEM_ShadowKey		XRAM_INVENTORY_ITEMS 28
+%BYTE	INV_ITEM_StarKey		XRAM_INVENTORY_ITEMS 33
+%BYTE	INV_ITEM_BlurryScroll	XRAM_INVENTORY_ITEMS 34
+%BYTE	INV_ITEM_Screwdriver	XRAM_INVENTORY_ITEMS 36
+%BYTE	INV_ITEM_SpecimanJar	XRAM_INVENTORY_ITEMS 37
+%BYTE	INV_ITEM_Fungus			XRAM_INVENTORY_ITEMS 38
+%BYTE	INV_ITEM_Algae			XRAM_INVENTORY_ITEMS 39
+%BYTE	INV_ITEM_Fungucide		XRAM_INVENTORY_ITEMS 40
+%BYTE	INV_ITEM_Hollow_Stool	XRAM_INVENTORY_ITEMS 41
+%BYTE	INV_ITEM_Tickets		XRAM_INVENTORY_ITEMS 43
+
+%BYTE	INV_SPELL_DispellX		XRAM_INVENTORY_SPELLS 45
+
+/*****************************************************************************/
+//	GC_OPENING				
+/*****************************************************************************/
+%BIT	Got_Crystal				XRAM_SAVEBITS 0^0		// Earthquake in hmt caves
+%BIT	Charades_Bit			XRAM_SAVEBITS 0^1		// Eidon finishes charades
+
+/*****************************************************************************/
+//	GC_NRM_INTRO
+/*****************************************************************************/
+%BYTE	Nrm_Intro_Count			XRAM_SAVEVARS 0			// (0: No one)(1: Pruitt)(2: Evu1)(3: Poad)(4: Evu2)(5: Last argument)
+
+/*****************************************************************************/
+//	GC_FIND_ORWIN
+/*****************************************************************************/
+%BIT	Orwin_Lost				XRAM_SAVEBITS 0^0		// Orwin has entered the Glade
+
+/*****************************************************************************/
+//	GC_QUEST_FOR_GIA
+/*****************************************************************************/
+%BIT	Talked_To_Eidon			XRAM_SAVEBITS 0^0		// first talk with Eidon
+%BIT	Shrub_Insult			XRAM_SAVEBITS 0^1		// Taunted by Gia about shrublike IQ
+%BYTE	Gias_Taunt				XRAM_SAVEVARS 0			// (0: No Taunts)(1: Taunt off of HS4)(2: Taunt off of HS5)(3: Taunt off of HS6)(4: Taunt off of HS7)(5: All Taunts Disabled)
+
+/*****************************************************************************/
+//	GC_NAROOM_GEYSER
+/*****************************************************************************/
+%BIT	Nrmgeyser_switch1		XRAM_SAVEBITS 0^0
+%BIT	Nrmgeyser_switch2		XRAM_SAVEBITS 0^1
+%BIT	Nrmgeyser_switch3		XRAM_SAVEBITS 0^2
+%BIT	Nrmgeyser_switch4		XRAM_SAVEBITS 0^3
+%BIT	Nrmgeyser_switch5		XRAM_SAVEBITS 0^4
+%BIT	Ngeyser1				XRAM_SAVEBITS 0^5
+%BIT	Ngeyser2				XRAM_SAVEBITS 0^6
+%BIT	Ngeyser3				XRAM_SAVEBITS 0^7
+%BIT	Ngeyser4				XRAM_SAVEBITS 1^0
+%BIT	Ngeyser5				XRAM_SAVEBITS 1^1
+%BIT	Nrmgeyser_Wall_Fixed	XRAM_SAVEBITS 1^2
+%BIT	Final_Door				XRAM_SAVEBITS 1^3
+
+/*****************************************************************************/
+//	GC_GLOVES
+/*****************************************************************************/
+%BIT	Encountered_Wence		XRAM_SAVEBITS 0^0		// first encounter with Wence
+%BYTE	Blades_State			XRAM_SAVEVARS 1			// (0: Not found)(1: Found blades)(2: Talked to Gia)
+
+/*****************************************************************************/
+//	GC_UND_INTRO
+//	Getting the gloves to Underneath town meeting
+%BIT	Talked_To_Ulk			XRAM_SAVEBITS 0^0		// first encounter with Ulk
+%BIT	Talked_To_Gogor			XRAM_SAVEBITS 0^1		// first encounter with Gogor
+%BIT	Learned_Of_Gruk			XRAM_SAVEBITS 0^2		// learned gruk's name in the town.
+
+
+%BYTE	Kidnapping				XRAM_SAVEVARS 0			// (0: Nothing)(1:Kidnap scene)(2:Gruk kidnapped)(3:K & Z have made demands)(4:Rock dropped)(5:Gogor tossed Tony)(6:Gruk Saved)
+/*****************************************************************************/
+//	GC_UND_QUAKE
+//	Town meeting to Gogor scene at the Underneath Geyser
+%BIT	Rock_Drop				XRAM_SAVEBITS 0^0		// Rock dropping scene
+
+/*****************************************************************************/
+//	GC_UND_GEYSER
+//	Gogor scene to beating the Underneath Geyser
+%BIT	Trigger1				XRAM_SAVEBITS 0^0		// Toggle one.
+%BIT	Trigger2				XRAM_SAVEBITS 0^1		// Toggle 2.
+%BIT	Trigger3				XRAM_SAVEBITS 0^2		// Toggle 3.
+%BIT	Trigger4				XRAM_SAVEBITS 0^3		// Toggle 4.
+
+%BYTE	Geyser_State			XRAM_SAVEVARS 0			// (0 = All)(1 = Full)(2 = New)(3 = First)(4 = Third)
+%BYTE	UndGeyserWall			XRAM_SAVEVARS 1			// (0 = No walls down)(Layer 1)(Layer 2)(Layer 3)(All walls down)
+
+/*****************************************************************************/
+//	GC_UND_WASTED
+//	Morag gloating to Wence's hut
+
+/*****************************************************************************/
+//	GC_CALD_INTRO
+//	Wence's hut to find Valkan
+%BYTE	Cald_Cowardice			XRAM_SAVEVARS 0			// Number of attempts to leave Map in Core-Magi battle cldlavatown01
+
+%BYTE	Bonus_Battle			XRAM_SAVEBITS 0			// Byte for clobbering bonus bits
+%BIT	Bonus_Battle00			XRAM_SAVEBITS 0^0		// ID bit for Core Magi TrapAI battle 1
+%BIT	Bonus_Battle01			XRAM_SAVEBITS 0^1		// ID bit for Core Magi TrapAI battle 2
+%BIT	Bonus_Battle02			XRAM_SAVEBITS 0^2		// ID bit for Core Magi TrapAI battle 3
+%BIT	Bonus_Battle03			XRAM_SAVEBITS 0^3		// ID bit for Core Magi TrapAI battle 4
+
+/*****************************************************************************/
+//	GC_ARBOLL_HUNT
+//	find Valkan scene to  Found Arboll
+
+/*****************************************************************************/
+//	GC_LAVA_BRIDGE
+//	Found Arboll to Bridge blowup scene
+
+/*****************************************************************************/
+//	GC_BOOTS_QUEST
+//	From end of Key stealing series of scenes to  end of Blu Vault scenes
+%BIT	Dynamite_Scene			XRAM_SAVEBITS 0^0		// Dynamite scene
+%BIT	Orlons_door				XRAM_SAVEBITS 0^1
+%BIT	Orlons_library1			XRAM_SAVEBITS 0^2
+%BIT	Orlons_library2			XRAM_SAVEBITS 0^3
+%BIT	Orlons_Talked			XRAM_SAVEBITS 0^4		//Orlon's opening script (True = Talked)
+%BIT	Algae1					XRAM_SAVEBITS 0^5		// the Algae on the wall.
+%BIT	Algae2					XRAM_SAVEBITS 0^6		// the Algae on the wall.
+%BIT	Algae3					XRAM_SAVEBITS 0^7		// the Algae on the wall.
+%BYTE	Blu_State				XRAM_SAVEVARS 0			// (0 = Haven't triggered Blu scene)(1 = Triggered scene-not opened Vault)(2 = Opened Vault no boots)(3 = Got Boots)(4 = Final Blu)
+
+/*****************************************************************************/
+//	GC_CALD_GEYSER
+/*****************************************************************************/
+//Blu Vault Scenes till beat Cald Geyser
+%BIT	Cldgeyser_Trig1			XRAM_SAVEBITS 0^1		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig2			XRAM_SAVEBITS 0^2		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig3			XRAM_SAVEBITS 0^3		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig4			XRAM_SAVEBITS 0^4		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig5			XRAM_SAVEBITS 0^5		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig6			XRAM_SAVEBITS 0^6		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig7			XRAM_SAVEBITS 0^7		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig8			XRAM_SAVEBITS 1^0		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig9			XRAM_SAVEBITS 1^1		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig10		XRAM_SAVEBITS 1^2		// Toggle for geyser dam
+%BIT	Cldgeyser_Trig11		XRAM_SAVEBITS 1^3		// Toggle for geyser dam
+%BIT	Cldgeyser03_Trig1		XRAM_SAVEBITS 1^4		// Toggle for geyser dam
+%BIT	Cldgeyser03_Trig2		XRAM_SAVEBITS 1^5		// Toggle for geyser dam
+%BIT	Cldgeyser03_Trig3		XRAM_SAVEBITS 1^6		// Toggle for geyser dam
+%BIT	Cldgeyser03_Trig4		XRAM_SAVEBITS 1^7		// Toggle for geyser dam
+%BIT	Cldgeyser03_Trig5		XRAM_SAVEBITS 2^0		// Toggle for geyser dam
+%BIT	Cldgeyser04_Trig1		XRAM_SAVEBITS 2^1		// Toggle for geyser dam
+%BIT	Cldgeyser05_Trig1		XRAM_SAVEBITS 2^2		// Toggle for geyser dam
+
+%BIT	Cldgeyser_Boxxle1		XRAM_SAVEBITS 2^3		// Solved The First Boxxle
+%BIT	Cldgeyser_Boxxle2		XRAM_SAVEBITS 2^4		// Solved The Second Boxxle
+%BIT	Cldgeyser_Boxxle3		XRAM_SAVEBITS 2^5		// Solved The Third Boxxle
+%BIT	Cldgeyser_Boxxle4		XRAM_SAVEBITS 2^6		// Solved The Fourth Boxxle
+%BIT	Cldgeyser_Boxxle5		XRAM_SAVEBITS 2^7		// Solved The Fifth Boxxle
+%BIT	Cldgeyser_Boxxle6		XRAM_SAVEBITS 3^0		// Solved The Sixth Boxxle
+%BIT	Cldgeyser_Boxxle7		XRAM_SAVEBITS 3^1		// Solved The Seventh Boxxle
+%BIT	Cldgeyser_Boxxle8		XRAM_SAVEBITS 3^2		// Solved The Eigth Boxxle
+
+/*****************************************************************************/
+//	GC_TONY_KIDNAPPED
+/*****************************************************************************/
+%BIT	Party_Intro				XRAM_SAVEBITS 0^0
+%BIT	Playscene				XRAM_SAVEBITS 0^1
+%BIT	Girl_Stormed_Off		XRAM_SAVEBITS 0^2
+
+/*****************************************************************************/
+//	GC_SHADOWHOLD_JAIL
+/*****************************************************************************/
+%BIT	DOOR_1					XRAM_SAVEBITS 0^0		// Door open/closed one Hldmaze01
+%BIT	DOOR_3					XRAM_SAVEBITS 0^2		// Door open/closed one Hldmaze06
+%BIT	DOOR_4					XRAM_SAVEBITS 0^3		// Door open/closed one Hldmaze06
+%BIT	DOOR_5					XRAM_SAVEBITS 0^4		// Door open/closed one Hldmaze16
+%BIT	DOOR_6					XRAM_SAVEBITS 0^5		// Door open/closed one Hldmaze16
+%BIT	DOOR_7					XRAM_SAVEBITS 0^6		// Door open/closed one Hldmaze07
+%BIT	BigRedKey				XRAM_SAVEBITS 0^7		// For Opening Arderial door on Hldmaze07
+
+%BIT	FloorFell				XRAM_SAVEBITS 1^0		// Has the floor fallen in Hldmaze14
+%BIT	DOOR_2					XRAM_SAVEBITS 1^1		// Door open/closed one Hldmaze11
+%BIT	HLDMAZE07_Corefight		XRAM_SAVEBITS 1^2		// fought the core magi guarding the Arderial cell.
+%BIT	HLDMAZE07_Feather		XRAM_SAVEBITS 1^3		// The feather in the arderial cell
+
+%BIT	HldChest1				XRAM_SAVEBITS 2^0		// Treasure Chest
+%BIT	HldChest2				XRAM_SAVEBITS 2^1		// Treasure Chest
+%BIT	HldChest3				XRAM_SAVEBITS 2^2		// Treasure Chest
+%BIT	HldChest4				XRAM_SAVEBITS 2^3		// Treasure Chest
+%BIT	HldChest5				XRAM_SAVEBITS 2^4		// Treasure Chest
+%BIT	HldChest6				XRAM_SAVEBITS 2^5		// Treasure Chest
+%BIT	HldChest7				XRAM_SAVEBITS 2^6		// Treasure Chest
+%BIT	HldChest8				XRAM_SAVEBITS 2^7		// Treasure Chest
+
+%BIT	Switch1					XRAM_SAVEBITS 3^0		// Switch one.
+%BIT	Switch2					XRAM_SAVEBITS 3^1		// Switch two.
+%BIT	Switch3					XRAM_SAVEBITS 3^2		// Switch three.
+%BIT	Switch4					XRAM_SAVEBITS 3^3		// Switch four.
+%BIT	Switch5					XRAM_SAVEBITS 3^4		// Switch five.
+%BIT	Switch6					XRAM_SAVEBITS 3^5		// Switch six.
+%BIT	Switch7					XRAM_SAVEBITS 3^6		// Switch seven.
+%BIT	Switch8					XRAM_SAVEBITS 3^7		// Switch eight.
+
+%BIT	Switch9					XRAM_SAVEBITS 4^0		// Switch nine.
+%BIT	Switch10				XRAM_SAVEBITS 4^1		// Switch ten.
+%BIT	Switch11				XRAM_SAVEBITS 4^2		// Switch eleven.
+%BIT	Switch12				XRAM_SAVEBITS 4^3		// Switch twelve.
+
+%BIT	CellSwitch1				XRAM_SAVEBITS 6^0		// Switch 1 on HldCell 02.
+%BIT	CellTrigger1			XRAM_SAVEBITS 6^1		// Toggle HLDCELL 02
+%BIT	CellDoor1				XRAM_SAVEBITS 6^2		// Cell 5 door locked/unlock
+%BIT	CellSwitch2				XRAM_SAVEBITS 6^3		// Switch 2 on HldCell 05. (Opens door on HldCell 02)
+%BIT	CellTrigger2			XRAM_SAVEBITS 6^4		// Toggle HLDCELL 05
+%BIT	Stuff					XRAM_SAVEBITS 6^5		// Tony's stuff/Jellybeans
+%BIT	Outside_key				XRAM_SAVEBITS 6^6		// A key lying on the ground in HLDEXTERIOR/Jellybeans
+
+%BIT	HldMaze04Trigger1		XRAM_SAVEBITS 7^0		// Arderial switch!
+%BIT	Hold_Bit				XRAM_SAVEBITS 7^1		// Wait For Delay
+
+
+/*****************************************************************************/
+//	GC_BACK_IN_OROTHE
+/*****************************************************************************/
+%BYTE	Oro_Plot_Byte			XRAM_SAVEVARS 0			// (0:arrival in city)(1:had initial talk to mobis)(2:hit forcefield)(3:got dispelX)(4:destroyed forcefield)
+%BIT	Talked_To_Orlon		 	XRAM_SAVEBITS 0^2		// Saying hi to Orlon
+
+/*****************************************************************************/
+//	GC_OROTHE_GEYSER
+/*****************************************************************************/
+%BYTE	Falling_Byte			XRAM_SAVEVARS 0			// which water portal is being used for OROGEYSER01
+%BYTE	Falling_Byte2			XRAM_SAVEVARS 1			// which water portal is being used for OROGEYSER08
+%BYTE	Falling_Byte3			XRAM_SAVEVARS 2			// which water portal is being used for OROGEYSER09
+
+%BIT	Warrada_Scene2			XRAM_SAVEBITS 0^0		// (TRUE = Encountered Warrada midway through Orothe Geyser )
+%BIT	Warrada_Scene3			XRAM_SAVEBITS 0^1		// (TRUE = Encountered Warrada boss dialogue in Orothe Geyser )
+
+%BIT	OROGEYSER01_Trig1		XRAM_SAVEBITS 1^0
+%BIT	OROGEYSER01_Trig2		XRAM_SAVEBITS 1^1
+%BIT	OROGEYSER01_Trig3		XRAM_SAVEBITS 1^2
+%BIT	OROGEYSER09_Trig1		XRAM_SAVEBITS 1^3
+
+/*****************************************************************************/
+//	GC_BEAT_OROTHE
+/*****************************************************************************/
+
+
+/*****************************************************************************/
+//	GC_FALSE_END
+/*****************************************************************************/
+%BIT	Rumble_State			XRAM_SAVEBITS 0^0		// When to stop rumbling during door open in coreentrance
+
+/*****************************************************************************/
+//	GC_ARDERIAL_INTRO
+/*****************************************************************************/
+
+
+/*****************************************************************************/
+//	GC_ARD_GEYSER
+/*****************************************************************************/
+%BYTE	GiaEidon_State			XRAM_SAVEVARS 0			// 0 = didn't meet either; 1 = met Eidon first; 2 = met Gia first; 3 = met both
+
+%BYTE	ArggeyserReset0			XRAM_SAVEBITS 0			// Resets savebits 0
+%BYTE	ArggeyserReset1			XRAM_SAVEBITS 1			// Resets savebits 1
+
+%BIT	Ardgeyser_Trig1			XRAM_SAVEBITS 0^0		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig2			XRAM_SAVEBITS 0^1		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig3			XRAM_SAVEBITS 0^2		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig4			XRAM_SAVEBITS 0^3		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig5			XRAM_SAVEBITS 0^4		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig6			XRAM_SAVEBITS 0^5		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig7			XRAM_SAVEBITS 0^6		// Toggle for geyser chute
+%BIT	Ardgeyser_Trig8			XRAM_SAVEBITS 0^7		// Toggle for geyser dam
+
+%BIT	Ardgeyser_Trig9			XRAM_SAVEBITS 1^0		// Toggle for geyser dam
+%BIT	Ardgeyser_Trig10		XRAM_SAVEBITS 1^1		// Toggle for geyser dam
+%BIT	Ardgeyser_Trig11		XRAM_SAVEBITS 1^2		// Toggle for geyser walls
+%BIT	Ardgeyser_Trig12		XRAM_SAVEBITS 1^3		// Toggle for geyser walls
+%BIT	Ardgeyser_Trig13		XRAM_SAVEBITS 1^4		// Toggle for geyser walls
+%BIT	Ardgeyser_Trig14		XRAM_SAVEBITS 1^5		// Toggle for geyser walls
+
+%BIT	Ardgeyser_Boxxle1		XRAM_SAVEBITS 1^6		// Solved The First Boxxle
+
+
+
+%BIT	ARDGEYSER01_Door1		XRAM_SAVEBITS 2^0
+%BIT	ARDGEYSER02_Door1		XRAM_SAVEBITS 2^1
+%BIT	ARDGEYSER02_Door2		XRAM_SAVEBITS 2^2
+%BIT	ARDGEYSER02_Door3		XRAM_SAVEBITS 2^3
+%BIT	ARDGEYSER02_Door4		XRAM_SAVEBITS 2^4
+%BIT	ARDGEYSER02_Door5		XRAM_SAVEBITS 2^5
+%BIT	ARDGEYSER02_Door6		XRAM_SAVEBITS 2^6
+%BIT	ARDGEYSER02_Door7		XRAM_SAVEBITS 2^7
+
+%BIT	ARDGEYSER02_Door8		XRAM_SAVEBITS 3^0
+%BIT	ARDGEYSER02_Door9		XRAM_SAVEBITS 3^1
+%BIT	ARDGEYSER02_Door10		XRAM_SAVEBITS 3^2
+%BIT	ARDGEYSER13_Door1		XRAM_SAVEBITS 3^3
+%BIT	ARDGEYSER13_Door2		XRAM_SAVEBITS 3^4
+%BIT	ARDGEYSER14_Door1		XRAM_SAVEBITS 3^5
+%BIT	ARDGEYSER19_Door1		XRAM_SAVEBITS 3^6
+%BIT	ARDGEYSER19_Door2		XRAM_SAVEBITS 3^7
+
+%BIT	ARDGEYSER19_Door3		XRAM_SAVEBITS 4^0
+%BIT	ARDGEYSER25_Door1		XRAM_SAVEBITS 4^1
+
+/*****************************************************************************/
+//	GC_BATTLE_AGRAM
+/*****************************************************************************/
+%BYTE	Agram_Count				XRAM_SAVEVARS 0		// (0: Magus Mode)(1: Super Creature)(2: Combi-Creature/Magi)
+%BYTE	Final_Byte				XRAM_SAVEVARS 1		// Tries to stop Tony from not leaving
+
+/*****************************************************************************/
+//	GC_END_FUNERAL
+/*****************************************************************************/
+
+%BIT	Gia_Funeral				XRAM_SAVEBITS 0^0		// Gia's funeral scene (very first funeral scene)
+%BIT	Gogor_Funeral			XRAM_SAVEBITS 0^1		// Gogor's scene at the funeral
+%BIT	Wence_Funeral			XRAM_SAVEBITS 0^2		// Wence's scene at the funeral
+%BIT	Eidon_Funeral			XRAM_SAVEBITS 0^3		// Eidon's talk at the funeral
+
+/*****************************************************************************/
+//	GC_END_PARTY
+/*****************************************************************************/
+%BYTE	SeerGame_MagiID			XRAM_SAVEVARS 0			// Determines which Magi the Seer is thinking of
+%BYTE	Worveline_Hiding		XRAM_SAVEVARS 1			// Determines Worveline's hiding place
+
+%BIT	Party_Gia				XRAM_SAVEBITS 0^0		// Gia's party bit (very first party scene)
+%BIT	Party_Orlon				XRAM_SAVEBITS 0^1		// Orlon's party bit
+%BIT	Party_Seer				XRAM_SAVEBITS 0^2		// Seer's party bit
+%BIT	Party_Blu				XRAM_SAVEBITS 0^3		// Blu's party bit
+%BIT	Party_Gruk				XRAM_SAVEBITS 0^4		// Gruk's party bit
+%BIT	Party_Ulk				XRAM_SAVEBITS 0^5		// Ulk's party bit
+%BIT	Party_Gogor				XRAM_SAVEBITS 0^6		// Gogor's party bit
+%BIT	Party_Pruitt			XRAM_SAVEBITS 0^7		// Pruitt's party bit
+
+%BIT	Party_Salafy			XRAM_SAVEBITS 1^0		// Salafy's party bit
+%BIT	Party_Evu				XRAM_SAVEBITS 1^1		// Evu's party bit
+%BIT	Party_Poad				XRAM_SAVEBITS 1^2		// Poad's party bit
+%BIT	Party_Yaki				XRAM_SAVEBITS 1^3		// Yaki's party bit
+%BIT	Party_Logan				XRAM_SAVEBITS 1^4		// Logan's party bit
+%BIT	Party_Worveline			XRAM_SAVEBITS 1^5		// Worveline's party bit
+%BIT	Party_Eidon				XRAM_SAVEBITS 1^6		// Eidon's party bit
+%BIT	Party_Valkan			XRAM_SAVEBITS 1^7		// Valkan's party bit
+
+%BIT	SeerGameHint			XRAM_SAVEBITS 2^0		// If you took a hint in the Seer minigame
+%BIT	Evu_Conversation_2		XRAM_SAVEBITS 2^1		// Evu says he needs jellybeans
+%BIT	Party_Jellybeans		XRAM_SAVEBITS 2^2		// Evu's jellybeans at the party
+%BIT	Worveline_Caught		XRAM_SAVEBITS 2^3		// Caught Worveline at the party
+
+%BIT	Party_Secret			XRAM_SAVEBITS 3^0		// If all the party bits are set...
+
+/*****************************************************************************/
+//	GLOBAL GAMESTATE
+/*****************************************************************************/
+%BYTE	TCState					XRAM_SAVEVARS 128		// Tryn's cousins' talking state
+%BYTE	Vash13_Training			XRAM_SAVEVARS 130		// (0 = Easy Training Battle)(1 = Moderate Training Battle)(2 = Hard Training Battle)(40 = Insane Battle)
+
+%BYTE	Cald_Btl_Count			XRAM_SAVEVARS 132		// Total bonus battles completed in Cald battle
+
+%WORD	Ferry_Price				XRAM_SAVEVARS 133		// (0:600)(1:550)(2:475)(3:300)(4:200)(5:199)(6:100)(7:50)
+%BYTE	Ferry_Location			XRAM_SAVEVARS 135		// (0:Cald)(1:Orothe)(2:Weave)
+%BYTE	Ferry_Destination		XRAM_SAVEVARS 136		// (0:Cald to Oroth)(1:Cald to Weave)(2:Oro to cald)(3:oro to weave)(4:weave to cald)(5:weave to oro)
+%BYTE	Ferry_State				XRAM_SAVEVARS 137		// (0:No Ferry)(1:has not paid ever)(2:has paid only 1st 300, is only in Cald, hasn't haggled yet)(3:Haggle_Price = price; boat is everywhere)
+
+%BYTE	Seer_Byte				XRAM_SAVEVARS 138		// (0 = Not Talked)(1 thru 5 control cycling text)
+
+%BYTE	First_Creature			XRAM_SAVEVARS 139		// Set based on when Tony falls in hmt caves (0: Small)(1: Medium)(2: Large)
+%BYTE	Brub_Byte				XRAM_SAVEVARS 140
+
+%BYTE	Overworld_Load			XRAM_SAVEVARS 141		// Which overworld load script to use
+%BYTE	Exit_Disable			XRAM_SAVEVARS 142		// Is it not OK for Tony to exit?
+
+%BYTE	Ormagon_Quest			XRAM_SAVEVARS 143		// (0:nothing)(1:talked to hunter,who goes to Fort02)(2:given hunter algae on time)(3:Given thankyouBOY fungus)(4:Applied fungucide, Everyone happy.)
+%BYTE	Vash13_Times_Around		XRAM_SAVEVARS 144		// (0:no rotations)(1:once around)(5:twice around and left eye is active)
+%BYTE	Vash13_Times_Backwords	XRAM_SAVEVARS 145		// (0:no rotations)(1:once around)(5:twice around and left eye is active)
+%BYTE	Vash24_Minigame_Arrows	XRAM_SAVEVARS 146
+%BYTE	Vash24_Minigame_Points	XRAM_SAVEVARS 147
+
+%BYTE	Mushrooms_Eaten			XRAM_SAVEVARS 148
+%BYTE	Hunter_Hyren			XRAM_SAVEVARS 149
+%BYTE	Which_Historian_Menu	XRAM_SAVEVARS 150		// (0:Evu)(1:Orothe & generic)
+%BYTE	Orlon_State				XRAM_SAVEVARS 151
+
+/*****************************************************************************/
+//	GLOBAL GAMESTATE BITS
+/*****************************************************************************/
+%BIT	Worveline				XRAM_SAVEBITS 128^0		// Worveline attack scene
+%BIT	Sick_Orwin				XRAM_SAVEBITS 128^1		// (False = Orwin is Well)
+%BIT	Cold_Shoulder			XRAM_SAVEBITS 128^2		// (False = Returned key when Valkan asked) 
+%BIT	I_Specialkey			XRAM_SAVEBITS 128^3		// (False = Don't have lava town special key) 
+%BIT	Wences_Arrow			XRAM_SAVEBITS 128^5
+%BIT	Vash05_Wence_Talk		XRAM_SAVEBITS 128^6
+%BIT	Vash13_Door_Open		XRAM_SAVEBITS 128^7
+
+%BIT	HldPrisoner1			XRAM_SAVEBITS 129^0
+%BIT	HldPrisoner2			XRAM_SAVEBITS 129^1
+%BIT	HldPrisoner3			XRAM_SAVEBITS 129^2			
+%BIT	HldPrisoner4			XRAM_SAVEBITS 129^3
+%BIT	HldPrisoner5			XRAM_SAVEBITS 129^4
+%BIT	HldPrisoner6			XRAM_SAVEBITS 129^5
+%BIT	HldPrisoner7			XRAM_SAVEBITS 129^6
+%BIT	HldPrisoner8			XRAM_SAVEBITS 129^7
+
+%BIT	MUSHFARM03_Door			XRAM_SAVEBITS 131^0
+%BIT	Vash20_Hollow_Stool		XRAM_SAVEBITS 131^1
+%BIT	NRMLAKE01_Door			XRAM_SAVEBITS 131^2		// (True = door to Seer's house is open)
+%BIT	Uncavern03_PoisonedWall	XRAM_SAVEBITS 131^3
+%BIT	Uncavern03_Stairway		XRAM_SAVEBITS 131^4
+%BIT	Vash24_MinigameLeftTar	XRAM_SAVEBITS 131^5
+%BIT	Vash24_MinigameMidTar	XRAM_SAVEBITS 131^6
+%BIT	Vash24_MinigameRigtTar	XRAM_SAVEBITS 131^7
+
+%BIT	Oro_City_Left			XRAM_SAVEBITS 132^1		// (True = Oscent Marrrrr has left.)
+%BIT	Forcefield_Dispelled	XRAM_SAVEBITS 132^2		// (true = forcefield has been dispelled in OROGEYSER11)
+%BIT	Core_Ringsmith_Door		XRAM_SAVEBITS 132^3		// In map HLDMAZE23, hidden in hdnroom01
+%BIT	Talked_Eidon_With_Stone	XRAM_SAVEBITS 132^5		// Showed Eidon the stone, told to talk to gia.	
+
+%BIT	Salafy_Bit				XRAM_SAVEBITS 133^0
+%BIT	Loss_Bit				XRAM_SAVEBITS 133^1
+%BIT	Warrada_Easyway			XRAM_SAVEBITS 133^2		// (TRUE = Tony accepted Warrada's offer)
+
+%BIT	WVEPATHVALLEY07Door1	XRAM_SAVEBITS 134^0
+%BIT	WVEPATHVALLEY07Door2	XRAM_SAVEBITS 134^1
+
+%BIT	GiaScene_BeatNaroom		XRAM_SAVEBITS 135^0
+%BIT	GiaScene_CaldGeyser		XRAM_SAVEBITS 135^1
+%BIT	EidonScene_QFG			XRAM_SAVEBITS 135^2
+%BIT	EidonScene_BeatNaroom	XRAM_SAVEBITS 135^3
+%BIT	OroIsl_TonyStranded		XRAM_SAVEBITS 135^4		// Check to see if tony saw that the ferry is gone before doing orlons buddy scene
+%BIT	Warrada_Scene			XRAM_SAVEBITS 135^5		// (TRUE = Encountered Warrada in Cald Geyser )
+%BIT	Right_Thing				XRAM_SAVEBITS 135^6		// (FALSE = Valkan has not asked for the Key back in CALDTOWN06 )
+%BIT	Beat_CldGeyser			XRAM_SAVEBITS 135^7	
+
+%BIT	CoreDoor_Opening		XRAM_SAVEBITS 136^0		// Stop Retrigger of Scene in COREENTRANCE
+%BIT	AvoidAgovo_Win			XRAM_SAVEBITS 136^1
+%BIT	AvoidAgovo_Played		XRAM_SAVEBITS 136^2
+%BIT	AvoidAgovo_Rules		XRAM_SAVEBITS 136^4
+
+%BIT	HdnRoom03_Bombed		XRAM_SAVEBITS 137^3		// Bombed room in Hidden 03 
+%BIT	BoxxleGlade_Bombed		XRAM_SAVEBITS 137^4		// Bombed room in Glade11
+%BIT	Undtunnel18_Bombed		XRAM_SAVEBITS 137^5		// Bombed room in UNDTUNNEL22
+%BIT	Undtunnel21_Bombed		XRAM_SAVEBITS 137^6		// Bombed room in UNDTUNNEL21
+%BIT	Undtunnel22_Bombed		XRAM_SAVEBITS 137^7		// Bombed room in UNDTUNNEL22
+
+%BIT	Cldlavavent01_Bombed01	XRAM_SAVEBITS 138^0
+%BIT	Cldlavavent01_Bombed02	XRAM_SAVEBITS 138^1
+%BIT	Cldlavavent04_Bombed	XRAM_SAVEBITS 138^2
+%BIT	Cldlavavent05_Bombed	XRAM_SAVEBITS 138^3
+
+%BIT	HldPrisoner1Talk		XRAM_SAVEBITS 139^0
+%BIT	HldPrisoner2Talk		XRAM_SAVEBITS 139^1
+%BIT	HldPrisoner3Talk		XRAM_SAVEBITS 139^2		
+%BIT	HldPrisoner4Talk		XRAM_SAVEBITS 139^3
+%BIT	HldPrisoner5Talk		XRAM_SAVEBITS 139^4
+%BIT	HldPrisoner6Talk		XRAM_SAVEBITS 139^5
+%BIT	HldPrisoner7Talk		XRAM_SAVEBITS 139^6
+%BIT	HldPrisoner8Talk		XRAM_SAVEBITS 139^7
+
+%BIT	NRMVASH01_Oldman_Told	XRAM_SAVEBITS 140^0		// The oldman on the boardwalk told Tony about Orwin being sick
+%BIT	HDNLOAD01_Door			XRAM_SAVEBITS 140^1
+%BIT	Orlons_Buddy			XRAM_SAVEBITS 140^2
+%BIT	Soap_Gag				XRAM_SAVEBITS 140^3
+%BIT	Poop_Gag				XRAM_SAVEBITS 140^4
+%BIT	Wence_On_His_Way		XRAM_SAVEBITS 140^5
+
+/*****************************************************************************/
+//	TREASURE
+/*****************************************************************************/
+%BIT	NRMGLADE01_Chest1		XRAM_TREASURE 0^0
+%BIT	NRMVASH04_Chest1		XRAM_TREASURE 0^1
+%BIT	NRMVASH15_Chest1		XRAM_TREASURE 0^2
+%BIT    NRMVASH19_Chest1		XRAM_TREASURE 0^3
+%BIT    NRMVASH14_Chest1		XRAM_TREASURE 0^4
+%BIT    NRMVASH14_Chest2		XRAM_TREASURE 0^5
+%BIT	NRMRIVER02_Chest1		XRAM_TREASURE 0^6
+%BIT	NRMRIVER02_Chest2		XRAM_TREASURE 0^7
+
+%BIT	NRMVASH09_Chest1		XRAM_TREASURE 1^0
+%BIT	NRMVASH17_Chest1		XRAM_TREASURE 1^1
+%BIT	NRMVASH18_Chest1		XRAM_TREASURE 1^2
+%BIT	NRMVASH20_Chest1		XRAM_TREASURE 1^3
+%BIT	NRMGLADE07_Chest1		XRAM_TREASURE 1^4
+%BIT	NRMFOREST05_Chest1		XRAM_TREASURE 1^5
+%BIT	NRMFOREST06_Chest1		XRAM_TREASURE 1^6
+%BIT	WVEPATHVALLEY08_Chest1	XRAM_TREASURE 1^7
+
+%BIT	NRMGLADE04_Chest1		XRAM_TREASURE 2^0
+%BIT    NRMLAKE02_Chest1		XRAM_TREASURE 2^1
+%BIT	NRMFOREST04_Chest1		XRAM_TREASURE 2^2
+%BIT	OROTUNNEL05_Chest1		XRAM_TREASURE 2^3
+%BIT	OROTUNNEL05_Chest2		XRAM_TREASURE 2^4
+%BIT	OROTUNNEL04_Chest1		XRAM_TREASURE 2^5
+%BIT	OROTUNNEL03_Chest1		XRAM_TREASURE 2^6
+%BIT	OROTUNNEL08_Chest1		XRAM_TREASURE 2^7
+
+%BIT	WVEPATHVALLEY05_Chest1	XRAM_TREASURE 3^0
+%BIT	WVEPATHVALLEY02_Chest1	XRAM_TREASURE 3^1
+%BIT	NRMGLADE05_Chest1		XRAM_TREASURE 3^2
+%BIT	NRMGEYSER02_Chest1		XRAM_TREASURE 3^3
+%BIT	NRMGEYSER03_Chest1		XRAM_TREASURE 3^4
+%BIT	NRMGEYSER04_Chest1		XRAM_TREASURE 3^5
+%BIT	NRMGEYSER06_Chest1		XRAM_TREASURE 3^6
+%BIT	NRMGEYSER07_Chest1		XRAM_TREASURE 3^7
+
+%BIT	NRMGEYSER12_Chest1		XRAM_TREASURE 4^0
+%BIT	WVEGIASHUT02_Chest1		XRAM_TREASURE 4^1
+%BIT	UNDTUNNEL06_Chest1		XRAM_TREASURE 4^2
+%BIT	UNDTUNNEL06_Chest2		XRAM_TREASURE 4^3
+%BIT	UNDTUNNEL12_Chest1		XRAM_TREASURE 4^4
+%BIT	UNDTUNNEL17_Chest1		XRAM_TREASURE 4^5
+%BIT	UNDTUNNEL20_Chest1		XRAM_TREASURE 4^6
+%BIT	UNDTUNNEL20_Chest2		XRAM_TREASURE 4^7
+
+%BIT	UNDCAVERN02_Chest1		XRAM_TREASURE 5^0
+%BIT	UNDCAVERN02_Chest2		XRAM_TREASURE 5^1
+%BIT	UNDCAVERN03_Chest1		XRAM_TREASURE 5^2
+%BIT	UNDCAVERN03_Chest2		XRAM_TREASURE 5^3
+%BIT	UNDGEYSER01_Chest1		XRAM_TREASURE 5^4
+%BIT	UNDGEYSER01_Chest2		XRAM_TREASURE 5^5
+%BIT	UNDGEYSER02_Chest1		XRAM_TREASURE 5^6
+%BIT	UNDGEYSER02_Chest2		XRAM_TREASURE 5^7
+
+%BIT	UNDGEYSER02_Chest3		XRAM_TREASURE 6^0
+%BIT	UNDGEYSER02_Chest4		XRAM_TREASURE 6^1
+%BIT	UNDGEYSER02_Chest5		XRAM_TREASURE 6^2
+%BIT	UNDGEYSER02_Chest6		XRAM_TREASURE 6^3
+%BIT	UNDGEYSER08_Chest1		XRAM_TREASURE 6^4
+%BIT	UNDGEYSER08_Chest2		XRAM_TREASURE 6^5
+%BIT	UNDGEYSER08_Chest3		XRAM_TREASURE 6^6
+%BIT	UNDGEYSER08_Chest4		XRAM_TREASURE 6^7
+
+%BIT	UNDGEYSER08_Chest5		XRAM_TREASURE 7^0
+%BIT	UNDGEYSER08_Chest6		XRAM_TREASURE 7^1
+
+%BIT	CLDLAVATOWN09_CHEST1	XRAM_TREASURE 8^0
+%BIT	CLDLAVATOWN11_CHEST1	XRAM_TREASURE 8^1
+%BIT	CLDLAVATUBE03_CHEST1	XRAM_TREASURE 8^2
+%BIT	CLDLAVATUBE06_CHEST1	XRAM_TREASURE 8^3
+%BIT	CLDLAVATUBE06_CHEST2	XRAM_TREASURE 8^4
+%BIT	CLDLAVATUBE09_CHEST1	XRAM_TREASURE 8^5
+%BIT	CLDLAVATUBE09_CHEST2	XRAM_TREASURE 8^6
+%BIT	CLDLAVATUBE09_CHEST3	XRAM_TREASURE 8^7
+
+%BIT	CLDLAVATUBE10_CHEST1	XRAM_TREASURE 9^0
+%BIT	CLDLAVATUBE10_CHEST2	XRAM_TREASURE 9^1
+%BIT	ARDCLOUD05_CHEST1		XRAM_TREASURE 9^2
+%BIT	ARDCLOUD06_CHEST1		XRAM_TREASURE 9^3
+%BIT	ARDCLOUD07_CHEST1		XRAM_TREASURE 9^4
+%BIT	ARDCLOUD08_CHEST1		XRAM_TREASURE 9^5
+%BIT	CLDLAVAVENT02_CHEST1	XRAM_TREASURE 9^6
+%BIT	CLDLAVAVENT03_CHEST1	XRAM_TREASURE 9^7
+
+%BIT	OROTUNNEL08_Chest2		XRAM_TREASURE 10^0
+%BIT	OROTUNNEL08_Chest3		XRAM_TREASURE 10^1
+%BIT	OROTUNNEL06_Chest1		XRAM_TREASURE 10^2
+%BIT	OROTUNNEL06_Chest2		XRAM_TREASURE 10^3
+%BIT	ORORUINS01_Chest1		XRAM_TREASURE 10^4
+%BIT	ORORUINS01_Chest2		XRAM_TREASURE 10^5
+%BIT	ORORUINS02_Chest1		XRAM_TREASURE 10^6
+%BIT	ORORUINS02_Chest2		XRAM_TREASURE 10^7
+
+%BIT	ORORUINS02_Chest3		XRAM_TREASURE 11^0
+%BIT	ORORUINS02_Chest4		XRAM_TREASURE 11^1
+%BIT	ORORUINS03_Chest1		XRAM_TREASURE 11^2
+%BIT	ORORUINS03_Chest2		XRAM_TREASURE 11^3
+%BIT	ORORUINS03_Chest3		XRAM_TREASURE 11^4
+%BIT	ORORUINS03_Chest4		XRAM_TREASURE 11^5
+%BIT	ORORUINS03_Chest5		XRAM_TREASURE 11^6
+%BIT	NRMVASH09_Chest2		XRAM_TREASURE 11^7
+
+%BIT	UNDTOWN02_Chest1		XRAM_TREASURE 12^0
+%BIT	UNDTOWN04_Chest1		XRAM_TREASURE 12^1
+%BIT	UNDTOWN01_Chest1		XRAM_TREASURE 12^2
+%BIT	NRMVASH12_Chest1		XRAM_TREASURE 12^3
+%BIT	NRMVASH12_Chest2		XRAM_TREASURE 12^4
+%BIT	NRMVASH22_Chest1		XRAM_TREASURE 12^5
+
+
+%BIT	CLDLAVAVENT03_CHEST2	XRAM_TREASURE 13^0
+%BIT	CLDLAVAVENT04_CHEST1	XRAM_TREASURE 13^1
+
+%BIT	HLDCELL01Chest1			XRAM_TREASURE 14^0
+%BIT	HLDCELL04Chest1			XRAM_TREASURE 14^1
+%BIT	HLDMAZE04Chest1			XRAM_TREASURE 14^2
+%BIT	HLDMAZE06Chest1			XRAM_TREASURE 14^3
+%BIT	HLDMAZE08Chest1			XRAM_TREASURE 14^4
+%BIT	HLDMAZE08Chest2			XRAM_TREASURE 14^5
+%BIT	HLDMAZE08Chest3			XRAM_TREASURE 14^6
+%BIT	HLDMAZE10Chest1			XRAM_TREASURE 14^7
+
+%BIT	HLDMAZE10Chest2			XRAM_TREASURE 15^0
+%BIT	HLDMAZE11Chest1			XRAM_TREASURE 15^1
+%BIT	HLDMAZE13Chest1			XRAM_TREASURE 15^2
+%BIT	HLDMAZE16Chest1			XRAM_TREASURE 15^3
+%BIT	HLDMAZE18Chest3			XRAM_TREASURE 15^4
+%BIT	HLDMAZE20Chest1			XRAM_TREASURE 15^5
+%BIT	HLDMAZE21Chest1			XRAM_TREASURE 15^6
+%BIT	HLDMAZE22Chest1			XRAM_TREASURE 15^7
+
+%BIT	HLDMAZE04Chest2			XRAM_TREASURE 16^0
+
+%BIT	WVESHORTCUT01_Chest1	XRAM_TREASURE 17^2		// (treasurechest with the gloves.)
+
+%BIT	WVEPATHVALLEY07Chest1	XRAM_TREASURE 18^2
+%BIT	WVEPATHVALLEY07Chest2	XRAM_TREASURE 18^3
+%BIT	WVEPATHVALLEY07Chest3	XRAM_TREASURE 18^4
+%BIT	WVEPATHVALLEY02_Chest2	XRAM_TREASURE 18^5
+%BIT	CLDGEYSER02_Chest1		XRAM_TREASURE 18^6
+%BIT	CLDGEYSER02_Chest2		XRAM_TREASURE 18^7
+
+%BIT	CLDGEYSER02_Chest3		XRAM_TREASURE 19^0
+%BIT	CLDGEYSER02_Chest4		XRAM_TREASURE 19^1
+%BIT	CLDGEYSER02_Chest5		XRAM_TREASURE 19^2
+%BIT	CLDGEYSER02_Chest6		XRAM_TREASURE 19^3
+%BIT	CLDGEYSER02_Chest7		XRAM_TREASURE 19^4
+%BIT	CLDGEYSER02_Chest8		XRAM_TREASURE 19^5
+%BIT	CLDGEYSER02_Chest9		XRAM_TREASURE 19^6
+%BIT	CLDGEYSER02_Chest10		XRAM_TREASURE 19^7
+
+%BIT	CLDGEYSER02_Chest11		XRAM_TREASURE 20^0
+%BIT	CLDGEYSER02_Chest12		XRAM_TREASURE 20^1
+%BIT	CLDGEYSER02_Chest13		XRAM_TREASURE 20^2
+%BIT	CLDGEYSER02_Chest14		XRAM_TREASURE 20^3
+%BIT	CLDGEYSER02_Chest15		XRAM_TREASURE 20^4
+%BIT	CLDGEYSER03_Chest1		XRAM_TREASURE 20^5
+%BIT	CLDGEYSER03_Chest2		XRAM_TREASURE 20^6
+%BIT	CLDGEYSER03_Chest3		XRAM_TREASURE 20^7
+
+%BIT	CLDGEYSER03_Chest4		XRAM_TREASURE 21^0
+%BIT	CLDGEYSER03_Chest5		XRAM_TREASURE 21^1
+%BIT	CLDGEYSER03_Chest6		XRAM_TREASURE 21^2
+%BIT	CLDGEYSER03_Chest7		XRAM_TREASURE 21^3
+%BIT	CLDGEYSER03_Chest8		XRAM_TREASURE 21^4
+%BIT	CLDGEYSER03_Chest9		XRAM_TREASURE 21^5
+%BIT	CLDGEYSER03_Chest10		XRAM_TREASURE 21^6
+%BIT	CLDGEYSER03_Chest11		XRAM_TREASURE 21^7
+
+%BIT	OROGEYSER10_Chest1		XRAM_TREASURE 22^0
+%BIT	OROGEYSER10_Chest2		XRAM_TREASURE 22^1
+%BIT	OROGEYSER10_Chest3		XRAM_TREASURE 22^2
+%BIT	OROGEYSER10_Chest4		XRAM_TREASURE 22^3
+%BIT	OROGEYSER10_Chest5		XRAM_TREASURE 22^4
+%BIT	OROGEYSER10_Chest6		XRAM_TREASURE 22^5
+%BIT	OROGEYSER10_Chest7		XRAM_TREASURE 22^6
+%BIT	OROGEYSER10_Chest8		XRAM_TREASURE 22^7
+
+%BIT	OROGEYSER10_Chest9		XRAM_TREASURE 23^0
+%BIT	OROGEYSER08_Chest1		XRAM_TREASURE 23^1
+%BIT	OROGEYSER08_Chest2		XRAM_TREASURE 23^2
+%BIT	OROGEYSER08_Chest3		XRAM_TREASURE 23^3
+%BIT	OROGEYSER08_Chest4		XRAM_TREASURE 23^4
+%BIT	OROGEYSER09_Chest1		XRAM_TREASURE 23^5
+%BIT	ARDGEYSER01_Chest1		XRAM_TREASURE 23^7
+
+%BIT	ARDGEYSER02_Chest1		XRAM_TREASURE 24^3
+%BIT	ARDGEYSER02_Chest2		XRAM_TREASURE 24^4
+%BIT	ARDGEYSER02_Chest3		XRAM_TREASURE 24^5
+%BIT	ARDGEYSER02_Chest4		XRAM_TREASURE 24^6
+%BIT	ARDGEYSER02_Chest5		XRAM_TREASURE 24^7
+
+%BIT	ARDGEYSER02_Chest6		XRAM_TREASURE 25^0
+%BIT	ARDGEYSER02_Chest7		XRAM_TREASURE 25^1
+%BIT	ARDGEYSER02_Chest8		XRAM_TREASURE 25^2
+%BIT	ARDGEYSER02_Chest9		XRAM_TREASURE 25^3
+%BIT	ARDGEYSER02_Chest10		XRAM_TREASURE 25^4
+%BIT	ARDGEYSER02_Chest11		XRAM_TREASURE 25^5
+%BIT	ARDGEYSER02_Chest12		XRAM_TREASURE 25^6
+
+%BIT	UNDGEYSER07_Chest1		XRAM_TREASURE 26^6
+%BIT	UNDGEYSER06_Chest1		XRAM_TREASURE 26^7
+
+%BIT	UNDGEYSER06_Chest2		XRAM_TREASURE 27^2
+
+%BIT	UNDGEYSER05_Chest1		XRAM_TREASURE 28^1
+%BIT	UNDGEYSER05_Chest2		XRAM_TREASURE 28^2
+%BIT	UNDGEYSER05_Chest3		XRAM_TREASURE 28^3
+%BIT	CLDGEYSER03_Chest12		XRAM_TREASURE 28^4
+%BIT	CLDGEYSER03_Chest13		XRAM_TREASURE 28^5
+%BIT	ARDGEYSER23_Chest1		XRAM_TREASURE 28^6
+%BIT	ARDGEYSER23_Chest2		XRAM_TREASURE 28^7
+
+%BIT	ARDGEYSER19_Chest1		XRAM_TREASURE 29^0
+%BIT	ARDGEYSER19_Chest2		XRAM_TREASURE 29^1
+%BIT	ARDGEYSER16_Chest1		XRAM_TREASURE 29^2
+%BIT	ARDGEYSER15_Chest1		XRAM_TREASURE 29^3
+%BIT	ARDGEYSER12_Chest1		XRAM_TREASURE 29^4
+%BIT	ARDGEYSER11_Chest1		XRAM_TREASURE 29^5
+%BIT	ARDGEYSER10_Chest1		XRAM_TREASURE 29^6
+%BIT	ARDGEYSER09_Chest1		XRAM_TREASURE 29^7
+
+%BIT	ARDGEYSER08_Chest1		XRAM_TREASURE 30^0
+%BIT	ARDGEYSER07_Chest1		XRAM_TREASURE 30^1
+%BIT	ARDGEYSER06_Chest1		XRAM_TREASURE 30^2
+%BIT	ARDGEYSER05_Chest1		XRAM_TREASURE 30^3
+%BIT	ARDGEYSER04_Chest1		XRAM_TREASURE 30^4
+%BIT	ARDGEYSER03_Chest1		XRAM_TREASURE 30^5
+%BIT	CLDGEYSER02_Chest16		XRAM_TREASURE 30^6
+%BIT	CLDGEYSER02_Chest17		XRAM_TREASURE 30^7
+
+%BIT	CLDGEYSER02_Chest18		XRAM_TREASURE 31^0
+%BIT	CLDGEYSER02_Chest19		XRAM_TREASURE 31^1
+%BIT	OROGEYSER01_Chest1		XRAM_TREASURE 31^2
+%BIT	OROGEYSER01_Chest2		XRAM_TREASURE 31^3
+%BIT	ARDGEYSER10_Chest2		XRAM_TREASURE 31^4
+%BIT	ARDGEYSER05_Chest2		XRAM_TREASURE 31^5
+%BIT	ARDGEYSER12_Chest2		XRAM_TREASURE 31^6
+%BIT	ARDGEYSER15_Chest2		XRAM_TREASURE 31^7
+
+%BIT	ARDGEYSER15_Chest3		XRAM_TREASURE 32^0
+%BIT	ARDGEYSER16_Chest2		XRAM_TREASURE 32^1
+%BIT	ARDGEYSER18_Chest1		XRAM_TREASURE 32^2
+%BIT	ARDGEYSER18_Chest2		XRAM_TREASURE 32^3
+%BIT	ARDGEYSER19_Chest3		XRAM_TREASURE 32^4
+%BIT	ARDGEYSER19_Chest4		XRAM_TREASURE 32^5
+%BIT	ARDGEYSER19_Chest5		XRAM_TREASURE 32^6
+%BIT	ARDGEYSER27_Chest1		XRAM_TREASURE 32^7
+
+%BIT	ARDGEYSER14_Chest1		XRAM_TREASURE 33^0
+%BIT	ARDGEYSER14_Chest2		XRAM_TREASURE 33^1
+%BIT	ARDGEYSER14_Chest3		XRAM_TREASURE 33^2
+%BIT	ARDGEYSER25_Chest1		XRAM_TREASURE 33^3
+%BIT	ARDGEYSER25_Chest2		XRAM_TREASURE 33^4
+%BIT	ARDGEYSER25_Chest3		XRAM_TREASURE 33^5
+%BIT	ARDGEYSER24_Chest1		XRAM_TREASURE 33^6
+%BIT	ARDGEYSER23_Chest3		XRAM_TREASURE 33^7
+
+%BIT	ARDGEYSER23_Chest4		XRAM_TREASURE 34^0
+%BIT	NRMVASH10_Chest1		XRAM_TREASURE 34^1
+%BIT	Vault_Chest				XRAM_TREASURE 34^2		// (False = treasure chest with boots in vault not opened
+%BIT	OROTUNNEL10_Chest2		XRAM_TREASURE 34^3		// (False = treasure chest with boots in vault not opened
+
+%BIT	UNDGEYSER03_Chest1		XRAM_TREASURE 35^0
+%BIT	UNDGEYSER03_Chest2		XRAM_TREASURE 35^1
+%BIT	NRMLAKE01_Chest1		XRAM_TREASURE 35^2
+%BIT	NRMLAKE01_Chest2		XRAM_TREASURE 35^3
+%BIT	NRMFOREST07_Chest1		XRAM_TREASURE 35^4
+%BIT	UNDTOWN05_Chest1		XRAM_TREASURE 35^5
+%BIT	UNDMUSHFARM03_Chest1	XRAM_TREASURE 35^6
+%BIT	FORT03_Chest1			XRAM_TREASURE 35^7
+
+%BIT	CLDLAVAVENT08_Chest1	XRAM_TREASURE 36^0
+%BIT	OROCITY04_Chest1		XRAM_TREASURE 36^1
+%BIT	OROCITY04_Chest2		XRAM_TREASURE 36^2
+%BIT	OROCITY04_Chest3		XRAM_TREASURE 36^3
+%BIT	OROISLANDS02_Chest1		XRAM_TREASURE 36^4
+%BIT	ARDCLOUDS06_Chest1		XRAM_TREASURE 36^5
+%BIT	ARDCLOUDS06_Chest2		XRAM_TREASURE 36^6
+%BIT	ARDCLOUDS03_Chest1		XRAM_TREASURE 36^7
+
+%BIT	HDNROOM04_Chest1		XRAM_TREASURE 37^0
+%BIT	HDNROOM04_Chest2		XRAM_TREASURE 37^1
+%BIT	HDNROOM04_Chest3		XRAM_TREASURE 37^2
+%BIT	OVRSURFACE01B_Chest1	XRAM_TREASURE 37^3
+%BIT	NRMLAKE04_Chest1		XRAM_TREASURE 37^4
+%BIT	NRMGLADE11B_Chest1		XRAM_TREASURE 37^5
+%BIT	NRMGLADE11B_Chest2		XRAM_TREASURE 37^6
+%BIT	NRMGLADE11C_Chest1		XRAM_TREASURE 37^7
+
+%BIT	NRMGLADE11C_Chest2		XRAM_TREASURE 38^0
+%BIT	NRMGLADE11C_Chest3		XRAM_TREASURE 38^1
+%BIT	HDNUNDTUN02_Chest1		XRAM_TREASURE 38^2
+%BIT	HDNUNDTUN01_Chest1		XRAM_TREASURE 38^3
+%BIT	HDNUNDTUN01_Chest2		XRAM_TREASURE 38^4
+%BIT	HDNLAVATUBE03_Trig1		XRAM_TREASURE 38^5
+%BIT	CLDVENTINT01_Chest1		XRAM_TREASURE 38^6
+%BIT	CLDVENTINT02_Chest1		XRAM_TREASURE 38^7
+
+%BIT	FORT02_Chest1			XRAM_TREASURE 39^0
+%BIT	HDNLAVATUBE03_Chest1	XRAM_TREASURE 39^1
+%BIT	HDNLAVATUBE03_Chest2	XRAM_TREASURE 39^2
+%BIT	HDNLAVATUBE03_Chest3	XRAM_TREASURE 39^3
+%BIT	HDNLAVATUBE03_Chest4	XRAM_TREASURE 39^4
+%BIT	HDNLAVATUBE03_Chest5	XRAM_TREASURE 39^5
+%BIT	HDNLAVATUBE03_Chest6	XRAM_TREASURE 39^6
+%BIT	HDNLAVATUBE03_Chest7	XRAM_TREASURE 39^7
+
+%BIT	CLDVENTINT04_Chest1		XRAM_TREASURE 40^0
+%BIT	ARDGARDEN07_Chest1		XRAM_TREASURE 40^1
+%BIT	ARDGARDEN07_Chest2		XRAM_TREASURE 40^2
+%BIT	ARDGARDEN05_Chest1		XRAM_TREASURE 40^3
+%BIT	ARDGARDEN05_Chest2		XRAM_TREASURE 40^4
+%BIT	ARDGARDEN01_Chest1		XRAM_TREASURE 40^5
+%BIT	ARDGARDEN01_Chest2		XRAM_TREASURE 40^6
+%BIT	OROCORAL05_Chest1		XRAM_TREASURE 40^7
+
+%BIT	OROCORAL05_Chest2		XRAM_TREASURE 41^0
+%BIT	OROCORAL05_Chest3		XRAM_TREASURE 41^1
+%BIT	CLDVENTINT03_Chest1		XRAM_TREASURE 41^2
+%BIT	WVEPATHVALLEY04_Chest1	XRAM_TREASURE 41^3
+%BIT	HDNLOAD1B_Chest1		XRAM_TREASURE 41^4
+%BIT	HDNLOAD1B_Chest2		XRAM_TREASURE 41^5
+%BIT	HDNLOAD1B_Chest3		XRAM_TREASURE 41^6
+%BIT	HDNLOAD1C_Chest1		XRAM_TREASURE 41^7
+
+%BIT	OROCORAL02_Chest1		XRAM_TREASURE 42^0
+%BIT	OROCORAL02_Chest2		XRAM_TREASURE 42^1
+%BIT	OROCORAL02_Chest3		XRAM_TREASURE 42^2
+%BIT	HDNUNDTUN04_Chest1		XRAM_TREASURE 42^3
+%BIT	HDNUNDTUN04_Chest2		XRAM_TREASURE 42^4
+%BIT	HLDMAZE23_Chest1		XRAM_TREASURE 42^5

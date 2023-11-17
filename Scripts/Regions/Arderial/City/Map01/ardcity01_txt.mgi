@@ -1,0 +1,22 @@
+/********************************/
+?_ARDCITY01_ATTACK_TXT01
+	TextOpen		()
+	TextIcon		(ICON_ARDGUARD)
+	TextWrite		("They're=")
+					("attacking")
+					("again!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+?_ARDCITY01_ATTACK_TXT02
+	TextOpen		()
+	TextIcon		(ICON_ARDGUARD)
+	TextWrite		("Hold fast,=")
+					("Great Magus.")
+					("We will take=")
+					("you safely to")
+					("the entrance.")
+	TextClose		()
+	SetEventText	(2)
+	End				()

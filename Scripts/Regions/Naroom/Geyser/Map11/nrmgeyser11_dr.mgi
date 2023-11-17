@@ -1,0 +1,15 @@
+?_NRMGEYSER11_DR_1
+	Switch				([GAMECOUNT])
+						(GC_GLOVES,_TOGATHBATTLE)
+	SetLoadScript		(?_NRMGEYSER11_DR_1)
+	HeroToDoor			(3,11,6,2)
+	Jump				(?_NRMGEYSER10)
+
+_TOGATHBATTLE
+	PalClearAnim		(0,15,31,0,0)
+	Delay				(8)
+	PalRefresh			(0,15)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_NRMGEYSER_HERO_ACT)
+	ThatActorStart		(ACTOR01)
+	End					()

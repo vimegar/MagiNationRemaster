@@ -1,0 +1,239 @@
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDLAVATOWN02_APOLOGY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_INTRO)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_INTRO)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN02_GIRL04_INTRO
+	SetText				(?_CLDTOWN02_GIRL04_TXT01)	
+	Jump				(?_FACE_GIRL04)					
+	
+?_CLDTOWN02_YOUNGMAN_INTRO
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT01)	
+	Jump				(?_FACE_YOUNGMAN)
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDLAVATOWN02_ARBOLLQUEST
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_HUNT)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_HUNT)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()				
+
+?_CLDTOWN02_GIRL04_HUNT
+	SetText				(?_CLDTOWN02_GIRL04_TXT02)	
+	Jump				(?_FACE_GIRL04)					
+
+?_CLDTOWN02_YOUNGMAN_HUNT
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT02)	
+	Jump				(?_FACE_YOUNGMAN)			
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDLAVATOWN02_COLDSHOULDER
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_CHILL)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_CHILL)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()				
+
+?_CLDTOWN02_GIRL04_CHILL
+	SetText				(?_CLDTOWN02_GIRL04_TXT03)	
+	Jump				(?_FACE_GIRL04)					
+
+?_CLDTOWN02_YOUNGMAN_CHILL
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT03)	
+	Jump				(?_FACE_YOUNGMAN)			
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDLAVATOWN02_HURRYUP
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_HURRY)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_HURRY)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()				
+
+?_CLDTOWN02_GIRL04_HURRY
+	SetText				(?_CLDTOWN02_GIRL04_TXT04)	
+	Jump				(?_FACE_GIRL04)					
+
+?_CLDTOWN02_YOUNGMAN_HURRY
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT04)	
+	Jump				(?_FACE_YOUNGMAN)			
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDLAVATOWN02_BESTBRIDGE
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN02)
+	LoadHotspots			(HS_CLDLAVATOWN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,5,35,20,0,?_CLDTOWN02_GIRL04,?_CLDTOWN02_GIRL04_BRIDGE)
+	ThatActorInit			(ACTOR01,?TALKER_AI,12,16,20,48,?_CLDTOWN02_YOUNGMAN,?_CLDTOWN02_YOUNGMAN_BRIDGE)
+	ThatActorInit			(ACTOR02,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,20,89,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	LoadVRAMTiles			(48,BIT_GIRL04,0,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,48,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,89,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()		
+
+?_CLDTOWN02_GIRL04_BRIDGE
+	SetText				(?_CLDTOWN02_GIRL04_TXT05)	
+	Jump				(?_FACE_GIRL04)					
+
+?_CLDTOWN02_YOUNGMAN_BRIDGE
+	SetText				(?_CLDTOWN02_YOUNGMAN_TXT05)	
+	Jump				(?_FACE_YOUNGMAN)			
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+
+/********************************//********************************/
+// MULTI-SCENE
+/********************************//********************************/
+?_CLDTOWN02_GIRL04
+	ThisActorSetAnimDelay	(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_LEFT_ANIM,64)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_UP_ANIM,16)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_STAND_DL_ANIM,64)
+							(?_GIRL04_STAND_UL_ANIM,64)
+							(?_GIRL04_WALK_DOWN_ANIM,32)
+							(?_GIRL04_STAND_DR_ANIM,64)
+							(?_GIRL04_STAND_UR_ANIM,64)
+							(?_GIRL04_WALK_UP_ANIM,16)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_RIGHT_ANIM,64)
+							(?_GIRL04_STAND_DOWN_ANIM,32)
+							(?_GIRL04_STAND_DL_ANIM,32)
+							(?_GIRL04_STAND_LEFT_ANIM,32)
+							(?_GIRL04_STAND_UL_ANIM,32)
+							(?_GIRL04_STAND_UP_ANIM,32)
+							(?_GIRL04_STAND_UR_ANIM,32)
+							(?_GIRL04_STAND_RIGHT_ANIM,32)
+							(?_GIRL04_STAND_DR_ANIM,32)
+	Jump					(?_CLDTOWN02_GIRL04)
+
+?_CLDTOWN02_YOUNGMAN
+	ThisActorSetAnimDelay	(?_YOUNGMAN_STAND_DOWN_ANIM,64)
+	Jump					(?_CLDTOWN02_YOUNGMAN)
+/********************************//********************************/
+// END MULTI-SCENE
+/********************************//********************************/

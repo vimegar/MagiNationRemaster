@@ -1,0 +1,25 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TUNNELS\MAP13\UNDTUNNEL13_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TUNNELS\MAP13\UNDTUNNEL13_TXT.MGI
+
+/********************************/
+?_UNDTUNNEL13
+	SceneNew		()
+	LoadMap			(MAP_UNDTUNNEL13)
+	//LoadEncounters		(EN_UNDTUNNEL,ENCOUNTER_FRQ_NORM,?_UNDTUNNEL_RE_ENTER)
+	LoadHotspots	(HS_UNDTUNNEL13)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,15,0,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,15,0,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_UNDTUNNEL13)	
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart			(SONGID_undtunnels)
+	SceneReady		()
+	End				()

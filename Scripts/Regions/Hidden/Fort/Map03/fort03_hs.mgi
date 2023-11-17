@@ -1,0 +1,8 @@
+/********************************/
+		FileHotspots	(HS_FORT03)
+						(HOTSPOT_TRIGGER_WEST,?_FORT03_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_FORT03_DR_2)
+						
+								FileTriggers	(TR_FORT03)
+						(TRIGGER_CONFIG,?_FORT03_TR_1)
+						

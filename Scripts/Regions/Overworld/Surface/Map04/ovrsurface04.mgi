@@ -1,0 +1,277 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP04\OVRSURFACE04_DR.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP04\OVRSURFACE04_TXT.MGI
+
+/********************************/
+//Orothe area
+?_OVRSURFACE04
+	SceneNew				()
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR02)
+	SongStart				(SONGID_overworld)
+	JumpLocal				(?_OVRSURFACE04_INIT)
+
+?_OVRSURFACE04_LOAD
+	ThatActorInit			(ACTOR02,?OVERPARA_AI,18,20,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+	HeroSetDoor				(18,20)
+
+?_OVRSURFACE04_PARATHIN
+	SceneNew				()
+	SongStart				(SONGID_turtleride)
+	//ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)
+
+?_OVRSURFACE04_INIT
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,4)
+
+	LoadMap					(MAP_OVRSURFACE04)
+	LoadHotspots			(HS_OVERSURFACE04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,33,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,12,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,7,31,31,31)
+
+	If						([GAMECOUNT < GC_OROTHE_GEYSER],_SKIP1)
+	CopyTileBlock			(33,15,16,5,5,19,21)
+_SKIP1
+
+	If						([GAMECOUNT > GC_OROTHE_GEYSER],_SKIP2)
+	ThatActorInit			(ACTOR01,?TRAP_AI,16,6,33,12,?_OVERWORLD_GEYSER_ANIM,?_END)
+	ThatActorStart			(ACTOR01)
+_SKIP2
+
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	End						()
+
+?_OVRSURFACE04_OROCITY
+	HeroSetDoor				(37,2)
+	Jump					(?_OROCITY01)
+
+/********************************//********************************/
+// BLACK THINGY
+/********************************//********************************/
+?_OVRSURFACE04_INTRO
+	SongFadeOut				(30)
+	Delay					(48)
+	SceneNew				()
+
+	SetLoadScript			(?_OVRSURFACE04_LOAD)
+
+	SetXRAMByte				(GS_Hero_Ability,4)
+	SetGamecount			(GC_BACK_IN_OROTHE)	
+
+	LoadMap					(MAP_OVRSURFACE04)
+	LoadHotspots			(HS_OVERSURFACE04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,22,15,33,0,_TONY,?_END)
+	ThatActorInit			(ACTOR01,?ANIM_AI,21,15,33,19,_BLU,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,14,15,33,16,_PARA,?_END)
+	ThatActorInit			(ACTOR03,?TRAP_AI,16,6,33,12,?_OVERWORLD_GEYSER_ANIM,?_END)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,12,0)
+	LoadVRAMTiles			(16,BIT_OVERBLU,19,0)
+	PalClearAnim			(0,15,31,31,31)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR03)
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_forest)
+	PalFade					(0,15,32,0)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnim		(?_HERO_OVER_UP_ANIM)
+	Delay					(64)
+	ThisActorSetAnim		(?_HERO_OVER_LEFT_ANIM)
+
+	Sync					(4,0)
+
+	ThisActorSetAnimDelay	(?_HERO_OVER_LEFT2_ANIM,16)
+							(?_HERO_OVER_LEFT_ANIM,8)
+	ThisActorStop			()
+
+_BLU
+	ThisActorSetAnimDelay	(?_OVERBLU_UP_ANIM,32)
+	SetText					(_TXT_SEE_THAT)
+	WaitAnyEventText		()
+	
+	CameraSeekActor			(ACTOR03,2)
+	Delay					(48)
+	CameraSeekActor			(ACTOR01,2)
+
+	ThisActorSetAnim		(?_OVERBLU_RIGHT_ANIM)
+	SetText					(_TXT_BLACK_THINGY)
+	WaitAnyEventText		()
+	
+	SongFadeOut				(80)
+	Delay					(80)
+	
+	
+	ThisActorSetAnim		(?_OVERBLU_LEFT_ANIM)
+	SetText					(_TXT_HERE_BOY)
+	WaitAnyEventText		()
+
+	SongStart				(SONGID_turtleride)
+	ThatActorStart			(ACTOR02)
+
+	Sync					(4,0)
+
+	ThisActorSetAnimDelay	(?_OVERBLU_DOWN_ANIM,6)
+	ThisActorStop			()
+	End						()
+
+_PARA
+	ThisActorSetAnimDelay	(?_OVERPARATHIN_SWIM_RIGHT_ANIM,96)
+							(?_OVERPARATHIN_UP_ANIM,0)
+	Delay					(16)
+
+	SetText					(_TXT_WAAAAARG)
+	Sync					(4,0)
+
+	Delay					(48)
+	ThisActorSetAnimScroll	(?_OVERPARATHIN_SWIM_DOWN_ANIM,90,0,1)
+							(?_OVERPARATHIN_DOWN_ANIM,40,0,0)
+	Jump					(?_OROCITY01_FIRST)
+
+/********************************/
+// SCROLL
+_SCROLL_WAAAAARG
+	SFX					(SFXID_EARTHQUAKE_END)
+	ScrollMap			(2,1,1)
+						(2,-1,0)
+						(2,1,-1)
+						(2,-1,0)
+						(2,1,1)
+						(2,-1,0)
+						(2,1,-1)
+						(2,-1,0)
+						(2,1,1)
+						(2,-1,0)
+						(2,1,-1)
+						(2,-1,0)
+	End					()
+
+/********************************/
+// TEXT
+_TXT_SEE_THAT
+	TextOpen			()
+	TextIcon			(ICON_BLU)
+	TextWrite			("See that,=")
+						("Toney?")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_BLACK_THINGY
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Wow, that's a--")
+	TextIcon			(ICON_BLU)
+	TextWrite			("It's a Black=")
+						("Thingy!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("...Black=")
+						("Thingy?")
+	TextIcon			(ICON_BLU)
+	TextWrite			("Arr, named it=")
+						("maself. Thar's")
+						("never been=")
+						("anythin' like")
+						("it around here=")
+						("before so I had")
+						("ta come up with=")
+						("somethin'.")
+						("Anyway, let's=")
+						("go to Oscent")
+						("Marrr.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_HERE_BOY
+	TextOpen			()
+	TextIcon			(ICON_BLU)
+	TextWrite			("Here, boy!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_WAAAAARG
+	TextOpen			()
+	SetScroll			(_SCROLL_WAAAAARG)
+	TextWrite			("WAAAAARG!")
+	TextIcon			(ICON_BLU)
+	TextWrite			("Good boy!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Whoa...")
+	TextClose			()
+	Sync				(4,0)
+	End					()
+
+/********************************//********************************/
+// END BLACK THINGY
+/********************************//********************************/
+
+?_OVRSURFACE04_NO_PARATHIN
+	SongFadeOut				(30)
+	SceneNew				()
+	LoadMap					(MAP_OVRSURFACE04)
+	LoadHotspots			(HS_OVERSURFACE04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,21,22,33,0,?_OVRSURFACE04_TONY_NO_MOVE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	PalClearAnim			(0,7,31,31,31)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	End						()
+	
+?_OVRSURFACE04_TONY_NO_MOVE
+	ThisActorSetAnim		(?_HERO_OVER_UP_ANIM)
+	Delay					(48)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I think that's=")
+							("too far to")
+							("swim.")
+	TextClose				()
+	ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,37,35,78,0,?_HERO_UNDTREAD_DOWN_ANIM,?_DONT_TALK)
+	Jump					(?_OROCITY01_FROM_PARATHIN)
+/********************************
+	
+?_OVRSURFACE04_CITY_JUST_LEFT
+	SongFadeOut				(30)
+	SceneNew				()
+
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,4)
+
+	LoadMap					(MAP_OVRSURFACE04)
+	LoadHotspots			(HS_OVERSURFACE04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,33,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?OVERPARA_AI,20,20,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+	ThatActorInit			(ACTOR01,?TRAP_AI,16,6,33,12,?_OVERWORLD_GEYSER_ANIM,?_END)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,12,0)
+	ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	SetCamera				(20,20)
+	PalClearAnim			(0,7,0,0,10)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	Delay					(8)
+	PalClearBase			(5,5,0,0,10)
+	PalFade					(5,5,32,0)
+	SongStart				(SONGID_overworld)
+	End						()
+*/

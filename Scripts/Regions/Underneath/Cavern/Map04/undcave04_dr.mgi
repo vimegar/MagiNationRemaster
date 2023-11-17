@@ -1,0 +1,13 @@
+/********************************/
+?_UNDCAVERN04_DR_1
+		HeroToDoor	(3,0,17,29)
+		Jump		(?_UNDCAVERN01)
+
+?_UNDCAVERN04_DR_2
+		HeroToDoor	(24,0,3,19)
+		Jump		(?_UNDCAVERN05)
+
+?_UNDCAVERN04_DR_3
+		HeroToDoor	(59,11,0,39)
+		Jump		(?_UNDCAVERN03)
+		

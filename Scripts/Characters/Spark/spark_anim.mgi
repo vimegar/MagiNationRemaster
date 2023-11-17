@@ -1,0 +1,48 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_SPARK_ANIM
+
+	FrameBlock:	(4,0,0)
+				(?SPARK01)
+				(?SPARK02)
+				(?SPARK03)
+	
+	JumpLocal	(?_SPARK_ANIM)
+
+/********************************/
+?_SPARK_FUSE_1
+	
+	Frame:	(1,-4,-4,?SPARK01)
+	
+	JumpLocal	(?_SPARK_ANIM)
+
+/********************************/
+?_SPARK_FUSE_2
+	
+	Frame:		(1,0,-2,?SPARK01)
+	
+	JumpLocal	(?_SPARK_ANIM)
+
+/********************************/
+?_SPARK_FUSE_3
+	
+	Frame:		(1,0,-2,?SPARK01)
+	
+	JumpLocal	(?_SPARK_ANIM)
+
+/********************************/
+?_SPARK_FUSE_4
+
+	Frame:		(1,2,0,?SPARK01)
+	
+	JumpLocal	(?_SPARK_ANIM)
+
+/********************************/
+?_SPARK_FUSE_5
+	
+	Frame:		(1,1,1,?SPARK01)
+	
+	JumpLocal	(?_SPARK_ANIM)
+

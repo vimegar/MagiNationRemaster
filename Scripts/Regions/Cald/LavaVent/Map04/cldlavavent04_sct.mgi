@@ -1,0 +1,69 @@
+/********************************//********************************/
+// BOMB SECRET
+/********************************//********************************/
+?_CLDVENTINT03
+	SceneNew				()
+	LoadMap					(MAP_CLDVENTINT03)
+	LoadHotspots			(HS_CLDVENTINT03)
+	LoadTriggers			(TR_CLDVENTINT03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,19,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,19,0,_PRISONER,_PRISONER_TALKER)
+	LoadVRAMTiles			(43,BIT_MAN03,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	If						([!HldPrisoner6],?_END)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+/********************************/
+// ACTORS
+_PRISONER
+	ThisActorSetAnimDelay	(?_MAN03_STAND_UP_ANIM,80)
+							(?_MAN03_STAND_UL_ANIM,48)
+							(?_MAN03_STAND_UP_ANIM,96)
+							(?_MAN03_WALK_DOWN_ANIM,32)
+							(?_MAN03_STAND_LEFT_ANIM,96)
+							(?_MAN03_WALK_UP_ANIM,32)
+	JumpLocal				(_PRISONER)
+	
+_PRISONER_TALKER
+	SetText					(_TXT_THANKS)
+	Jump					(?_FACE_MAN03)
+
+/********************************/
+// TEXT
+_TXT_THANKS
+	TextOpen				()
+
+	If						([HldPrisoner6Talk],_TALKED)
+	SetXRAMBit				(HldPrisoner6Talk,TRUE)
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Thanks for=")
+							("freeing me!")
+							("I really didn't=")
+							("like it in that")
+							("prison. Here, I=")
+							("have an extra")
+							("one of these.")
+	InventoryGive			(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
+	TextIcon				(ICON_TONY)
+	TextWrite				("Tony got a=")
+							("%X")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TALKED
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Thanks again=")
+							("for freeing me!")
+							
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************//********************************/
+// END BOMB SECRET
+/********************************//********************************/

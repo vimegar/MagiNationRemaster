@@ -1,0 +1,33 @@
+/********************************/
+?_OROGEYSER11_DR_1
+	SetLoadScript				(?_OROGEYSER11_DR_1)
+	ThatActorInit				(ACTOR02,?OVERPARA_AI,16,7,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+	HeroSetDoor					(16,7)
+	Jump						(?_OVRSURFACE04_PARATHIN)
+
+?_OROGEYSER11_DR_2
+	HeroSetDoor					(63,61)
+	Jump						(?_OROGEYSER10)
+
+?_OROGEYSER11_TR_1
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	If							([Oro_Plot_Byte > 1],_OUCH)
+	SetXRAMByte					(Oro_Plot_Byte,2)
+	TextWrite					("Ouch!=")
+								("I can't get")
+								("through this.")
+								("Maybe that")
+								("Historian in")
+								("Oscent Mar")
+								("knows about")
+								("forcefields.")
+	TextClose					()
+	End							()
+
+_OUCH
+	TextWrite					("OUCH!=")
+								("That really")
+								("stings!")
+	TextClose					()
+	End							()

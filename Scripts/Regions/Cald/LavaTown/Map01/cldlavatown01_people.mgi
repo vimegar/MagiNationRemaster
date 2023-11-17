@@ -1,0 +1,473 @@
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDLAVATOWN01_APOLOGY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,24,33,40,0,?_CLDTOWN01_APOL_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,24,31,40,123,?_CLDTOWN01_APOL_ELD,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,23,32,40,0,?_CLDTOWN01_APOL_OLDMAN,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,23,33,40,38,?_CLDTOWN01_APOL_WOMAN,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,25,33,40,80,?_CLDTOWN01_APOL_MAN2,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(26,BIT_OLDMAN03,123,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+//	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,4)
+	WaitEventText			(11)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_INTRO)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()
+
+?_CLDTOWN01_APOL_TONY
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	WaitEventText			(4)
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	WaitEventText			(5)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(6)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	WaitEventText			(4)
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	WaitEventText			(5)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(6)
+	ThisActorSetAnim		(?_HERO_STAND_UL_ANIM)
+	WaitEventText			(10)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,16)	
+							(?_HERO_STAND_UL_ANIM,16)	
+							(?_HERO_STAND_RIGHT_ANIM,16)	
+							(?_HERO_STAND_UP_ANIM,48)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetText					(?_CLDLAVATOWN01_APOLOGY_TXT02)	
+	End						()
+?_CLDTOWN01_APOL_ELD
+	ThisActorSetAnimDelay	(?_OLDMAN03_STAND_DOWN_ANIM,32)
+	SetText					(?_CLDLAVATOWN01_APOLOGY_TXT01)
+	WaitEventText			(10)
+	ThisActorSetAnimDelay	(?_OLDMAN03_WALK_UP_ANIM,48)
+	ThisActorStop			()	
+	End						()
+?_CLDTOWN01_APOL_OLDMAN
+	ThisActorSetAnim		(?_OLDMAN04_STAND_UR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_UR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(52)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DOWN_ANIM)
+	WaitEventText			(62)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_UR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_UR_ANIM)
+	WaitEventText			(12)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(52)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DOWN_ANIM)
+	WaitEventText			(62)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(10)
+	ThisActorSetAnimDelay	(?_OLDMAN04_WALK_RIGHT_ANIM,96)	
+	End						()
+?_CLDTOWN01_APOL_WOMAN
+	ThisActorSetAnim		(?_OLDLADY04_STAND_UR_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_RIGHT_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_UR_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_RIGHT_ANIM)
+	WaitEventText			(63)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_UR_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_RIGHT_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_UR_ANIM)
+	WaitEventText			(13)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_RIGHT_ANIM)
+	WaitEventText			(63)
+	ThisActorSetAnim		(?_OLDLADY04_STAND_UP_ANIM)
+	WaitEventText			(10)
+	ThisActorSetAnimDelay	(?_OLDLADY04_WALK_UP_ANIM,48)
+							(?_OLDLADY04_WALK_LEFT_ANIM,0)	
+	End						()
+?_CLDTOWN01_APOL_MAN2
+	ThisActorSetAnim		(?_MAN04_STAND_UL_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_UL_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(64)
+	ThisActorSetAnim		(?_MAN04_STAND_UL_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_UL_ANIM)
+	WaitEventText			(14)
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(64)
+	ThisActorSetAnim		(?_MAN04_STAND_UL_ANIM)
+	WaitEventText			(10)
+	ThisActorSetAnimDelay	(?_MAN04_WALK_DOWN_ANIM,16)
+							(?_MAN04_WALK_LEFT_ANIM,32)	
+							(?_MAN04_WALK_UP_ANIM,16)	
+							(?_MAN04_WALK_LEFT_ANIM,96)	
+	ThatActorInit			(ACTOR00,?TALKER_AI,11,11,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_INTRO)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_INTRO)
+	ThisActorSetAnim		(?_MAN04_STAND_LEFT_ANIM)
+	WaitEventText			(11)
+	End						()
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// GENERIC APOLOGY
+/********************************//********************************/
+
+?_CLDLAVATOWN01_APOLOGY_GEN
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,24,33,40,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,11,11,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_INTRO)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_INTRO)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_INTRO)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(26,BIT_OLDMAN03,123,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN01_OLDMAN04_INTRO
+	SetText				(?_CLDTOWN01_OLDMAN04_TXT01)	
+	Jump				(?_FACE_OLDMAN04)			
+	
+?_CLDTOWN01_OLDLADY04_INTRO
+	SetText				(?_CLDTOWN01_OLDLADY04_TXT01)	
+	Jump				(?_FACE_OLDLADY04)					
+
+?_CLDTOWN01_MAN04_INTRO
+	SetText				(?_CLDTOWN01_MAN04_TXT01)	
+	Jump				(?_FACE_MAN04)					
+
+/********************************//********************************/
+// END  GENERIC APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDLAVATOWN01_ARBOLLQUEST
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,32,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_HUNT)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_HUNT)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_HUNT)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN01_OLDMAN04_HUNT
+	SetText				(?_CLDTOWN01_OLDMAN04_TXT02)	
+	Jump				(?_FACE_OLDMAN04)			
+		
+?_CLDTOWN01_OLDLADY04_HUNT
+	SetText				(?_CLDTOWN01_OLDLADY04_TXT02)	
+	Jump				(?_FACE_OLDLADY04)					
+
+?_CLDTOWN01_MAN04_HUNT
+	SetText				(?_CLDTOWN01_MAN04_TXT02)	
+	Jump				(?_FACE_MAN04)					
+
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDLAVATOWN01_COLDSHOULDER
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,32,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_CHILL)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_CHILL)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_CHILL)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN01_OLDMAN04_CHILL
+	SetText				(?_CLDTOWN01_OLDMAN04_TXT03)	
+	Jump				(?_FACE_OLDMAN04)			
+		
+?_CLDTOWN01_OLDLADY04_CHILL
+	SetText				(?_CLDTOWN01_OLDLADY04_TXT03)	
+	Jump				(?_FACE_OLDLADY04)					
+
+?_CLDTOWN01_MAN04_CHILL
+	SetText				(?_CLDTOWN01_MAN04_TXT03)	
+	Jump				(?_FACE_MAN04)					
+
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDLAVATOWN01_HURRYUP
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,32,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_HURRY)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_HURRY)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_HURRY)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN01_OLDMAN04_HURRY
+	SetText				(?_CLDTOWN01_OLDMAN04_TXT04)	
+	Jump				(?_FACE_OLDMAN04)			
+	
+?_CLDTOWN01_OLDLADY04_HURRY
+	SetText				(?_CLDTOWN01_OLDLADY04_TXT04)	
+	Jump				(?_FACE_OLDLADY04)					
+
+?_CLDTOWN01_MAN04_HURRY
+	SetText				(?_CLDTOWN01_MAN04_TXT04)	
+	Jump				(?_FACE_MAN04)					
+
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDLAVATOWN01_BESTBRIDGE
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,27,32,40,0,?_CLDTOWN01_OLDMAN04,?_CLDTOWN01_OLDMAN04_BRIDGE)
+	ThatActorInit			(ACTOR01,?TALKER_AI,10,27,40,38,?_CLDTOWN01_OLDLADY04,?_CLDTOWN01_OLDLADY04_BRIDGE)
+	ThatActorInit			(ACTOR02,?TALKER_AI,31,21,40,80,?_CLDTOWN01_MAN04,?_CLDTOWN01_MAN04_BRIDGE)
+	ThatActorInit			(ACTOR03,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?RAINDROP_AI,1,1,40,149,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(42,BIT_OLDLADY04,38,0)
+	LoadVRAMTiles			(43,BIT_MAN04,80,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,149,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN01_OLDMAN04_BRIDGE
+	SetText				(?_CLDTOWN01_OLDMAN04_TXT05)	
+	Jump				(?_FACE_OLDMAN04)			
+	
+?_CLDTOWN01_OLDLADY04_BRIDGE
+	SetText				(?_CLDTOWN01_OLDLADY04_TXT05)	
+	Jump				(?_FACE_OLDLADY04)					
+
+?_CLDTOWN01_MAN04_BRIDGE
+	SetText				(?_CLDTOWN01_MAN04_TXT05)	
+	Jump				(?_FACE_MAN04)					
+
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// MULTI-SCENE
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04
+	ThisActorSetAnimDelay	(?_OLDMAN04_WALK_RIGHT_ANIM,64)
+							(?_OLDMAN04_STAND_RIGHT_ANIM,64)
+							(?_OLDMAN04_STAND_DR_ANIM,64)
+							(?_OLDMAN04_STAND_UR_ANIM,64)
+							(?_OLDMAN04_WALK_UP_ANIM,32)
+							(?_OLDMAN04_STAND_DL_ANIM,64)
+							(?_OLDMAN04_STAND_UL_ANIM,64)
+							(?_OLDMAN04_WALK_LEFT_ANIM,64)
+							(?_OLDMAN04_STAND_DL_ANIM,64)
+							(?_OLDMAN04_STAND_UL_ANIM,64)
+							(?_OLDMAN04_WALK_DOWN_ANIM,32)
+							(?_OLDMAN04_STAND_DOWN_ANIM,64)
+							(?_OLDMAN04_STAND_DR_ANIM,64)
+	Jump					(?_CLDTOWN01_OLDMAN04)
+
+?_CLDTOWN01_OLDLADY04
+	ThisActorSetAnimDelay	(?_OLDLADY04_STAND_LEFT_ANIM,64)
+							(?_OLDLADY04_WALK_LEFT_ANIM,48)
+							(?_OLDLADY04_STAND_DOWN_ANIM,64)
+							(?_OLDLADY04_STAND_DL_ANIM,64)
+							(?_OLDLADY04_STAND_DR_ANIM,64)
+							(?_OLDLADY04_WALK_RIGHT_ANIM,48)
+							(?_OLDLADY04_STAND_RIGHT_ANIM,64)
+							(?_OLDLADY04_STAND_UR_ANIM,64)
+							(?_OLDLADY04_STAND_UL_ANIM,64)
+	Jump					(?_CLDTOWN01_OLDLADY04)
+
+?_CLDTOWN01_MAN04
+	ThisActorSetAnimDelay	(?_MAN04_WALK_DOWN_ANIM,48)
+							(?_MAN04_STAND_LEFT_ANIM,64)
+							(?_MAN04_WALK_RIGHT_ANIM,48)
+							(?_MAN04_STAND_RIGHT_ANIM,64)
+							(?_MAN04_STAND_DL_ANIM,64)
+							(?_MAN04_WALK_LEFT_ANIM,48)
+							(?_MAN04_STAND_DOWN_ANIM,64)
+							(?_MAN04_STAND_DR_ANIM,64)
+							(?_MAN04_WALK_UP_ANIM,48)
+							(?_MAN04_STAND_DOWN_ANIM,64)
+							(?_MAN04_STAND_DR_ANIM,64)
+	Jump					(?_CLDTOWN01_MAN04)
+
+?_CLDTOWN01_GIRL04
+	ThisActorSetAnimDelay	(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_LEFT_ANIM,64)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_UP_ANIM,16)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_STAND_DL_ANIM,64)
+							(?_GIRL04_STAND_UL_ANIM,64)
+							(?_GIRL04_WALK_DOWN_ANIM,32)
+							(?_GIRL04_STAND_DR_ANIM,64)
+							(?_GIRL04_STAND_UR_ANIM,64)
+							(?_GIRL04_WALK_UP_ANIM,16)
+							(?_GIRL04_STAND_LEFT_ANIM,64)
+							(?_GIRL04_WALK_RIGHT_ANIM,64)
+							(?_GIRL04_STAND_DOWN_ANIM,32)
+							(?_GIRL04_STAND_DL_ANIM,32)
+							(?_GIRL04_STAND_LEFT_ANIM,32)
+							(?_GIRL04_STAND_UL_ANIM,32)
+							(?_GIRL04_STAND_UP_ANIM,32)
+							(?_GIRL04_STAND_UR_ANIM,32)
+							(?_GIRL04_STAND_RIGHT_ANIM,32)
+							(?_GIRL04_STAND_DR_ANIM,32)
+	Jump					(?_CLDTOWN01_GIRL04)
+
+?_CLDTOWN01_YOUNGMAN
+	ThisActorSetAnimDelay	(?_YOUNGMAN_STAND_DOWN_ANIM,64)
+	Jump					(?_CLDTOWN01_YOUNGMAN)
+/********************************//********************************/
+// END MULTI-SCENE
+/********************************//********************************/

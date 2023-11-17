@@ -1,0 +1,27 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP07\OROTUNNEL07_DR.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP07\OROTUNNEL07_TXT.MGI
+
+/********************************/
+
+?_OROTUNNEL07
+	SetXRAMByte		(Exit_Disable,0)
+	SceneNew		()
+	LoadMap			(MAP_OROTUNNEL07)
+	LoadHotspots	(HS_OROTUNNEL07)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,24,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,24,0,?_RAINER,?_OROTUNNEL_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_OROTUNNEL07)
+	SongStart				(SONGID_orotunnels)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SceneReady		()
+	End				()

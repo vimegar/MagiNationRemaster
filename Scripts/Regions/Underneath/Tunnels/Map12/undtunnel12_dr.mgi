@@ -1,0 +1,7 @@
+/********************************/
+?_UNDTUNNEL12_DR_1
+		HeroToDoor	(12,0,13,19)
+		Jump		(?_UNDTUNNEL11)
+
+?_UNDTUNNEL12_TR_1
+		TriggerTreasure	(UNDTUNNEL12_Chest1,INV_TYPE_ITEM,INV_KARMIC_HOPE,4,7,20)

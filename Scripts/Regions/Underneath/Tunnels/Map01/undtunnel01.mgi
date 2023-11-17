@@ -1,0 +1,34 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TUNNELS\MAP01\UNDTUNNEL01_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TUNNELS\MAP01\UTUNNELS_BAT.MGI
+
+/********************************/
+?_UNDTUNNEL01_FADEIN
+?_UNDTUNNEL01
+	SceneNew			()
+	LoadMap				(MAP_UNDTUNNEL01)
+	LoadPalette			(PAL_HERO)
+
+?_GENERIC_UNDTUNNEL01
+	LoadHotspots		(HS_UNDTUNNEL01)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,20,0,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,20,0,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	SetBtlReturn		(_UNDTUNNEL01_RET)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongFadeOut			(80)
+	SceneReady			()
+	End					()
+
+_UNDTUNNEL01_RET
+	SceneNew			()
+	LoadVRAM			(VRM_UNDTUNNEL,PAL_UNDTUNNEL)
+	LoadPalette			(PAL_HERO)
+	JumpLocal			(?_GENERIC_UNDTUNNEL01)
+

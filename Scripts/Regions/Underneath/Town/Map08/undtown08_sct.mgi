@@ -1,0 +1,220 @@
+
+/********************************//********************************/
+// INTRO
+/********************************//********************************/
+?_UNDTOWN08B
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN08)
+	LoadHotspots			(HS_UNDTOWN08B)
+	LoadTriggers			(TR_UNDTOWN08B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,5,15,0,?_KID01_STAND_DOWN_ANIM,?_UNDTOWN08B_BRUB_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(40,BIT_KID01,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+	
+?_UNDTOWN08B_BRUB_TALK
+	SetText					(?_UNDTOWN08B_KID01_TXT01)
+	Jump					(?_FACE_KID01)
+	
+
+/********************************//********************************/	
+//	BRUB MINI-GAME RETURN	
+/********************************//********************************/		
+?_UNDTOWN08B_BRUB_RET
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN08)
+	LoadHotspots			(HS_UNDTOWN08B)
+	LoadTriggers			(TR_UNDTOWN08B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,15,0,_BRUBRET_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,5,15,0,?_KID01_STAND_RIGHT_ANIM,?_UNDTOWN08B_BRUB_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(40,BIT_KID01,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	End						()
+
+/********************************/	
+//ACTORS
+
+_BRUBRET_TONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,32)
+	SetText					(_BRUB_RET_TEXT)
+	Sync					(2,0)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_LEFT_ANIM)
+
+
+/********************************/	
+// TEXT
+_BRUB_RET_TEXT
+	TextOpen				()
+	TextIcon				(ICON_BOY)
+	TextByte				(Brub_Byte)
+	TextWrite				("Wow, You=")
+							("got %X points!")
+							("Here you go.")	
+	TextClose				()
+	TextOpen				()
+	TextWrite				("Tony got=")
+							("%X Tickets!")
+	TextClose				()
+	If						([Brub_Byte = 0],_SKIP)
+_LOOP
+	InventoryGive			(INV_TYPE_ITEM,INV_TICKET,1)
+	ExprXRAMByte			(Brub_Byte,[Brub_Byte - 1])
+	If						([Brub_Byte > 0],_LOOP)
+_SKIP
+	Sync					(2,0)
+	End						()
+		
+/********************************//********************************/	
+// END BRUB MINI-GAME RETURN	
+/********************************//********************************/		
+
+/********************************//********************************/
+//	UNDTOWN08B TEXT
+/********************************//********************************/
+?_UNDTOWN08B_KID01_TXT01
+	If					([!Wences_Arrow],?_UNDTOWN08_KID01_TXT01)
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("I relocated=")
+						("here after")
+						("the Underneath=")
+						("Town was")
+						("destroyed.")
+						("Would you like=")
+						("to play Scrub")
+						("a Brub or my=")
+						("new game, Aim")
+						("for Animite?")
+						("Both cost=")
+						("30 Animite")
+						("to play.")
+	TextClear			()
+	TextWrite			(" Scrub  Aim=")
+						(" Neither$")
+
+	TextMenu			(3)
+						(_SCRUB)
+						(_NO)
+						(_AIM)
+_SCRUB
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	If					([GS_Animite < 30],_POOR)
+	TextWrite			("Do you need=")
+						("to know how")
+						("to play?")
+	TextClear			()
+	TextWrite			(" No=")
+						(" Yes$")
+
+	TextMenu			(2)
+						(_NO2)
+						(_YES2)
+_YES2
+	TextIcon			(ICON_BOY)
+	TextWrite			("Just run over=")
+						("the brubs as")
+						("they appear in=")
+						("the holes in")
+						("the floor.")
+						("A blue brub is=")
+						("worth 1 point")
+						("and a red brub=")
+						("is worth 5")
+						("points.")
+	JumpLocal			(_SCRUB)
+
+_NO2
+	TextIcon			(ICON_BOY)
+	TextWrite			("Right this=")
+						("way...")
+	TextClose			()
+	ExprXRAMWord		(GS_Animite,[GS_Animite - 30])
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	HeroSetDoor			(9,16)
+	Jump				(?_SCRUBABRUB)
+
+_NO
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Fine.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_POOR
+	TextWrite			("You don't have=")
+						("30 animite!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_AIM
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	If					([GS_Animite < 30],_POOR)
+	TextWrite			("Do you need=")
+						("to know how")
+						("to play?")
+	TextClear			()
+	TextWrite			(" No=")
+						(" Yes$")
+
+	TextMenu			(2)
+						(_NO3)
+						(_YES3)
+						
+_NO3
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Right this=")
+						("way...")
+	TextClose			()
+	ExprXRAMWord		(GS_Animite,[GS_Animite - 30])
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	HeroSetDoor			(5,9)
+	Jump				(?_AIM_ANIMITE)
+	
+_YES3
+	TextClear			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Run to one=")	
+						("of the shooting")
+						("points and=")
+						("shoot an arrow.")
+						("Each green=")
+						("Animite is")
+						("worth 10=")
+						("points.")
+						("The targets are=")
+						("worth 1,3 or")
+						("5 points=")
+						("depending on")
+						("how fast they=")
+						("are moving.")
+						("The faster the=")
+						("targets,")
+						("the more points=")
+						("it is worth!")
+	Jump				(_AIM)
+
+/********************************//********************************/
+//	END UNDTOWN08B TEXT
+/********************************//********************************/

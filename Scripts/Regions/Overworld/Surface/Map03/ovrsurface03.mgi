@@ -1,0 +1,35 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP03\OVRSURFACE03_DR.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP03\OVRSURFACE03_TXT.MGI
+
+/********************************/
+//Cald area
+?_OVRSURFACE03_LOAD
+?_OVRSURFACE03
+	SongFadeOut				(30)
+	SceneNew				()
+
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,3)
+
+	LoadMap					(MAP_OVRSURFACE03)
+	LoadHotspots			(HS_OVERSURFACE03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,40,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,18,14,40,0,?_OVERWORLD_GEYSER_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	If						([GC > GC_CALD_GEYSER],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	PalClearAnim			(0,7,31,31,31)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	//SongStart				(SONGID_orwin)
+	SongStart				(SONGID_overworld)
+	End						()
+

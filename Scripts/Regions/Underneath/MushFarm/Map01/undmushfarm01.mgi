@@ -1,0 +1,20 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP01\UNDMUSHFARM01_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP01\UNDMUSHFARM01_TXT.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP01\MUSHFARM_BAT.MGI
+
+/********************************/
+?_UNDMUSHFARM01
+	SceneNew		()
+	SetXRAMByte		(Exit_Disable,1)
+	LoadMap			(MAP_UNDMUSHFARM01)
+	LoadHotspots	(HS_UNDMUSHFARM01)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,25,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undcaverns)
+	SceneReady		()
+	End				()

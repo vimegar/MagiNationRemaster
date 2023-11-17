@@ -1,0 +1,14 @@
+/********************************/
+
+?_ORODEEP01_DR_1
+		ThatActorInit		(ACTOR02,?OVERPARA_AI,18,12,33,16,?_OVERPARATHIN_DOWN_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor			(18,12)
+		Jump				(?_OVRSURFACE04_PARATHIN)
+
+/********************************/
+
+
+?_ORODEEP01_DR_2
+		ThatActorInit		(ACTOR02,?OVERPARA_AI,17,9,33,16,?_OVERPARATHIN_DOWN_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor			(17,9)
+		Jump				(?_OVRSURFACE04_PARATHIN)

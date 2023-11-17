@@ -1,0 +1,715 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP13\NRMVASH13_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP13\NRMVASH13_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP13\NRMVASH13_PARTY.MGI
+
+/********************************//********************************/
+// TRAINING GROUNDS NORMAL
+/********************************//********************************/
+?_NRMVASH13
+	SetXRAMByte				(Exit_Disable,1)
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH13_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH13_PARTY)
+							(GC_AGRAM_BATTLE,_DONT_RESET_DOOR)
+	If						([GAMECOUNT = GC_CALD_GEYSER],_DONT_RESET_DOOR)
+	SetXRAMBit				(Vash13_Door_Open,FALSE)
+_DONT_RESET_DOOR
+	If						([GAMECOUNT = GC_CALD_GEYSER || GAMECOUNT = GC_AGRAM_BATTLE],_YAKI_NOT_THERE)
+
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI,12,12,25,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR20,?TALKER_AI,13,7,25,0,_YAKI,_YAKI_TALK)
+	ThatActorInit			(ACTOR21,?TALKER_AI,16,9,25,41,_SALAFY,_SALAFY_TALK)
+
+_BATTLE_RESET
+	ThatActorSetAI			(ACTOR21,?TALKER_AI)
+	LoadMap					(MAP_NRMVASH13)
+	LoadHotspots			(HS_NRMVASH13)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH13)
+	LoadVRAMTiles			(41,BIT_YAKI,0,0)
+	LoadVRAMTiles			(37,BIT_SALAFY,41,0)
+	ThatActorStart			(ACTOR20)
+	ThatActorStart			(ACTOR21)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SetBtlReturn			(_RETURN_WIN,_RETURN_LOSE)
+	SongStart				(SONGID_lesson)
+	SceneReady				()
+	End						()
+
+/********************************/
+//  Gamecount when Yaki is away on training mission
+_YAKI_NOT_THERE
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?HERO_AI,12,12,25,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR20,?TALKER_AI,13,7,25,0,?_END,?_END)
+	ThatActorInit			(ACTOR21,?TALKER_AI,16,9,25,41,_SALAFY,_SALAFY_TALK)
+	ThatActorSetAI			(ACTOR21,?TALKER_AI)
+	LoadMap					(MAP_NRMVASH13)
+	LoadHotspots			(HS_NRMVASH13)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH13)
+	LoadVRAMTiles			(37,BIT_SALAFY,41,0)
+	ThatActorStart			(ACTOR21)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SetBtlReturn			(_RETURN_WIN,_RETURN_LOSE)
+	SongStart				(SONGID_lesson)
+	If						([!Vash13_Door_Open],_SKIP_OPENING_THE_DOOR)
+	CopyTileBlock			(25,0,0,2,1,21,5)
+	CopyTileBlock			(25,0,0,2,1,21,6)
+	CopyTileBlock			(25,0,1,2,1,21,7)
+_SKIP_OPENING_THE_DOOR
+	SceneReady				()
+	End						()
+
+
+/********************************/
+// BATTLE RETURNS
+_RETURN_WIN
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	SceneNew				()
+	SetScroll				(_TONY_WIN)
+	JumpLocal				(_BATTLE_RESET)
+_TONY_WIN
+	SetText					(_TXT_WIN)
+	WaitAnyEventText		()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+_RETURN_LOSE
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	InventoryGive			(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,200)
+	SceneNew				()
+	SetScroll				(_TONY_LOSE)
+	JumpLocal				(_BATTLE_RESET)
+_TONY_LOSE
+	SetText					(_TXT_LOSE)
+	WaitAnyEventText		()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+/********************************/
+// ACTORS
+_YAKI
+	ThisActorSetAnimDelay	(?_YAKI_STAND_DR_ANIM,60)
+							(?_YAKI_RUN_LEFT_ANIM,40)	
+							(?_YAKI_STAND_DL_ANIM,60)
+							(?_YAKI_RUN_RIGHT_ANIM,40)	
+	Jump					(_YAKI)
+
+_YAKI_TALK
+	SetText					(_TXT_YAKI_EXPLAIN)
+	Jump					(?_FACE_YAKI)
+
+_SALAFY
+	ThisActorSetAnim		(?_SALAFY_STAND_LEFT_ANIM)
+	End						()
+
+_SALAFY_TALK
+	SetText					(_TXT_SALAFY_TRAIN)
+	Jump					(?_FACE_SALAFY)
+
+/********************************/
+// WIN AND LOSE TEXT
+_TXT_LOSE
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Hmmm... looks=")
+							("like you need")
+							("more practice!")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+_TXT_WIN
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Wow! Great job,=")
+							("Tony!")
+	RangeSwitch				([GAMECOUNT])
+							(0,GC_GLOVES,_COME_BACK_AGAIN)
+							(GC_UND_INTRO,GC_UND_WASTED,_COME_BACK_AGAIN)
+							(GC_CALD_INTRO,GC_FALSE_END,_COME_BACK_AGAIN)
+							(GC_ARDERIAL,100,_END)
+_COME_BACK_AGAIN
+	TextWrite				("If you come=")
+							("back later I")
+							("might know some=")
+							("other tricks.")
+_END
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+/********************************/
+// YAKI TEXT
+_TXT_YAKI_EXPLAIN
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("OOOH YEAAHH!!=")
+							("Dig it! WOOO!!")
+							("You came back=")
+							("to do some more")
+							("trainin', eh?=")
+							("Want to refresh")
+							("your knowledge?")
+	
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" No=")
+							(" Yes$")
+	TextMenu				(2)
+							(_EXPLAIN_NO)
+							(?_NRMVASH13_TXT_EXPLAIN)
+
+_EXPLAIN_NO
+	TextIcon				(ICON_YAKI)	
+	TextWrite				("Well get over=")
+							("there and get")
+							("to beatin' up=")
+							("those Dream")
+							("Creatures!")
+							("WOOOOO!!!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************/
+// SALAFY TEXT
+_TXT_SALAFY_TRAIN
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Ready to=")
+							("battle?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" No=")
+							(" Yes$")
+	TextMenu				(2)
+							(_TRAIN_NO)
+							(_TRAIN_YES)
+_TRAIN_NO
+	TextClear				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Oh...")
+							("OK.")
+	TextClose				()
+	ThisActorRestoreState	()
+_TRAIN_YES	
+	TextClear				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Good.")
+							("Let's Go!")
+	TextClose				()
+	HeroToDoor				(0,0,0,0)
+	Jump					(?_NRMVASH13_TRAININGBTL)
+/********************************//********************************/
+// END TRAINING GROUNDS NORMAL
+/********************************//********************************/
+
+/********************************//********************************/
+// YAKI KICKS TONY OUT
+/********************************//********************************/
+?_NRMVASH13_YAKI_BOOTS_TONY
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY)
+	ThatActorInit			(ACTOR23,?ANIM_AI,13,10,25,79,_YAKI,?_DONT_TALK)
+	LoadVRAMTiles			(41,BIT_YAKI,79,0)
+	ThatActorStart			(ACTOR23)
+	SetText					(_HEY)
+	Sync					(2,2)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	HeroSetDoor				(15,8)
+	Jump					(?_NRMGLADE03)
+	End						()
+
+
+_TONY
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	Sync					(2,1)
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,4)
+							(?_HERO_RUN_LEFT_ANIM,120)
+	ThisActorStop			()
+	End						()
+	
+_YAKI
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_YAKI_RUN_RIGHT_ANIM,64)
+	Sync					(2,1)
+	ThisActorSetAnimDelay	(?_YAKI_RUN_UP_ANIM,18)
+							(?_YAKI_RUN_LEFT_ANIM,40)
+							(?_YAKI_STAND_LEFT_ANIM,16)
+	SetText					(_AND_STAY_OUT)
+	End						()
+/********************************/
+_HEY
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("Hey! You're=")
+							("not allowed")
+							("in there!")
+	TextClose				()
+	Sync					(2,0)
+	End						()
+
+_AND_STAY_OUT
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("And stay out!")
+	TextClose				()
+	Sync					(2,2)
+	End						()
+
+/********************************//********************************/
+// END YAKI KICKS TONY OUT
+/********************************//********************************/
+
+/********************************//********************************/
+// TRAINING GROUNDS INTRO
+/********************************//********************************/
+?_NRMVASH13_NRM_INTRO
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?ANIM_AI,0,10,25,0,_TONY_ENTER,?_END)
+	ThatActorInit			(ACTOR20,?TALKER_AI,1,10,25,0,_EIDON_ENTER,_EIDON_TALKER)
+	ThatActorInit			(ACTOR21,?TALKER_AI,12,9,25,79,_YAKI,_YAKI_TALKER)
+	ThatActorInit			(ACTOR22,?TALKER_AI,14,10,25,42,_SALAFY,_SALAFY_TALKER)
+
+_BATTLE_RESET
+	LoadMap					(MAP_NRMVASH13)
+	LoadTriggers			(TR_NRMVASH13)
+	LoadHotspots			(HS_NRMVASH13_INTRO)
+	LoadPalette				(PAL_HERO)
+	
+	LoadVRAMTiles			(42,BIT_EIDON,0,0)
+	LoadVRAMTiles			(37,BIT_SALAFY,42,0)
+	LoadVRAMTiles			(41,BIT_YAKI,79,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR20)
+	ThatActorStart			(ACTOR21)
+	ThatActorStart			(ACTOR22)
+	HeroSetCamera			()
+	SetBtlReturn			(_BATTLE_RETURN,_BATTLE_RETURN)
+	SongStart				(SONGID_lesson)
+	SceneReady				()
+	End						()
+
+/********************************/
+// BATTLE RETURNS
+_BATTLE_RETURN
+	SceneNew				()
+	ThatActorInit			(HEROACTOR,?ANIM_AI,13,10,25,0,?_HERO_STAND_RIGHT_ANIM,?_END)
+	ThatActorInit			(ACTOR22,?ANIM_AI,14,10,25,42,?_SALAFY_STAND_LEFT_ANIM,?_END)
+	SetScroll				(_TONY_NCOURAGE)
+	JumpLocal				(_BATTLE_RESET)
+
+_TONY_NCOURAGE
+	SetText					(_TXT_NCOURAGE)
+	WaitAnyEventText		()
+	ThatActorInit			(ACTOR22,?TALKER_AI,14,10,25,42,_SALAFY,_SALAFY_TALKER)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY_ENTER
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,32)
+							(?_HERO_STAND_RIGHT_ANIM,0)				
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_WALK_RIGHT_ANIM,128)
+							(?_HERO_STAND_RIGHT_ANIM,0)
+	End						()						
+
+_EIDON_TALKER
+	SetText					(_TXT_EIDON_WAIT)
+	Jump					(?_FACE_EIDON)
+
+_EIDON_ENTER
+	ThisActorSetAnimDelay	(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_STAND_LEFT_ANIM,0)
+	SetText					(_TXT_DO_YOU_KNOW)
+	WaitAnyEventText		()
+	ThisActorSetAnimScroll	(?_EIDON_WALK_RIGHT_ANIM,128,1,0)
+	ThisActorSetAnim		(?_EIDON_STAND_UP_ANIM)
+	SetText					(_TXT_MEET_YAKI)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_EIDON_WALK_LEFT_ANIM,112)
+							(?_EIDON_WALK_UP_ANIM,16)
+							(?_EIDON_STAND_DOWN_ANIM,0)						
+	End						()
+
+_SALAFY
+	ThisActorSetAnimDelay	(?_SALAFY_WALK_RIGHT_ANIM,64)
+							(?_SALAFY_STAND_DOWN_ANIM,40)
+							(?_SALAFY_WALK_LEFT_ANIM,64)
+							(?_SALAFY_STAND_LEFT_ANIM,100)	
+	JumpLocal				(_SALAFY)
+
+_SALAFY_TALKER
+	SetText					(_TXT_MEET_SALAFY)
+	Jump					(?_FACE_SALAFY)
+
+_YAKI
+	ThisActorSetAnim		(?_YAKI_STAND_LEFT_ANIM)
+	End						()
+
+_YAKI_TALKER
+	SetText					(?_NRMVASH13_TXT_EXPLAIN)
+	Jump					(?_FACE_YAKI)
+
+/********************************/
+// TEXT
+_TXT_EIDON_WAIT
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Won't we get=")
+							("in trouble if")
+							("Orwin finds us=")
+							("here?")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("........")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_DO_YOU_KNOW
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Tony, I=")
+							("want you to")
+							("have this.")
+	InventoryGive			(INV_TYPE_ITEM,INV_ELDRITCH_AWL,1)
+	TextClose				()
+	TextOpen				()
+	TextWrite				("Tony got an=")
+							("Eldritch Awl!")
+	TextClose				()
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("It will help=")
+							("you escape from")
+							("dangerous=")
+							("areas.")
+							("Do you=")
+							("know how to")
+							("control the=")
+							("power of")
+							("infused=")
+							("Animite?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" No=")
+							(" Yes$")
+	TextMenu				(2)
+							(_DONT_KNOW)
+							(_KNOW)
+
+_KNOW
+	TextIcon				(ICON_TONY)
+	TextWrite				("Yes I do!")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Ha, okay.=")
+							("In that case,")
+							("come with me=")
+							("to the Weave.")
+							("There's a=")
+							("person there")
+							("who you should-")
+	TextClose				()
+	JumpLocal				(?_NRMVASH13_QUAKE)
+
+_DONT_KNOW			
+	TextIcon				(ICON_TONY)
+	TextWrite				("Nope.")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Well... Yaki=")
+							("over there is")
+							("the trainer of=")
+							("Vash Naroom.")
+							("Here, I'll=")
+							("introduce you.")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+_TXT_MEET_YAKI
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Tony, I'd like=")
+							("you to meet")
+							("Yaki. Yaki,=")
+							("meet Tony.")
+	TextClose				()
+
+	SetAnyEventText			()
+
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("OOOOOH YEAHHH!!")
+							("How ya doin',=")
+							("brother! I'm")
+							("the guy that's=")
+							("gonna tell ya")
+							("how to nab=")
+							("those Dream")
+							("Creatures and=")
+							("beat 'em")
+							("senseless! Er,=")
+							("I mean... beat")
+							("'em and nab=")
+							("'em! WOOO! So")
+							("WHATCHA GONNA=")
+							("DO?!")
+	TextClose				()
+
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	End						()
+
+_TXT_MEET_SALAFY
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("I'm Salafy,=")
+							("apprentice")
+							("trainer!")
+							("Ready for a=")
+							("training match?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" No=")
+							(" Yes$")
+	TextMenu				(2)
+							(_TRAIN_NO)
+							(_TRAIN_YES)
+_TRAIN_NO
+	TextClear				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Oh...")
+							("OK.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TRAIN_YES	
+	TextClear				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Good.")
+							("Let's Go!")
+	TextClose				()
+	Jump					(?_NRMVASH13_TRAININGBTL)
+
+_TXT_NCOURAGE
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("That was great!")
+							("Come back any")
+							("time!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("I'll do that.")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+/********************************//********************************/
+// END TRAINING GROUNDS INTRO
+/********************************//********************************/
+
+
+/********************************//********************************/
+// QUAKE
+/********************************//********************************/
+?_NRMVASH13_QUAKE
+	LoadHotspots			(HS_NRMVASH13)
+	ThatActorSetScript		(HEROACTOR,_TONY_QUAKE)
+	ThatActorSetScript		(ACTOR20,_EIDON_QUAKE)
+	ThatActorInit			(ACTOR21,?TALKER_AI,12,9,25,79,_YAKI_QUAKE,_YAKI_TALKER)
+	ThatActorInit			(ACTOR22,?TALKER_AI,14,10,25,42,_SALAFY_QUAKE,_SALAFY_TALKER)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY_QUAKE
+	ThisActorSetAnimDelay	(?_HERO_STAND_DOWN_ANIM,4)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	WaitAnyEventMaster		()
+	ThisActorSetAnimDelay	(?_HERO_STAND_RIGHT_ANIM,38)
+	WaitAnyEventMaster		()
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_RIGHT_ANIM)
+
+_EIDON_QUAKE
+	ThisActorSetAnimDelay	(?_EIDON_STAND_DOWN_ANIM,16)
+							(?_EIDON_STAND_LEFT_ANIM,0)
+	ThatActorSetScript		(HEROACTOR,_TONY_QUAKE)
+	SFX						(SFXID_EARTHQUAKE)
+	SetScroll				(?_NRMGEYSER_QUAKE)
+	SetText					(_TXT_WHATS_GOING_ON)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_EIDON_RUN_UP_ANIM,6)
+							(?_EIDON_RUN_LEFT_ANIM,48)
+	SetAnyEventMaster		()
+	ThisActorStop			()
+
+_YAKI_QUAKE
+	WaitAnyEventMaster		()
+	Delay					(24)
+	ThisActorSetAnimDelay	(?_YAKI_RUN_LEFT_ANIM,32)
+							(?_YAKI_STAND_LEFT_ANIM,0)
+	SetText					(_TXT_WHATS_SHAKIN)
+	WaitAnyEventText		()
+	SetAnyEventMaster		()
+	End						()	
+
+_YAKI_TALKER
+	SetText					(_DIG_IT)
+	Jump					(?_FACE_YAKI)
+
+_SALAFY_QUAKE
+	ThisActorSetAnim		(?_SALAFY_STAND_LEFT_ANIM)
+	End						()
+
+_SALAFY_TALKER
+	SetText					(_OH_NO)
+	Jump					(?_FACE_SALAFY)
+
+/********************************/
+// TEXT
+_TXT_WHATS_GOING_ON
+	SetGamecount			(GC_FIND_ORWIN)
+
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Huh?")
+	TextIcon				(ICON_TONY)
+	TextWrite				("What's going=")
+							("on?")
+	TextIcon				(ICON_EIDON)
+	TextWrite				("I... don't=")
+							("know! I think")
+							("it's coming=")
+							("from the")
+							("glade.")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+_TXT_WHATS_SHAKIN
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("OOOH YEAH!!!")
+							("What's shakin',=")
+							("brother!")
+	TextIcon				(ICON_TONY)
+	TextWrite				(".........")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+_DIG_IT
+	TextOpen				()
+	TextIcon				(ICON_YAKI)
+	TextWrite				("OOOOOH YEAHHH!=")
+					    	("DIG IT! WOOO!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_OH_NO
+	TextOpen				()
+	TextIcon				(ICON_SALAFY)
+	TextWrite				("Oh no!")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END QUAKE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// TRAINING GROUNDS ENDING
+/********************************//********************************/
+?_NRMVASH13_ENDING
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH13)
+	LoadHotspots			(HS_NRMVASH13)
+	LoadTriggers			(TR_NRMVASH13)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,11,8,25,0,?_NRMVASH13_WENCE_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,11,7,25,41,?_NRMVASH13_YAKI_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,13,8,25,82,?_NRMVASH13_SALAFY_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,0,8,25,121,?_NRMVASH13_GIA_END,?_DONT_TALK)
+	LoadVRAMTiles			(41,BIT_WENCE,0,0)
+	LoadVRAMTiles			(41,BIT_YAKI,41,0)
+	LoadVRAMTiles			(37,BIT_SALAFY,82,0)
+	LoadVRAMTiles			(39,BIT_GIA,121,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	HeroSetCamera			()
+	SceneReady				()
+	WaitEventMaster			(1)
+	Jump					(?_NRMVASH16_ENDING)
+	End						()
+
+?_NRMVASH13_WENCE_END
+	ThisActorSetAnimDelay	(?_WENCE_STAND_UP_ANIM,128)
+							(?_WENCE_STAND_RIGHT_ANIM,96)
+							(?_WENCE_STAND_UP_ANIM,96)
+							(?_WENCE_STAND_RIGHT_ANIM,0)
+	Sync					(2,0)
+	ThatActorStart			(ACTOR02)
+	Sync					(4,1)
+	ThisActorSetAnimDelay	(?_WENCE_STAND_LEFT_ANIM,32)
+							(?_WENCE_BACK_LEFT_ANIM,128)
+	End						()
+
+?_NRMVASH13_YAKI_END
+	ThisActorSetAnimDelay	(?_YAKI_STAND_DOWN_ANIM,144)
+							(?_YAKI_STAND_DR_ANIM,112)
+							(?_YAKI_STAND_DOWN_ANIM,80)
+							(?_YAKI_STAND_DR_ANIM,64)
+	Sync					(2,0)
+	Delay					(96)
+	ThisActorSetAnimDelay	(?_YAKI_STAND_LEFT_ANIM,64)
+							(?_YAKI_STAND_DL_ANIM,0)
+	Sync					(4,1)
+	ThisActorSetAnimDelay	(?_YAKI_STAND_LEFT_ANIM,128)
+							(?_YAKI_STAND_DOWN_ANIM,108)
+							(?_YAKI_WALK_RIGHT_ANIM,96)
+	End						()
+
+?_NRMVASH13_SALAFY_END
+	ThisActorSetAnimDelay	(?_SALAFY_STAND_LEFT_ANIM,16)
+							(?_SALAFY_STAND_UL_ANIM,80)
+							(?_SALAFY_WALK_LEFT_ANIM,16)
+							(?_SALAFY_STAND_LEFT_ANIM,96)
+							(?_SALAFY_STAND_UL_ANIM,128)
+							(?_SALAFY_STAND_LEFT_ANIM,0)
+	Sync					(4,1)
+	ThisActorSetAnimDelay	(?_SALAFY_STAND_LEFT_ANIM,80)
+							(?_SALAFY_WALK_LEFT_ANIM,16)
+							(?_SALAFY_STAND_LEFT_ANIM,64)
+							(?_SALAFY_STAND_UP_ANIM,96)
+							(?_SALAFY_WALK_RIGHT_ANIM,96)
+	SetEventMaster			(1)
+	End						()
+
+?_NRMVASH13_GIA_END
+	ThisActorSetAnimDelay	(?_GIA_WALK_RIGHT_ANIM,160)
+							(?_GIA_STAND_RIGHT_ANIM,96)
+	Sync					(4,1)
+	ThisActorSetAnimDelay	(?_GIA_STAND_RIGHT_ANIM,32)
+							(?_GIA_WALK_LEFT_ANIM,128)
+	End						()
+/********************************//********************************/
+// END TRAINING GROUNDS ENDING
+/********************************//********************************/

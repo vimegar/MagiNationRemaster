@@ -1,0 +1,110 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_ARBOLL_SIT_LEFT_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?ARBOL_FLOAT01_LEFT)
+					(?ARBOL_FLOAT02_LEFT)
+					(?ARBOL_FLOAT03_LEFT)
+	
+	JumpLocal		(?_ARBOLL_SIT_LEFT_ANIM)
+
+/********************************/
+?_ARBOLL_SIT_RIGHT_ANIM
+
+	FrameBlock:		(4,0,0)
+					(?ARBOL_FLOAT01_RIGHT)
+					(?ARBOL_FLOAT02_RIGHT)
+					(?ARBOL_FLOAT03_RIGHT)
+	
+	JumpLocal		(?_ARBOLL_SIT_RIGHT_ANIM)
+
+/********************************/
+?_ARBOLL_MOVE_LEFT_ANIM
+
+	FrameBlock:		(4,-1,0)
+					(?ARBOL_FLY01_LEFT)
+					(?ARBOL_FLY02_LEFT)
+					(?ARBOL_FLY03_LEFT)
+	
+	JumpLocal		(?_ARBOLL_MOVE_LEFT_ANIM)
+
+/********************************/
+?_ARBOLL_MOVE_RIGHT_ANIM
+
+	FrameBlock:		(4,1,0)
+					(?ARBOL_FLY01_RIGHT)
+					(?ARBOL_FLY02_RIGHT)
+					(?ARBOL_FLY03_RIGHT)
+	
+	JumpLocal		(?_ARBOLL_MOVE_RIGHT_ANIM)
+
+/********************************/
+?_ARBOLL_MOVE_DOWN_ANIM
+
+	FrameBlock:		(4,0,1)
+					(?ARBOL_FLY01_RIGHT)
+					(?ARBOL_FLY02_RIGHT)
+					(?ARBOL_FLY03_RIGHT)
+	
+	JumpLocal		(?_ARBOLL_MOVE_DOWN_ANIM)
+
+/********************************/
+?_ARBOLL_MOVE_UP_ANIM
+
+	FrameBlock:		(4,0,-1)
+					(?ARBOL_FLY01_LEFT)
+					(?ARBOL_FLY02_LEFT)
+					(?ARBOL_FLY03_LEFT)
+	
+	JumpLocal		(?_ARBOLL_MOVE_UP_ANIM)
+
+/********************************/
+?_ARBOLL_VANISH_LEFT_ANIM
+
+	Frame:			(4,0,0,?ARBOL_FLOAT01_LEFT)
+					(4,0,0,?ARBOL_FLOAT02_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT01_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT01_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT02_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT02_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_LEFT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_LEFT)
+
+	End				()
+
+/********************************/
+?_ARBOLL_VANISH_RIGHT_ANIM
+
+	Frame:			(4,0,0,?ARBOL_FLOAT01_RIGHT)
+					(4,0,0,?ARBOL_FLOAT02_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT01_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT01_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT02_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT02_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_RIGHT)
+	Pass			()
+	Frame:			(1,0,0,?ARBOL_FLOAT03_RIGHT)
+
+	End				()

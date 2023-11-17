@@ -1,0 +1,12 @@
+/********************************/
+?_CLDLAVATUBE12_DR_1
+		HeroToDoor	(0,0,26,24)
+		Jump		(?_CLDLAVATUBE01)
+
+?_CLDLAVATUBE12_DR_2
+		HeroToDoor	(19,27,0,10)
+		Jump		(?_CLDLAVATUBE11)
+
+?_CLDLAVATUBE12_DR_3
+		HeroSetDoor	(37,55)
+		Jump		(?_OVRSURFACE01)

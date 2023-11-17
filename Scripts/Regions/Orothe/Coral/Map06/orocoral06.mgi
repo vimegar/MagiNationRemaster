@@ -1,0 +1,17 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\CORAL\MAP06\OROCORAL06_DR.MGI
+
+?_OROCORAL06
+	SceneNew		()
+	LoadMap			(MAP_OROCORAL06)
+	LoadHotspots	(HS_OROCORAL06)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,36,0,?_HERO_UNDTREAD_RIGHT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_ororuins)
+	SceneReady		()
+	End				()
+	

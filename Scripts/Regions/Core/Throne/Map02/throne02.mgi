@@ -1,0 +1,21 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP02\THRONE02_DR.MGI
+%INCLUDE			REGIONS\CORE\THRONE\MAP02\THRONE02_TXT.MGI
+
+?_THRONE02
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	SongStart				(SONGID_destruction)
+	LoadMap					(MAP_THRONE02)
+	LoadHotspots			(HS_THRONE02)
+	If						([GAMECOUNT != GC_AGRAM_BATTLE],_NO_BATTLES)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,14,0,?_RAINER,?_THRONE_RANDOM_BATTLE)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,14,0,?_RAINER,?_THRONE_RANDOM_BATTLE)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_THRONE02)
+_NO_BATTLES
+	Jump					(?_SCENE_READY)
+

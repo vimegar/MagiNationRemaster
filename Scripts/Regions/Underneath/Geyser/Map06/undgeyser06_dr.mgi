@@ -1,0 +1,33 @@
+/********************************/
+
+?_UNDGEYSER06_DR_1
+		HeroToDoor	(4,46,5,0)
+		Jump		(?_UNDGEYSER08)
+
+?_UNDGEYSER06_DR_2
+		HeroToDoor	(0,9,31,8)
+		Jump		(?_UNDGEYSER05)
+
+?_UNDGEYSER06_DR_3
+		HeroSetDoor		(31,36)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,10,0)
+		Jump			(?_UNDGEYSER09)
+		
+?_UNDGEYSER06_DR_4
+	Jump					(?_UNDGEYSER_FULL)
+?_UNDGEYSER06_DR_5
+	Jump					(?_UNDGEYSER_NEW)
+?_UNDGEYSER06_DR_6
+	Jump					(?_UNDGEYSER_FIRST)
+?_UNDGEYSER06_DR_7
+	Jump					(?_UNDGEYSER_THIRD)
+
+/********************************/
+
+?_UNDGEYSER06_TR_1
+	TriggerTreasure	(UNDGEYSER06_Chest1,INV_TYPE_ITEM,INV_MASTER_RUNE,5,6,32)
+	
+?_UNDGEYSER06_TR_2
+	TriggerTreasure	(UNDGEYSER06_Chest2,INV_TYPE_ITEM,INV_BALOO_ROOT,22,40,32)

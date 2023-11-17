@@ -1,0 +1,142 @@
+?_HDNLOAD01_DR_1
+	TextOpen				()
+	TextWrite				("New game?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Yes=")
+							(" No$")
+							
+	TextMenu				(2)
+							(_NEW)
+							(_NONEW)
+
+_NEW
+	If						([!Game_Saved],_SKIP)
+
+	TextClose				()
+	TextOpen				()
+	TextWrite				("WARNING:")
+							("Saving=")
+							("your progress")
+							("during a new=")
+							("game will")
+							("erase any=")
+							("currently")
+							("saved progress.")
+	TextClose				()
+
+_SKIP
+	NewGame					(SCRIPT_NEWGAME_VANILLA)
+
+	//BtlRingGive				(ORMAGON,83)
+	//BtlRingGive				(WEEBAT,83)
+	//BtlRingGive				(BRUB,83)
+	//BtlRingGive				(SARBIL,83)
+	//BtlRingGive				(MUSH_HYREN,83)
+	//BtlRingGive				(SHARBLOOT,83)
+
+	Jump					(?_HMTCAVE01_OPENING)
+	
+_NONEW
+	TextClose				()
+	End						()
+
+?_HDNLOAD01_DR_2
+	TextOpen				()
+	TextWrite				("Continue?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Yes=")
+							(" No$")
+							
+	TextMenu				(2)
+							(_LOAD)
+							(_NOLOAD)
+
+_LOAD
+	PalClearBase			(0,15,0,0,0)
+	PalFade					(0,15,32,3)
+	LoadGame				()
+	End						()
+	
+_NOLOAD
+	TextClose				()
+	End						()
+
+?_HDNLOAD01_DR_3
+	HeroSetDoor				(5,1)
+	Jump					(?_HDNLOAD01B)
+
+?_HDNLOAD01_DR_4
+	TextOpen				()
+	TextWrite				("Start a new=")
+							("game with")
+							("current Dream=")
+							("Creatures?")
+	TextClear				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(" Yes=")
+							(" No$")
+							
+	TextMenu				(2)
+							(_NEW)
+							(_NONEW)
+
+_NEW
+	TextClose				()
+	TextOpen				()
+	TextWrite				("WARNING:")
+							("Saving=")
+							("your progress")
+							("during a new=")
+							("game will")
+							("erase any=")
+							("currently")
+							("saved progress.")
+	TextClose				()
+
+	NewGame					(SCRIPT_NEWGAME_CHOCOLATE)
+	Jump					(?_HMTCAVE01_OPENING)
+	
+_NONEW
+	TextClose				()
+	End						()
+
+/********************************/
+//	LOAD SCREEN SECRET
+/********************************/
+?_HDNLOAD01B_DR_1
+	HeroSetDoor				(3,6)
+	Jump					(?_HDNLOAD01)
+	
+?_HDNLOAD01B_DR_2
+	HeroSetDoor				(7,12)
+	Jump					(?_HDNLOAD01C)
+
+?_HDNLOAD01B_TR_1
+	InitSkip				(_SKIP)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If						([INV_ITEM_StarKey > 0],_SKIP)
+	Jump					(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	If						([Newgame_Plus > 1],_OPEN)
+	TriggerAlways			(HDNLOAD01_Door,?_END,170,29,0,30)
+_OPEN
+	CopyTileBlock			(30,13,0,2,2,23,3)
+	Jump					(?_SET_BIT)
+
+/********************************/
+?_HDNLOAD01C_DR_1
+	HeroSetDoor				(24,5)
+	Jump					(?_HDNLOAD01B)
+	
+?_HDNLOAD01C_DR_2
+	HeroSetDoor				(7,12)
+	Jump					(?_HDNLOAD01C)
+
+
+
+/********************************/
+//	LOAD SCREEN SECRET
+/********************************/

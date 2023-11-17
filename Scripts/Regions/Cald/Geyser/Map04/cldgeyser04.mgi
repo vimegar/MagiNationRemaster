@@ -1,0 +1,62 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\CALD\GEYSER\MAP04\CLDGEYSER04_DR.MGI
+%INCLUDE				REGIONS\CALD\GEYSER\MAP04\CLDGEYSER04_TXT.MGI
+
+/********************************/
+?_CLDGEYSER04
+	SceneNew			()
+	ThatActorInit		(ACTOR20,?BOXXLE_AI,16,20,30,0,?_END,?_DONT_TALK)
+	ThatActorInit		(ACTOR21,?BOXXLE_AI,18,20,30,0,?_END,?_DONT_TALK)
+	ThatActorInit		(ACTOR22,?BOXXLE_AI,20,20,30,0,?_END,?_DONT_TALK)
+	ThatActorInit		(ACTOR23,?BOXXLE_AI,17,21,30,0,?_END,?_DONT_TALK)
+	ThatActorInit		(ACTOR24,?BOXXLE_AI,19,21,30,0,?_END,?_DONT_TALK)
+	ThatActorInit		(ACTOR25,?BOXXLE_AI,21,21,30,0,?_END,?_DONT_TALK)
+	LoadMap				(MAP_CLDGEYSER04)
+	LoadPalette			(PAL_HERO)
+	LoadHotspots		(HS_CLDGEYSER04)
+	LoadTriggers		(TR_CLDGEYSER04)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_CLDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_CLDGEYSER04_RET)
+	ThatActorStart		(ACTOR20)
+	ThatActorStart		(ACTOR21)
+	ThatActorStart		(ACTOR22)
+	ThatActorStart		(ACTOR23)
+	ThatActorStart		(ACTOR24)
+	ThatActorStart		(ACTOR25)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	SceneReady			()
+	End					()
+	
+/********************************
+	ThatActorDrawTile	(ACTOR00,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile	(ACTOR01,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile	(ACTOR02,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile	(ACTOR03,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile	(ACTOR04,0,0,30,229,COLLCODE_BOXXLE)
+	ThatActorDrawTile	(ACTOR05,0,0,30,229,COLLCODE_BOXXLE)
+/********************************/
+?_CLDGEYSER04_RET
+	SceneNew			()
+	LoadVRAM			(VRM_CLDGEYSER,PAL_CLDGEYSER)
+	LoadPalette			(PAL_HERO)
+	LoadHotspots		(HS_CLDGEYSER04)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR20)
+	ThatActorStart		(ACTOR21)
+	ThatActorStart		(ACTOR22)
+	ThatActorStart		(ACTOR23)
+	ThatActorStart		(ACTOR24)
+	ThatActorStart		(ACTOR25)
+	SetEncounter		(?_CLDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_CLDGEYSER04_RET)	
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+	

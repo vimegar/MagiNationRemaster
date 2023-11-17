@@ -1,0 +1,17 @@
+?_HLDMAZE20_DR_1
+		HeroToDoor	(0,7,35,19)
+		Jump		(?_HLDMAZE19)
+
+?_HLDMAZE20_DR_2
+		HeroToDoor	(22,0,22,29)
+		Jump		(?_HLDMAZE21)
+
+?_HLDMAZE20_DR_3
+		HeroToDoor	(28,0,28,29)
+		Jump		(?_HLDMAZE21)
+
+?_HLDMAZE20_TR_1
+		TriggerTreasure		(HldChest6,INV_TYPE_ITEM,INV_SHADOW_KEY,17,12,35)
+
+?_HLDMAZE20_TR_2
+		TriggerTreasure		(HLDMAZE20Chest1,INV_TYPE_ITEM,INV_MASTER_RUNE,19,12,35)

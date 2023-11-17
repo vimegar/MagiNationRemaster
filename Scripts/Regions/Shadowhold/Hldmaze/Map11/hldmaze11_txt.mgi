@@ -1,0 +1,43 @@
+/********************************/
+//HLDMAZE01 TXT
+/********************************/
+
+?_HLDMAZE11_TXT1
+	TextOpen			()
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Don't hurt me!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Sheesh. I'm not=")
+						("here to hurt")
+						("you, I'm here=")
+						("to rescue you!")
+	TextIcon			(ICON_GUY01)
+	TextWrite			("Thanks, and be=")
+						("careful. There")
+						("is some pretty=")
+						("weird stuff")
+						("around here.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_HLDMAZE11_TXT2
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-IT'S LOCKED-")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	
+?_HLDMAZE11_TXT3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("-TONY UNLOCKS=")
+						("THE DOOR. THE")
+						("KEY JAMS AND=")
+						("BREAKS IN THE")
+						("LOCK-")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+

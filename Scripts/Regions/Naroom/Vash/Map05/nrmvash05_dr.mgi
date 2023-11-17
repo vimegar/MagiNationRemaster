@@ -1,0 +1,48 @@
+/********************************/
+?_NRMVASH05_DR_1
+		HeroToDoor	(11,23,10,0)
+		Jump		(?_NRMVASH02)
+		
+?_NRMVASH05_DR_2
+		HeroToDoor	(0,14,17,7)
+		Jump		(?_NRMVASH06)
+		
+?_NRMVASH05_DR_3
+		HeroToDoor	(3,3,4,8)
+		Jump		(?_NRMVASH20)
+
+?_NRMVASH05_DR_4
+		HeroToDoor	(7,3,4,9)
+		Jump		(?_NRMVASH17)
+
+?_NRMVASH05_DR_5
+		HeroToDoor	(25,8,4,17)
+		Jump		(?_NRMVASH18)
+
+?_NRMVASH05_DR_6
+		HeroToDoor	(29,4,0,29)
+		Jump		(?_NRMVASH07)
+		
+?_NRMVASH05_TR_1
+		TextOpen	()
+		TextWrite	("Performing=")
+					("soon: The")
+					("famous jug-band=")
+					("Poad and the")
+					("ingredients.")
+		TextClose	()
+		End			()
+
+?_NRMVASH05_TR_2
+		TextOpen	()
+		TextWrite	("Gresh Square")
+		TextClose	()
+		End			()
+
+
+?_NRMVASH05_TR_3
+		TextOpen	()
+		TextWrite	("Bust of a Jile")
+		TextClose	()
+		End			()
+

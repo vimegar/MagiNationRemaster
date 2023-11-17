@@ -1,0 +1,279 @@
+/********************************//********************************/
+//	WORVELINE SCENE
+/********************************//********************************/
+?_UNDCAVERN08_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_LOGAN)
+	TextWrite 			("Hi.  SNIKT=")
+	         			("SNIKT!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Uh... hi.")
+	TextIcon			(ICON_LOGAN)
+	TextWrite 			("Welcome to the=")
+	         			("Prospector")
+	         			("Garage!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Berserker what?")
+	TextIcon			(ICON_LOGAN)
+	TextWrite			("Prospector=")
+	         			("Garage! This is")
+	         			("the mining=")
+	         			("headquarters")	
+	         			("here in=")	
+	         			("the Underneath.")	
+	         			("Miners come=")	
+	         			("here to hang")	
+	         			("out, have some=")	
+	         			("milk, and buy")	
+	         			("mining=")	
+	         			("equipment.")	
+	TextClose			()
+	SetEventText		(1)
+	End					()
+		
+?_UNDCAVERN08_TXT_2
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DL_ANIM)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("What is that?")
+	TextIcon			(ICON_WORVELINE)
+	TextWrite			("GRRRRRR!")
+	TextIcon			(ICON_LOGAN)
+	TextWrite 			("That's my=")
+	         			("little bisiwog")
+	         			("Worveline! Say=")
+	         			("hi, Worvie!")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	
+?_UNDCAVERN08_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("AAAAAAAUGH!!=")
+	Delay				(64)
+	TextClose			()
+	SetEventText		(3)
+	End					()
+	
+?_UNDCAVERN08_TXT_4
+	TextOpen			()
+	TextIcon			(ICON_LOGAN)	
+	TextWrite 			("Haha hahaha!!=")
+	         			("He likes you!")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Yeah, great...")
+	TextIcon			(ICON_LOGAN)
+	TextWrite			("Oh, by the way,=")
+						("I'm the guy")
+						("who sells=")
+						("stuff.")
+						("SNIKT SNIKT!")	
+	TextClose			()
+	SetEventText		(4)
+	End					()
+	
+?_UNDCAVERN08_TXT_5
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Get me away=")
+	         			("from that")
+	         			("thing...")
+	TextClose			()
+	SetEventText		(5)
+	End					()	
+
+?_UNDCAVERN08_TXT_6
+	TextOpen			()
+	TextIcon			(ICON_LOGAN)
+	TextWrite			("Need somethin',=")
+						("rookie?")
+	TextClose			()
+	Jump				(?_UNDCAVERN08_LOGAN_SHOP)
+
+?_UNDCAVERN08_TXT_GRRRR
+	TextOpen			()
+	TextIcon			(ICON_WORVELINE)
+	TextWrite			("GRRRR!!")
+	TextClose			()
+	SetEventText		(7)
+	End					()	
+
+?_UNDCAVERN08_LOGANG_TEXT
+	TextOpen			()
+	TextIcon			(ICON_LOGAN)
+	TextWrite			("Need somethin',=")
+						("rookie?")
+	TextClose			()
+	Jump				(?_UNDCAVERN08_LOGAN_SHOP)
+	
+?_UNDCAVERN08_LOGAN_SHOP
+	MenuShop			(_DONE)
+						(INV_BALOO_SAP,35)
+						(INV_BALOO_ROOT,60)
+						(INV_REMEDY_DRINK,20)
+						(INV_POWER_GEM,5)
+	SetEventText		(1)
+_DONE
+	TextOpen			()
+	TextIcon			(ICON_LOGAN)
+	TextWrite			("Don't be=")
+							("a stranger,")
+							("bub!")
+	TextClose			()
+	SetEventText		(1)
+	End					()	
+/********************************//********************************/
+//	END WORVELINE SCENE
+/********************************//********************************/
+
+/********************************//********************************/
+// RINGSMITH
+/********************************//********************************/
+?_UNDCAVERN08_TXT_RINGSMITH
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("Hello.")
+						("Nice day,=")
+						("isn't it?")
+_BACK_TO_MENU
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Forge  Equip=")
+						(" Power  Done$")
+	
+	TextMenu			(4)
+						(_RINGSMITH)
+						(_UPGRADE)
+						(_RINGBANK)
+						(_END)
+
+_UPGRADE
+	TextClose			()
+	MenuRingUpgrade		(GUM_GUM)
+						(PORKUSLIME)
+						(BRUB)
+						(GHOSTBWISP)
+						(AGOVO)
+						(WEEBAT)
+						(CAVERUDWOT)
+						(GIANTKORIT)
+						(BISIWOG)
+						(PARMALAG)
+						(TUSK_BWISP)
+						(VULBOR)
+						(MUSH_HYREN)
+						(LEAF_HYREN)
+						(ORMAGON)
+	Jump				(_BACK_TO_MENU)
+_RINGBANK
+	TextClose			()
+	MenuRingBank		()
+	Jump				(_BACK_TO_MENU)
+
+_RINGSMITH
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("What kind of=")
+						("ring would")
+						("you like?")
+	TextClose			()
+
+
+	MenuRingSmith		(_BANK_FULL,_BACK_TO_MENU)
+						(GUM_GUM,50,10,GUM_GUM,1,CREATURE_NULL,0)
+						(PORKUSLIME,50,10,PORKUSLIME,2,GUM_GUM,1)
+						(BRUB,50,10,BRUB,2,CREATURE_NULL,0)
+						(GHOSTBWISP,70,10,GHOSTBWISP,3,PARMALAG,1)
+						(AGOVO,70,13,AGOVO,2,CREATURE_NULL,0)
+						(WEEBAT,70,13,WEEBAT,2,WEEBO,1)
+						(CAVERUDWOT,100,13,CAVERUDWOT,3,CREATURE_NULL,0)
+						(GIANTKORIT,100,15,GIANTKORIT,2,WEEBO,1)
+						(BISIWOG,100,15,BISIWOG,1,CREATURE_NULL,0)
+						(PARMALAG,100,15,PARMALAG,2,CREATURE_NULL,0)
+						(TUSK_BWISP,120,15,TUSK_BWISP,2,PARMALAG,1)
+						(VULBOR,120,15,VULBOR,3,CREATURE_NULL,0)
+						(MUSH_HYREN,200,50,MUSH_HYREN,3,WEEBO,1)
+						(CAVE_HYREN,300,50,CAVE_HYREN,4,CREATURE_NULL,0)
+						(ORMAGON,400,60,ORMAGON,1,WEEBO,1)
+_DONE
+
+	ThatActorSetScript	(ACTOR02,?_UNDCAVERN08_SMITHY)
+	WaitAnyEventMaster	()
+	
+	TextOpen			()
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("Here is your=")
+						("%X")
+						("If you are=")
+						("trying to train")
+						("your new=")
+						("creature, the")
+						("area outside=")
+						("the garage is")
+						("great!")
+	JumpLocal			(_BACK_TO_MENU)
+
+_BANK_FULL
+	TextOpen			()
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("Your Ring Bank=")
+						("is full.")
+	JumpLocal			(_BACK_TO_MENU)
+
+_END
+	TextOpen			()
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("Come back=")
+						("anytime!")
+						("Fossik's Ring=")
+						("Shop is always")
+						("open!")
+	TextClose			()
+	ScrollMap			(24,-2,0)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+/********************************//********************************/
+// END RINGSMITH
+/********************************//********************************/
+
+?_UNDCAVE08_INN_TXT
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Morag destroyed=")
+						("my inn, but I")
+						("can still=")
+						("record your")
+						("journey. Would=")
+						("you like to")
+						("rest?")
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Yes=")
+						(" No$")
+	TextMenu			(2)
+						(_UND_INN_YES2)
+						(_UND_INN_NO2)
+_UND_INN_YES2
+	TextClear			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Good night!")
+	TextClose			()
+	SetLoadScript		(?_LOAD_UNDCAVE08)
+	PalClearBase		(0,15,31,31,31)
+	PalFade				(0,15,32,0)
+	SaveGame			(1)
+	Delay				(64)
+	Jump				(?_UNDCAVE08_TONY_WAKING)
+
+_UND_INN_NO2
+	TextClear			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Take care!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+
+

@@ -1,0 +1,16 @@
+/********************************/
+?_HLDCELL06_DR_1
+		HeroToDoor		(26,15,0,15)
+		Jump			(?_HLDCELL05)
+		
+?_HLDCELL06_DR_2
+		HeroToDoor		(26,15,26,6)
+		Jump			(?_HLDEXTERIOR)
+
+/*********************************/
+?_HLDEXTERIOR_DR_1
+		HeroToDoor		(26,6,0,13)
+		Jump			(?_HLDCELL06)
+
+
+		

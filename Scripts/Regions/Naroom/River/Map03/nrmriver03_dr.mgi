@@ -1,0 +1,57 @@
+/********************************/
+?_NRMRIVER03_DR_1
+	LoadGame	()
+	End			()
+
+?_NRMRIVER03_DR_2
+	LoadGame	()
+	End			()
+
+
+?_NRMRIVER03_DR_3	// TOP LEFT
+	NewGame			(SCRIPT_NEWGAME_VANILLA)
+	
+	BtlRingGive		(CORE_HYREN,98)
+	BtlRingGive		(CORE_HYREN,98)
+	BtlRingGive		(CORE_HYREN,98)
+	BtlRingGive		(CORE_HYREN,98)
+	BtlRingGive		(CORE_HYREN,98)
+	BtlRingGive		(CORE_HYREN,98)
+	
+	SetXRAMWord		(GS_Animite,999)
+	SetGamecount	(GC_OPENING)
+	Jump			(?_HMTCAVE01_OPENING)
+
+?_NRMRIVER03_DR_4	// TOP MIDDLE
+	InventoryGive	(INV_TYPE_INFUSED,ABAQUIST,20)
+	End				()
+
+?_NRMRIVER03_DR_5	// TOP RIGHT
+	SetGamecount	(GC_UND_GEYSER)
+	HeroSetDoor		(17,21)
+	Jump			(?_SCRUBABRUB)
+
+?_NRMRIVER03_DR_6	// MIDDLE LEFT
+	HeroSetDoor		(19,21)
+	Jump			(?_OVRSURFACE03)
+
+?_NRMRIVER03_DR_7	// MIDDLE RIGHT
+	ThatActorInit	(ACTOR02,?TRIGGER_AI,16,24,33,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+	HeroSetDoor		(14,25)
+	Jump			(?_OVRSURFACE04)
+
+?_NRMRIVER03_DR_8	// BOTTOM LEFT
+	HeroSetDoor		(12,22)
+	Jump			(?_OVRSURFACE05)
+
+?_NRMRIVER03_DR_9	// BOTTOM MIDDLE
+	HeroSetDoor		(29,31)
+	SetXRAMByte		(GS_Hero_Ability,2)
+	SetGamecount	(GC_CALD_INTRO)
+	Jump			(?_CLDLAVAPOOL01_CALD)
+
+?_NRMRIVER03_DR_10	// BOTTOM RIGHT
+	SetGamecount	(GC_CALD_GEYSER)
+	SetXRAMByte		(GS_Hero_Ability,3)
+	HeroSetDoor		(12,0)
+	Jump			(?_UNDMUSHFARM02_KIDNAPPING)

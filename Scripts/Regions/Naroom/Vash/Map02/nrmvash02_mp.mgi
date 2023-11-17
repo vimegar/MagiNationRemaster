@@ -1,0 +1,13 @@
+/********************************/
+	FileMapLayout		(MAP_NRMVASH02,PAL_NRMVASH,VRM_NRMVASH,PAT_NRMVASH,SCR_NRMVASH02,COL_NRMVASH02)
+
+/********************************/
+//	NRMVASH02_SCT
+/********************************/
+	FileMapLayout		(MAP_NRMVASH02_SCT,PAL_NRMINTERIOR1,VRM_NRMINTERIOR,PAT_NRMINTERIOR,SCR_NRMVASH02_SCT,COL_NRMVASH02_SCT)
+
+/********************************/
+//	HDNROOM05
+/********************************/
+	FileMapLayout		(MAP_HDNROOM05,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_HDNROOM05,COL_HDNROOM05)
+

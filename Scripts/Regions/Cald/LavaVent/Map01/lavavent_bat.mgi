@@ -1,0 +1,263 @@
+/**** LEVEL22 ****/
+?_LAVAVENT_RNDBAT
+	If				([GAMECOUNT < GC_ARBOLL_HUNT],_LAVAVENT_RNDBAT_NO_ARBOL)
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+					(_BTL9)
+					(_BTL10)
+					(_BTL11)
+					(_BTL12)
+
+_LAVAVENT_RNDBAT_NO_ARBOL
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+					(_BTL10)
+					(_BTL12)
+
+
+_BTL1
+	BtlNew		(CALD_ARENA1,MAGI_RND1,23,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,LAVA_AQ,21,42,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KELTHET,21,42,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CALD_ARENA1,MAGI_RND1,22,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,LAVA_AQ,20,40,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CALD_ARENA1,MAGI_RND1,21,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,LAVAARBOLL,21,42,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CALD_ARENA1,MAGI_RND1,24,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KELTHET,24,48,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(CALD_ARENA1,MAGI_RND1,22,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,23,46,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KELTHET,22,44,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(CALD_ARENA1,MAGI_RND1,23,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,20,40,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,20,40,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew		(CALD_ARENA1,MAGI_RND1,22,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,LAVA_AQ,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,20,40,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KELTHET,21,42,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(CALD_ARENA1,MAGI_RND1,24,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,LAVA_AQ,23,46,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,22,44,1)
+	BtlNextTurn	()
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,20,40,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KELTHET,20,40,1)
+	BtlAuto		()
+
+_BTL9
+	BtlNew		(CALD_ARENA1,MAGI_RND1,21,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,LAVAARBOLL,21,42,1)
+	BtlAuto		()
+
+_BTL10
+	BtlNew		(CALD_ARENA1,MAGI_RND1,23,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,20,40,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,20,40,1)
+	BtlAuto		()
+
+_BTL11
+	BtlNew		(CALD_ARENA1,MAGI_RND1,21,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,22,44,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,LAVAARBOLL,21,42,1)
+	BtlAuto		()
+
+_BTL12
+	BtlNew		(CALD_ARENA1,MAGI_RND1,22,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,23,46,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,22,44,1)
+	BtlAuto		()
+
+/********************************/
+//	HYREN FOR UNDERNEATH ENCOUNTERS
+?_UNDHYREN_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+
+_BTL1
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,WEEBAT,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,CAVE_HYREN,60,200,3)
+	BtlSummonDelay	(BTL_ID_MAGI,WEEBAT,30,60,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,MUSH_HYREN,40,150,1)
+	BtlSummonDelay	(BTL_ID_MAGI,CAVE_HYREN,60,200,2)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,MUSH_HYREN,40,150,3)
+	BtlSummonDelay	(BTL_ID_MAGI,GIANTKORIT,30,60,1)
+	BtlAuto			()
+
+/********************************/
+//	HYREN FOR CALD ENCOUNTERS
+?_CLDHYREN_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+
+_BTL1
+	BtlNew			(CALD_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,FLAMEHYREN,60,200,3)
+	BtlSummonDelay	(BTL_ID_MAGI,ARBOLIT,30,60,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(CALD_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,MAGMAHYREN,40,150,1)
+	BtlSummonDelay	(BTL_ID_MAGI,FLAMEHYREN,60,200,2)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(CALD_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,MAGMAHYREN,40,150,3)
+	BtlSummonDelay	(BTL_ID_MAGI,QUOR,30,60,1)
+	BtlAuto			()
+
+
+/********************************/
+//	WHIRLPOOL APPPEAR SECRET
+?_WIRLPOOL_APPEAR
+	ThisActorSetAnim			(?_END)
+	ThisActorRaindrop			(COLLCODE_BOXSPACE)
+	
+	SFX							(SFXID_PANPOP)
+
+	JumpRandom					(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_START)
+
+
+_START
+
+	ThisActorSetAI				(?TRAP_AI)
+	HeroSetDoor					(14,13)
+	ThisActorSetAnimDelay		(?_WHIRLPOOL_ANIM,124)
+	
+	SFX							(SFXID_SFX_CURSOR)
+	
+	ThisActorSetAI				(?ANIM_AI)
+	ThisActorSetAnim			(?_END)
+	JumpLocal					(?_WIRLPOOL_APPEAR)
+
+
+_END
+	Delay						(32)
+	JumpLocal					(?_WIRLPOOL_APPEAR)
+
+/********************************/
+//	SMALL WHIRLPOOL APPPEAR SECRET
+?_SMALLWIRLPOOL_APPEAR
+	ThisActorSetAnim			(?_END)
+	ThisActorRaindrop			(COLLCODE_BOXSPACE)
+	
+	SFX							(SFXID_PANPOP)
+
+	JumpRandom					(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_END)
+								(_START)
+
+
+_START
+
+	ThisActorSetAI				(?TRAP_AI)
+	HeroSetDoor					(14,13)
+	ThisActorSetAnimDelay		(?_SMALLWHIRL_ANIM,222)
+	
+	SFX							(SFXID_SFX_CURSOR)
+	
+	ThisActorSetAI				(?ANIM_AI)
+	ThisActorSetAnim			(?_END)
+	JumpLocal					(?_SMALLWIRLPOOL_APPEAR)
+
+
+_END
+	Delay						(32)
+	JumpLocal					(?_SMALLWIRLPOOL_APPEAR)

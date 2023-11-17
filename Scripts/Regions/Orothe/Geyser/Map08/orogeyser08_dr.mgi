@@ -1,0 +1,19 @@
+/********************************/
+
+?_OROGEYSER08_DR_1
+	HeroToDoor	(0,14,9,7)
+	Jump		(?_OROGEYSER07)
+
+/********************************/
+
+?_OROGEYSER08_TR_1
+	TriggerTreasure	(OROGEYSER08_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,11,8,20)
+
+?_OROGEYSER08_TR_2
+	TriggerTreasure	(OROGEYSER08_Chest2,INV_TYPE_ITEM,INV_RUNEOFPOWER,16,4,20)
+
+?_OROGEYSER08_TR_3
+	TriggerTreasure	(OROGEYSER08_Chest3,INV_TYPE_ITEM,INV_KARMIC_POWER,17,4,20)
+
+?_OROGEYSER08_TR_4
+	TriggerTreasure	(OROGEYSER08_Chest4,INV_TYPE_ITEM,INV_BALOO_LEAF,18,4,20)

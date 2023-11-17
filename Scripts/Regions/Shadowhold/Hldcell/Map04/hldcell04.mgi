@@ -1,0 +1,26 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP04\HLDCELL04_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP04\HLDCELL04_TXT.MGI
+
+/********************************/
+
+?_HLDCELL04
+	SceneNew				()
+	LoadMap					(MAP_HLDCELL04)
+	//LoadEncounters		(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDCELL_RE_ENTER)
+	LoadHotspots			(HS_HLDCELL04)
+	LoadTriggers			(TR_HLDCELL04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	SongStart				(SONGID_shadowhold)
+	ThatActorStart			(HEROACTOR)
+		SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_HLDCELL04)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	If						([!CellSwitch1],_END)
+	CopyTileBlock			(27,1,4,4,4,4,4)
+_END	
+	SceneReady				()
+	End						()

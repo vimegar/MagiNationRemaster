@@ -1,0 +1,39 @@
+/********************************/
+?_NRMVASH17_DR_1
+		HeroToDoor	(4,9,7,3)
+		Jump		(?_NRMVASH05)
+
+?_NRMVASH17_TR_1
+		TriggerTreasure	(NRMVASH17_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,10,3,16)		
+		
+?_NRMVASH17_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Bookcase.")
+					("Full of booky=")
+					("goodness.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH17_TR_3
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Bird-feeder.")
+					("Spiffy.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH17_TR_4
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A chair for=")
+					("sitting.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH17_TR_5
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Ash...")
+		TextClose	()
+		End			()

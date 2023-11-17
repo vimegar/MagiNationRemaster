@@ -1,0 +1,42 @@
+?_HLDMAZE07_DR_1
+		HeroToDoor	(8,0,17,15)
+		Jump		(?_HLDMAZE04)
+
+?_HLDMAZE07_DR_2
+		HeroToDoor	(23,22,0,8)
+		Jump		(?_HLDMAZE08)
+
+?_HLDMAZE07_DR_3
+		If			([DOOR_7],?_HLDMAZE07_DR_3_END)
+		Jump		(?_HLDMAZE07_DOOR_LOCKED)
+?_HLDMAZE07_DR_3_END
+		End			()
+
+?_HLDMAZE07_DR_4
+		If			([HLDMAZE07_Corefight],?_END)
+		SetXRAMBit	(HLDMAZE07_Corefight,TRUE)
+		Jump		(?_HLDMAZE07_BATTLE)
+
+?_HLDMAZE07_TR_1
+		TriggerTreasure		(HldChest8,INV_TYPE_ITEM,INV_CLOUD_FROND,21,7,24)				
+
+?_HLDMAZE07_TR_2	// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("There's a big=")
+						("pile of worms")
+						("under this=")
+						("mattress!")
+		TextClose		()
+		End				()
+
+?_HLDMAZE07_TR_3	// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Something's=")
+						("bubbled up in")
+						("here, and it=")
+						("doesn't look")
+						("friendly.")
+		TextClose		()
+		End				()

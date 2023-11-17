@@ -1,0 +1,16 @@
+/********************************/
+?_NRMVASH24_DR_1
+	Delay					(16)
+	SFX						(SFXID_DRAIN)
+	ThatActorSetScript		(ACTOR0F,?_AIM_ANIM_HIT_BLOCK)
+	End						()
+	
+?_NRMVASH24_TR_1
+	SFX						(SFXID_JUMP)
+	ThatActorSetVRAMBase	(HEROACTOR,5)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_NRMVASH24_HERO_ARROW_FLIES)
+	ThatActorLocRelative	(ACTOR0F,HEROACTOR)
+	ThatActorSetScript		(ACTOR0F,?_HERO_STAND_UP_ANIM)
+	End						()
+

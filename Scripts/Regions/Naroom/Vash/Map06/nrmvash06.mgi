@@ -1,0 +1,36 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP06\NRMVASH06_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP06\NRMVASH06_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP06\NRMVASH06_PARTY.MGI
+
+/********************************/
+?_NRMVASH06
+	Switch			([GAMECOUNT])
+					(GC_END_FUNERAL,?_NRMVASH06_FUNERAL)
+					(GC_END_PARTY,?_NRMVASH06_PARTY)
+	SceneNew		()
+	LoadMap			(MAP_NRMVASH06)
+	LoadHotspots	(HS_NRMVASH06)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_NRMVASH06)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,18,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR00,?TALKER_AI,1,5,18,0,?_NRMVASH06_BOY,?_NRMVASH06_BOY_TALKS)
+	ThatActorStart	(ACTOR00)
+	LoadVRAMTiles	(48,BIT_BOY,0,0)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_naroom)
+	SceneReady		()
+	End				()
+
+
+?_NRMVASH06_BOY
+	ThisActorSetAnim	(?_BOY_STAND_RIGHT_ANIM)
+	End					()
+	
+?_NRMVASH06_BOY_TALKS
+	SetText				(?_NRMVASH06_BOY_TXT)
+	Jump				(?_FACE_BOY)
+

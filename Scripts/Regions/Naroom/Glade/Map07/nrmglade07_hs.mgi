@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_NRMGLADE07)
+						(HOTSPOT_TRIGGER_EAST,?_NRMGLADE07_DR_1)						
+						
+		FileTriggers	(TR_NRMGLADE07)
+						(TRIGGER_CONFIG,?_NRMGLADE07_TR_1)

@@ -1,0 +1,364 @@
+;********************************
+; SCRIPT_00_SYSTEM.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+; HL:	<-- Script params after menu table
+?SCRIPT_MENUTABLE_SETUP
+
+	LD				L,C
+	LD				H,B
+
+	INC				HL
+	INC				HL
+	INC				HL
+
+	LD				A,(HLI)		;Total bytes
+	LD				C,A
+	LD				A,(HLI)
+	LD				B,A
+
+	LD				DE,$D000
+	SWITCH_RAM_BANK	WRAM_INFLATE
+	
+	CALL			?MEM_MOV
+
+	MOVADDR_FF		SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	SET16_FF		H,L,SCRIPT_WFRAME
+
+	RET
+
+;********************************
+?SCRIPT_SCENE_INIT
+	PUSH_ROM_BANK
+	
+	XOR				A
+	LD				(SCRIPT_SCENE_READY),A
+	
+_INIT
+	SCRIPT_DO		MASTER_SCRIPT
+	SWITCH_ROM_BANK	(VBLANK_BANK)
+	GET16			H,L,VBLANK_FUNC
+	CALL_HL
+
+	LD				A,(SCRIPT_SCENE_READY)
+	AND				A
+	JR				Z,_INIT
+	
+	POP_ROM_BANK
+	RET
+
+;********************************
+?CMD_BGSCREENNEW
+
+	SCREEN_HIDE
+	TIMER_START
+
+	MOVADDR			SCRIPT_CURRENT,MASTER_SCRIPT
+	MOVADDR			SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	SCRIPT_CLOSE
+	
+	SYSTEM_INIT
+	INTERPRETER_REINIT
+	SCRIPT_INIT		SYSTEM_SCRIPT
+
+	STACK_INIT
+	CALL			?SCRIPT_SCENE_INIT
+	
+	
+	LD				A,$20
+	LD				(TILEMAP_WIDTH),A
+	LD				(TILEMAP_HEIGHT),A
+	LD				(TILEMAP_HSTOP),A
+	LD				(TILEMAP_VSTOP),A
+	
+	XCALL			?TILEMAP_CAMERA_INIT
+	STACK_INIT
+
+	SCREEN_SHOW
+	JP				?GAME_LOOP_INIT
+
+;********************************
+?CMD_INVENTORYGIVE
+
+	LD					HL,INV_ID_TYPE
+	LD_HLI_BCI
+	LD_HLI_BCI
+	LD_HLI_BCI
+
+	PUSH				BC
+
+	XCALL				?INVENTORY_GIVE
+	SWITCH_ROM_BANK		(SCRIPT_WBANK)
+
+	POP					BC
+	JP					?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_INVENTORYTAKE
+
+	LD					HL,INV_ID_TYPE
+	LD_HLI_BCI
+	LD_HLI_BCI
+	LD_HLI_BCI
+
+	PUSH				BC
+
+	XCALL				?INVENTORY_TAKE
+	SWITCH_ROM_BANK		(SCRIPT_WBANK)
+
+	POP					BC
+	JP					?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_JUMPLOADSCRIPT
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD					A,(XRAM_HERO_DOORX)
+	LD					(HERO_DOORX),A
+
+	LD					A,(XRAM_HERO_DOORY)
+	LD					(HERO_DOORY),A
+
+	LD					A,(XRAM_LOAD_BANK)
+	LD					E,A
+	LD					A,(XRAM_LOAD_SCRIPT)
+	LD					L,A
+	LD					A,(XRAM_LOAD_SCRIPT+$01)
+	LD					H,A
+
+	BATTERY_OFF
+
+	LD					A,H
+	OR					L
+	JR					Z,_RETURN
+
+	LD					A,E
+	LDFF_A				SCRIPT_WBANK
+	SWITCH_ROM_BANK		A
+
+	LD					C,L
+	LD					B,H
+
+_RETURN
+	JP					?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_LOADGAME
+
+	PUSH				BC
+	XCALL				?LOAD_GAME
+	POP					BC
+
+	JP					?CMD_JUMPLOADSCRIPT
+
+;********************************
+?CMD_MENUHISTORIAN
+
+	PUSH			BC
+	XCALL			?MENU_HISTORIAN_START
+	POP				BC
+	
+	SWITCH_ROM_BANK	(SCRIPT_WBANK)
+	JP				?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_MENUMUSIC
+
+	DEC				BC
+	DEC				BC
+	DEC				BC
+	CALL			?SCRIPT_MENUTABLE_SETUP
+	XCALL			?MENU_MUSIC_START
+	RET
+
+;********************************
+?CMD_MENURINGBANK
+
+	PUSH			BC
+	XCALL			?RINGBANK_OPEN
+	POP				BC
+
+	SWITCH_ROM_BANK	(SCRIPT_WBANK)
+	JP				?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_MENURINGSMITH
+
+	XCALL			?RINGSMITH_BANK_FULL
+	SWITCH_ROM_BANK	(SCRIPT_WBANK)
+
+	LD				A,(RINGSMITH_BANKFULL)
+	AND				A
+	JP				NZ,?CMD_JUMP
+
+	INC				BC
+	INC				BC
+	INC				BC
+
+	PUSH			BC
+	CALL			?SCRIPT_MENUTABLE_SETUP
+	XCALL			?RINGSMITH_OPEN
+	POP				BC
+
+	LD				A,(RINGSMITH_MADERING)	; 0 if no ring
+	AND				A
+	RET				NZ
+
+	SWITCH_ROM_BANK	(SCRIPT_WBANK)
+	JP				?CMD_JUMP
+
+;********************************
+?CMD_MENURINGUPGRADE
+
+	DEC				BC
+	DEC				BC
+	DEC				BC
+	CALL			?SCRIPT_MENUTABLE_SETUP
+	XCALL			?MENU_RINGUP_START
+	RET
+
+;********************************
+?CMD_MENUSHOP
+	CALL			?SCRIPT_MENUTABLE_SETUP
+	XCALL			?MENU_SHOP_START
+	RET
+
+;********************************
+?CMD_NEWGAME
+
+	MOVADDR_FF			SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	
+	LD					A,(BC)
+	INC					BC
+	AND					A
+
+	SET16_FF			B,C,SCRIPT_WFRAME
+
+	SWITCH_ROM_BANK		:?CMD_NEWGAME_XX
+	
+	JP					Z,?CMD_NEWGAME_XX
+	JP					?CMD_NEWGAMEPLUS_XX
+
+;********************************
+?CMD_SAVEGAME
+
+	BATTERY_ON
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+
+	LD					A,$01
+	LD					(XRAM_GAME_SAVED),A
+
+	LD					A,(HEROACTOR_XTILE)
+	LD					(XRAM_HERO_DOORX),A
+
+	LD					A,(HEROACTOR_YTILE)
+	LD					(XRAM_HERO_DOORY),A
+
+	BATTERY_SET_BANK	RAMB_CREATURES
+
+	LD					A,(BC)
+	INC					BC
+
+	AND					A
+	JR					Z,_NO_HEAL
+	
+	LD					A,(CREATURETONY_ENGMAXL)
+	LD					(CREATURETONY_ENGL),A
+	LD					A,(CREATURETONY_ENGMAXH)
+	LD					(CREATURETONY_ENGH),A
+
+_NO_HEAL
+
+	PUSH				BC
+	XCALL				?SAVE_GAME
+	SWITCH_ROM_BANK		(SCRIPT_WBANK)
+	POP					BC
+
+	JP					?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_SCENENEW
+
+	SCREEN_HIDE
+	TIMER_START
+
+	MOVADDR			SCRIPT_CURRENT,MASTER_SCRIPT
+	MOVADDR			SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	SCRIPT_CLOSE
+
+	XOR				A
+	LD				(MENU_SAVE_ENABLE),A
+
+	SYSTEM_INIT
+	INTERPRETER_REINIT
+	SCRIPT_INIT		SYSTEM_SCRIPT
+	
+	STACK_INIT
+	CALL			?SCRIPT_SCENE_INIT
+	TILEMAP_POSITION
+	STACK_INIT
+
+	LD				A,$01
+	LD				(TEXTBOX_SOUND_ENABLE),A
+
+	SCREEN_SHOW
+	JP				?GAME_LOOP_INIT
+
+;********************************
+?CMD_SCENEREADY
+
+	LD				A,$01
+	LD				(SCRIPT_SCENE_READY),A
+	MOVADDR			SCRIPT_WSTATE,?SCRIPT_PLAY_NEXT
+	RET
+
+;********************************
+?CMD_SETITEMSCRIPT
+
+	LD				HL,ITEM_SCRIPT_BANK
+	LD_HLI_BCI		; Encounter script
+	LD_HLI_BCI
+	LD_HLI_BCI
+
+	JP				?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_SETLOADSCRIPT
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD				A,(HEROACTOR_XTILE)
+	LD				(XRAM_HERO_DOORX),A
+
+	LD				A,(HEROACTOR_YTILE)
+	LD				(XRAM_HERO_DOORY),A
+
+	LD				A,(BC)
+	INC				BC
+	LD				(XRAM_LOAD_BANK),A
+
+	LD				A,(BC)
+	INC				BC
+	LD				(XRAM_LOAD_SCRIPT),A
+	
+	LD				A,(BC)
+	INC				BC
+	LD				(XRAM_LOAD_SCRIPT+$01),A
+
+	BATTERY_OFF
+	JP				?SCRIPT_PLAY_NEXT
+
+;********************************
+?CMD_SOFTRESET
+	JP				?SOFT_RESET
+
+;********************************
+	END
+;********************************

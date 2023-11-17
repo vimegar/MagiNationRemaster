@@ -1,0 +1,60 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_ITEM_BALOO_LEAF	// Restores 10 energy
+
+	TextOpen		()
+	TextWrite		("Tony recovered=")
+					("10 Energy!")
+	TextClose		()
+	InventoryTake	(INV_TYPE_ITEM,INV_BALOO_LEAF,1)
+	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,10)
+	End				()
+
+/********************************/
+?_ITEM_BALOO_SAP	// Restores 30 energy
+
+	TextOpen		()
+	TextWrite		("Tony recovered=")
+					("30 Energy!")
+	TextClose		()
+	InventoryTake	(INV_TYPE_ITEM,INV_BALOO_SAP,1)
+	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,30)
+	End				()
+
+/********************************/
+?_ITEM_BALOO_ROOT	// Restores 65 energy
+
+	TextOpen		()
+	TextWrite		("Tony recovered=")
+					("65 Energy!")
+	TextClose		()
+	InventoryTake	(INV_TYPE_ITEM,INV_BALOO_ROOT,1)
+	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,65)
+	End				()
+
+/********************************/
+?_ITEM_WATER_OF_LIFE	// Raises energy max by 5
+
+	TextOpen		()
+	TextWrite		("Tony's energy=")
+					("maximum was")
+					("raised by 5!")
+	TextClose		()
+	InventoryTake	(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
+	InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,5)
+	End				()
+
+/********************************/
+?_MENU_EXIT
+?_ITEM_ELDRITCH_AWL
+	If							([Exit_Disable],_EXIT_DISABLE)
+	JumpLoadScript				()
+
+_EXIT_DISABLE
+	TextOpen					()
+	TextWrite					("You can't exit=")
+								("here!")
+	TextClose					()
+	End							()

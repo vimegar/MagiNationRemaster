@@ -1,0 +1,71 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\CALD\LAVAVENT\MAP03\CLDLAVAVENT03_DR.MGI
+%INCLUDE					REGIONS\CALD\LAVAVENT\MAP03\CLDLAVAVENT03_TXT.MGI
+
+/********************************/
+?_CLDLAVAVENT03
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVAVENT03)
+	LoadHotspots			(HS_CLDLAVAVENT03)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_CLDLAVAVENT03)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,60,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1C,?RAINDROP_AI,10,9,60,70,?_SMALLWIRLPOOL_APPEAR,?_CLDLAVAVENT01B)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	ThatActorStart			(ACTOR1C)
+	LoadVRAMTiles			(16,BIT_SMALLWHIRL,70,0)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_CLDLAVAVENT03)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lavatubes)
+	SceneReady				()
+	End						()
+	
+
+/********************************//********************************/
+//	HYREN FROM WHIRLPOOL RETURN
+/********************************//********************************/
+?_CLDLAVAVENT03_HYRENRET
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVAVENT03)
+	LoadHotspots			(HS_CLDLAVAVENT03)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_CLDLAVAVENT03)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,43,13,60,0,_CLDLAVAVENT03_HRET_TONY,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1C,?RAINDROP_AI,10,9,60,70,?_SMALLWIRLPOOL_APPEAR,?_CLDLAVAVENT01B)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	ThatActorStart			(ACTOR1C)
+	LoadVRAMTiles			(16,BIT_SMALLWHIRL,70,0)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_CLDLAVAVENT03)
+	SetCamera				(43,15)
+	SongStart				(SONGID_lavatubes)
+	SceneReady				()
+	End						()
+
+_CLDLAVAVENT03_HRET_TONY
+	ThisActorSetAnimDelay	(?_HERO_FLY_UP_ANIM,16)
+							(?_HERO_RUN_RIGHT_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	SetScroll				(_SCROLL_TONY)	
+	End						()
+
+_SCROLL_TONY
+	ScrollMap				(32,1,0)
+	ThatActorSetScript		(HEROACTOR,?_OROGEYSER_TONY_FALLING)
+	End						()
+/********************************//********************************/
+//	HYREN FROM WHIRLPOOL RETURN
+/********************************//********************************/

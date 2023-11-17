@@ -1,0 +1,77 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\OROTHE\GEYSER\MAP01\OROGEYSER01_DR.MGI
+%INCLUDE					REGIONS\OROTHE\GEYSER\MAP01\OROGEYSER01_TXT.MGI
+%INCLUDE					REGIONS\OROTHE\GEYSER\MAP01\GEYSER_BAT.MGI
+
+/********************************/
+
+?_OROGEYSER01
+	SceneNew				()
+	LoadMap					(MAP_OROGEYSER01)
+	LoadHotspots			(HS_OROGEYSER01)
+	LoadTriggers			(TR_OROGEYSER01)
+	LoadPalette				(PAL_HERO)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter			(?_OROGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_OROGEYSER01)
+
+	Switch					([Falling_Byte])
+							(0,_SKIP)
+							(1,_ONE)
+							(2,_TWO)
+							(3,_THREE)
+							(4,_FOUR)
+							(5,_FIVE)
+							(6,_SIX)
+_ONE
+	ThatActorInit			(HEROACTOR,?ANIM_AI,24,18,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(24,22)
+	JumpLocal				(_END)
+
+_TWO
+	ThatActorInit			(HEROACTOR,?ANIM_AI,28,31,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(28,35)
+	JumpLocal				(_END)
+
+_THREE
+	ThatActorInit			(HEROACTOR,?ANIM_AI,18,27,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(18,31)
+	JumpLocal				(_END)
+
+_FOUR
+	ThatActorInit			(HEROACTOR,?ANIM_AI,18,4,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(18,8)
+	JumpLocal				(_END)
+
+_FIVE
+	ThatActorInit			(HEROACTOR,?ANIM_AI,29,11,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(29,15)
+	JumpLocal				(_END)
+
+_SIX
+	ThatActorInit			(HEROACTOR,?ANIM_AI,38,12,48,0,?_OROGEYSER_TONY_FALLING,?_DONT_TALK)
+	SetCamera				(38,18)
+	JumpLocal				(_END)
+
+_SKIP
+	ThatActorInit			(HEROACTOR,?HERO_AI,0,0,48,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	HeroFromDoor			()
+	HeroSetCamera			()
+
+_END
+	SetXRAMByte				(Falling_Byte,0)
+	SceneReady				()
+	SongStart				(SONGID_maze)
+	End						()
+
+?_OROGEYSER_TONY_FALLING
+	ThisActorSetAnimDelay	(?_HERO_FALLING_GOOFILY_3,16)
+	ThisActorSetAnimScroll	(?_HERO_FALLING_GOOFILY_3,16,0,3)
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_LEFT,32)
+	SetScroll				(_BLORG)
+	End						()
+_BLORG
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()

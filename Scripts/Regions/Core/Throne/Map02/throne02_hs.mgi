@@ -1,0 +1,4 @@
+/********************************/
+		FileHotspots	(HS_THRONE02)
+						(HOTSPOT_TRIGGER_SOUTH,?_THRONE02_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_THRONE02_DR_2)

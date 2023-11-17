@@ -1,0 +1,18 @@
+/********************************/
+?_NRMGLADE09A_DR_1
+		SetLoadScript		(?_NRMGLADE09A_DR_1)
+		HeroSetDoor			(38,9)
+		Jump				(?_OVRSURFACE01)
+
+?_NRMGLADE09A_DR_2
+		If					([GAMECOUNT != GC_NAROOM_GEYSER],?_DENIED)
+
+		ThatActorStop		(HEROACTOR)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+
+_LOAD
+		SetXRAMByte			(Exit_Disable,0)		
+		SetLoadScript		(_LOAD)
+		HeroSetDoor			(9,23)
+		Jump				(?_NRMGEYSER12_FADEIN)

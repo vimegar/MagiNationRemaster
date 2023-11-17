@@ -1,0 +1,18 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\TUNNELS\MAP11\OROTUNNEL11_DR.MGI
+
+/********************************/
+
+?_OROTUNNEL11
+	SceneNew			()
+	LoadMap				(MAP_OROTUNNEL11)
+	LoadHotspots		(HS_OROTUNNEL11)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,22,0,?_HERO_UNDTREAD_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_orotunnels)
+	SceneReady			()
+	End					()

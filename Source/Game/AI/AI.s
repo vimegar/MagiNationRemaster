@@ -1,0 +1,28 @@
+;********************************
+; AI.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000 Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB		SOURCE\GAME\AI\ANIM_AI.S
+	LIB		SOURCE\GAME\AI\BLOCKER_AI.S
+	LIB		SOURCE\GAME\AI\CAMERA.S
+	LIB		SOURCE\GAME\AI\HERO\HERO_AI.S
+	LIB		SOURCE\GAME\AI\BOXXLE_AI.S
+	LIB		SOURCE\GAME\AI\ONTOP_AI.S
+	LIB		SOURCE\GAME\AI\OVERLAY_AI.S
+	LIB		SOURCE\GAME\AI\OVERPARA_AI.S
+	LIB		SOURCE\GAME\AI\PARATHIN_AI.S
+	LIB		SOURCE\GAME\AI\PUPPET_AI.S
+	LIB		SOURCE\GAME\AI\RAINDROP\RAINDROP_AI.S
+	LIB		SOURCE\GAME\AI\SCROLLER_AI.S
+	LIB		SOURCE\GAME\AI\TALKER_AI.S
+	LIB		SOURCE\GAME\AI\TITLE_AI.S
+	LIB		SOURCE\GAME\AI\TRAP_AI.S
+	LIB		SOURCE\GAME\AI\ZOMBIE_AI.S
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,110 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP06\UNDTOWN06_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP06\UNDTOWN06_TXT.MGI
+
+
+/********************************//********************************/
+// ALL
+/********************************//********************************/
+?_UNDTOWN06
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN06)
+	LoadHotspots			(HS_UNDTOWN06)
+	LoadTriggers			(TR_UNDTOWN06)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,8,15,15,9,?_OLDLADY05_STAND_DOWN_ANIM,?_UNDTOWN06_OLDLADY05)
+	ThatActorStart			(HEROACTOR)
+	If						([GAMECOUNT = GC_UND_QUAKE],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	LoadVRAMTiles			(9,BIT_FATTONY,0,0)
+	LoadVRAMTiles			(37,BIT_OLDLADY05,9,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+	
+?_UNDTOWN06_OLDLADY05
+	ThisActorSetAnim		(?_OLDLADY05_STAND_DOWN_ANIM)
+	SetText					(?_UNDTOWN06_OLDLADY05_TXT01)
+	Jump					(?_FACE_OLDLADY05)
+
+/********************************//********************************/
+// MUSHROOM GAG
+/********************************//********************************/
+?_UNDTOWN06_MUSHGAG
+	If						([Mushrooms_Eaten = 40],_UNDTOWN06_MUSHGAG2)
+	SetText					(_NOGOOD)
+	WaitEventText			(1)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,2,3,15,0,?_FATTONY_IN_DA_HOUSE,?_DONT_TALK)
+	Delay					(16)
+	ThatActorInit			(ACTOR00,?ANIM_AI,6,11,15,9,_GAG_MOTASH,?_END)
+	WaitEventMaster			(1)
+	ThatActorInit			(ACTOR00,?TALKER_AI,8,15,15,9,?_OLDLADY05_STAND_DOWN_ANIM,?_UNDTOWN06_OLDLADY05)
+	Delay					(16)
+	ThatActorInit			(HEROACTOR,?HERO_AI,2,3,15,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	End						()
+		
+_UNDTOWN06_MUSHGAG2
+	ThatActorInit			(HEROACTOR,?ANIM_AI,2,3,15,0,?_FATTONY_IN_DA_HOUSE,?_DONT_TALK)
+	Delay					(16)
+	SetText					(_NOGOOD2)
+	WaitEventText			(1)
+	ThatActorInit			(ACTOR00,?ANIM_AI,6,11,15,9,_GAG_MOTASH,?_END)
+	WaitEventMaster			(1)
+	ThatActorInit			(ACTOR00,?TALKER_AI,8,15,15,9,?_OLDLADY05_STAND_DOWN_ANIM,?_UNDTOWN06_OLDLADY05)
+	Delay					(16)
+	ThatActorInit			(HEROACTOR,?HERO_AI,2,3,15,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	End						()
+
+_NOGOOD
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I don't feel=")
+							("so good.")
+	TextClose				()
+	SetEventText			(1)
+	ExprXRAMByte			(Mushrooms_Eaten,[Mushrooms_Eaten + 1])
+	End						()
+
+_NOGOOD2
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("These mushrooms=")
+							("are great.")
+	TextClose				()
+	SetEventText			(1)
+	SetXRAMByte				(Mushrooms_Eaten,21)
+	End						()
+
+_GAG_MOTASH
+	ThisActorSetAnimDelay	(?_OLDLADY05_RUN_UP_ANIM,24)
+							(?_OLDLADY05_RUN_LEFT_ANIM,24)
+							(?_OLDLADY05_RUN_UP_ANIM,40)
+							(?_OLDLADY05_STAND_LEFT_ANIM,0)
+	SetText					(_ADMONISH)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_OLDLADY05_RUN_DOWN_ANIM,24)
+							(?_OLDLADY05_RUN_RIGHT_ANIM,24)
+							(?_OLDLADY05_RUN_DOWN_ANIM,40)
+	SetEventMaster			(1)
+	End						()
+	
+_ADMONISH
+	TextOpen				()
+	TextIcon				(ICON_MOTASH)
+	TextWrite				("Take this=")
+							("elixir, quick!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Thank you")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+					
+/********************************//********************************/
+// END MUSHROOM GAG
+/********************************//********************************/

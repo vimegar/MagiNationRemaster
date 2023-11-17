@@ -1,0 +1,224 @@
+;********************************
+; HERO_BOXXLE.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?HERO_BOXXLE_ABORT
+	SOUND_START_SFX		SFXID_ENEMY_HIT
+	POP			AF
+	JP			?HERO_AI_CLOSE
+
+;********************************
+?HERO_BOXXLE_UPDATE
+
+	SOUND_START_SFX		SFXID_KICK;SFXID_PHYSICAL_ATTACK
+
+	; SAVE THE GRAPHIC CODES
+	;--------------------------------
+	PUSH		BC
+
+	; UPDATE THE DEST
+	;--------------------------------
+	SET16		D,E,TILEMAP_VBLANK_DST
+	
+	LD			A,D
+	LD			(AI_BOX_XDEST),A
+	LD			A,E
+	LD			(AI_BOX_YDEST),A
+	
+	SET16		H,L,TILEMAP_VBLANK_SRC
+	SET16		H,L,AI_BOX_DEST
+
+	LD					A,COLLCODE_BOXXLE
+	LD					(HL),A
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+	LD					(HL),C
+
+	CALL_FOREIGN		?TILEMAP_UPDATE_TILE
+
+	; UPDATE THE BOXXLE
+	;--------------------------------
+	POP			BC
+	POP			DE
+	POP			HL
+
+	SET16		D,E,TILEMAP_VBLANK_DST
+	SET16		H,L,TILEMAP_VBLANK_SRC
+	SET16		H,L,AI_BOX_SOURCE
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	LD					A,COLLCODE_BOXSPACE
+	LD					(HL),A
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+	LD					A,MAP_TILE_BLANK
+	LD					(HL),A
+
+	CALL_FOREIGN		?TILEMAP_UPDATE_TILE
+
+	LD			HL,AI_HEROFLAGS_NEXT
+	SET			HEROFLAGS_BOXXLE,(HL)
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+?HERO_AI_BOXXLE_DOWN
+	CALL		?HERO_AI_OPEN
+	
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CALL		?CAMERA_UPDATE
+	
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI
+
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+
+	FGET16		H,L,ACTOR_TILE			
+
+	LD			A,(TILEMAP_WIDTH)
+	LD			E,A
+	LD			D,$00
+	ADD			HL,DE
+	
+	LD			C,(HL)
+	
+	PUSH		HL
+	ADD			HL,DE
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	LD			A,(HL)
+	CP			COLLCODE_BOXSPACE
+	JP			NZ,?HERO_BOXXLE_ABORT
+
+	LDA_FF		(ACTOR_XTILE)
+	LD			D,A
+	LDA_FF		(ACTOR_YTILE)
+	INC			A
+	LD			E,A
+	PUSH		DE
+	INC			E
+
+	JP			?HERO_BOXXLE_UPDATE
+
+;********************************
+?HERO_AI_BOXXLE_LEFT
+	CALL		?HERO_AI_OPEN
+	
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CALL		?CAMERA_UPDATE
+	
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI
+
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+
+	FGET16		H,L,ACTOR_TILE			
+
+	DEC			HL
+	
+	LD			C,(HL)
+	
+	PUSH		HL
+	DEC			HL
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	LD			A,(HL)
+	CP			COLLCODE_BOXSPACE
+	JP			NZ,?HERO_BOXXLE_ABORT
+
+	LDA_FF		(ACTOR_XTILE)
+	DEC			A
+	LD			D,A
+	LDA_FF		(ACTOR_YTILE)
+	LD			E,A
+	PUSH		DE
+	DEC			D
+
+	JP			?HERO_BOXXLE_UPDATE
+
+;********************************
+?HERO_AI_BOXXLE_RIGHT
+	CALL		?HERO_AI_OPEN
+	
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CALL		?CAMERA_UPDATE
+	
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI
+
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+
+	FGET16		H,L,ACTOR_TILE			
+
+	INC			HL
+	
+	LD			C,(HL)
+	
+	PUSH		HL
+	INC			HL
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	LD			A,(HL)
+	CP			COLLCODE_BOXSPACE
+	JP			NZ,?HERO_BOXXLE_ABORT
+
+	LDA_FF		(ACTOR_XTILE)
+	INC			A
+	LD			D,A
+	LDA_FF		(ACTOR_YTILE)
+	LD			E,A
+	PUSH		DE
+	INC			D
+
+	JP			?HERO_BOXXLE_UPDATE
+
+;********************************
+?HERO_AI_BOXXLE_UP
+	CALL		?HERO_AI_OPEN
+	
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CALL		?CAMERA_UPDATE
+	
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI
+
+	SWITCH_RAM_BANK		WRAM_TILEMAP
+
+	FGET16		H,L,ACTOR_TILE			
+
+	LD			A,(TILEMAP_WIDTH)
+	CPL
+	INC			A
+	LD			E,A
+	LD			D,$FF
+	ADD			HL,DE
+	
+	LD			C,(HL)
+	
+	PUSH		HL
+	ADD			HL,DE
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	LD			A,(HL)
+	CP			COLLCODE_BOXSPACE
+	JP			NZ,?HERO_BOXXLE_ABORT
+
+	LDA_FF		(ACTOR_XTILE)
+	LD			D,A
+	LDA_FF		(ACTOR_YTILE)
+	DEC			A
+	LD			E,A
+	PUSH		DE
+	DEC			E
+
+	JP			?HERO_BOXXLE_UPDATE
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,24 @@
+/********************************/
+
+?_OROGEYSER09_DR_1
+	HeroToDoor	(19,9,0,8)
+	Jump		(?_OROGEYSER06)
+
+?_OROGEYSER09_DR_2
+	If			([Warrada_Scene3],_NORMAL)
+	SetXRAMBit	(Warrada_Scene3,TRUE)
+	Jump		(?_OROGEYSER12_WARRADABOSS)
+_NORMAL
+	HeroSetDoor	(10,8)
+	Jump		(?_OROGEYSER12)
+
+/********************************/
+
+?_OROGEYSER09_TR_1
+	TriggerAlways	(OROGEYSER09_Trig1,?_END,239,13,9,20)
+	LoadSpareMap	(SCR_OROGEYSER09B,COL_OROGEYSER09B)
+	CopyTileSpare	(20,3,13,5,2,3,13)
+	End				()
+
+?_OROGEYSER09_TR_2
+	TriggerTreasure	(OROGEYSER09_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,3,7,20)

@@ -1,0 +1,179 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_GIA_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?GIA_WALK01_BACK)
+					(?GIA_WALK02_BACK)
+					(?GIA_WALK03_BACK)
+					(?GIA_WALK02_BACK)
+					
+	JumpLocal:		(?_GIA_WALK_UP_ANIM)
+
+/********************************/
+?_GIA_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?GIA_WALK01_FRONT)
+					(?GIA_WALK02_FRONT)
+					(?GIA_WALK03_FRONT)
+					(?GIA_WALK02_FRONT)
+					
+	JumpLocal:		(?_GIA_WALK_DOWN_ANIM)
+
+/********************************/
+?_GIA_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?GIA_WALK01_LEFT)
+					(?GIA_WALK02_LEFT)
+					(?GIA_WALK03_LEFT)
+					(?GIA_WALK02_LEFT)
+					
+	JumpLocal:		(?_GIA_WALK_LEFT_ANIM)
+
+/********************************/
+?_GIA_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?GIA_WALK01_RIGHT)
+					(?GIA_WALK02_RIGHT)
+					(?GIA_WALK03_RIGHT)
+					(?GIA_WALK02_RIGHT)
+					
+	JumpLocal:		(?_GIA_WALK_RIGHT_ANIM)
+
+/********************************/
+?_GIA_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?GIA_WALK01_BACK)
+					(?GIA_WALK02_BACK)
+					(?GIA_WALK03_BACK)
+					(?GIA_WALK02_BACK)
+					
+	JumpLocal:		(?_GIA_RUN_UP_ANIM)
+
+/********************************/
+?_GIA_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?GIA_WALK01_FRONT)
+					(?GIA_WALK02_FRONT)
+					(?GIA_WALK03_FRONT)
+					(?GIA_WALK02_FRONT)
+					
+	JumpLocal:		(?_GIA_RUN_DOWN_ANIM)
+
+/********************************/
+?_GIA_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?GIA_WALK01_LEFT)
+					(?GIA_WALK02_LEFT)
+					(?GIA_WALK03_LEFT)
+					(?GIA_WALK02_LEFT)
+					
+	JumpLocal:		(?_GIA_RUN_LEFT_ANIM)
+
+/********************************/
+?_GIA_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?GIA_WALK01_RIGHT)
+					(?GIA_WALK02_RIGHT)
+					(?GIA_WALK03_RIGHT)
+					(?GIA_WALK02_RIGHT)
+					
+	JumpLocal:		(?_GIA_RUN_RIGHT_ANIM)
+
+/********************************/
+?_GIA_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?GIA_WALK02_BACK)
+	
+	JumpLocal:		(?_GIA_STAND_UP_ANIM)
+
+/********************************/
+?_GIA_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?GIA_WALK02_FRONT)
+	
+	JumpLocal:		(?_GIA_STAND_DOWN_ANIM)
+
+/********************************/
+?_GIA_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?GIA_WALK02_LEFT)
+	
+	JumpLocal:		(?_GIA_STAND_LEFT_ANIM)
+
+/********************************/
+?_GIA_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?GIA_WALK02_RIGHT)
+	
+	JumpLocal:		(?_GIA_STAND_RIGHT_ANIM)
+
+/********************************/
+?_GIA_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?GIA_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_GIA_STAND_UL_ANIM)
+
+/********************************/
+?_GIA_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?GIA_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_GIA_STAND_UR_ANIM)
+
+/********************************/
+?_GIA_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?GIA_STAND_LEFT)
+	
+	JumpLocal:		(?_GIA_STAND_DL_ANIM)
+
+/********************************/
+?_GIA_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?GIA_STAND_RIGHT)
+	
+	JumpLocal:		(?_GIA_STAND_DR_ANIM)
+
+/********************************/
+?_GIA_HALF_ANIM
+
+	Frame:			(255,0,0,?GIA_HALF)
+	
+	JumpLocal:		(?_GIA_HALF_ANIM)
+
+/********************************/
+?_FACE_GIA
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_GIA_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_GIA_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_GIA_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_GIA_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

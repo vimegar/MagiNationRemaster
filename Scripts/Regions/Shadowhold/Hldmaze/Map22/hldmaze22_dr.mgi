@@ -1,0 +1,18 @@
+?_HLDMAZE22_DR_1
+		HeroToDoor	(0,19,34,26)
+		Jump		(?_HLDMAZE21)
+
+
+?_HLDMAZE22_TR_1
+		ToggleOnce			(Switch11,?_END,250,251,4,9,20)
+		End					()
+
+?_HLDMAZE22_TR_2
+		TriggerAlways	(HLDMAZE22Chest1,?_TXT_ITS_EMPTY,255,15,36,20)
+		InitSkip		(_END)
+		TextOpen		()
+		TextWrite		("ROOOAR!")
+		TextClose		()
+		Jump			(?_HLDMAZE_JINGJACK_BATTLE)	
+_END
+		End				()

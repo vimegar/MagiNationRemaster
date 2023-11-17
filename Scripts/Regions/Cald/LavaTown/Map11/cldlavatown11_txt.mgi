@@ -1,0 +1,45 @@
+?_CLDLAVATOWN11_SAVER_TXT
+	TextOpen		()
+	TextIcon		(ICON_OLDMAN)
+?_CLDLAVATOWN11_JUMPER
+	TextWrite		("Would you=")
+					("like to record")
+					("your journey=")
+					("and recover")
+					("lost energy?")
+	TextIcon		(ICON_TONY)
+	TextWrite		(" Yes=")
+					(" No$")
+	TextMenu		(2)
+					(_CALD_SAVE_YES)
+					(_CALD_SAVE_NO)
+_CALD_SAVE_YES
+	TextClear		()
+	TextIcon		(ICON_OLDMAN)
+	TextWrite		("Pleasant=")
+					("dreams!")
+	TextClose		()
+	SetLoadScript	(?_LOAD_CLDLAVATOWN11)
+	PalClearBase	(0,15,31,31,31)
+	PalFade			(0,15,32,0)
+	SaveGame		(1)
+	Delay			(64)
+	Jump			(?_CLDLAVATOWN11_TONY_WAKING)
+_CALD_SAVE_NO
+	TextClear		()
+	TextIcon		(ICON_OLDMAN)
+	TextWrite		("Have a great=")
+					("day!!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+
+?_CLDLVTN11_SPECIAL_TXT
+	TextOpen		()
+	TextIcon		(ICON_OLDMAN)
+	TextWrite		("Funny, I didn't")
+					("see you come")
+					("in...")
+	Jump			(?_CLDLAVATOWN11_JUMPER)
+

@@ -1,0 +1,42 @@
+
+/********************************/
+//NRMVASH03
+/********************************/
+?_NRMVASH03_DUDE_TXT
+	If					([Sick_Orwin],_SICK)
+	If					([GC > GC_SHADOWHOLD_JAIL],_ORWIN_HEALED)
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("The inn is open=")
+						("even though its")
+						("door is closed.=")
+						("Poad shuts it")
+						("to keep the=")
+						("weebos from")
+						("getting=")
+						("into his flour.")
+						("Yech!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+_SICK
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("I think Orwin=")
+						("could use one")
+						("of Poad's hot=")
+						("cooked meals.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+_ORWIN_HEALED
+	TextOpen			()
+	TextIcon			(ICON_BOY)
+	TextWrite			("Did you hear?=")
+						("Orwin was")
+						("healed by the=")
+						("Great Magus")
+						("Kyros.")
+	TextClose			()
+	SetEventText		(1)
+	End					()

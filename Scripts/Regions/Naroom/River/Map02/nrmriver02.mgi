@@ -1,0 +1,22 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\RIVER\MAP02\NRMRIVER02_DR.MGI
+%INCLUDE			REGIONS\NAROOM\RIVER\MAP02\NRMRIVER02_TXT.MGI
+
+/********************************/
+
+?_NRMRIVER02
+	SceneNew		()
+	LoadMap			(MAP_NRMRIVER02)
+	LoadHotspots	(HS_NRMRIVER02)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers    (TR_NRMRIVER02)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_glade)
+	SceneReady		()
+	End				()
+	
+	

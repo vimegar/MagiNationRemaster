@@ -1,0 +1,18 @@
+?_HMTCAVE04_TXT_1
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Got it!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+	
+	
+?_HMTCAVE04_TXT_2	
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Oh no! I've=")
+							("gotta get out")
+							("of here!")
+	TextClose				()
+	SetEventText			(2)
+	End						()

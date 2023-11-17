@@ -1,0 +1,192 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\UNDERNEATH\TOWN\MAP05\UNDTOWN05_DR.MGI
+%INCLUDE					REGIONS\UNDERNEATH\TOWN\MAP05\UNDTOWN05_TXT.MGI
+
+/********************************/
+?_UNDTOWN05
+	Switch			([GAMECOUNT])
+					(GC_UND_INTRO,?_UNDTOWN05_UNDERNEATH)
+					(GC_UND_QUAKE,?_UNDTOWN05_POSTQUAKE)
+					(GC_UND_GEYSER,?_UNDTOWN05_POSTQUAKE)
+/********************************/
+?_UNDTOWN05_UNDERNEATH
+	If 						([Kidnapping > 0 && Kidnapping < 4],?_UNDTOWN05_EMPTY)
+	If 						([Talked_To_Gogor],?_UNDTOWN05_JUSTGOGOR)
+	SetXRAMBit				(Talked_To_Gogor,TRUE)
+	//Pre geyser gogor posing scene
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN05)
+	LoadHotspots			(HS_UNDTOWN05)
+	LoadTriggers			(TR_UNDTOWN05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,14,10,0,?_UNDTOWN05_UNDERNEATH_TONY,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?ANIM_AI,7,3,10,0,?_GOGOR_IS_ALIVE,?_DONT_TALK)
+	LoadVRAMTiles			(54,BIT_GOGOR,0,0)
+	ThatActorStart			(ACTOR00)	
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lesson)
+	SceneReady				()
+	WaitEventMaster			(1)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	WaitEventText			(7)
+	ThatActorSetScript		(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+	Delay					(64)
+	ThatActorStop			(HEROACTOR)
+//	SetGamecount			(GC_UND_QUAKE)
+	Sync					(2,0)
+	HeroSetDoor				(44,16)
+	Jump					(?_UNDTOWN01_GENERIC_PRE)
+
+?_UNDTOWN05_UNDERNEATH_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,48)
+	ThisActorSetAnimScroll	(?_HERO_WALK_RIGHT_ANIM,16,1,0)
+							(?_HERO_WALK_UP_ANIM,48,0,-1)
+	ThisActorSetAnim		(?_HERO_STAND_UP_ANIM)
+	SetText					(?_UNDTOWN05_TXT_OPEN)
+	WaitEventText			(1)
+	ScrollMap				(48,0,-1)
+	Delay					(48)
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,32)
+							(?_HERO_STAND_UP_ANIM,0)
+	ThatActorSetScript		(ACTOR00,?_UNDTOWN05_GOGOR_TALKER)
+	End						()
+
+?_GOGOR_IS_ALIVE
+	ThisActorSetAnimDelay	(?_GOGOR_POSE_UL_ANIM,32)
+							(?_GOGOR_STAND_UP_ANIM,32)
+							(?_GOGOR_POSE_UR_ANIM,32)
+							(?_GOGOR_STAND_UP_ANIM,32)
+	Jump					(?_GOGOR_IS_ALIVE)
+
+?_UNDTOWN05_GOGOR_TALKER
+	ThisActorSetAnim		(?_GOGOR_STAND_DOWN_ANIM)
+	SetText					(?_UNDTOWN05_TXT_1)
+	Delay					(4)
+	SetEventMaster			(1)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_GOGOR_POSE_DL_ANIM,32)
+							(?_GOGOR_STAND_DOWN_ANIM,8)
+	SetText					(?_UNDTOWN05_TXT_2)
+	ThisActorSetAnimDelay	(?_GOGOR_POSE_DR_ANIM,32)
+							(?_GOGOR_STAND_RIGHT_ANIM,8)
+							(?_GOGOR_POSE_UR_ANIM,32)
+							(?_GOGOR_STAND_UP_ANIM,8)
+							(?_GOGOR_POSE_UL_ANIM,32)
+							(?_GOGOR_STAND_LEFT_ANIM,8)
+							(?_GOGOR_POSE_DL_ANIM,32)
+	WaitEventText			(2)
+	SetText					(?_UNDTOWN05_TXT_3)
+	ThisActorSetAnimDelay	(?_GOGOR_STAND_DOWN_ANIM,32)
+	WaitEventText			(3)
+	SetText					(?_UNDTOWN05_TXT_4)
+	ThisActorSetAnim		(?_GOGOR_POSE_DL_ANIM)
+	WaitEventText			(4)
+	SetText					(?_UNDTOWN05_TXT_5)	
+	ThisActorSetAnimDelay	(?_GOGOR_STAND_DOWN_ANIM,8)
+							(?_GOGOR_POSE_DR_ANIM,0)
+	WaitEventText			(5)
+	SetText					(?_UNDTOWN05_TXT_6)			
+	ThisActorSetAnimDelay	(?_GOGOR_STAND_RIGHT_ANIM,8)
+							(?_GOGOR_POSE_UR_ANIM,32)
+							(?_GOGOR_STAND_UP_ANIM,8)
+							(?_GOGOR_POSE_UL_ANIM,32)
+							(?_GOGOR_STAND_LEFT_ANIM,8)
+							(?_GOGOR_POSE_DL_ANIM,0)
+	WaitEventText			(6)		
+	End						()
+/********************************/
+?_UNDTOWN05_JUSTGOGOR
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN05)
+	LoadHotspots			(HS_UNDTOWN05)
+	LoadTriggers			(TR_UNDTOWN05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,14,10,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,3,10,0,?_GOGOR_IS_ALIVE,?_UNDTOWN05_GOGOR_STAND)
+	LoadVRAMTiles			(54,BIT_GOGOR,0,0)
+	ThatActorStart			(ACTOR00)	
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lesson)
+	SceneReady				()
+	End						()
+
+?_UNDTOWN05_GOGOR_STAND
+	SetText					(?_UNDTOWN05_TXT_7)
+	Jump					(?_FACE_GOGOR)
+	
+/********************************/
+
+?_UNDTOWN05_EMPTY
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN05)
+	LoadHotspots			(HS_UNDTOWN05)
+	LoadTriggers			(TR_UNDTOWN05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,14,10,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+
+
+/********************************/
+?_UNDTOWN05_POSTQUAKE
+	//Post earthquake gruk and ulk
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN05)
+	LoadHotspots			(HS_UNDTOWN05)
+	LoadTriggers			(TR_UNDTOWN05)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,10,10,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,3,10,10,48,?_WORRIED_GRUK,?_WORRIED_GRUK_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,7,8,10,0,?_WORRIED_ULK,?_WORRIED_ULK_TALK)
+	LoadVRAMTiles			(48,BIT_ULK,0,0)
+	LoadVRAMTiles			(41,BIT_GRUK,48,0)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	HeroFromDoor			()
+	SongStart				(SONGID_undtown)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+/********************************/
+?_WORRIED_GRUK
+	ThisActorSetAnimDelay	(?_GRUK_STAND_DOWN_ANIM,144)
+							(?_GRUK_STAND_LEFT_ANIM,144)
+							(?_GRUK_STAND_RIGHT_ANIM,144)
+	Jump					(?_WORRIED_GRUK)
+	End						()
+
+/********************************/
+?_WORRIED_ULK
+	ThisActorSetAnimDelay	(?_ULK_WALK_LEFT_ANIM,32)
+							(?_ULK_STAND_LEFT_ANIM,96)
+							(?_ULK_WALK_RIGHT_ANIM,32)
+							(?_ULK_STAND_RIGHT_ANIM,96)
+							(?_ULK_STAND_DR_ANIM,96)
+							(?_ULK_STAND_RIGHT_ANIM,96)
+							(?_ULK_STAND_UR_ANIM,96)
+							(?_ULK_STAND_RIGHT_ANIM,96)
+	Jump					(?_WORRIED_ULK)
+	End						()
+/********************************/
+?_WORRIED_ULK_TALK
+	ThisActorSetAnimDelay		(?_ULK_STAND_DOWN_ANIM,16)	
+	SetEventMaster				(23)
+	SetText						(?_WORRIED_ULK_TXT01)
+	Jump						(?_FACE_ULK)
+	End							()
+/********************************/
+?_WORRIED_GRUK_TALK
+	ThisActorSetAnim		(?_GRUK_STAND_DOWN_ANIM)
+	SetText					(?_WORRIED_GRUK_TXT)
+	Jump					(?_FACE_GRUK)
+	End						()

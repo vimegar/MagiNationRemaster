@@ -1,0 +1,19 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\CITY\MAP04\ARDCITY04_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\CITY\MAP04\ARDCITY04_TXT.MGI
+
+/********************************/
+?_ARDCITY04
+	SetXRAMByte		(Exit_Disable,1)
+	SceneNew		()
+	LoadMap			(MAP_ARDCITY04)
+	LoadHotspots	(HS_ARDCITY04)
+	LoadPalette		(PAL_HERO)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_orotunnels)
+	SceneReady		()
+	End				()
+	

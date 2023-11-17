@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH24)
+						(HOTSPOT_TRIGGER_ALL,?_NRMVASH24_DR_1)
+
+		FileTriggers	(TR_NRMVASH24)
+						(TRIGGER_NORMAL,?_NRMVASH24_TR_1)

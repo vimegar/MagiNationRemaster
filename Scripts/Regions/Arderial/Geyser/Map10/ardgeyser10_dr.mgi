@@ -1,0 +1,46 @@
+?_ARDGEYSER10_DR_1
+	HeroToDoor					(0,14,23,15)
+	Jump						(?_ARDGEYSER06)
+	
+?_ARDGEYSER10_TR_1
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	TriggerAlways				(Ardgeyser_Trig11,?_ARDGEYSER_FLIPPED,250,14,3,24)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	LoadSpareMap				(SCR_ARDGEYSER10B,COL_ARDGEYSER10B)
+	CopyTileSpare				(24,6,2,1,2,7,2)
+	CopyTileSpare				(24,4,4,2,5,7,4)
+	CopyTileSpare				(24,6,6,1,3,9,6)
+	CopyTileSpare				(24,4,4,2,5,10,4)
+	CopyTileSpare				(24,6,2,1,2,11,2)
+	SetScroll					(?_END)
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+
+?_ARDGEYSER10_TR_2
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	TriggerAlways				(Ardgeyser_Trig12,?_ARDGEYSER_FLIPPED,250,6,3,24)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	LoadSpareMap				(SCR_ARDGEYSER10,COL_ARDGEYSER10)	
+	CopyTileSpare				(24,4,10,4,4,13,8)
+	CopyTileSpare				(24,12,12,1,1,13,12)
+	CopyTileSpare				(24,4,10,4,4,13,13)
+	SetScroll					(?_END)
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+
+?_ARDGEYSER_FLIPPED
+	InitSkip					(_SKIP)
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("It won't=")
+								("budge.")
+	TextClose					()								
+_SKIP
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+
+?_ARDGEYSER10_TR_3
+	TriggerTreasure	(ARDGEYSER10_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,9,4,24)
+	
+?_ARDGEYSER10_TR_4
+	TriggerTreasure	(ARDGEYSER10_Chest2,INV_TYPE_ITEM,INV_BALOO_SAP,16,12,24)
+	

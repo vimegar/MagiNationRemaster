@@ -1,0 +1,152 @@
+/********************************/
+?_THRONE01_AGRAM_BATTLE
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_agrambattle)
+	BtlNew				(CORE_ARENA1,AGRAM_V1,60,?_BATTLE_FADE_IN)	
+	BtlNextTurn			()
+
+//950 ENERGY
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,3)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,132)	
+	
+	TextOpen		()
+	TextIcon		(ICON_AGRAM)
+	TextWrite		("Finishing you=")
+					("off will ensure")
+					("the completion=")
+					("of my plan.")
+	TextClose		()
+	
+	
+?_AGRAM_LOOP
+	SetScroll		(?_AGRAM_CREATURE_MODE)
+	WaitAnyEventScroll	()
+	BtlNextTurn			()	
+	SetScroll		(?_AGRAM_CREATURE_MODE)
+	WaitAnyEventScroll	()
+	BtlNextTurn			()	
+	SetScroll		(?_AGRAM_CREATURE_MODE)
+	WaitAnyEventScroll	()
+	SetScroll		(?_AGRAM_CREATURE_MODE)
+	WaitAnyEventScroll	()
+	BtlNextTurn			()	
+	
+	TextOpen		()
+	TextIcon		(ICON_AGRAM)
+	TextWrite		("Why must you=")
+					("defend Agadon's")
+					("tribe?=")
+	TextClose		()
+	Jump			(?_AGRAM_JJE)
+
+
+?_AGRAM_CREATURE_MODE
+	JumpRandom		(?_AGRAM11)
+					(?_AGRAM12)
+					(?_AGRAM13)
+					(?_AGRAM14)
+
+
+?_AGRAM11
+	BtlSummonDelay		(BTL_ID_MAGI,DRYTEFIEND,47,130,0)
+	SetAnyEventScroll	()
+	End					()	
+
+?_AGRAM12
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_HYREN,65,150,0)
+	SetAnyEventScroll	()
+	End					()	
+
+?_AGRAM13
+	BtlSummonDelay		(BTL_ID_MAGI,DARKVELLUP,47,130,0)
+	SetAnyEventScroll	()
+	End					()	
+
+?_AGRAM14
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,45,125,0)
+	SetAnyEventScroll	()
+	End					()	
+
+?_AGRAM_JJE
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_JUDGE,BTLSCR_ALLYSTRONGEST_ABSOLUTE)
+	BtlNextTurn		()	
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_JURY,BTLSCR_ALLYSTRONGEST_ABSOLUTE)
+	BtlNextTurn		()	
+	BtlCastSpell	(BTL_ID_MAGI,SPELL_EXECUTIONER,BTLSCR_ALLYSTRONGEST_ABSOLUTE)
+	BtlNextTurn		()
+	Jump			(?_AGRAM_LOOP)		
+
+/**** LEVEL60 ****/
+?_THRONE_RANDOM_BATTLE
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+
+_BTL1
+	BtlNew		(CORE_ARENA1,MAGI_RND1,60,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,DARKAYEBAW,56,112,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,DARKVELLUP,56,113,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,58,117,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHRYQUE,58,117,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(CORE_ARENA1,MAGI_RND1,58,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,YVOHCNA,56,116,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWKARAK,60,119,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(CORE_ARENA1,MAGI_RND1,63,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_HYREN,63,126,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(CORE_ARENA1,MAGI_RND1,62,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,58,112,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,58,116,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(CORE_ARENA1,MAGI_RND1,63,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,HOOK_WING,60,118,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,GRAX,62,125,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KAZOR,62,125,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(CORE_ARENA1,MAGI_RND1,58,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,58,116,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SARBIL,59,120,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SPINDLE,60,122,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew			(CORE_ARENA1,MAGI_RND1,60,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,59,118,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,60,122,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,DRYTEFIEND,59,120,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(CORE_ARENA1,MAGI_RND1,63,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_HYREN,63,126,1)
+	BtlAuto		()
+

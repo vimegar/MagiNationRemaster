@@ -1,0 +1,11 @@
+/********************************/
+?_NRMGLADE05_DR_1
+		HeroToDoor	(0,24,29,14)
+		Jump		(?_NRMGLADE04)
+
+?_NRMGLADE05_DR_2
+		HeroToDoor	(15,0,10,29)
+		Jump		(?_NRMGLADE06)
+
+?_NRMGLADE05_TR_1
+		TriggerTreasure	(NRMGLADE05_Chest1,INV_TYPE_RELIC,INV_GOLDENCLOVER,21,7,30)

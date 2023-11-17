@@ -1,0 +1,63 @@
+/********************************/
+?_ARDGARDEN05_DR_1
+		HeroSetDoor		(11,13)
+		ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+		Jump			(?_ARDCITY02)
+
+/********************************/
+?_ARDGARDEN05_TR_1
+//		TriggerTreasure	(ARDGARDEN05_Chest1,INV_TYPE_ITEM,INV_KARMIC_WILL,16,9,24)
+		If				([ARDGARDEN05_Chest1],_NOTHING_ELSE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hey there's=")
+						("something in")
+						("this plant.")
+		Delay			(48)
+		SetXRAMBit		(ARDGARDEN05_Chest1,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_KARMIC_WILL,1)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got a=")
+		TextWrite		("%X")
+		TextClose		()
+		End				()
+_NOTHING_ELSE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Fresh out of=")
+						("treasures in")
+						("this plant.")
+		TextClose		()
+		End				()
+
+?_ARDGARDEN05_TR_2
+//		TriggerTreasure	(ARDGARDEN05_Chest2,INV_TYPE_ITEM,INV_KARMIC_WILL,4,8,24)
+		If				([ARDGARDEN05_Chest2],_NOTHING_ELSE2)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hey there's=")
+						("something in")
+						("this plant.")
+		Delay			(48)
+		SetXRAMBit		(ARDGARDEN05_Chest2,TRUE)
+		InventoryGive	(INV_TYPE_ITEM,INV_KARMIC_WILL,1)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got a=")
+		TextWrite		("%X")
+		TextClose		()
+		End				()
+_NOTHING_ELSE2
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I'll have to=")
+						("wait for more")
+						("items to grow=")
+						("in this one.")
+		TextClose		()
+		End				()
+
+
+
+

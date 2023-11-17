@@ -1,0 +1,25 @@
+/********************************/
+?_CLDLAVATOWN09_PARTY_INTRO
+	If						([Party_Intro],?_CLDLAVATOWN09_EMPTY)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN09)
+	LoadHotspots			(HS_CLDLAVATOWN09)
+	LoadTriggers			(TR_CLDLAVATOWN09A)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,4,8,16,0,?_CLDTOWN09_TONY_INTRO,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_CLDTOWN09_TONY_INTRO
+	ThisActorSetLoc			(4,9,9,-2,16)
+	SetXRAMBit				(Party_Intro,TRUE)
+	ThisActorSetAnimDelay	(?_HERO_INBED_RIGHT_ANIM,64)
+							(?_HERO_INBED_LEFT_ANIM,32)
+	ThisActorSetLoc			(4,8,9,4,16)						
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,2)
+							(?_HERO_RUN_LEFT_ANIM,6)
+	ThisActorSetAnimDelay	(?_HERO_STAND_DOWN_ANIM,24)
+	SetText					(?_CLDLVTN09_PARTY_TXT_1)
+	End						()

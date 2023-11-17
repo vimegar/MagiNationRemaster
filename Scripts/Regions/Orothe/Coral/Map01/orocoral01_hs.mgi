@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_OROCORAL01)
+						(HOTSPOT_TRIGGER_EAST,?_OROCORAL01_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_OROCORAL01_DR_2)
+						(HOTSPOT_TRIGGER_WEST,?_OROCORAL01_DR_3)
+	
+		FileTriggers	(TR_OROCORAL01)						

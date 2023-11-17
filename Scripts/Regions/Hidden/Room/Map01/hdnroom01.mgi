@@ -1,0 +1,301 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP01\HDNROOM01_DR.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP01\HDNROOM01_TXT.MGI
+%INCLUDE			REGIONS\HIDDEN\ROOM\MAP01\HDNROOM_BAT.MGI
+
+/********************************/
+?_HDNROOM01
+	SceneNew		()
+	LoadMap			(MAP_HDNROOM01)
+	LoadHotspots	(HS_HDNROOM01)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,17,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongFadeOut		(80)
+	SceneReady		()
+	End				()
+	
+?_HDNROOM01_FADEIN
+	SceneNew		()
+	LoadMap			(MAP_HDNROOM01)
+	LoadHotspots	(HS_HDNROOM01)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,17,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongFadeOut		(80)
+	PalClearAnim	(0,15,31,31,31)
+	SceneReady		()
+	PalFade			(0,15,32,0)
+	End				()
+
+/********************************//********************************/
+// hidden warp07
+/********************************//********************************/
+
+
+?_WARP07
+	SceneNew		()
+	LoadMap			(MAP_WARP07)
+	LoadHotspots	(HS_WARP07)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtunnels)
+	SceneReady		()
+	End				()
+
+?_WARP07_FADEIN
+	SceneNew		()
+	LoadMap			(MAP_WARP07)
+	LoadHotspots	(HS_WARP07)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtunnels)
+	PalClearAnim	(0,15,31,31,31)
+	SceneReady		()
+	PalFade			(0,15,32,0)
+	End				()
+	
+	
+/********************************//********************************/
+// hidden Shadowhold23
+/********************************//********************************/
+
+
+?_HLDMAZE23
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE23)
+	LoadHotspots		(HS_HLDMAZE23)
+	LoadTriggers		(TR_HLDMAZE23)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?TALKER_AI,21,38,40,52,?_CLOAKMAN_STAND_DOWN_ANIM,_CORE_RINGSMITH)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,40,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE1)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,40,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE1)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles		(27,BIT_ARDCLOAKMAN,52,0)
+	SetBtlReturn		(?_HLDMAZE23)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	If					([!Core_Ringsmith_Door],_DONT_OPEN_DOOR)	
+	CopyTileBlock		(40,0,0,2,2,19,46)
+_DONT_OPEN_DOOR	
+	If					([!Newgame_Plus],_DONT_START_CORE_SMITH)
+	CopyTileBlock		(40,0,2,2,2,19,34)
+	ThatActorStart		(ACTOR00)	
+_DONT_START_CORE_SMITH
+	SongStart			(SONGID_shadowhold)
+	SceneReady			()
+	End					()
+
+_CORE_RINGSMITH
+	SetText				(_TXT_RINGSMITH)
+	Jump				(?_FACE_CLOAKMAN)
+
+_TXT_RINGSMITH
+	TextOpen			()
+	TextIcon			(ICON_CLOAK)
+	TextWrite			("Welcome to the=")
+						("dark side of")
+						("Ringsmithing.")
+	TextClose			()
+_MAIN_MENU
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Forge  Equip=")
+						(" Power  Done$")
+	
+	TextMenu			(4)
+						(_RINGSMITH)
+						(_UPGRADE)
+						(_RINGBANK)
+						(_END)
+
+_UPGRADE
+	TextClose			()
+	MenuRingUpgrade		
+
+
+						(HOOK_WING)
+						(BLACKAGOVO)
+						(SHADWVINOC)
+						(GRAX)
+
+						(KOIL)
+						(CORE_GRAG)
+						(VILE_YOGU)
+
+						(YVOHCNA)
+						(SHADWKARAK)
+						(CHAOS_JILE)
+
+						(KLETCH)
+						(SARBIL)
+						(SPINDLE)
+						(JINGJACK)
+						(BORGOR)
+
+						(DARKAYEBAW)
+						(DARKVELLUP)
+						(SHRYQUE)
+
+						(DRYTEFIEND)
+						(KAZOR)
+						(CORE_HYREN)
+
+
+	Jump				(_MAIN_MENU)
+
+_RINGBANK
+	TextClose			()
+	MenuRingBank		()
+	Jump				(_MAIN_MENU)
+
+_RINGSMITH
+	TextIcon			(ICON_CLOAK)
+	TextWrite			("What kind of=")
+						("ring would")
+						("you like?")
+	TextClose			()
+
+	MenuRingSmith		(_BANK_FULL,_MAIN_MENU)
+
+						(HOOK_WING,300,45,HOOK_WING,3,PLITH,1)
+						(BLACKAGOVO,300,45,BLACKAGOVO,3,AGOVO,1)
+						(SHADWVINOC,300,45,SHADWVINOC,3,VINOC,1)
+						(GRAX,300,45,GRAX,3,PARMALAG,1)
+
+						(KOIL,500,48,KOIL,3,CREATURE_NULL,0)
+						(CORE_GRAG,500,48,CORE_GRAG,3,CREATURE_NULL,0)
+						(VILE_YOGU,500,48,VILE_YOGU,3,GRAW,1)
+
+						(YVOHCNA,550,50,YVOHCNA,3,PLATHEUS,1)
+						(SHADWKARAK,550,50,SHADWKARAK,3,KARAK,1)
+						(CHAOS_JILE,600,50,CHAOS_JILE,1,SEA_JILE,1)
+
+						(KLETCH,600,55,KLETCH,3,SPINDLE,1)
+						(SARBIL,600,55,SARBIL,3,JINGJACK,1)
+						(SPINDLE,600,55,SPINDLE,3,KLETCH,1)
+						(JINGJACK,600,55,JINGJACK,3,SARBIL,1)
+						(BORGOR,600,55,BORGOR,3,SPHOR,1)
+
+						(DARKAYEBAW,650,58,DARKAYEBAW,3,AYEBAW,1)
+						(DARKVELLUP,650,58,DARKVELLUP,3,VELLUP,1)
+						(SHRYQUE,650,58,SHRYQUE,3,RAXIS,1)
+
+						(DRYTEFIEND,700,60,DRYTEFIEND,3,BHATAR,1)
+						(KAZOR,700,60,KAZOR,3,SHARBLOOT,2)
+						(CORE_HYREN,800,60,CORE_HYREN,3,THUNDRHYRN,1)
+
+
+_DONE
+	
+	TextOpen			()
+	TextIcon			(ICON_CLOAK)
+	TextWrite			("Here is your=")
+						("%X")
+						("but be careful=")
+						("with it. Those")
+						("things are=")
+						("dangerous.")
+	JumpLocal			(_MAIN_MENU)
+
+_BANK_FULL
+	TextOpen			()
+	TextIcon			(ICON_CLOAK)
+	TextWrite			("Your Ring Bank=")
+						("is full.")
+	JumpLocal			(_MAIN_MENU)
+
+_END
+	TextOpen			()
+	TextIcon			(ICON_CLOAK)
+	TextWrite			("Come back=")
+						("anytime!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+	
+/********************************//********************************/
+// hidden Shadowhold24
+/********************************//********************************/
+
+?_HLDMAZE24
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE24)
+	LoadHotspots		(HS_HLDMAZE24)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,40,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE2)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,40,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE2)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	SetBtlReturn		(?_HLDMAZE24)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_shadowhold)
+	SceneReady			()
+	End					()
+
+/********************************//********************************/
+// hidden Shadowhold25
+/********************************//********************************/
+
+?_HLDMAZE25
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE25)
+	LoadHotspots		(HS_HLDMAZE25)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,16,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE3)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,16,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE3)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	SetBtlReturn		(?_HLDMAZE25)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_shadowhold)
+	SceneReady			()
+	End					()
+
+/********************************//********************************/
+// hidden Shadowhold26
+/********************************//********************************/
+
+?_HLDMAZE26
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE26)
+	LoadHotspots		(HS_HLDMAZE26)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,35,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE4)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,35,0,?_RAINER,?_SECRET_RINGSMITH_BATTLE4)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	SetBtlReturn		(?_HLDMAZE26)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_shadowhold)
+	SceneReady			()
+	End					()
+

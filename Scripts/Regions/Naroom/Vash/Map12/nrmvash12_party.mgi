@@ -1,0 +1,76 @@
+?_NRMVASH12_FUNERAL
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH12)
+	LoadHotspots			(HS_NRMVASH12) 
+	LoadTriggers			(TR_NRMVASH12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,9,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,15,5,20,0,?_EVU_STAND_DOWN_ANIM,?_NRMVASH12_FUN_EVU)
+	LoadVRAMTiles			(48,BIT_EVU,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_giahut)
+	SceneReady				()
+	End						()
+
+?_NRMVASH12_FUN_EVU
+	SetText					(?_NRMVASH12_FUN_EVU_TXT)
+	Jump					(?_FACE_EVU)
+
+?_NRMVASH12_FUN_EVU_TXT
+	TextOpen				()
+	TextIcon				(ICON_EVU)
+	JumpRandom				(_TXT1)
+							(_TXT2)
+							(_TXT3)
+							(_TXT4)
+							(_TXT5)
+							(_TXT6)
+_TXT1
+	TextWrite				("Ah, Pruitt.")
+							("You look lovely=")
+							("today, my dear.")
+	Jump					(_DONE)
+_TXT2
+	TextWrite				("Hello, Poad...=")
+							("do you have any")
+							("more of those=")
+							("licorice ones?")
+	Jump					(_DONE)
+_TXT3
+	TextWrite				("-ahem-")
+							("-cough cough-")
+							("-bleck-")
+	Jump					(_DONE)
+_TXT4
+	TextWrite				("Why hello Tryn.=")
+							("What can I do=")
+							("for you today?")
+	Jump					(_DONE)
+_TXT5
+	TextWrite				("Why, how did=")
+							("you get in here,")
+							("little Eebit?")
+	Jump					(_DONE)
+_TXT6
+	TextWrite				("Boy, I'm sure=")
+							("hungry...")
+	Jump					(_DONE)
+_DONE
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_NRMVASH12_PARTY
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH12)
+	LoadHotspots			(HS_NRMVASH12) 
+	LoadTriggers			(TR_NRMVASH12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,9,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()

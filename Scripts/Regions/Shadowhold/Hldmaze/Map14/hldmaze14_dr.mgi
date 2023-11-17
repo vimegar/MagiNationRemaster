@@ -1,0 +1,34 @@
+?_HLDMAZE14_DR_1
+		HeroToDoor	(11,24,11,0)
+		Jump		(?_HLDMAZE12)
+
+?_HLDMAZE14_DR_2
+		HeroToDoor	(32,24,5,0)
+		Jump		(?_HLDMAZE15)
+
+?_HLDMAZE14_DR_3
+		HeroToDoor	(49,23,0,16)
+		Jump		(?_HLDMAZE06)
+
+?_HLDMAZE14_DR_4
+		HeroToDoor	(1,24,0,0)
+		Jump		(?_HLDMAZE12)
+
+?_HLDMAZE14_DR_5
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_FLAILING)
+		Delay				(24)
+		Jump				(?_HLDMAZE13_DEATHFALL)
+		
+		
+?_HLDMAZE14_TR_1
+		TriggerAlways	(HldChest3,?_TXT_ITS_EMPTY,255,39,10,50)
+		InitSkip		(_END)
+		InventoryGive	(INV_TYPE_ITEM,INV_SHADOW_KEY,1)
+		TextOpen		()
+		TextWrite		("Tony got a=")
+						("Shadow Key")
+		TextClose		()
+		Jump			(?_HLDMAZE14_FLOORFALL)
+_END
+		End				()

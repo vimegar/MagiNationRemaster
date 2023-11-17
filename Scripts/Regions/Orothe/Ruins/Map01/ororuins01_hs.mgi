@@ -1,0 +1,10 @@
+/********************************/
+		FileHotspots	(HS_ORORUINS01)
+						(HOTSPOT_TRIGGER_EAST,?_ORORUINS01_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_ORORUINS01_DR_2)
+						(HOTSPOT_TRIGGER_WEST,?_ORORUINS01_DR_3)
+	
+		FileTriggers	(TR_ORORUINS01)
+						(TRIGGER_CONFIG,?_ORORUINS01_TR_1)
+						(TRIGGER_CONFIG,?_ORORUINS01_TR_2)
+						

@@ -1,0 +1,182 @@
+;Size:160
+                      
+;********************************
+; C:\Work\Patrick's Project\scripts\CHARACTERS\WORVELINE\WORVELINE_ANIM.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_WORVELINE_STAND_LEFT_ANIM
+	DB	CMD_FRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?WORVELINE_01_LEFT&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_STAND_LEFT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_STAND_RIGHT_ANIM
+	DB	CMD_FRAME
+		DB	$FF
+		DB	$00
+		DB	$00
+		DW	(?WORVELINE_01_RIGHT&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_STAND_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_SUCKIT_LEFT_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$04
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DW	(?WORVELINE_01_LEFT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_SUCKIT_LEFT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_SUCKIT_RIGHT_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$04
+		DB	$10
+		DB	$00
+		DB	$00
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DW	(?WORVELINE_01_RIGHT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_SUCKIT_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_MOVE_LEFT_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$04
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?WORVELINE_01_LEFT&$FFFF)
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_MOVE_LEFT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_MOVE_RIGHT_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$04
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?WORVELINE_01_RIGHT&$FFFF)
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_MOVE_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_MOVE_UP_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$08
+		DB	$02
+		DB	$00
+		DB	$FE
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DW	(?WORVELINE_01_RIGHT&$FFFF)
+		DW	(?WORVELINE_01_LEFT&$FFFF)
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_MOVE_UP_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_MOVE_DOWN_ANIM
+	DB	CMD_FRAMEBLOCK
+		DB	$08
+		DB	$02
+		DB	$00
+		DB	$02
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DW	(?WORVELINE_01_RIGHT&$FFFF)
+		DW	(?WORVELINE_01_LEFT&$FFFF)
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_MOVE_DOWN_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_HOP_UP_ANIM
+	DB	CMD_FRAME
+		DB	$01
+		DB	$01
+		DB	$FC
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$FD
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$FE
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DB	$02
+		DB	$01
+		DB	$FF
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DB	$02
+		DB	$02
+		DB	$00
+		DW	(?WORVELINE_02_RIGHT&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_STAND_RIGHT_ANIM&$FFFF)
+
+;********************************
+?_WORVELINE_HOP_DOWN_ANIM
+	DB	CMD_FRAME
+		DB	$02
+		DB	$FE
+		DB	$00
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$01
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$02
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DB	$02
+		DB	$FF
+		DB	$03
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DB	$01
+		DB	$FF
+		DB	$04
+		DW	(?WORVELINE_02_LEFT&$FFFF)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_WORVELINE_STAND_LEFT_ANIM&$FFFF)
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?WORVELINE_01_LEFT
+	GLOBAL	?WORVELINE_01_RIGHT
+	GLOBAL	?WORVELINE_02_LEFT
+	GLOBAL	?WORVELINE_02_RIGHT
+
+;********************************
+	END
+;********************************

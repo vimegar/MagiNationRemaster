@@ -1,0 +1,9 @@
+/********************************/
+	FileMapLayout		(MAP_NRMVASH09,PAL_NRMINTERIOR1,VRM_NRMINTERIOR,PAT_NRMINTERIOR,SCR_NRMVASH09,COL_NRMVASH09)
+
+/********************************/
+// Secret to shop
+	FileMapLayout		(MAP_NRMVASH09B,PAL_SEWER,VRM_SEWER,PAT_SEWER,SCR_NRMSECRET01,COL_NRMSECRET01)
+/********************************/
+// Connecter to shop
+	FileMapLayout		(MAP_NRMVASH09C,PAL_SEWER,VRM_SEWER,PAT_SEWER,SCR_NRMSECRET02,COL_NRMSECRET02)

@@ -1,0 +1,231 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_KORREMAR_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?KORREMAR_WALK01_BACK)
+					(?KORREMAR_WALK02_BACK)
+					(?KORREMAR_WALK03_BACK)
+					(?KORREMAR_WALK02_BACK)
+					
+	JumpLocal:		(?_KORREMAR_WALK_UP_ANIM)
+
+/********************************/
+?_KORREMAR_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?KORREMAR_WALK01_FRONT)
+					(?KORREMAR_WALK02_FRONT)
+					(?KORREMAR_WALK03_FRONT)
+					(?KORREMAR_WALK02_FRONT)
+					
+	JumpLocal:		(?_KORREMAR_WALK_DOWN_ANIM)
+
+/********************************/
+?_KORREMAR_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?KORREMAR_WALK01_LEFT)
+					(?KORREMAR_WALK02_LEFT)
+					(?KORREMAR_WALK03_LEFT)
+					(?KORREMAR_WALK02_LEFT)
+					
+	JumpLocal:		(?_KORREMAR_WALK_LEFT_ANIM)
+
+/********************************/
+?_KORREMAR_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?KORREMAR_WALK01_RIGHT)
+					(?KORREMAR_WALK02_RIGHT)
+					(?KORREMAR_WALK03_RIGHT)
+					(?KORREMAR_WALK02_RIGHT)
+					
+	JumpLocal:		(?_KORREMAR_WALK_RIGHT_ANIM)
+
+/********************************/
+?_KORREMAR_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?KORREMAR_WALK01_BACK)
+					(?KORREMAR_WALK02_BACK)
+					(?KORREMAR_WALK03_BACK)
+					(?KORREMAR_WALK02_BACK)
+					
+	JumpLocal:		(?_KORREMAR_RUN_UP_ANIM)
+
+/********************************/
+?_KORREMAR_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?KORREMAR_WALK01_FRONT)
+					(?KORREMAR_WALK02_FRONT)
+					(?KORREMAR_WALK03_FRONT)
+					(?KORREMAR_WALK02_FRONT)
+					
+	JumpLocal:		(?_KORREMAR_RUN_DOWN_ANIM)
+
+/********************************/
+?_KORREMAR_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?KORREMAR_WALK01_LEFT)
+					(?KORREMAR_WALK02_LEFT)
+					(?KORREMAR_WALK03_LEFT)
+					(?KORREMAR_WALK02_LEFT)
+					
+	JumpLocal:		(?_KORREMAR_RUN_LEFT_ANIM)
+
+/********************************/
+?_KORREMAR_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?KORREMAR_WALK01_RIGHT)
+					(?KORREMAR_WALK02_RIGHT)
+					(?KORREMAR_WALK03_RIGHT)
+					(?KORREMAR_WALK02_RIGHT)
+					
+	JumpLocal:		(?_KORREMAR_RUN_RIGHT_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_WALK02_BACK)
+	
+	JumpLocal:		(?_KORREMAR_STAND_UP_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_WALK02_FRONT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_DOWN_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_WALK02_LEFT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_LEFT_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_WALK02_RIGHT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_RIGHT_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_UL_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_UR_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_STAND_LEFT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_DL_ANIM)
+
+/********************************/
+?_KORREMAR_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_STAND_RIGHT)
+	
+	JumpLocal:		(?_KORREMAR_STAND_DR_ANIM)
+
+/********************************/
+?_KORREMAR_BATTLE_STAND_ANIM
+
+	Frame:			(96,0,0,?KORREMAR_TAUNT01)
+					(128,0,0,?KORREMAR_STANDRIGHT)
+					(96,0,0,?KORREMAR_TAUNT01)
+					(128,0,0,?KORREMAR_STANDLEFT)
+	
+	JumpLocal		(?_KORREMAR_BATTLE_STAND_ANIM)
+	
+/********************************/
+?_KORREMAR_BATTLE_TAUNT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?KORREMAR_TAUNT01)
+					(?KORREMAR_TAUNT02)
+					(?KORREMAR_TAUNT03)
+					(?KORREMAR_TAUNT04)
+
+	JumpLocal		(?_KORREMAR_BATTLE_TAUNT_ANIM)
+
+/********************************/
+?_KORREMAR_BATTLE_SUMMON_ANIM
+
+	FrameBlock		(4,0,0)
+					(?KORREMAR_SUMMON01)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON03)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON01)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON03)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON01)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON03)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON01)
+					(?KORREMAR_SUMMON02)
+					(?KORREMAR_SUMMON03)
+					(?KORREMAR_SUMMON02)
+	Frame:			(32,0,0,?KORREMAR_SUMMON01)
+
+	JumpLocal		(?_KORREMAR_BATTLE_STAND_ANIM)
+
+/********************************/
+?_KORREMAR_BATTLE_WIN_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_WIN)
+
+	JumpLocal		(?_KORREMAR_BATTLE_WIN_ANIM)
+	
+/********************************/
+?_KORREMAR_BATTLE_LOSE_ANIM
+
+	Frame:			(255,0,0,?KORREMAR_LOSE)
+
+	JumpLocal		(?_KORREMAR_BATTLE_LOSE_ANIM)
+
+/********************************/
+?_FACE_KORREMAR
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_KORREMAR_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_KORREMAR_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_KORREMAR_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_KORREMAR_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

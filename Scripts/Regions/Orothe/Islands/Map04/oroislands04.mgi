@@ -1,0 +1,255 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP04\OROISLANDS04_DR.MGI
+%INCLUDE			REGIONS\OROTHE\ISLANDS\MAP04\OROISLANDS04_TXT.MGI
+
+/********************************/
+?_OROISLANDS04
+	SetXRAMByte				(Exit_Disable,1)
+	Switch					([GAMECOUNT])
+							(GC_BOOTS_QUEST,?_OROISLANDS04_ORLON_SHMUCK)
+							(GC_CALD_GEYSER,?_OROISLANDS04_ORLON_SHMUCK)
+							(GC_BACK_IN_OROTHE,?_OROISLANDS04_EMPTY)
+							(GC_OROTHE_GEYSER,?_OROISLANDS04_EMPTY)
+							(GC_BEAT_OROTHE,?_OROISLANDS04_EIDON_SCENE)
+
+/********************************//********************************/
+// GENERIC
+/********************************//********************************/
+?_OROISLANDS04_GENERIC
+	//If						([GC = GC_CALD_GEYSER && !Ferry_Paid && No_Ferry],?_OROISLANDS04_ORLONSBUDDY)
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS04)
+	LoadHotspots			(HS_OROISLANDS04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,0,0,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,12,16,0,?_ORLON_STAND_DOWN_ANIM,?_OROISLANDS04_ORLON_SMITH_TALK)
+	LoadVRAMTiles			(48,BIT_ORLON,0,0)
+	LoadVRAMTiles			(40,BIT_ORLONRING,48,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_OROISLANDS04_ORLON_SMITH_TALK
+	ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+	SetText					(?_OROISLANDS04_ORLON_SMITH_TXT)
+	End						()
+
+?_OROISLANDS04_MAKE_RING
+
+	ThisActorSetAnimDelay	(?_ORLON_MAKE_RING_ANIM,250)
+							(?_ORLON_DONE_RING_ANIM,30)
+	ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+	
+	SetAnyEventMaster		()
+	ThisActorRestoreState	()
+	End						()		
+
+?_OROISLANDS04_ORLON_RESTORE
+	ThisActorRestoreState	()
+	End						()
+/********************************//********************************/
+// END GENERIC
+/********************************//********************************/
+
+/********************************//********************************/
+// GENERIC EMPTY
+/********************************//********************************/
+?_OROISLANDS04_EMPTY
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS04)
+	LoadHotspots			(HS_OROISLANDS04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+/********************************//********************************/
+// END GENERIC EMPTY
+/********************************//********************************/
+
+/********************************//********************************/
+// EIDON CATCHES UP
+/********************************//********************************/
+?_OROISLANDS04_EIDON_SCENE
+	SetLoadScript			(?_NRMGLADE03_LOAD)
+
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS04)
+	LoadHotspots			(HS_OROISLANDS04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,10,10,16,0,?_OROISLAND_TONY_CATCH,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,11,16,16,0,?_OROISLAND_ORLON_CATCH,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,9,16,16,42,?_OROISLAND_EIDON_CATCH,?_DONT_TALK)
+	LoadVRAMTiles			(42,BIT_ORLON,0,0)
+	LoadVRAMTiles			(42,BIT_EIDON,42,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	SongStart				(SONGID_orwin)
+	SetCamera				(10,20)
+	SceneReady				()
+	PalClearAnim			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	ThatActorStart			(HEROACTOR)
+	ScrollMap				(32,0,-1)
+	End						()
+
+?_OROISLAND_ORLON_CATCH
+	ThisActorSetAnimDelay	(?_ORLON_STAND_LEFT_ANIM,32)
+							(?_ORLON_STAND_UL_ANIM,4)
+							(?_ORLON_STAND_UP_ANIM,0)
+	
+	End						()
+
+?_OROISLAND_TONY_CATCH
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	Sync					(3,1)
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,32)
+							(?_HERO_WALK_LEFT_ANIM,0)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_NRMGLADE03_OMINOUSPORTENT_FD)		
+	End						()
+
+?_OROISLAND_EIDON_CATCH
+	ThisActorSetAnimDelay	(?_EIDON_STAND_RIGHT_ANIM,32)
+							(?_EIDON_STAND_UR_ANIM,4)
+							(?_EIDON_STAND_UP_ANIM,0)
+	SetText					(?_OROISLAND_EIDON_TXT)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_EIDON_RUN_UP_ANIM,8)
+							(?_EIDON_RUN_RIGHT_ANIM,8)
+							(?_EIDON_RUN_UP_ANIM,8)
+							(?_EIDON_STAND_UP_ANIM,0)			
+	SetText					(?_OROISLAND_EIDON_TXT1)
+	Sync					(3,1)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_UL_ANIM,4)
+							(?_EIDON_WALK_LEFT_ANIM,0)
+	End						()
+/********************************//********************************/
+// END EIDON CATCHES UP
+/********************************//********************************/
+
+/********************************//********************************/
+// ORLON SHMUCK
+/********************************//********************************/
+?_OROISLANDS04_ORLON_SHMUCK
+	If						([[GC = GC_CALD_GEYSER] && [Ferry_State = 2] && [OroIsl_TonyStranded]],?_OROISLANDS04_ORLONSBUDDY)
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS04)
+	LoadHotspots			(HS_OROISLANDS04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,0,0,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,12,16,0,?_ORLON_STAND_DOWN_ANIM,?_OROISLANDS04_ORLON_TALKER)
+	LoadVRAMTiles			(48,BIT_ORLON,0,0)
+	LoadVRAMTiles			(40,BIT_ORLONRING,48,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_OROISLANDS04_ORLON_TALKER
+	ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+	SetText					(?_OROISLAND04_TXT_1)
+	Jump					(?_FACE_ORLON)
+
+/********************************//********************************/
+// END ORLON SHMUCK
+/********************************//********************************/
+
+/********************************//********************************/
+// ORLON'S BUDDY
+/********************************//********************************/
+?_OROISLANDS04_ORLONSBUDDY
+	SceneNew				()
+	LoadMap					(MAP_OROISLANDS04)
+	LoadHotspots			(HS_OROISLANDS04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,7,12,16,0,?_OROISLANDS04_BTC_ORLON,?_OROISLANDS04_BTC_TALKER)
+	LoadVRAMTiles			(42,BIT_ORLON,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	SetXRAMBit				(Orlons_Buddy,TRUE)
+	End						()
+
+?_OROISLANDS04_BTC_ORLON
+	ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+	End						()
+
+?_OROISLANDS04_BTC_TONY
+	ThisActorSetAnimDelay	(?_HERO_STAND_RIGHT_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,24)
+							(?_HERO_WALK_DOWN_ANIM,16)
+							(?_HERO_WALK_LEFT_ANIM,0)
+	End						()
+
+
+
+?_OROISLANDS04_BTC_TALKER
+	SetText					(?_OROISLANDS04_TXT_3)
+	Switch					([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+	ThisActorSetAnim		(?_ORLON_STAND_UP_ANIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	WaitEventText			(1)
+	Jump					(_NEXT)
+_DOWN
+	ThisActorSetAnim		(?_ORLON_STAND_DOWN_ANIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	WaitEventText			(1)
+	Jump					(_YOURE_BELOW_ORLON)
+_LEFT
+	ThisActorSetAnim		(?_ORLON_STAND_LEFT_ANIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	WaitEventText			(1)
+	Jump					(_NEXT)
+_RIGHT
+	ThisActorSetAnim		(?_ORLON_STAND_RIGHT_ANIM)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+_NEXT	
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_OROISLANDS04_BTC_TONY)	
+	ThisActorSetAnimDelay	(?_ORLON_RUN_DOWN_ANIM,16)
+							(?_ORLON_RUN_LEFT_ANIM,64)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_FERRY02_ORLONSBUDDY)
+_YOURE_BELOW_ORLON
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_OROISLANDS04_BTC_TONY)	
+	ThisActorSetAnimDelay	(?_ORLON_RUN_RIGHT_ANIM,8)
+							(?_ORLON_RUN_DOWN_ANIM,16)
+							(?_ORLON_RUN_LEFT_ANIM,32)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_FERRY02_ORLONSBUDDY)
+
+/********************************//********************************/
+// END ORLON'S BUDDY
+/********************************//********************************/
+
+
+	

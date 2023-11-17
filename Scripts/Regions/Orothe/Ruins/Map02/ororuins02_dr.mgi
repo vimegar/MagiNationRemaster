@@ -1,0 +1,31 @@
+/********************************/
+?_ORORUINS02_DR_1
+			HeroToDoor			(49,39,0,8)
+			Jump				(?_ORORUINS01)
+
+?_ORORUINS02_DR_2
+			HeroToDoor			(10,49,12,0)
+			Jump				(?_ORORUINS03)
+
+?_ORORUINS02_TR_1
+		TriggerTreasure	(ORORUINS02_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,32,9,50)
+
+?_ORORUINS02_TR_2
+		TriggerAlways	(ORORUINS02_Chest2,?_TXT_ITS_EMPTY,255,31,14,50)
+		InitSkip		(_SKIP)
+		SetXRAMByte		(Oro_Plot_Byte,3)
+		InventoryGive	(INV_TYPE_ITEM,INV_BLURRY_SCROLL,1)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Tony got a=")
+						("Blurry Scroll")
+		TextClose		()
+_SKIP
+		End				()
+
+?_ORORUINS02_TR_3
+		TriggerTreasure	(ORORUINS02_Chest3,INV_TYPE_SPELL,INV_ENTANGLE,33,14,50)
+		
+?_ORORUINS02_TR_4
+		TriggerTreasure	(ORORUINS02_Chest4,INV_TYPE_ITEM,INV_MASTER_RUNE,15,12,50)
+		

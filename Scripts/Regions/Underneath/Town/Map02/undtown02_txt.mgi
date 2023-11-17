@@ -1,0 +1,21 @@
+/********************************/
+//UNDTOWN02
+/********************************/
+?_UNDTOWN02_MAN03_TXT01
+	If						([GC = GC_UND_GEYSER],_GEYSER)
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Look at the=")
+							("damage the")
+							("town has=")
+							("suffered....")
+	TextClose				()
+	ThisActorRestoreState	()
+	
+_GEYSER
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("The poor=")
+							("mushrooms!")
+	TextClose				()
+	ThisActorRestoreState	()

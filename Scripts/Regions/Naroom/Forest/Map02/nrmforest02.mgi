@@ -1,0 +1,151 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\FOREST\MAP02\NRMFOREST02_DR.MGI
+%INCLUDE			REGIONS\NAROOM\FOREST\MAP02\NRMFOREST02_TXT.MGI
+
+/********************************/
+?_NRMFOREST02
+	
+	If					([GAMECOUNT = GC_GLOVES && !Encountered_Wence],?_NRMFOREST02_WENCE_SCENE)
+
+/********************************/
+?_GENERIC_NRMFOREST02	
+	SceneNew			()
+	LoadMap				(MAP_NRMFOREST02)
+	LoadHotspots		(HS_NRMFOREST02)
+	//LoadEncounters		(EN_NRMFOREST,ENCOUNTER_FRQ_NORM,?_NRMFOREST_RE_ENTER)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_FOREST_RNDBAT)
+	ThatActorInit		(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_FOREST_RNDBAT)
+	ThatActorStart		(ACTOR1E)
+	ThatActorStart		(ACTOR1D)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	SetBtlReturn		(?_NRMFOREST02)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_forest)
+	SceneReady			()
+	End					()
+
+/********************************/
+?_NRMFOREST02_WENCE_SCENE
+	SceneNew				()
+	LoadMap					(MAP_NRMFOREST02)
+	LoadHotspots			(HS_NRMFOREST02)
+	//LoadEncounters		(EN_NRMFOREST,ENCOUNTER_FRQ_NORM,?_NRMFOREST_RE_ENTER)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,49,13,50,0,?_NRMFOREST02_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,32,12,50,64,?_NRMFOREST02_WENCE,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,29,12,50,0,?_NRMFOREST02_CORE3,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,34,12,50,0,?_NRMFOREST02_CORE4,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	LoadVRAMTiles			(64,BIT_BLACKAGOVE,0,0)
+	LoadVRAMTiles			(48,BIT_WENCE,64,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)	
+	SetCamera				(48,12)
+	SongStart				(SONGID_battle)
+	SceneReady				()
+	SetXRAMBit				(Encountered_Wence,TRUE)
+	End						()
+
+?_NRMFOREST02_TONY
+	ThisActorSetAnimScroll	(?_HERO_WALK_LEFT_ANIM,64,1,0)
+	SetText					(?_NRMFOREST02_QFG_TEXT01)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)	
+	WaitEventText			(1)
+	ThisActorSetAnimScroll	(?_HERO_RUN_LEFT_ANIM,36,-2,0)
+							(?_HERO_RUN_UP_ANIM,8,0,0)
+							(?_HERO_RUN_LEFT_ANIM,36,-2,0)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetEventMaster			(32)
+	ScrollMap				(12,-4,0)
+	Sync					(2,0)
+	ThisActorSetAnimScroll	(?_HERO_RUN_LEFT_ANIM,4,-2,0)
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,8)
+	SetBtlReturn			(?_NRMFOREST02_RETURN)
+	Jump					(?_NRMFOREST02_TONYBAT)
+
+?_NRMFOREST02_WENCE
+	ThisActorSetAnim		(?_WENCE_STAND_LEFT_ANIM)
+	WaitEventMaster			(32)
+	ThisActorSetAnimDelay	(?_WENCE_STAND_LEFT_ANIM,64)
+							(?_WENCE_RUN_LEFT_ANIM,8)
+							(?_WENCE_RUN_RIGHT_ANIM,8)
+							(?_WENCE_RUN_LEFT_ANIM,8)
+							(?_WENCE_RUN_RIGHT_ANIM,8)
+							(?_WENCE_STAND_LEFT_ANIM,0)
+	WaitEventMaster			(2)
+	ThisActorSetAnim		(?_WENCE_STAND_RIGHT_ANIM)
+	End						()
+
+?_NRMFOREST02_CORE3
+	ThisActorSetAnimDelay	(?_AGOVE_HOVER_RIGHT_ANIM,0)
+	WaitEventMaster			(32)
+	ThisActorSetAnimDelay	(?_AGOVE_HOVER_RIGHT_ANIM,40)
+							(?_AGOVE_MOVE_RIGHT_ANIM,24)
+							(?_AGOVE_HOVER_RIGHT_ANIM,24)
+							(?_AGOVE_EXPLODE_RIGHT_ANIM,48)
+	ThatActorStart			(ACTOR02)
+	CameraSeek				(35,12,3)
+	End						()
+	
+?_NRMFOREST02_CORE4
+	ThisActorSetAnimDelay	(?_AGOVE_HOVER_RIGHT_ANIM,32)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_AGOVE_HOVER_LEFT_ANIM,32)
+	End						()
+/********************************//********************************/
+	
+?_NRMFOREST02_RETURN
+	SceneNew				()
+	LoadMap					(MAP_NRMFOREST02)
+	LoadHotspots			(HS_NRMFOREST02)
+	//LoadEncounters		(EN_NRMFOREST,ENCOUNTER_FRQ_NORM,?_NRMFOREST_RE_ENTER)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,34,12,50,0,?_NRMFOREST02_TONYRET,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,32,12,50,64,?_NRMFOREST02_WENCERET,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,34,12,50,0,?_NRMFOREST02_CORE4RET,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	LoadVRAMTiles			(64,BIT_BLACKAGOVE,0,0)
+	LoadVRAMTiles			(48,BIT_WENCE,64,0)
+	ThatActorStart			(ACTOR00)
+	SetCamera				(32,12)
+	SongStart				(SONGID_battle)
+	SceneReady				()
+	SetXRAMBit				(Encountered_Wence,TRUE)
+	End						()
+
+?_NRMFOREST02_TONYRET
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,0)
+	WaitEventMaster			(1)			
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,16)
+							(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	End						()
+	
+?_NRMFOREST02_WENCERET
+	ThisActorSetAnimDelay	(?_WENCE_STAND_RIGHT_ANIM,0)
+	SetText					(?_NRMFOREST02_QFG_TEXT03)
+	WaitEventText			(1)
+	SongFadeOut				(20)
+	ThisActorSetAnimDelay	(?_WENCE_RUN_RIGHT_ANIM,8)
+							(?_WENCE_RUN_UP_ANIM,16)
+							(?_WENCE_RUN_RIGHT_ANIM,64)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	SongStart				(SONGID_forest)
+	ThisActorStop			()
+	End						()
+
+	
+?_NRMFOREST02_CORE4RET
+	ThisActorSetAnimDelay	(?_AGOVE_HOVER_LEFT_ANIM,32)
+	SetEventMaster			(1)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_AGOVE_EXPLODE_LEFT_ANIM,32)
+	SetEventMaster			(2)
+	End						()
+

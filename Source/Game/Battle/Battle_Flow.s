@@ -1,0 +1,2532 @@
+;********************************
+; BATTLE_FLOW.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "Akip!" Mayo/Hayato "But what if Tony is at a certain energy" Sato
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;*******************************
+?BTL_CRASH
+
+	LD		A,BTL_EXIT_WIN
+	JP		?BTL_EXIT
+
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_CRASH_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP		
+	
+	JR		?BTL_CRASH			; We'll fix it later! =^.^=
+
+;********************************
+?BTL_APPLY_COMMAND
+
+	;Clear any flags that need to be cleared
+	;-----------------------------------
+	XOR		A
+	LD		(BTL_MIRRORED_ATK),A
+	
+	;Open target creature into BTL_TARGET
+	;------------------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	
+	;I _THINK_ WE SHOULD NEVER HAVE A TARGET_ME @ THIS POINT
+	CP		BTL_TARGET_ME
+	JP		Z,?BTL_CRASH
+	
+	CP		BTL_TARGET_NONE
+	JP		Z,_HAVE_TARGET
+	
+	;SHOULD NEVER HAVE ANY NON SPECIFICS BESIDES NONE
+	CP		BTL_TARGET_ALLYEMPTY
+	JP		NC,?BTL_CRASH
+	
+	
+	;find out if it is an empty slot (summon) or not
+	;but not if it just died.
+	;unless its a blanket attack, then just return
+	;--------------------------------------------	
+_NORMAL_CHECK	
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_CREATURE_SLOTS
+	ADD		HL,BC
+	XOR		A
+	CP		(HL)
+	JR		NZ,_NON_EMPTY
+	
+	;CHECK FOR TARGET INVISO MAGI
+	;------------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_ID_MAGI
+	JR		Z,_NON_EMPTY
+	
+	LD		HL,BTL_RECENT_DEAD_ARRAY
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	JP		Z,_HAVE_TARGET
+	
+	LD		A,(BTL_MULTI_FLAG)
+	CP		1
+	RET		Z
+	
+	LD		A,BTL_DEAD_REDIRECT
+	LD		(BTL_DIVERT_TYPE),A
+	CALL_FOREIGN	?BTL_DIVERT_TARGET	
+	
+	
+_NON_EMPTY
+	;LD THE BTL_TARGET
+	;-------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		C,A
+	LD		B,CREATURE_BTL_SIZE		;AND C STILL HAS SLOT #
+	
+	CALL	?MULT
+		
+	LD		BC,BTL_CREATURES
+	ADD		HL,BC
+	LD		B,H
+	LD		C,L
+	FSET16	B,C,BTL_TARGET_SLOT
+	LD		HL,BTL_TARGET
+	CALL	?BTL_CREATURE_OPEN	
+
+;	If command rating is BTL_CMD_RATING_ATK4
+;		goto _NO_ESCAPE
+	LD		A,(BTL_CREATURE_RATING)
+	CP		BTL_CMD_RATING_ATK4
+	JP		Z,_HAVE_TARGET
+	
+	CP		BTL_CMD_RATING_HEAL4
+	JP		Z,_HAVE_TARGET
+
+;	If not a blanket command
+	LD		A,(BTL_MULTI_FLAG)
+	CP		1
+	JP		Z,_HAVE_TARGET
+	
+	;If BTL_TARGET has DIVERT status
+	;----------------------------
+	LD		A,(BTL_TARGET_STATUS)
+	AND		DIVERT
+	JR		Z,_CHECK_MIRROR
+			
+	;Find another creature and open it into BTL_TARGET
+	;---------------------------
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_STATUS_DIVERT_ANIM
+	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_DIVERT_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP		
+	
+	BTL_ACTOR_END			(BTL_CREATURE_TARGET)
+	
+	LD		A,BTL_DIVERT_REDIRECT
+	LD		(BTL_DIVERT_TYPE),A
+	CALL_FOREIGN	?BTL_DIVERT_TARGET	
+	
+	;OPEN NEW TARGET
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		C,A
+	LD		B,CREATURE_BTL_SIZE		;AND C STILL HAS SLOT #
+	
+	CALL	?MULT
+		
+	LD		BC,BTL_CREATURES
+	ADD		HL,BC
+	LD		B,H
+	LD		C,L
+	FSET16	B,C,BTL_TARGET_SLOT
+	LD		HL,BTL_TARGET
+	CALL	?BTL_CREATURE_OPEN		
+		
+_CHECK_MIRROR
+;	If BTL_TARGET has MIRROR status
+	LD		A,(BTL_TARGET_STATUS)
+	AND		MIRROR
+	JP		Z,_HAVE_TARGET	
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_STATUS_MIRROR_ANIM
+		
+	;Setup msg
+	;---------------------------	
+	LD		A,(BTL_TARGET_ID)
+	LD		(BTL_NAME_INDEX),A
+	LD		BC,TEXT_PARAM_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	CALL_FOREIGN	?BTL_COPY_CREATURE_NAME
+	LD		A,?FORMAT
+	LD		(TEXT_PARAM_BUFFER+10),A	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_MIRROR_USED
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+;		remove BTL_TARGET's mirror counter
+	LD		HL,BTL_TARGET
+	LD		A,1
+	CALL	?BTL_STATUS_DEC_MIRROR
+	
+	BTL_ACTOR_END		(BTL_CREATURE_TARGET)
+	
+	;Close the creature
+	;------------------
+	FGET16	H,L,BTL_TARGET_SLOT
+	LD		BC,BTL_TARGET
+	CALL	?BTL_CREATURE_CLOSE
+	
+	;BTL_CREATURE BECOMES BTL_TARGET
+	;---------------------------------
+	LD		A,(BTL_PROCESS_ACTIVE)
+	LD		(BTL_CREATURE_TARGET),A
+	
+	LD		C,A
+	LD		B,CREATURE_BTL_SIZE		;AND C STILL HAS SLOT #
+	
+	CALL	?MULT
+		
+	LD		BC,BTL_CREATURES
+	ADD		HL,BC
+	LD		B,H
+	LD		C,L
+	FSET16	B,C,BTL_TARGET_SLOT
+	LD		HL,BTL_TARGET
+	CALL	?BTL_CREATURE_OPEN 
+		
+_HAVE_TARGET	
+;	Call command function
+;		-> This command must play the battle scene script
+	CALL	?BATTLE_ATK_WRAPPER
+		
+_NO_DAMAGE
+	;Close the BTL_TARGET
+	;unless BTL_TARGET_NONE
+	;------------------------------	
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_TARGET_NONE
+	RET		Z	
+	
+	FGET16	H,L,BTL_TARGET_SLOT
+	LD		BC,BTL_TARGET
+	CALL	?BTL_CREATURE_CLOSE	
+
+	RET
+
+;********************************
+?BTL_BATTLE_SCRIPT
+	
+	LD		A,$01
+	LD		(BTL_SCRIPT_BUSY),A
+
+_LOOP
+	CALL	?SYSTEM_UPDATE_GAME
+	
+	LD		A,(BTL_SCRIPT_BUSY)
+	AND		A
+	JR		NZ,_LOOP
+
+	RET
+
+;********************************
+?BTL_BEGIN
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+
+	;SET TURN TO 0
+	;----------------
+	LD			BC,0
+	FSET16		B,C,BTL_ENGINE_TURN
+	
+	;FLUSH BATTLE RAM
+	;-----------------
+	MEM_SET		BTL_CREATURE,CREATURE_BTL_SIZE*12,0
+	
+	;Load the hero
+	;-------------------------------------------
+	LD		BC,CREATURETONY
+	LD		HL,BTL_HERO	
+	CALL	?BTL_SUMMON_MAGI	
+	LD		A,1
+	LD		(BTL_CREATURE_SLOTS+BTL_ID_HERO),A	
+	
+	;Load the opposing magi
+	;-------------------------------------------
+	LD		A,(BTL_AI_MAGI)
+	
+	LD		C,A
+	LD		B,CREATURE_TEMPLATE_SIZE
+	
+	CALL	?MULT
+	
+	LD		BC,CREATURE_TEMPLATE_TABLE
+	ADD		HL,BC
+	SET16	H,L,BTL_TABLE_COPY_FROM
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	
+	CALL_FOREIGN	?MAGI_TABLE_COPY
+	
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	LD		HL,BTL_ENEMY
+	CALL	?BTL_SUMMON_MAGI
+	
+	;DETERMINE IF THE MAGI IS "VISIBLE" OR NOT
+	;-------------------------------
+	LD		A,(BTL_ENEMY_TYPE)
+	CP		CREATURE_TYPE_RNDMAGI
+	JR		Z,_NOT_VISIBLE
+		
+	LD		A,1
+	JR		_LD_MAGI_SLOT
+	
+_NOT_VISIBLE
+	XOR		A
+	
+_LD_MAGI_SLOT
+	LD		(BTL_CREATURE_SLOTS+BTL_ID_MAGI),A
+	
+	;Set magi's stand anim
+	;-------------------------------
+	BTL_SET_MAGI_ANIM	(BTL_ENEMY_ID),STAND_ANIM,BTL_ID_MAGI_ACTOR
+	
+	;Clear both of the magi's status ailments
+	;and the BTL_EXIT_CODE; menu memory
+	;-------------------------------------------
+	XOR		A
+	LD		(BTL_HERO_STATUS),A
+	LD		(BTL_ENEMY_STATUS),A
+	LD		(BTL_EXIT_CODE),A
+	
+	;Clear the Cash Pending
+	;---------------------
+	LD		(BTL_CASH_PENDING),A
+	
+	LD		A,$FF
+	LD		(BTL_MENU_MEMORY),A
+	
+	;Clear list of creature slots
+	;-------------------------------------------
+	MEM_SET	BTL_CREATURE_SLOTS+BTL_ID_ALLY0,8,0
+
+	;Clear the exp vars
+	;---------------------------
+	MEM_SET	BTL_HERO_XRAM0,24,0	
+	
+	;Clear being summoned list
+	;-------------------------
+	MEM_SET	BTL_BEING_SUMMONED,10,0
+	
+	;Clear dead creature
+	;-------------------
+	MEM_SET	BTL_DEAD_CREATURE_TYPES,8,$FF
+	
+	;Do inital turn stuff
+	;--------------------------
+	LD		BC,?CMD_FUNC_NONE
+	FSET16	B,C,BTL_ENEMY_FUNC_PTR
+	
+	CALL	?BTL_BATTLE_SCRIPT
+		
+	LD		BC,?CMD_FUNC_NONE
+	FSET16	B,C,BTL_HERO_FUNC_PTR
+	
+	CALL	?BTL_SORT_CMD_ORDER	
+	CALL	?BTL_PROCESS_BATTLE	
+	
+	JP		?BTL_MAIN_LOOP	
+	
+;********************************
+;		->This routine must select or clear the command
+?BTL_COMMAND_MENU_SETUP
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+
+	;Use "other" byte for fight/defend toggle
+	;load vram w/ "other"
+	;-----------------------------
+	XOR		A
+	LD		(BTL_CREATURE_OTHER),A
+
+	;HERO OR CREATURE?
+	;-----------------------------
+	LD		BC,ATK_STANDARD
+	LD		A,(BTL_ACTIVE_TURN)
+	CP		BTL_ID_HERO
+	JR		NZ,_COMMON
+	
+_HERO
+	LD		BC,CMD_FOCUS
+	
+_COMMON	
+	;COPY STR
+	;-------------------------
+	FSET16	B,C,BTL_CMD_BASE_PTR
+	LD		BC,BTL_MENU_CMD_NAME0
+	FSET16	B,C,BTL_TEXT_BUFFER_PTR
+	
+	XOR		A
+	LD		(BTL_COPY_COST_FLAG),A
+	CALL_FOREIGN	?BTL_CMD_COPY_NAME
+	
+	;GET THE 4 OTHER COMMAND INDICIES
+	;--------------------------------------
+	LD		BC,BTL_CREATURE_CMD0
+	LD		HL,BTL_MENU_CMDS
+	
+	LD		D,8
+_4CMD_LOOP
+	LD_HLI_BCI
+	DEC		D
+	JR		NZ,_4CMD_LOOP
+	
+	;LOOP TO DUMP THE NAMES INTO THE MENU STR VARS
+	;---------------------------------------------
+	LD		E,3		;START W/ 4TH, WORK BACK UP
+	LD		D,0		;FOR 16 BIT MATH BELOW
+	
+_STR_LUPE
+
+	;figure out if each command has been learned yet
+	;-----------------------------------------------	
+	LD		HL,BTL_CREATURE_CMD0LVL
+	ADD		HL,DE
+	LD		A,(HL)
+	CP		$FF			;GETS SET TO $FF WHEN LEARNED	
+	JR		Z,_LEARNED
+	
+	;else JR	NZ,_NOT_LEARNED
+	;-----------------------
+	LD		BC,0
+	PUSH	BC
+	JR		_NOT_LEARNED
+	
+_LEARNED	
+
+	;get the index of the current command
+	LD		HL,BTL_MENU_CMDS
+	ADD		HL,DE
+	ADD		HL,DE
+	DEREF_HL			;DE-REFERENCEERIZE	
+	
+	PUSH	HL			;PUSH START OF NAME IN TEMPLATE
+	
+_NOT_LEARNED	
+	LD		B,7
+	LD		C,E			
+	
+	PUSH	DE			;SAVE COUNTER, SINCE MULT FRIES IT	
+	CALL	?MULT		;WHICH NAME ARE WE ON?
+	POP		DE			;GET IT BACK
+	
+	LD		BC,BTL_MENU_CMD_NAME1
+	ADD		HL,BC		;ADD IN THE BASE
+	
+	POP		BC			;POP NAME IN TEMPLATE BACK OUT
+	
+	SET16	H,L,BTL_TEXT_BUFFER_PTR
+	FSET16	B,C,BTL_CMD_BASE_PTR
+	XOR		A
+	LD		(BTL_COPY_COST_FLAG),A
+
+	PUSH	DE	
+	CALL_FOREIGN	?BTL_CMD_COPY_NAME
+	POP		DE
+
+	DEC		E
+	LD		A,$FF
+	CP		E			;DEC DOESN'T SET CY FLAG =>.<=
+	RET		Z
+	
+	LD		HL,BTL_MENU_CMDS
+	ADD		HL,DE
+	LD		A,(HL)		;LD A W/ PREVIOUS CMD 
+	JR		_STR_LUPE	;RELUPE!
+
+;********************************
+?BTL_CONTROL_CREATURE
+
+	;IMAGINE CHECK FOR CONFUSE FLAG
+	
+	XOR		A
+	LD		(BTL_ACTOR_EFFECT_TYPE),A
+	
+	;	Call creature command menu
+	;------------------------------------
+	CALL	?BTL_CREATURE_COMMAND_MENU	
+	
+	;Back to tony's menu?
+	;--------------------------
+	LD		A,(BTL_RETURN_MENU)
+	AND		A
+	RET		NZ
+
+	;	Check the selected command and call its menu
+	;if any, else just do its targeting
+	;-----------------------------------------------
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	LD		A,(BTL_TARGET_MODE)
+
+	CP		BTL_TARGET_ME
+	JR		NZ,_NOT_ME
+	LD		A,(BTL_ACTIVE_TURN)
+	RES		7,A
+	LD		(BTL_CREATURE_TARGET),A
+	BTL_TEXTCLOSE
+	RET		
+	
+_NOT_ME
+	CP		BTL_TARGET_NONE
+	JR		NZ,_NOT_NONE
+	BTL_TEXTCLOSE
+	RET		
+	
+_NOT_NONE
+	LD		A,(BTL_CREATURE_MENU)
+	AND		A
+	JR		NZ,_NEED_MENU
+	BTL_TEXTCLOSE
+	JR		_TARGET
+	
+_NEED_MENU
+	CALL_FOREIGN	?BTL_SELECT_MENU
+	
+	BTL_TEXTCLOSE
+	
+	LD		A,(MENU_RETURN_VALUE)	
+	CP		$FE						;CHECK FOR CANCEL
+	JR		NZ,_TARGET
+	LD		A,(BTL_ACTIVE_TURN)
+	CP		BTL_ID_HERO
+	JP		NZ,?BTL_CONTROL_CREATURE
+	BTL_TEXTOPEN
+	JP		?BTL_CONTROL_CREATURE	
+	
+_TARGET
+	;	Get the targeting
+	;-------------------------------------	
+	CALL_FOREIGN	?BTL_TARGET_CURSOR_CONTROL
+	
+	;	If they "b" out of the targeting, 
+	;	then JP ?btl_control_creature
+	;----------------------------------------
+	LD		A,(MENU_RETURN_VALUE)
+	CP		$FE
+	JP		NZ,_NO_CANCEL
+	LD		A,(BTL_ACTIVE_TURN)
+	CP		BTL_ID_HERO
+	JP		NZ,?BTL_CONTROL_CREATURE
+	BTL_TEXTOPEN
+	JP		?BTL_CONTROL_CREATURE
+	
+	
+	;if targeting is not multi-select, or non-specific
+	;(ally magi, etc) put the 
+	;chosen target into the open command.
+_NO_CANCEL
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_TARGET_ALLENEMY
+	RET		NC
+	
+	LD		A,(MENU_RETURN_VALUE)		
+	LD		(BTL_CREATURE_TARGET),A	
+	
+	LD		(BTL_ACTOR_AFFECTING),A	
+	CALL_FOREIGN	?BTL_SET_ACTOR_EFFECT
+	
+	RET
+	
+;********************************
+;Be sure to check for cost vs. remiaining energy
+;To see if it is a legal pick.
+;Also, make sure a legal target is in play.
+?BTL_CREATURE_COMMAND_MENU
+
+	;SETUP THE STRINGS FOR THE MENU/OPEN TXT BOX
+	;---------------------------------
+	CALL	?BTL_COMMAND_MENU_SETUP	
+	
+	CALL_FOREIGN	?BTL_DRAW_MENU
+	
+	;DO MENU
+	;-----------------------------------
+	XOR		A						;SET UP INIT MENU
+	LD		(MENU_RETURN_VALUE),A	;SET UP W/ 1 FOR TONY (SUMMON DEFAULT)
+	LD		(BTL_RETURN_MENU),A
+	LD		A,(BTL_ACTIVE_TURN)
+	AND		A
+	JR		NZ,_BTL_CMD_MENU_SETUP
+	LD		A,1
+	LD		(MENU_RETURN_VALUE),A		
+			
+_BTL_CMD_MENU_SETUP
+	MOVADDR				HFUNC,?HFUNC_WINDOW_SPRITE	;LET THE CURSOR BE SEEN
+	SWITCH_RAM_BANK		WRAM_BATTLE
+
+	LD		A,TEXT_BOX_CURSOR1
+	LD		(MENU_CURSOR_VRAM),A
+	LD		A,(BTL_ACTIVE_TURN)
+	CP		BTL_ID_HERO
+	JR		Z,_MENU_HERO
+	
+	LD		A,1
+	LD		HL,MENU_MAIN_VALID	
+	LD		(HLI),A
+	LD		(HLI),A
+	XOR		A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		A,1
+	LD		(HL),A
+	
+	LD		HL,BTL_CREATURE_CMD1LVL
+	LD		D,3
+	LD		BC,MENU_MAIN_VALID+2
+	
+_TABLE_LUPE
+	LD		A,(HLI)
+	CP		$FF
+	JR		NZ,_GOT_INDEX
+	LD		(BC),A
+	INC		BC
+	DEC		D
+	JR		NZ,_TABLE_LUPE
+	
+_GOT_INDEX
+	MENU_INIT	BATTLE_CREATURE_4CMD_MENU,243,MENU_MAIN_VALID,?MENU_FLASH,?MENU_FLASH,(MENU_RETURN_VALUE),MENU_CURSOR_NOBLINK,MENU_CURSOR_SPRITE
+	JP			_MENU_LUPE
+	
+_MENU_HERO
+	LD		A,1
+	LD		HL,MENU_MAIN_VALID
+	LD		D,5
+	
+_HERO_SETUP_LOOP
+	LD		(HLI),A
+	DEC		D
+	JR		NZ,_HERO_SETUP_LOOP
+	
+	XOR		A
+	LD		(HL),A		;NO DEFEND TOGGLE FOR TONY
+	
+	;Can't run from actual magi
+	;----------------------------
+	LD		A,(BTL_RUN_FLAG)
+	AND		A
+	JR		NZ,_CAN_RUN
+	XOR		A
+	LD		(MENU_MAIN_VALID+4),A	
+	
+_CAN_RUN
+	XOR		A
+	LD		HL,BTL_CREATURE_SLOTS+1
+	LD		D,4
+	
+_FULL_SUMMON_LOOP
+	CP		(HL)
+	JR		Z,_NO_RINGS_LEFT_CHECK
+	INC		HL
+	DEC		D
+	JR		NZ,_FULL_SUMMON_LOOP
+	
+_NO_SUMMON
+	XOR		A
+	LD		(MENU_MAIN_VALID+1),A	
+	LD		(MENU_RETURN_VALUE),A
+	
+	JR		_HERO_READY
+	
+_NO_RINGS_LEFT_CHECK	
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ALLY0
+	XOR		A
+	LD		D,4
+	
+_CREATURE_COUNT_LOOP
+	ADD		A,(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_CREATURE_COUNT_LOOP
+	
+	AND		A
+	JR		Z,_HERO_READY
+	CP		4
+	JR		Z,_HERO_READY
+	
+	LD		C,A	
+	LD		B,0
+	LD		HL,XRAM_INVENTORY_RINGS
+	ADD		HL,BC
+		
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+	
+	LD		A,(HL)
+	LD		B,A
+	
+	BATTERY_OFF
+	
+	LD		A,B
+	CP		$FF
+	JR		Z,_NO_SUMMON	
+	
+_HERO_READY
+	MENU_INIT	BATTLE_TONY_CMD_MENU,243,MENU_MAIN_VALID,?MENU_FLASH,?MENU_FLASH,(MENU_RETURN_VALUE),MENU_CURSOR_NOBLINK,MENU_CURSOR_SPRITE	
+	
+_MENU_LUPE
+	;Check for fight/defend toggle
+	;----------------------------
+	LD		A,(MENU_CURSOR_ID)
+	CP		5
+	JR		NZ,_NO_TOGGLE
+	MOVADDR		VBLANK_FUNC,?BATTLE_TOGGLE_VBLANK
+	XOR		A
+	LD		(MENU_CURSOR_ID),A
+	SET		BitRight,A
+	LD		(CNTDOWN),A
+	MENU_GO
+	CALL	?SYSTEM_UPDATE_GAME
+	LD		HL,BTL_CREATURE_OTHER
+	LD		A,(HL)
+	CPL		
+	LD		(HL),A	
+	
+_NO_TOGGLE
+	MENU_GO
+	CALL	?SYSTEM_UPDATE_GAME
+	LD		A,(MENU_RETURN_VALUE)
+	CP		$FF	
+	JR		NC,_MENU_LUPE
+	
+	CP		$FE
+	JR		NZ,_NOT_CANCEL
+	LD		A,(BTL_ACTIVE_TURN)
+	CP		BTL_ID_HERO
+	JR		Z,_MENU_LUPE
+	LD		A,1
+	LD		(BTL_RETURN_MENU),A
+	RET
+	
+_NOT_CANCEL	
+	CALL_FOREIGN	?BTL_OPEN_CMD	
+
+	;CHECK ENERGY/VALID TARGETS
+	;------------------------------	
+	CALL_FOREIGN	?BTL_CHECK_TARGET
+	LD		A,(BTL_CMD_VALID)
+	AND		A
+	RET		NZ
+	
+	JP		_BTL_CMD_MENU_SETUP		
+
+;********************************	
+?BTL_END_CHECK
+
+	LD		A,(BTL_EXIT_CODE)
+	AND		A
+	RET		NZ
+
+	;See if tony loses
+	;---------------------
+	XOR		A
+	LD		HL,BTL_HERO_ENGH
+	OR		(HL)
+	INC		HL
+	OR		(HL)
+	
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ALLY0
+	
+	
+	LD		D,4
+	
+_LOOP1		
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP1
+
+	
+	LD		HL,BTL_BEING_SUMMONED+BTL_ID_ALLY0
+	
+	LD		D,4
+	
+_LOOP2
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP2
+	
+	AND		A
+	JR		NZ,_WIN_CHECK
+	LD		A,BTL_EXIT_LOSE
+	LD		(BTL_EXIT_CODE),A
+	RET
+	
+_WIN_CHECK
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ENEMY0
+	XOR		A
+	
+	LD		D,4
+	
+_LOOP3
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP3
+	
+	AND		A
+	RET		NZ
+	
+	LD		B,A
+	
+	LD		A,(BTL_CREATURE_SLOTS+BTL_ID_MAGI)
+	AND		A
+	JR		Z,_WIN	
+	LD		HL,BTL_BEING_SUMMONED+BTL_ID_ENEMY0
+	
+	LD		D,4
+	LD		A,B
+	
+_LOOP4
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP4
+	
+	LD		HL,BTL_ENEMY_ENGH
+	OR		(HL)
+	INC		HL
+	OR		(HL)	
+
+	RET		NZ
+
+_WIN	
+	LD		A,BTL_EXIT_WIN
+	LD		(BTL_EXIT_CODE),A
+	RET	
+	
+;********************************
+?BTL_EXIT	
+
+	;FIND EXIT STATE
+	;----------------------
+	LD		A,(BTL_EXIT_CODE)
+	CP		BTL_EXIT_WIN
+	JP		NZ,_LOSE_CHECK
+	
+_WIN_CHECK
+	SOUND_START_SONG	SONGID_getitem
+	BTL_SET_MAGI_ANIM	(BTL_ENEMY_ID),LOSE_ANIM,BTL_ID_MAGI_ACTOR
+	BTL_SET_MAGI_ANIM	TONY,WIN_ANIM,BTL_ID_HERO_ACTOR
+	
+_DRAW_CHECK
+	
+	;GET ENERGY BACK FROM CREATURES
+	;PUT CREATURES BACK IF THEY NEED TO BE UPDATED
+	;---------------------------
+	LD		HL,BTL_HERO_XRAM0
+	LD		C,0
+	LD		B,CREATURE_BTL_SIZE
+	
+_INUSE_LOOP
+	PUSH	HL
+	DEREF_HL
+	LD		A,H
+	OR		L
+	JR		Z,_CONT_INUSE_LOOP
+	LD		DE,XRAM_CREATURE_EXPH
+	ADD		HL,DE
+	
+	;HL POINTS AT XRAM LOC OF CREATURE'S EXP
+	;-----------------
+	PUSH	HL
+	CALL	?MULT
+	LD		DE,BTL_ALLY0
+	ADD		HL,DE
+	LD		DE,CREATURE_EXPH
+	ADD		HL,DE
+	
+	;HL POINTS AT BENCH SLOT, GIVE TONY ENERGY BACK
+	;-----------------------------
+	PUSH	HL
+	LD		DE,CREATURE_EXPH
+	TWOS_COMP	D,E
+	ADD		HL,DE
+	LD		DE,CREATURE_ENGH
+	ADD		HL,DE
+	LD		A,(HLI)
+	LD		E,(HL)
+	LD		D,A
+	LD		HL,BTL_HERO_ENGH
+	LD		A,(HLI)
+	LD		L,(HL)
+	LD		H,A
+	ADD		HL,DE
+	INC		HL
+	
+	LD		A,(BTL_HERO_ENGMAXH)
+	LD		D,A
+	LD		A,(BTL_HERO_ENGMAXL)
+	LD		E,A
+	
+	LD		A,E
+	SUB		L
+	LD		A,D
+	SBC		A,H
+	JP		NC,_SET_TONY_ENERGY
+	
+	;SET UPPER BOUND AS NEW TOTAL
+	;------------------------
+	LD		H,D
+	LD		L,E
+	
+_SET_TONY_ENERGY
+	LD		A,H
+	LD		(BTL_HERO_ENGH),A
+	LD		A,L
+	LD		(BTL_HERO_ENGL),A
+	
+	;NOW HL POINTS AT BENCH SLOT, DE IS XRAM
+	;--------------------------
+	POP		HL
+	POP		DE	
+	BATTERY_ON
+	BATTERY_SET_BANK	RAMB_CREATURES	
+	
+	LD		A,(HLI)
+	LD		(DE),A
+	INC		DE
+	LD		A,(HLI)
+	LD		(DE),A
+	
+	BATTERY_OFF
+	
+_CONT_INUSE_LOOP	
+	POP		HL
+	INC		BC
+	LD		A,4
+	CP		C
+	JR		Z,_INUSE_DONE
+	INC		HL
+	INC		HL
+	JR		_INUSE_LOOP
+	
+_INUSE_DONE
+	;PUT TONY BACK IN XRAM
+	;----------------------------
+	LD		BC,BTL_HERO_ENGH
+	LD		HL,CREATURETONY_ENGH
+	
+	BATTERY_ON
+	BATTERY_SET_BANK	RAMB_CREATURES	
+	LD_HLI_BCI
+	LD_HLI_BCI
+	BATTERY_OFF	
+	
+	;GIVE TONY BOOTY
+	;--------------------
+	CALL_FOREIGN	?BTL_BOOTY		
+
+	;CHECK FOR LVL UP
+	;-------------------------	
+	CALL	?BTL_CHECK_LVL_UP
+
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_WIN_MSG
+	JP		_TXT_LOOP
+	
+_LOSE_CHECK
+	CP		BTL_EXIT_LOSE
+	JP		NZ,_RUN_CHECK
+	
+	BTL_SET_MAGI_ANIM	(BTL_ENEMY_ID),WIN_ANIM,BTL_ID_MAGI_ACTOR
+	BTL_SET_MAGI_ANIM	TONY,LOSE_ANIM,BTL_ID_HERO_ACTOR
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_LOSE_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	;palfade
+	LD				A,$20
+	LD				(TEMP_MISC5),A			; 8 iterations of fade out
+	LD				A,$0F					; fade all bg palettes
+	LD				(TEMP_MISC1),A
+	MOVADDR			TEMP_MISC3,$7FFF		; CLEAR TO white color
+	CALL_FOREIGN	?PALFX_CLEAR_BASEBUFFER
+	
+	; set to 4 x speed -- other parameters are the same
+	LD				A,1
+	LD				(TEMP_MISC4),A
+
+_PAL_LOOP	
+	CALL_FOREIGN	?PALFX_FADE_ANIM_TO_BASE
+	CALL_FOREIGN	?DETERMINE_UPDATE_PALETTE_VFUNC	
+	
+	CALL			?SYSTEM_UPDATE_GAME		; <-- total system update (sfx+graphics/animation+gamestates)
+	LD				A,(TEMP_MISC5)
+	DEC				A
+	LD				(TEMP_MISC5),A
+	JR				NZ,_PAL_LOOP
+	
+	SCREEN_HIDE
+	
+	;De-archive VRAM
+	CALL_FOREIGN	?CARDSCENE_DEARCHIVE_VRAM
+	
+	;START THE OLD SONG
+	LD					A,(SAVED_SONG)
+	SOUND_START_SONG	A
+	
+	;Go back to whatever called the BTL
+	;-----------------------------------	
+	SWITCH_RAM_BANK		WRAM_BATTLE 
+	LD			A,(BTL_LOSE_SCRIPT_BANK)
+	LDFF_A		SCRIPT_WBANK
+	FGET16		B,C,BTL_LOSE_SCRIPT
+	FSET16		B,C,SCRIPT_WFRAME
+
+	JP			?CMD_SCENENEW	
+	
+_RUN_CHECK
+	CP		BTL_EXIT_DRAW
+	JP		Z,_DRAW_CHECK
+	
+	;PUT TONY BACK IN XRAM
+	;----------------------------
+	LD		BC,BTL_HERO_ENGH
+	LD		HL,CREATURETONY_ENGH
+	
+	BATTERY_ON
+	BATTERY_SET_BANK	RAMB_CREATURES	
+	LD_HLI_BCI
+	LD		D,A
+	LD_HLI_BCI
+	OR		D
+	JR		NZ,_NOT_ZERO
+	DEC		HL
+	INC		(HL)
+_NOT_ZERO
+	BATTERY_OFF	
+
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_RUN_MSG	
+
+_TXT_LOOP
+	LD		A,(BTL_EXIT_CODE)
+	CP		BTL_EXIT_DRAW
+	JR		Z,_DRAW_SKIP_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+_DRAW_SKIP_MSG
+	;De-archive VRAM
+	SCREEN_HIDE
+	CALL_FOREIGN	?CARDSCENE_DEARCHIVE_VRAM
+	
+	;START THE OLD SONG
+	LD					A,(SAVED_SONG)
+	SOUND_START_SONG	A
+	
+	;Go back to whatever called the BTL
+	;-----------------------------------	
+	SWITCH_RAM_BANK		WRAM_BATTLE 
+	LD			A,(BTL_WIN_SCRIPT_BANK)
+	LDFF_A		SCRIPT_WBANK
+	FGET16		B,C,BTL_WIN_SCRIPT
+	FSET16		B,C,SCRIPT_WFRAME
+		
+	JP			?CMD_SCENENEW	
+	
+;********************************
+?BTL_LOSE_CHECK
+
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ALLY0
+	XOR		A
+	
+	LD		D,4
+	
+_LOOP1		
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP1
+
+	
+	LD		HL,BTL_BEING_SUMMONED+BTL_ID_ALLY0
+	
+	LD		D,4
+	
+_LOOP2
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP2
+
+	RET
+	
+;********************************
+?BTL_MAIN_LOOP
+
+	; ACH!  BLEMPH!  GAAAAAAAAA.....
+	;-------------------------------
+_RE_TONY
+	CALL	?BTL_PROCESS_HERO		; Murph!	
+	CALL	?BTL_PROCESS_ALLIES	; ...Etc
+	
+	;Back to tony's menu?
+	;--------------------------
+	LD		A,(BTL_RETURN_MENU)
+	AND		A
+	JR		NZ,_RE_TONY	
+
+	CALL	?BTL_PROCESS_ENEMIES
+	CALL	?BTL_PROCESS_MAGI
+
+	CALL	?BTL_SORT_CMD_ORDER
+	
+	CALL	?BTL_BATTLE_SCRIPT
+	
+	CALL	?BTL_PROCESS_BATTLE
+	
+	LD		A,(BTL_EXIT_CODE)
+	CP		BTL_NO_EXIT
+	JP		NZ,?BTL_EXIT
+	
+	JP		?BTL_MAIN_LOOP
+
+;********************************
+?BTL_PROCESS_ALLIES
+
+;	For each ally (creature summoned by hero)
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+
+	LD		DE,BTL_ALLY0				
+	FSET16	D,E,BTL_CREATURE_SLOT			
+	LD		HL,BTL_CREATURE_SLOTS+1		;START OF ALLIES
+	LD		B,4							;COUNTER	
+	
+_ALLY_LOOP
+	LD		A,(BTL_ACTIVE_TURN)
+	INC		A
+	LD		(BTL_ACTIVE_TURN),A
+
+	LD		A,(HLI)
+	AND		A
+	
+	PUSH	HL
+	PUSH	BC
+	
+	JP		Z,_DONE	
+	
+	;Open the ally
+	;----------------------------
+	FGET16	B,C,BTL_CREATURE_SLOT
+	LD		HL,BTL_CREATURE
+	CALL	?BTL_CREATURE_OPEN	
+	
+	;Check for stone ailment
+	;-------------------------
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		STONE
+	JR		Z,_NOT_STONE
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_ACTIVE_TURN),?_STATUS_STONED_ANIM
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_STONE
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	BTL_ACTOR_END		(BTL_ACTIVE_TURN)
+	
+	JP		_CLOSE	
+	
+_NOT_STONE
+	;Start the frame around the creature
+	;---------------------------
+	BTL_ACTOR_SET_SCRIPT	(BTL_ACTIVE_TURN),?_BOX_ANIM
+	
+	;Check for confuse
+	;------------------------------
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		CONFUSED
+	JR		Z,_NOT_CONFUSED
+	
+	XOR		A
+	LD		(MENU_RETURN_VALUE),A
+	CALL_FOREIGN	?BTL_OPEN_CMD
+	
+_CONFUSE_TARGET_LOOP
+	RANDVAL	E
+	LD		C,A
+	LD		B,10
+	CALL	?DIV
+	LD		H,0
+	LD		BC,BTL_CREATURE_SLOTS
+	PUSH	HL
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	POP		HL
+	JR		Z,_CONFUSE_TARGET_LOOP
+	LD		A,L
+	LD		(BTL_CREATURE_TARGET),A
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_ACTIVE_TURN),?_STATUS_CONFUSED_ANIM
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_CONFUSE_MSG	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	BTL_ACTOR_END		(BTL_ACTIVE_TURN)
+	
+	JR		_CLOSE	
+	
+_NOT_CONFUSED
+	;Call ?BTL_CONTROL_CREATURE
+	;------------------------------
+	CALL	?BTL_CONTROL_CREATURE
+	
+	;Stop the frame around the creature
+	;---------------------------
+	BTL_ACTOR_END		(BTL_ACTIVE_TURN)
+	
+	;Back to tony's menu?
+	;--------------------------
+	LD		A,(BTL_RETURN_MENU)
+	AND		A
+	JR		Z,_CLOSE
+	POP		HL
+	POP		HL
+	RET
+
+_CLOSE
+	;Close the ally
+	;------------------------------
+	LD		BC,BTL_CREATURE
+	FGET16	H,L,BTL_CREATURE_SLOT
+	CALL	?BTL_CREATURE_CLOSE
+	
+_DONE
+	POP		BC
+
+	DEC		B
+	JR		NZ,_CONTINUE
+	POP		HL		;BALANCE
+	RET
+	
+_CONTINUE
+	FGET16	H,L,BTL_CREATURE_SLOT
+	LD		DE,CREATURE_BTL_SIZE
+	ADD		HL,DE
+	SET16	H,L,BTL_CREATURE_SLOT
+
+	POP		HL	
+	
+	JP		_ALLY_LOOP	
+	
+;********************************
+?BTL_PROCESS_BATTLE
+
+	;clear flags
+	;------------------------
+	XOR		A
+	LD		(BTL_PROCESS_COUNT),A
+	LD		(BTL_NEW_SUMMONS),A
+	
+	LD		HL,BTL_RECENT_DEAD_ARRAY
+	LD		D,$0A
+	
+_CLEAR_DEAD_LOOP
+	LD		(HLI),A
+	DEC		D
+	JR		NZ,_CLEAR_DEAD_LOOP
+
+;	For each creature
+_TOP
+	XOR		A
+	LD		(BTL_EXERTION_FLAG),A
+
+	LD		A,(BTL_PROCESS_COUNT)
+	CP		2
+	JR		NC,_NOT_MAGI
+	
+	AND		A
+	JR		NZ,_NOT_TONY
+	
+	XOR		A
+	LD		(BTL_PROCESS_ACTIVE),A
+	LD		BC,BTL_HERO
+	JR		_GOT_CREATURE
+	
+_NOT_TONY
+	LD		A,BTL_ID_MAGI
+	LD		(BTL_PROCESS_ACTIVE),A
+	LD		BC,BTL_ENEMY
+	JR		_GOT_CREATURE	
+	
+_NOT_MAGI
+	;look in the sorted order list to see
+	;what creature goes at this time.
+	;------------------------------
+	LD		HL,BTL_INDEX_SLOTS-2
+	LD		C,A
+	ADD		A,L
+	LD		L,A
+	LD		C,(HL)		;WHICH CREATURE HAS THIS INITIATIVE
+	LD		A,$FF
+	CP		C
+	JP		Z,_NO_TURN
+	
+	;make sure the creature hasn't died yet
+	;---------------------------------
+	LD		B,0
+	LD		HL,BTL_CREATURE_SLOTS
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	JP		Z,_NO_TURN
+	
+	;Set the active process slot
+	;-------------------------
+	LD		A,C
+	LD		(BTL_PROCESS_ACTIVE),A
+	
+	LD		B,CREATURE_BTL_SIZE
+	
+	CALL	?MULT
+	
+	LD		BC,BTL_CREATURES	
+	ADD		HL,BC		;SINCE BTL_CRE STARTS AT TONY, THIS WORKS 
+						;ADJUSTMENT
+	LD		B,H
+	LD		C,L
+	
+_GOT_CREATURE
+	;Open creature
+	;---------------------
+	FSET16	B,C,BTL_CREATURE_SLOT
+	LD		HL,BTL_CREATURE
+	
+	CALL	?BTL_CREATURE_OPEN
+
+	;Check the hiccup status ailment
+	;---------------------------------
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		HICCUP
+	JR		Z,_NO_HICCUP	
+	
+	;Compute hiccup based of speed and luck
+	;Hiccup = (Rnd(32) + Luck(18)) + -Speed
+	;Hiccup true if => 0
+	;--------------------------------------
+	LD		A,(BTL_CREATURE_LUCK)
+	LD		B,A
+	LD		A,18
+	CALL	?BATTLE_LUCK
+	LD		B,A					;SAVE THE VAL FROM LUCK
+
+	LD		C,32
+	CALL	?RANDOM
+	ADD		A,B
+	LD		B,A					;SAVE THE "HICCUP FACTOR"
+	
+	LD		A,(BTL_CREATURE_SPEED)
+	CPL
+	ADD		A,B	
+	JR		NC,_NO_HICCUP
+	
+;			If hiccup
+;				Print the hiccup message
+
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_STATUS_HICCUP_ANIM
+
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_HICCUP_MSG	
+
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	BTL_ACTOR_END	(BTL_PROCESS_ACTIVE)
+
+	;goto _CMD_DONE
+	;--------------------------------------
+	JP		_CMD_DONE2
+
+_NO_HICCUP
+	;Deduct the command cost from the creature's energy
+	;------------------------------
+	LD		B,0	
+	LD		A,(BTL_CREATURE_COST)
+	LD		C,A
+	LD		A,(BTL_CREATURE_ENGH)
+	LD		H,A
+	LD		A,(BTL_CREATURE_ENGL)
+	LD		L,A
+	
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	
+	;Check to see if the creature over-exerted itself
+	;----------------------------------------	
+	JR		NC,_EXERTED
+	LD		A,H
+	OR		L
+	JR		NZ,_COST_DEDUCT_CONTINUE
+	
+_EXERTED
+	LD		A,B
+	OR		C
+	JR		Z,_COST_DEDUCT_CONTINUE
+	
+	;Change command to command 0, which is free.
+	;And defend, if rating = heal
+	;----------------------------------
+	LD		A,(BTL_PROCESS_COUNT)
+	CP		2
+	JR		NC,_NOT_MAGI_EXERT
+	LD		A,BTL_ID_HERO
+	LD		(BTL_ACTIVE_TURN),A
+	JR		_EXERT_COMMON
+	
+_NOT_MAGI_EXERT
+	LD		A,BTL_ID_ALLY0
+	LD		(BTL_ACTIVE_TURN),A
+	LD		A,(BTL_CREATURE_RATING)
+	RES		7,A
+	CP		BTL_CMD_RATING_HEAL0
+	JR		C,_EXERT_COMMON
+	LD		A,$FF
+	LD		(BTL_CREATURE_OTHER),A
+	
+_EXERT_COMMON
+	XOR		A
+	LD		(MENU_RETURN_VALUE),A
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		(BTL_EXERT_TARGET_CACHE),A
+	CALL_FOREIGN	?BTL_OPEN_CMD
+	
+	;Find target for cmd0, A has target mode
+	;-----------------------------------
+	LD		A,(BTL_EXERT_TARGET_CACHE)
+	CP		BTL_ID_MAGI+1
+	JR		C,_HAVE_EXERT_TARGET
+	LD		A,(BTL_CREATURE_TEAM)
+	AND		A
+	JR		Z,_EXERT_ALLY
+	
+_EXERT_ENEMY
+	CALL	?BTL_AI_GET_TARGET
+	JR		_FREE_COMMAND
+	
+_EXERT_ALLY	
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ENEMY0
+	
+_EXERT_ALLY_LOOP	
+	LD		A,(HLI)
+	AND		A
+	JR		Z,_EXERT_ALLY_LOOP
+	
+	DEC		HL
+	LD		BC,BTL_CREATURE_SLOTS
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,L	
+	
+_HAVE_EXERT_TARGET	
+	LD		(BTL_CREATURE_TARGET),A
+	JR		_FREE_COMMAND	
+		
+_COST_DEDUCT_CONTINUE
+	LD		A,H
+	LD		(BTL_CREATURE_ENGH),A
+	LD		A,L
+	LD		(BTL_CREATURE_ENGL),A	
+
+	;Close the BTL_CREATURE
+	;he is still there, its just he might need
+	;to be a target, so we update him now
+	;and open him again later if we need to
+	;--------------------------
+_FREE_COMMAND
+	FGET16		H,L,BTL_CREATURE_SLOT
+	LD			BC,BTL_CREATURE
+	CALL		?BTL_CREATURE_CLOSE
+
+	;If creature's command has a target
+	;-------------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_TARGET_ALLENEMY		;ANY LESS HAS ONE TARGET
+	JR		NC,_CMD_MULTI
+	
+_CMD_SINLGE
+	XOR		A
+	LD		(BTL_MULTI_FLAG),A
+	CALL	?BTL_APPLY_COMMAND
+	JR		_CMD_DONE
+
+_CMD_MULTI
+	;Check each creature against the target mode
+	;to see if they are valid for this attack.
+	;if so, set BTL_CREATURE_TARGET to that slot
+	;and call BTL_APPLY_COMMAND, else go to the next one.
+	;BLEH
+	;-------------------------------------
+	XOR		A
+	LD		(BTL_APPLY_FLAG),A
+	LD		A,1
+	LD		(BTL_MULTI_FLAG),A
+	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	AND		A
+	JR		Z,_MAGI_SKIP
+	CP		BTL_ID_MAGI
+	JR		Z,_MAGI_SKIP
+	
+	CALL_FOREIGN	?BTL_MSG_TARGET_PARAMS	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_TARGET_MANY_MSG
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_BOX_ANIM
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	BTL_ACTOR_END	(BTL_PROCESS_ACTIVE)
+	
+_MAGI_SKIP	
+	CALL_FOREIGN	?BTL_APPLY_MULTI
+
+_CMD_DONE
+	;RE-OPEN	
+	
+	FGET16	B,C,BTL_CREATURE_SLOT
+	LD		HL,BTL_CREATURE
+	CALL	?BTL_CREATURE_OPEN
+	
+	;Check for drain attack
+	;-------------------
+	LD		A,(BTL_DRAIN_FLAG)
+	AND		A
+	JR		Z,_CMD_DONE2
+	LD		A,(BTL_DRAIN_AMOUNT)
+	LD		L,A
+	LD		A,(BTL_PENDING_DAMAGE)
+	LD		B,A
+	CALL	?SCALE_NUMBER8
+	LD		C,A
+	LD		B,0
+	LD		A,(BTL_CREATURE_ENGH)
+	LD		H,A
+	LD		A,(BTL_CREATURE_ENGL)
+	LD		L,A
+	ADD		HL,BC
+	PUSH	HL
+	LD		A,(BTL_CREATURE_ENGMAXH)
+	LD		B,A
+	LD		A,(BTL_CREATURE_ENGMAXL)
+	LD		C,A
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	POP		HL
+	JR		NC,_DRAIN_DONE
+	TWOS_COMP	B,C
+	LD		H,B
+	LD		L,C
+		
+_DRAIN_DONE
+	LD		A,H
+	LD		(BTL_CREATURE_ENGH),A
+	LD		A,L
+	LD		(BTL_CREATURE_ENGL),A
+
+_CMD_DONE2
+	;if !Magi
+	LD		A,(BTL_PROCESS_COUNT)
+	CP		BTL_ID_HERO
+	JR		Z,_NO_AIL
+	CP		BTL_ID_MAGI-8		;MAGI GOES 2ND IN BATTLE
+	JR		Z,_NO_AIL
+
+	;Call	?BTL_STATUS_AILMENTS
+	;------------------------------
+	CALL	?BTL_STATUS_AILMENTS	
+	
+_NO_AIL
+	;CLOSE
+	FGET16	H,L,BTL_CREATURE_SLOT
+	LD		BC,BTL_CREATURE
+	CALL	?BTL_CREATURE_CLOSE		
+	
+;Did the creature over exert itself?
+	;----------------------------
+_EXTERTION_CHECK
+	LD		A,(BTL_EXERTION_FLAG)
+	AND		A
+	JP		Z,_NO_TURN
+	
+	;Is tony now @ 0?
+	;------------------------------
+	LD		A,(BTL_PROCESS_ACTIVE)
+	AND		A
+	JR		NZ,_TONY_LIVES
+	
+	;See if tony has any creatures left
+	;-----------------------------
+	CALL	?BTL_LOSE_CHECK
+	
+	AND		A
+	JP		NZ,_NO_TURN
+	
+	LD		A,BTL_EXIT_LOSE
+	LD		(BTL_EXIT_CODE),A
+	RET	
+	
+_TONY_LIVES
+	;Is enemy now @ 0?
+	;------------------------------
+	CP		BTL_ID_MAGI
+	JR		NZ,_MAGI_LIVES
+	
+	;See if enemy has any creatures left
+	;-----------------------------
+	CALL	?BTL_WIN_CHECK	
+	
+	AND		A
+	JP		NZ,_NO_TURN
+	
+	LD		A,BTL_EXIT_WIN
+	LD		(BTL_EXIT_CODE),A
+	RET	
+	
+_MAGI_LIVES
+	;clear the slot
+	;------------------------------	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_CREATURE_SLOTS
+	ADD		HL,BC
+	XOR		A
+	LD		(HL),A	
+	
+	;set up the recent dead array
+	;-----------------------------
+	LD		HL,BTL_RECENT_DEAD_ARRAY
+	ADD		HL,BC
+	LD		A,1
+	LD		(HL),A
+	
+	;CHECK FOR TONY'S CREATURE, 
+	;IF SO, clear exp slot
+	;-----------------------------
+	LD		A,(BTL_PROCESS_ACTIVE)
+	CP		BTL_ID_ENEMY0
+	JR		NC,_EXERT_MSG
+	
+	DEC		A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_ACTIVE_RINGS
+	ADD		HL,BC
+	LD		C,(HL)
+	LD		HL,BTL_HERO_USED_RINGS
+	ADD		HL,BC
+	LD		A,BTL_RING_USED
+	LD		(HL),A
+	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	DEC		A
+	ADD		A,A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_XRAM0
+	ADD		HL,BC
+	
+	;CLEAR OUT HERO XRAM SLOT
+	;---------------------------
+	XOR		A
+	LD		(HLI),A
+	LD		(HL),A	
+	
+_EXERT_MSG
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	
+	LD		A,(BTL_EXERTION_FLAG)
+	CP		1
+	JR		NZ,_TXT_LOOP_B	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_EXERT_MSG
+	
+_TXT_LOOP_B
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+	BTL_ACTOR_END		(BTL_PROCESS_ACTIVE)
+	
+	;Clear the card
+	;-----------------------------
+	XOR		A
+	LD		(BTL_ANIM_DONE),A
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_FLAME_ANIM
+	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	DEC		A
+	LD		B,A
+	
+	BTL_LOAD_CARD_VRAM	BLANK_CARD_TILE,B
+	
+_FLAMEY_LOOP
+	CALL	?SYSTEM_UPDATE_GAME
+	LD		A,(BTL_ANIM_DONE)
+	AND		A
+	JR		Z,_FLAMEY_LOOP
+	
+_NO_TURN
+	;INC counter and continue/leave
+	;Also check for battle exit code
+	;----------------------------
+	FGET16	H,L,BTL_ENGINE_TURN
+	LD		A,H
+	OR		L
+	JR		Z,_FIRST_TURN
+	LD		A,1
+	CP		L
+	JR		Z,_FIRST_TURN
+	CALL	?BTL_END_CHECK	
+	
+_FIRST_TURN
+	LD		A,(BTL_EXIT_CODE)
+	AND		A
+	RET		NZ
+	
+	LD		HL,BTL_PROCESS_COUNT
+	INC		(HL)
+	LD		A,9
+	CP		(HL)
+	JP		NC,_TOP	
+
+	;Update BTL_CREATURE_SLOTS for new summons
+	;-------------------------------
+	CALL_FOREIGN	?BTL_UPDATE_NEW_SUMMON
+
+	;INC THE TURN
+	;--------------------------
+	LD		HL,BTL_ENGINE_TURN
+	INCHL_16
+
+	RET
+
+;********************************
+?BTL_PROCESS_ENEMIES
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+
+	;set bit 7 to show enemy team
+	LD		A,BTL_ID_ENEMY0-1
+	SET		7,A
+	LD		(BTL_ACTIVE_TURN),A
+	
+	LD		DE,BTL_ENEMY0				
+	FSET16	D,E,BTL_CREATURE_SLOT			
+	LD		HL,BTL_CREATURE_SLOTS+5		;START OF ALLIES
+	LD		B,4							;COUNTER	
+	
+_ENEMY_LOOP
+	LD		A,(BTL_ACTIVE_TURN)
+	INC		A
+	LD		(BTL_ACTIVE_TURN),A
+
+	RES		7,A
+	LD		A,(HLI)
+	CP		0
+	
+	PUSH	HL
+	PUSH	BC
+	
+	JP		Z,_DONE	
+	
+	;Open the enemy
+	;----------------------------
+	FGET16	B,C,BTL_CREATURE_SLOT
+	LD		HL,BTL_CREATURE
+	CALL	?BTL_CREATURE_OPEN	
+	
+	;Clear defend flag
+	;-----------------------
+	XOR		A
+	LD		(BTL_CREATURE_OTHER),A
+	
+;Check for confuse
+	;------------------------------
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		CONFUSED
+	JR		Z,_NOT_CONFUSED
+	
+	XOR		A
+	LD		(MENU_RETURN_VALUE),A
+	CALL_FOREIGN	?BTL_OPEN_CMD
+	
+_CONFUSE_TARGET_LOOP
+	RANDVAL	E
+	LD		C,A
+	LD		B,10
+	CALL	?DIV
+	LD		H,0
+	LD		BC,BTL_CREATURE_SLOTS
+	PUSH	HL
+	ADD		HL,BC
+	LD		A,(HL)
+	AND		A
+	POP		HL
+	JR		Z,_CONFUSE_TARGET_LOOP
+	LD		A,L
+	LD		(BTL_CREATURE_TARGET),A
+	
+	LD		A,(BTL_ACTIVE_TURN)
+	RES		7,A
+	
+	BTL_ACTOR_SET_SCRIPT	A,?_STATUS_CONFUSED_ANIM
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_CONFUSE_MSG	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	LD		A,(BTL_ACTIVE_TURN)
+	RES		7,A
+	BTL_ACTOR_END		A
+	
+	JR		_CLOSE	
+	
+_NOT_CONFUSED	
+	
+	;Call the enemy AI
+	;--------------------------	
+	LD		A,(BTL_CREATURE_AI)
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_AI_TABLE
+	ADD		HL,BC
+	ADD		HL,BC
+	ECALL_HL
+	
+	XOR		A
+	LD		(BTL_CREATURE_OTHER),A
+	
+	
+_CLOSE
+	;Close the enemy
+	;------------------------------
+	LD		BC,BTL_CREATURE
+	FGET16	H,L,BTL_CREATURE_SLOT
+	CALL	?BTL_CREATURE_CLOSE	
+	
+_DONE
+	POP		BC
+
+	DEC		B
+	JR		NZ,_CONTINUE
+	POP		HL		;BALANCE
+	RET
+	
+_CONTINUE
+	FGET16	H,L,BTL_CREATURE_SLOT
+	LD		DE,CREATURE_BTL_SIZE
+	ADD		HL,DE
+	SET16	H,L,BTL_CREATURE_SLOT
+
+	POP		HL	
+	
+	JP		_ENEMY_LOOP		
+
+	RET
+
+;********************************
+?BTL_PROCESS_HERO
+
+	BTL_TEXTCLOSE	
+	BTL_TEXTOPEN
+
+	; Reset the turn counter
+	;---------------------	
+	XOR		A
+	LD		(BTL_ACTIVE_TURN),A
+
+	; AND NOW WE OPEN THE HERO
+	;--------------------------------
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	
+	LD		BC,BTL_HERO
+	LD		HL,BTL_CREATURE
+	CALL	?BTL_CREATURE_OPEN
+
+	;	Clear the hero's status
+	;	Clear the hero's relics
+	;---------------------------------
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	
+	XOR		A
+	LD		(BTL_CREATURE_STATUS),A
+	LD		HL,BTL_CREATURE_RELIC0
+	LD		(HLI),A
+	LD		(HL),A	
+	
+	;stop the hero's actor
+	;-----------------------
+	BTL_ACTOR_END	(BTL_CREATURE_TARGET)
+	
+	;	Call ?BTL_CONTROL_CREATURE
+	;------------------------------
+	BTL_SET_MAGI_ANIM	TONY,WAIT_ANIM,BTL_ID_HERO_ACTOR
+	CALL	?BTL_CONTROL_CREATURE
+	BTL_SET_MAGI_ANIM	TONY,STAND_ANIM,BTL_ID_HERO_ACTOR
+	
+	FGET16	H,L,BTL_CREATURE_FUNC_PTR
+	LD		BC,?CMD_FUNC_SUMMON
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,H
+	OR		L
+	JR		NZ,_NOT_SUMMON
+	BTL_SET_MAGI_ANIM	TONY,SUMMON_ANIM,BTL_ID_HERO_ACTOR	
+	
+_NOT_SUMMON
+	;Close the hero
+	;-------------------------------
+	LD		BC,BTL_CREATURE
+	LD		HL,BTL_HERO
+	CALL	?BTL_CREATURE_CLOSE
+
+	RET
+
+;********************************
+?BTL_PROCESS_MAGI
+
+	;Set the turn
+	;------------------------
+	LD		A,BTL_ID_MAGI
+	LD		(BTL_ACTIVE_TURN),A
+
+	;Open the enemy magi
+	;--------------------------------
+	LD		BC,BTL_ENEMY
+	LD		HL,BTL_CREATURE
+	CALL	?BTL_CREATURE_OPEN	
+
+;	Call the magi AI
+	;--------------------------	
+	LD		A,(BTL_CREATURE_AI)
+	ADD		A,A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_AI_TABLE
+	ADD		HL,BC
+	ECALL_HL
+	
+	XOR		A
+	LD		(BTL_CREATURE_OTHER),A
+	
+	;Close the magi
+	;-----------------------------
+	LD		HL,BTL_ENEMY
+	LD		BC,BTL_CREATURE
+	CALL	?BTL_CREATURE_CLOSE
+	
+
+;		->This AI is called even if there is no opposing magi
+;		->This AI controls the summoning of enemy creatures
+
+	;REMEMBER IF THEY SUMMON TO GET THE COST BYTE OUT OF THE TABLE
+
+	RET
+
+;********************************
+?BTL_SORT_CMD_ORDER
+;	Hero goes into slot 0
+;	Magi goes into slot 1
+;	Sort slots 2-9 by speed
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	
+	;Fill speed slots w/ speed vals for each
+	;active creature
+	;------------------------------
+	LD		C,$FF						;C IS COUNTER
+	
+_FILL_SPEED_LOOP
+	INC		C
+	LD		HL,BTL_CREATURE_SLOTS+1
+	LD		B,0
+	ADD		HL,BC
+	XOR		A
+	CP		(HL)
+	JR		Z,_EMPTY_SLOT
+	
+	LD		B,CREATURE_BTL_SIZE
+	CALL	?MULT					;HL HAS DEPTH INTO BTL_CREATURES
+	LD		DE,CREATURE_SPEED
+	ADD		HL,DE					;NOW ADD IN SPD ATTRIB LOCATION
+	LD		DE,BTL_ALLY0			
+	ADD		HL,DE					;AND FINALY ADD IN BASE
+	
+	;Save speed and snag luck
+	;-----------------------------------
+	LD		A,(HL)
+	LD		(BTL_SORT_CUR_SPD),A
+	LD		DE,CREATURE_LUCK-CREATURE_SPEED
+	ADD		HL,DE
+	LD		B,(HL)
+	LD		A,10					
+	
+	;Calc [-10,+10] off of luck, add to spd,
+	; store in slot
+	;-------------------------------------
+	PUSH	BC
+	CALL	?BATTLE_LUCK
+	POP		BC
+	LD		HL,BTL_SORT_CUR_SPD
+	ADD		A,(HL)
+	
+	JR		NC,_GOT_SPD
+	XOR		A	
+	
+_GOT_SPD
+	;ld the spd array w/ the final spd value
+	;ld the index array w/ C, the counter
+	;--------------------------------------
+	LD		HL,BTL_SPEED_SLOTS
+	LD		B,0
+	ADD		HL,BC
+	LD		(HL),A
+	LD		HL,BTL_INDEX_SLOTS
+	ADD		HL,BC
+	LD		(HL),C
+	INC		(HL)
+	JR		_FILL_LOOP_DONE
+	
+_EMPTY_SLOT
+	;ld the spd array w/ 0, and the index array
+	;w/ $FF.  All the FFs will get sorted to the 
+	;end and skipped during the resolution
+	;----------------------------------------
+	LD		HL,BTL_SPEED_SLOTS
+	LD		B,0
+	ADD		HL,BC
+	LD		(HL),A
+	LD		HL,BTL_INDEX_SLOTS
+	ADD		HL,BC
+	DEC		A
+	LD		(HL),A
+	
+_FILL_LOOP_DONE
+	LD		A,7
+	CP		C
+	JR		NZ,_FILL_SPEED_LOOP	
+	
+	;sort both arrays by the value in the spd array
+	;when you make a swap in the spd array, make 
+	;the same swap in the index array.
+
+_SORT_START
+	LD		E,7
+	XOR		A
+	LD		(BTL_COUNTER),A
+	
+_SORT_LOOP
+	LD		D,0
+	LD		HL,BTL_SPEED_SLOTS
+	LD		BC,BTL_INDEX_SLOTS
+
+	ADD		HL,DE
+	LD		A,E
+	ADD		A,C
+	LD		C,A
+	LD		A,(HL)	
+
+	DEC		HL
+	DEC		BC
+	CP		(HL)
+	JR		C,_NO_SWAP
+	
+_SWAP
+	LD		D,A
+	LD		A,(HLI)
+	LD		(HLD),A
+	LD		(HL),D
+	
+	LD		A,(BC)
+	INC		BC
+	LD		D,A
+	LD		A,(BC)
+	LD		(BTL_SWAP),A
+	LD		A,D
+	LD		(BC),A
+	DEC		BC
+	LD		A,(BTL_SWAP)
+	LD		(BC),A
+	
+_NO_SWAP
+	DEC		E
+	LD		A,(BTL_COUNTER)
+	CP		E
+	JR		NZ,_SORT_LOOP
+	
+	CP		6
+	RET		Z
+	
+	INC		A
+	LD		(BTL_COUNTER),A
+	LD		E,7
+	JR		_SORT_LOOP	
+	
+_DONE	
+	RET
+
+;********************************
+?BTL_STATUS_AILMENTS
+
+	LD		A,(BTL_EXERTION_FLAG)
+	AND		A
+	RET		NZ
+
+;	If BTL_CREATURE is PLAGUE
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		PLAGUE
+	JR		Z,_AIL1
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_STATUS_PLAGUE_ANIM	
+
+;		Draing BTL_CREATURE's energy
+	LD		A,(BTL_CREATURE_ENGL)
+	SUB		10
+	JR		C,_DEAD
+	JR		Z,_DEAD
+	LD		(BTL_CREATURE_ENGL),A
+	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_PLAGUE_DAMAGE_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	BTL_ACTOR_END		(BTL_PROCESS_ACTIVE)
+	
+	JR		_AIL1
+	
+_DEAD	
+	XOR		A
+	LD		HL,BTL_CREATURE_ENGH
+	LD		(HLI),A
+	LD		(HLI),A
+	
+	LD		A,2
+	LD		(BTL_EXERTION_FLAG),A
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_PLAGUE_DEAD_MSG
+	
+	RET
+	
+_AIL1
+;	If BTL_CREATURE is ERUPT
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		ERUPT
+	JP		Z,_AIL2
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_STATUS_ERRUPT_ANIM	
+	
+;		Decrement BTL_CREATURE's erupt counter
+	LD		A,(BTL_CREATURE_COUNTER)
+	LD		B,A			;SAVE COUNTER
+	AND		$F0			
+	SWAP	A			;GET THE ERUPT COUNTER IN THE LOWER 1/2
+	AND		A			;IF COUNTER IS 0, SET TO $F
+	JR		NZ,_COUNTER_EXISTS
+	LD		A,$0F
+_COUNTER_EXISTS
+	DEC		A
+
+;		if erupt counter = 0
+	JR		Z,_GARBLED_ERUPT
+	SWAP	A
+	LD		C,A			;SAVE NEW ERUPT COUNT
+	LD		A,B			;GET OLD COUNTER
+	AND		$0F			;MASK OUT OLD ERUPT
+	ADD		A,C			;ADD IN THE NEW ERUPT COUNT
+	LD		(BTL_CREATURE_COUNTER),A
+	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_ERUPTING_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+	BTL_ACTOR_END		(BTL_PROCESS_ACTIVE)
+	
+	JR		_AIL2
+
+_GARBLED_ERUPT
+	LD		A,(BTL_CREATURE_ENGH)
+	LD		H,A
+	LD		A,(BTL_CREATURE_ENGL)
+	LD		L,A
+	PUSH	HL
+
+	XOR		A
+	LD		HL,BTL_CREATURE_ENGH
+	LD		(HLI),A
+	LD		(HLI),A
+	POP		HL
+	
+	LD		A,3
+	CALL	?DIV16
+	INC  	A
+	
+	LD		C,A
+	LD		B,0
+	TWOS_COMP	B,C
+	FSET16	B,C,BTL_ERUPT_DAMAGE
+	LD		A,(BTL_CREATURE_TEAM)
+	SLA		A
+	SLA		A
+	INC		A
+	LD		HL,BTL_HERO_ENGH
+	LD		BC,CREATURE_BTL_SIZE
+	
+_ERUPT_SETUP
+	ADD		HL,BC
+	DEC		A
+	JR		NZ,_ERUPT_SETUP	
+	
+	LD		D,4
+_ERUPT_LOOP
+	GET16	B,C,BTL_ERUPT_DAMAGE
+	PUSH	HL
+	LD		A,(HLI)
+	LD		L,(HL)
+	LD		H,A
+	ADD		HL,BC
+	JR		C,_ERUPT_READY
+	LD		HL,1
+_ERUPT_READY
+	LD		B,H
+	LD		C,L	
+	POP		HL
+	LD		A,B
+	LD		(HLI),A
+	LD		A,C
+	LD		(HLI),A
+	DEC		D
+	JR		Z,_ERUPT_DONE
+	LD		BC,CREATURE_BTL_SIZE-2
+	ADD		HL,BC
+	JR		_ERUPT_LOOP
+
+_ERUPT_DONE
+	
+	LD		A,2
+	LD		(BTL_EXERTION_FLAG),A	
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_ERUPTED_MSG	
+	
+	RET
+
+_AIL2
+;	If BTL_CREATURE is MIRROR
+	LD		A,(BTL_CREATURE_STATUS)
+	AND		MIRROR
+	JR		Z,_AIL3
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_STATUS_MIRROR_ANIM	
+	
+	LD		HL,BTL_CREATURE	
+	XOR		A
+	CALL	?BTL_STATUS_DEC_MIRROR
+	
+	BTL_ACTOR_END		(BTL_PROCESS_ACTIVE)	
+	
+_AIL3
+
+	RET
+
+;********************************
+?BTL_STATUS_COMBOS
+
+;	If command rating is ATK
+	LD		A,(BTL_CREATURE_RATING)
+	CP		BTL_CMD_RATING_HEAL0
+	JP		NC,_NOT_ATK
+
+;		If BTL_TARGET is STONE and elemental is Earth
+	LD		A,(BTL_TARGET_STATUS)
+	AND		STONE
+	JR		Z,_COMBO3
+	
+	LD		A,(BTL_CREATURE_CMDELEM)
+	AND		EARTH
+	JR		Z,_COMBO2
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_STATUS_STONED_ANIM
+	
+;			Damage = 255	
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		A,255
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	
+;			RET
+	RET
+
+_COMBO2
+;		If BTL_TARGET is STONE
+;			Damage = 1/2
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_STATUS_STONED_ANIM
+
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		A,(BTL_PENDING_DAMAGE)
+	SRL		A
+	JR		NZ,_COMBO2_READY
+	LD		A,1
+_COMBO2_READY
+	LD		(BTL_OVERRIDE_DAMAGE),A
+
+;			RET
+	RET
+
+_COMBO3
+;		If BTL_TARGET is HIDDEN and mirror
+	LD		A,(BTL_TARGET_STATUS)
+	AND		HIDDEN
+	JR		Z,_COMBO5
+	
+	LD		A,(BTL_TARGET_STATUS)
+	AND		MIRROR
+	JR		Z,_COMBO4	
+	
+;			Damage = 255
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		A,255
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	
+;			RET
+	RET
+
+_COMBO4
+;		If BTL_TARGET is HIDDEN
+;			Remove hidden status
+	LD		A,(BTL_TARGET_STATUS)
+	XOR		HIDDEN
+	LD		(BTL_TARGET_STATUS),A
+
+_COMBO5
+;		If BTL_TARGET is PLAGUE and elemental is Fire
+	LD		A,(BTL_TARGET_STATUS)
+	AND		PLAGUE
+	JR		Z,_COMBO6
+	
+	LD		A,(BTL_CREATURE_CMDELEM)
+	AND		FIRE
+	JR		Z,_COMBO6
+	
+	LD		A,(BTL_CREATURE_PERMSTAT)
+	AND		PLAGUE
+	JR		NZ,_COMBO6
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_STATUS_PLAGUE_ANIM
+	
+	;Show cured plague msg
+	;----------------------------
+	LD		A,(BTL_TARGET_ID)
+	LD		(BTL_NAME_INDEX),A
+	LD		BC,TEXT_PARAM_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	CALL_FOREIGN	?BTL_COPY_CREATURE_NAME
+	
+	LD		A,?FORMAT
+	LD		(TEXT_PARAM_BUFFER+10),A
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_PLAGUE_CURED_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	BTL_ACTOR_END		(BTL_CREATURE_TARGET)
+
+;			Remove plague status	
+	LD		A,(BTL_TARGET_STATUS)
+	XOR		PLAGUE
+	LD		(BTL_TARGET_STATUS),A
+	
+
+_COMBO6
+;		If BTL_TARGET is HICCUP and elemental is Water
+	LD		A,(BTL_TARGET_STATUS)
+	AND		HICCUP
+	JR		Z,_COMBO7
+	
+	LD		A,(BTL_CREATURE_CMDELEM)
+	AND		WATER	
+	JR		Z,_COMBO7	
+
+	;Show cured hiccup msg
+	;--------------------------
+	LD		A,(BTL_TARGET_ID)
+	LD		(BTL_NAME_INDEX),A
+	LD		BC,TEXT_PARAM_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	CALL_FOREIGN	?BTL_COPY_CREATURE_NAME
+	
+	LD		A,?FORMAT
+	LD		(BTL_TABLE_COPY_BUFFER+10),A
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_HICCUP_CURED_MSG
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+;			Remove hiccup status	
+	LD		A,(BTL_TARGET_STATUS)
+	XOR		HICCUP
+	LD		(BTL_TARGET_STATUS),A
+
+_COMBO7
+;		If BTL_TARGET is CONFUSED and attack if from same team
+	LD		A,(BTL_TARGET_STATUS)
+	AND		CONFUSED
+	JR		Z,_COMBO8	
+	
+	LD		A,(BTL_TARGET_TEAM)
+	LD		B,A
+	LD		A,(BTL_CREATURE_TEAM)
+	AND		B
+	JR		Z,_COMBO8
+	
+;			Remove confused status
+	LD		A,(BTL_TARGET_STATUS)
+	XOR		CONFUSED
+	LD		(BTL_TARGET_STATUS),A
+
+_COMBO8
+
+	RET
+
+_NOT_ATK
+
+	RET
+	
+;********************************	
+;HL: PTR TO WHICH CREATURE TO DEC
+?BTL_STATUS_DEC_MIRROR
+
+	;See if auto remove
+	;-----------------
+	AND		A
+	JR		Z,_NORMAL_MIRROR
+	
+	PUSH	HL
+	LD		BC,CREATURE_COUNTER
+	ADD		HL,BC
+	PUSH	HL
+	JR		_MIRROR_GONE
+	
+
+	;Dec its counter, remove mirror is 
+	;counter = 0
+	;------------------
+	
+_NORMAL_MIRROR
+	PUSH	HL
+	LD		BC,CREATURE_COUNTER
+	ADD		HL,BC
+	PUSH	HL
+	LD		A,(HL)
+	LD		B,A			;SAVE COUNTER
+	AND		$0F			
+	DEC		A
+
+;		if mirror counter = 0
+	JR		Z,_MIRROR_GONE
+	LD		C,A			;SAVE NEW ERUPT COUNT
+	LD		A,B			;GET OLD COUNTER
+	AND		$F0			;MASK OUT OLD ERUPT
+	ADD		A,C			;ADD IN THE NEW ERUPT COUNT
+	POP		HL
+	LD		(HL),A
+	
+	;MIRROR MSG
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_MIRROR_WEAKEN_MSG
+	
+	JR		_TXT_2
+	
+_MIRROR_GONE
+	POP		HL			;BALANCE STACK
+	LD		A,MIRROR
+	POP		HL
+	PUSH	HL
+	LD		BC,CREATURE_STATUS
+	ADD		HL,BC
+	XOR		(HL)
+	LD		(HL),A
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_MIRROR_GONE_MSG
+	
+_TXT_2
+	POP		HL
+	LD		BC,CREATURE_ID
+	ADD		HL,BC
+	LD		A,(HL)
+	LD		(BTL_NAME_INDEX),A
+	LD		BC,TEXT_PARAM_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	CALL_FOREIGN	?BTL_COPY_CREATURE_NAME
+	LD		A,?FORMAT
+	LD		(TEXT_PARAM_BUFFER+10),A	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+	RET
+	
+;********************************	
+?BTL_WIN_CHECK
+
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_ENEMY0
+	XOR		A
+	
+	LD		D,4
+	
+_LOOP1		
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP1
+		
+	AND		A
+	RET		NZ
+		
+	LD		B,A	
+	
+	LD		A,(BTL_CREATURE_SLOTS+BTL_ID_MAGI)
+	AND		A
+	RET		Z	
+	
+	LD		HL,BTL_BEING_SUMMONED+BTL_ID_ENEMY0
+	
+	LD		D,4
+	XOR		A
+	
+_LOOP2
+	OR		(HL)
+	INC		HL
+	DEC		D
+	JR		NZ,_LOOP2
+	
+	LD		HL,BTL_ENEMY_ENGH
+	OR		(HL)
+	INC		HL
+	OR		(HL)
+
+	RET
+
+;********************************
+	END
+;********************************

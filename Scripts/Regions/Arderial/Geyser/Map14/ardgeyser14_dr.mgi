@@ -1,0 +1,46 @@
+/***********************************************/
+
+?_ARDGEYSER14_DR_1
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay						(6)
+	ThatActorStop				(HEROACTOR)
+	ScrollMap					(56,0,-4)
+	Jump						(?_ARDGEYSER21_FROM14)
+
+?_ARDGEYSER14_DR_2
+	HeroSetDoor					(10,0)
+	Jump						(?_ARDGEYSER13)
+	
+?_ARDGEYSER14_DR_3
+	HeroSetDoor					(16,0)
+	Jump						(?_ARDGEYSER13)
+
+/***********************************************/
+
+?_ARDGEYSER14_TR_1
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER14_Door1,?_END,190,7,11,27)
+	LoadSpareMap		(SCR_ARDGEYSER14B,COL_ARDGEYSER14B)
+	CopyTileSpare		(27,6,9,3,4,6,9)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+
+
+?_ARDGEYSER14_TR_2
+	TriggerTreasure	(ARDGEYSER14_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,5,4,27)
+
+?_ARDGEYSER14_TR_3
+	TriggerTreasure	(ARDGEYSER14_Chest2,INV_TYPE_SPELL,INV_LIGHTNING,7,4,27)
+
+?_ARDGEYSER14_TR_4
+	TriggerTreasure	(ARDGEYSER14_Chest3,INV_TYPE_ITEM,INV_BALOO_ROOT,9,4,27)
+
+		

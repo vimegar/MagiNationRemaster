@@ -1,0 +1,40 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP07\UNDTOWN07_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP07\UNDTOWN07_TXT.MGI
+
+/********************************/
+?_UNDTOWN07
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN07)
+	LoadHotspots			(HS_UNDTOWN07)
+	LoadTriggers			(TR_UNDTOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,4,3,10,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,4,4,10,0,?_ULK_STAND_DR_ANIM,?_UNDTOWN07_ULK_TALKER)
+	LoadVRAMTiles			(48,BIT_ULK,0,0)
+	ThatActorStart			(HEROACTOR)
+	If						([GAMECOUNT != GC_UND_INTRO],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+
+?_UNDTOWN07_ULK_TALKER
+	ThisActorSetAnim		(?_ULK_STAND_DR_ANIM)
+	If						([Kidnapping > 0],_ULK_IS_SAD)
+	If						([Talked_To_Ulk],_ULK_TALKS_LESS)
+	SetXRAMBit				(Talked_To_Ulk,TRUE)
+	SetText					(?_UNDTOWN07_TXT_1)
+	Jump					(?_FACE_ULK)
+_ULK_TALKS_LESS
+	SetText					(?_UNDTOWN07_TXT_2)
+	Jump					(?_FACE_ULK)
+_ULK_IS_SAD
+	SetText					(?_UNDTOWN07_TXT_3)
+	Jump					(?_FACE_ULK)
+
+

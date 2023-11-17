@@ -1,0 +1,90 @@
+?_HLDMAZE11_DR_1
+		HeroToDoor	(41,29,9,0)
+		Jump		(?_HLDMAZE10)
+
+?_HLDMAZE11_DR_2
+		If			([DOOR_2],?_HLDMAZE11_DR_2_END)
+		Jump		(?_HLDMAZE11_DOOR_LOCKED)
+?_HLDMAZE11_DR_2_END
+		End			()
+
+?_HLDMAZE11_TR_1
+		TriggerTreasure		(HldChest2,INV_TYPE_ITEM,INV_SHADOW_KEY,3,18,50)
+
+/*******************************/
+// ALL 6 SWITCHES for this map
+/*******************************/
+?_HLDMAZE11_TR_2
+		ToggleOnce			(Switch12,?_END,250,251,11,9,50)
+		End					()
+/*******************************/
+	
+?_HLDMAZE11_TR_3
+		ToggleOnce			(Switch2,_HLDMAZE11_SWITCH2,250,251,37,24,50)
+		CopyTileBlock		(50,0,0,2,3,41,13)
+		End					()
+_HLDMAZE11_SWITCH2
+		CopyTileBlock		(50,23,6,2,3,41,13)
+		End					()
+/*******************************/
+
+?_HLDMAZE11_TR_4
+		ToggleOnce			(Switch3,_HLDMAZE11_SWITCH3,250,251,44,6,50)
+		CopyTileBlock		(50,14,4,2,7,32,17)
+		CopyTileBlock		(50,4,0,1,1,33,23)
+		End					()
+_HLDMAZE11_SWITCH3
+		CopyTileBlock		(50,31,3,2,7,32,17)
+		End					()
+
+/*******************************/
+
+?_HLDMAZE11_TR_5
+		ToggleOnce			(Switch4,_HLDMAZE11_SWITCH4,250,251,25,17,50)
+		CopyTileBlock		(50,14,4,2,7,33,3)
+		CopyTileBlock		(50,4,0,1,1,33,09)
+		End					()
+_HLDMAZE11_SWITCH4
+		CopyTileBlock		(50,31,3,2,7,33,3)
+		End					()
+
+/*******************************/
+
+?_HLDMAZE11_TR_6
+		ToggleOnce			(Switch5,_HLDMAZE11_SWITCH5,250,251,17,6,50)
+		CopyTileBlock		(50,14,4,2,7,14,17)
+		CopyTileBlock		(50,4,0,1,1,14,23)
+		End					()
+_HLDMAZE11_SWITCH5
+		CopyTileBlock		(50,31,3,2,7,14,17)
+		End					()
+
+/*******************************/
+
+?_HLDMAZE11_TR_7
+		ToggleOnce			(Switch6,?_END,250,251,8,24,50)
+		End					()
+
+
+/*******************************/
+//END SWITCHES
+/*******************************/
+
+?_HLDMAZE11_TR_8
+		TriggerTreasure		(HLDMAZE11Chest1,INV_TYPE_ITEM,INV_RUNEOFPOWER,21,10,50)
+
+
+?_HLDMAZE11_TR_9			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("What is this=")
+						("stuff?")
+		TextClose		()
+		End				()
+
+?_HLDMAZE11_TR_10			// TOILET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Disturbing.")
+		TextClose		()
+		End				()

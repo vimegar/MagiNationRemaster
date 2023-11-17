@@ -1,0 +1,82 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GEYSER\MAP06\NRMGEYSER06_DR.MGI
+/********************************/
+
+?_NRMGEYSER06						
+?_NRMGEYSER06A
+	SceneNew			()
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+?_NRMGEYSER06_RETURN
+	If					([GAMECOUNT = GC_GLOVES],?_NRMGEYSER06D)
+	If					([Nrmgeyser_switch1],?_NRMGEYSER06B)
+	If					([Nrmgeyser_switch4],?_NRMGEYSER06C)
+	LoadMap				(MAP_NRMGEYSER06)
+	LoadHotspots		(HS_NRMGEYSER06)
+	LoadTriggers		(TR_NRMGEYSER06)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_NRMGEYSER06_RETURN)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+
+?_NRMGEYSER06B	
+	If					([Nrmgeyser_switch4],?_NRMGEYSER06D)
+	SceneNew			()
+	LoadMap				(MAP_NRMGEYSER06)
+	LoadHotspots		(HS_NRMGEYSER06)
+	LoadTriggers		(TR_NRMGEYSER06)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	SongStart			(SONGID_maze)
+	HeroSetCamera		()
+	CopyTileBlock		(24,16,22,4,1,16,19)
+	CopyTileBlock		(24,16,22,4,1,16,20)
+	CopyTileBlock		(24,16,22,4,1,16,21)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+
+
+?_NRMGEYSER06C	
+	SceneNew			()
+	LoadMap				(MAP_NRMGEYSER06)
+	LoadHotspots		(HS_NRMGEYSER06)
+	LoadTriggers		(TR_NRMGEYSER06)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	SongStart			(SONGID_maze)
+	HeroSetCamera		()
+	CopyTileBlock		(24,7,6,1,2,14,6)
+	CopyTileBlock		(24,9,8,4,3,14,3)
+	CopyTileBlock		(24,9,8,3,2,15,6)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+
+?_NRMGEYSER06D	
+	SceneNew			()
+	LoadMap				(MAP_NRMGEYSER06)
+	LoadHotspots		(HS_NRMGEYSER06)
+	LoadTriggers		(TR_NRMGEYSER06)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	SongStart			(SONGID_maze)
+	HeroSetCamera		()
+	CopyTileBlock		(24,7,6,1,2,14,6)
+	CopyTileBlock		(24,9,8,4,3,14,3)
+	CopyTileBlock		(24,9,8,3,2,15,6)
+	CopyTileBlock		(24,16,22,4,1,16,19)
+	CopyTileBlock		(24,16,22,4,1,16,20)
+	CopyTileBlock		(24,16,22,4,1,16,21)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()

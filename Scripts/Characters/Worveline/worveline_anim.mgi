@@ -1,0 +1,96 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_WORVELINE_STAND_LEFT_ANIM
+
+	Frame:		(255,0,0,?WORVELINE_01_LEFT)
+	
+	JumpLocal	(?_WORVELINE_STAND_LEFT_ANIM)
+
+/********************************/
+?_WORVELINE_STAND_RIGHT_ANIM
+
+	Frame:		(255,0,0,?WORVELINE_01_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_STAND_RIGHT_ANIM)
+
+/********************************/
+?_WORVELINE_SUCKIT_LEFT_ANIM
+
+	FrameBlock:	(16,0,0)
+				(?WORVELINE_02_LEFT)
+				(?WORVELINE_01_LEFT)
+	
+	JumpLocal	(?_WORVELINE_SUCKIT_LEFT_ANIM)
+
+/********************************/
+?_WORVELINE_SUCKIT_RIGHT_ANIM
+
+	FrameBlock:	(16,0,0)
+				(?WORVELINE_02_RIGHT)
+				(?WORVELINE_01_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_SUCKIT_RIGHT_ANIM)
+
+/********************************/
+?_WORVELINE_MOVE_LEFT_ANIM
+
+	FrameBlock:	(2,-2,0)
+				(?WORVELINE_01_LEFT)
+				(?WORVELINE_02_LEFT)
+	
+	JumpLocal	(?_WORVELINE_MOVE_LEFT_ANIM)
+
+/********************************/
+?_WORVELINE_MOVE_RIGHT_ANIM
+
+	FrameBlock:	(2,2,0)
+				(?WORVELINE_01_RIGHT)
+				(?WORVELINE_02_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_MOVE_RIGHT_ANIM)
+
+/********************************/
+?_WORVELINE_MOVE_UP_ANIM
+
+	FrameBlock:	(2,0,-2)
+				(?WORVELINE_02_LEFT)
+				(?WORVELINE_01_RIGHT)
+				(?WORVELINE_01_LEFT)
+				(?WORVELINE_02_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_MOVE_UP_ANIM)
+
+/********************************/
+?_WORVELINE_MOVE_DOWN_ANIM
+
+	FrameBlock:	(2,0,2)
+				(?WORVELINE_02_LEFT)
+				(?WORVELINE_01_RIGHT)
+				(?WORVELINE_01_LEFT)
+				(?WORVELINE_02_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_MOVE_DOWN_ANIM)
+
+/********************************/
+?_WORVELINE_HOP_UP_ANIM
+	
+	Frame:		(1,1,-4,?WORVELINE_02_RIGHT)
+				(2,1,-3,?WORVELINE_02_RIGHT)
+				(2,1,-2,?WORVELINE_02_RIGHT)
+				(2,1,-1,?WORVELINE_02_RIGHT)
+				(2,2,0,?WORVELINE_02_RIGHT)
+	
+	JumpLocal	(?_WORVELINE_STAND_RIGHT_ANIM)
+
+/********************************/
+?_WORVELINE_HOP_DOWN_ANIM
+	
+	Frame:		(2,-2,0,?WORVELINE_02_LEFT)
+				(2,-1,1,?WORVELINE_02_LEFT)
+				(2,-1,2,?WORVELINE_02_LEFT)
+				(2,-1,3,?WORVELINE_02_LEFT)
+				(1,-1,4,?WORVELINE_02_LEFT)
+	
+	JumpLocal	(?_WORVELINE_STAND_LEFT_ANIM)

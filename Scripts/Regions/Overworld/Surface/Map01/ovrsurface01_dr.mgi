@@ -1,0 +1,114 @@
+/********************************/
+?_OVERSURFACE01_DR_1
+		HeroToDoor		(32,12,5,15)
+		Jump			(?_NRMGLADE03_FADEIN)
+		
+?_OVERSURFACE01_DR_2
+		HeroSetDoor		(5,1)
+		Jump			(?_NRMGLADE02_FADEIN)
+
+?_OVERSURFACE01_DR_3
+		HeroSetDoor		(0,20)
+		Jump			(?_NRMGLADE04_FADEIN)
+
+?_OVERSURFACE01_DR_4
+		HeroSetDoor		(4,35)
+		Jump			(?_NRMLAKE03_FADEIN)
+
+?_OVERSURFACE01_DR_5
+		HeroSetDoor		(15,6)
+		Jump			(?_NRMGLADE11_FADEIN)
+
+?_OVERSURFACE01_DR_6
+		HeroSetDoor		(11,29)
+		Jump			(?_NRMTOWEAVE01_FADEIN)
+
+?_OVERSURFACE01_DR_7
+		HeroSetDoor		(13,1)
+		Jump			(?_WVEPATHVALLEY01_FADEIN)
+
+?_OVERSURFACE01_DR_8
+		HeroSetDoor		(7,1)
+		Jump			(?_NRMGLADE08)
+
+?_OVERSURFACE01_DR_9
+		HeroSetDoor		(5,11)
+		Jump			(?_NRMGLADE10_FADEIN)
+
+?_OVERSURFACE01_DR_10
+		HeroSetDoor		(22,38)
+		Jump			(?_WVEGIASHUT01_FADEIN)
+
+?_OVERSURFACE01_DR_11
+		HeroSetDoor		(20,39)
+		Jump			(?_WVEPATHVALLEY04_FADEIN)
+
+?_OVERSURFACE01_DR_12
+		HeroSetDoor		(12,47)
+		Jump			(?_WVEPATHVALLEY07_FADEIN)
+
+?_OVERSURFACE01_DR_13
+		HeroSetDoor		(30,35)
+		Jump			(?_WVECOREENTRANCE01)
+
+?_OVERSURFACE01_DR_14
+		HeroSetDoor		(0,11)
+		Jump			(?_FERRY01_AT_WEAVE)
+
+?_OVERSURFACE01_DR_15
+		HeroSetDoor		(11,28)
+		Jump			(?_NRMTOWEAVE01_FADEIN)
+
+?_OVERSURFACE01_DR_16
+		HeroSetDoor		(13,0)
+		Jump			(?_WVEPATHVALLEY01_FADEIN)
+
+?_OVERSURFACE01_DR_17
+		HeroSetDoor		(8,49)
+		Jump			(?_CLDLAVATUBE12)
+
+?_OVERSURFACE01_DR_18
+		HeroSetDoor		(0,11)
+		Jump			(?_FERRY01_AT_CALD)
+
+?_OVERSURFACE01_DR_19
+		HeroSetDoor		(3,19)
+		Jump			(?_WVEPATHVALLEY05_FADEIN)
+
+?_OVERSURFACE01_DR_20
+		HeroSetDoor		(8,18)
+		Jump			(?_OROISLANDS04)
+
+?_OVERSURFACE01_DR_21
+		HeroSetDoor		(38,0)
+		Jump			(?_UNDTUNNEL23)
+
+?_OVERSURFACE01_DR_22
+		HeroSetDoor		(10,18)
+		Jump			(?_FORT01)
+
+?_OVERSURFACE01_DR_23
+		HeroSetDoor		(29,11)
+		Jump			(?_FERRY02)
+
+?_OVERSURFACE01_DR_24
+		HeroSetDoor		(18,9)
+		Jump			(?_HDNROOM03C)
+
+?_OVERSURFACE01_DR_25
+		HeroSetDoor		(1,25)
+		Jump			(?_OVRSURFACE01B)
+/***********************************/
+//	HYREN'S GLADE
+/***********************************/
+?_OVERSURFACE01B_DR_1
+		HeroSetDoor		(8,8)
+		Jump			(?_OVRSURFACE01)
+		
+?_OVERSURFACE01B_TR_1
+		TriggerTreasure	(OVRSURFACE01B_Chest1,INV_TYPE_RELIC,INV_HYREN_S_CLAW,19,19,40)
+
+/***********************************/
+//	END HYREN'S GLADE
+/***********************************/
+

@@ -1,0 +1,30 @@
+/********************************/
+
+?_NRMLAKE01_DR_1
+		HeroToDoor	(20,59,2,0)
+		Jump		(?_NRMLAKE03)
+
+?_NRMLAKE01_DR_2
+		HeroToDoor	(17,35,4,10)
+		Jump		(?_NRMLAKE02)
+
+?_NRMLAKE01_DR_3
+		HeroSetDoor	(18,17)
+		Jump		(?_NRMLAKE06)
+
+/********************************/
+
+?_NRMLAKE01_TR_1
+	TriggerTreasure	(NRMLAKE01_Chest1,INV_TYPE_RELIC,INV_LEAF_ESSENCE,9,6,60)
+
+?_NRMLAKE01_TR_2
+	TriggerTreasure	(NRMLAKE01_Chest2,INV_TYPE_RELIC,INV_GRAILOFLIFE,44,12,60)
+
+?_NRMLAKE01_TR_3
+	TextOpen		()
+	TextWrite		("It's locked.")
+	TextClose		()
+	End				()
+
+/********************************/
+

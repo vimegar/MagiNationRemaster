@@ -1,0 +1,31 @@
+/********************************/
+?_CLDGEYSER05_DR_1
+	HeroToDoor			(29,7,0,21)
+	Jump				(?_CLDGEYSER04)
+	
+?_CLDGEYSER05_DR_2
+	HeroToDoor			(2,0,18,47)
+	Jump				(?_CLDGEYSER03)
+	
+?_CLDGEYSER05_DR_3
+	HeroToDoor			(11,0,33,47)
+	Jump				(?_CLDGEYSER03)	
+	
+?_CLDGEYSER05_DR_4
+	Jump				(?_CLDGEYSER05_BOSSFIGHT)
+
+?_CLDGEYSER05_TR_1
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	TriggerAlways				(Cldgeyser05_Trig1,?_CLDGEYSER_BROKEN,17,18,4,30)
+	InitSkip					(_INITSKIP)
+	SetText						(?_CLDGEYSER_SNAP)
+	WaitEventText				(1)
+_INITSKIP
+	LoadSpareMap				(SCR_CLDGEYSER05B,COL_CLDGEYSER05B)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	CopyTileSpare				(30,0,2,7,2,11,4)
+	CopyTileSpare				(30,14,0,7,1,11,6)
+	CopyTileSpare				(30,8,1,20,20,5,7)
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+	

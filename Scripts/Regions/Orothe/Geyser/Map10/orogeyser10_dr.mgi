@@ -1,0 +1,99 @@
+/********************************/
+
+?_OROGEYSER10_DR_1
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,1)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+	
+?_OROGEYSER10_DR_2
+	HeroSetDoor		(17,27)
+	Jump			(?_OROGEYSER05)
+
+?_OROGEYSER10_DR_3
+	HeroSetDoor		(6,6)
+	Jump			(?_OROGEYSER02)
+
+?_OROGEYSER10_DR_4
+	HeroSetDoor		(25,8)
+	Jump			(?_OROGEYSER03)
+
+?_OROGEYSER10_DR_5
+	HeroSetDoor		(6,28)
+	Jump			(?_OROGEYSER04)
+
+?_OROGEYSER10_DR_6
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,4)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+
+?_OROGEYSER10_DR_7
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,5)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+
+?_OROGEYSER10_DR_8
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,6)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+
+?_OROGEYSER10_DR_9
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte2,1)		// Whirlpool
+	Jump			(?_OROGEYSER08)
+
+?_OROGEYSER10_DR_10
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,2)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+
+?_OROGEYSER10_DR_11
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte,3)		// Whirlpool
+	Jump			(?_OROGEYSER01)
+
+?_OROGEYSER10_DR_12
+	ThatActorStop	(HEROACTOR)
+	Delay			(112)
+	SetXRAMByte		(Falling_Byte3,1)		// Whirlpool
+	Jump			(?_OROGEYSER09)
+
+?_OROGEYSER10_DR_13
+	HeroSetDoor		(0,1)
+	Jump			(?_OROGEYSER11)
+	
+/********************************/
+
+?_OROGEYSER10_TR_1
+	TriggerTreasure	(OROGEYSER10_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,55,43,64)
+
+?_OROGEYSER10_TR_2
+	TriggerTreasure	(OROGEYSER10_Chest2,INV_TYPE_ITEM,INV_BALOO_SAP,57,43,64)
+
+?_OROGEYSER10_TR_3
+	TriggerTreasure	(OROGEYSER10_Chest3,INV_TYPE_ITEM,INV_RUNEOFPOWER,23,54,64)
+
+?_OROGEYSER10_TR_4
+	TriggerTreasure	(OROGEYSER10_Chest4,INV_TYPE_SPELL,INV_TIDAL_WAVE,2,37,64)
+
+?_OROGEYSER10_TR_5
+	TriggerTreasure	(OROGEYSER10_Chest5,INV_TYPE_ITEM,INV_MASTER_RUNE,25,25,64)
+
+?_OROGEYSER10_TR_6
+	TriggerTreasure	(OROGEYSER10_Chest6,INV_TYPE_ITEM,INV_BALOO_ROOT,26,25,64)
+
+?_OROGEYSER10_TR_7
+	TriggerTreasure	(OROGEYSER10_Chest7,INV_TYPE_ITEM,INV_BALOO_SAP,47,27,64)
+
+?_OROGEYSER10_TR_8
+	TriggerTreasure	(OROGEYSER10_Chest8,INV_TYPE_ITEM,INV_BALOO_LEAF,47,28,64)
+
+?_OROGEYSER10_TR_9
+	TriggerTreasure	(OROGEYSER10_Chest9,INV_TYPE_ITEM,INV_RUNEOFPOWER,59,9,64)
+	

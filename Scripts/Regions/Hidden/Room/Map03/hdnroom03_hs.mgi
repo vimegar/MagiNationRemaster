@@ -1,0 +1,23 @@
+/********************************/
+		FileHotspots	(HS_HDNROOM03)
+						(HOTSPOT_TRIGGER_EAST,?_HDNROOM03_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM03_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNROOM03_DR_3)
+
+		FileTriggers	(TR_HDNROOM03)
+						(TRIGGER_NORMAL,?_HDNROOM03_TR_1)
+
+/********************************/
+//	ROUTE TO HYREN'S GLADE
+/********************************/
+		FileHotspots	(HS_HDNROOM03B)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM03B_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HDNROOM03B_DR_2)
+
+/********************************/
+		FileHotspots	(HS_HDNROOM03C)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM03C_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_HDNROOM03C_DR_2)
+/********************************/
+//	END ROUTE TO HYREN'S GLADE
+/********************************/

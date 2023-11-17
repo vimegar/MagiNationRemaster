@@ -1,0 +1,61 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP03\UNDTOWN03_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\TOWN\MAP03\UNDTOWN03_TXT.MGI
+
+?_LOAD_UNDTOWN03
+	HeroSetDoor				(8,13)
+
+/********************************//********************************/
+?_UNDTOWN03
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN03)
+	LoadHotspots			(HS_UNDTOWN03)
+	LoadTriggers			(TR_UNDTOWN03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,6,13,20,0,?_OLDLADY02_STAND_RIGHT_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	End						()
+
+?_UNDTOWN03_TONY_WAKING
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_UNDTOWN03)
+	LoadHotspots			(HS_UNDTOWN03)
+	LoadTriggers			(TR_UNDTOWN03)
+	LoadPalette				(PAL_HERO)
+	PalClearAnim			(0,15,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,15,5,20,0,_TONY_WAKING,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,6,13,20,0,?_OLDLADY02_STAND_RIGHT_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,0,0)
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	Sync					(2,0)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End						()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_INBED_RIGHT_ANIM,64)
+							(?_HERO_INBED_LEFT_ANIM,32)
+							(?_HERO_OUTTABED_LEFT,16)
+	Sync					(2,0)
+	End						()
+
+
+
+
+
+

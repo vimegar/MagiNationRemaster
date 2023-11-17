@@ -1,0 +1,49 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP12\CLDLAVATOWN12_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP12\CLDLAVATOWN12_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP12\CLDLAVATOWN12_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP12\CLDLAVATOWN12_PEOPLE.MGI
+
+/********************************//********************************/
+//  GENERIC RINGSMITH AND SHOP
+/********************************//********************************/
+?_CLDLAVATOWN12 
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN12)
+	LoadHotspots			(HS_CLDLAVATOWN12)
+	LoadTriggers			(TR_CLDLAVATOWN12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,9,13,0,?_MAGAM_STAND_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,8,10,13,38,?_MAN03_STAND_LEFT_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(38,BIT_MAGAMRING,0,0)
+	LoadVRAMTiles			(43,BIT_MAN03,38,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_shop)
+	SceneReady				()
+	End						()
+
+?_CLDLAVATOWN12_SMITHY
+	ThisActorSetAnimDelay	(?_MAGAM_MAKE_RING_ANIM,255)
+							(?_MAGAM_STAND_ANIM,0)
+	SetAnyEventMaster		()
+	End						()
+
+/********************************//********************************/
+//  END GENERIC RINGSMITH AND SHOP
+/********************************//********************************/
+
+
+
+
+
+
+
+
+
+

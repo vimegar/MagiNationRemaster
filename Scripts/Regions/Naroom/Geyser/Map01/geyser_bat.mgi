@@ -1,0 +1,145 @@
+/**** LEVEL10 ****/
+?_NRMGEYSER_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,8,16,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,8,15,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,10,19,1)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,HOOK_WING,9,18,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,8,16,1)
+	BtlAuto			()
+
+_BTL4
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,7,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,7,14,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KOIL,9,18,1)
+	BtlAuto			()
+
+_BTL5
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,8,16,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,8,17,1)
+	BtlAuto			()
+
+_BTL6
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,7,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,HOOK_WING,9,18,1)
+	BtlAuto			()
+
+_BTL7
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,9,19,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,HOOK_WING,7,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,9,18,1)
+	BtlAuto			()
+
+_BTL8
+	BtlNew			(NRMGEYSER_ARENA1,MAGI_RND1,10,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,VILE_YOGU,10,22,1)
+	BtlAuto			()
+	
+/********************************/
+?_NRMGEYSER_TOGOTHBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew			(NRMGEYSER_ARENA1,TOGOTH,12,?_BATTLE_FADE_IN)
+	BtlNextTurn		()
+	
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,210)
+
+	TextOpen		()
+	TextIcon		(ICON_TOGOTH)
+	TextWrite		("Don't worry,=")
+					("this won't")
+					("hurt for long.")
+	TextClose		()
+	BtlSummonDelay	(BTL_ID_MAGI,SHADWVINOC,11,25,0)
+	BtlNextTurn		()	
+	
+	TextOpen		()
+	TextIcon		(ICON_TOGOTH)
+	ThatActorSetScript	(ACTOR0C,?_TOGATH_BATTLE_TAUNT_ANIM)
+	TextWrite		("I must keep=")
+					("this Core Gate")
+					("open. It is=")
+					("our portal for")
+					("destroying=")
+					("this pansy")
+					("forest.")
+	TextClose		()
+	ThatActorSetScript	(ACTOR0C,?_TOGATH_BATTLE_STAND_ANIM)
+		
+_TOGOTH_LOOP
+	SetScroll		(?_NRMGEYSER_TOGOTH_MODE1)
+	WaitAnyEventScroll	()
+	BtlNextTurn		()	
+	Jump			(_TOGOTH_LOOP)
+	
+?_NRMGEYSER_TOGOTH_MODE1
+	JumpRandom		(_TOGOTH11)
+					(_TOGOTH11)
+					(_TOGOTH12)
+					(_TOGOTH13)
+					(_TOGOTH13)
+					(_TOGOTH14)
+					(_TOGOTH15)
+	
+_TOGOTH11
+	BtlSummonDelay		(BTL_ID_MAGI,KOIL,13,30,0)
+	SetAnyEventScroll	()
+	End					()
+
+_TOGOTH12
+	BtlCastSpell		(BTL_ID_MAGI,SPELL_FIREBALL,BTLSCR_ALLYWEAKEST_ABSOLUTE)
+	SetAnyEventScroll	()
+	End					()
+
+_TOGOTH13
+	BtlSummonDelay		(BTL_ID_MAGI,VILE_YOGU,12,32,0)
+	SetAnyEventScroll	()
+	End					()
+
+_TOGOTH14
+	BtlSummonDelay		(BTL_ID_MAGI,SHADWVINOC,11,25,0)
+	SetAnyEventScroll	()
+	End					()
+
+_TOGOTH15
+	BtlCastSpell		(BTL_ID_MAGI,SPELL_GROW,BTLSCR_ENEMYWEAKEST_ABSOLUTE)
+	SetAnyEventScroll	()
+	End					()
+
+
+

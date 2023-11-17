@@ -1,0 +1,15 @@
+/********************************/
+?_OROTUNNEL08_DR_1
+		HeroToDoor	(0,9,27,12)
+		Jump		(?_OROTUNNEL07)
+		
+/********************************/
+?_OROTUNNEL08_TR_1
+		TriggerTreasure	(OROTUNNEL08_Chest1,INV_TYPE_ITEM,INV_BALOO_ROOT,23,17,28)
+
+?_OROTUNNEL08_TR_2		
+		TriggerTreasure	(OROTUNNEL08_Chest2,INV_TYPE_ITEM,INV_WATER_OF_LIFE,23,27,28)
+
+?_OROTUNNEL08_TR_3		
+		TriggerTreasure	(OROTUNNEL08_Chest3,INV_TYPE_ITEM,INV_CRESCENT_GEM,5,9,28)
+		

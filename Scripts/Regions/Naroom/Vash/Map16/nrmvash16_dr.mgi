@@ -1,0 +1,13 @@
+/********************************/
+?_NRMVASH16_DR_1
+		HeroToDoor	(9,15,8,0)
+		Jump		(?_NRMVASH15)
+
+?_NRMVASH16_TR_1
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Orwin's...=")
+					("celestial....")
+					("...thing.")
+		TextClose	()
+		End			()

@@ -1,0 +1,13 @@
+	
+?_NRMGLADE07_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Doesn't seem=")
+						("like Orwin is")
+						("around here...")
+						("Uh... wha?")
+						("Where'd=")
+						("everyone go?")
+	TextClose			()
+	SetEventText		(1)
+	End					()						

@@ -1,0 +1,62 @@
+/********************************/
+%EQUATE		GC_OPENING				1
+%EQUATE		GC_NRM_INTRO			2
+%EQUATE		GC_FIND_ORWIN			3
+%EQUATE		GC_QUEST_FOR_GIA		4
+%EQUATE		GC_NAROOM_GEYSER		5
+%EQUATE		GC_GLOVES				6
+%EQUATE		GC_UND_INTRO			7
+%EQUATE		GC_UND_QUAKE			8
+%EQUATE		GC_UND_GEYSER			9
+%EQUATE		GC_UND_WASTED			10
+%EQUATE		GC_CALD_INTRO			11
+%EQUATE		GC_ARBOLL_HUNT			12
+%EQUATE		GC_LAVA_BRIDGE			13
+%EQUATE		GC_BOOTS_QUEST			14
+%EQUATE		GC_CALD_GEYSER			15
+%EQUATE		GC_TONY_KIDNAPPED		16
+%EQUATE		GC_SHADOWHOLD_JAIL		17
+%EQUATE		GC_BACK_IN_OROTHE		18
+%EQUATE		GC_OROTHE_GEYSER		19
+%EQUATE		GC_BEAT_OROTHE			20
+%EQUATE		GC_FALSE_END			21
+%EQUATE		GC_ARDERIAL				22
+%EQUATE		GC_ARDERIAL_GEYSER		23
+%EQUATE		GC_AGRAM_BATTLE			24
+%EQUATE		GC_END_FUNERAL			25
+%EQUATE		GC_END_PARTY			26
+
+//%EQUATE		GC_OPENING				1	//Opening			Introduction to Magi-Nation
+//%EQUATE		GC_QUEST_FOR_GIA		2	//Quest for Gia		Tony journies to Gia
+//%EQUATE		GC_NAROOM_GEYSER		3	//Naroom Geyser		Shut the first Shadow Geyser
+//%EQUATE		GC_BEAT_NAROOM			4	//Beat Naroom		Defeated the Naroom Shadow Geyser
+//%EQUATE		GC_UNDERNEATH			5	//The Underneath	Tony explores the Underneath
+//%EQUATE		GC_UNDERNEATH_GEYSER	6	//Underneath Geyser	Shut the second Shadow Geyser
+//%EQUATE		GC_BEAT_UNDERNEATH		7	//Beat Underneath	Defeated the Underneath Shadow Geyser
+//%EQUATE		GC_CALD					8	//Cald				Tony is trapped in Cald
+//%EQUATE		GC_OFF_TO_OROTHE		9	//Off To Orothe		Tony travels to Orothe to acquire Agadon's Boots
+//%EQUATE		GC_CALD_GEYSER			10	//Cald Geyser		Shut down the Cald Geyser
+//%EQUATE		GC_BEAT_CALD			11	//Beat Cald	The 	Cald town celebrates
+//%EQUATE		GC_SHADOWHOLD			12	//Shadowhold		Tony has been captured and placed in a dungeon
+//%EQUATE		GC_BACK_IN_OROTHE		13	//Back in Orothe	Tony returns to Orothe to defeat the geyser
+//%EQUATE		GC_OROTHE_GEYSER		14	//Orothe Geyser		Shut down the Orothe Geyser
+//%EQUATE		GC_BEAT_OROTHE			15	//Beat Orothe		Tony returns to Gia to open the Core
+//%EQUATE		GC_GOING_HOME			16	//Going Home		Tony will use the Core Glyph to return home
+//%EQUATE		GC_ARDERIAL				17	//Arderial			Tony has been capture and taken to the Sky
+//%EQUATE		GC_ARDERIAL_GEYSER		18	//Arderial Geyser	Shut down the Arderial Geyser
+//%EQUATE		GC_BEAT_ARDERIAL		19	//Beat Arderial		Tony has defeated Morag
+
+/********************************/
+%EQUATE		FACE_UP					0
+%EQUATE		FACE_DOWN				3
+%EQUATE		FACE_LEFT				1
+%EQUATE		FACE_RIGHT				2
+
+/********************************/
+%EQUATE		GLYPH_NONE				0
+%EQUATE		GLYPH_EMPTY				1
+%EQUATE		GLYPH_NRM_STONE			2
+%EQUATE		GLYPH_UND_STONE			3
+%EQUATE		GLYPH_CLD_STONE			4
+%EQUATE		GLYPH_ORO_STONE			5
+%EQUATE		GLYPH_ARD_STONE			6

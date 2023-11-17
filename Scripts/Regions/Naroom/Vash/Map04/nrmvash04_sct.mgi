@@ -1,0 +1,56 @@
+/********************************/
+// MAPS CONNECTING VASH TO ARDERIAL
+/********************************/
+// FROM VASH04
+?_NRMVASH04B_GROUND
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+
+?_NRMVASH04B
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH04B)
+	LoadHotspots			(HS_NRMVASH04B)
+	LoadPalette				(PAL_HERO)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+// WARP PAD TO ARDERIAL
+?_NRMVASH04C
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH04C)
+	LoadHotspots			(HS_NRMVASH04C)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+// ARRIVAL FROM ARDERIAL
+?_NRMVASH04C_ARRIVAL
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH04C)
+	LoadHotspots			(HS_NRMVASH04C)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,20,0,?_HERO_FROM_WARP,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	WaitEventMaster			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End						()
+
+/********************************/
+// END MAPS CONNECTING VASH TO ARDERIAL
+/********************************/
+

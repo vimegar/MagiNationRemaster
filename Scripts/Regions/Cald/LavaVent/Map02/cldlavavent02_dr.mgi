@@ -1,0 +1,12 @@
+/********************************/
+?_CLDLAVAVENT02_DR_1
+		HeroToDoor	(51,29,47,0)
+		Jump		(?_CLDLAVAVENT01)
+
+?_CLDLAVAVENT02_DR_2
+		HeroToDoor	(50,0,17,19)
+		Jump		(?_CLDLAVAVENT03)
+
+/********************************/
+?_CLDLAVAVENT02_TR_1
+		TriggerTreasure (CLDLAVAVENT02_CHEST1,INV_TYPE_RELIC,INV_FLAMEESSENCE,12,4,60)

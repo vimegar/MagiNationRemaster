@@ -1,0 +1,12 @@
+/********************************/
+?_HLDCELL04_DR_1
+		HeroToDoor	(15,17,7,0)
+		Jump		(?_HLDCELL03)
+		
+?_HLDCELL04_DR_2
+		HeroToDoor	(0,7,26,7)
+		Jump		(?_HLDCELL05)
+
+/********************************/
+?_HLDCELL04_TR_1
+		TriggerTreasure	(HLDCELL04Chest1,INV_TYPE_RELIC,INV_SHADOW_VEIL,24,5,27)

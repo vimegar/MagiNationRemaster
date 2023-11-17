@@ -1,0 +1,12 @@
+/********************************/
+?_WVEPATHVALLEY01_DR_1
+		HeroSetDoor	(11,26)
+		Jump		(?_OVRSURFACE01)
+
+?_WVEPATHVALLEY01_DR_2
+		HeroToDoor	(15,24,0,0)
+		Jump		(?_WVEPATHVALLEY02)
+
+?_WVEPATHVALLEY01_DR_3
+		HeroToDoor	(9,24,10,1)
+		Jump		(?_WVEPATHVALLEY03_SWIM)

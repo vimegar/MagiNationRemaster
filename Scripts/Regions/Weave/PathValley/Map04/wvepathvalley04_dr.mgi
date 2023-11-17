@@ -1,0 +1,85 @@
+/********************************/
+?_WVEPATHVALLEY04_DR_1
+		HeroSetDoor	(17,36)
+		ThatActorInit			(ACTOR00,?TRAP_AI,37,8,64,0,?_OVERWORLD_GEYSER_ANIM,?_OVRSURFACE_NRMGEYSER)
+		Jump		(?_OVRSURFACE01)
+
+?_WVEPATHVALLEY04_DR_2
+		HeroToDoor	(20,11,8,11)
+		Jump		(?_WVEPATHVALLEY08)
+		
+?_WVEPATHVALLEY04_TR_1
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+
+		JumpRandom	(_TEXT_1)
+					(_TEXT_2)
+					(_TEXT_3)
+	
+_TEXT_1
+		TextWrite	("Heh heh...")
+		JumpLocal	(_END)
+
+_TEXT_2
+		TextWrite	("I think I'm=")
+					("lost!")
+		JumpLocal	(_END)
+
+_TEXT_3
+		TextWrite	("How do I get=")
+					("outta here?")
+
+_END
+		TextClose	()
+		End			()
+
+?_WVEPATHVALLEY04_TR_2
+		TriggerOnce		(WVEPATHVALLEY04_Chest1,?_END,235,25,28,40)
+		InitSkip		(_SKIP)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I found=")
+						("something...")
+		TextClose		()
+		TextOpen		()
+		TextWrite		("Tony got a=")
+						("Water of Life")
+		TextClose		()
+		InventoryGive	(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
+		
+_SKIP
+		End			()
+
+?_WVEPATHVALLEY04_TR_3		// WHEELBARROW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Reminds me=")
+						("of my dog.")
+		TextClose		()
+		End				()
+
+?_WVEPATHVALLEY04_TR_4		// SCARECROW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Creepy.")
+						("I think it's")
+						("doing its job")
+						("a little too")
+						("well.")
+		TextClose		()
+		End				()
+
+/********************************/
+?_WVEPATHVALLEY08_DR_1
+		HeroToDoor	(8,11,20,11)
+		Jump		(?_WVEPATHVALLEY04)
+
+?_WVEPATHVALLEY08_TR_1
+		TriggerTreasure	(WVEPATHVALLEY08_Chest1,INV_TYPE_RELIC,INV_BAG_OF_BONES,10,7,16)				
+		
+?_WVEPATHVALLEY08_TR_2
+		TextOpen	()
+		TextIcon	(ICON_POLLY)
+		TextWrite	("PRRRRR.")
+		TextClose	()
+		End			()

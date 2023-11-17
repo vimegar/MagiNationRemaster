@@ -1,0 +1,144 @@
+/********************************/
+?_WVEGIASHUT01_DR_1
+	ThatActorInit		(ACTOR00,?TRAP_AI,37,8,64,0,?_OVERWORLD_GEYSER_ANIM,?_OVRSURFACE_NRMGEYSER)
+		HeroSetDoor		(18,37)
+		Jump			(?_OVRSURFACE01)
+
+?_WVEGIASHUT01_DR_2
+		HeroToDoor		(22,21,6,11)
+		Jump			(?_WVEGIASHUT02)
+
+?_WVEGIASHUT01_DR_3
+		If				([GAMECOUNT = GC_QUEST_FOR_GIA], ?_WVEGIASHUT01_QFG_GREET)
+		End				()
+
+?_WVEGIASHUT01_TR_1				// OUTHOUSE
+
+		If				([Poop_Gag],_GIA_POOP)
+		SetXRAMBit		(Poop_Gag,TRUE)
+
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This must be=")
+						("her storage")
+						("shed!")
+						("I wonder what=")
+						("she keeps in")
+						("here?")
+		TextClose		()
+
+		ThatActorStop		(HEROACTOR)
+		Delay				(64)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		ThatActorStart		(HEROACTOR)
+
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Oh.")
+		TextClose		()
+		End				()
+
+_GIA_POOP
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I really don't=")
+						("think I need")
+						("to go back=")
+						("into the")
+						("'storage shed'=")
+						("again.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_2				// WOODPILE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Firewood!")
+						("Just like=")
+						("Grandpa used")
+						("to make!")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_3				// WOODPILE
+		TextOpen		()			
+		TextIcon		(ICON_TONY)
+		TextWrite		("Perfect cuts=")
+						("of wood.")
+						("It can only=")
+						("be expected.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_4				// BARREL
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A barrel.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_5				// BARREL
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Another=")
+						("barrel.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_6				// FURNACE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A mighty wood=")
+						("burning")
+						("furnace.")
+						("Harnesses the=")
+						("power of")
+						("burning wood=")
+						("with its")
+						("mightiness.")
+						("For the=")
+						("cooking of pots")
+						("and stuff.")
+						("Yeah.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_7				// CABBAGE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Wow!")
+						("A cabbage so=")
+						("big I could")
+						("sleep in it!")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_8				// PUMP
+		TextOpen		()
+		TextWrite		("Slurp! Slurp!")
+						("Spurlat!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("What's in this=")
+						("stuff, anyway?")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_9				// ROOF
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Every hut=")
+						("should have")
+						("its own special=")
+						("frog weather")
+						("vane.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT01_TR_10			// DOOR IN CLIFF
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("It won't open.")
+		TextClose		()
+		End				()
+
+

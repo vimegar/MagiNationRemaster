@@ -1,0 +1,292 @@
+/********************************//********************************/
+// OMINOUS PORTENT
+/********************************//********************************/
+?_NRMGLADE03_MID_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Whoa!=")
+						("Deja vu!")
+	TextClose			()
+	Sync				(2,3)
+	End					()
+
+?_NRMGLADE03_TXT_1B
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Hey! It's=")
+						("Eidon! Lower")
+						("the stairs!")
+	TextClose			()
+	Sync				(2,0)
+	End					()
+
+?_NRMGLADE03_TXT_1AX
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Come, Tony.")
+	TextClose			()
+	Sync				(3,2)
+	End					()
+/********************************//********************************/
+// END OMINOUS PORTENT
+/********************************//********************************/
+
+/********************************//********************************/
+// EIDON CALLS THE STAIRS
+/********************************//********************************/
+?_NRMGLADE03_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Hey! It's=")
+						("Eidon! Lower")
+						("the stairs!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_NRMGLADE03_TXT_1A
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Come, Tony.")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+
+?_NRMGLADE03_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_KORG)
+	TextWrite			("That's the=")
+						("entrance to")
+						("Vash Naroom!")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+
+?_NRMGLADE03_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_ZET)
+	TextWrite			("Korg, this is=")
+						("the perfect")
+						("chance for us=")
+						("to get in there")
+						("and cause some=")
+						("disarray.")
+	TextClose			()
+	SetEventText		(3)
+	End					()
+
+?_NRMGLADE03_TXT_4
+	TextOpen			()
+	TextIcon			(ICON_KORG)
+	TextWrite			("Shaddup, Zet!=")
+						("I'm in charge,")
+						("and I say we go=")
+						("in and cause")
+						("di...")
+						("dis...ray!")
+	TextIcon			(ICON_ZET)
+	TextWrite			(".........")
+	TextClose			()
+	SetEventText		(4)
+	End					()
+
+?_NRMGLADE03_TXT_6
+	TextOpen			()
+	TextIcon			(ICON_ZET)
+	TextWrite			("Hurry, or the=")
+						("stairs will...")
+	TextClose			()
+	SetEventText		(6)
+	End					()
+
+?_NRMGLADE03_TXT_7
+	TextOpen			()
+	TextIcon			(ICON_KORG)
+	TextWrite			("No! We must not=")
+						("be seen!")
+	TextClose			()
+	SetEventText		(7)
+	End					()
+
+?_NRMGLADE03_TXT_9
+	TextOpen			()
+	TextIcon			(ICON_ZET)
+	TextWrite			("RUN!!")
+	TextClose			()
+	SetEventText		(9)
+	End					()
+
+?_NRMGLADE03_TXT_10
+	TextOpen			()
+	TextIcon			(ICON_KORG)
+	TextWrite			("Shaddup Zet,=")
+						("I'm in char...")
+	TextClose			()
+	SetEventText		(10)
+	End					()
+
+?_NRMGLADE03_TXT_12
+	TextOpen			()
+	TextIcon			(ICON_ZET)
+	TextWrite			("............")
+	TextClose			()
+	SetEventText		(12)
+	End					()
+/********************************//********************************/
+// END EIDON CALLS THE STAIRS
+/********************************//********************************/
+
+/********************************//********************************/
+// NAROOM QUAKE
+/********************************//********************************/
+?_NRMGLADE03_TXT_13
+	TextOpen			()
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("Eidon! What in=")
+						("blazes is going")
+						("on?!")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("What are you=")
+						("asking me for?!")
+						("I don't know!")
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("And you have=")
+						("the boy with")
+						("you! You FOOL!")
+	TextClose			()
+	SetEventText		(13)
+	End					()
+
+?_NRMGLADE03_TXT_14
+	TextOpen			()
+	TextIcon			(ICON_ORWIN)
+	TextWrite			("It's coming=")
+						("from the")
+						("glade! I will=")
+						("deal with you")
+						("later.")
+	TextClose			()
+	SetEventText		(14)
+	End					()
+
+?_NRMGLADE03_TXT_15
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Eidon, what's=")
+						("going on?")
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("I was eating=")
+						("lunch and")
+						("that quake made=")
+						("me fall right")
+						("off my chair!")
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("And I just saw=")
+						("Orwin running")
+						("through town=")
+						("like a madman!")
+						("Where's he=")
+						("going in such a")
+						("hurry?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("This isn't=")
+						("good. Let's go")
+						("see what's=")
+						("going on.")
+	TextClose			()
+	SetEventText		(15)
+	End					()
+/********************************//********************************/
+// END NAROOM QUAKE
+/********************************//********************************/
+
+
+?_NRMGLADE03_TXT_16
+	TextOpen			()
+	TextWrite			("You can go=")
+						("on ahead.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRM_END_4_PRUITT_TXT
+	TextOpen			()
+	TextIcon			(ICON_PRUITT)
+	TextWrite			("I'm glad to see=")
+						("you, but.....")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRM_END_4_POAD_TXT
+	TextOpen			()
+	TextIcon			(ICON_POAD)
+	TextWrite			("Orwin.....")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_NRM_END_4_WENCE_TXT
+	TextOpen			()
+	TextIcon			(ICON_WENCE)
+	TextWrite			("It's too bad we=")
+						("couldn't meet")
+						("like this under=")
+						("better")
+						("circumstances.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRM_END_4_TRYN_TXT
+	TextOpen			()
+	TextIcon			(ICON_TRYN)
+	TextWrite			("Why did this=")
+						("have to happen?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_NRMGLADE03_ENDING_4_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_PRUITT)
+	TextWrite			("You came back=")
+						("after all!")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Just to say=")
+						("goodbye.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMGLADE03_ENDING_4_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_WENCE)
+	TextWrite			("Unfortunately,=")
+						("you've come at")
+						("a bad time.")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Why?")
+	TextClose			()
+	SetEventText		(2)
+	End					()
+	
+?_NRMGLADE03_ENDING_4_TXT_3
+	TextOpen			()
+	TextWrite			("It's Orwin....")
+	TextClose			()
+	SetEventText		(3)
+	End					()
+	
+?_NRMGLADE03_ENDING_4_TXT_4
+	TextOpen			()
+	TextWrite			("I think I've=")
+						("lost my")
+						("appetite")
+	TextClose			()
+	SetEventText		(4)
+	End					()

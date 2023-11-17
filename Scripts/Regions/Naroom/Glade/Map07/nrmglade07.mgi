@@ -1,0 +1,69 @@
+/*********************************************************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP07\NRMGLADE07_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP07\NRMGLADE07_TXT.MGI
+/*********************************************************************/
+/********************************/
+?_NRMGLADE07
+	Switch					([GAMECOUNT])
+							(GC_FIND_ORWIN,?_NRMGLADE07_LOSTORWIN)
+
+
+?_NRMGLADE07_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE07)
+	LoadHotspots			(HS_NRMGLADE07)
+	LoadTriggers			(TR_NRMGLADE07)
+	SetBtlReturn			(?_NRMGLADE07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,49,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_glade)
+	SceneReady				()
+	End						()
+
+
+?_NRMGLADE07_LOSTORWIN
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE07)
+	LoadHotspots			(HS_NRMGLADE07)
+	LoadTriggers			(TR_NRMGLADE07)
+	SetBtlReturn			(?_NRMGLADE07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,6,49,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,16,8,50,52,?_NRMGLADE07_MAN03,?_NRMGLADE07_MAN03_TALKER)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles			(43,BIT_MAN03,52,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_forest)
+	SceneReady				()
+	End						()
+
+?_NRMGLADE07_MAN03
+	ThisActorSetAnimDelay	(?_MAN03_STAND_LEFT_ANIM,50)
+							(?_MAN03_STAND_DL_ANIM,50)
+							(?_MAN03_STAND_DR_ANIM,50)
+							(?_MAN03_STAND_RIGHT_ANIM,50)
+							(?_MAN03_WALK_RIGHT_ANIM,50)
+							(?_MAN03_STAND_LEFT_ANIM,50)
+							(?_MAN03_WALK_LEFT_ANIM,50)
+							(?_MAN03_STAND_RIGHT_ANIM,50)
+							(?_MAN03_STAND_DR_ANIM,50)
+	Jump					(?_NRMGLADE07_MAN03)
+
+?_NRMGLADE07_MAN03_TALKER
+	SetText					(?_NRMGLADE07_TXT_1)
+	Jump					(?_FACE_MAN03)
+	End						()

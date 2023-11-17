@@ -1,0 +1,83 @@
+/********************************/
+?_UNDTOWN01_DR_1
+		HeroSetDoor	(19,21)
+		Jump		(?_OVRSURFACE02)
+
+?_UNDTOWN01_DR_2
+		HeroSetDoor	(21,22)
+		Jump		(?_OVRSURFACE02)
+
+?_UNDTOWN01_DR_3
+		HeroToDoor	(8,17,6,14)
+		Jump		(?_UNDTOWN02)
+
+?_UNDTOWN01_DR_4
+		HeroToDoor	(22,16,8,19)
+		Jump		(?_UNDTOWN03)
+
+?_UNDTOWN01_DR_5
+		HeroToDoor	(34,18,3,9)
+		Jump		(?_UNDTOWN04)
+
+?_UNDTOWN01_DR_6
+		HeroToDoor	(43,15,4,14)
+		Jump		(?_UNDTOWN05)
+
+?_UNDTOWN01_DR_7
+		HeroToDoor	(32,33,11,19)
+		Jump		(?_UNDTOWN06)
+
+?_UNDTOWN01_DR_8
+		HeroToDoor	(10,27,3,9)
+		Jump		(?_UNDTOWN07)
+
+?_UNDTOWN01_DR_9
+		HeroToDoor	(13,44,6,9)
+		Jump		(?_UNDTOWN08)
+		
+?_UNDTOWN01_DR_10
+		Jump		(?_UNDTOWN01_LOCKED)
+		End			()
+
+?_UNDTOWN01_DR_11
+		HeroSetDoor	(18,22)
+		Jump		(?_OVRSURFACE02)
+
+?_UNDTOWN01_DR_12
+		End			()
+
+?_UNDTOWN01_TR_1
+		TriggerTreasure	(UNDTOWN01_Chest1,INV_TYPE_ITEM,INV_BALOO_SAP,3,27,60)
+		End				()
+
+/********************************/
+?_UNDTOWN01_DR_3B
+?_UNDTOWN01_DR_4B
+?_UNDTOWN01_DR_5B
+?_UNDTOWN01_DR_6B
+?_UNDTOWN01_DR_7B
+?_UNDTOWN01_DR_8B
+?_UNDTOWN01_DR_9B
+?_UNDTOWN01_DR_10B
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_UNDTOWN_RUINS)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)	
+	End						()
+?_UNDTOWN_RUINS
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)	
+	SetText					(?_UNDTOWN_RUINS_TXT)
+	End						()
+
+?_UNDTOWN_RUINS_TXT
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("It's just=")
+							("a pile of")
+							(" rubble...")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+

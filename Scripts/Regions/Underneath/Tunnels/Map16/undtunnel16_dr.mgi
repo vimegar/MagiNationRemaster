@@ -1,0 +1,16 @@
+/********************************/
+?_UNDTUNNEL16_DR_1
+		HeroToDoor	(0,12,19,8)
+		Jump		(?_UNDTUNNEL15)
+
+?_UNDTUNNEL16_DR_2
+		HeroToDoor	(16,19,21,0)
+		Jump		(?_UNDTUNNEL17)
+
+?_UNDTUNNEL16_DR_3
+		HeroToDoor	(39,9,0,8)
+		Jump		(?_UNDTUNNEL18)
+
+?_UNDTUNNEL16_DR_4
+		HeroToDoor	(12,0,7,49)
+		Jump		(?_UNDTUNNEL10)

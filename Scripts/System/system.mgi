@@ -1,0 +1,189 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_END_ACTOR
+	ThisActorSetAnim		(?_END)
+
+?_END
+	End						()
+
+/********************************/
+?_DONT_TALK
+	ThisActorRestoreState	()
+	
+/********************************/
+?_TXT_CANT_USE_ITEM
+?_TXT_NOTHING_HAPPENED
+	TextOpen		()
+	TextIcon		(ICON_TONY)					
+	TextWrite		("I can't use my=")	
+	TextWrite		("%X")
+	TextWrite		("here.")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_TXT_CANT_USE_SPELL
+	TextOpen		()
+	TextIcon		(ICON_TONY)					
+	TextWrite		("I can't cast=")	
+	TextWrite		("%X")
+	TextWrite		("here.")
+	TextClose		()
+	End				()
+
+/********************************/
+?_TXT_GOT_ITEM
+	TextOpen		()
+	TextWrite		("Tony got a=")
+	TextWrite		("%X")
+	TextClose		()
+	End				()
+
+/********************************/
+?_TXT_ITS_EMPTY
+	InitSkip		(_END)
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Empty! Noooo!!")
+	TextClose		()
+_END
+	End				()
+
+/********************************/
+?_TXT_TOO_MANY
+	TextOpen					()
+	TextWrite					("Tony can't hold=")
+	TextWrite					("another")
+	TextWrite					("%X")
+	TextClose					()
+	End							()
+
+/********************************/
+?_TXT_WONT_BUDGE
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("It won't budge!")
+	TextClose					()
+	End							()
+
+/********************************/
+?_OVERPARA_DISMOUNT
+	ThatActorSetAI				(HEROACTOR,?OVERWORLD_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_OVER_DOWN_ANIM)
+	ThatActorStart				(HEROACTOR)
+
+	SongStart					(SONGID_overworld)
+
+?_OVERPARA_WAIT
+	ThisActorSetAnim			(?_OVERPARATHIN_UP_ANIM)
+
+_LOOP
+	Pass						()
+	JumpLocal					(_LOOP)
+
+/********************************/
+?_OVERPARA_MOUNT
+	ThatActorStop				(HEROACTOR)
+	Pass						()
+	SongStart					(SONGID_turtleride)
+	ThisActorSetAI				(?OVERPARA_AI)
+	Jump						(?_OVERPARATHIN_UP_ANIM)
+
+/********************************/
+?_BATTLE_LOST
+	SceneNew					()
+	PalClearAnim				(0,7,255,255,255)
+	SceneReady					()
+	Delay						(96)
+	Jump						(?_HDNLOAD01)
+
+/********************************/
+?_RAINER
+	ThisActorSetAnim			(?_END)
+	DelayRandom					(DELAY_RND_HYPER)
+	ThisActorRaindrop			(COLLCODE_SPACE)
+	
+	SFX							(SFXID_PANPOP)
+
+	JumpRandom					(_SMALL_RAINER)
+								(_BIG_RAINER)
+
+_SMALL_RAINER
+	ThisActorSetAnimDelay		(?_DREAMGLOW_BEGIN_ANIM,50)
+	ThisActorSetAI				(?TRAP_AI)
+	ThisActorSetAnimDelay		(?_DREAMGLOW_SMALL_ANIM,156)
+	
+	SFX							(SFXID_SFX_CURSOR)
+	
+	ThisActorSetAI				(?ANIM_AI)
+	ThisActorSetAnimDelay		(?_DREAMGLOW_BURST_ANIM,32)
+	JumpLocal					(?_RAINER)
+
+_BIG_RAINER
+	ThisActorSetAnimDelay		(?_DREAMGLOW_BEGIN_ANIM,62)
+	ThisActorSetAI				(?TRAP_AI)
+	ThisActorSetAnimDelay		(?_DREAMGLOW_MAIN_ANIM,200)
+	
+	SFX							(SFXID_SFX_CURSOR)
+	
+	ThisActorSetAI				(?ANIM_AI)
+	ThisActorSetAnimDelay		(?_DREAMGLOW_BURST_ANIM,32)
+	JumpLocal					(?_RAINER)
+
+/********************************/
+?_MENU_SAVE
+
+	TextOpen					()
+	TextWrite					("Tony's progress=")
+								("has been")
+								("recorded.")
+	TextClose					()
+
+	Switch						([Overworld_Load])
+								(1,_NRM)
+								(2,_UND)
+								(3,_CLD)
+								(4,_ORO)
+								(5,_ARD)
+
+_NRM
+	SetLoadScript				(?_OVRSURFACE01_LOAD)
+	SaveGame					(0)
+	End							()	
+
+_UND
+	SetLoadScript				(?_OVRSURFACE02_LOAD)
+	SaveGame					(0)
+	End							()	
+
+_CLD
+	SetLoadScript				(?_OVRSURFACE03_LOAD)
+	SaveGame					(0)
+	End							()	
+
+_ORO
+	SetLoadScript				(?_OVRSURFACE04_LOAD)
+	SaveGame					(0)
+	End							()	
+
+_ARD
+	SetLoadScript				(?_OVRSURFACE05_LOAD)
+	SaveGame					(0)
+	End							()
+
+/********************************/
+?_MAIN
+	Jump						(?_WARPPORTAL)
+	Jump						(?_MAIN_TITLES)
+
+/********************************/
+?_SCENE_READY
+	LoadPalette					(PAL_HERO)
+	ThatActorInit				(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart				(HEROACTOR)
+	HeroFromDoor				()
+	HeroSetCamera				()
+	SceneReady					()
+	End							()

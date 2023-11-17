@@ -1,0 +1,5 @@
+/********************************/
+	FileMapLayout	(MAP_HDNROOM02,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_HDNROOM02,COL_HDNROOM02)
+
+/********************************/
+	FileMapLayout	(MAP_WARP06,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_WARP06,COL_WARP06)

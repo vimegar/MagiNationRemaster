@@ -1,0 +1,42 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP10\NRMVASH10_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP10\NRMVASH10_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP10\NRMVASH10_PARTY.MGI
+
+/********************************/
+?_NRMVASH10
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH10_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH10_PARTY)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH10)
+	LoadHotspots			(HS_NRMVASH10)
+	LoadTriggers			(TR_NRMVASH10)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,9,11,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,1,5,11,0,?_BOY_STAND_RIGHT_ANIM,_NRMVASH10_BOY_TALKS)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_shop)
+	End						()
+
+_NRMVASH10_BOY_TALKS
+	ThisActorSetAnim		(?_BOY_STAND_DOWN_ANIM)
+	SetText					(_TALKS)
+	WaitEventText			(1)
+	ThisActorRestoreState	()
+	
+_TALKS
+	TextOpen				()
+	TextIcon				(ICON_BOY)
+	TextWrite				("This is an=")
+							("employee")
+							("only area!")
+	TextClose				()
+	SetEventText			(1)
+	End						()

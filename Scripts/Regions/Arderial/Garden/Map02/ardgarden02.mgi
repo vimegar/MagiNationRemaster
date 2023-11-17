@@ -1,0 +1,20 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP02\ARDGARDEN02_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP02\ARDGARDEN02_TXT.MGI
+
+/********************************/
+?_ARDGARDEN02
+	SetXRAMByte		(Exit_Disable,1)
+	SceneNew		()
+	LoadMap			(MAP_ARDGARDEN02)
+	LoadHotspots	(HS_ARDGARDEN02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_wencetheme)
+	SceneReady		()
+	End				()
+	

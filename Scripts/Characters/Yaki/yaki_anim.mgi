@@ -1,0 +1,172 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_YAKI_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?YAKI_WALK01_BACK)
+					(?YAKI_WALK02_BACK)
+					(?YAKI_WALK03_BACK)
+					(?YAKI_WALK02_BACK)
+					
+	JumpLocal:		(?_YAKI_WALK_UP_ANIM)
+
+/********************************/
+?_YAKI_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?YAKI_WALK01_FRONT)
+					(?YAKI_WALK02_FRONT)
+					(?YAKI_WALK03_FRONT)
+					(?YAKI_WALK02_FRONT)
+					
+	JumpLocal:		(?_YAKI_WALK_DOWN_ANIM)
+
+/********************************/
+?_YAKI_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?YAKI_WALK01_LEFT)
+					(?YAKI_WALK02_LEFT)
+					(?YAKI_WALK03_LEFT)
+					(?YAKI_WALK02_LEFT)
+					
+	JumpLocal:		(?_YAKI_WALK_LEFT_ANIM)
+
+/********************************/
+?_YAKI_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?YAKI_WALK01_RIGHT)
+					(?YAKI_WALK02_RIGHT)
+					(?YAKI_WALK03_RIGHT)
+					(?YAKI_WALK02_RIGHT)
+					
+	JumpLocal:		(?_YAKI_WALK_RIGHT_ANIM)
+
+/********************************/
+?_YAKI_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?YAKI_WALK01_BACK)
+					(?YAKI_WALK02_BACK)
+					(?YAKI_WALK03_BACK)
+					(?YAKI_WALK02_BACK)
+					
+	JumpLocal:		(?_YAKI_RUN_UP_ANIM)
+
+/********************************/
+?_YAKI_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?YAKI_WALK01_FRONT)
+					(?YAKI_WALK02_FRONT)
+					(?YAKI_WALK03_FRONT)
+					(?YAKI_WALK02_FRONT)
+					
+	JumpLocal:		(?_YAKI_RUN_DOWN_ANIM)
+
+/********************************/
+?_YAKI_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?YAKI_WALK01_LEFT)
+					(?YAKI_WALK02_LEFT)
+					(?YAKI_WALK03_LEFT)
+					(?YAKI_WALK02_LEFT)
+					
+	JumpLocal:		(?_YAKI_RUN_LEFT_ANIM)
+
+/********************************/
+?_YAKI_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?YAKI_WALK01_RIGHT)
+					(?YAKI_WALK02_RIGHT)
+					(?YAKI_WALK03_RIGHT)
+					(?YAKI_WALK02_RIGHT)
+					
+	JumpLocal:		(?_YAKI_RUN_RIGHT_ANIM)
+
+/********************************/
+?_YAKI_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?YAKI_WALK02_BACK)
+	
+	JumpLocal:		(?_YAKI_STAND_UP_ANIM)
+
+/********************************/
+?_YAKI_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?YAKI_WALK02_FRONT)
+	
+	JumpLocal:		(?_YAKI_STAND_DOWN_ANIM)
+
+/********************************/
+?_YAKI_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?YAKI_WALK02_LEFT)
+	
+	JumpLocal:		(?_YAKI_STAND_LEFT_ANIM)
+
+/********************************/
+?_YAKI_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?YAKI_WALK02_RIGHT)
+	
+	JumpLocal:		(?_YAKI_STAND_RIGHT_ANIM)
+
+/********************************/
+?_YAKI_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?YAKI_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_YAKI_STAND_UL_ANIM)
+
+/********************************/
+?_YAKI_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?YAKI_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_YAKI_STAND_UR_ANIM)
+
+/********************************/
+?_YAKI_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?YAKI_STAND_LEFT)
+	
+	JumpLocal:		(?_YAKI_STAND_DL_ANIM)
+
+/********************************/
+?_YAKI_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?YAKI_STAND_RIGHT)
+	
+	JumpLocal:		(?_YAKI_STAND_DR_ANIM)
+
+/********************************/
+?_FACE_YAKI
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_YAKI_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_YAKI_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_YAKI_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_YAKI_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

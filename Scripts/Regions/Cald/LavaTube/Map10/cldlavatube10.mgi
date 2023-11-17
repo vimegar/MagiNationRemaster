@@ -1,0 +1,51 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATUBE\MAP10\CLDLAVATUBE10_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATUBE\MAP10\CLDLAVATUBE10_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATUBE\MAP10\CLDLAVATUBE10_SCT.MGI
+
+/********************************/
+?_CLDLAVATUBE10
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATUBE10)
+	LoadHotspots			(HS_CLDLAVATUBE10)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_CLDLAVATUBE10)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,50,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_LAVATUBE_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_LAVATUBE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	SetBtlReturn			(?_CLDLAVATUBE10)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lavatubes)
+	SceneReady				()
+	End						()
+
+/********************************/
+?_CLDLAVATUBE10_VACUUM
+	JumpRandom				(?_END)
+							(?_END)
+							(?_END)
+							(?_END)
+							(_MONKEY_SUCK)
+							(?_END)
+
+_MONKEY_SUCK
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_SUCK)
+	CopyTileBlock			(50,0,47,2,3,24,27)
+	Delay					(32)
+	CopyTileBlock			(50,20,27,2,3,24,27)
+	Delay					(128)
+	HeroSetDoor				(4,48)
+	Jump					(?_HDNLAVATUBE03)
+
+_TONY_SUCK
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,8)
+							(?_HERO_RUN_DOWN_ANIM,8)
+							(?_HERO_BOUNCY_DOWN_ANIM,8)
+	ThisActorStop			()

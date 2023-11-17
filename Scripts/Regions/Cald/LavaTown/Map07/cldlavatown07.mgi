@@ -1,0 +1,89 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP07\CLDLAVATOWN07_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP07\CLDLAVATOWN07_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP07\CLDLAVATOWN07_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP07\CLDLAVATOWN07_PEOPLE.MGI
+
+/********************************/
+?_CLDLAVATOWN07
+	Switch					([GAMECOUNT])
+							(GC_CALD_INTRO,?_CLDLAVATOWN07_APOLOGY)
+							(GC_ARBOLL_HUNT,?_CLDLAVATOWN07_ARBOLLQUEST)
+							(GC_LAVA_BRIDGE,?_CLDLAVATOWN07_BESTBRIDGE)
+							(GC_BOOTS_QUEST,?_CLDLAVATOWN07_HURRYUP)
+							(GC_CALD_GEYSER,?_CLDLAVATOWN07_HURRYUP)
+							(GC_TONY_KIDNAPPED,?_CLDLAVATOWN07_PARTY)
+
+	If						([Cold_Shoulder],?_CLDLAVATOWN07_COLDSHOULDER)
+	
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDLAVATOWN07_WARMREUNION
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_REUNION)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_REUNION
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT06)	
+	Jump				(?_FACE_OLDMAN02)			
+
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+
+
+/********************************//********************************/
+// PARTY
+/********************************//********************************/
+?_CLDLAVATOWN07_PARTY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_PARTY)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_PARTY
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT08)	
+	Jump				(?_FACE_OLDMAN02)			
+
+?_CLDTOWN07_OLDMAN02_TXT08
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Party on, dude!")
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Is there=")
+						("anything you")
+						("want to know=")
+						("about?")
+	TextClose			()
+	Jump				(?_HISTORIAN_CALD_TEXT)
+	
+/********************************//********************************/
+// END PARTY
+/********************************//********************************/

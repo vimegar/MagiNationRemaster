@@ -1,0 +1,28 @@
+?_HLDMAZE03_DR_1
+		HeroToDoor	(5,0,23,23)
+		Jump		(?_HLDMAZE01)
+
+?_HLDMAZE03_DR_2
+		HeroToDoor	(17,23,3,0)
+		Jump		(?_HLDMAZE04)
+
+?_HLDMAZE03_TR_1
+		ToggleOnce			(Switch7,?_END,250,251,20,6,24)
+		End					()
+
+?_HLDMAZE03_TR_2
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This door=")
+						("doesn't even")
+						("have a keyhole!")
+		TextClose		()
+		End				()
+
+?_HLDMAZE03_TR_3		// SKELETON ON COT
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("It looks=")
+						("radioactive...")
+		TextClose		()
+		End				()

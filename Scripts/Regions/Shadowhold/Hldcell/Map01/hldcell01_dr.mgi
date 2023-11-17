@@ -1,0 +1,130 @@
+/********************************/
+?_HLDCELL01_DR_1
+		HeroToDoor	(31,15,0,27)
+		Jump		(?_HLDCELL02)
+
+?_HLDCELL01_DR_2
+		HeroToDoor	(0,15,19,25)
+		Jump		(?_HLDCELL03)
+
+?_HLDCELL01_TR_1
+		SetText				(_TXT)
+		End					()
+_TXT
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Ugh. The=")
+							("walls're all")
+							("slimy and wet.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_2
+		SetText				(_TXT)
+		End					()
+_TXT
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("This must be=")
+							("put here for")
+							("torture. This=")
+							("thing is harder")
+							("than the floor.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_3
+		SetText				(_TXT)
+		End					()
+_TXT
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Strange, I =")
+							("can't see")
+							("anything but=")
+							("darkness")
+							("through here.")
+		TextClose			()
+		End					()
+		
+
+?_HLDCELL01_TR_4
+		TriggerAlways		(Stuff,?_TXT_ITS_EMPTY,255,21,22,32)
+		InitSkip			(_END)
+		SetText				(_TXT)
+_END
+		End					()
+_TXT
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Hey!=")
+							("This is my")
+							("stuff!=")
+							("The armband")
+							("from Orwin...=")
+							("My digging")
+							("gloves...=")
+							("Agadon's boots,")
+							("and my=")
+							("translation")
+							("bracelet!")
+		TextClose			()
+		SetXRAMByte			(GS_Hero_Ability,3)
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		End					()
+
+?_HLDCELL01_TR_5	// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Smells of=")
+							("decay.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_6	// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("There's grungy=")
+							("slime in this")
+							("one.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_7	// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("A rotting bed.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_8	// BED
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("Covered in=")
+							("dust and bugs.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_9	// TOILET
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("It's dripping.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_10	// TOILET
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("It's missing=")
+							("the knobs.")
+		TextClose			()
+		End					()
+
+?_HLDCELL01_TR_11	// TOILET
+		TextOpen			()
+		TextIcon			(ICON_TONY)
+		TextWrite			("It reeks.")
+							("I should leave=")
+							("it alone.")
+		TextClose			()
+		End					()

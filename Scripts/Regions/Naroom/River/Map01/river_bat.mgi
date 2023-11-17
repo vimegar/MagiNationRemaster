@@ -1,0 +1,75 @@
+/**** LEVEL7 ****/
+?_NRMRIVER_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_dream)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,6,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,6,7,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,7,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,5,9,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,3,7,1)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,LEAF_CHOGO,6,13,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,FUROK,5,9,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,3,6,1)
+	BtlAuto			()
+
+_BTL4
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,FUROK,6,11,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,FUROK,6,12,1)
+	BtlAuto			()
+
+_BTL5
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,7,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,7,13,1)
+	BtlAuto			()
+
+_BTL6
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,LEAF_CHOGO,6,12,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,4,7,1)
+	BtlAuto			()
+
+_BTL7
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,7,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,FUROK,5,10,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,LEAF_CHOGO,8,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,4,9,1)
+	BtlAuto			()
+
+_BTL8
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,9,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,4,7,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,8,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,4,6,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,EEBIT,8,17,1)
+	BtlAuto			()

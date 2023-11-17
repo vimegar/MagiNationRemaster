@@ -1,0 +1,51 @@
+/********************************/
+?_UNDTOWN04_DR_1
+		HeroToDoor	(3,9,34,18)
+		Jump		(?_UNDTOWN01)
+
+
+?_UNDTOWN04_TR_1		// BOOKS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A book of local=")
+					("events...")
+		TextClear	()
+		TextWrite	("Stalactite Run:")
+					("Where the only=")
+					("obstacle to")
+					("victory is a=")
+					("pointy chunk")
+					("of falling=")
+					("stone.")
+		TextIcon	(ICON_TONY)
+		TextWrite	("Sounds=")
+					("dangerous.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN04_TR_2		// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Ahh, yes.")
+					("Chairs that=")
+					("mold to your")
+					("form.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN04_TR_3		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Do they grow=")
+					("these at the")
+					("mushroom farm?")
+		TextClose	()
+		End			()
+
+?_UNDTOWN04_TR_4		// WINDOW
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A window.")
+					("Why?")
+		TextClose	()
+		End			()

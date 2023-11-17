@@ -1,0 +1,14 @@
+/********************************/
+?_FERRY01_WEAVE_DR_1
+		SetLoadScript	(?_FERRY01_WEAVE_DR_1)
+		HeroSetDoor		(20,40)
+		Jump			(?_OVRSURFACE01)
+
+/********************************/
+//	IN THE CALD
+/********************************/
+?_FERRY01_CALD_DR_1
+		SetLoadScript	(?_FERRY01_CALD_DR_1)
+		HeroSetDoor		(38,55)
+		Jump			(?_OVRSURFACE01)
+

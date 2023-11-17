@@ -1,0 +1,96 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_BOMB_FUSE_1
+
+	Frame:		(255,0,0,?BOMB01)
+	
+	JumpLocal	(?_BOMB_FUSE_1)
+
+/********************************/
+?_BOMB_FUSE_2
+
+	Frame:		(255,0,0,?BOMB02)
+	
+	JumpLocal	(?_BOMB_FUSE_2)
+
+/********************************/
+?_BOMB_FUSE_3
+
+	Frame:		(255,0,0,?BOMB03)
+	
+	JumpLocal	(?_BOMB_FUSE_3)
+
+/********************************/
+?_BOMB_FUSE_4
+
+	Frame:		(255,0,0,?BOMB04)
+	
+	JumpLocal	(?_BOMB_FUSE_4)
+
+/********************************/
+?_BOMB_FUSE_5
+
+	Frame:		(255,0,0,?BOMB05)
+	
+	JumpLocal	(?_BOMB_FUSE_5)
+
+/********************************/
+?_BOMB_EXPLODE_ANIM
+
+	FrameBlock:	(7,0,0)
+				(?BOMB05)
+				(?BOMB06)
+	FrameBlock:	(4,0,0)
+				(?BOMB07)
+				(?BOMB08)
+				(?BOMB09)
+				(?BOMB10)
+
+	End			()
+
+/********************************/
+?_BOMB_FLYFAST_UP_ANIM
+	
+	FrameBlock:	(4,0,-2)
+				(?BOMB01)
+				(?BOMB_FLY01)
+				(?BOMB_FLY02)
+				(?BOMB_FLY03)
+	
+	JumpLocal	(?_BOMB_FLYFAST_UP_ANIM)
+
+/********************************/
+?_BOMB_FLYFAST_DOWN_ANIM
+	
+	FrameBlock:	(4,0,2)
+				(?BOMB01)
+				(?BOMB_FLY01)
+				(?BOMB_FLY02)
+				(?BOMB_FLY03)
+	
+	JumpLocal	(?_BOMB_FLYFAST_DOWN_ANIM)
+
+/********************************/
+?_BOMB_FLYSLOW_UP_ANIM
+	
+	FrameBlock:	(4,0,-1)
+				(?BOMB01)
+				(?BOMB_FLY01)
+				(?BOMB_FLY02)
+				(?BOMB_FLY03)
+	
+	JumpLocal	(?_BOMB_FLYSLOW_UP_ANIM)
+
+/********************************/
+?_BOMB_FLYSLOW_DOWN_ANIM
+	
+	FrameBlock:	(4,0,1)
+				(?BOMB01)
+				(?BOMB_FLY01)
+				(?BOMB_FLY02)
+				(?BOMB_FLY03)
+	
+	JumpLocal	(?_BOMB_FLYSLOW_DOWN_ANIM)
+

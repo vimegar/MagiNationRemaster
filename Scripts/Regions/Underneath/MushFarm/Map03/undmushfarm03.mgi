@@ -1,0 +1,46 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP03\UNDMUSHFARM03_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP03\UNDMUSHFARM03_TXT.MGI
+	
+/********************************/
+//UNDMUSHFARM03:  the hidden room
+/********************************/
+?_UNDMUSHFARM03
+	SceneNew		()
+	LoadMap			(MAP_UNDMUSHFARM03)
+	LoadHotspots	(HS_UNDMUSHFARM03)
+	LoadTriggers	(TR_UNDMUSHFARM03)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,10,17,10,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtunnels)
+	If				([MUSHFARM03_Door || GAMECOUNT > GC_UND_INTRO],_SKIP)
+	SceneReady		()	
+	End				()
+_SKIP
+	CopyTileBlock	(10,0,12,2,2,7,22)
+	SceneReady		()	
+	End				()
+
+?_UNDMUSHFARM03_KIDNAPPIN
+	If					([GAMECOUNT > GC_UND_INTRO || Kidnapping > 0],?_END)
+	If					([!Learned_Of_Gruk],?_END)
+	SetXRAMByte			(Kidnapping,1)
+	SongStop			()
+	SFX					(SFXID_SFX_EXPLOSION_SMALL)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	CopyTileBlock		(10,0,12,2,2,7,22)
+	Delay				(32)
+	SetXRAMBit			(MUSHFARM03_Door,TRUE)
+	Delay				(32)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("What was that?")
+	TextClose			()
+	ScrollMap			(80,0,2)
+	Jump				(?_UNDMUSHFARM02_KIDNAPPING)
+	End					()

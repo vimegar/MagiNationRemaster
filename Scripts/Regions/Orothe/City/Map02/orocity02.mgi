@@ -1,0 +1,79 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP02\OROCITY02_DR.MGI
+%INCLUDE			REGIONS\OROTHE\CITY\MAP02\OROCITY02_TXT.MGI
+
+/********************************//********************************/
+// OROCITY02 INTRO
+/********************************//********************************/
+?_LOAD_OROCITY02
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	HeroSetDoor			(6,14)
+
+?_OROCITY02
+	SetXRAMByte		(Exit_Disable,1)
+	SceneNew		()
+	LoadMap			(MAP_OROCITY02)
+	LoadHotspots	(HS_OROCITY02)
+	LoadTriggers	(TR_OROCITY02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,3,14,20,0,?_OLDLADY05_STAND_RIGHT_ANIM,?_OROCITY02_OLDLADY05_INTRO)
+	ThatActorInit	(ACTOR01,?ANIM_AI,16,14,20,37,?_GIRL05_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	ThatActorStart	(ACTOR01)
+	LoadVRAMTiles	(37,BIT_OLDLADY05,0,0)
+	LoadVRAMTiles	(40,BIT_GIRL05,37,0)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_wencehouse)
+	SceneReady		()
+	End				()
+	
+
+?_OROCITY02_OLDLADY05_INTRO
+	SetText			(?_OROCITY02_INN_TXT)
+	Jump		 	(?_FACE_OLDLADY05)
+
+?_OROCITY02_TONY_WAKING
+	SetXRAMByte		(Exit_Disable,1)
+	SceneNew		()
+	LoadMap			(MAP_OROCITY02)
+	LoadHotspots	(HS_OROCITY02)
+	LoadTriggers	(TR_OROCITY02)
+	LoadPalette		(PAL_HERO)
+	PalClearAnim		(0,15,31,31,31)
+	ThatActorInit	(HEROACTOR,?ANIM_AI,5,4,20,0,_TONY_SLIDE_UP,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,3,14,20,0,?_OLDLADY05_STAND_RIGHT_ANIM,?_OROCITY02_OLDLADY05_INTRO)
+	ThatActorInit	(ACTOR01,?ANIM_AI,16,14,20,37,?_GIRL05_STAND_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	ThatActorStart	(ACTOR01)
+	LoadVRAMTiles	(37,BIT_OLDLADY05,0,0)
+	LoadVRAMTiles	(40,BIT_GIRL05,37,0)
+	HeroSetCamera	()
+	SongStart		(SONGID_wencehouse)
+	SceneReady		()
+	End				()
+_TONY_SLIDE_UP
+	ThisActorSetAnimDelay	(?_HERO_RUN_UP_ANIM,4)
+							(?_HERO_INBED_LEFT_ANIM,0)
+	SetScroll				(_TONY_CONTINUES)
+	End						()
+_TONY_CONTINUES	
+	ThatActorSetScript	(HEROACTOR,_TONY_WAKING)
+	PalFade				(0,15,32,0)
+	Sync				(2,0)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End				()
+
+_TONY_WAKING
+	ThisActorSetAnimDelay	(?_HERO_INBED_LEFT_ANIM,64)
+							(?_HERO_INBED_RIGHT_ANIM,32)
+							(?_HERO_OUTTABED_RIGHT,16)
+							(?_HERO_RUN_DOWN_ANIM,8)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	Sync					(2,0)
+	End						()

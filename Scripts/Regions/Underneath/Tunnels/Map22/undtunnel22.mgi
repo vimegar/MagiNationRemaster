@@ -1,0 +1,87 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\UNDERNEATH\TUNNELS\MAP22\UNDTUNNEL22_DR.MGI
+%INCLUDE					REGIONS\UNDERNEATH\TUNNELS\MAP22\UNDTUNNEL22_TXT.MGI
+%INCLUDE					REGIONS\UNDERNEATH\TUNNELS\MAP22\UNDTUNNEL22_SCT.MGI
+
+/********************************/
+?_UNDTUNNEL22
+	SceneNew				()
+	LoadMap					(MAP_UNDTUNNEL22)
+	LoadHotspots			(HS_UNDTUNNEL22)
+	LoadPalette				(PAL_HERO)
+	SetItemScript			(_BOMB)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,35,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?ANIM_AI,16,18,35,0,?_END,?_END)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,35,25,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,35,25,?_RAINER,?_TUNNEL_RNDBAT)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	LoadVRAMTiles			(52,BIT_SPARKLE,25,0)
+	SetBtlReturn			(?_UNDTUNNEL22)		
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtunnels)
+	If						([Undtunnel22_Bombed], _ACTOR00_BOMBED_HDNWALL)
+	SceneReady				()
+	End						()
+
+_BOMB
+	If						([[USEITEM_ID == INV_BLAST_URN] && [USEITEM_CollCode == COLLCODE_ITEM01]],_BOMB01)
+	Jump					(?_TXT_NOTHING_HAPPENED)
+
+_BOMB01
+	SetXRAMBit				(Undtunnel22_Bombed,TRUE)
+	Jump					(_BOMB_HDNWALL)
+
+/********************************/
+// BOMB SCRIPT
+_BOMB_HDNWALL
+	InventoryTake			(INV_TYPE_ITEM,INV_BLAST_URN,1)
+	ThatActorSetAI			(HEROACTOR,?ZOMBIE_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOMB_DROP)
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,35,100,_BOMB_ACT,?_END)
+	LoadVRAMTiles			(32,BIT_URN,100,0)
+	End						()
+
+_TONY_BOMB_DROP
+	// Tony runs down, waits for bomb w/ delay
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,16)
+	ThatActorStart			(ACTOR01)		
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,24)
+							(?_HERO_STAND_UP_ANIM,16)
+	SetScroll				(_BLAM)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UP_ANIM)
+
+_BOMB_ACT
+	ThisActorLocRelative	(HEROACTOR)
+	SFX						(SFXID_SFX_EXPLOSION_SMALL)
+	ThisActorSetAnimDelay	(?_URN_EXPLODE_ANIM,64)
+	End						()
+
+_BLAM
+	ScrollMap				(1,3,0)
+	ScrollMap				(1,-3,0)
+	ScrollMap				(1,3,-3)
+	ScrollMap				(1,-3,3)
+	ScrollMap				(1,0,-3)
+	ScrollMap				(1,0,3)
+	ThatActorSetScript		(ACTOR00,_ACTOR_BOMB_HDNWALL)
+	End						()
+
+_ACTOR_BOMB_HDNWALL
+	ThisActorDrawTile		(0,0,35,84,COLLCODE_HS04)
+	ThisActorDrawTile		(0,-1,35,68,COLLCODE_WALL)
+	End						()
+
+_ACTOR00_BOMBED_HDNWALL
+	//ThatActorDrawTile
+	ThatActorDrawTile		(ACTOR00,0,0,35,84,COLLCODE_HS04)
+	ThatActorDrawTile		(ACTOR00,0,-1,35,68,COLLCODE_WALL)
+	SceneReady				()
+	End						()
+	
+

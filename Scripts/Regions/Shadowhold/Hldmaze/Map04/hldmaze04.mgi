@@ -1,0 +1,71 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP04\HLDMAZE04_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP04\HLDMAZE04_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE04
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE04)
+	LoadHotspots		(HS_HLDMAZE04)
+	LoadTriggers		(TR_HLDMAZE04)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?ANIM_AI,32,7,40,0,?_HLDMAZE04_ARDCLOAKMAN,?_DONT_TALK)
+	LoadVRAMTiles		(27,BIT_ARDCLOAKMAN,0,0)
+	SongStart			(SONGID_shadowhold)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE04)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+
+/********************************/
+// ARDERIAL HELPS TONY
+/********************************/
+
+
+?_HLDMAZE04_ARDCLOAKMAN
+	ThisActorSetAnimDelay	(?_CLOAKMAN_RUN_LEFT_ANIM,32)
+							(?_CLOAKMAN_RUN_RIGHT_ANIM,24)
+	ThisActorStop			()
+	End						()
+
+
+?_HLDMAZE04_ARDHELP
+		If				([HldMaze04Trigger1],?_END)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		Delay			(32)
+		ScrollMap		(64,1,0)
+		ThatActorStart	(ACTOR00)
+		Delay			(32)
+		CopyTileBlock	(40,0,15,1,1,28,7)
+		SetScroll		(?_HLDMAZE04_TR_3)
+		Delay			(32)
+		ScrollMap		(44,-1,0)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+		Delay			(32)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		Delay			(32)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+		Delay			(32)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		Delay			(32)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("OK, who did=")
+						("that?")
+		TextClose		()
+		Delay			(32)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		End				()
+
+	
+	
+		

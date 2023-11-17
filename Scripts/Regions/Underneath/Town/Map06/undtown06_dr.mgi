@@ -1,0 +1,139 @@
+/********************************/
+?_UNDTOWN06_DR_1
+		HeroToDoor	(11,19,32,33)
+		Jump		(?_UNDTOWN01)
+
+?_UNDTOWN06_TR_1		// MIRROR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A necessity=")
+					("for a leader")
+					("of the=")
+					("community.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_2		// BOOKS
+		TextOpen	()
+		TextWrite	("Motash's=")
+					("Magi Opus.")
+		TextIcon	(ICON_TONY)
+		TextWrite	("A most=")
+					("intimidating")
+					("read.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_3		// DEALBIN
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A bin of=")
+					("strange looking")
+					("bits and deals.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_4		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It's moving!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_5		// KNICK-KNACKS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Knick knacks.")
+					("I should leave=")
+					("them be.")
+					("I don't want to=")
+					("break anything.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_6		// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Chairs grown=")
+					("right from the")
+					("ground itself.")
+					("Cool beans!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN06_TR_7		// TONY INFLATION
+		If				([GC = GC_UND_QUAKE],_SKIP)
+
+		If				([Mushrooms_Eaten > 0],_SAMPLE)		
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Yuck!")
+						("Mushrooms.")
+		TextClose		()
+		End				()
+
+_SAMPLE
+		If				([Mushrooms_Eaten > 20],_DOUBLE_SAMPLE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hmm...=")
+						("Mushrooms.")
+						("I hear=")
+						("these things")
+						("are yummy.")
+		TextClose		()
+		TextOpen		()
+		TextClear		()
+		TextIcon		(ICON_TONY)
+		TextWrite		(" Try some=")
+						(" Don't$")
+		TextMenu		(2)
+						(_YES)
+						(_NO)
+_YES
+		If				([Mushrooms_Eaten == 20],?_UNDTOWN06_MUSHGAG)
+		TextClear		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Blah! These=")
+						("taste like")
+						("styrofoam!")
+		TextClose		()
+		ExprXRAMByte	(Mushrooms_Eaten,[Mushrooms_Eaten + 1])
+		End				()
+
+_NO
+		TextClose		()
+		End				()
+		
+_DOUBLE_SAMPLE
+
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I wonder if=")
+						("these mushrooms")
+						("are an acquired=")
+						("taste...")
+		TextClose		()
+		TextOpen		()
+		TextClear		()
+		TextIcon		(ICON_TONY)
+		TextWrite		(" Try more=")
+						(" Don't$")
+		TextMenu		(2)
+						(_YES2)
+						(_NO2)
+_YES2
+		If				([Mushrooms_Eaten == 40],?_UNDTOWN06_MUSHGAG)
+		TextClear		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hmm...=")
+						("pretty good!")
+		TextClose		()
+		ExprXRAMByte	(Mushrooms_Eaten,[Mushrooms_Eaten + 1])
+		End				()
+
+_NO2
+		TextClose		()
+_SKIP
+		End				()
+		End			()

@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_HLDMAZE09)
+						(HOTSPOT_TRIGGER_WEST,?_HLDMAZE09_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_HLDMAZE09_DR_2)
+
+		FileTriggers	(TR_HLDMAZE09)
+						(TRIGGER_CONFIG,?_HLDMAZE09_TR_1)

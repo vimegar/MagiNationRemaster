@@ -1,0 +1,110 @@
+/********************************/
+?_NRMVASH02_DR_1
+		HeroToDoor	( 0,7,19,9)
+		Jump		(?_NRMVASH03)
+
+?_NRMVASH02_DR_2
+		HeroToDoor	(10,0,11,23)
+		Jump		(?_NRMVASH05)
+
+?_NRMVASH02_DR_3
+		HeroToDoor	(23,7,0,8)
+		Jump		(?_NRMVASH04)
+
+?_NRMVASH02_DR_4
+		If			([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If			([!Worveline_Caught],_SKIP)
+		ThatActorStart	(ACTOR03)
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		Delay				(32)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		TextOpen			()
+		TextWrite			("-Worveline=")
+							(" escaped!-")
+		TextClose			()
+		SetXRAMBit			(Worveline_Caught,FALSE)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_UP_ANIM)
+		JumpRandom			(_WORV_SETTER1)
+							(_WORV_SETTER2)
+							(_WORV_SETTER3)
+							(_WORV_SETTER4)
+							(_WORV_SETTER5)
+							(_WORV_SETTER6)
+_WORV_SETTER1
+		SetXRAMByte			(Worveline_Hiding,1)
+		Jump				(_DONE)
+_WORV_SETTER2
+		SetXRAMByte			(Worveline_Hiding,2)
+		Jump				(_DONE)
+_WORV_SETTER3
+		SetXRAMByte			(Worveline_Hiding,3)
+		Jump				(_DONE)
+_WORV_SETTER4
+		SetXRAMByte			(Worveline_Hiding,4)
+		Jump				(_DONE)
+_WORV_SETTER5
+		SetXRAMByte			(Worveline_Hiding,5)
+		Jump				(_DONE)
+_WORV_SETTER6
+		SetXRAMByte			(Worveline_Hiding,6)
+_DONE
+		Delay				(16)
+		ThatActorStop		(ACTOR03)
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+		End					()	
+_SKIP
+		HeroToDoor	(11,16,8,0)
+		Jump		(?_NRMVASH01)
+
+?_NRMVASH02_DR_5
+		HeroSetDoor	(5,9)
+		Jump		(?_NRMVASH02_SCT)
+
+/********************************/
+?_NRMVASH02_TR_1
+		TextOpen		()
+		TextWrite		("It's been=")
+						("welded shut.")
+		TextClose		()
+		End				()
+
+
+/********************************/
+//	NRMVASH22
+/********************************/
+?_NRMVASH02_SCT_DR_1
+		HeroSetDoor		(16,3)
+		Jump			(?_NRMVASH02)
+
+?_NRMVASH02_SCT_TR_2
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+		Jump				(?_NRMVASH02_SCT_OLDMAN_TALKS)
+
+?_NRMVASH02_SCT_TR_3
+		TextOpen		()
+		TextIcon		(ICON_DINGO)
+		TextWrite		("MEEEEEEOOOW!")
+		TextClose		()
+		End				()
+
+/********************************/
+//	HDNROOM05
+/********************************/
+?_HDNROOM05_DR_1
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I can't get=")
+						("out!")
+		TextClose		()
+		
+		End				()
+
+/********************************/
+?_HDNROOM05_TR_1
+
+		SetXRAMBit		(AvoidAgovo_Win,TRUE)
+		HeroSetDoor		(8,6)
+		Jump			(?_NRMVASH02_SCT)

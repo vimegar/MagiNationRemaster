@@ -1,0 +1,92 @@
+;Size:55
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\NAROOM\VASH\MAP22\NRMVASH22.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_NRMVASH22_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$04
+		DB	$14
+		DB	$0F
+		DB	$07
+
+	DB	CMD_JUMP
+		DB	:?_NRMVASH13
+		DW	(?_NRMVASH13&$FFFF)
+
+;********************************
+?_NRMVASH22_TR_1
+	DB	CMD_TRIGGERTREASURE
+		DW	(XRAM_TREASURE+$000C)
+		DB	$20
+		DB	INV_TYPE_ITEM
+		DB	INV_FUNGICIDE
+		DW	$D068
+
+;********************************
+?_NRMVASH22
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_NRMVASH22&$FFFF)
+		DB	:MAP_NRMVASH22
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_NRMVASH22&$FFFF)
+
+	DB	CMD_LOADTRIGGERS
+		DW	(TR_NRMVASH22&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$0B
+		DW	$D0B5
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_lesson
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_NRMVASH13
+	GLOBAL	XRAM_TREASURE
+	GLOBAL	MAP_NRMVASH22
+	GLOBAL	HS_NRMVASH22
+	GLOBAL	TR_NRMVASH22
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+
+;********************************
+	END
+;********************************

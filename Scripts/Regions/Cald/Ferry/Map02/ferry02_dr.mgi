@@ -1,0 +1,6 @@
+/********************************/
+?_FERRY02_DR_1
+		SetLoadScript	(?_FERRY02_DR_1)
+		HeroSetDoor		(56,46)
+		Jump			(?_OVRSURFACE01)
+

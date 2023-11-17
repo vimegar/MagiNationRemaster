@@ -1,0 +1,213 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_MAN05_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?MAN05_WALK01_BACK)
+					(?MAN05_WALK02_BACK)
+					(?MAN05_WALK03_BACK)
+					(?MAN05_WALK02_BACK)
+					
+	JumpLocal:		(?_MAN05_WALK_UP_ANIM)
+
+/********************************/
+?_MAN05_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?MAN05_WALK01_FRONT)
+					(?MAN05_WALK02_FRONT)
+					(?MAN05_WALK03_FRONT)
+					(?MAN05_WALK02_FRONT)
+					
+	JumpLocal:		(?_MAN05_WALK_DOWN_ANIM)
+
+/********************************/
+?_MAN05_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?MAN05_WALK01_LEFT)
+					(?MAN05_WALK02_LEFT)
+					(?MAN05_WALK03_LEFT)
+					(?MAN05_WALK02_LEFT)
+					
+	JumpLocal:		(?_MAN05_WALK_LEFT_ANIM)
+
+/********************************/
+?_MAN05_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?MAN05_WALK01_RIGHT)
+					(?MAN05_WALK02_RIGHT)
+					(?MAN05_WALK03_RIGHT)
+					(?MAN05_WALK02_RIGHT)
+					
+	JumpLocal:		(?_MAN05_WALK_RIGHT_ANIM)
+
+/********************************/
+?_MAN05_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?MAN05_WALK01_BACK)
+					(?MAN05_WALK02_BACK)
+					(?MAN05_WALK03_BACK)
+					(?MAN05_WALK02_BACK)
+					
+	JumpLocal:		(?_MAN05_RUN_UP_ANIM)
+
+/********************************/
+?_MAN05_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?MAN05_WALK01_FRONT)
+					(?MAN05_WALK02_FRONT)
+					(?MAN05_WALK03_FRONT)
+					(?MAN05_WALK02_FRONT)
+					
+	JumpLocal:		(?_MAN05_RUN_DOWN_ANIM)
+
+/********************************/
+?_MAN05_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?MAN05_WALK01_LEFT)
+					(?MAN05_WALK02_LEFT)
+					(?MAN05_WALK03_LEFT)
+					(?MAN05_WALK02_LEFT)
+					
+	JumpLocal:		(?_MAN05_RUN_LEFT_ANIM)
+
+/********************************/
+?_MAN05_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?MAN05_WALK01_RIGHT)
+					(?MAN05_WALK02_RIGHT)
+					(?MAN05_WALK03_RIGHT)
+					(?MAN05_WALK02_RIGHT)
+					
+	JumpLocal:		(?_MAN05_RUN_RIGHT_ANIM)
+
+/********************************/
+?_MAN05_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?MAN05_WALK02_BACK)
+	
+	JumpLocal:		(?_MAN05_STAND_UP_ANIM)
+
+/********************************/
+?_MAN05_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?MAN05_WALK02_FRONT)
+	
+	JumpLocal:		(?_MAN05_STAND_DOWN_ANIM)
+
+/********************************/
+?_MAN05_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?MAN05_WALK02_LEFT)
+	
+	JumpLocal:		(?_MAN05_STAND_LEFT_ANIM)
+
+/********************************/
+?_MAN05_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?MAN05_WALK02_RIGHT)
+	
+	JumpLocal:		(?_MAN05_STAND_RIGHT_ANIM)
+
+/********************************/
+?_MAN05_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?MAN05_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_MAN05_STAND_UL_ANIM)
+
+/********************************/
+?_MAN05_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?MAN05_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_MAN05_STAND_UR_ANIM)
+
+/********************************/
+?_MAN05_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?MAN05_STAND_LEFT)
+	
+	JumpLocal:		(?_MAN05_STAND_DL_ANIM)
+
+/********************************/
+?_MAN05_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?MAN05_STAND_RIGHT)
+	
+	JumpLocal:		(?_MAN05_STAND_DR_ANIM)
+
+/********************************/
+?_MAN05_HOP_LEFT_ANIM
+
+	Frame:			(2,0,-4,?MAN05_WALK02_LEFT)
+					(2,0,-3,?MAN05_WALK02_LEFT)
+					(2,0,-2,?MAN05_WALK02_LEFT)
+					(2,0,-1,?MAN05_WALK02_LEFT)
+					(2,0,0,?MAN05_WALK02_LEFT)
+					(2,0,1,?MAN05_WALK02_LEFT)
+					(2,0,2,?MAN05_WALK02_LEFT)
+					(2,0,3,?MAN05_WALK02_LEFT)
+					(2,0,4,?MAN05_WALK02_LEFT)
+	
+	JumpLocal:		(?_MAN05_STAND_LEFT_ANIM)
+
+/********************************/
+?_MAN05_HOP_RIGHT_ANIM
+
+	Frame:			(2,0,-4,?MAN05_WALK02_RIGHT)
+					(2,0,-3,?MAN05_WALK02_RIGHT)
+					(2,0,-2,?MAN05_WALK02_RIGHT)
+					(2,0,-1,?MAN05_WALK02_RIGHT)
+					(2,0,0,?MAN05_WALK02_RIGHT)
+					(2,0,1,?MAN05_WALK02_RIGHT)
+					(2,0,2,?MAN05_WALK02_RIGHT)
+					(2,0,3,?MAN05_WALK02_RIGHT)
+					(2,0,4,?MAN05_WALK02_RIGHT)
+	
+	JumpLocal:		(?_MAN05_STAND_RIGHT_ANIM)
+
+/********************************/
+?_MAN05_BLOWNAWAY_ANIM
+	
+	FrameBlock:		(2,-4,0)
+					(?MAN05_STAND_RIGHT)
+					(?MAN05_STAND_BACKRIGHT)
+					(?MAN05_STAND_BACKLEFT)
+					(?MAN05_STAND_LEFT)
+
+	JumpLocal:		(?_MAN05_BLOWNAWAY_ANIM)
+
+/********************************/
+?_FACE_MAN05
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_MAN05_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_MAN05_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_MAN05_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_MAN05_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

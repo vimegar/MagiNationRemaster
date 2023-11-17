@@ -1,0 +1,44 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP02\UNDCAVE02_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP02\UNDCAVE02_TXT.MGI
+
+/********************************/
+?_UNDCAVERN02
+
+?_UNDCAVERN02_GENERIC
+	SceneNew				()
+	LoadMap					(MAP_UNDCAVERN02)
+	LoadHotspots			(HS_UNDCAVERN02)
+	LoadTriggers			(TR_UNDCAVERN02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,4,17,50,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_CAVERN_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_CAVERN_RNDBAT)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,50,52,?_END,?_END)
+	LoadVRAMTiles			(21,BIT_EXPLODESHROOM,52,0)
+
+	SetBtlReturn			(?_UNDCAVERN02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undcaverns)
+	SceneReady				()
+	End						()
+
+/********************************/
+?_UNDCAVERN02_MUSHPOP
+	ThatActorSetScript		(ACTOR00,_POP)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+_POP
+	ThisActorLocRelative	(HEROACTOR)
+	ThisActorSetAnim		(?_SHROOM_EXPLODE_ANIM)
+	ThisActorDrawTile		(0,0,50,253,COLLCODE_SPACE)
+	Delay					(64)
+	ThisActorStop			()

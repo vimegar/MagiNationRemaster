@@ -1,0 +1,53 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP07\ARDGARDEN07_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP07\ARDGARDEN07_TXT.MGI
+
+/********************************/
+?_ARDGARDEN07
+	SetXRAMByte		(Exit_Disable,1)
+	SceneNew		()
+	LoadMap			(MAP_ARDGARDEN07)
+	LoadHotspots	(HS_ARDGARDEN07)
+	LoadTriggers	(TR_ARDGARDEN07)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,18,0,?_HERO_STAND_RIGHT_ANIM,?_DONT_TALK)
+	ThatActorInit	(ACTOR00,?TALKER_AI,8,4,18,0,_OLDMAN_WALKING,_HISTORIAN_TALKER)
+	LoadVRAMTiles	(48,BIT_OLDMAN,0,0)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR00)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_orotunnels)
+	SceneReady		()
+	End				()
+	
+_OLDMAN_WALKING
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_DL_ANIM,90)
+							(?_OLDMAN_WALK_RIGHT_ANIM,16)
+							(?_OLDMAN_STAND_DOWN_ANIM,120)
+							(?_OLDMAN_STAND_UP_ANIM,32)
+							(?_OLDMAN_WALK_UP_ANIM,20)
+							(?_OLDMAN_STAND_UP_ANIM,160)
+							(?_OLDMAN_STAND_UR_ANIM,64)
+							(?_OLDMAN_WALK_DOWN_ANIM,20)
+							(?_OLDMAN_STAND_DOWN_ANIM,80)
+							(?_OLDMAN_STAND_DR_ANIM,70)
+							(?_OLDMAN_WALK_LEFT_ANIM,16)
+							(?_OLDMAN_STAND_DOWN_ANIM,45)
+	Jump					(_OLDMAN_WALKING)
+
+_HISTORIAN_TALKER
+	SetText			(_TXT_HISTORIAN)
+	Jump			(?_FACE_OLDMAN)	
+	
+_TXT_HISTORIAN
+	TextOpen		()
+	TextIcon		(ICON_OLDMAN)
+	TextWrite		("Hello, I'm the=")
+					("local")
+					("historian. Feel=")
+					("free to ask me")
+					("anything.")
+	TextClose		()
+	Jump			(?_HISTORIAN_CALD_TEXT)

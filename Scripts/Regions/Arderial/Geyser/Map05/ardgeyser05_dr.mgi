@@ -1,0 +1,33 @@
+/*******************************************/
+
+?_ARDGEYSER05_DR_1
+	Jump					(?_UNDGEYSER_FULL)
+
+?_ARDGEYSER05_DR_2
+	Jump					(?_UNDGEYSER_NEW)
+
+?_ARDGEYSER05_DR_3
+	Jump					(?_UNDGEYSER_FIRST)
+
+?_ARDGEYSER05_DR_4
+	Jump					(?_UNDGEYSER_THIRD)
+
+?_ARDGEYSER05_DR_5
+	HeroToDoor				(0,14,23,14)
+	Jump					(?_ARDGEYSER01)
+	
+?_ARDGEYSER05_DR_6
+	HeroToDoor				(11,0,11,23)
+	Jump					(?_ARDGEYSER06)
+	
+?_ARDGEYSER05_DR_7
+	HeroSetDoor				(0,4)
+	Jump					(?_ARDGEYSER11)
+
+/*******************************************/
+
+?_ARDGEYSER05_TR_1
+	TriggerTreasure	(ARDGEYSER05_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,14,13,24)
+
+?_ARDGEYSER05_TR_2
+	TriggerTreasure	(ARDGEYSER05_Chest2,INV_TYPE_ITEM,INV_BALOO_SAP,8,4,24)

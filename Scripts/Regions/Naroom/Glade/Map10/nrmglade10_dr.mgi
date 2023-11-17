@@ -1,0 +1,11 @@
+/********************************/
+?_NRMGLADE10_DR_1
+		HeroSetDoor	(37,8)
+		Jump		(?_OVRSURFACE01)
+
+?_NRMGLADE10_DR_2
+		ThatActorStop	(HEROACTOR)
+		HeroToDoor		(4,4,43,24)
+		PalClearBase	(0,15,31,31,31)
+		PalFade			(0,15,32,0)
+		Jump			(?_WVESHORTCUT01_FADEIN)

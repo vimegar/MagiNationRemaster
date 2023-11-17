@@ -1,0 +1,147 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\GEYSER\MAP09\UNDGEYSER09_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\GEYSER\MAP09\UNDGEYSER09_TXT.MGI
+
+/********************************//********************************/
+//	OGAR THE NASTY
+/********************************//********************************/
+?_UNDGEYSER09
+	SceneNew				()
+	LoadMap					(MAP_UNDGEYSER09)
+
+_UNDGEYSER09
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_UNDGEYSER09)
+	LoadTriggers			(TR_UNDGEYSER09)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,18,20,40,0,?_CORE_STONE_ANIM,?_UND_STONE_TALKER)
+	ThatActorInit			(ACTOR01,?ANIM_AI,29,20,40,8,?_UNDGEYSER09_OGAR,?_DONT_TALK)
+	LoadVRAMTiles			(8,BIT_CORESTONE,0,0)
+	LoadVRAMTiles			(41,BIT_OGAR,8,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	SetEncounter			(?_UNDGEYSER_RNDBAT,ENCOUNTER_FRQ_SUPERSLOW)
+	SetBtlReturn			(_UNDGEYSER09_RETURN)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongFadeOut				(80)
+	SongStart				(SONGID_maze)
+	Switch					([UndGeyserWall])
+							(0,_DONE)
+							(1,_ONE_WALL_GONE)
+							(2,_TWO_WALLS_GONE)
+							(3,_THREE_WALLS_GONE)
+							(4,_ALL_WALLS_GONE)
+_ALL_WALLS_GONE
+	CopyTileBlock			(40,11,26,4,7,24,15)
+	CopyTileBlock			(40,8,26,3,7,10,15)
+	CopyTileBlock			(40,14,26,3,7,13,15)
+	CopyTileBlock			(40,9,29,4,6,17,23)
+	CopyTileBlock			(40,8,29,5,6,16,11)
+	Jump					(_DONE)
+_THREE_WALLS_GONE
+	CopyTileBlock			(40,12,26,3,7,25,15)
+	CopyTileBlock			(40,8,26,3,7,10,15)
+	CopyTileBlock			(40,17,26,4,6,17,23)
+	CopyTileBlock			(40,9,31,5,3,16,11)
+	Jump					(_DONE)
+_TWO_WALLS_GONE
+	CopyTileBlock			(40,13,26,2,7,26,15)
+	CopyTileBlock			(40,8,26,2,7,10,15)
+	CopyTileBlock			(40,17,26,4,5,17,24)
+	CopyTileBlock			(40,21,7,5,2,16,11)
+	Jump					(_DONE)	
+_ONE_WALL_GONE
+	CopyTileBlock			(40,14,26,1,7,27,15)
+	CopyTileBlock			(40,8,26,1,7,10,15)
+	CopyTileBlock			(40,17,26,4,4,17,25)
+	CopyTileBlock			(40,9,32,5,1,16,11)
+_DONE
+	SceneReady				()
+	End						()
+
+_UNDGEYSER09_RETURN
+	SceneNew				()
+	SetCollMask				(1,1,1,1)
+	LoadVRAM				(VRM_GEYSER,PAL_GEYSER)
+	JumpLocal				(_UNDGEYSER09)
+
+?_UND_STONE_TALKER
+	SetXRAMByte				(Exit_Disable,1)
+	SetLoadScript			(?_UNDCAVERN06_DR_1)
+	
+	SetXRAMByte				(GS_Glyph_Count,GLYPH_UND_STONE)
+	SetGamecount			(GC_UND_WASTED)
+	ThatActorStart			(ACTOR01)
+	SetText					(?_UNDGEYSER09_TXT_1)
+	End						()
+
+?_UNDGEYSER09_OGAR
+	ThatActorStop			(ACTOR00)
+	WaitEventText			(1)
+	SetScroll				(?_UNDGEYSER_MINI_QUAKE)
+	WaitEventScroll			(1)
+	SetText					(?_UNDGEYSER09_TXT_4)
+	WaitEventText			(4)
+	ThisActorSetAnimDelay	(?_OGAR_WALK_LEFT_ANIM,80)
+	ScrollMap				(32,1,0)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_UNDGEYSER09_TONY)
+	ThisActorSetAnimDelay	(?_OGAR_WALK_LEFT_ANIM,16)
+							(?_OGAR_STAND_LEFT_ANIM,0)
+	SetText					(?_UNDGEYSER09_TXT_2)
+	WaitEventText			(2)
+	ThisActorSetAnimDelay	(?_OGAR_RUN_LEFT_ANIM,12)
+							(?_OGAR_STAND_LEFT_ANIM,0)
+	End						()
+
+?_UNDGEYSER09_TONY
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	WaitEventText			(2)
+	ThisActorSetAnimDelay	(?_HERO_RUN_RIGHT_ANIM,8)
+							(?_HERO_STAND_RIGHT_ANIM,0)
+	SetBtlReturn			(?_UNDGEYSER09_RETURN)
+	Jump					(?_UNDGEYSER_OGARBAT)
+	End						()
+
+/********************************//********************************/
+//	BOSS DEFEATED
+/********************************//********************************/
+?_UNDGEYSER09_RETURN
+	SetGamecount			(GC_UND_WASTED)
+	SceneNew				()
+	LoadMap					(MAP_UNDGEYSER09)
+	LoadPalette				(PAL_HERO)
+//	LoadEncounters			(EN_NRMRIVER03,ENCOUNTER_FRQ_NORM,?_UNDGEYSER_RE_ENTER)
+	LoadHotspots			(HS_UNDGEYSER09)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,18,20,40,0,?_UNDGEYSER09_TONYRET,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+//	HeroFromDoor			()
+	HeroSetCamera			()
+//	SongFadeOut				(80)
+	SongStart				(SONGID_maze)
+	CopyTileBlock			(40,39,0,1,1,30,17)
+	CopyTileBlock			(40,39,0,1,1,13,6)
+	CopyTileBlock			(40,39,0,1,1,2,21)
+	CopyTileBlock			(40,39,0,1,1,2,31)
+	CopyTileBlock			(40,11,26,4,7,24,15)
+	CopyTileBlock			(40,11,26,4,7,10,15)
+	CopyTileBlock			(40,9,29,4,6,17,23)
+	CopyTileBlock			(40,8,29,5,6,16,11)
+	SceneReady				()
+	SetScroll				(?_UNDGEYSER_QUAKE)
+	Sync					(2,0)
+	PalClearAnim			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	End						()
+ 
+?_UNDGEYSER09_TONYRET
+	ThisActorSetAnim		(?_HERO_STAND_RIGHT_ANIM)
+	SetText					(?_UNDGEYSER09_TXT_5)
+	WaitEventText			(5)
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,48)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,48)
+	HeroSetDoor				(6,13)
+	Jump					(?_UNDCAVERN06_DR_1)

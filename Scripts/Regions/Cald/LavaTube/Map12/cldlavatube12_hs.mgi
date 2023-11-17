@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_CLDLAVATUBE12)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVATUBE12_DR_1)
+						(HOTSPOT_TRIGGER_EAST,?_CLDLAVATUBE12_DR_2)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDLAVATUBE12_DR_3)
+						

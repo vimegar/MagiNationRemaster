@@ -1,0 +1,9 @@
+/********************************/
+?_CLDLAVATUBE17_DR_1
+		HeroToDoor	(8,0,31,29)
+		Jump		(?_CLDLAVATUBE14)
+
+?_CLDLAVATUBE17_DR_2
+		HeroToDoor	(5,39,30,0)
+		Jump		(?_CLDLAVATUBE18)
+

@@ -1,0 +1,21 @@
+/********************************/
+?_ARDCITY02_DR_1
+		HeroSetDoor	(22,22)
+		Jump		(?_OVRSURFACE05)
+
+?_ARDCITY02_DR_2
+		HeroSetDoor	(13,19)
+		Jump		(?_ARDGARDEN05)
+
+?_ARDCITY02_DR_3
+		HeroSetDoor	(21,21)
+		Jump		(?_OVRSURFACE05)
+
+?_ARDCITY02_DR_4
+		HeroSetDoor	(22,20)
+		Jump		(?_OVRSURFACE05)
+
+?_ARDCITY02_DR_5
+		HeroSetDoor	(23,21)
+		Jump		(?_OVRSURFACE05)
+

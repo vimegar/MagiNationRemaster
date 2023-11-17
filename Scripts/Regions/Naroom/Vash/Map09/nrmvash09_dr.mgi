@@ -1,0 +1,107 @@
+/********************************/
+?_NRMVASH09_DR_1
+		HeroToDoor	(12,17,6,4)
+		Jump		(?_NRMVASH03)
+		
+?_NRMVASH09_DR_2
+		HeroToDoor	(2,10,4,27)
+		Jump		(?_NRMVASH09B)
+
+?_NRMVASH09_TR_1
+		TriggerTreasure	(NRMVASH09_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,16,7,20)		
+		
+?_NRMVASH09_TR_2
+		End			()
+		
+?_NRMVASH09_TR_3
+		TextOpen	()
+		TextWrite	("This bed smells=")
+					("like turnips.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH09_TR_4
+		TextOpen	()
+		TextWrite	("This bed is=")
+					("too soft.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH09_TR_5
+		TextOpen	()
+		TextWrite	("This bed is=")
+					("too hard.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH09_TR_6
+		TextOpen	()
+		TextIcon	(ICON_DINGO)
+		TextWrite	("MEW")
+					("MROW")
+					("MEOW")
+					("MEWW")
+					("MEWW")
+					("MEROW")
+					("ME-OW")
+					("MOW")
+		TextIcon	(ICON_TONY)
+		TextWrite	("AHHHH! STOP!!")
+		TextClose	()
+		End			()
+
+?_NRMVASH09_TR_7
+		If			([GAMECOUNT < GC_END_FUNERAL],_SKIP)
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Hmmm, all of=")
+					("Poad's jars")
+					("are empty.")
+		TextClose	()
+		End			()
+_SKIP
+		TextOpen	()
+		TextWrite	("Jars of=")
+					("jellybeans.")
+		TextIcon	(ICON_TONY)
+		TextWrite	("Eww, they're=")
+					("all licorice")
+					("ones.")
+		TextClose	()
+		End			()
+
+/****************************************/
+//	SECRET PASSAGEWAY FROM POAD'S TO SHOP
+/****************************************/
+//	From Poad's
+?_NRMVASH09B_DR_1
+		HeroToDoor	(4,27,2,10)
+		Jump		(?_NRMVASH09)
+
+?_NRMVASH09B_DR_2
+		HeroToDoor	(4,0,8,26)
+		Jump		(?_NRMVASH09C)
+
+/****************************************/
+//	Connector
+?_NRMVASH09C_DR_1
+		HeroToDoor	(8,26,4,0)
+		Jump		(?_NRMVASH09B)
+
+?_NRMVASH09C_DR_2
+		HeroToDoor	(39,26,4,0)
+		Jump		(?_NRMVASH09D)
+
+/****************************************/
+//	From Shop
+?_NRMVASH09D_DR_1
+		HeroToDoor	(4,27,0,2)
+		Jump		(?_NRMVASH10)
+
+?_NRMVASH09D_DR_2
+		HeroToDoor	(4,0,39,26)
+		Jump		(?_NRMVASH09C)
+
+/****************************************/
+//	END SECRET PASSAGEWAY FROM POAD'S TO SHOP
+/****************************************/

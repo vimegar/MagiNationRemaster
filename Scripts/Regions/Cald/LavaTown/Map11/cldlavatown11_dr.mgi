@@ -1,0 +1,84 @@
+/********************************/
+?_CLDLAVATOWN11_DR_1
+		HeroToDoor	(4,17,6,14)
+		Jump		(?_CLDLAVATOWN02)		
+		
+/********************************/
+?_CLDLAVATOWN11_TR_1
+		TriggerTreasure (CLDLAVATOWN11_CHEST1,INV_TYPE_ITEM,INV_BALOO_ROOT,7,6,12)
+
+
+?_CLDLAVATOWN11_TR_2			// BOOKCASE
+		TextOpen		()
+		TextWrite		("BBQ Cookbooks.")
+		TextIcon		(ICON_TONY)
+		TextWrite		("I'd figure.")
+						("Yeah.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_3			// FILING CABINET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I must inspect=")
+						("this!")
+						("Hmm...")
+						("Nothing.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_4			// FILING CABINET
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Why do I feel=")
+						("the urge to")
+						("mess with=")
+						("people's stuff?")
+						("Oh well, can't=")
+						("be helped")
+						("I guess.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_5			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Some of these=")
+						("drawers are")
+						("melting.")
+						("I think I'll=")
+						("leave this")
+						("alone.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_6			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Crawling under=")
+						("some covers")
+						("just doesn't=")
+						("seem appealing")
+						("right now.")
+						("Whew.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_7			// CHAIR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This must be=")
+						("the time out")
+						("chair.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN11_TR_8			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Pigs, goats,=")
+						("and chickens.")
+						("On fire.")
+		TextClose		()
+		End				()
+

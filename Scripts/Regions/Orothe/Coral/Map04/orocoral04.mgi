@@ -1,0 +1,25 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\CORAL\MAP04\OROCORAL04_DR.MGI
+
+?_OROCORAL04
+	SceneNew		()
+?_OROCORAL04_OVER_ENTRY
+	LoadMap			(MAP_OROCORAL04)
+	LoadHotspots	(HS_OROCORAL04)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,50,0,?_HERO_UNDTREAD_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_CORAL_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_CORAL_RNDBAT)
+	ThatActorStart	(HEROACTOR)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_OROCORAL04)
+	HeroFromDoor	()
+	SongStart		(SONGID_ororuins)
+	HeroSetCamera	()
+	SceneReady		()
+	End				()
+	

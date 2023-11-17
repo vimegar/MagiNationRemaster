@@ -1,0 +1,4 @@
+/********************************/
+		FileHotspots	(HS_CLDLAVAVENT07)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDLAVAVENT07_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT07_DR_2)

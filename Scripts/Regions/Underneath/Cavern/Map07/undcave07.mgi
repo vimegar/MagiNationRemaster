@@ -1,0 +1,24 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP07\UNDCAVE07_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\CAVERN\MAP07\UNDCAVE07_TXT.MGI
+
+/********************************/
+?_UNDCAVERN07
+	SceneNew		()
+	LoadMap			(MAP_UNDCAVERN07)
+	LoadHotspots	(HS_UNDCAVERN07)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,25,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,25,0,?_RAINER,?_CAVERN_RNDBAT2)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,25,0,?_RAINER,?_CAVERN_RNDBAT2)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_UNDCAVERN07)	
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undcaverns)
+	SceneReady		()
+	End				()

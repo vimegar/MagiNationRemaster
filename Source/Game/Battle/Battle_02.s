@@ -1,0 +1,80 @@
+;********************************
+; BATTLE_02.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "Basketball Floozy!" Mayo,Emory Georges
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+		LIB		SOURCE\GAME\BATTLE\TABLES\ATTACK_TABLE.S
+
+;********************************
+		LIB		SOURCE\GAME\BATTLE\COMMANDS\BTLCMD_FUNC.S
+		LIB		SOURCE\GAME\BATTLE\COMMANDS\BTLCMD_FORMULA.S
+
+		LIB		SOURCE\GAME\BATTLE\COMMANDS\BTLCMD_LEVELUP.S
+		LIB		SOURCE\GAME\BATTLE\COMMANDS\BTLCMD_UTILITY.S
+		
+;********************************
+		LIB		SOURCE\GAME\BATTLE\BATTLE_INIT.S
+		LIB		SOURCE\GAME\BATTLE\BATTLE_FLOW.S
+		LIB		SOURCE\GAME\BATTLE\BATTLE_GLOBALS.S
+				
+;********************************
+		LIB		SOURCE\GAME\BATTLE\BATTLEAI\BATTLE_AI.S
+				
+;********************************
+		LIB		SOURCE\ENGINE\SCRIPT\MODULES\SCRIPT_02_BATTLE.S
+
+;********************************
+CMD_STR_BLANK
+	DB		?SPCE,?SPCE,?SPCE,?SPCE,?SPCE,?SPCE,?SPCE
+
+;********************************
+;TEST TONY
+BTL_TST_TONY
+
+TEST_TONY_ID			DB		TONY
+TEST_TONY_TYPE			DB		CREATURE_TYPE_MAGI
+TEST_TONY_LVL			DB		1
+TEST_TONY_EXPH			DB		$00
+TEST_TONY_EXPL			DB		$00
+
+TEST_TONY_ENGH			DB		0
+TEST_TONY_ENGL			DB		100
+TEST_TONY_ENGMAXH		DB		0
+TEST_TONY_ENGMAXL		DB		100
+
+TEST_TONY_ATK			DB		50
+TEST_TONY_MAG_ATK		DB		50
+TEST_TONY_SPEED			DB		50
+TEST_TONY_DEF			DB		25
+TEST_TONY_MAG_DEF		DB		25
+
+TEST_TONY_LUCK			DB		$01
+TEST_TONY_ENERGYUP		DB		$00
+TEST_TONY_ELEMSTONG		DB		$00
+TEST_TONY_ELEMWEAK		DB		$00
+TEST_TONY_IMMUNE		DB		$FF		; Immune to status ailments
+TEST_TONY_STATUS		DB		$00		; Battle status of creature (reset at start)
+TEST_TONY_PERMSTAT		DB		$00		; Always have status ailments
+TEST_TONY_AI			DB		$00
+
+TEST_TONY_CMD0			DW		(CMD_SUMMON & $FFFF)
+TEST_TONY_CMD1			DW		(CMD_SPELL & $FFFF)
+TEST_TONY_CMD2			DW		(CMD_ITEM & $FFFF)
+TEST_TONY_CMD3			DW		(CMD_RUN & $FFFF)
+
+TEST_TONY_CMD0LVL		DB		$FF
+TEST_TONY_CMD1LVL		DB		$FF
+TEST_TONY_CMD2LVL		DB		$FF
+TEST_TONY_CMD3LVL		DB		$FF
+
+TEST_TONY_RELIC0		DB		$00
+TEST_TONY_RELIC1		DB		$00
+
+TEST_TONY_OTHER			DB		$42
+
+;********************************
+	END
+;********************************

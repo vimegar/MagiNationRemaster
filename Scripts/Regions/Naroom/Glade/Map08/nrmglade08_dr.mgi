@@ -1,0 +1,12 @@
+/********************************/
+?_NRMGLADE08_DR_1
+		HeroToDoor	(3,19,19,0)
+		Jump		(?_NRMGLADE06)
+
+?_NRMGLADE08_DR_2
+		HeroSetDoor	(38,9)
+		Jump		(?_OVRSURFACE01)
+//		HeroToDoor	(5,0,7,15)
+//		If			([GC > GC_NAROOM_GEYSER],?_NRMGLADE09B)
+//		Jump		(?_NRMGLADE09A)
+

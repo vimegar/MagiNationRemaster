@@ -1,0 +1,129 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP04\NRMGLADE04_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP04\NRMGLADE04_TXT.MGI
+
+/********************************/
+?_NRMGLADE04_FADEIN
+	SongFadeOut				(30)
+
+?_NRMGLADE04
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE04)
+	LoadTriggers			(TR_NRMGLADE04)
+	LoadPalette				(PAL_HERO)
+	If						([GAMECOUNT < GC_FIND_ORWIN],?_NRMGLADE04_GOAWAY)
+	Switch					([GAMECOUNT])
+							(GC_FIND_ORWIN,?_NRMGLADE04_LOSTORWIN)
+
+/********************************/	
+?_NRMGLADE04_GENERIC	
+	LoadHotspots			(HS_NRMGLADE04)
+	SetBtlReturn			(?_NRMGLADE04)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,20,30,52,?_GUARD_STAND_DOWN_ANIM,?_NRMGLADE04_GUARDTALK)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,30,0,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles			(20,BIT_GUARD,52,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_glade)
+	End						()
+
+?_NRMGLADE04_GUARDTALK
+	SetText					(?_NRMGLADE04_TXT_GUARD_2)
+	Jump					(?_FACE_GUARD)
+
+/********************************/
+?_NRMGLADE04_GOAWAY
+	LoadHotspots			(HS_NRMGLADE04)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,30,0,?_NRMGLADE04_TONYLOST,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,3,19,30,0,?_NRMGLADE04_GUARDSTOP,?_DONT_TALK)
+	LoadVRAMTiles			(20,BIT_GUARD,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_glade)
+	WaitEventMaster			(1)
+	HeroSetDoor				(36,13)
+	Jump					(?_OVRSURFACE01)
+	End						()
+
+?_NRMGLADE04_TONYLOST
+	ThisActorSetAnimDelay	(?_HERO_WALK_RIGHT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,32)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UR_ANIM,32)
+							(?_HERO_WALK_LEFT_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	SetEventMaster			(1)
+	End						()
+
+?_NRMGLADE04_GUARDSTOP
+	ThisActorSetAnimDelay	(?_GUARD_STAND_DOWN_ANIM,16)
+							(?_GUARD_STAND_DL_ANIM,24)
+	SetText					(?_NRMGLADE04_TXT_GUARD_1)
+	WaitEventText			(1)
+	Sync					(2,0)
+	End						()
+
+/********************************/
+?_NRMGLADE04_LOSTORWIN
+	LoadHotspots			(HS_NRMGLADE04)
+	SetBtlReturn			(?_NRMGLADE04)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,15,20,30,0,?_NRMGLADE04_GIRL05,?_NRMGLADE04_GIRL05_TALKER)
+	ThatActorInit			(ACTOR01,?TALKER_AI,15,8,30,48,?_NRMGLADE04_OLDMAN,?_NRMGLADE04_OLDMAN_TALKER)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,12,150,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,150,0)
+	LoadVRAMTiles			(48,BIT_GIRL05,0,0)
+	LoadVRAMTiles			(48,BIT_OLDMAN,48,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_forest)
+	End						()
+	
+
+?_NRMGLADE04_GIRL05
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_LEFT_ANIM,60)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DL_ANIM,3)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DOWN_ANIM,3)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DR_ANIM,3)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_RIGHT_ANIM,60)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DR_ANIM,3)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DOWN_ANIM,3)
+	ThisActorSetAnimDelay	(?_GIRL05_STAND_DL_ANIM,3)
+	Jump					(?_NRMGLADE04_GIRL05)
+	End						()
+
+?_NRMGLADE04_GIRL05_TALKER
+	SetText					(?_NRMGLADE04_TXT_1)
+	Jump					(?_FACE_GIRL05)
+	End						()
+
+?_NRMGLADE04_OLDMAN
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_RIGHT_ANIM,30)
+	ThisActorSetAnimDelay	(?_OLDMAN_WALK_LEFT_ANIM,24)
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_LEFT_ANIM,30)
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_RIGHT_ANIM,30)
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_LEFT_ANIM,30)
+	ThisActorSetAnimDelay	(?_OLDMAN_WALK_RIGHT_ANIM,24)
+	ThisActorSetAnimDelay	(?_OLDMAN_STAND_LEFT_ANIM,30)
+	Jump					(?_NRMGLADE04_OLDMAN)	
+	End						()
+	
+?_NRMGLADE04_OLDMAN_TALKER
+	SetText					(?_NRMGLADE04_TXT_2)
+	Jump					(?_FACE_OLDMAN)
+	End						()

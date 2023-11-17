@@ -1,0 +1,1028 @@
+/********************************/
+
+/********************************/
+// BATTLE SCRIPTS
+/********************************/
+?_BATTLE_ACTOR_INIT
+
+	LoadPalette				(PAL_HERO)
+
+	ThatActorStart			(ACTOR0A)
+
+	ThatActorStart			(ACTOR0B)
+	ThatActorStart			(ACTOR0C)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	ThatActorStart			(ACTOR09)
+
+	SetCamera				(5,5)
+	SceneReady				()
+
+	End						()
+
+/********************************/
+?_BATTLE_FADE_IN
+
+	LoadPalette				(PAL_HERO)
+
+	OverlayInit				(ACTOR0A,0,0,64,?_HAND_OF_FATE_ANIM)
+	ThatActorStart			(ACTOR0A)
+
+	ThatActorInit			(ACTOR0B,?ANIM_AI,5,5,10,0,?_HERO_BATTLE_STAND_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR0C,?ANIM_AI,5,5,10,0,?_END,?_DONT_TALK)
+	
+	ThatActorInit			(ACTOR00,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)	
+	ThatActorInit			(ACTOR01,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR04,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR05,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	ThatActorInit			(ACTOR09,?ONTOP_AI,5,5,10,64,?_END,?_DONT_TALK)
+	
+	ThatActorSetLoc			(ACTOR0B,4,5,15,15,10)
+	ThatActorSetLoc			(ACTOR0C,4,2,15,8,10)
+	
+	ThatActorSetLoc			(ACTOR00,4,5,15,15,10)
+	ThatActorSetLoc			(ACTOR01,0,5,15,15,10)
+	ThatActorSetLoc			(ACTOR02,3,5,8,8,10)
+	ThatActorSetLoc			(ACTOR03,6,5,8,8,10)
+	ThatActorSetLoc			(ACTOR04,8,5,15,15,10)
+	ThatActorSetLoc			(ACTOR05,1,2,0,8,10)
+	ThatActorSetLoc			(ACTOR06,3,2,8,8,10)
+	ThatActorSetLoc			(ACTOR07,6,2,8,8,10)
+	ThatActorSetLoc			(ACTOR08,8,2,15,8,10)
+	ThatActorSetLoc			(ACTOR09,4,2,15,8,10)
+	
+	ThatActorStart			(ACTOR0B)
+	ThatActorStart			(ACTOR0C)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+	ThatActorStart			(ACTOR05)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	ThatActorStart			(ACTOR09)
+	
+	SetCamera				(5,5)
+
+	PalClearAnim			(0,15,31,31,31)
+
+	SceneReady				()
+
+	PalFade					(8,15,32,0)
+	PalFade					(0,7,32,0)
+
+	End						()
+
+/*******************************/	
+?_BTL_CANT_CAUSE_MSG
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%G%X=")	
+					("is immune to") 
+					("%G%X") 
+	TextClose		()
+	End				()
+
+	
+/*******************************/
+?_BTL_CANT_CURE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%G%X=")	
+					("can't heal its") 
+					("%G%X") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_CASUE_ALL_STATUS_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%G%X=")	
+					("has all") 
+					("possible status=") 
+					("now.")
+	TextClose		()
+	End				()	
+	
+/*******************************/
+?_BTL_CASUE_STATUS_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%G%X=")	
+					("has %X") 
+					("now.") 
+	TextClose		()
+	End				()	
+
+/*******************************/
+?_BTL_CONFUSE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")	
+					("is confused!") 
+	TextClose		()
+	End				()	
+
+
+/*******************************/
+?_BTL_CRASH_MSG
+	TextOpen		()
+	//TextIcon		(ICON_AGRAM)
+	TextWrite		("You crashed the=")
+					("Battle engine!")
+					("Contact that=")
+					("pitiful ExoByte")
+					("NOW! MUAHAHAHA")		
+	TextClose		()
+	End				()
+
+/*******************************/
+?_BTL_CREATURE_DIES_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_DEAD)
+	TextWrite		("%G%X=")
+					("is eliminated.")
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_DEFEND_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")	
+					("is defending.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_DEFLATE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")	
+					("deflates")
+					("itself.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_DIVERT_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")	
+					("tries to divert=") 
+					("the attack.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_DRAIN_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")	
+					("drains") 
+					("%X") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_ELEM_STRONG_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")	
+					("resists the") 
+					("attack.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_ELEM_WEAK_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")	
+					("is weak against=") 
+					("the attack.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_EMPTY_MSG
+
+	End		 		()
+		
+/*******************************/
+?_BTL_ERUPTED_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_DEAD)
+	TextWrite		("%X=")	
+					("erupted! All") 
+					("its allies are=")
+					("hurt in the")
+					("explosion!")
+	TextClose		()
+	End		 		()
+	
+/*******************************/
+?_BTL_ERUPTING_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")	
+					("is erupting!") 
+	TextClose		()
+	End		 		()
+	
+/*******************************/
+?_BTL_EXECUTIONER_MSG
+
+	TextOpen		()
+	TextIcon		(ICON_AGRAM)
+	TextWrite		("%G%X=")	
+					("is sentenced.")  
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_EXERT_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_DEAD)
+	TextWrite		("%X=")	
+					("over-exerted") 
+					("itself.") 
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_FIGHT_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=")
+					("fights")
+					("%G%X")
+	TextClose		()
+	End				()
+
+/*******************************/
+?_BTL_FOCUS_ENEMY_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("focuses.")
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_FOCUS_MSG
+
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("%G%GTony gains=")
+					("%X energy")
+					("by focusing.") 
+	TextClose		()
+	End				()
+
+	
+/*******************************/
+?_BTL_FULL_HEAL_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%G%X=")	
+					("is completely") 
+					("healed!") 
+	TextClose		()
+	End				()
+
+//;********************************
+?_BTL_GOT_HICCUP_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%G%X =")
+					("got hiccups!")
+	TextClose		()
+	End				()
+	
+//;********************************
+?_BTL_GOT_CASH_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("You got=")
+					("%X Animite!")
+	TextClose		()
+	End				()	
+	
+//;********************************
+?_BTL_GOT_INFUSED_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%X=")
+					("found!")
+	TextClose		()
+	End				()
+	
+//;********************************
+?_BTL_HEAL_MSG
+	
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")
+					("healed")
+					("%X=")
+					("for %X.")
+	TextClose		()
+	End				()
+	
+//;********************************
+?_BTL_HICCUP_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("hiccups!")
+	TextClose		()
+	End				()
+	
+//;********************************
+?_BTL_HICCUP_CURED_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")
+					("had its hiccups")
+					("cured!")
+	TextClose		()
+	End				()
+
+/*******************************/
+?_BTL_HIDDEN
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("is hidden!")
+	TextClose		()
+	End				()
+	
+/*******************************/
+?_BTL_INSTANT_KILL
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_DEAD)
+	TextWrite		("%X=")
+					("terminates")
+					("%X")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_ITEM_MSG
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=") 
+					("uses")
+					("%X")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_JUDGE_MSG
+	TextOpen		()
+	TextIcon		(ICON_AGRAM)
+	TextWrite		("%G%X=") 
+					("is my judge.")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_JURY_MSG
+	TextOpen		()
+	TextIcon		(ICON_AGRAM)
+	TextWrite		("%G%X=") 
+					("is guilty.")
+	TextClose		()
+	End				()	
+
+
+/********************************/
+?_BTL_KARMIC_RAISE_ATK_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Skill is up")
+					("%X permanently!")
+					("Its %X")
+					("is down 1.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_KARMIC_RAISE_DEF_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Defense is up")
+					("%X permanently!")
+					("Its %X")
+					("is down 1.")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_KARMIC_RAISE_RES_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Resist is up")
+					("%X permanently!")
+					("Its %X")
+					("is down 1.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_KARMIC_RAISE_SPEED_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Speed is up")
+					("%X permanently!")
+					("Its %X")
+					("is down 1.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_KARMIC_RAISE_STR_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Strength is up")
+					("%X permanently!")
+					("Its %X")
+					("is down 1.")
+	TextClose		()
+	End				()
+	
+//***************************
+?_BTL_LOSE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("Tony was=")
+					("defeated.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_LOWER_DEF_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Defense is")
+					("down %X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_LOWER_RES_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Resist is")
+					("down %X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_LOWER_SKILL_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Skill is")
+					("down %X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_LOWER_SPEED_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Speed is")
+					("down %X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_LOWER_STR_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Strength is")
+					("down %X!")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_LUCK_DOWN
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Luck is down")
+					("%X permanently!")
+	TextClose		()
+	End				()		
+	
+/********************************/
+?_BTL_LUCK_UP
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Luck is up")
+					("%X permanently!")
+	TextClose		()
+	End				()		
+	
+//;********************************
+?_BTL_LVLUP_CREATURE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%X=")
+					("is now level %X")
+					("Energy is %X.")
+					("Strength=")
+					("is now %X.")
+					("Skill=")
+					("is now %X.")
+					("Speed=")
+					("is now %X.")
+					("Defense=")
+					("is now %X.")
+					("Resist=")
+					("is now %X.")
+	TextClose		()
+	End				()
+	
+//;********************************
+?_BTL_LVLUP_CREATURE_MSG2
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%X=")
+					("is now level %X")
+					("Energy=")
+					("is %X.")
+					("Strength=")
+					("is now %X.")
+					("Skill=")
+					("is now %X.")
+					("Speed=")
+					("is now %X.")
+					("Defense=")
+					("is now %X.")
+					("Resist=")
+					("is now %X.")
+
+	TextWrite		("Ability %X=")
+					("was learned.")
+	TextClose		()
+	End				()
+
+//;********************************
+?_BTL_LVLUP_MAGI_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("%X=")
+					("is now level %X")
+					("Energy is %X.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_MIRROR_GONE_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("mirror is gone!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_MIRROR_USED
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")
+					("reflects the")
+					("maneuver!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_MIRROR_WEAKEN_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("mirror is")
+					("weakening!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_MISS_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("missed!")
+	TextClose		()
+	End				()
+	
+/*************************************/
+?_BTL_NORM_DAMAGE_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_OUCH)
+	TextWrite		("%X=")
+					("hits %X")
+					("for %X damage.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_PLAGUE_CURED_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%X=")
+					("had its plague")
+					("cured.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_PLAGUE_DAMAGE_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("was hurt by the")
+					("plague.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_PLAGUE_DEAD_MSG	
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_DEAD)
+	TextWrite		("%X=")
+					("was eliminated")
+					("by the plague.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RALLY_PT_MSG
+
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony gains %G%G%X=")
+					("energy for the")
+					("defeat.")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_RAISE_DEF_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Defense is up")
+					("%X!")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_RAISE_LUCK_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Luck is up")
+					("%X!")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_RAISE_RES_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Resist is up")
+					("%X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_SPEED_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Speed is up")
+					("%X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_SKILL_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Skill is up")
+					("%X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_STR_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Strength is up")
+					("%X!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_ALL_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("has all its")
+					("stats raised=")
+					("permanently!")
+	TextClose		()
+	End				()
+
+	
+/********************************/
+?_BTL_RAISE_SKILL_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Skill is up")
+					("%X permanently!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_DEF_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Defense is up")
+					("%X permanently!")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_RAISE_RES_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Resist is up")
+					("%X permanently!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_SPEED_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Speed is up")
+					("%X permanently!")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RAISE_STR_PERM_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("Strength is up")
+					("%X permanently!")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_RUN_MSG
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("Tony escapes.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_RUN_FAIL_MSG
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("Tony can't=") 
+					("escape!")
+	TextClose		()
+	End				()
+
+/********************************/
+?_BTL_SPELL_MSG
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=") 
+					("casts")
+					("%X")
+	TextClose		()
+	End				()	
+
+/********************************/
+?_BTL_STATUS_ALL_GONE
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("has all non")
+					("permanent =")
+					("status removed.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_STATUS_GONE
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("has %X")
+					("no longer.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_STATUS_ROTATE
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SCHEM)
+	TextWrite		("%G%X=")
+					("has its status")
+					("affected=")
+					("mysteriously.")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_STONE
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SAD)
+	TextWrite		("%X=")
+					("is stone and ")
+					("can't act!")
+	TextClose		()
+	End				()	
+
+
+/********************************/
+?_BTL_SUMMON_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SUMMON)
+	TextWrite		("%G%X=")
+					("was summoned.")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_SUMMON_MAGI_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SUMMON)
+	TextWrite		("%G%X=")
+					("was summoned.")
+	TextClose		()
+	End				()
+
+/********************************/
+?_BTL_SUMMON_RND_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_SUMMON)
+	TextWrite		("%G%X=")
+					("appears.")
+	TextClose		()
+	End				()	
+	
+/********************************/
+?_BTL_TARGET_MANY_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=")
+					("uses %X")
+					("on a group")
+	TextClose		()
+	End				()
+
+	
+/********************************/
+?_BTL_TARGET_OTHER_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=")
+					("uses %X")
+					("on %X")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_TARGET_SELF_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_NORMAL)
+	TextWrite		("%X=")
+					("uses %X")
+					("on itself")
+	TextClose		()
+	End				()
+	
+/********************************/
+?_BTL_WIN_MSG
+
+	TextOpen		()
+	//TextIcon		(ICON_WEEBO_HAPPY)
+	TextWrite		("Tony wins!")
+	TextClose		()
+	End				()
+	
+	
+
+
+
+
+
+
+
+

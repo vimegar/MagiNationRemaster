@@ -1,0 +1,39 @@
+?_NRMGLADE04_TXT_GUARD_1
+	TextOpen			()
+	TextIcon			(ICON_GUARD02)
+	TextWrite			("The glade is=")
+						("not safe for")
+						("kids. Beat it!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMGLADE04_TXT_GUARD_2
+	TextOpen			()
+	TextIcon			(ICON_GUARD02)
+	TextWrite			("I've been told=")
+						("to let you pass")
+						("so quit talking=")
+						("to me and go!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_NRMGLADE04_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Orwin? Where=")
+						("are yoooou?")
+	TextClose			()					
+	SetEventText		(1)
+	End					()
+	
+?_NRMGLADE04_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("I think I saw=")
+						("Orwin run") 
+						("down that path.")
+	TextClose			()
+	SetEventText		(1)
+	End					()

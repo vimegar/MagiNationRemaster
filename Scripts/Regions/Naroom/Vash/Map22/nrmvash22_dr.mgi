@@ -1,0 +1,7 @@
+/********************************/
+?_NRMVASH22_DR_1
+		HeroToDoor	(4,15,20,7)
+		Jump		(?_NRMVASH13)
+
+?_NRMVASH22_TR_1
+		TriggerTreasure	(NRMVASH22_Chest1,INV_TYPE_ITEM,INV_FUNGICIDE,8,6,16)

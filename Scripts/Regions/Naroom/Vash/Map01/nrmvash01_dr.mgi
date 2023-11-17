@@ -1,0 +1,16 @@
+/********************************/
+?_NRMVASH01_DR_1
+		If					([GC = GC_NRM_INTRO && Nrm_Intro_Count != 5 || GC = GC_OPENING],?_NRMVASH01_BOUNCE)
+		HeroToDoor			(3,59,6,0)
+		Jump				(?_NRMGLADE03)
+
+?_NRMVASH01_DR_2
+		HeroToDoor			(8,0,11,16)
+		Jump				(?_NRMVASH02)
+
+?_NRMVASH01_DR_3
+		If					([[!Sick_Orwin] || [NRMVASH01_Oldman_Told]],?_END)
+		ThatActorSetScript	(ACTOR02,?_OLDMAN_STOPS_TONY)
+		End					()
+
+

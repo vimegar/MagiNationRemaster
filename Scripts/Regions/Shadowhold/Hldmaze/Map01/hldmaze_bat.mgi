@@ -1,0 +1,80 @@
+/**** LEVEL30 ****/
+?_HLDMAZE_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					
+
+_BTL1
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,32,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,32,64,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,30,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SPINDLE,30,60,1)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,31,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SARBIL,30,60,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,25,50,1)
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,25,50,1)
+	BtlAuto			()
+
+_BTL4
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,31,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SARBIL,31,62,1)
+	BtlAuto			()
+
+_BTL5
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,27,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,27,54,1)
+	BtlAuto			()
+
+_BTL6
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,28,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KLETCH,24,50,1)
+	BtlNextTurn		()
+	BtlSummonDelay	(BTL_ID_MAGI,BORGOR,30,60,1)
+	BtlAuto			()	
+	
+/********************************/
+?_HLDMAZE_CORE7_BATTLE
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew			(SHADOWHOLD_ARENA1,CORE7,35,?_BATTLE_FADE_IN)
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,110)
+
+	BtlSummonDelay	(BTL_ID_MAGI,BLACKAGOVO,25,50,1)
+	BtlNextTurn		()
+	
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_GRAG,25,50,1)
+	BtlAuto			()
+
+/********************************/
+?_HLDMAZE_CORE8_BATTLE
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew			(SHADOWHOLD_ARENA1,CORE8,45,?_BATTLE_FADE_IN)
+	SetWRAMByte		(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte		(BTL_ENEMY_ENGL,WRAM_BATTLE,100)
+
+	BtlSummonDelay	(BTL_ID_MAGI,CORE_HYREN,48,80,1)
+	BtlAuto			()
+/********************************/
+?_HLDMAZE_JINGJACK_BATTLE
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew			(SHADOWHOLD_ARENA1,MAGI_RND1,32,?_BATTLE_FADE_IN)
+	SetWRAMByte		(BTL_RUN_ENABLE,WRAM_BATTLE,0)
+	BtlSummonDelay	(BTL_ID_MAGI,JINGJACK,32,64,0)
+	BtlAuto			()

@@ -1,0 +1,388 @@
+/********************************/
+?_NRMVASH15_RETURN
+	If						([Sick_Orwin],?_NRMVASH15_RETURN_SICK)
+	JumpLocal				(?_NRMVASH15_RETURN_WELL)
+
+/********************************//********************************/
+// RETURN FROM OROTHE - ORWIN SICK
+/********************************//********************************/
+?_NRMVASH15_RETURN_SICK
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadTriggers			(TR_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,14,9,20,0,_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,4,20,0,?_ORWIN_INBED,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,14,9,20,39,_EIDON,_EIDON_TALKER)
+	ThatActorInit			(ACTOR03,?TALKER_AI,2,6,20,83,_GIA,_GIA_TALKER)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	LoadVRAMTiles			(44,BIT_EIDON,39,0)
+	LoadVRAMTiles			(34,BIT_GIA,83,0)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	HeroSetCamera			()
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	Delay					(24)
+	ThatActorStart			(HEROACTOR)
+	SetGamecount			(GC_FALSE_END)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,48)
+	ThisActorSetAnimScroll	(?_HERO_WALK_LEFT_ANIM,128,-1,0)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	End						()
+
+_EIDON
+	ThisActorSetAnimDelay	(?_EIDON_WALK_UP_ANIM,32)
+							(?_EIDON_WALK_LEFT_ANIM,128)
+							(?_EIDON_WALK_UP_ANIM,32)
+							(?_EIDON_WALK_LEFT_ANIM,32)
+_EIDON_PACING
+	ThisActorSetAnimDelay	(?_EIDON_STAND_LEFT_ANIM,144)
+							(?_EIDON_STAND_DL_ANIM,32)
+							(?_EIDON_STAND_LEFT_ANIM,48)
+							(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_STAND_RIGHT_ANIM,128)
+							(?_EIDON_STAND_DL_ANIM,32)
+							(?_EIDON_STAND_LEFT_ANIM,48)
+							(?_EIDON_WALK_LEFT_ANIM,32)
+							(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_WALK_LEFT_ANIM,32)
+							(?_EIDON_WALK_RIGHT_ANIM,32)
+							(?_EIDON_STAND_RIGHT_ANIM,64)
+							(?_EIDON_WALK_LEFT_ANIM,32)
+	Jump					(_EIDON_PACING)
+
+
+_GIA
+	ThisActorSetAnimDelay	(?_GIA_STAND_RIGHT_ANIM,128)
+							(?_GIA_WALK_RIGHT_ANIM,32)
+							(?_GIA_STAND_RIGHT_ANIM,0)
+
+	SetText					(?_NRMVASH15_RETURN_TXT_GIA)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	ThisActorSetAnimDelay	(?_GIA_WALK_LEFT_ANIM,32)
+							(?_GIA_STAND_UP_ANIM,0)
+	End						()
+
+_ORWIN_TALKER
+	SetText					(_TXT_BLEARGH)
+	Jump					(?_ORWIN_INBED)
+
+_EIDON_TALKER
+	SetText					(_TXT_ORWIN_IS_ALMOST)
+	Jump					(?_FACE_EIDON)
+
+_GIA_TALKER
+	SetText					(_TXT_YOU_MUST_GO)
+	Jump					(?_FACE_GIA)
+
+/********************************/
+// TEXT
+_TXT_ORWIN_IS_ALMOST
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				("Orwin is almost=")
+							("dead.")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_YOU_MUST_GO
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("You must go to=")
+							("the Core")
+							("Entrance!")
+							("Hurry!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_BLEARGH
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				(".......")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END RETURN FROM OROTHE - ORWIN SICK
+/********************************//********************************/
+
+
+/********************************//********************************/
+// RETURN FROM OROTHE - ORWIN WELL
+/********************************//********************************/
+?_NRMVASH15_RETURN_WELL
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH15)
+	LoadTriggers			(TR_NRMVASH15)
+	LoadHotspots			(HS_NRMVASH15)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,14,9,20,0,_TONY,?_END)
+	ThatActorInit			(ACTOR01,?TALKER_AI,2,4,20,0,?_ORWIN_INBED,_ORWIN_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,14,9,20,39,?_EIDON_STAND_DOWN_ANIM,_EIDON_TALKER)
+	ThatActorInit			(ACTOR03,?TALKER_AI,2,6,20,83,_GIA,_GIA_TALKER)
+	LoadVRAMTiles			(39,BIT_ORWIN,0,0)
+	LoadVRAMTiles			(44,BIT_EIDON,39,0)
+	LoadVRAMTiles			(34,BIT_GIA,83,0)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	ThatActorStart			(ACTOR03)
+	SetCamera				(14,6)	
+	SongStart				(SONGID_orwin)
+	SceneReady				()
+	Delay					(24)
+	ThatActorStart			(HEROACTOR)
+	SetGamecount			(GC_FALSE_END)
+	SetXRAMBit				(Sick_Orwin,FALSE)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,48)
+	ThisActorSetAnimScroll	(?_HERO_WALK_LEFT_ANIM,128,-1,0)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,32)
+							(?_HERO_WALK_UP_ANIM,16)
+							(?_HERO_WALK_LEFT_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,0)	
+	End						()
+
+_GIA
+	ThisActorSetAnimDelay	(?_GIA_STAND_RIGHT_ANIM,128)
+							(?_GIA_WALK_RIGHT_ANIM,32)
+							(?_GIA_STAND_RIGHT_ANIM,0)
+
+	SetText					(?_NRMVASH15_RETURN_TXT_GIA)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End						()
+
+_ORWIN_TALKER
+	SetText					(_TXT_ZZZ)
+	Jump					(?_ORWIN_INBED)
+
+_EIDON_TALKER
+	SetText					(_TXT_SILENT)
+	Jump					(?_FACE_EIDON)
+
+_GIA_TALKER
+	SetText					(_TXT_YOU_MUST_GO)
+	Jump					(?_FACE_GIA)
+
+/********************************/
+// TEXT
+_TXT_SILENT
+	TextOpen				()
+	TextIcon				(ICON_EIDON)
+	TextWrite				(".........")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_YOU_MUST_GO
+	TextOpen				()
+	TextIcon				(ICON_GIA)
+	TextWrite				("You must go to=")
+							("the Core")
+							("Entrance.")
+							("Hurry!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TXT_ZZZ
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Zzz...")
+	TextClose				()
+	ThisActorRestoreState	()
+/********************************//********************************/
+// END RETURN FROM OROTHE - ORWIN WELL
+/********************************//********************************/
+
+/********************************//********************************/
+// TEXT
+/********************************//********************************/
+?_NRMVASH15_RETURN_TXT_GIA
+	TextOpen			()
+	TextIcon			(ICON_GIA)
+	TextWrite			("Welcome back,=")
+						("Tony.")
+	TextClose			()
+	Delay				(64)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Why aren't you=")
+						("at home, Gia?")
+	TextIcon			(ICON_GIA)
+	TextWrite			("I had to leave.")
+	Delay				(32)
+	TextWrite			("It's no matter.")
+						("I see you have=")
+						("acquired the")
+						("fourth and=")
+						("final Core")
+						("Stone. You may=")
+						("return home")
+						("now any time=")
+						("you wish.")
+						("Just go to the=")
+						("Core Entrance")
+						("West of my=")
+						("home.")
+	TextClose			()
+	Delay				(96)
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Is something=")
+						("wrong?")
+	TextIcon			(ICON_GIA)
+	TextWrite			("I'm sorry...")
+						("I'm going to=")
+						("be frank with")
+						("you.")
+						("You are not=")
+						("the Great Magus.")
+						("You are not=")
+						("Kyros.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("What?")
+	TextIcon			(ICON_GIA)
+	TextWrite			("Too much is=")
+						("going wrong.")
+						("The balance=")
+						("of the world is")
+						("falling apart.")
+						("After thinking=")
+						("it over, I")
+						("believe it is=")
+						("better for us")
+						("all if you=")
+						("return home")
+						("immediately.")
+						("I'm sorry for=")
+						("forcing this")
+						("delusion on=")
+						("you that you're")
+						("some prophetic=")
+						("savior.")
+						("It's my fault.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("WHAT!?  But...")
+						("That can't be!")
+						("Maybe I'm not=")
+						("the Great Magus")
+						("but what about=")
+						("all the Shadow")
+						("Geysers I've=")
+						("closed?")
+						("How can you=")
+						("treat me this")
+						("way after all=")
+						("I've done!?")
+	TextIcon			(ICON_GIA)
+	TextWrite			("...")
+						("I'm so sorry,=")
+						("child.")
+						("I didn't mean=")
+						("to hurt you.")
+						("You see, we've=")
+						("realized too")
+						("late that the=")
+						("Prophecy was")
+						("actually a=")
+						("warning.")
+						("Because you are=")
+						("from another")
+						("world, your=")
+						("presence here")
+						("has allowed=")
+						("an ancient")
+						("enemy of the=")
+						("Magi to open")
+						("dark portals=")
+						("into his")
+						("dimension.")
+						("You see, Tony,=")
+						("you are the")
+						("catalyst.")
+						("That is why=")
+						("you were taken")
+						("to the Cald.")
+						("That is why a=")
+						("Shadow Geyser")
+						("appeared in=")
+						("Orothe.")
+		
+	TextIcon			(ICON_TONY)
+	TextWrite			("I...")
+						("I can't believe=")
+						("it!")
+	
+	TextIcon			(ICON_GIA)
+	TextWrite			("We fear the=")
+						("worst.")
+						("If you remain,=")
+						("more Shadow")
+						("Geysers will=")
+						("appear.")
+						("Our only hope=")
+						("of survival")
+						("is for you=")
+						("to leave")
+						("Magi-Nation.")
+
+						("I do not know=")
+						("what fate")
+						("awaits you in=")
+						("the Core...")
+						("I can only=")
+						("pray that it")
+						("will return you=")
+						("to your world.")
+						("But...")
+
+	TextIcon			(ICON_TONY)
+	TextWrite			("...")
+	
+	TextIcon			(ICON_GIA)
+	TextWrite			("Please, Tony.")
+						("I have trusted=")
+						("you with the")
+						("truth.")
+						("I know that you=")
+						("have a good")
+						("heart.")
+						("Please make=")
+						("this sacrifice")
+						("for us.")
+						("Go to the=")
+						("Core Entrance,")
+						("to the West of=")
+						("my poor")
+						("cottage.")
+
+	TextIcon			(ICON_TONY)
+	TextWrite			("Well, I guess=")
+						("that's what I")
+						("wanted. To get=")
+						("home.")
+						("...")
+						("Goodbye, Gia.")
+	TextIcon			(ICON_GIA)
+	TextWrite			("Farewell, Tony.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END TEXT
+/********************************//********************************/

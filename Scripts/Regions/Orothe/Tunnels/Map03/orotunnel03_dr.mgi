@@ -1,0 +1,13 @@
+/********************************/
+?_OROTUNNEL03_DR_1
+		HeroToDoor	(14,0,5,9)
+		Jump		(?_OROTUNNEL02)
+		
+?_OROTUNNEL03_DR_2
+		HeroToDoor	(35,7,0,10)
+		Jump		(?_OROTUNNEL04)
+
+/********************************/
+?_OROTUNNEL03_TR_1
+		TriggerTreasure	(OROTUNNEL03_Chest1,INV_TYPE_ITEM,INV_REMEDY_DRINK,34,47,36)
+		

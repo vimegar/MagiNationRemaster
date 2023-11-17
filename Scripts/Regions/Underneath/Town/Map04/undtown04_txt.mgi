@@ -1,0 +1,322 @@
+/********************************/
+//UNDTOWN04
+/********************************/
+?_UNDTOWN04_OLDMAN_TXT01
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+
+	TextWrite				("I am the=")
+							("smartest man")
+							("in town.")
+							("The mushrooms=")
+							("told me so!")
+	TextClose				()
+
+_DUMB_HISTORIAN
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Ask me=")
+							("anything.")
+	TextClose				()
+
+_THE_MENU
+	MenuHistorian			()
+
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+
+	Switch					([SYS_Historian_Type])
+							(INV_TYPE_ITEM,_RANDOM_DEFINITION)
+							(INV_TYPE_RELIC,_RANDOM_DEFINITION)
+							(INV_TYPE_SPELL,_RANDOM_DEFINITION)
+
+	TextWrite				("I told you I=")
+							("was really")
+							("smart!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_RANDOM_DEFINITION
+	JumpRandom				(_JUMP_HIGH)
+							(_CONFUSES_PURPLE)
+							(_CLIMB_TREES)
+							(_VERY_POWERFUL)
+							(_USELESS)
+							(_DOUBLES_ENERGY)
+							(_USE_ON_MUSHROOMS)
+							(_MORE_RINGS)
+							(_VERY_LUCKY)
+							(_STRENGTH)
+							(_ENEMY_ATTACK_THEMSELVES)
+							(_GROW_HORN)
+							(_DONT_USE_THAT)
+							(_CAUSES_BLINDNESS)
+							(_DESTROY_CAT_PICTURES)
+							(_MAKES_FACE_BLUE)
+							(_SETS_ON_FIRE)
+							(_HEAT)
+							(_ITCHING)
+							(_VOMIT)
+							(_SICK_ORWIN)
+							(_JINK_ROOT)
+							(_CONTINENT)
+							(_OVERWORLD)
+
+/*************************/
+_JUMP_HIGH
+	TextWrite				("That allows=")
+							("your Dream")
+							("Creatures to=")
+							("jump very high.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_CONFUSES_PURPLE
+	TextWrite				("That makes=")
+							("any purple")
+							("Dream Creature=")
+							("very weak.")
+	TextClose				()
+	Jump					(_THE_MENU)
+	
+_CLIMB_TREES
+	TextWrite				("That gives=")
+							("any Magi the")
+							("ability to=")
+							("climb almost")
+							("any tree.")
+	TextClose				()
+	Jump					(_THE_MENU)
+	
+_VERY_POWERFUL
+	TextWrite				("Wow, I can't=")
+							("believe you")
+							("found one of=")
+							("these. It's...")
+							("I'm sorry, I=")
+							("cannot tell")
+							("you because if=")
+							("I did, you're")
+							("life would be=")
+							("in danger.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_USELESS
+	TextWrite				("That? That=")
+							("does absolutely")
+							("nothing.")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_DOUBLES_ENERGY
+	TextWrite				("This item looks=")
+							("back at you if")
+							("you call its=")
+							("name after")
+							("midnight.")
+	TextClose				()
+	Jump					(_THE_MENU)
+	
+_USE_ON_MUSHROOMS
+	TextWrite				("If you use that=")
+							("on a mushroom")
+							("you will get=")
+							("an elixir of")
+							("healing.")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_MORE_RINGS
+	TextWrite				("Ahh, that is=")
+							("special. With")
+							("that you can=")
+							("equip more")
+							("than ten rings.") 
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_VERY_LUCKY
+	TextWrite				("If you use=")
+							("that too many")
+							("times, you'll=")
+							("turn inside")
+							("out.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_STRENGTH
+	TextWrite				("Hey! I think=")
+							("this used to")
+							("belong to=")
+							("my estranged")
+							("mother!")
+							("You can keep=")
+							("it.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_ENEMY_ATTACK_THEMSELVES
+	TextWrite				("You can use=")
+							("that to")
+							("exfoliate=")
+							("a worveline!")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_GROW_HORN
+	TextWrite				("That causes=")
+							("a Magi to")
+							("grow a horn.")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_DONT_USE_THAT
+	TextWrite				("AHH!")
+							("One of those!")
+							("That turns you=")
+							("into an evil")
+							("Dream Creature.")
+							("You should=")
+							("destroy it")
+							("immediately!")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_CAUSES_BLINDNESS
+	TextWrite				("That causes=")
+							("blindness in")
+							("small rodents.")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_DESTROY_CAT_PICTURES
+	TextWrite				("If ever you=")
+							("find a picture")
+							("of a cat, you=")
+							("can use that")
+							("to turn it=")
+							("into a picture")
+							("of a weebo.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_MAKES_FACE_BLUE
+	TextWrite				("That makes=")
+							("you're face")
+							("turn blue.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_SETS_ON_FIRE
+	TextWrite				("That will set=")
+							("any furry")
+							("creature on=")
+							("fire.")
+	TextClose				()
+	Jump					(_THE_MENU)
+							
+_HEAT
+	TextWrite				("If you have=")
+							("any food. that")
+							("will cook it=")
+							("for you.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_ITCHING
+	TextWrite				("That causes=")
+							("itching.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_VOMIT
+	TextWrite				("This one=")
+							("smells exactly")
+							("like a baby=")
+							("brub's first")
+							("vomit.")
+							("I get all=")
+							("nostalgic")
+							("just thinking=")
+							("about it.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_SICK_ORWIN
+	TextWrite				("I hear the=")
+							("Elder of")
+							("Vash Naroom=")
+							("is allergic")
+							("to those.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_JINK_ROOT
+	TextWrite				("You can trade=")
+							("that for a")
+							("Jink Root.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+
+_CONTINENT
+	TextWrite				("That=")
+							("exterminates")
+							("parasites on=")
+							("another")
+							("continent!")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+_OVERWORLD
+	TextWrite				("If you use=")
+							("that on the")
+							("overworld,=")
+							("you'll look")
+							("like a fool.")
+	TextClose				()
+	Jump					(_THE_MENU)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

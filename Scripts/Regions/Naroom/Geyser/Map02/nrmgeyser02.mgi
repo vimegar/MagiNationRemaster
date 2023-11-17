@@ -1,0 +1,43 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GEYSER\MAP02\NRMGEYSER02_DR.MGI
+/********************************/
+
+?_NRMGEYSER02						
+?_NRMGEYSER02_A
+	SceneNew			()
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+?_NRMGEYSER02_RETURN
+	If					([GAMECOUNT = GC_GLOVES],?_NRMGEYSER02_B_PASS)
+	If					([Nrmgeyser_switch2],?_NRMGEYSER02_B)
+	LoadMap				(MAP_NRMGEYSER02)
+	LoadHotspots		(HS_NRMGEYSER02)
+	LoadTriggers		(TR_NRMGEYSER02)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_NRMGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_NRMGEYSER02_RETURN)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+	
+?_NRMGEYSER02_B
+	If					([!Nrmgeyser_switch2],?_NRMGEYSER02_A)
+?_NRMGEYSER02_B_PASS
+	LoadMap				(MAP_NRMGEYSER02)
+	LoadHotspots		(HS_NRMGEYSER02)
+	LoadTriggers		(TR_NRMGEYSER02)
+	LoadPalette			(PAL_HERO)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_maze)
+	CopyTileBlock		(24,19,6,1,7,3,6)
+	SceneReady			()
+	If					([GAMECOUNT = GC_GLOVES],?_GEYSER_QUAKE)
+	End					()
+	
+

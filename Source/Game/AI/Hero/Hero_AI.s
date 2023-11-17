@@ -1,0 +1,234 @@
+;********************************
+; HERO_AI.S
+;********************************
+;	Author:	Patrick Meehan
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+	LIB			SOURCE\GAME\AI\HERO\HERO_GLOBALS.S
+
+;********************************
+	LIB			SOURCE\GAME\AI\HERO\HERO_ACTION.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_BOXXLE.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_FLY.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_JUMP.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_RUN.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_WALK.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_SWIM.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_OVERWORLD.S
+	LIB			SOURCE\GAME\AI\HERO\HERO_UNDERSWIM.S
+
+;********************************
+?HERO_AI
+
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	BATTERY_ON
+
+	LD					A,(XRAM_HERO_ABILITY)
+	LD					(HERO_ABILITY),A
+
+	BATTERY_OFF
+	JP					?HERO_AI_START
+
+;********************************
+?HERO_AI_CLOSE
+	SCRIPT_CLOSE
+	ACTOR_CLOSE
+	RET
+
+;********************************
+?HERO_AI_PUPPET
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI_ANIM
+	JP			?HERO_AI_CLOSE
+
+?HERO_AI_ANIM
+	ACTOR_OPEN
+	
+	XOR			A
+	LD			(ACTOR_NEWSTATE+$01),A
+	
+	SCRIPT_OPEN
+	SCRIPT_PLAY
+	SCRIPT_CLOSE
+
+	COLL_FREEMOVE
+	CALL		?CAMERA_UPDATE
+
+	LD			A,(ACTOR_NEWSTATE+$01)
+	AND			A
+	JR			Z,_RETURN
+
+	LDFF_A		ACTOR_STATE+$01
+
+	LD			A,(ACTOR_NEWSTATE)
+	LDFF_A		ACTOR_STATE
+
+_RETURN
+	ACTOR_CLOSE
+	RET
+
+;********************************
+?HERO_AI_OPEN
+
+	ACTOR_OPEN
+	SCRIPT_OPEN
+	SCRIPT_PLAY
+
+	LD			HL,AI_HEROFLAGS_NEXT
+	SET			HEROFLAGS_ACTIVE,(HL)
+
+	SWITCH_RAM_BANK		WRAM_COLL
+	FGET16				H,L,ACTOR_TILE
+
+	RET
+
+;********************************
+;	BC:		Ptr to gob
+?HERO_AI_STAND
+	MOVADDR_FF	SCRIPT_WSTATE,?SCRIPT_START
+	MOVADDR_FF	ACTOR_STATE,?HERO_AI_START
+	JP			?HERO_AI_CLOSE
+
+?HERO_AI_START
+	CALL		?HERO_AI_OPEN
+	
+	LD			A,(AI_CNT1)
+	BIT			BitRight,A
+	JP			NZ,?HERO_AI_WALK_RIGHT
+	BIT			BitLeft,A
+	JP			NZ,?HERO_AI_WALK_LEFT
+	BIT			BitUp,A
+	JP			NZ,?HERO_AI_WALK_UP
+	BIT			BitDown,A
+	JP			NZ,?HERO_AI_WALK_DOWN
+
+	; MOVE
+	;--------------------------------
+	COLL_DETECT
+	CHECK_HOTSPOT
+	CALL		?CAMERA_UPDATE
+
+	; CHECK ACTION
+	;--------------------------------
+	CALL		?HERO_ACTION_STAND
+
+	JP			?HERO_AI_CLOSE
+
+;********************************
+?HERO_ACTION_STAND
+	LD			A,(AI_CNTDOWN)
+	BIT			BitA,A
+	RET			Z
+
+	LDA_FF		ACTOR_FLAGS
+	AND			$03
+
+	CP			ACTOR_FACING_UP
+	JR			Z,_UP
+	CP			ACTOR_FACING_DOWN
+	JR			Z,_DOWN
+	CP			ACTOR_FACING_LEFT
+	JR			Z,_LEFT
+	CP			ACTOR_FACING_RIGHT
+	JR			Z,_RIGHT
+
+_UP
+	JP			?HERO_CHECK_ACTION_UP
+_DOWN
+	JP			?HERO_CHECK_ACTION_DOWN
+_LEFT
+	JP			?HERO_CHECK_ACTION_LEFT
+_RIGHT
+	JP			?HERO_CHECK_ACTION_RIGHT
+
+	RET
+	
+;********************************
+?HERO_CHECK_CURRENTS
+	GET16	H,L,ACTOR_TILE
+	LD		B,COLLCODE_MOVEU
+	LD		A,(HL)
+	
+
+_MOVEU	
+	CP		B
+	JR		NZ,_MOVEUR
+	LD		E,-$03
+	LD		D,$00
+	JR		_CHANGEMOVE
+	
+_MOVEUR
+	INC		B
+	CP		B
+	JR		NZ,_MOVER
+	LD		E,-$02
+	LD		D,$02
+	JR		_CHANGEMOVE
+	
+_MOVER
+	INC		B
+	CP		B
+	JR		NZ,_MOVEDR				
+	LD		E,$00
+	LD		D,$03
+	JR		_CHANGEMOVE
+	
+_MOVEDR
+	INC		B
+	CP		B
+	JR		NZ,_MOVED
+	LD		E,$02
+	LD		D,$02
+	JR		_CHANGEMOVE
+	
+_MOVED
+	INC		B
+	CP		B
+	JR		NZ,_MOVEDL
+	LD		E,$03
+	LD		D,$00
+	JR		_CHANGEMOVE
+	
+_MOVEDL
+	INC		B
+	CP		B
+	JR		NZ,_MOVEL
+	LD		E,$02
+	LD		D,-$02
+	JR		_CHANGEMOVE
+	
+_MOVEL	
+	INC		B
+	CP		B
+	JR		NZ,_MOVEUL
+	LD		E,$00
+	LD		D,-$03
+	JR		_CHANGEMOVE
+	
+_MOVEUL
+	INC		B
+	CP		B
+	JR		NZ,_NOTHING
+	LD		E,-$02
+	LD		D,-$02
+	JR		_CHANGEMOVE
+	
+_NOTHING
+	LD		E,$00
+	LD		D,$00
+
+
+_CHANGEMOVE
+	LD		A,(COLL_XMOVE)
+	ADD		A,D
+	LD		(COLL_XMOVE),A
+	LD		A,(COLL_YMOVE)
+	ADD		A,E
+	LD		(COLL_YMOVE),A
+	RET
+
+;********************************
+	END
+;********************************

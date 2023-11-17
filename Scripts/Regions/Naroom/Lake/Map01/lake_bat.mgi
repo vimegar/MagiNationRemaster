@@ -1,0 +1,107 @@
+/**** LEVEL8 ****/
+?_NRMLAKE_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_dream)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,7,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,7,14,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,RUDWOT,8,15,1)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,9,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,RUDWOT,6,12,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,PLITH,7,15,1)
+	BtlAuto			()
+
+_BTL4
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,9,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,PLITH,7,15,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,6,12,1)
+	BtlAuto			()
+
+_BTL5
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,7,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,3,6,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,3,6,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,4,9,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,PLITH,3,7,1)
+	BtlAuto			()
+
+_BTL6
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,9,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,PLITH,6,12,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,4,8,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,WEEBO,4,9,1)
+	BtlAuto			()
+
+_BTL7
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,RUDWOT,6,13,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,RUDWOT,6,12,1)
+	BtlAuto			()
+
+_BTL8
+	BtlNew			(NAROOM_ARENA1,MAGI_RND1,8,?_BATTLE_FADE_IN)
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,6,12,1)
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,PLITH,6,11,1)
+	BtlNextTurn		()
+	BtlNextTurn		()
+	BtlSummonDelay		(BTL_ID_MAGI,VINOC,7,15,1)
+	BtlAuto			()
+
+
+/********************************/
+//	HYREN FOR OROTHE ENCOUNTERS
+?_OROHYREN_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+
+_BTL1
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,DEEP_HYREN,60,200,3)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,30,60,1)
+	BtlAuto			()
+
+_BTL2
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,CORALHYREN,40,150,1)
+	BtlSummonDelay	(BTL_ID_MAGI,DEEP_HYREN,60,200,2)
+	BtlAuto			()
+
+_BTL3
+	BtlNew			(UNDERNEATH_ARENA1,MAGI_RND1,70,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,30,60,1)
+	BtlSummonDelay	(BTL_ID_MAGI,CORALHYREN,40,150,3)
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,30,60,1)
+	BtlAuto			()

@@ -1,0 +1,23 @@
+################################################################
+# LISTS
+################################################################
+LOAD_HSFILES = 		${HDNLOAD01_HSFILES}
+
+LOAD_MPFILES = 		${HDNLOAD01_MPFILES}
+
+LOAD_SFILES = 		${HDNLOAD01_SFILES}
+						
+################################################################
+# HDNLOAD01_LISTS
+################################################################
+HDNLOAD01_HSFILES =		REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_HS.MGI
+
+HDNLOAD01_MGIFILES =	REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01.MGI \
+								REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_DR.MGI \
+								REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_TXT.MGI \
+								REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_SCT.MGI
+
+HDNLOAD01_MPFILES =		REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_MP.MGI
+
+HDNLOAD01_SFILES =		REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01.S
+

@@ -1,0 +1,28 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP13\CLDLAVATOWN13_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP13\CLDLAVATOWN13_TXT.MGI
+
+/********************************/
+?_CLDLAVATOWN13
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN13)
+	LoadHotspots			(HS_CLDLAVATOWN13)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,164,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+

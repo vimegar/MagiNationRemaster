@@ -1,0 +1,56 @@
+/********************************/
+?_WVEPATHVALLEY06_DR_1
+		HeroToDoor	(21,29,7,4)
+		Jump		(?_WVEPATHVALLEY05)
+
+?_WVEPATHVALLEY06_DR_2
+		Jump		(?_WVEPATHVALLEY06_DOOR1)
+
+?_WVEPATHVALLEY06_DR_3
+		Jump		(?_WVEPATHVALLEY06_DOOR2)
+
+?_WVEPATHVALLEY06_DR_4
+		Jump		(?_WVEPATHVALLEY06_DOOR3)
+
+?_WVEPATHVALLEY06_DR_5
+		Jump		(?_WVEPATHVALLEY06_DOOR4)
+
+
+?_WVEPATHVALLEY06_TR_1
+		TriggerTreasure	(WVEPATHVALLEY07Chest1,INV_TYPE_RELIC,INV_CRIMSON_VOID,22,11,40)
+
+?_WVEPATHVALLEY06_TR_2
+		TriggerTreasure	(WVEPATHVALLEY07Chest2,INV_TYPE_RELIC,INV_CHANNELEDGEM,32,8,40)
+
+?_WVEPATHVALLEY06_TR_3
+		TriggerTreasure	(WVEPATHVALLEY07Chest3,INV_TYPE_ITEM,INV_BALOO_ROOT,33,8,40)
+
+?_WVEPATHVALLEY06_TR_4
+		InitSkip		(_INIT)
+		If				([I_Specialkey],_OPEN)
+		TextOpen		()
+		TextWrite		("It's locked.")
+		TextClose		()
+_INIT
+		If				([WVEPATHVALLEY07Door1],_COPY)
+		End				()
+_OPEN
+		SetXRAMBit		(WVEPATHVALLEY07Door1,1)
+_COPY
+		CopyTileBlock	(40,0,28,1,2,16,24)
+		End				()
+
+?_WVEPATHVALLEY06_TR_5
+		InitSkip		(_INIT)
+		If				([I_Specialkey],_OPEN)
+		TextOpen		()
+		TextWrite		("It's locked.")
+		TextClose		()
+_INIT
+		If				([WVEPATHVALLEY07Door2],_COPY)
+		End				()
+_OPEN
+		SetXRAMBit		(WVEPATHVALLEY07Door2,1)
+_COPY
+		CopyTileBlock	(40,1,28,1,2,25,24)
+		End				()

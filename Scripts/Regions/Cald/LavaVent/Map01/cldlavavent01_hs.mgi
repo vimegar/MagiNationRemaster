@@ -1,0 +1,35 @@
+/********************************/
+// CLDLAVAVENT01
+		FileHotspots	(HS_CLDLAVAVENT01)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDLAVAVENT01_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT01_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT01_DR_3)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT01_DR_4)
+
+/********************************/
+// CLDLAVAVENT01B
+		FileHotspots	(HS_CLDLAVAVENT01B)
+						(HOTSPOT_TRIGGER_NORTH,?_CLDLAVAVENT01B_DR_1)
+
+/********************************/
+// CLDVENTINT01
+		FileHotspots	(HS_CLDVENTINT01)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDVENTINT01_DR_1)
+						
+		FileTriggers	(TR_CLDVENTINT01)
+						(TRIGGER_CONFIG,?_CLDVENTINT01_TR_1)
+
+/********************************/
+// CLDVENTINT02
+		FileHotspots	(HS_CLDVENTINT02)
+						(HOTSPOT_TRIGGER_SOUTH,?_CLDVENTINT02_DR_1)						
+						
+		FileTriggers	(TR_CLDVENTINT02)
+						(TRIGGER_CONFIG,?_CLDVENTINT02_TR_1)
+
+/********************************/
+// CLDHYRENROOM
+
+		FileHotspots	(HS_CLDHYRENROOM)
+						(HOTSPOT_TRIGGER_EAST,?_CLDHYRENROOM_DR_1)
+

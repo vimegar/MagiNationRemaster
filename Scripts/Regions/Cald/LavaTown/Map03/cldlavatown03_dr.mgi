@@ -1,0 +1,14 @@
+/********************************/
+?_CLDLAVATOWN03_DR_1
+		HeroToDoor	(0,21,39,21)
+		Jump		(?_CLDLAVATOWN01)
+		
+?_CLDLAVATOWN03_DR_2
+		HeroSetDoor	(24,20)
+		Jump		(?_OVRSURFACE03)
+//		HeroToDoor	(24,0,9,29)
+//		Jump		(?_CLDLAVATOWN04)
+						
+?_CLDLAVATOWN03_DR_3
+		HeroSetDoor	(4,10)
+		Jump		(?_CLDLAVATOWN10)	

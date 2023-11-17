@@ -1,0 +1,18 @@
+/********************************/
+?_NRMVASH15_DR_1
+		HeroToDoor	(12,9,6,3)
+		Jump		(?_NRMVASH08)
+
+?_NRMVASH15_DR_2
+		HeroToDoor	(8,0,9,15)
+		Jump		(?_NRMVASH16)
+
+?_NRMVASH15_TR_1
+		TriggerTreasure	(NRMVASH15_Chest1,INV_TYPE_RELIC,INV_ARCHAIC_LEAF,11,5,20)
+
+?_NRMVASH15_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It's locked.")
+		TextClose	()
+		End			()

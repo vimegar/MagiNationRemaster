@@ -1,0 +1,20 @@
+/********************************/
+?_ORORUINS01_DR_1
+	ThatActorInit			(ACTOR02,?TRIGGER_AI,15,15,33,16,?_OVERPARA_WAIT,?_OVERPARA_MOUNT)
+		HeroSetDoor	(13,15)
+		Jump		(?_OVRSURFACE04)
+
+?_ORORUINS01_DR_2
+		HeroToDoor	(0,8,49,39)
+		Jump		(?_ORORUINS02)
+
+?_ORORUINS01_DR_3
+		HeroToDoor	(0,35,49,17)
+		Jump		(?_ORORUINS03)
+
+/********************************/
+?_ORORUINS01_TR_1
+		TriggerTreasure	(ORORUINS01_Chest1,INV_TYPE_ITEM,INV_MASTER_RUNE,29,1,50)
+		
+?_ORORUINS01_TR_2
+		TriggerTreasure	(ORORUINS01_Chest2,INV_TYPE_ITEM,INV_BALOO_ROOT,25,45,50)		

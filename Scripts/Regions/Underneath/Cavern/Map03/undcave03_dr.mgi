@@ -1,0 +1,111 @@
+/********************************/
+?_UNDCAVERN03_DR_1
+		HeroToDoor		(0,39,59,11)
+		Jump			(?_UNDCAVERN04)
+
+?_UNDCAVERN03_DR_2
+		HeroToDoor		(11,0,39,39)
+		Jump			(?_UNDCAVERN02)
+
+?_UNDCAVERN03_DR_3
+		HeroToDoor		(32,0,9,19)
+		Jump			(?_UNDCAVERN11)
+
+?_UNDCAVERN03_DR_4
+		Jump			(?_UNDCAVERN03_MUSHPOP)
+
+?_UNDCAVERN03_DR_5
+		HeroSetDoor		(7,13)
+		Jump			(?_UNDCAVERN03_SECRET)
+		
+
+?_UNDCAVERN03_TR_1
+		TriggerTreasure	(UNDCAVERN03_Chest1,INV_TYPE_ITEM,INV_GIBBOUS_GEM,12,20,60)
+		
+?_UNDCAVERN03_TR_2
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("The wall is=")
+						("spongy here.")
+		If				([Ormagon_Quest = 4],_OPEN_WITH_FUNGICIDE)
+		TextWrite		("Hey! Some of=")
+						("it is loose.")
+		TextClear		()
+		TextWrite		(" Take fungus=")
+						(" Don't take$")
+		TextMenu		(2)
+						(_TAKE_FUNGUS)
+						(_DONT_TAKE_FUNGUS)
+_DONT_TAKE_FUNGUS
+		TextClear		()
+		TextWrite		("It's too gooey=")
+						("anyway.")
+		TextClose		()
+		End				()
+_TAKE_FUNGUS		
+		If				([INV_ITEM_SpecimanJar > 0],_PUT_FUNGUS_IN_JAR)
+		TextClear		()
+		TextWrite		("I can't, I=")
+						("need something")
+						("to carry it in.")
+		TextClose		()
+		End				()
+_PUT_FUNGUS_IN_JAR
+		InventoryTake	(INV_TYPE_ITEM,INV_SPECIMEN_JAR,1)
+		InventoryGive	(INV_TYPE_ITEM,INV_FUNGUS,1)
+		TextClear		()
+		TextWrite		("Tony got a=")
+		TextWrite		("Fungus and")
+						("put it in the=")
+						("Specimen Jar")
+		TextClose		()
+		End				()
+_OPEN_WITH_FUNGICIDE
+		TextWrite		("Use Fungicide=")
+						("on the wall?")
+		TextClear		()
+		TextWrite		(" Use Fungicide=")
+						(" Don't use$")
+		TextMenu		(2)
+						(_USED_FUNGICIDE)
+						(_DONT__USE_FUNGICIDE)
+_DONT__USE_FUNGICIDE
+		TextClose		()
+		End				()
+_USED_FUNGICIDE
+		TextClose		()
+		Jump			(?_UNDCAVERN03_OPENING)
+
+/********************************/
+?_UNDCAVERN03_SECRET_DR_1
+		HeroSetDoor		(40,11)
+		Jump			(?_UNDCAVERN03)
+	
+
+?_UNDCAVERN03_SECRET_TR_1
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Lumpily")
+					("smooshy!")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN03_SECRET_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Smooshy!")
+		TextClose	()
+		End			()
+
+?_UNDCAVERN03_SECRET_TR_3
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Mushy!")
+		TextClose	()
+		End			()
+
+/********************************/
+?_UNDCAVERN11_DR_1
+		HeroToDoor		(9,19,32,0)
+		Jump			(?_UNDCAVERN03)
+

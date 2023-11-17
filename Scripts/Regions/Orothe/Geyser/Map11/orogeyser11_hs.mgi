@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_OROGEYSER11)
+						(HOTSPOT_TRIGGER_SOUTH,?_OROGEYSER11_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_OROGEYSER11_DR_2)
+		
+		FileTriggers	(TR_OROGEYSER11)
+						(TRIGGER_NORMAL,?_OROGEYSER11_TR_1)

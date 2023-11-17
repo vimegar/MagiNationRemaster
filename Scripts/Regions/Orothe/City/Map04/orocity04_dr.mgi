@@ -1,0 +1,177 @@
+/********************************/
+
+?_OROCITY04_DR_1
+		HeroSetDoor		(65,36)
+		Jump			(?_OROCITY01)		
+		
+?_OROCITY04_DR_2
+		If				([GAMECOUNT = GC_BACK_IN_OROTHE && Oro_Plot_Byte =4],?_OROCITY04_CITYLEAVE)
+		End				()		
+		
+/********************************/
+?_OROCITY04_TR_1			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Hammer of=")
+						("the Masters")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_2			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Hidden=")
+						("Parasites")
+						("of Orothe")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_3			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Art of=")
+						("Warlords")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_4			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Tome of=")
+						("Tremors")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_5			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Embers of=")
+						("Destruction")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_6			// BOOKCASE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A set of books=")
+						("chronicling the")
+						("different Dream=")
+						("Creatures of")
+						("the Moonlands.")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_7			// BOOKCASE
+		TextOpen		()
+		TextWrite		("How to BREAK=")
+						("Stuff!")
+						("by Ebylon")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_8			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Ancient=")
+						("Treasures")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_9			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Journeys=")
+						("of Orwin")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_10			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Treaty of=")
+						("the Sea")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_11			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Great Tactical=")
+						("Victories")
+						("Throughout=")
+						("History")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_12			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Journey to=")
+						("Immortality")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_13			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Path of=")
+						("O'Qua")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_14			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Legend of=")
+						("Agram")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_15			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Thunders of=")
+						("Mystery")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_16			// BOOKCASE
+		TextOpen		()
+		TextWrite		("A Study in=")
+						("Physics")
+						("by Orlon")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_17			// BOOKCASE
+		TextOpen		()
+		TextWrite		("The Power=")
+						("of Me")
+						("by Gogor")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_18			// BOOKCASE
+		TextOpen		()
+		TextWrite		("A note:")
+						("IOU 4 Joke=")
+						("Books")
+						("    --Orlon")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_19			// TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("It's covered=")
+						("in beaten up")
+						("books and torn=")
+						("out pages.")
+		TextClose		()
+		End				()
+
+?_OROCITY04_TR_20			// TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("There's a book=")
+						("leveling this")
+						("table.")
+						("I can just=")
+						("make out the")
+						("title:")
+						("Evu's...")
+						("Day...")
+						("at...")
+						("Jellybean...")
+						("Beach.")
+						("...")
+						("Oh boy.")
+		TextClose		()
+		End				()

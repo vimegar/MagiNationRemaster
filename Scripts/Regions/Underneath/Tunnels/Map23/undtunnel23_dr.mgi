@@ -1,0 +1,13 @@
+/********************************/
+?_UNDTUNNEL23_DR_1
+		HeroToDoor		(3,29,28,0)
+		Jump			(?_UNDTUNNEL22)
+
+?_UNDTUNNEL23_DR_2
+		SetLoadScript	(?_UNDTUNNEL23_DR_2)
+		HeroSetDoor		(31,38)
+		Jump			(?_OVRSURFACE01)
+
+?_UNDTUNNEL23_DR_3
+		If				([GAMECOUNT = GC_UND_INTRO && Kidnapping = 3],?_UNDTUNNEL23_ROCK_DROP_SCENE)
+		End				()

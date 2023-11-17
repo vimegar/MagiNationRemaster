@@ -1,0 +1,10 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH15)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH15_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH15_DR_2)
+
+		FileTriggers	(TR_NRMVASH15)
+						(TRIGGER_CONFIG,?_NRMVASH15_TR_1)
+						(TRIGGER_NORMAL,?_NRMVASH15_TR_2)
+
+

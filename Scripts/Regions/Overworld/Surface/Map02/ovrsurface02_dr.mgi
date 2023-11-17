@@ -1,0 +1,44 @@
+/********************************/
+
+?_OVERSURFACE02_DR_1
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+
+_UP
+		HeroSetDoor		(12,0)
+		Jump			(?_UNDTOWN01)
+_DOWN
+_RIGHT
+		HeroSetDoor		(59,21)
+		Jump			(?_UNDTOWN01)
+_LEFT
+		HeroSetDoor		(0,24)
+		Jump			(?_UNDTOWN01)
+
+?_OVERSURFACE02_DR_2
+		HeroSetDoor		(13,39)
+		Jump			(?_UNDTUNNEL21)
+
+?_OVERSURFACE02_DR_3
+		HeroSetDoor		(12,24)	
+		Jump			(?_UNDCAVERN07)
+		
+?_OVERSURFACE02_DR_4
+		HeroSetDoor		(0,16)
+		Jump			(?_UNDCAVERN01)
+
+?_OVERSURFACE02_DR_5
+		HeroSetDoor		(5,1)
+		Jump			(?_UNDCAVERN05)
+
+?_OVERSURFACE02_DR_6
+		HeroSetDoor		(5,24)
+		If				([GC = GC_UND_GEYSER || GC = GC_UND_QUAKE],?_UNDCAVERN06)
+		Jump			(?_UNDMUSHFARM01)		
+?_OVERSURFACE02_DR_7
+		HeroSetDoor		(17,39)
+		Jump			(?_UNDTUNNEL22)
+		

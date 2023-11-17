@@ -1,0 +1,34 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH09)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH09_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH09_DR_2)
+/********************************/
+//	From Poad's
+		FileHotspots	(HS_NRMVASH09B)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH09B_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH09B_DR_2)
+						
+/********************************/
+//	Connector
+		FileHotspots	(HS_NRMVASH09C)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH09C_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH09C_DR_2)
+
+/********************************/
+//	From Shop
+		FileHotspots	(HS_NRMVASH09D)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH09D_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH09D_DR_2)
+
+
+/********************************/
+		FileTriggers	(TR_NRMVASH09)
+						(TRIGGER_CONFIG,?_NRMVASH09_TR_1)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_2)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_3)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_4)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_5)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_6)
+						(TRIGGER_NORMAL,?_NRMVASH09_TR_7)						
+						
+	//	FileTriggers	(TR_NRMVASH09C)

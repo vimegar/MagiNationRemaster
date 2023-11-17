@@ -1,0 +1,43 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP11\NRMGLADE11_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP11\NRMGLADE11_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP11\NRMGLADE11_SCT.MGI
+
+/********************************/
+?_NRMGLADE11_FADEIN
+	SongFadeOut			(30)
+?_NRMGLADE11
+	SceneNew			()
+	LoadMap				(MAP_NRMGLADE11)
+	LoadPalette			(PAL_HERO)
+	LoadHotspots		(HS_NRMGLADE11)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?TRAP_AI,12,4,16,0,?_NRMGLADE11_BOXXEL,?_NRMGLADE11B)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR00)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_glade)
+	SceneReady			()
+	End					()
+
+
+?_NRMGLADE11_BOXXEL
+	ThisActorWaitTile	(MAP_TILE_BLANK)
+	ThisActorDrawTile	(0,0,16,134,COLLCODE_SPACE)
+	HeroSetDoor			(10,4)
+	End					()
+
+?_NRMGLADE11_BOXRET
+	SceneNew			()
+	LoadMap				(MAP_NRMGLADE11RET)
+	LoadPalette			(PAL_HERO)
+	LoadHotspots		(HS_NRMGLADE11RET)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart			(SONGID_glade)
+	SceneReady			()
+	End					()

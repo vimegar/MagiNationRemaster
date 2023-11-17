@@ -1,0 +1,107 @@
+;Size:68
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\ARDERIAL\CLOUDS\MAP15\ARDCLOUDS15.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_ARDCLOUDS15_DR_1
+	DB	CMD_HEROSETDOOR
+		DB	$16
+		DB	$1D
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE05
+		DW	(?_OVRSURFACE05&$FFFF)
+
+;********************************
+?_ARDCLOUDS15_DR_2
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI_FLY_DOWN&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D09B
+		DB	$00
+		DB	:?_HERO_FLY_DOWN_ANIM
+		DW	(?_HERO_FLY_DOWN_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_HEROSETDOOR
+		DB	$16
+		DB	$01
+
+	DB	CMD_JUMP
+		DB	:?_ARDCLOUDS16
+		DW	(?_ARDCLOUDS16&$FFFF)
+
+;********************************
+?_ARDCLOUDS15
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_ARDCLOUDS15&$FFFF)
+		DB	:MAP_ARDCLOUDS15
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_ARDCLOUDS15&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_arderial
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_ARDCLOUDS15_RET
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D145
+		DB	$00
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_ARDCLOUDS15
+		DW	(?_ARDCLOUDS15&$FFFF)
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_OVRSURFACE05
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI_FLY_DOWN
+	GLOBAL	?_HERO_FLY_DOWN_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_ARDCLOUDS16
+	GLOBAL	MAP_ARDCLOUDS15
+	GLOBAL	HS_ARDCLOUDS15
+	GLOBAL	PAL_HERO
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STAND_UP_ANIM
+
+;********************************
+	END
+;********************************

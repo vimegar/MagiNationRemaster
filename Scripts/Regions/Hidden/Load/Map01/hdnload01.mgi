@@ -1,0 +1,158 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_DR.MGI
+%INCLUDE				REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_TXT.MGI
+%INCLUDE				REGIONS\HIDDEN\LOAD\MAP01\HDNLOAD01_SCT.MGI
+
+
+/********************************//********************************/
+// MAIN TITLES
+/********************************//********************************/
+?_MAIN_TITLES
+	BGScreenNew			()
+	LoadVRAM			(VRM_LOGO,PAL_LOGO)
+	LoadBGScreen		(BG_LOGO)
+	PalClearAnim		(0,7,255,255,255)
+	SetCamera			(0,0)
+	SceneReady			()
+	PalFade				(0,7,32,2)
+	Delay				(90)
+
+	PalClearBase		(0,7,255,255,255)
+	PalFade				(0,7,32,2)
+	BGScreenNew			()
+	LoadVRAM			(VRM_LOGO,PAL_MUSYX)
+	LoadBGScreen		(BG_MUSYX)
+	PalClearAnim		(0,7,255,255,255)
+	SetCamera			(0,0)
+	SceneReady			()
+	PalFade				(0,7,32,2)
+	Delay				(90)
+
+	PalClearBase		(0,7,255,255,255)
+	PalFade				(0,7,32,2)
+	BGScreenNew			()
+	LoadPalette			(PAL_HERO)
+
+	LoadVRAM			(VRM_TITLE,PAL_TITLE)
+	LoadBGScreen		(BG_TITLE)
+
+	Switch				([GAMECOUNT])
+						(0,_NAROOM)
+						(GC_OPENING,_NAROOM)
+						(GC_NRM_INTRO,_NAROOM)
+						(GC_FIND_ORWIN,_NAROOM)
+						(GC_QUEST_FOR_GIA,_NAROOM)
+						(GC_NAROOM_GEYSER,_NAROOM)
+						(GC_GLOVES,_NAROOM)
+
+						(GC_UND_INTRO,_UNDERNEATH)
+						(GC_UND_QUAKE,_UNDERNEATH)
+						(GC_UND_GEYSER,_UNDERNEATH)
+						(GC_UND_WASTED,_UNDERNEATH)
+
+						(GC_CALD_INTRO,_CALD)
+						(GC_ARBOLL_HUNT,_CALD)
+						(GC_LAVA_BRIDGE,_CALD)
+						(GC_BOOTS_QUEST,_CALD)
+						(GC_CALD_GEYSER,_CALD)
+						(GC_TONY_KIDNAPPED,_CALD)
+
+						(GC_SHADOWHOLD_JAIL,_OROTHE)
+						(GC_BACK_IN_OROTHE,_OROTHE)
+						(GC_OROTHE_GEYSER,_OROTHE)
+
+_ARDERIAL
+	FightLoadArena		(ARDERIAL_ARENA1)
+	JumpLocal			(_DONE)
+
+_NAROOM
+	FightLoadArena		(NAROOM_ARENA1)
+	JumpLocal			(_DONE)
+
+_UNDERNEATH
+	FightLoadArena		(UNDERNEATH_ARENA1)
+	JumpLocal			(_DONE)
+
+_CALD
+	FightLoadArena		(CALD_ARENA1)
+	JumpLocal			(_DONE)
+
+_OROTHE
+	FightLoadArena		(OROTHE_ARENA1)
+
+_DONE
+	ThatActorInit		(ACTOR00,?TITLE_AI,0,0,10,0,?_END,?_END)
+	ThatActorInit		(ACTOR01,?ANIM_AI,5,6,10,0,?_PRESS_START_BLINK_ANIM,?_END)
+	ThatActorSetLoc		(ACTOR01,5,6,0,7,10)
+
+	ThatActorStart		(ACTOR00)
+	PalClearAnim		(0,7,255,255,255)
+	SetCamera			(0,0)
+
+	SongStart			(SONGID_dream)
+
+	SceneReady			()
+	PalFade				(0,7,32,5)
+	ThatActorStart		(ACTOR01)
+_LOOP
+	If					([SYS_ContDown_Start],_START)
+	JumpLocal			(_LOOP)
+
+	ThatActorSetScript	(ACTOR01,?_PRESS_START_ANIM)
+
+_START
+	PalClearBase		(0,15,255,255,255)
+	PalFade				(0,7,32,2)
+	PalFade				(8,15,32,1)
+	JumpLocal			(?_HDNLOAD01)
+/********************************//********************************/
+// END MAIN TITLES
+/********************************//********************************/
+
+/********************************//********************************/
+// LOAD SCREEN
+/********************************//********************************/
+?_HDNLOAD01
+	SongFadeOut			(96)
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	LoadMap				(MAP_HDNLOAD01)
+	LoadSpareMap		(SCR_LOAD01B,COL_LOAD01B)
+	LoadHotspots		(HS_HDNLOAD01)
+	LoadPalette			(PAL_HERO)	
+	ThatActorInit		(HEROACTOR,?ANIM_AI,6,4,12,0,?_HERO_STAND_DOWN_ANIM,?_END)
+	ThatActorInit		(ACTOR00,?ANIM_AI,4,6,12,0,_WAIT_TILE,?_END)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR00)
+	HeroSetCamera		()
+	PalClearAnim		(0,7,255,255,255)
+	SceneReady			()
+	PalFade				(0,15,32,4)
+
+	Delay				(40)
+
+	If					([!Game_Saved],_SKIP)
+	SFX					(SFXID_DARK_ATTACK)
+	CopyTileSpare		(12,8,1,2,4,8,1)
+
+	If					([Newgame_Plus < 2],_SKIP)
+
+	Delay				(16)
+	SFX					(SFXID_DARK_ATTACK)
+	CopyTileSpare		(12,6,1,1,3,6,1)
+
+_SKIP
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+
+/********************************/
+// ACTOR
+_WAIT_TILE
+	ThisActorWaitTile	(253)
+	DrawTile			(4,6,12,253,COLLCODE_HS03)
+	End					()
+
+/********************************//********************************/
+// END LOAD SCREEN
+/********************************//********************************/

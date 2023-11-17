@@ -1,0 +1,10 @@
+/********************************/
+		FileHotspots	(HS_HLDCELL06)
+						(HOTSPOT_TRIGGER_EAST,?_HLDCELL06_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_HLDCELL06_DR_2)
+
+/*********************************/
+		FileHotspots	(HS_HLDEXTERIOR)
+						(HOTSPOT_TRIGGER_EAST,?_HLDEXTERIOR_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_HLDEXTERIOR_CHOICE)
+

@@ -1,0 +1,80 @@
+/********************************/
+// CLDLAVAVENT04
+?_CLDLAVAVENT04_DR_1
+		HeroToDoor		(38,0,51,19)
+		Jump			(?_CLDLAVAVENT03)
+
+?_CLDLAVAVENT04_DR_2
+		HeroToDoor		(40,29,41,0)
+		Jump			(?_CLDLAVAVENT05)
+
+?_CLDLAVAVENT04_DR_3
+		HeroSetDoor		(15,13)
+		Jump			(?_CLDVENTINT03)
+
+?_CLDLAVAVENT04_TR_1
+		TriggerTreasure (CLDLAVAVENT04_CHEST1,INV_TYPE_ITEM,INV_BALOO_SAP,21,5,50)
+
+/********************************/
+// CLDVENTINT03
+?_CLDVENTINT03_DR_1
+		HeroSetDoor		(20,11)
+		Jump			(?_CLDLAVAVENT04)		
+		
+?_CLDVENTINT03_TR_1
+		TriggerTreasure	(CLDVENTINT03_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,2,2,19)
+
+?_CLDVENTINT03_TR_2			// BOOKS
+		TextOpen		()
+		TextWrite		("Lava: Our")
+						("Temperamental")
+						("Neighbor.")
+		TextClose		()
+		End				()
+
+?_CLDVENTINT03_TR_3			// BOOKS
+		TextOpen		()
+		TextWrite		("How to dry your=")
+						("produce for")
+						("later use:")
+						("Step 1: Put on=")
+						("porch.")
+						("Step 2: Wait a=")
+						("minute.")
+						("Step 3: There=")
+						("is no Step 3.")
+		TextClose		()
+		End				()
+
+?_CLDVENTINT03_TR_4			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Clothes!")
+						("Wow.")
+						("Something=")
+						("normal.")
+		TextClose		()
+		End				()
+
+?_CLDVENTINT03_TR_5			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("I wonder if=")
+						("there's a")
+						("friend under=")
+						("this pillow")
+						("for me...")
+						("Nope.")
+		TextClose		()
+		End				()
+
+?_CLDVENTINT03_TR_6			// CLOCK
+		TextOpen		()
+		TextWrite		("CLONG-CLONG-")
+						("CLONG-CLONG-")
+						("...")
+						("CLONG!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("Spooky!")
+		TextClose		()
+		End				()

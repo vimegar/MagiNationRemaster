@@ -1,0 +1,32 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\GEYSER\MAP06\UNDGEYSER06_DR.MGI
+
+/********************************/
+?_UNDGEYSER06
+	SceneNew			()
+	SetCollMask			(1,1,1,1)
+	LoadMap				(MAP_UNDGEYSER06)
+	LoadPalette			(PAL_HERO)
+//	//LoadEncounters		(EN_NRMRIVER03,ENCOUNTER_FRQ_NORM,?_UNDGEYSER_RE_ENTER)
+	LoadHotspots		(HS_UNDGEYSER06)
+	LoadTriggers		(TR_UNDGEYSER06)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,32,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_UNDGEYSER_RNDBAT,ENCOUNTER_FRQ_SUPERSLOW)
+	SetBtlReturn		(?_UNDGEYSER06)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SetScroll			(_INIT)
+	SongFadeOut			(80)
+	SongStart			(SONGID_maze)
+	Switch				([Geyser_State])
+						(1,?_UNDGEYSER_INITFIRST)
+						(2,?_UNDGEYSER_INITNEW)
+						(3,?_UNDGEYSER_INITFULL)
+						(4,?_UNDGEYSER_INITTHIRD)
+	SceneReady			()
+	End					()
+_INIT
+	If					([GAMECOUNT = GC_UND_WASTED],?_UNDGEYSER_QUAKE)
+	End					()

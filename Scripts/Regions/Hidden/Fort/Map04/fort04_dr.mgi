@@ -1,0 +1,26 @@
+/********************************/
+?_HDNFORT04_DR_1
+		HeroSetDoor			(7,12)
+		Jump				(?_HDNFORT04B)
+
+?_HDNFORT04_DR_2
+		HeroSetDoor			(24,36)
+		Jump				(?_OVRSURFACE05)
+
+/********************************/
+// WARP FROM VASH04
+/********************************/
+?_HDNFORT04B_DR_1
+		HeroSetDoor			(9,18)
+		Jump				(?_HDNFORT04)
+
+?_HDNFORT04B_DR_2
+		HeroSetDoor			(7,8)
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+		Jump				(?_NRMVASH04C_ARRIVAL)
+/********************************/
+// END WARP FROM VASH04
+/********************************/

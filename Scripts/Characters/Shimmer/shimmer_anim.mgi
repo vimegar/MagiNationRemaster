@@ -1,0 +1,113 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+
+?_SHIMMER_HOVER_DL_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?SHIMMER_FLOAT01_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+				(?SHIMMER_FLOAT03_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+
+	JumpLocal	(?_SHIMMER_HOVER_DL_ANIM)
+
+/********************************/
+?_SHIMMER_HOVER_DR_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?SHIMMER_FLOAT01_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+				(?SHIMMER_FLOAT03_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+
+	JumpLocal	(?_SHIMMER_HOVER_DR_ANIM)
+
+/********************************/
+?_SHIMMER_HOVER_UL_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?SHIMMER_FLOAT01_BACKLEFT)
+				(?SHIMMER_FLOAT02_BACKLEFT)
+				(?SHIMMER_FLOAT03_BACKLEFT)
+				(?SHIMMER_FLOAT02_BACKLEFT)
+
+	JumpLocal	(?_SHIMMER_HOVER_UL_ANIM)
+
+/********************************/
+?_SHIMMER_HOVER_UR_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?SHIMMER_FLOAT01_BACKRIGHT)
+				(?SHIMMER_FLOAT02_BACKRIGHT)
+				(?SHIMMER_FLOAT03_BACKRIGHT)
+				(?SHIMMER_FLOAT02_BACKRIGHT)
+
+	JumpLocal	(?_SHIMMER_HOVER_UR_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_DL_ANIM
+
+	FrameBlock:	(8,-1,1)
+				(?SHIMMER_FLOAT01_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+				(?SHIMMER_FLOAT03_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_DL_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_DR_ANIM
+
+	FrameBlock:	(8,1,1)
+				(?SHIMMER_FLOAT01_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+				(?SHIMMER_FLOAT03_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_DR_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_LEFT_ANIM
+
+	FrameBlock:	(8,-1,0)
+				(?SHIMMER_FLOAT01_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+				(?SHIMMER_FLOAT03_LEFT)
+				(?SHIMMER_FLOAT02_LEFT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_LEFT_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_RIGHT_ANIM
+
+	FrameBlock:	(8,1,0)
+				(?SHIMMER_FLOAT01_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+				(?SHIMMER_FLOAT03_RIGHT)
+				(?SHIMMER_FLOAT02_RIGHT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_RIGHT_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_UL_ANIM
+
+	FrameBlock:	(8,-1,-1)
+				(?SHIMMER_FLOAT01_BACKLEFT)
+				(?SHIMMER_FLOAT02_BACKLEFT)
+				(?SHIMMER_FLOAT03_BACKLEFT)
+				(?SHIMMER_FLOAT02_BACKLEFT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_UL_ANIM)
+
+/********************************/
+?_SHIMMER_FLOAT_UR_ANIM
+
+	FrameBlock:	(8,1,-1)
+				(?SHIMMER_FLOAT01_BACKRIGHT)
+				(?SHIMMER_FLOAT02_BACKRIGHT)
+				(?SHIMMER_FLOAT03_BACKRIGHT)
+				(?SHIMMER_FLOAT02_BACKRIGHT)
+
+	JumpLocal	(?_SHIMMER_FLOAT_UR_ANIM)

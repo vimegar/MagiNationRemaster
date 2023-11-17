@@ -1,0 +1,66 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP13\HLDMAZE13_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP13\HLDMAZE13_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE13
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE13)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadTriggers		(TR_HLDMAZE13)
+	LoadHotspots		(HS_HLDMAZE13)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,26,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	SongStart			(SONGID_shadowhold)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE13)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	End					()
+
+?_HLDMAZE13_DEATHFALL
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE13)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadHotspots		(HS_HLDMAZE13)
+	LoadTriggers		(TR_HLDMAZE13)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,15,11,26,0,?_HLDMAZE13_TONY_FALLS,?_DONT_TALK)
+	SongStart			(SONGID_shadowhold)
+	SetCamera			(15,18)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE13)
+	SceneReady			()
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("AAAAAHHHH!!!!")
+	TextClose				()
+	ThatActorStart		(HEROACTOR)
+
+	End					()
+
+
+?_HLDMAZE13_TONY_FALLS
+	ThisActorSetAnimDelay	(?_HERO_FALLING_GOOFILY_4,32)
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_RIGHT,48)
+	ThisActorSetAnimDelay	(?_HERO_SLOSHED_LEFT,48)
+							(?_HERO_SLOSHED_RIGHT,32)
+							(?_HERO_STAND_LEFT_ANIM,16)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Oooo, that's=")
+							("gonna leave a")
+							("mark!")
+	TextClose				()
+	SetScroll				(?_HLDMAZE13_TONY_SCREAMS)
+	End						()
+	
+	
+?_HLDMAZE13_TONY_SCREAMS
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End						()

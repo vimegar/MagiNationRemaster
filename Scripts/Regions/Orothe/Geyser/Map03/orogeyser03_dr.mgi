@@ -1,0 +1,9 @@
+/********************************/
+
+?_OROGEYSER03_DR_1
+	HeroToDoor	(0,15,47,26)
+	Jump		(?_OROGEYSER01)
+	
+?_OROGEYSER03_DR_2
+	HeroSetDoor	(56,38)
+	Jump		(?_OROGEYSER10)

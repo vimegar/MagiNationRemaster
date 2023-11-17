@@ -1,0 +1,390 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+
+?_MORAG_HOVER_DOWN_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_FRONT)
+				(?MORAG_FLOAT02_FRONT)
+				(?MORAG_FLOAT03_FRONT)
+				(?MORAG_FLOAT02_FRONT)
+
+	JumpLocal	(?_MORAG_HOVER_DOWN_ANIM)
+
+/********************************/
+?_MORAG_HOVER_DOWN_STILL
+
+	Frame:		(255,0,0,?MORAG_FLOAT01_FRONT)
+
+	JumpLocal	(?_MORAG_HOVER_DOWN_STILL)
+
+/********************************/
+?_MORAG_HOVER_UP_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_BACK)
+				(?MORAG_FLOAT02_BACK)
+				(?MORAG_FLOAT03_BACK)
+				(?MORAG_FLOAT02_BACK)
+
+	JumpLocal	(?_MORAG_HOVER_UP_ANIM)
+
+/********************************/
+?_MORAG_HOVER_DL_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+				(?MORAG_FLOAT03_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+
+	JumpLocal	(?_MORAG_HOVER_DL_ANIM)
+
+/********************************/
+?_MORAG_HOVER_DR_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+				(?MORAG_FLOAT03_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+
+	JumpLocal	(?_MORAG_HOVER_DR_ANIM)
+
+/********************************/
+?_MORAG_HOVER_UL_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_BACKLEFT)
+				(?MORAG_FLOAT02_BACKLEFT)
+				(?MORAG_FLOAT03_BACKLEFT)
+				(?MORAG_FLOAT02_BACKLEFT)
+
+	JumpLocal	(?_MORAG_HOVER_UL_ANIM)
+
+/********************************/
+?_MORAG_HOVER_UR_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01_BACKRIGHT)
+				(?MORAG_FLOAT02_BACKRIGHT)
+				(?MORAG_FLOAT03_BACKRIGHT)
+				(?MORAG_FLOAT02_BACKRIGHT)
+
+	JumpLocal	(?_MORAG_HOVER_UR_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_UP_ANIM
+
+	FrameBlock:	(8,0,-1)
+				(?MORAG_FLOAT01_BACK)
+				(?MORAG_FLOAT02_BACK)
+				(?MORAG_FLOAT03_BACK)
+				(?MORAG_FLOAT02_BACK)
+
+	JumpLocal	(?_MORAG_FLOAT_UP_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_DOWN_ANIM
+
+	FrameBlock:	(8,0,1)
+				(?MORAG_FLOAT01_FRONT)
+				(?MORAG_FLOAT02_FRONT)
+				(?MORAG_FLOAT03_FRONT)
+				(?MORAG_FLOAT02_FRONT)
+
+	JumpLocal	(?_MORAG_FLOAT_DOWN_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_RIGHT_ANIM
+
+	FrameBlock:	(8,1,0)
+				(?MORAG_FLOAT01_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+				(?MORAG_FLOAT03_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+
+	JumpLocal	(?_MORAG_FLOAT_RIGHT_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_LEFT_ANIM
+
+	FrameBlock:	(8,-1,0)
+				(?MORAG_FLOAT01_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+				(?MORAG_FLOAT03_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+
+	JumpLocal	(?_MORAG_FLOAT_LEFT_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_DL_ANIM
+
+	FrameBlock:	(8,-1,1)
+				(?MORAG_FLOAT01_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+				(?MORAG_FLOAT03_LEFT)
+				(?MORAG_FLOAT02_LEFT)
+
+	JumpLocal	(?_MORAG_FLOAT_DL_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_DR_ANIM
+
+	FrameBlock:	(8,1,1)
+				(?MORAG_FLOAT01_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+				(?MORAG_FLOAT03_RIGHT)
+				(?MORAG_FLOAT02_RIGHT)
+
+	JumpLocal	(?_MORAG_FLOAT_DR_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_UL_ANIM
+
+	FrameBlock:	(8,-1,-1)
+				(?MORAG_FLOAT01_BACKLEFT)
+				(?MORAG_FLOAT02_BACKLEFT)
+				(?MORAG_FLOAT03_BACKLEFT)
+				(?MORAG_FLOAT02_BACKLEFT)
+
+	JumpLocal	(?_MORAG_FLOAT_UL_ANIM)
+
+/********************************/
+?_MORAG_FLOAT_UR_ANIM
+
+	FrameBlock:	(8,1,-1)
+				(?MORAG_FLOAT01_BACKRIGHT)
+				(?MORAG_FLOAT02_BACKRIGHT)
+				(?MORAG_FLOAT03_BACKRIGHT)
+				(?MORAG_FLOAT02_BACKRIGHT)
+
+	JumpLocal	(?_MORAG_FLOAT_UR_ANIM)
+
+/********************************/
+?_MORAG_THROW1_ANIM
+	
+	FrameBlock:	(8,0,0)
+				(?MORAG_THROW01A)
+				(?MORAG_THROW01B)
+				(?MORAG_THROW01C)
+				(?MORAG_THROW01B)
+	
+	JumpLocal	(?_MORAG_THROW1_ANIM)
+
+/********************************/
+?_MORAG_THROW1_UP_ANIM
+	
+	FrameBlock:	(8,0,-1)
+				(?MORAG_THROW01A)
+				(?MORAG_THROW01B)
+				(?MORAG_THROW01C)
+				(?MORAG_THROW01B)
+	
+	JumpLocal	(?_MORAG_THROW1_UP_ANIM)
+
+/********************************/
+?_MORAG_THROW2_ANIM
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_THROW02A)
+				(?MORAG_THROW02B)
+				(?MORAG_THROW02C)
+				(?MORAG_THROW02B)
+	
+	JumpLocal	(?_MORAG_THROW2_ANIM)
+
+/********************************/
+?_MORAG_THROW2_STILL
+
+	Frame:		(255,0,0,?MORAG_THROW02B)
+	
+	JumpLocal	(?_MORAG_THROW2_STILL)
+
+/********************************/
+?_MORAG_THROW3_ANIM
+
+	Frame:		(255,0,0,?MORAG_THROW03)
+	
+	JumpLocal	(?_MORAG_THROW3_ANIM)
+
+/********************************/
+?_MORAG_FLICKER
+	
+	Frame:		(1,0,0,?MORAG_FLOAT02_FRONT)
+	
+	Pass		()
+	
+	JumpLocal	(?_MORAG_FLICKER)
+
+/********************************/
+?_MORAG_HURT_LEFT
+
+	Frame:		(1,0,0,?MORAG_HURT_LEFT)
+				(1,0,-1,?MORAG_HURT_LEFT)
+				(1,0,0,?MORAG_HURT_LEFT)
+				(1,0,1,?MORAG_HURT_LEFT)
+				(1,0,0,?MORAG_HURT_LEFT)
+				(1,0,-1,?MORAG_HURT_LEFT)
+				(1,0,0,?MORAG_HURT_LEFT)
+				(1,0,1,?MORAG_HURT_LEFT)
+
+?_MORAG_HURTING_LEFT
+	
+	Frame		(255,0,0,?MORAG_HURT_LEFT)
+	
+	JumpLocal	(?_MORAG_HURTING_LEFT)
+
+/********************************/
+?_MORAG_HURT_RIGHT
+
+	Frame:		(1,0,0,?MORAG_HURT_RIGHT)
+				(1,0,-1,?MORAG_HURT_RIGHT)
+				(1,0,0,?MORAG_HURT_RIGHT)
+				(1,0,1,?MORAG_HURT_RIGHT)
+				(1,0,0,?MORAG_HURT_RIGHT)
+				(1,0,-1,?MORAG_HURT_RIGHT)
+				(1,0,0,?MORAG_HURT_RIGHT)
+				(1,0,1,?MORAG_HURT_RIGHT)
+
+?_MORAG_HURTING_RIGHT
+
+	Frame		(255,0,0,?MORAG_HURT_RIGHT)
+	
+	JumpLocal	(?_MORAG_HURTING_RIGHT)
+
+/********************************/
+?_MORAG_BATTLE_STAND_ANIM
+
+_FLOATDOWN
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT02FRONT)
+				(?MORAG_FLOAT01FRONT)
+				(?MORAG_TAUNT01)
+				(?MORAG_FLOAT01FRONT)
+				(?MORAG_FLOAT02FRONT)
+				(?MORAG_FLOAT01FRONT)
+				(?MORAG_TAUNT01)
+				(?MORAG_FLOAT01FRONT)
+				(?MORAG_FLOAT02FRONT)
+				(?MORAG_FLOAT01FRONT)
+				(?MORAG_TAUNT01)
+				(?MORAG_FLOAT01FRONT)
+
+	JumpRandom	(_FLOATLEFT)
+				(_FLOATRIGHT)
+
+_FLOATLEFT
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01LEFT)
+				(?MORAG_FLOAT02LEFT)
+				(?MORAG_FLOAT03LEFT)
+				(?MORAG_FLOAT02LEFT)
+				(?MORAG_FLOAT01LEFT)
+				(?MORAG_FLOAT02LEFT)
+				(?MORAG_FLOAT03LEFT)
+				(?MORAG_FLOAT02LEFT)
+				(?MORAG_FLOAT01LEFT)
+				(?MORAG_FLOAT02LEFT)
+				(?MORAG_FLOAT03LEFT)
+				(?MORAG_FLOAT02LEFT)
+
+	JumpLocal	(_FLOATDOWN)
+
+_FLOATRIGHT
+
+	FrameBlock:	(8,0,0)
+				(?MORAG_FLOAT01RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+				(?MORAG_FLOAT03RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+				(?MORAG_FLOAT01RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+				(?MORAG_FLOAT03RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+				(?MORAG_FLOAT01RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+				(?MORAG_FLOAT03RIGHT)
+				(?MORAG_FLOAT02RIGHT)
+
+	JumpLocal	(_FLOATDOWN)
+
+/********************************/
+?_MORAG_BATTLE_TAUNT_ANIM
+
+	Frame:		(8,0,0,?MORAG_TAUNT01)
+				(32,0,0,?MORAG_TAUNT02)
+				(32,0,0,?MORAG_TAUNT03)
+				(32,0,0,?MORAG_TAUNT04)
+
+	JumpLocal	(?_MORAG_BATTLE_STAND_ANIM)
+
+/********************************/
+?_MORAG_BATTLE_SUMMON_ANIM
+
+	FrameBlock:	(4,0,0)
+				(?MORAG_SUMMON01)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON03)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON01)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON03)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON01)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON03)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON01)
+				(?MORAG_SUMMON02)
+				(?MORAG_SUMMON03)
+				(?MORAG_SUMMON02)
+	Frame:		(32,0,0,?MORAG_SUMMON01)
+	
+	JumpLocal	(?_MORAG_BATTLE_STAND_ANIM)
+
+/********************************/
+?_MORAG_BATTLE_WIN_ANIM
+
+	Frame:		(8,0,0,?MORAG_TAUNT01)
+				(32,0,0,?MORAG_WIN02)
+				(8,0,0,?MORAG_WIN01)
+				(8,0,0,?MORAG_WIN02)
+				(8,0,0,?MORAG_WIN01)
+				(8,0,0,?MORAG_WIN02)
+				(8,0,0,?MORAG_WIN01)
+				(8,0,0,?MORAG_WIN02)
+
+_LAUGHING
+	FrameBlock:	(8,0,0)
+				(?MORAG_WIN03)
+				(?MORAG_WIN02)
+	
+	JumpLocal	(_LAUGHING)
+
+/********************************/
+?_MORAG_BATTLE_LOSE_ANIM
+
+	Frame:		(64,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+	Pass		()
+	Frame:		(1,0,0,?MORAG_DEFEAT01)
+
+	End			()

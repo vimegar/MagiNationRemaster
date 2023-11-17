@@ -1,0 +1,89 @@
+/********************************/
+?_UNDTOWN07_DR_0
+		HeroToDoor	(3,9,10,27)
+		Jump		(?_UNDTOWN01)
+
+?_UNDTOWN07_TR_1		// BOOKS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+
+		If			([GC = GC_UND_INTRO],_DIARY)
+		TextWrite	("A diary!")
+		TextClear	()
+		TextWrite	("What Gogor ate")
+					("today:")
+					("Five plates of=")
+					("creamed fungus.")
+					("Mushroom steak.")
+					("Blue pulped=")
+					("gourds.")
+					("Puffball=")
+					("rhind.")
+					("Spore pie.")
+		TextClear	()
+		TextWrite	("Hmmm...")
+		TextClose	()
+		End			()
+
+_DIARY
+		TextWrite	("Ooo!")
+					("A diary!")
+					("I'll just take=")
+					("a quick...")
+
+		TextIcon	(ICON_ULK)
+		TextWrite	("No you won't!")
+
+		TextIcon	(ICON_TONY)
+		TextWrite	("No I won't.")
+
+		TextClose	()
+		End			()
+
+?_UNDTOWN07_TR_2		// BOOKS
+		TextOpen	()
+		TextWrite	("Frustration=")
+					("Barrage!")
+					("For those=")
+					("surrounded by")
+					("difficult=")
+					("people.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN07_TR_3		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Nice and neat.")
+					("Every corner=")
+					("tucked in.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN07_TR_4		// DEAL BIN
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Messy.")
+					("Hmm...")
+					("Someone here=")
+					("is selectively")
+					("clean.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN07_TR_5		// CHAIR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Mushroom")
+					("chairs...")
+					("What's next?")
+		TextClose	()
+		End			()
+
+?_UNDTOWN07_TR_6		// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("They're=")
+					("everywhere!")
+		TextClose	()
+		End			()

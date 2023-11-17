@@ -1,0 +1,71 @@
+/********************************/
+?_UNDTOWN03_DR_1
+		HeroToDoor	(8,19,22,16)
+		Jump		(?_UNDTOWN01)
+?_UNDTOWN03_TR_1
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_UNDTOWN03_INN)
+	WaitEventText			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	End						()
+	
+?_UNDTOWN03_TR_2					// BOOKS
+		TextOpen	()
+		TextWrite	("Through the=")
+					("Darkness:")
+					("A guide for=")
+					("tourists.")
+		TextClose	()
+		End			()
+	
+?_UNDTOWN03_TR_3					// BOOKS
+		TextOpen	()
+		TextWrite	("Innkeeper's=")
+					("Monthly.")
+					("This month:")
+					("Making the most=")
+					("out of your two")
+					("story gourd.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN03_TR_4					// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Hmmm...")
+					("How much floor=")
+					("space do they")
+					("lose to=")
+					("arbitrary")
+					("fungus?")
+		TextClose	()
+		End			()
+
+?_UNDTOWN03_TR_5					// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Mushroom.")
+					("Plain and=")
+					("simple.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN03_TR_6					// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Deals. ")
+		TextClose	()
+		End			()
+
+?_UNDTOWN03_TR_7					// MIRROR
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Who's that=")
+					("sharp looking")
+					("fellow?")
+					("Why, it's=")
+					("Tony Jones!")
+		TextClose	()
+		End			()

@@ -1,0 +1,5 @@
+/********************************/
+		FileHotspots	(HS_UNDGEYSER04)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDGEYSER04_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_UNDGEYSER04_DR_2)
+						(HOTSPOT_TRIGGER_ALL,?_UNDGEYSER04_DR_3)

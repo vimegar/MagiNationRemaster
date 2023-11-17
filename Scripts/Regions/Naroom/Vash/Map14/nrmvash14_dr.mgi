@@ -1,0 +1,37 @@
+/********************************/
+?_NRMVASH14_DR_1
+		HeroToDoor	(4,17,11,2)
+		Jump		(?_NRMVASH06)
+		
+?_NRMVASH14_TR_1
+		End			()
+		
+?_NRMVASH14_TR_2
+		TriggerTreasure	(NRMVASH14_Chest2,INV_TYPE_ITEM,INV_REMEDY_DRINK,3,9,11)		
+		
+?_NRMVASH14_TR_3
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("There is a=")
+					("branch ")
+					("blocking the=")
+					("view.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH14_TR_4
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Hey I can=")
+					("talk to this")
+					("one!")
+		TextClose	()
+		End			()
+		
+?_NRMVASH14_TR_5
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("What powers=")
+					("this thing?")
+		TextClose	()
+		End			()

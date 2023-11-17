@@ -1,0 +1,51 @@
+/********************************/
+?_THRONE05_DR_1
+	HeroSetDoor		(4,4)
+	Jump			(?_THRONE04)
+
+?_THRONE05_DR_2
+	HeroSetDoor		(8,15)
+	Jump			(?_THRONE06)	
+	
+?_THRONE05_TR_1
+	JumpRandom		(_TXT1)
+					(_TXT2)
+					(_TXT3)
+					(_TXT4)
+_TXT1
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("What a strange-=")
+					("looking statue.")
+	TextClose		()
+	End				()
+
+_TXT2
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Stone. It's=")
+					("made of stone.")
+	TextClose		()
+	End				()
+	
+_TXT3
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("There sure are=")
+					("a lot of these")
+					("around here...")
+	TextClose		()
+	End				()
+	
+_TXT4
+	TextOpen		()
+	TextIcon		(ICON_TONY)
+	TextWrite		("Hmmmm...")
+	TextClose		()
+	TextOpen		()
+	TextWrite		("-CRAKK-")
+	TextIcon		(ICON_TONY)
+	TextWrite		("Oops. Better=")
+					("be careful.")
+	TextClose		()
+	End				()

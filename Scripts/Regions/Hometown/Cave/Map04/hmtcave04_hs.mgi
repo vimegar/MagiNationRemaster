@@ -1,0 +1,4 @@
+/********************************/
+		FileHotspots	(HS_HMTCAVE04)
+						(HOTSPOT_TRIGGER_SOUTH,?_HMTCAVE04_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_HMTCAVE_FALL)

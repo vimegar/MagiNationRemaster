@@ -1,0 +1,186 @@
+/*****************************************//*****************************************/
+// GENERIC VALKAN
+/*****************************************//*****************************************/
+?_VALKAN_GENERIC_TXT_1
+	TextOpen		()
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Hey Tony!")
+					("Keep in touch!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+
+/*****************************************//*****************************************/
+// END GENERIC VALKAN
+/*****************************************//*****************************************/
+
+/*****************************************//*****************************************/
+// INTRO VALKAN
+/*****************************************//*****************************************/
+?_VALKAN_FOUND_TEXT
+	TextOpen		()
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Hey! You're=")
+					("the one who")
+					("helped stomp=")
+					("those Core")
+					("creatures.")
+	TextIcon		(ICON_TONY)
+	TextWrite		("My name's Tony.=")
+					("Tony Jones.")
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Nice to meet=")
+					("you, Tony, I'm")
+					("Valkan. Here's=")
+					("something for")
+					("your trouble.")
+					("It's the least=")
+					("I can do for")
+					("your help.")
+	TextClose		()
+	Sync			(2,0)
+	Switch			([Cald_Btl_Count])
+					(0,_CRAP)
+					(1,_BELOW_AVE)
+					(2,_AVERAGE)
+					(3,_GOOD)
+					(4,_MEGAITEM)
+
+_CRAP
+	TextOpen		()
+	TextWrite		("Tony got a=")
+					("Baloo Leaf!")
+	TextClose		()
+	InventoryGive	(INV_TYPE_ITEM,INV_BALOO_LEAF,1)
+	Jump			(_VALKAN_INTRO_TXT_2)
+
+_BELOW_AVE
+	TextOpen		()
+	TextWrite		("Tony got a=")
+					("Baloo Sap!")
+	TextClose		()
+	InventoryGive	(INV_TYPE_ITEM,INV_BALOO_SAP,1)
+	Jump			(_VALKAN_INTRO_TXT_2)
+
+_AVERAGE
+	TextOpen		()
+	TextWrite		("Tony got a=")
+					("Strength Gem!")
+	TextClose		()
+	InventoryGive	(INV_TYPE_ITEM,INV_STRENGTH_GEM,1)
+	Jump			(_VALKAN_INTRO_TXT_2)
+
+_GOOD
+	TextOpen		()
+	TextWrite		("Tony got a=")
+					("RuneOfFury!")
+	TextClose		()
+	InventoryGive	(INV_TYPE_ITEM,INV_RUNEOFFURY,1)
+	Jump			(_VALKAN_INTRO_TXT_2)
+
+_MEGAITEM
+	TextOpen		()
+	TextWrite		("Tony got a=")
+					("Maelstrom!")
+	TextClose		()
+	InventoryGive	(INV_TYPE_RELIC,INV_MAELSTROM,1)
+	Jump			(_VALKAN_INTRO_TXT_2)
+
+_VALKAN_INTRO_TXT_2
+	TextOpen		()
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("So....")
+					("What's up?")
+	TextIcon		(ICON_TONY)
+	TextWrite		("I heard that=")
+					("you are the")
+					("Master Bridge=")
+					("Builder of")
+					("Cald.")
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Yep!")
+					("That's me!")
+	TextIcon		(ICON_TONY)
+	TextWrite		("Well.....")
+					("I need a way=")
+					("to get over")
+					("the lava pool=")
+					("in front of the")
+					("Shadow Geyser.")
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Lava pool, huh?")
+					("Hmmm.....")
+	Sync			(2,1)
+	Sync			(2,2)
+	TextWrite		("To build a=")
+					("structure over")
+					("that distance=")
+					("will require")
+					("the assistance=")
+					("of a Lava")
+					("Arboll.")
+	TextIcon		(ICON_TONY)
+	TextWrite		("Lava Arboll?")
+	TextIcon		(ICON_VALKAN)	
+	TextWrite		("A flying=")
+					("Dream Creature.")
+					("I used to=")
+					("have one,")
+					("but it=")
+					("escaped...")
+	Sync			(2,3)
+	TextWrite		("Capture a=")
+					("Lava Arboll")
+					("and I will=")
+					("help you.")
+	TextIcon		(ICON_TONY)
+	TextWrite		("No problem.")
+	TextClose		()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	SetGamecount		(GC_ARBOLL_HUNT)
+	End				()
+
+
+/*****************************************//*****************************************/
+// END INTRO VALKAN
+/*****************************************//*****************************************/
+
+/*****************************************//*****************************************/
+// STILL LOOKING
+/*****************************************//*****************************************/
+?_STILL_LOOKING_TEXT
+	TextOpen		()
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Still looking=")
+					("for that Lava")
+					("Arboll, Tony?")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+/*****************************************//*****************************************/
+// END STILL LOOKING
+/*****************************************//*****************************************/
+
+
+/*****************************************//*****************************************/
+// FOUND ARBOLL
+/*****************************************//*****************************************/
+?_FOUND_ARBOLL_TEXT01
+	TextOpen		()
+	TextIcon		(ICON_VALKAN)
+	TextWrite		("Good!")
+					("You have the=")
+					("Arboll Ring...")
+					("Let's go to the=")
+					("Shadow Geyser.")
+	TextClose		()
+	Sync			(2,0)
+	End				()					
+
+/*****************************************//*****************************************/
+// END FOUND ARBOLL
+/*****************************************//*****************************************/
+

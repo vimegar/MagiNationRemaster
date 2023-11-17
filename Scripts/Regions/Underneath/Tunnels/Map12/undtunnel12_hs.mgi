@@ -1,0 +1,5 @@
+/********************************/
+		FileHotspots	(HS_UNDTUNNEL12)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDTUNNEL12_DR_1)
+		FileTriggers	(TR_UNDTUNNEL12)
+						(TRIGGER_CONFIG,?_UNDTUNNEL12_TR_1)

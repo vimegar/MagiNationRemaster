@@ -1,0 +1,131 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP06\CLDLAVATOWN06_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP06\CLDLAVATOWN06_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP06\CLDLAVATOWN06_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP06\CLDLAVATOWN06_PEOPLE.MGI
+
+/********************************/
+?_CLDLAVATOWN06_RE_ENTER
+	SceneNew				()
+	LoadVRAM				(VRM_CLDLAVATOWN,PAL_CLDLAVATOWN)
+	ThatActorStart			(HEROACTOR)	
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+/********************************/
+?_CLDLAVATOWN06
+	SetXRAMByte				(Exit_Disable,1)
+	If						([[!Right_Thing] && [GC = GC_CALD_GEYSER]],?_CLDLAVATOWN06_DOITNOW)
+?_GENERIC_CLDLAVATOWN06
+	
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN06)
+	LoadHotspots			(HS_CLDLAVATOWN06)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,164,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	SongStart				(SONGID_caldtown)
+	ThatActorStart			(ACTOR08)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+/********************************//********************************/
+//	THE MOST VALUABLE OBJECT
+/********************************//********************************/
+?_CLDLAVATOWN06_VIA_FINAL
+	SetXRAMByte				(Exit_Disable,1)
+	SetGamecount			(GC_BOOTS_QUEST)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN06)
+	LoadHotspots			(HS_CLDLAVATOWN06)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,10,3,20,0,?_CLDLAVATOWN06_HERO_VIA,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,9,3,20,0,?_CLDLAVATOWN06_VALKAN_VIA,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	LoadVRAMTiles			(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,164,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDLAVATOWN06_HERO_VIA
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(1)
+	Delay					(8)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UL_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,0)
+	End						()
+
+?_CLDLAVATOWN06_VALKAN_VIA
+	ThisActorSetAnim		(?_VALKAN_STAND_RIGHT_ANIM)
+	Delay					(16)
+	SetText					(?_CLDLAVATOWN06_VIA_TXT_1)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_VALKAN_WALK_UP_ANIM,96)
+
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ThisActorStop			()
+	End						()
+
+
+/********************************//********************************/
+//	DO THE RIGHT THING
+/********************************//********************************/
+?_CLDLAVATOWN06_DOITNOW
+	SetXRAMBit				(Right_Thing,TRUE)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN06)
+	LoadHotspots			(HS_CLDLAVATOWN06)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,10,20,20,0,?_CLDLAVATOWN06_HERO_DIN,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,9,20,0,?_CLDLAVATOWN06_VALKAN_DIN,?_DONT_TALK)
+	ThatActorInit			(ACTOR06,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,20,164,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	LoadVRAMTiles			(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,164,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR06)
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDLAVATOWN06_HERO_DIN
+	ThisActorSetAnimDelay	(?_HERO_WALK_UP_ANIM,64)
+							(?_HERO_STAND_UP_ANIM,0)
+	End						()
+
+?_CLDLAVATOWN06_VALKAN_DIN
+	Delay					(16)
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_DOWN_ANIM,48)
+							(?_VALKAN_STAND_DOWN_ANIM,0)
+	SetText					(?_CLDLAVATOWN06_DIN_TXT_1)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_UP_ANIM,48)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ThisActorStop			()
+	End						()
+

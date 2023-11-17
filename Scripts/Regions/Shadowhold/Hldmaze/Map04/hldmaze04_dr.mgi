@@ -1,0 +1,36 @@
+?_HLDMAZE04_DR_1
+		HeroToDoor	(3,0,17,23)
+		Jump		(?_HLDMAZE03)
+
+?_HLDMAZE04_DR_2
+		HeroToDoor	(17,0,3,13)
+		Jump		(?_HLDMAZE05)
+
+?_HLDMAZE04_DR_3
+		HeroToDoor	(39,9,0,22)
+		Jump		(?_HLDMAZE09)
+
+?_HLDMAZE04_DR_4
+		HeroToDoor	(17,15,8,0)
+		Jump		(?_HLDMAZE07)
+
+?_HLDMAZE04_DR_5
+		Jump			(?_HLDMAZE04_ARDHELP)
+		
+?_HLDMAZE04_TR_1
+		TriggerAlways	(HLDMAZE04Chest1,?_TXT_ITS_EMPTY,255,34,2,40)
+		InitSkip		(_END)
+		TextOpen		()
+		TextWrite		("ROOOAR!")
+		TextClose		()
+		Jump			(?_HLDMAZE_JINGJACK_BATTLE)	
+_END
+		End				()
+
+?_HLDMAZE04_TR_2
+		TriggerTreasure	(HLDMAZE04Chest2,INV_TYPE_ITEM,INV_RUNEOFMIGHT,35,2,40)
+
+?_HLDMAZE04_TR_3
+		TriggerAlways	(HldMaze04Trigger1,?_TXT_WONT_BUDGE,250,28,7,40)
+		CopyTileBlock	(40,22,4,3,5,25,4)
+		End				()

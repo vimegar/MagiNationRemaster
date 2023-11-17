@@ -1,0 +1,229 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_AGRAM_STAND_DOWN_ANIM
+
+	Frame:		(255,0,0,?AGRAM_WALK02_FRONT)
+
+	JumpLocal	(?_AGRAM_STAND_DOWN_ANIM)
+
+/********************************/
+?_AGRAM_STAND_UP_ANIM
+
+	Frame:		(255,0,0,?AGRAM_WALK02_BACK)
+
+	JumpLocal	(?_AGRAM_STAND_UP_ANIM)
+
+/********************************/
+?_AGRAM_STAND_LEFT_ANIM
+
+	Frame:		(255,0,0,?AGRAM_WALK02_LEFT)
+
+	JumpLocal	(?_AGRAM_STAND_LEFT_ANIM)
+
+/********************************/
+?_AGRAM_STAND_RIGHT_ANIM
+
+	Frame:		(255,0,0,?AGRAM_WALK02_RIGHT)
+
+	JumpLocal	(?_AGRAM_STAND_RIGHT_ANIM)
+
+/********************************/
+?_AGRAM_STAND_DL_ANIM
+
+	Frame:		(255,0,0,?AGRAM_STAND_LEFT)
+
+	JumpLocal	(?_AGRAM_STAND_DL_ANIM)
+
+/********************************/
+?_AGRAM_STAND_DR_ANIM
+
+	Frame:		(255,0,0,?AGRAM_STAND_RIGHT)
+
+	JumpLocal	(?_AGRAM_STAND_DR_ANIM)
+
+/********************************/
+?_AGRAM_WALK_UP_ANIM
+
+	FrameBlock:	(8,0,-1)
+				(?AGRAM_WALK01_BACK)
+				(?AGRAM_WALK02_BACK)
+				(?AGRAM_WALK03_BACK)
+				(?AGRAM_WALK02_BACK)
+
+	JumpLocal	(?_AGRAM_WALK_UP_ANIM)
+
+/********************************/
+?_AGRAM_WALK_DOWN_ANIM
+
+	FrameBlock:	(8,0,1)
+				(?AGRAM_WALK01_FRONT)
+				(?AGRAM_WALK02_FRONT)
+				(?AGRAM_WALK03_FRONT)
+				(?AGRAM_WALK02_FRONT)
+
+	JumpLocal	(?_AGRAM_WALK_DOWN_ANIM)
+
+/********************************/
+?_AGRAM_WALK_RIGHT_ANIM
+
+	FrameBlock:	(8,1,0)
+				(?AGRAM_WALK01_RIGHT)
+				(?AGRAM_WALK02_RIGHT)
+				(?AGRAM_WALK03_RIGHT)
+				(?AGRAM_WALK02_RIGHT)
+
+	JumpLocal	(?_AGRAM_WALK_RIGHT_ANIM)
+
+/********************************/
+?_AGRAM_WALK_LEFT_ANIM
+
+	FrameBlock:	(8,-1,0)
+				(?AGRAM_WALK01_LEFT)
+				(?AGRAM_WALK02_LEFT)
+				(?AGRAM_WALK03_LEFT)
+				(?AGRAM_WALK02_LEFT)
+
+	JumpLocal	(?_AGRAM_WALK_LEFT_ANIM)
+
+/********************************/
+?_AGRAM_BATTLE_STAND_ANIM
+	
+	Frame:		(255,0,0,?AGRAM_STANDFRONT)
+	
+	JumpLocal	(?_AGRAM_BATTLE_STAND_ANIM)
+
+/********************************/
+?_AGRAM_BATTLE_TAUNT_ANIM
+	
+	Frame:		(32,0,0,?AGRAM_TAUNT01)
+				(8,0,0,?AGRAM_TAUNT02)
+				(8,0,0,?AGRAM_TAUNT03)
+				(8,0,0,?AGRAM_TAUNT04)
+
+_TAUNTING
+	FrameBlock:	(8,0,0)
+				(?AGRAM_TAUNT05)
+				(?AGRAM_TAUNT06)
+				(?AGRAM_TAUNT07)
+				(?AGRAM_TAUNT06)
+	
+	JumpLocal	(_TAUNTING)
+	
+/********************************/
+?_AGRAM_BATTLE_SUMMON_ANIM
+
+	FrameBlock:	(4,0,0)
+				(?AGRAM_SUMMON01)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON03)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON01)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON03)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON01)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON03)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON01)
+				(?AGRAM_SUMMON02)
+				(?AGRAM_SUMMON03)
+				(?AGRAM_SUMMON02)
+	Frame:		(32,0,0,?AGRAM_SUMMON01)
+
+	JumpLocal	(?_AGRAM_BATTLE_STAND_ANIM)
+
+/********************************/
+?_AGRAM_BATTLE_WIN_ANIM
+	
+	Frame:		(8,0,0,?AGRAM_WIN01)
+				(64,0,0,?AGRAM_WIN03)
+_WON
+	FrameBlock:	(8,0,0)
+				(?AGRAM_WIN02)
+				(?AGRAM_WIN03)
+	
+	JumpLocal	(_WON)
+	
+/********************************/
+?_AGRAM_BATTLE_LOSE_ANIM
+
+	Frame:		(255,0,0,?AGRAM_LOSE)
+
+	JumpLocal	(?_AGRAM_BATTLE_LOSE_ANIM)
+
+/********************************/
+?_AGRAM_BATTLE_END_ANIM
+
+	Frame:		(128,0,0,?AGRAM_STANDFRONT)
+				(32,0,0,?AGRAM_WIN01)
+_LOOP
+	Frame:		(255,0,0,?AGRAM_WIN02)
+	
+	JumpLocal	(_LOOP)
+
+/********************************/
+?_AGRAM_BATTLE_GONE_ANIM
+
+	Frame:		(64,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(4,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(4,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(4,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(4,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(2,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+	Frame:		(1,0,0,?AGRAM_LOSE)
+	Pass		()
+
+	End			()	

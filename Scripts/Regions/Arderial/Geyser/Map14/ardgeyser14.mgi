@@ -1,0 +1,40 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP14\ARDGEYSER14_DR.MGI
+
+/********************************/
+?_ARDGEYSER14
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER14)
+	LoadHotspots		(HS_ARDGEYSER14)
+	LoadTriggers		(TR_ARDGEYSER14)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER14)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	End					()
+
+?_ARDGEYSER14_FROM_21
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER14)
+	LoadHotspots		(HS_ARDGEYSER14)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,19,18,27,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	LoadPalette			(PAL_HERO)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER14)
+	SetCamera			(19,0)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(56,0,4)
+	ThatActorStart		(HEROACTOR)
+	WaitEventMaster		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+
+	

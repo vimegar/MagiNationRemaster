@@ -1,0 +1,16 @@
+/********************************/
+//NRMGLADE02
+/********************************/
+
+?_NRMGLADE02_TXT_3
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Since I have=")
+							("followed him")
+							("this far, it=")
+							("would be")
+							("foolish to =")
+							("stop now")
+	TextClose				()
+	SetEventText			(3)
+	End						()

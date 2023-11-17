@@ -1,0 +1,98 @@
+/********************************/
+?_NRMVASH12_DR_1
+		HeroToDoor		(5,8,3,1)
+		Jump			(?_NRMVASH06)
+
+?_NRMVASH12_TR_1
+		SetText			(?_TXT_ITS_EMPTY)
+		End				()
+		
+?_NRMVASH12_TR_2
+		TextOpen		()
+		TextWrite		("CLICK!")
+		TextClose		()
+		CopyTileBlock	(20,2,3,1,1,18,7)
+		End				()
+
+?_NRMVASH12_TR_3
+		TriggerTreasure	(NRMVASH12_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,18,3,20)
+		End				()
+		
+?_NRMVASH12_TR_4
+		TextOpen	()
+		TextIcon	(ICON_POLLY)
+		TextWrite	("WEOM")
+		TextIcon	(ICON_TONY)
+		TextWrite	("??")
+		TextClose	()
+		End			()
+		
+?_NRMVASH12_TR_5
+		If				([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If				([Worveline_Hiding != 4],_SKIP)
+		TextOpen		()
+		TextWrite		("-rustle-")
+						("-rustle-")
+		TextIcon		(ICON_WORVELINE)
+		TextWrite		("GRRRRRR!!!!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("YEEEOWWW!!!")
+		TextClose		()
+		TextOpen		()
+		TextWrite		("-Worveline=")
+						(" found!-")
+		TextClose		()
+		SetXRAMByte		(Worveline_Hiding,0)
+		SetXRAMBit		(Worveline_Caught,TRUE)
+		End				()
+_SKIP
+		TriggerOnce		(NRMVASH12_Chest2,_NOTHING,107,6,3,20)
+		TextOpen		()
+		TextWrite		("-rustle-")
+						("-rustle-")
+						("-clink-")
+		TextIcon		(ICON_TONY)
+		TextWrite		("???")
+		TextClose		()
+		TextOpen		()
+		TextWrite		("Tony got a=")
+						("Remedy Drink.")
+		InventoryGive	(INV_TYPE_ITEM,INV_REMEDY_DRINK,1)
+		TextClose		()
+		End				()
+_NOTHING
+		TextWrite		("-rustle-")
+						("-rustle-")
+		TextIcon		(ICON_TONY)
+		TextWrite		("Nothing else")
+						("here.")	
+		TextClose		()
+		End				()
+		
+		
+?_NRMVASH12_TR_6
+		TextOpen	()
+		TextWrite	("Evu's Trip to=")
+					("the Zoo")
+					("by Evu")
+		TextClose	()
+		End			()
+?_NRMVASH12_TR_7
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A history book.=")
+					("Somebody's")
+					("scribbled all=")
+					("over it!")	
+		TextClose	()
+		End			()
+?_NRMVASH12_TR_8
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("A history book.=")
+					("Eww! The pages")
+					("are stuck=")
+					("together with")
+					("jellybeans.")	
+		TextClose	()
+		End			()

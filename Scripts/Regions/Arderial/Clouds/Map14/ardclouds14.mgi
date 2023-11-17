@@ -1,0 +1,51 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP14\ARDCLOUDS14_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP14\ARDCLOUDS14_TXT.MGI
+
+/********************************/
+?_ARDCLOUDS14
+	SceneNew		()
+	LoadMap			(MAP_ARDCLOUDS14)
+	LoadHotspots	(HS_ARDCLOUDS14)
+	LoadPalette		(PAL_HERO)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,15,0,?_RAINER,?_ARDCLOUDS_RNDBAT)
+	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,15,0,?_RAINER,?_ARDCLOUDS_RNDBAT)
+	ThatActorStart	(ACTOR1E)
+	ThatActorStart	(ACTOR1D)
+	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+	SetBtlReturn	(?_ARDCLOUDS14)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_arderial)
+	SceneReady		()
+	End				()
+	
+/********************************/
+// JOURNEY TO ARDERIAL
+/********************************/
+?_ARDCLOUDS14_ARD_ESCORT
+	SceneNew				()
+	LoadMap					(MAP_ARDCLOUDS14)
+	LoadHotspots			(HS_ARDCLOUDS14)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,6,49,15,0,?_HERO_MOVE_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,6,47,15,0,?_ARDGUARD_FLOAT_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,6,49,15,0,?_ARDGUARD_FLOAT_UP_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(47,BIT_ARDGUARDFLY,48,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroSetCamera			()
+	SongStart				(SONGID_arderial)
+	SceneReady				()
+	Delay					(8)
+	ThatActorStart			(ACTOR01)
+	Delay					(48)
+	SetText					(?_ARDCLOUDS14_TXT_1)
+_SCROLL_LOTS
+	ScrollMap				(212,0,-1)
+	Jump					(_SCROLL_LOTS)
+/********************************/
+// END JOURNEY TO ARDERIAL
+/********************************/

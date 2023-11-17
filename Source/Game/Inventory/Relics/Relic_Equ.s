@@ -1,0 +1,66 @@
+;********************************
+; RELIC_EQU.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "MyCodeNeverBreaks" Mayo/Erik "BreakerOfDylansCode" Hutchinson
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+;FUNC	EQUS
+
+
+
+;********************************
+	
+INV_BLANK_RELIC			EQU		$00
+
+INV_ARCHAIC_LEAF		EQU		$01 
+INV_ARMOR_ORB			EQU		$02
+INV_BAG_OF_BONES		EQU		$03
+INV_BARK_THIMBLE		EQU		$04
+INV_CHANNELEDGEM		EQU		$05
+INV_CORF_PEARL			EQU		$06
+INV_CRIMSON_VOID		EQU		$07
+INV_EARTH_S_AURA		EQU		$08
+INV_END_BRINGER			EQU		$09
+INV_ENERGY_GEM			EQU		$0A
+INV_FLAME_AURA			EQU		$0B
+INV_FLAMEESSENCE		EQU		$0C
+INV_GEMOFNAROOM			EQU		$0D
+INV_GOLDENCLOVER		EQU		$0E
+INV_GRAILOFLIFE			EQU		$0F
+INV_HYREN_S_CLAW		EQU		$10
+INV_LEAF_ESSENCE		EQU		$11
+INV_LUCENT_BELT			EQU		$12
+INV_MAELSTROM			EQU		$13
+INV_OMBORSAMULET		EQU		$14
+INV_PHANTOM_WIND		EQU		$15
+INV_PINCHOFLIFE			EQU		$16
+INV_RABBAGE_FOOT		EQU		$17
+INV_RAGE_STONE			EQU		$18
+INV_SHADOW_VEIL 		EQU		$19
+INV_SHIELD_ORB 			EQU		$1A
+INV_SKY_ESSENCE			EQU		$1B
+INV_SPICEOFLIFE			EQU		$1C
+INV_STONEESSENCE		EQU		$1D
+INV_STONEOFDOOM			EQU		$1E
+INV_STONEOFLIFE			EQU		$1F
+INV_SWORDOFWIND			EQU		$20
+INV_TIDE_ESSENCE		EQU		$21
+INV_TITAN_RING			EQU		$22
+INV_WATER_ORB			EQU		$23
+INV_WISHBONE    		EQU		$24
+
+;********************************
+RELIC_SIZE				EQU		19
+RELIC_NAME_SIZE			EQU		13
+RELIC_FUNC_BANK			EQU		7
+RELIC_CMD_OFFSET		EQU		0
+RELIC_STATS_OFFSET		EQU		2
+RELIC_XTRA_OFFSET		EQU		4
+RELIC_NAME_OFFSET		EQU		6
+;********************************
+
+;********************************
+	END
+;********************************

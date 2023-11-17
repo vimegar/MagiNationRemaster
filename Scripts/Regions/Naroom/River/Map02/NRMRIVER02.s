@@ -1,0 +1,101 @@
+;Size:63
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\NAROOM\RIVER\MAP02\NRMRIVER02.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_NRMRIVER02_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$03
+		DB	$0A
+		DB	$0B
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_NRMRIVER01
+		DW	(?_NRMRIVER01&$FFFF)
+
+;********************************
+?_NRMRIVER02_TR_1
+	DB	CMD_TRIGGERTREASURE
+		DW	(XRAM_TREASURE+$0000)
+		DB	$40
+		DB	INV_TYPE_ITEM
+		DB	INV_RUNEOFMIGHT
+		DW	$D029
+
+;********************************
+?_NRMRIVER02_TR_2
+	DB	CMD_TRIGGERTREASURE
+		DW	(XRAM_TREASURE+$0000)
+		DB	$80
+		DB	INV_TYPE_RELIC
+		DB	INV_BARK_THIMBLE
+		DW	$D044
+
+;********************************
+?_NRMRIVER02
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_NRMRIVER02&$FFFF)
+		DB	:MAP_NRMRIVER02
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_NRMRIVER02&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_LOADTRIGGERS
+		DW	(TR_NRMRIVER02&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D041
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_glade
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_NRMRIVER01
+	GLOBAL	XRAM_TREASURE
+	GLOBAL	MAP_NRMRIVER02
+	GLOBAL	HS_NRMRIVER02
+	GLOBAL	PAL_HERO
+	GLOBAL	TR_NRMRIVER02
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+
+;********************************
+	END
+;********************************

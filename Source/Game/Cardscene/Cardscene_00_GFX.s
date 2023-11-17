@@ -1,0 +1,305 @@
+;********************************
+; CARDSCENE_GFX.S		
+;********************************
+;	Author:	Patrick Meehan,EMG
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+;	these functions init the graphics for the fightscene
+;********************************
+	
+;********************************
+; GLOBALS
+;********************************
+		GLOBAL		PAL_CARD_TABLE
+		GLOBAL		BG_CARD_DATA
+		GLOBAL		BG_CARD1
+		GLOBAL		BG_CARD2
+		GLOBAL		BG_CARD3
+		GLOBAL		BG_CARD4
+		GLOBAL		BG_CARD5
+		GLOBAL		BG_CARD6
+		GLOBAL		BG_CARD7
+		GLOBAL		BG_CARD8
+		GLOBAL		BIT_ERASE_CARD
+		GLOBAL		BIT_CARD_ARENA
+		GLOBAL		BG_CARD_ARENA
+;********************************
+; input:
+;   HL  BG Address to write to  (use defines)
+;   BC  BG Address to write from 
+?DRAW_CARD
+	LD			E,4
+	LD			D,5
+	CALL		?UNPACK_BG
+	RET
+
+	
+;***********************************************
+; THIS RESETS THE CARDS TO THE CORRECT BOARD STATE
+; (CALLED IN ?CARDSCN_INIT)
+?RESET_CARDS	
+		if 1	
+	LD			A,(CARD_CREATURE_DECK)
+	LD			(TEMP_MISC1),A
+	LD			A,0
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+		
+	LD			A,(CARD_CREATURE_DECK+1)
+	LD			(TEMP_MISC1),A
+	LD			A,1
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+2)
+	LD			(TEMP_MISC1),A
+	LD			A,2
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+3)
+	LD			(TEMP_MISC1),A
+	LD			A,3
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+4)
+	LD			(TEMP_MISC1),A
+	LD			A,4
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+5)
+	LD			(TEMP_MISC1),A
+	LD			A,5
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+6)
+	LD			(TEMP_MISC1),A
+	LD			A,6
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+	
+	LD			A,(CARD_CREATURE_DECK+7)
+	LD			(TEMP_MISC1),A
+	LD			A,7
+	LD			(TEMP_MISC2),A
+	XCALL		?GET_DEST_CARD_VRAM
+	CALL		?BTL_DRAW_CARD_VRAM
+			ENDIF
+	RET	
+	
+		
+;********************************
+; ASSUMES THE SCREEN IS OFF
+; CAVEAT: TROUNCES THE SELECTED 'ROM_BANK'
+?BTL_INIT_CARDPALETTES	
+	; LOAD THE 4 CARD PALETTES INTO THE BG PALETTES 
+	;         +1 CARD PALETTE FOR 'CURSOR'
+	;		  +1 CARD PALETTE FOR 'ERASE'
+	LD			A,:PAL_CARD_TABLE
+	SWITCH_ROM_BANK		A
+	XOR			A
+	LD			(PALETTE_SAFE),A
+	LD			BC,PAL_CARD_TABLE
+	LD			HL,BASE_PAL_BG_BUFFER
+	LD			E, 0                  ;COLOR DEST OFFSET 
+	LD			A, 6*4				  ;NUMBER OF CARDTYPES +2
+	CALL		?UNPACK_PALETTE_RAM   
+	
+	LD			A,$05			
+	LD			(TEMP_MISC1),A
+	XCALL		?PALFX_REFRESH_ANIMBUFFER
+	LD			A,1
+	LD			(PALETTE_SAFE),A
+	RET
+	
+;********************************
+; ASSUMES THE SCREEN IS OFF	
+;
+?BTL_INIT_CARDSCENE_MAP	
+
+	PUSH_ROM_BANK
+	;LOAD STATIC BACKGROUND COLOR -FROM ARENA TABLE-(INTO FIRST ELEMENT OF PALETTE 6)
+	XCALL		?BTL_GET_CARDSCENE_ARENA_COLOR
+	XCALL		?BTL_LOAD_CARDSCENE_ARENA_COLOR
+	
+	;RELOAD TEXT PALETTE
+	; Switch to PAL bank <-- TEXT PAL
+	SWITCH_ROM_BANK		:PAL_TEXTMENU
+	LD			BC,PAL_TEXTMENU
+	LD			HL,BASE_PAL_BG_BUFFER
+	LD			E, 7*4
+	LD			A, 4
+	CALL		?UNPACK_PALETTE_RAM
+		
+	; THIS UPDATES THE BUFFER IMEDIATELY 
+	; (WE MAY WANT TO FADE INSTEAD, IF SO MAKE THAT PART OF THE INIT SCRIPT)
+	LD			A,$61			
+	LD			(TEMP_MISC1),A
+	XCALL		?PALFX_REFRESH_ANIMBUFFER
+	
+	
+	;**********************************
+	; Load the Vram Tiles 	
+	; BANK 0
+	XOR			A
+	LD			(VBK),A
+	; Switch to Bitmap bank
+	SWITCH_ROM_BANK		:BIT_CARD_ARENA
+	; Copy the Bitmap to VRAM
+	LD			HL,BIT_CARD_ARENA
+	LD			DE,CARDSCN_ARENAVRM
+	LD			BC,16*48
+	CALL		?MEM_MOV
+		
+	; Load the BG Tiles 	
+	; BANK 1 
+	LD			A,$01
+	LD			(VBK),A
+	
+	; Switch to BG bank
+	SWITCH_ROM_BANK		:BG_CARD_ARENA
+	; Copy the BG_DATA to VRAM
+	LD			HL,CARDSCN_ARENA_BG
+	LD			A,20
+	LD			E,A
+	LD			A,13
+	LD			D,A
+	LD			BC, BG_CARD_ARENA
+	CALL		?UNPACK_BG
+	;*****************************************
+	POP_ROM_BANK
+		
+	XCALL		?RESET_ARENABG 
+	RET
+	
+;********************************
+; ASSUMES THE SCREEN IS OFF
+?BTL_INIT_CARDBATTLE	
+	PUSH_ROM_BANK
+	
+	CALL		?BTL_INIT_CARDPALETTES
+	CALL		?BTL_INIT_CARDSCENE_MAP
+	
+	; SET UP THE BG DATA FOR ALL 8 CARDS
+	LD			A,:BG_CARD_DATA
+	SWITCH_ROM_BANK		A
+	LD			HL,CARDSCN_CARD1BG
+	LD			BC,BG_CARD1
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD2BG
+	LD			BC,BG_CARD2
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD3BG
+	LD			BC,BG_CARD3
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD4BG
+	LD			BC,BG_CARD4
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD5BG
+	LD			BC,BG_CARD5
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD6BG
+	LD			BC,BG_CARD6
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD7BG
+	LD			BC,BG_CARD7
+	CALL		?DRAW_CARD
+	
+	LD			HL,CARDSCN_CARD8BG
+	LD			BC,BG_CARD8
+	CALL		?DRAW_CARD
+		
+	CALL		?RESET_CARDS
+	
+	; HIDE WINDOW
+	;--------------------------------
+	LD			A,$A7
+	LDFF_A		WX
+	
+	POP_ROM_BANK
+	RET
+	
+; ---------------------------------------------------------------------------------------------------------	
+
+;********************************
+; (TEMP_MISC1)	  :  which creature_card to draw (use EQU BLANK_CARD_TILE for erase)
+; (TEMP_MISC2)    :  card slot to CLEAR
+;  -CAVAET-       :  THIS FUNC IS TO BE DONE WHEN 'BLANKING' THE SCREEN
+?BTL_DRAW_CARD_VRAM
+	PUSH_ROM_BANK		
+	
+	; GET SOURCE VRAM
+	XCALL	?GET_CARD_VRAMDATA
+	; GET DESTINATION VRAM
+	XCALL	?GET_DEST_CARD_VRAM
+	
+	;(VBLANK_DEST) :  this var is set to correct VRAM dest
+	;(VBLANK_VBK)  :  this var is set to correct VRAM bank
+	SWITCH_ROM_BANK	(VBLANK_BANK)
+	LD			A,(VBLANK_VBK)
+	LD			(VBK),A
+	; Copy the Bitmap to VRAM
+	GET16		H,L, VBLANK_SOURCE
+	GET16		D,E, VBLANK_DEST
+	LD			BC,5*4*16
+	CALL		?MEM_MOV
+	
+	LD			A,(TEMP_MISC2)
+	LD			(CARDSCN_PAL_SLOT),A
+	XCALL		?VBLANK_SET_CARD_PALETTE   
+	XCALL		?VBLANK_UPDATE_PALETTE_BG  
+	
+	; sets the card to solid tiles
+	;CALL_FOREIGN	?GET_DEST_CARD_VRAM
+	;LD			A,(VBLANK_VBK)
+	;LD			(VBK),A
+	;GET16		H,L,VBLANK_DEST
+	;LD			BC, 5*4*16
+	;LD			E,$00
+	;CALL		?MEM_SET
+	POP_ROM_BANK
+	RET
+	
+;********************************
+;  RESETS THE CARD BACK TO ITS PREVIOUS COLOR(BASED ON TABLE)
+; (TEMP_MISC2)    :  card slot to reset palette 
+?BTL_RESET_CARD_PALETTE
+	LD			A,(TEMP_MISC2)
+	LD			(CARDSCN_PAL_SLOT),A
+	XCALL		?GET_CREATURE_CARD_SLOT
+	XCALL		?GET_CARD_PALETTE		;sets the card palette
+	MOVADDR		VBLANK_FUNC,?VBLANK_SET_CARD_PALETTE
+	RET
+
+;********************************
+; (TEMP_MISC2)    :  card slot to set 'CURSOR' palette 
+?BTL_SET_CARD_PALETTE_CURSOR
+	LD			A,(TEMP_MISC2)
+	LD			(CARDSCN_PAL_SLOT),A
+	LD			A,4
+	LD			(CARDSCN_PAL_OFFSET),A
+	MOVADDR		VBLANK_FUNC,?VBLANK_SET_CARD_PALETTE
+	RET	
+	
+;*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	
+
+;********************************
+	END
+;********************************

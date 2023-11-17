@@ -1,0 +1,9 @@
+/********************************/
+?_ARDCLOUDS02_DR_1
+		HeroToDoor	(0,11,30,12)
+		Jump		(?_ARDCLOUDS01)
+
+?_ARDCLOUDS02_DR_2
+		HeroToDoor	(63,11,1,34)
+		Jump		(?_ARDCLOUDS03)
+

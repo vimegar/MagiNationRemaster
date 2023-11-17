@@ -1,0 +1,96 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP01\CLDLAVAVENT01_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP01\CLDLAVAVENT01_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP01\CLDLAVAVENT01_SCT.MGI
+%INCLUDE			REGIONS\CALD\LAVAVENT\MAP01\LAVAVENT_BAT.MGI
+
+/********************************/
+?_CLDLAVAVENT01
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVAVENT01)
+	LoadHotspots			(HS_CLDLAVAVENT01)
+	LoadPalette				(PAL_HERO)
+	SetItemScript			(_ITEM_SCRIPT)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,60,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,60,0,?_RAINER,?_LAVAVENT_RNDBAT)
+	ThatActorInit			(ACTOR1C,?RAINDROP_AI,10,9,60,70,?_SMALLWIRLPOOL_APPEAR,?_CLDLAVAVENT01B)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+	ThatActorStart			(ACTOR1C)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+	LoadVRAMTiles			(18,BIT_URN,52,0)
+	LoadVRAMTiles			(16,BIT_SMALLWHIRL,70,0)
+	SetBtlReturn			(?_CLDLAVAVENT01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lavatubes)
+
+	If						([!Cldlavavent01_Bombed01],_SKIP01)
+	CopyTileBlock			(60,0,0,2,2,16,30)
+_SKIP01
+
+	If						([!Cldlavavent01_Bombed02],_SKIP02)
+	CopyTileBlock			(60,2,0,2,2,38,27)
+_SKIP02
+
+	SceneReady				()
+	End						()
+
+/********************************/
+// ITEMS
+_ITEM_SCRIPT
+	If						([[USEITEM_ID == INV_BLAST_URN] && [USEITEM_CollCode == COLLCODE_ITEM01]],_BOMB01)
+	If						([[USEITEM_ID == INV_BLAST_URN] && [USEITEM_CollCode == COLLCODE_ITEM02]],_BOMB02)
+	Jump					(?_TXT_NOTHING_HAPPENED)
+
+_BOMB01
+	SetXRAMBit				(Cldlavavent01_Bombed01,TRUE)
+	SetScroll				(_OPEN_WALL01)
+	JumpLocal				(_BOMB)
+
+_BOMB02
+	SetXRAMBit				(Cldlavavent01_Bombed02,TRUE)
+	SetScroll				(_OPEN_WALL02)
+
+_BOMB
+	InventoryTake			(INV_TYPE_ITEM,INV_BLAST_URN,1)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOMB_DROP)
+	ThatActorInit			(ACTOR00,?ANIM_AI,0,0,60,52,_BOMB_ACT,?_END)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+_OPEN_WALL01
+	Delay					(100)
+	CopyTileBlock			(60,0,0,2,2,16,30)
+	End						()
+
+_OPEN_WALL02
+	Delay					(100)
+	CopyTileBlock			(60,2,0,2,2,38,27)
+	End						()
+
+/********************************/
+// ACTORS
+_TONY_BOMB_DROP
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,16)	
+							(?_HERO_RUN_DOWN_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,64)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UP_ANIM)
+
+_BOMB_ACT
+	ThisActorLocRelative	(HEROACTOR)
+	SFX						(SFXID_SFX_EXPLOSION_SMALL)
+	ThisActorSetAnimDelay	(?_URN_EXPLODE_ANIM,32)
+	ScrollMap				(1,3,0)
+	ScrollMap				(1,-3,0)
+	ScrollMap				(1,3,-3)
+	ScrollMap				(1,-3,3)
+	ScrollMap				(1,0,-3)
+	ScrollMap				(1,0,3)
+	End						()

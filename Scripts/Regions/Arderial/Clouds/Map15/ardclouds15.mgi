@@ -1,0 +1,27 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP15\ARDCLOUDS15_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\CLOUDS\MAP15\ARDCLOUDS15_TXT.MGI
+
+/********************************/
+?_ARDCLOUDS15
+	SceneNew		()
+	LoadMap			(MAP_ARDCLOUDS15)
+	LoadHotspots	(HS_ARDCLOUDS15)
+	LoadPalette		(PAL_HERO)
+	ThatActorStart	(HEROACTOR)
+//	ThatActorInit	(ACTOR1E,?RAINDROP_AI,10,9,20,0,?_RAINER,?_ARDCLOUDS_RNDBAT)
+//	ThatActorInit	(ACTOR1D,?RAINDROP_AI,10,9,20,0,?_RAINER,?_ARDCLOUDS_RNDBAT)
+//	ThatActorStart	(ACTOR1E)
+//	ThatActorStart	(ACTOR1D)
+//	LoadVRAMTiles	(52,BIT_SPARKLE,0,0)
+//	SetBtlReturn	(?_ARDCLOUDS15_RET)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart				(SONGID_arderial)
+	SceneReady		()
+	End				()
+	
+?_ARDCLOUDS15_RET
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,64,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	Jump					(?_ARDCLOUDS15)

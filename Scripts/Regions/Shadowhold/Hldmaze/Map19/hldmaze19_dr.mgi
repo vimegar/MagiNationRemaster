@@ -1,0 +1,12 @@
+?_HLDMAZE19_DR_1
+		HeroToDoor	(13,0,18,29)
+		Jump		(?_HLDMAZE17)
+
+?_HLDMAZE19_DR_2
+		HeroToDoor	(35,7,0,20)
+		Jump		(?_HLDMAZE21)
+
+?_HLDMAZE19_DR_3
+		HeroToDoor	(35,19,0,7)
+		Jump		(?_HLDMAZE20)
+

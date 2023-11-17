@@ -1,0 +1,232 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\FERRY\MAP01\FERRY01_DR.MGI
+%INCLUDE			REGIONS\CALD\FERRY\MAP01\FERRY01_TXT.MGI
+
+/********************************//********************************/
+?_FERRY01_AT_WEAVE
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadHotspots			(HS_FERRY01_AT_WEAVE)
+	If						([Ferry_State < 3],?_FERRY01_FERRY_NOT_THERE)
+	SetXRAMByte				(Ferry_Location,2)
+	JumpLocal				(?_FERRY01)
+
+/********************************//********************************/
+?_FERRY01_AT_CALD
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadHotspots			(HS_FERRY01_AT_CALD)
+	If						([!Ferry_State],?_FERRY01_FERRY_NOT_THERE)
+	SetXRAMByte				(Ferry_Location,0)
+	JumpLocal				(?_FERRY01)
+
+/********************************//********************************/
+//	FERRY
+/********************************//********************************/
+?_FERRY01
+	LoadMap					(MAP_FERRY01B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,0,0,30,0,?_HERO_STANDL_ANIM,?_END)
+	ThatActorInit			(ACTOR00,?TALKER_AI,16,8,30,0,?_MAN05_STAND_DOWN_ANIM,_FERRY_MAN_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_MAN05,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+
+_FERRY_MAN_TALK
+	ThisActorSetAnim		(?_MAN05_STAND_DOWN_ANIM)
+	Switch					([Ferry_State])
+							(1,_INTRO_FERRY)
+							(2,_HAGGLE_FERRY)
+							(3,_NORMAL_FERRY)
+
+_NORMAL_FERRY
+	SetText					(?_TXT_FERRY_NORMAL)
+	Jump					(?_FACE_MAN05)
+
+_INTRO_FERRY
+	SetText					(?_TXT_FERRY_INTRO)
+	Jump					(?_FACE_MAN05)
+
+_HAGGLE_FERRY	
+	SetText					(?_TXT_FERRY_HAGGLE)
+	Jump					(?_FACE_MAN05)
+
+/********************************//********************************/
+//	END FERRY
+/********************************//********************************/
+
+
+/********************************//********************************/
+//	FERRY NOT THERE
+/********************************//********************************/
+?_FERRY01_FERRY_NOT_THERE
+	SceneNew				()
+	LoadMap					(MAP_FERRY01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+//	END FERRY NOT THERE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ORLON'S BUDDY
+/********************************//********************************/
+?_WVEPATHVALLEY09_ARRIVAL
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_FERRY01)
+	LoadPalette				(PAL_HERO)
+	LoadHotspots			(HS_FERRY01_AT_WEAVE)
+	PalClearAnim			(0,7,31,31,31)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,22,9,30,0,?_WVEPV09_ARRIVAL_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,21,9,30,0,?_WVEPV09_ARRIVAL_OLDGUY,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,21,7,30,38,?_BOAT_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles			(21,BIT_BOAT,38,0)
+	SongStart				(SONGID_oroisland)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	SetCamera				(5,11)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	ScrollMap				(124,2,0)
+	End						()
+
+?_WVEPV09_ARRIVAL_TONY
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,5)
+							(?_HERO_STAND_LEFT_ANIM,110)
+	SetText					(?_FERRY1_OB_TXT_1)
+	WaitEventText			(3)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,32)
+							(?_HERO_STAND_LEFT_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,32)
+							(?_HERO_STAND_RIGHT_ANIM,0)
+	WaitEventText			(5)
+	Sync					(2,0)
+	Delay					(4)
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,2)
+							(?_HERO_JUMP_DOWN_ANIM,26)
+							(?_HERO_SLOSHED_LEFT,24)
+							(?_HERO_STAND_DOWN_ANIM,16)
+							(?_HERO_STAND_UR_ANIM,32)
+							(?_HERO_STAND_RIGHT_ANIM,64)
+	SetText					(?_FERRY1_OB_TXT_2)
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,32)
+							(?_HERO_STAND_LEFT_ANIM,32)
+							(?_HERO_STAND_UP_ANIM,32)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	Sync					(3,1)
+	End						()
+
+?_WVEPV09_ARRIVAL_OLDGUY	
+	ThisActorSetAnimDelay	(?_OLDMAN04_RUN_LEFT_ANIM,5)
+							(?_OLDMAN04_STAND_RIGHT_ANIM,0)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_OLDMAN04_STAND_UP_ANIM,64)
+							(?_OLDMAN04_STAND_DOWN_ANIM,32)
+							(?_OLDMAN04_STAND_LEFT_ANIM,32)
+							(?_OLDMAN04_STAND_DOWN_ANIM,0)
+	WaitEventText			(3)
+	ThisActorSetAnimDelay	(?_OLDMAN04_STAND_LEFT_ANIM,96)
+							(?_OLDMAN04_STAND_RIGHT_ANIM,0)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_OLDMAN04_RUN_RIGHT_ANIM,8)
+							(?_OLDMAN04_RUN_DOWN_ANIM,4)
+							(?_OLDMAN04_RUN_UP_ANIM,4)
+							(?_OLDMAN04_RUN_LEFT_ANIM,8)
+							(?_OLDMAN04_STAND_DOWN_ANIM,0)
+	ThatActorSetScript		(ACTOR01,?_BOAT_RIGHT_ANIM)
+	ThisActorSetAnimDelay	(?_OLDMAN04_MOVE_RIGHT_ANIM,80)
+							(?_OLDMAN04_STAND_RIGHT_ANIM,0)
+	ThatActorStop			(ACTOR01)
+	Sync					(3,1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STANDR_ANIM)
+	ThisActorStop			()
+	End						()
+/********************************//********************************/
+// END ORLON'S BUDDY
+/********************************//********************************/
+
+?_FERRY01_END
+	SceneNew				()
+	LoadMap					(MAP_FERRY01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(ACTOR00,?ANIM_AI,11,0,30,0,?_FERRY01_COFFINFLOAT,?_END)
+	ThatActorInit			(ACTOR01,?ANIM_AI,8,3,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,10,11,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	ThatActorInit			(ACTOR03,?ANIM_AI,5,4,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR04,?ANIM_AI,7,8,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	ThatActorInit			(ACTOR05,?ANIM_AI,6,5,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR06,?ANIM_AI,11,2,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	ThatActorInit			(ACTOR07,?ANIM_AI,4,6,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR08,?ANIM_AI,2,7,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	ThatActorInit			(ACTOR09,?ANIM_AI,3,1,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR0A,?ANIM_AI,8,5,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	ThatActorInit			(ACTOR0B,?ANIM_AI,12,10,30,3,?_WATER_SHIMMER1_ANIM,?_END)
+	ThatActorInit			(ACTOR0C,?ANIM_AI,5,3,30,3,?_WATER_SHIMMER2_ANIM,?_END)
+	LoadVRAMTiles			(3,BIT_COFFIN,0,0)
+	LoadVRAMTiles			(4,BIT_WATERSHIMMER,3,0)
+	SetCamera				(8,6)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,2)
+	Delay					(16)
+	ThatActorStart			(ACTOR01)
+	Delay					(16)
+	ThatActorStart			(ACTOR01)
+	Delay					(16)
+	ThatActorStart			(ACTOR02)
+	Delay					(16)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR00)
+	Delay					(16)
+	ThatActorStart			(ACTOR04)
+	Delay					(80)
+	ThatActorStart			(ACTOR05)
+	Delay					(16)
+	ThatActorStart			(ACTOR06)
+	Delay					(16)
+	ThatActorStart			(ACTOR07)
+	Delay					(16)
+	ThatActorStart			(ACTOR08)
+	Delay					(80)
+	ThatActorStart			(ACTOR09)
+	Delay					(16)
+	ThatActorStart			(ACTOR0A)
+	Delay					(16)
+	ThatActorStart			(ACTOR0B)
+	Delay					(16)
+	ThatActorStart			(ACTOR0C)
+	Delay					(80)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,3)
+	Jump					(?_CREDITS)
+	End						()
+
+?_FERRY01_COFFINFLOAT
+	ThisActorSetAnimDelay	(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+							(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+							(?_COFFIN_DOWN_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+							(?_COFFIN_DL_ANIM,32)
+	End						()

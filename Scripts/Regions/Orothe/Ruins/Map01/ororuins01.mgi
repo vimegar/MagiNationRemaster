@@ -1,0 +1,76 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\OROTHE\RUINS\MAP01\ORORUINS01_DR.MGI
+%INCLUDE					REGIONS\OROTHE\RUINS\MAP01\RUINS_BAT.MGI
+
+?_ORORUINS01
+	SceneNew				()
+?_ORORUINS_OVER_ENTRY
+	LoadMap					(MAP_ORORUINS01)
+	LoadHotspots			(HS_ORORUINS01)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_ORORUINS01)
+	SetItemScript			(?_ORORUINS_BOMB_SUMMON)
+	ThatActorInit			(HEROACTOR,?HERO_AI_UNDERSWIM,5,5,50,0,?_HERO_UNDTREAD_LEFT_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,50,0,?_RAINER,?_RUINS_RNDBAT)
+	ThatActorInit			(ACTOR1D,?RAINDROP_AI,10,9,50,0,?_RAINER,?_RUINS_RNDBAT)
+//	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,50,52,?_ORO_AIRBUBBLE,?_DONT_TALK)
+//	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,50,52,?_ORO_AIRBUBBLE,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR1E)
+	ThatActorStart			(ACTOR1D)
+//	ThatActorStart			(ACTOR07)
+//	ThatActorStart			(ACTOR08)
+	LoadVRAMTiles			(52,BIT_SPARKLE,0,0)
+//	LoadVRAMTiles			(3,BIT_AQUARIUMBUBBLES,52,0)
+	SetBtlReturn			(?_ORORUINS01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_ororuins)
+	SceneReady				()
+	End						()
+	
+?_ORORUINS_BOMB_SUMMON
+	If						([USEITEM_ID == INV_BLAST_URN],_BOMB01_SUMMON)
+	Jump					(?_TXT_NOTHING_HAPPENED)
+
+/********************************/
+// BOMB SCRIPT
+_BOMB01_SUMMON
+	InventoryTake			(INV_TYPE_ITEM,INV_BLAST_URN,1)
+	ThatActorSetAI			(HEROACTOR,?ZOMBIE_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOMB_DROP)
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,30,52,_BOMB_ACT,?_END)
+	LoadVRAMTiles			(32,BIT_URN,52,0)
+	End						()
+
+_TONY_BOMB_DROP
+	// Tony SWIMS down, waits for bomb w/ delay
+	ThisActorSetAnimDelay	(?_HERO_UNDTREAD_UP_ANIM,16)
+	ThatActorStart			(ACTOR01)		
+	ThisActorSetAnimDelay	(?_HERO_UNDSWIM_DOWN_ANIM,32)
+	SetScroll				(_BLAM)
+	ThisActorSetAnimDelay	(?_HERO_UNDTREAD_UP_ANIM,16)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_UNDTREAD_UP_ANIM)
+
+_BOMB_ACT
+	ThisActorLocRelative	(HEROACTOR)
+	SFX						(SFXID_SFX_EXPLOSION_SMALL)
+	ThisActorSetAnimDelay	(?_URN_EXPLODE_ANIM,64)
+	End						()
+
+_BLAM
+	ScrollMap				(1,3,0)
+	ScrollMap				(1,-3,0)
+	ScrollMap				(1,3,-3)
+	ScrollMap				(1,-3,3)
+	ScrollMap				(1,0,-3)
+	ScrollMap				(1,0,3)
+	Delay					(32)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_RUINS_MEGATHAN_BAT)
+
+	

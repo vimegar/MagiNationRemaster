@@ -1,0 +1,42 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP17\NRMVASH17_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP17\NRMVASH17_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP17\NRMVASH17_PARTY.MGI
+
+/********************************/
+?_NRMVASH17
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH17_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH17_PARTY)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH17)
+	LoadHotspots			(HS_NRMVASH17)
+	LoadTriggers			(TR_NRMVASH17)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,9,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,8,3,16,0,?_NRMVASH17_PRISONER1,?_NRMVASH17_PRISONER_TXT)
+	LoadVRAMTiles			(43,BIT_MAN02,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	If						([!HldPrisoner1],?_END)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+?_NRMVASH17_PRISONER1
+	ThisActorSetAnimDelay	(?_MAN02_STAND_UP_ANIM,80)
+							(?_MAN02_STAND_UL_ANIM,48)
+							(?_MAN02_STAND_UP_ANIM,96)
+							(?_MAN02_STAND_UR_ANIM,48)
+	JumpLocal				(?_NRMVASH17_PRISONER1)
+	
+?_NRMVASH17_PRISONER_TXT
+	If						([HldPrisoner1Talk],_TALKED)
+	SetXRAMBit				(HldPrisoner1Talk,TRUE)
+	SetText					(?_NRMVASH17_TXT_1)
+	Jump					(?_FACE_MAN02)
+_TALKED
+	SetText					(?_NRMVASH17_TXT_2)
+	Jump					(?_FACE_MAN02)

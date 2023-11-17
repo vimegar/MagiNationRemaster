@@ -1,0 +1,84 @@
+/********************************/
+?_WVEGIASHUT02_DR_1
+		HeroToDoor	(6,11,22,21)
+		Jump		(?_WVEGIASHUT01)
+
+?_WVEGIASHUT02_TR_1
+		TriggerTreasure	(WVEGIASHUT02_Chest1,INV_TYPE_RELIC,INV_WISHBONE,5,3,15)
+
+/********************************/		
+?_WVEGIASHUT02_TR_2				// BOOKCASE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("All kinds of=")
+						("old books and")
+						("rusty gadgets.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_3				// BOOKCASE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Knick knacks,=")
+						("trinkets")
+						("and mibobbers.")
+						("Hey, look!")
+						("A picture of=")
+						("Eidon.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_4				// STOOL
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Better hope she=")
+						("doesn't run out")
+						("of firewood,=")
+						("little stool.")
+						("You might be=")
+						("next!")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_5				// PICTURE
+		TextOpen		()
+		TextIcon		(ICON_POLLY)
+		TextWrite		("Whumph!")
+		TextIcon		(ICON_TONY)
+		TextWrite		("The fun=")
+						("never stops.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_6				// COMFY CHAIR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A chair of=")
+						("comfy-ness!")
+						("There's a Gia=")
+						("shaped groove")
+						("in this chair.")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_7				// CHAIR
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This must be=")
+						("the waiting...")
+						("er...")
+						("nook?")
+		TextClose		()
+		End				()
+
+?_WVEGIASHUT02_TR_8				// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Nothing under=")
+						("here but some")
+						("cobwebs and a=")
+						("bug or two.")
+		TextClose		()
+		End				()
+
+

@@ -1,0 +1,93 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP09\CLDLAVATOWN09_DR.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP09\CLDLAVATOWN09_TXT.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP09\CLDLAVATOWN09_PARTY.MGI
+%INCLUDE			REGIONS\CALD\LAVATOWN\MAP09\CLDLAVATOWN09_PEOPLE.MGI
+
+/********************************/
+?_CLDLAVATOWN09
+	Switch					([GAMECOUNT])
+							(GC_CALD_INTRO,?_CLDLAVATOWN09_APOLOGY)
+							(GC_ARBOLL_HUNT,?_CLDLAVATOWN09_ARBOLLQUEST)
+							(GC_LAVA_BRIDGE,?_CLDLAVATOWN09_BESTBRIDGE)
+							(GC_BOOTS_QUEST,?_CLDLAVATOWN09_BESTBRIDGE)
+							(GC_CALD_GEYSER,?_CLDLAVATOWN09_HURRYUP)
+							(GC_TONY_KIDNAPPED,?_CLDLAVATOWN09_EMPTY)
+
+	If						([Cold_Shoulder],?_CLDLAVATOWN09_COLDSHOULDER)
+	
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDLAVATOWN09_WARMREUNION
+
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN09)
+	LoadHotspots			(HS_CLDLAVATOWN09)
+	LoadTriggers			(TR_CLDLAVATOWN09)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,12,10,16,0,?_CLDTOWN09_ELDER,?_CLDTOWN09_ELDER_REUNION)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(26,BIT_OLDMAN03,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN09_ELDER_REUNION
+	SetText				(?_CLDTOWN09_ELDER_TXT06)	
+	Jump				(?_FACE_OLDMAN03)
+
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+
+?_CLDLAVATOWN09_KEY_THIEF
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN09)
+	LoadHotspots			(HS_CLDLAVATOWN09A)
+	LoadTriggers			(TR_CLDLAVATOWN09)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,11,14,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,11,16,16,0,?_CLDLAVATOWN09_MAN03,?_DONT_TALK)
+	LoadVRAMTiles			(43,BIT_MAN03,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_random)
+	SceneReady				()
+	End						()
+
+?_CLDLAVATOWN09_MAN03
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ScrollMap				(16,0,1)
+	ThisActorSetAnimDelay	(?_MAN03_WALK_UP_ANIM,32)
+							(?_MAN03_STAND_UP_ANIM,32)
+							(?_MAN03_RUN_UP_ANIM,32)
+							(?_MAN03_STAND_RIGHT_ANIM,0)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	SetText					(?_CLDLAVATOWN09_MAN03_TXT)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_MAN03_WALK_DOWN_ANIM,128)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STANDL_ANIM)
+	ThisActorStop			()
+	End						()
+
+?_CLDLAVATOWN09_EMPTY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN09)
+	LoadHotspots			(HS_CLDLAVATOWN09)
+	LoadTriggers			(TR_CLDLAVATOWN09A)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,11,14,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+	End						()
+

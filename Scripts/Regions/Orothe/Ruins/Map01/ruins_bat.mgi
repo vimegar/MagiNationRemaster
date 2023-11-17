@@ -1,0 +1,78 @@
+/**** LEVEL37 ****/
+?_RUINS_RNDBAT
+	HeroToDoor		(0,0,0,0)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+
+	JumpRandom		(_BTL1)
+					(_BTL2)
+					(_BTL3)
+					(_BTL4)
+					(_BTL5)
+					(_BTL6)
+					(_BTL7)
+					(_BTL8)
+
+_BTL1
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,38,76,1)
+	BtlAuto		()
+
+_BTL2
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,37,78,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,35,65,1)
+	BtlAuto		()
+
+_BTL3
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,37,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,37,73,1)
+	BtlAuto		()
+
+_BTL4
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,37,74,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,35,70,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,35,71,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,SHARBLOOT,34,69,1)
+	BtlAuto		()
+
+_BTL5
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,37,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SHARBLOOT,36,71,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,36,72,1)
+	BtlAuto		()
+
+_BTL6
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,37,73,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,35,71,1)
+	BtlAuto		()
+
+_BTL7
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,39,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,SEA_JILE,38,77,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,37,75,1)
+	BtlAuto		()
+
+_BTL8
+	BtlNew		(OROTHE_ARENA1,MAGI_RND1,38,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,ORPUS,36,72,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,PARALIT,37,75,1)
+	BtlNextTurn	()
+	BtlSummonDelay	(BTL_ID_MAGI,KARAK,37,78,1)
+	BtlAuto		()
+
+
+?_RUINS_MEGATHAN_BAT
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
+	BtlNew			(OROTHE_ARENA1,MAGI_RND1,60,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,MEGATHAN,60,230,1)
+	BtlAuto			()

@@ -1,0 +1,6 @@
+?_ARDGEYSER07_DR_1
+	HeroSetDoor					(5,0)
+	Jump						(?_ARDGEYSER06)	
+	
+?_ARDGEYSER07_TR_1
+	TriggerTreasure	(ARDGEYSER07_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,17,6,24)

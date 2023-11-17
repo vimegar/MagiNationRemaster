@@ -1,0 +1,22 @@
+/********************************/
+?_NRMVASH03_DR_1
+		HeroToDoor		(19,9,0,7)
+		Jump			(?_NRMVASH02)
+		
+?_NRMVASH03_DR_2
+		HeroSetDoor		(5,8)
+		Jump			(?_NRMVASH10)
+
+?_NRMVASH03_DR_3
+		HeroSetDoor		(14,16)
+		Jump			(?_NRMVASH09)
+
+?_NRMVASH03_TR_1
+		TextOpen		()
+		TextWrite		("There's a note.")
+						("PLEASE DO NOT=")
+						("TOUCH MY")
+						("PLANTS.=")
+						("-POAD")
+		TextClose		()
+		End				()

@@ -1,0 +1,23 @@
+/********************************/
+?_NRMGLADE01_DR_1
+		If			([GC = GC_OPENING],?_NRMGLADE01_TONY_NO)
+		HeroToDoor	(24,21,0,12)
+		Jump		(?_NRMRIVER01)
+		
+?_NRMGLADE01_DR_2
+		HeroToDoor	(9,0,2,49)
+		Jump		(?_NRMGLADE02)
+
+?_NRMGLADE01_DR_1F
+		Jump		(?_NRMRIVER01_FUNERAL)
+
+?_NRMGLADE01_DR_2F
+		ThatActorSetAI	(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+		Delay				(16)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+		ThatActorSetAI	(HEROACTOR,?HERO_AI)
+		End				()
+
+?_NRMGLADE01_TR_1
+		TriggerTreasure	(NRMGLADE01_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,18,9,25)

@@ -1,0 +1,31 @@
+/********************************/
+		FileHotspots	(HS_NRMGLADE11)
+						(HOTSPOT_TRIGGER_EAST,?_NRMGLADE11_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_NRMGLADE11_DR_2)
+
+/**************************************/
+		FileHotspots	(HS_NRMGLADE11B)
+						(HOTSPOT_TRIGGER_EAST,?_NRMGLADE11B_DR_1)
+						(HOTSPOT_TRIGGER_ALL,?_NRMGLADE11B_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMGLADE11B_DR_3)
+
+		FileTriggers	(TR_NRMGLADE11B)
+						(TRIGGER_CONFIG,?_NRMGLADE11B_TR_1)
+						(TRIGGER_CONFIG,?_NRMGLADE11B_TR_2)
+
+/**************************************/
+		FileHotspots	(HS_NRMGLADE11C)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMGLADE11C_DR_1)
+						
+		FileTriggers	(TR_NRMGLADE11C)
+						(TRIGGER_CONFIG,?_NRMGLADE11C_TR_1)
+						(TRIGGER_CONFIG,?_NRMGLADE11C_TR_2)
+						(TRIGGER_CONFIG,?_NRMGLADE11C_TR_3)
+
+/**************************************/
+		FileHotspots	(HS_NRMGLADE11RET)
+						(HOTSPOT_TRIGGER_EAST,?_NRMGLADE11_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_NRMGLADE11_DR_2)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMGLADE11_DR_3)
+
+

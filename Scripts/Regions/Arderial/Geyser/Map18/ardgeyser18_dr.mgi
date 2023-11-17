@@ -1,0 +1,55 @@
+/*********************************/
+
+?_ARDGEYSER18_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(40,0,-4)
+						(37,-3,0)
+						(48,0,4)
+						(43,-3,0)
+						(44,0,-4)
+						(43,-3,0)
+						(42,0,4)
+	Jump				(?_ARDGEYSER17_FROM18)
+
+?_ARDGEYSER18_DR_2
+	HeroToDoor					(47,13,0,12)
+	Jump						(?_ARDGEYSER19)
+
+?_ARDGEYSER18_DR_3
+	If					([!Warrada_Easyway],_SKIP)
+	SetXRAMBit			(Warrada_Easyway,FALSE)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_ARDGEYSER18_HERO)
+	Jump				(?_ARDGEYSER18_WARRADA_FINAL)
+_SKIP
+	End					()
+	
+?_ARDGEYSER18_DR_4
+	If					([!Warrada_Easyway],_SKIP)
+	SetXRAMBit			(Warrada_Easyway,FALSE)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_ARDGEYSER18_HERO2)
+	Jump				(?_ARDGEYSER18_WARRADA_FINAL)
+_SKIP
+	End					()
+
+?_ARDGEYSER18_DR_5
+	If					([!Warrada_Easyway],_SKIP)
+	SetXRAMBit			(Warrada_Easyway,FALSE)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_ARDGEYSER18_HERO3)
+	Jump				(?_ARDGEYSER18_WARRADA_FINAL)
+_SKIP
+	End					()
+	
+/*********************************/
+
+?_ARDGEYSER18_TR_1
+	TriggerTreasure	(ARDGEYSER18_Chest1,INV_TYPE_ITEM,INV_KARMIC_WILL,18,20,48)
+
+?_ARDGEYSER18_TR_2
+	TriggerTreasure	(ARDGEYSER18_Chest2,INV_TYPE_ITEM,INV_RUNEOFWILL,26,16,48)
+	

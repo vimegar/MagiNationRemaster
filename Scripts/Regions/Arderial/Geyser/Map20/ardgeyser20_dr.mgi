@@ -1,0 +1,43 @@
+/************************************************/
+
+?_ARDGEYSER20_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(28,0,-4)
+	If					([Ardgeyser_Trig2],?_ARDGEYSER20_GOTO21)
+	ScrollMap			(28,-4,0)
+						(44,0,4)
+	Delay				(24)
+	Jump				(?_ARDGEYSER13_TUBE)
+
+?_ARDGEYSER20_GOTO21
+	ScrollMap			(28,4,0)
+						(44,0,-4)
+	Jump				(?_ARDGEYSER21_TUBE)
+	
+/************************************************/
+
+?_ARDGEYSER20_TR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ToggleAlways		(Ardgeyser_Trig2,_SWITCH,170,172,8,17,27)
+	LoadSpareMap		(SCR_ARDGEYSER20,COL_ARDGEYSER20)
+	CopyTileSpare		(27,12,10,3,5,12,10)
+	CopyTileSpare		(27,11,10,1,5,11,10)
+	CopyTileSpare		(27,10,10,1,5,10,10)
+	CopyTileSpare		(27,9,10,1,5,9,10)
+	CopyTileSpare		(27,8,10,1,5,8,10)
+	CopyTileSpare		(27,7,10,1,5,7,10)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+	
+_SWITCH
+	LoadSpareMap		(SCR_ARDGEYSER20B,COL_ARDGEYSER20B)
+	CopyTileSpare		(27,8,14,1,5,7,10)
+	CopyTileSpare		(27,9,14,1,5,8,10)
+	CopyTileSpare		(27,10,14,1,5,9,10)
+	CopyTileSpare		(27,11,14,1,5,10,10)
+	CopyTileSpare		(27,12,14,1,5,11,10)
+	CopyTileSpare		(27,13,14,3,5,12,10)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)

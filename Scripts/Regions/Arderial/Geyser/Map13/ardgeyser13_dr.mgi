@@ -1,0 +1,85 @@
+/*****************************************************/
+
+?_ARDGEYSER13_DR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_FLY_UP_ANIM)
+	Delay				(6)
+	ThatActorStop		(HEROACTOR)
+	ScrollMap			(28,0,-4)
+	If					([Ardgeyser_Trig1],?_ARDGEYSER13_RETURN)
+	ScrollMap			(28,-4,0)
+						(44,0,-4)
+	Delay				(24)
+	Jump				(?_ARDGEYSER20_LEFT)
+	
+?_ARDGEYSER13_DR_2
+	HeroToDoor			(10,26,36,0)
+	Jump				(?_ARDGEYSER02)
+
+?_ARDGEYSER13_DR_3
+	HeroToDoor			(8,0,8,26)
+	Jump				(?_ARDGEYSER14)
+	
+?_ARDGEYSER13_DR_4
+	HeroToDoor			(13,0,13,26)
+	Jump				(?_ARDGEYSER14)
+
+?_ARDGEYSER13_RETURN
+	ScrollMap			(28,4,0)
+						(44,0,-4)
+	Jump				(?_ARDGEYSER20_RIGHT)
+
+/*****************************************************/
+
+?_ARDGEYSER13_TR_1
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ToggleAlways		(Ardgeyser_Trig1,_SWITCH,170,172,9,18,27)
+	LoadSpareMap		(SCR_ARDGEYSER13,COL_ARDGEYSER13)
+	CopyTileSpare		(27,14,13,5,5,14,13)
+	CopyTileSpare		(27,13,13,1,5,13,13)
+	CopyTileSpare		(27,12,13,1,5,12,13)
+	CopyTileSpare		(27,11,13,1,5,11,13)
+	CopyTileSpare		(27,10,13,1,5,10,13)
+	CopyTileSpare		(27,9,13,1,5,9,13)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+	
+_SWITCH
+	LoadSpareMap		(SCR_ARDGEYSER13B,COL_ARDGEYSER13B)
+	CopyTileSpare		(27,1,4,1,5,9,13)
+	CopyTileSpare		(27,2,4,1,5,10,13)
+	CopyTileSpare		(27,3,4,1,5,11,13)
+	CopyTileSpare		(27,4,4,1,5,12,13)
+	CopyTileSpare		(27,5,4,1,5,13,13)
+	CopyTileSpare		(27,6,4,5,5,14,13)
+	Jump				(?_CLDGEYSER_HERO_AI_SET)
+
+?_ARDGEYSER13_TR_2
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER13_Door1,?_END,190,10,3,27)
+	LoadSpareMap		(SCR_ARDGEYSER13B,COL_ARDGEYSER13B)
+	CopyTileSpare		(27,14,11,3,4,9,1)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+	
+?_ARDGEYSER13_TR_3
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER13_Door2,?_END,190,16,2,27)
+	LoadSpareMap		(SCR_ARDGEYSER13B,COL_ARDGEYSER13B)
+	CopyTileSpare		(27,14,11,3,4,15,1)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)

@@ -1,0 +1,10 @@
+/********************************/
+
+?_UNDGEYSER03_DR_1
+		HeroToDoor	(29,28,0,45)
+		Jump		(?_UNDGEYSER02)
+
+/********************************/
+
+?_UNDGEYSER03_TR_1
+		TriggerTreasure	(UNDGEYSER03_Chest1,INV_TYPE_ITEM,INV_RUNEOFHOPE,4,5,30)

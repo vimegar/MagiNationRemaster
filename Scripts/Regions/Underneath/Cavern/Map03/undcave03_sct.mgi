@@ -1,0 +1,65 @@
+/********************************//********************************/
+// EXPLODING MUSHROOM ROOM
+/********************************//********************************/
+?_UNDCAVERN03_SECRET
+	SceneNew				()
+	LoadMap					(MAP_UNDCAVERN03_SECRET)
+	LoadHotspots			(HS_UNDCAVERN03_SECRET)
+	LoadTriggers			(TR_UNDCAVERN03_SECRET)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,13,19,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,2,6,16,0,_PRISONER,_PRISONER_TALKER)
+	LoadVRAMTiles			(43,BIT_MAN04,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_undtown)
+	SceneReady				()
+	If						([!HldPrisoner5],?_END)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+/********************************/
+// ACTOR
+
+_PRISONER
+	ThisActorSetAnim		(?_MAN04_STAND_RIGHT_ANIM)
+	End						()
+
+_PRISONER_TALKER
+	SetText					(_TXT_THANKS)
+	Jump					(?_FACE_MAN04)
+
+/********************************/
+// TEXT
+
+_TXT_THANKS
+	TextOpen		()
+
+	If						([HldPrisoner5Talk],_TALKED)
+	SetXRAMBit				(HldPrisoner5Talk,TRUE)
+	TextIcon				(ICON_GUY01)
+	TextWrite				("You're the guy=")
+							("who rescued me!")
+							("I don't think I=")
+							("I thanked you")
+							("properly for=")
+							("it. Here, take")
+							("this.")
+	InventoryGive			(INV_TYPE_ITEM,INV_MASTER_RUNE,1)
+	TextIcon				(ICON_TONY)
+	TextWrite				("Tony got a=")
+							("%X")
+	TextClose				()
+	ThisActorRestoreState	()
+
+_TALKED
+	TextIcon				(ICON_GUY01)
+	TextWrite				("Thanks again=")
+							("for freeing me!")
+	TextClose				()
+	ThisActorRestoreState	()
+
+/********************************//********************************/
+// END EXPLODING MUSHROOM ROOM
+/********************************//********************************/

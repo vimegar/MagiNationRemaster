@@ -1,0 +1,16 @@
+?_HLDMAZE12_DR_1
+		HeroToDoor	(0,15,23,10)
+		Jump		(?_HLDMAZE10)
+
+?_HLDMAZE12_DR_2
+		HeroToDoor	(11,0,11,24)
+		Jump		(?_HLDMAZE14)
+
+?_HLDMAZE12_DR_3
+		HeroToDoor	(10,24,18,0)
+		Jump		(?_HLDMAZE13)
+
+?_HLDMAZE12_DR_4
+		HeroToDoor	(0,0,1,24)
+		Jump		(?_HLDMAZE14)
+

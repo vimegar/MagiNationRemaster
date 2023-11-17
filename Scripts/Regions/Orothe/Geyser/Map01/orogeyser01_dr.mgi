@@ -1,0 +1,51 @@
+/********************************/
+
+?_OROGEYSER01_DR_1
+	HeroToDoor	(0,26,31,15)
+	Jump		(?_OROGEYSER05)
+	
+?_OROGEYSER01_DR_2
+	HeroToDoor	(21,0,5,31)
+	Jump		(?_OROGEYSER02)
+	
+?_OROGEYSER01_DR_3
+	HeroToDoor	(47,26,0,15)
+	Jump		(?_OROGEYSER03)
+	
+?_OROGEYSER01_DR_4
+	HeroToDoor	(22,47,6,0)
+	Jump		(?_OROGEYSER04)
+
+?_OROGEYSER01_DR_5
+	HeroToDoor	(7,47,4,0)
+	Jump		(?_OROGEYSER06)
+
+?_OROGEYSER01_DR_6
+	HeroToDoor	(40,47,1,0)
+	Jump		(?_OROGEYSER07)
+
+/********************************/
+
+?_OROGEYSER01_TR_1
+	TriggerAlways	(OROGEYSER01_Trig1,?_END,239,22,16,48)
+	LoadSpareMap	(SCR_OROGEYSER01B,COL_OROGEYSER01B)
+	CopyTileSpare	(48,21,17,6,2,21,17)
+	End				()
+
+?_OROGEYSER01_TR_2
+	TriggerAlways	(OROGEYSER01_Trig2,?_END,239,34,23,48)
+	LoadSpareMap	(SCR_OROGEYSER01B,COL_OROGEYSER01B)
+	CopyTileSpare	(48,33,21,1,6,33,21)
+	End				()
+
+?_OROGEYSER01_TR_3
+	TriggerAlways	(OROGEYSER01_Trig3,?_END,239,25,32,48)
+	LoadSpareMap	(SCR_OROGEYSER01B,COL_OROGEYSER01B)
+	CopyTileSpare	(48,22,30,5,2,22,30)
+	End				()
+
+?_OROGEYSER01_TR_4
+	TriggerTreasure	(OROGEYSER01_Chest1,INV_TYPE_ITEM,INV_RUNEOFPOWER,28,14,48)
+
+?_OROGEYSER01_TR_5
+	TriggerTreasure	(OROGEYSER01_Chest2,INV_TYPE_ITEM,INV_MASTER_RUNE,30,14,48)

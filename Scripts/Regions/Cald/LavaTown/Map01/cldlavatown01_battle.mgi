@@ -1,0 +1,709 @@
+/********************************//********************************/
+//	THE TOWN IS ATTACKED
+/********************************//********************************/
+?_CLDLAVATOWN01_WELCOME
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,15,1,40,0,_CLDLAVATOWN01_WEL_HERO,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,15,0,40,0,_CLDLAVATOWN01_WEL_MAN03,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,15,2,40,43,_CLDLAVATOWN01_WEL_OLDMAN,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,15,12,40,81,_CLDLAVATOWN01_WEL_ELDER,?_DONT_TALK)
+	ThatActorInit			(ACTOR03,?ANIM_AI,14,1,40,107,_CLDLAVATOWN01_WEL_MAN02,?_DONT_TALK)
+	LoadVRAMTiles			(43,BIT_MAN03,0,0)
+	LoadVRAMTiles			(38,BIT_OLDMAN,43,0)
+	LoadVRAMTiles			(26,BIT_OLDMAN03,81,0)
+	LoadVRAMTiles			(43,BIT_MAN02,107,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR03)
+	HeroSetCamera			()
+	SongFadeOut				(80)
+	SceneReady				()
+	Delay					(16)
+	ScrollMap				(32,0,1)
+	ThatActorStart			(ACTOR02)
+	ScrollMap				(32,0,1)
+	WaitEventText			(10)
+	PalClearBase			(0,15,31,0,0)
+	PalFade					(0,15,32,0)
+	HeroToDoor				(0,0,0,0)
+	JumpLocal				(?_CLDLAVATOWN01_PHASE01)
+
+_CLDLAVATOWN01_WEL_HERO
+	ThisActorSetAnimDelay	(?_HERO_WALK_DOWN_ANIM,80)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	WaitEventMaster			(1)
+	Delay					(16)
+	ThisActorSetAnimDelay	(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,16)
+							(?_HERO_STAND_UP_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	WaitEventText			(3)
+	ThisActorSetAnimDelay	(?_HERO_BACK_UP_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,4)
+							(?_HERO_STAND_DL_ANIM,16)
+	ThisActorSetAnimScroll	(?_HERO_BACK_UP_ANIM,16,0,-1)
+	ThisActorSetAnimDelay	(?_HERO_STAND_DL_ANIM,4)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	ScrollMap				(16,0,-1)
+	WaitEventText			(4)
+	ThisActorSetAnimDelay	(?_HERO_STAND_DL_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,16)
+							(?_HERO_STAND_DL_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	WaitEventText			(5)
+	ThisActorSetAnimDelay	(?_HERO_STAND_DL_ANIM,4)
+							(?_HERO_STAND_LEFT_ANIM,4)
+	WaitEventText			(6)
+	ThisActorSetAnimDelay	(?_HERO_STAND_UL_ANIM,8)
+							(?_HERO_STAND_UP_ANIM,48)
+							(?_HERO_STAND_UL_ANIM,4)
+							(?_HERO_STAND_LEFT_ANIM,4)
+							(?_HERO_STAND_DL_ANIM,4)
+							(?_HERO_STAND_DOWN_ANIM,0)
+	End						()
+
+_CLDLAVATOWN01_WEL_MAN02
+	ThisActorSetAnimDelay	(?_MAN02_WALK_DOWN_ANIM,80)
+							(?_MAN02_STAND_DOWN_ANIM,0)
+	WaitEventText			(1)
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_2)
+	WaitEventMaster			(1)
+	ThisActorSetAnimDelay	(?_MAN02_WALK_DOWN_ANIM,128)
+							(?_MAN02_STAND_UP_ANIM,0)
+	WaitEventMaster			(2)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_MAN02_RUN_UP_ANIM,56)
+							(?_MAN02_STAND_UP_ANIM,8)
+	SongStart				(SONGID_battle)
+	SetEventMaster			(3)
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_4)
+	WaitEventText			(4)
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_5)
+	ThisActorSetAnimDelay	(?_MAN02_RUN_LEFT_ANIM,16)
+							(?_MAN02_RUN_DOWN_ANIM,16)
+							(?_MAN02_RUN_RIGHT_ANIM,16)
+							(?_MAN02_RUN_UP_ANIM,16)
+							(?_MAN02_RUN_LEFT_ANIM,16)
+							(?_MAN02_RUN_DOWN_ANIM,96)
+	ScrollMap				(32,0,-1)
+	ThisActorStop			()
+	End						()
+
+_CLDLAVATOWN01_WEL_MAN03
+	ThisActorSetAnimDelay	(?_MAN03_WALK_DOWN_ANIM,80)
+							(?_MAN03_STAND_DOWN_ANIM,0)
+	WaitEventMaster			(1)
+	ThisActorSetAnimDelay	(?_MAN03_WALK_UP_ANIM,80)
+	ThisActorStop			()
+	End						()
+
+_CLDLAVATOWN01_WEL_OLDMAN
+	ThisActorSetAnimDelay	(?_OLDMAN_WALK_DOWN_ANIM,64)
+							(?_OLDMAN_WALK_RIGHT_ANIM,16)
+							(?_OLDMAN_STAND_DOWN_ANIM,0)
+	WaitEventMaster			(1)
+	ThisActorSetAnimDelay	(?_OLDMAN_WALK_RIGHT_ANIM,16)
+							(?_OLDMAN_WALK_UP_ANIM,16)
+							(?_OLDMAN_WALK_RIGHT_ANIM,96)
+	ThisActorStop			()
+	End						()
+
+_CLDLAVATOWN01_WEL_ELDER
+	ThisActorSetAnimDelay	(?_OLDMAN03_WALK_UP_ANIM,64)
+							(?_OLDMAN03_STAND_UP_ANIM,0)
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_1)
+	WaitEventText			(2)
+	SetEventMaster			(1)
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_3)
+	WaitEventText			(3)
+	SetEventMaster			(2)
+	ThisActorSetAnimDelay	(?_OLDMAN03_WALK_UP_ANIM,32)
+							(?_OLDMAN03_WALK_LEFT_ANIM,16)
+							(?_OLDMAN03_WALK_UP_ANIM,32)
+							(?_OLDMAN03_STAND_DOWN_ANIM,0)
+	WaitEventText			(4)
+	ThisActorSetAnimDelay	(?_OLDMAN03_STAND_DR_ANIM,16)
+							(?_OLDMAN03_STAND_DL_ANIM,32)
+							(?_OLDMAN03_STAND_DOWN_ANIM,0)
+	WaitEventText			(5)
+	ThisActorSetAnim		(?_OLDMAN03_STAND_RIGHT_ANIM)
+	
+	SetText					(?_CLDLAVATOWN01_WEL_TXT_6)
+	WaitEventText			(6)
+	ThisActorSetAnimDelay	(?_OLDMAN03_RUN_UP_ANIM,48)
+	ThisActorStop			()
+	End						()
+/********************************//********************************/
+//	END THE TOWN IS ATTACKED
+/********************************//********************************/
+
+/********************************//********************************/
+// CALD TOWN BATTLE PHASE01
+/********************************//********************************/
+?_CLDLAVATOWN01_PHASE01
+	SceneNew				()
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE01)
+	SetScroll				(_CONTINUE)
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_BATTLES)
+
+_CONTINUE
+	WaitAnyEventMaster		()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE PHASE01
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE PHASE02
+/********************************//********************************/
+?_CLDLAVATOWN01_PHASE02
+	SceneNew				()
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE02)
+	SetScroll				(_CONTINUE)
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_RESTART)
+
+_CONTINUE
+	WaitAnyEventMaster		()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE PHASE02
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE PHASE03
+/********************************//********************************/
+?_CLDLAVATOWN01_PHASE03
+	SceneNew				()
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE03)
+	SetScroll				(_CONTINUE)
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_RESTART)
+
+_CONTINUE
+	WaitAnyEventMaster		()
+	SetXRAMBit				(Bonus_Battle02,TRUE)
+	SetXRAMBit				(Bonus_Battle03,TRUE)
+	SetMaster				(?_CLDLAVATOWN01_VALKAN_SPEAR)
+	WaitAnyEventMaster		()
+	SetXRAMByte				(Bonus_Battle,3)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+/********************************//********************************/
+// END CALD TOWN BATTLE PHASE03
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BATTLE VICTORY
+/********************************//********************************/
+?_CLDLAVATOWN01_VICTORY
+	SceneNew				()
+	ThatActorInit			(ACTOR01,?ANIM_AI,30,28,40,117,_FLUNKY1_RUN,?_END)
+	ThatActorInit			(ACTOR02,?ANIM_AI,35,28,40,161,_FLUNKY2_RUN,?_END)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	SetScroll				(_CONTINUE)
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_RESTART)
+
+_CONTINUE
+	WaitAnyEventMaster		()
+	ThatActorSetScript		(HEROACTOR,_TONY_VICTORY)
+	End						()
+
+_TONY_VICTORY
+	ThisActorSetAnimDelay	(?_HERO_STAND_DL_ANIM,32)
+							(?_HERO_STAND_DR_ANIM,32)
+							(?_HERO_STAND_DOWN_ANIM,1)
+	End						()
+
+_FLUNKY1_RUN
+	ThisActorSetAnimDelay	(?_CORE02_STAND_UR_ANIM,32)	
+							(?_CORE02_STAND_RIGHT_ANIM,0)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_CORE02_STAND_UR_ANIM,32)
+							(?_CORE02_RUN_DOWN_ANIM,64)
+	ThisActorStop			()
+	End						()
+
+_FLUNKY2_RUN
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UL_ANIM,32)
+	SetText					(_TOO_POWERFUL)
+	ThisActorSetAnim		(?_CORE05_STAND_LEFT_ANIM)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UL_ANIM,32)
+							(?_CORE05_RUN_DOWN_ANIM,64)
+							(?_END,1)
+
+	SetMaster				(?_CLDLAVATOWN01_VALKAN_SPEAR)
+	WaitAnyEventMaster		()
+	SetText					(_TXT_VICTORY)
+	WaitAnyEventText		()
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_CLDLAVATOWN01_APOLOGY)
+
+/********************************/
+// TEXT
+_TOO_POWERFUL
+	TextOpen			()
+	TextWrite			("He's too=")
+						("powerful!")
+	TextClose			()
+	SetAnyEventText		()			
+	End					()
+
+_TXT_VICTORY
+	TextOpen			()
+	TextWrite			("VICTORY!")
+	TextClose			()
+	SetAnyEventText		()			
+	End					()
+
+/********************************//********************************/
+// END CALD TOWN BATTLE VICTORY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// CALD TOWN BONUS BATTLES
+/********************************//********************************/
+?_CLDLAVATOWN01_BONUS_RETURN
+	SceneNew				()
+	SetScroll				(_CONTINUE)
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_RESTART)
+
+_CONTINUE
+	WaitAnyEventMaster		()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+?_CLDLAVATOWN01_BONUS_RESTART
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+
+	LoadVRAMTiles			(36,BIT_CORE01,81,0)
+	LoadVRAMTiles			(44,BIT_CORE02,117,0)
+	LoadVRAMTiles			(30,BIT_CORE05,161,0)
+	LoadVRAMTiles			(15,BIT_SMOKE,191,0)
+	LoadVRAMTiles			(4,BIT_BLAST,206,0)
+	LoadVRAMTiles			(41,BIT_YOUNGMAN,210,0)
+
+	ThatActorInit			(HEROACTOR,?ANIM_AI,15,1,40,0,?_HERO_STAND_DOWN_ANIM,?_END)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	ThatActorStart			(HEROACTOR)
+
+	ThatActorStart			(ACTOR20)	// Bonus 00
+	ThatActorStart			(ACTOR24)	// Victim 1
+
+	ThatActorStart			(ACTOR21)	// Bonus 01
+	ThatActorStart			(ACTOR26)	// Fireball 1
+
+	ThatActorStart			(ACTOR22)	// Bonus 02
+	ThatActorStart			(ACTOR27)	// Fireball 2
+
+	ThatActorStart			(ACTOR23)	// Bonus 03
+	ThatActorStart			(ACTOR25)	// Victim 2
+
+	PalClearAnim			(0,15,31,0,0)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	SetAnyEventMaster		()
+	End						()
+
+?_CLDLAVATOWN01_BONUS_BATTLES
+	ThatActorInit			(ACTOR20,?TRAP_AI,9,10,40,117,_CORE01,_BONUS_BATTLE_00)		// Bonus 00
+	ThatActorInit			(ACTOR21,?TRAP_AI,24,13,40,161,_CORE02,_BONUS_BATTLE_01)	// Bonus 01
+	ThatActorInit			(ACTOR22,?TRAP_AI,7,21,40,161,_CORE03,_BONUS_BATTLE_02)		// Bonus 02
+	ThatActorInit			(ACTOR23,?TRAP_AI,29,35,40,117,_CORE01,_BONUS_BATTLE_03)	// Bonus 03
+
+	ThatActorInit			(ACTOR24,?TALKER_AI,7,10,40,210,_CLDLAVATOWN01_VICTIM,_CLDLAVATOWN01_VICTIM_TALK)
+	ThatActorInit			(ACTOR25,?TALKER_AI,27,35,40,210,_CLDLAVATOWN01_VICTIM,_CLDLAVATOWN01_VICTIM_TALK)
+
+	ThatActorInit			(ACTOR26,?ANIM_AI,0,0,40,0,?_END,?_END)
+	ThatActorInit			(ACTOR27,?ANIM_AI,0,0,40,0,?_END,?_END)
+
+	JumpLocal				(?_CLDLAVATOWN01_BONUS_RESTART)
+
+/*****************************/
+// VICTIM SEQUENCES
+_CLDLAVATOWN01_VICTIM
+	ThisActorSetAnimDelay	(?_YOUNGMAN_STAND_DL_ANIM,16)
+							(?_YOUNGMAN_STAND_LEFT_ANIM,16)
+							(?_YOUNGMAN_STAND_DR_ANIM,16)
+							(?_YOUNGMAN_STAND_DL_ANIM,16)
+							(?_YOUNGMAN_STAND_LEFT_ANIM,16)
+							(?_YOUNGMAN_STAND_DR_ANIM,16)
+	Jump					(_CLDLAVATOWN01_VICTIM)
+
+_CLDLAVATOWN01_VICTIM_TALK
+	SetText					(_TXT_HELP)
+	Jump					(?_FACE_YOUNGMAN)
+
+/*****************************/
+// SAVED SEQUENCES
+_CLDLAVATOWN01_SAVED
+	ThisActorSetAnimDelay	(?_YOUNGMAN_STAND_DR_ANIM,1)
+	End						()
+
+_CLDLAVATOWN01_SAVED_TALK01
+	SetText					(_TXT_STOP_THE_REST)
+	Jump					(?_FACE_YOUNGMAN)
+
+_CLDLAVATOWN01_SAVED_TALK02
+	SetText					(_TXT_WHY_ARE_THEY)
+	Jump					(?_FACE_YOUNGMAN)
+
+/*****************************/
+// TEXT
+_TXT_HELP
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("HELP!!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_TXT_STOP_THE_REST
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Please stop=")
+						("the rest of")
+						("these fiends!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_TXT_WHY_ARE_THEY
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Why are they=")
+						("attacking us?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/*****************************/
+// CORE MAGI SEQUENCES
+_CORE01
+	ThisActorSetAnimDelay	(?_CORE02_RUN_LEFT_ANIM,16)
+							(?_CORE02_RUN_RIGHT_ANIM,16)
+							(?_CORE02_STAND_LEFT_ANIM,48)
+	JumpLocal				(_CORE01)
+	
+_CORE02
+	ThisActorSetAnimDelay	(?_CORE05_STAND_LEFT_ANIM,32)
+	ThatActorInit			(ACTOR26,?ANIM_AI,24,13,40,206,?_BLAST_LEFT_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_LEFT_ANIM,4)
+							(?_CORE05_RUN_RIGHT_ANIM,4)
+							(?_CORE05_STAND_LEFT_ANIM,20)
+	ThatActorInit			(ACTOR26,?ANIM_AI,20,13,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UP_ANIM,32)
+							(?_CORE05_STAND_RIGHT_ANIM,32)
+	ThatActorInit			(ACTOR26,?ANIM_AI,24,13,40,206,?_BLAST_RIGHT_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_RIGHT_ANIM,4)
+							(?_CORE05_RUN_LEFT_ANIM,4)
+							(?_CORE05_STAND_RIGHT_ANIM,20)
+	ThatActorInit			(ACTOR26,?ANIM_AI,28,13,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UP_ANIM,32)
+							(?_CORE05_STAND_DR_ANIM,32)
+							(?_CORE05_RUN_DOWN_ANIM,32)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_RIGHT_ANIM,32)
+	ThatActorInit			(ACTOR26,?ANIM_AI,24,17,40,206,?_BLAST_RIGHT_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_RIGHT_ANIM,4)
+							(?_CORE05_RUN_LEFT_ANIM,4)
+							(?_CORE05_STAND_RIGHT_ANIM,12)
+	ThatActorInit			(ACTOR26,?ANIM_AI,27,17,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UP_ANIM,32)
+							(?_CORE05_STAND_DOWN_ANIM,32)
+	ThatActorInit			(ACTOR26,?ANIM_AI,24,17,40,206,?_BLAST_DOWN_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_DOWN_ANIM,4)
+							(?_CORE05_RUN_UP_ANIM,4)
+							(?_CORE05_STAND_DOWN_ANIM,4)
+	ThatActorInit			(ACTOR26,?ANIM_AI,24,19,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_UP_ANIM,32)
+							(?_CORE05_STAND_UP_ANIM,0)
+	JumpLocal				(_CORE02)
+
+_CORE03
+	ThisActorSetAnimDelay	(?_CORE05_STAND_RIGHT_ANIM,96)
+	ThatActorInit			(ACTOR27,?ANIM_AI,7,21,40,206,?_BLAST_RIGHT_ANIM,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_RUN_RIGHT_ANIM,4)
+							(?_CORE05_RUN_LEFT_ANIM,4)
+							(?_CORE05_STAND_RIGHT_ANIM,20)
+	ThatActorInit			(ACTOR27,?ANIM_AI,11,21,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThisActorSetAnim		(?_CORE05_STAND_RIGHT_ANIM)
+	JumpLocal				(_CORE03)
+
+/*****************************/
+// CORE MAGI TRAPS
+_BONUS_BATTLE_00
+	ExprXRAMByte			(Cald_Btl_Count,[Cald_Btl_Count + 1])
+	SetXRAMBit				(Bonus_Battle00,TRUE)
+	ThatActorInit			(ACTOR24,?TALKER_AI,7,10,40,210,_CLDLAVATOWN01_SAVED,_CLDLAVATOWN01_SAVED_TALK01)
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE02)
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	SetMaster				(?_CLDLAVATOWN_BAT02)
+	JumpLocal				(_KILL)
+
+_BONUS_BATTLE_01
+	ExprXRAMByte			(Cald_Btl_Count,[Cald_Btl_Count + 1])
+	SetXRAMBit				(Bonus_Battle01,TRUE)
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE02)
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	SetMaster				(?_CLDLAVATOWN_BAT05)
+	JumpLocal				(_KILL)
+
+_BONUS_BATTLE_02
+	ExprXRAMByte			(Cald_Btl_Count,[Cald_Btl_Count + 1])
+	SetXRAMBit				(Bonus_Battle02,TRUE)
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE03)
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	SetMaster				(?_CLDLAVATOWN_BAT05)
+	JumpLocal				(_KILL)
+
+_BONUS_BATTLE_03
+	ExprXRAMByte			(Cald_Btl_Count,[Cald_Btl_Count + 1])
+	SetXRAMBit				(Bonus_Battle03,TRUE)
+	ThatActorInit			(ACTOR25,?TALKER_AI,27,35,40,210,_CLDLAVATOWN01_SAVED,_CLDLAVATOWN01_SAVED_TALK02)
+	LoadHotspots			(HS_CLDLAVATOWN01_PHASE03)
+	SetBtlReturn			(?_CLDLAVATOWN01_BONUS_RETURN)
+	SetMaster				(?_CLDLAVATOWN_BAT02)
+	JumpLocal				(_KILL)
+
+_KILL
+	ThisActorSetAI			(?ANIM_AI)
+	ThisActorSetAnim		(?_END)
+	End						()
+/********************************//********************************/
+// END CALD TOWN BONUS BATTLES
+/********************************//********************************/
+
+/********************************//********************************/
+// CALD TOWN VALKAN SPEAR
+/********************************//********************************/
+?_CLDLAVATOWN01_VALKAN_SPEAR
+	LoadVRAMTiles			(43,BIT_VALKAN,0,0)
+	LoadVRAMTiles			(12,BIT_VALKANSPEAR,48,0)
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,40,0,?_END,?_END)
+	ThatActorStart			(ACTOR01)
+
+	If						([Bonus_Battle00],_SKIP_BONUS00)
+	ThatActorInit			(ACTOR20,?ANIM_AI,9,10,40,117,_CORE00_GET_SPEARED,?_END)
+	WaitAnyEventScroll		()
+
+_SKIP_BONUS00
+	If						([Bonus_Battle01],_SKIP_BONUS01)
+	ThatActorInit			(ACTOR21,?ANIM_AI,24,13,40,161,_CORE01_GET_SPEARED,?_END)
+	WaitAnyEventScroll		()
+
+_SKIP_BONUS01
+	If						([Bonus_Battle02],_SKIP_BONUS02)
+	ThatActorInit			(ACTOR22,?ANIM_AI,7,21,40,161,_CORE02_GET_SPEARED,?_END)
+	WaitAnyEventScroll		()
+
+_SKIP_BONUS02
+	If						([Bonus_Battle03],_SKIP_BONUS03)
+	ThatActorInit			(ACTOR23,?ANIM_AI,29,35,40,117,_CORE03_GET_SPEARED,?_END)
+	WaitAnyEventScroll		()
+
+_SKIP_BONUS03
+	CameraSeekActor			(HEROACTOR,4)
+	ThatActorStop			(ACTOR01)
+	SetAnyEventMaster		()
+	End						()	
+
+/*****************************/
+// SAVED SEQUENCES
+_CLDLAVATOWN01_SAVED
+	ThisActorSetAnimDelay	(?_YOUNGMAN_STAND_DR_ANIM,1)
+	End						()
+
+_CLDLAVATOWN01_SAVED_TALK
+	SetText					(_TXT_VALKAN_SAVED)
+	Jump					(?_FACE_YOUNGMAN)
+
+/*****************************/
+//	Bonus Battle 00
+_CORE00_GET_SPEARED
+	ThisActorSetAnim		(?_CORE02_STAND_DOWN_ANIM)
+	CameraSeekActor			(ACTOR20,4)
+	SetText					(_TXT_PROTECT_YOUR_BACK)
+	WaitAnyEventText		()
+	ThatActorInit			(ACTOR01,?ANIM_AI,14,10,40,0,_VALKAN00,?_END)	
+	ThisActorSetAnimDelay	(?_CORE02_STAND_DL_ANIM,16)
+							(?_CORE02_STAND_DR_ANIM,16)
+							(?_CORE02_STAND_UR_ANIM,8)
+							(?_CORE02_STAND_LEFT_ANIM,8)
+							(?_CORE02_STAND_RIGHT_ANIM,0)
+	End						()
+	
+_VALKAN00
+	ThisActorSetAnim		(?_VALKAN_STAND_LEFT_ANIM)
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_LEFT_ANIM,35)
+							(?_VALKAN_SPEAR_LEFT_ANIM,8)
+	ThatActorInit			(ACTOR20,?ANIM_AI,9,10,40,191,?_SMOKE_ANIM,?_END)
+	ThatActorInit			(ACTOR24,?TALKER_AI,7,10,40,210,_CLDLAVATOWN01_SAVED,_CLDLAVATOWN01_SAVED_TALK)
+	ThisActorSetAnimDelay	(?_VALKAN_SPEARING_LEFT_ANIM,4)
+							(?_VALKAN_STAND_LEFT_ANIM,32)
+							(?_VALKAN_STAND_RIGHT_ANIM,32)
+	SetXRAMBit				(Bonus_Battle00,TRUE)
+	SetAnyEventScroll		()		
+	End						()
+
+/*****************************/
+//	Bonus Battle 01
+_CORE01_GET_SPEARED
+	ThisActorSetAnim		(?_CORE05_STAND_LEFT_ANIM)
+	CameraSeekActor			(ACTOR21,4)
+	SetText					(_TXT_TERMINATION)
+	WaitAnyEventText		()
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UP_ANIM,16)	
+							(?_CORE05_STAND_DR_ANIM,8)	
+							(?_CORE05_STAND_UL_ANIM,8)	
+							(?_CORE05_STAND_RIGHT_ANIM,8)
+	ThatActorInit			(ACTOR01,?ANIM_AI,20,13,40,0,_VALKAN01,?_DONT_TALK)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_RIGHT_ANIM,16)
+							(?_CORE05_STAND_LEFT_ANIM,1)		
+	End						()
+	
+_VALKAN01
+	ThisActorSetAnim		(?_VALKAN_STAND_DOWN_ANIM)
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_RIGHT_ANIM,20)
+	ThisActorSetAnimDelay	(?_VALKAN_SPEAR_RIGHT_ANIM,16)
+	ThatActorInit			(ACTOR21,?ANIM_AI,24,13,40,191,?_SMOKE_ANIM,?_END)
+	ThisActorSetAnimDelay	(?_VALKAN_SPEAR_RIGHT_ANIM,8)
+	ThisActorSetAnim		(?_VALKAN_STAND_DOWN_ANIM)
+	SetXRAMBit				(Bonus_Battle01,TRUE)
+	SetAnyEventScroll		()			
+	End						()
+
+/*****************************/	
+//	Bonus Battle 02
+_CORE02_GET_SPEARED
+	ThisActorSetAnim		(?_CORE05_STAND_UP_ANIM)
+	CameraSeekActor			(ACTOR22,4)
+	SetText					(_TXT_FOR_THE_CALD)
+	WaitAnyEventText		()
+	ThatActorInit			(ACTOR01,?ANIM_AI,7,26,40,0,_VALKAN02,?_END)
+	ThatActorStart			(ACTOR01)
+	ThisActorSetAnimDelay	(?_CORE05_STAND_UP_ANIM,24)
+							(?_CORE05_STAND_LEFT_ANIM,16)	
+							(?_CORE05_STAND_DR_ANIM,12)	
+							(?_CORE05_STAND_UL_ANIM,12)	
+							(?_CORE05_STAND_RIGHT_ANIM,12)
+							(?_CORE05_STAND_DL_ANIM,12)
+							(?_CORE05_STAND_RIGHT_ANIM,12)
+							(?_CORE05_STAND_DL_ANIM,12)
+							(?_CORE05_STAND_UR_ANIM,12)
+							(?_CORE05_STAND_DOWN_ANIM,0)	
+	End						()			
+
+_VALKAN02
+	ThisActorSetAnim		(?_VALKAN_STAND_UP_ANIM)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_UP_ANIM,34)
+	ThatActorInit			(ACTOR22,?ANIM_AI,7,21,40,191,?_SMOKE_ANIM,?_END)
+	Delay					(12)
+	ThisActorSetAnimDelay	(?_VALKAN_STAND_UP_ANIM,32)
+							(?_VALKAN_STAND_DOWN_ANIM,10)
+	SetXRAMBit				(Bonus_Battle02,TRUE)
+	SetAnyEventScroll		()
+	End						()
+
+/*****************************/
+//	Bonus Battle 03
+_CORE03_GET_SPEARED
+	ThisActorSetAnim		(?_CORE02_STAND_LEFT_ANIM)
+	CameraSeekActor			(ACTOR23,4)
+	ThisActorSetAnim		(?_CORE02_STAND_UP_ANIM)
+	SetText					(_TXT_END_THIS_STRUGGLE)
+	WaitAnyEventText		()
+	ThatActorInit			(ACTOR01,?ANIM_AI,29,31,40,0,_VALKAN03,?_DONT_TALK)
+	ThatActorStart			(ACTOR01)	
+	ThisActorSetAnimDelay	(?_CORE02_STAND_DOWN_ANIM,96)
+							(?_CORE02_STAND_UR_ANIM,12)
+							(?_CORE02_STAND_DL_ANIM,12)
+							(?_CORE02_STAND_RIGHT_ANIM,12)
+							(?_CORE02_STAND_LEFT_ANIM,12)
+							(?_CORE02_STAND_UR_ANIM,12)
+							(?_CORE02_STAND_UP_ANIM,0)
+	End						()
+
+
+_VALKAN03
+	ThisActorSetAnimDelay	(?_VALKAN_RUN_DOWN_ANIM,20)
+							(?_VALKAN_RUN_DOWN_ANIM,14)
+	ThatActorInit			(ACTOR23,?ANIM_AI,29,35,40,191,?_SMOKE_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR25,?TALKER_AI,27,35,40,210,_CLDLAVATOWN01_SAVED,_CLDLAVATOWN01_SAVED_TALK)
+	ThisActorSetAnimDelay	(?_VALKAN_STAND_DOWN_ANIM,16)
+							(?_VALKAN_STAND_LEFT_ANIM,8)
+							(?_VALKAN_STAND_UL_ANIM,8)
+							(?_VALKAN_STAND_UR_ANIM,16)
+							(?_VALKAN_STAND_UL_ANIM,0)
+	SetXRAMBit				(Bonus_Battle03,TRUE)
+	SetAnyEventScroll		()
+	End						()
+
+/********************************/
+// TEXT
+_TXT_PROTECT_YOUR_BACK
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("I will=")
+						("protect your")
+						("back, friend!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_TERMINATION
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("Prepare for=")
+						("termination,")
+						("Shadow Magi...")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_FOR_THE_CALD
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("For the=")
+						("Cald!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_END_THIS_STRUGGLE
+	TextOpen			()
+	TextIcon			(ICON_VALKAN)
+	TextWrite			("It's time=")
+						("I end this")
+						("struggle.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_TXT_VALKAN_SAVED
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Valkan saved=")
+						("my life!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END CALD TOWN VALKAN SPEAR
+/********************************//********************************/
+

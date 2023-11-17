@@ -1,0 +1,111 @@
+/********************************/
+%INCLUDE				INCLUDES\INCLUDES.MGI
+%INCLUDE				REGIONS\ARDERIAL\GEYSER\MAP21\ARDGEYSER21_DR.MGI
+
+/********************************/
+?_ARDGEYSER21	
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	LoadHotspots		(HS_ARDGEYSER21)
+	LoadTriggers		(TR_ARDGEYSER21)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER21)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	End					()
+
+?_ARDGEYSER21_TUBE_RETURN
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	LoadHotspots		(HS_ARDGEYSER21)
+	LoadTriggers		(TR_ARDGEYSER21)
+	LoadPalette			(PAL_HERO)
+	SetCamera			(29,14)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(48,-3,0)
+	If					([Ardgeyser_Trig4],?_ARDGEYSER21_GOTO23)
+?_ARDGEYSER21_TUBE_RETURNB
+	ScrollMap			(32,0,3)
+	If					([Ardgeyser_Trig3],?_ARDGEYSER21_STAY)
+	ScrollMap			(24,4,0)
+	ScrollMap			(54,0,3)
+	Jump				(?_ARDGEYSER20_FROM21)
+
+	
+?_ARDGEYSER21_TUBE
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	LoadHotspots		(HS_ARDGEYSER21)
+	LoadTriggers		(TR_ARDGEYSER21)
+	LoadPalette			(PAL_HERO)
+	SetCamera			(23,34)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(54,0,-3)
+	ScrollMap			(24,-4,0)
+	If					([Ardgeyser_Trig3],?_ARDGEYSER21_STAY)
+	ScrollMap			(12,0,-4)
+	If					([Ardgeyser_Trig4],?_ARDGEYSER21_GOTO26)
+?_ARDGEYSER21_GOTO23B
+	ScrollMap			(16,0,-4)
+?_ARDGEYSER21_GOTO23
+	ScrollMap			(70,3,0)
+	Jump				(?_ARDGEYSER23_TUBE)
+
+?_ARDGEYSER21_STAY	
+	ScrollMap			(16,-4,0)
+?_ARDGEYSER21_EXIT_TUBE
+	ScrollMap			(16,-4,0)
+	ScrollMap			(16,0,4)
+	ThatActorInit		(HEROACTOR,?ANIM_AI,8,25,30,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	ThatActorStart		(HEROACTOR)
+	WaitEventMaster		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End					()
+	
+?_ARDGEYSER21_GOTO26
+	ScrollMap			(16,0,-4)
+?_ARDGEYSER21_GOTO26B
+	ScrollMap			(42,-4,0)
+	Jump				(?_ARDGEYSER26_TUBE)
+
+?_ARDGEYSER21_FROM26
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	LoadHotspots		(HS_ARDGEYSER21)
+	LoadTriggers		(TR_ARDGEYSER21)
+	LoadPalette			(PAL_HERO)
+	SetCamera			(0,14)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	Delay				(24)
+	ScrollMap			(42,4,0)
+	If					([!Ardgeyser_Trig4],?_ARDGEYSER21_GOTO26B)
+	Jump				(?_ARDGEYSER21_TUBE_RETURNB)
+		
+?_ARDGEYSER21_FROM14
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	SetCamera			(21,10)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(37,0,-3)
+	Jump				(?_ARDGEYSER22_FROM_21)
+
+?_ARDGEYSER21_FROM22
+	SceneNew			()
+	LoadMap				(MAP_ARDGEYSER21)
+	SetCamera			(21,0)
+	SongStart		(SONGID_maze)
+	SceneReady			()
+	ScrollMap			(37,0,3)
+	Jump				(?_ARDGEYSER14_FROM_21)
+
+			

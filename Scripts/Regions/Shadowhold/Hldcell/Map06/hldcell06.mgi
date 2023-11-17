@@ -1,0 +1,474 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP06\HLDCELL06_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDCELL\MAP06\HLDCELL06_TXT.MGI
+
+/********************************//********************************/
+// HLDCELL06
+/********************************//********************************/
+?_HLDCELL06
+	SceneNew					()
+	LoadMap						(MAP_HLDCELL06)
+	LoadHotspots				(HS_HLDCELL06)
+	LoadPalette					(PAL_HERO)
+	SetEncounter				(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn				(?_HLDCELL06)
+	ThatActorInit				(HEROACTOR,?HERO_AI,18,18,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	SongStart					(SONGID_shadowhold)
+	ThatActorStart				(HEROACTOR)
+	HeroFromDoor				()
+	HeroSetCamera				()
+	SceneReady					()
+	End							()
+/********************************//********************************/
+// END HLDCELL06
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HLDEXTERIOR
+/********************************//********************************/
+?_HLDEXTERIOR
+	SceneNew					()
+	LoadMap						(MAP_HLDEXTERIOR)
+	LoadHotspots				(HS_HLDEXTERIOR)
+	LoadPalette					(PAL_HERO)
+	ThatActorInit				(HEROACTOR,?HERO_AI,26,6,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	SongStart					(SONGID_shadowhold)
+	ThatActorStart				(HEROACTOR)
+
+	ThatActorInit				(ACTOR00,?TRIGGER_AI,13,5,30,0,?_KEY_ANIM,_KEY_TALKER)
+	LoadVRAMTiles				(6,BIT_KEY,0,0)
+	LoadVRAMTiles				(30,BIT_CORE05,6,0)
+	LoadVRAMTiles				(40,BIT_CORE06,36,0)
+	If							([Outside_key],_SKIP)
+	
+	ThatActorStart				(ACTOR00)
+_SKIP
+	SetCamera					(26,0)
+	SongStart					(SONGID_destruction)
+	SceneReady					()
+	End							()
+
+/********************************/
+// ACTORS
+_KEY_TALKER
+	SetText						(_TXT_KEY)
+	ThisActorStop				()
+	End							()
+
+/********************************/
+// TEXT
+_TXT_KEY
+	SetXRAMBit					(Outside_key,TRUE)
+	InventoryGive				(INV_TYPE_ITEM,INV_SHADOW_KEY,1)
+	TextOpen					()
+	TextWrite					("Tony got a=")
+	TextWrite					("Shadow Key")
+	TextClose					()
+	ThatActorSetAI				(HEROACTOR,?HERO_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End							()
+/********************************//********************************/
+// END HLDEXTERIOR
+/********************************//********************************/
+
+
+/********************************//********************************/
+// LEAP OF FAITH
+/********************************//********************************/
+?_HLDEXTERIOR_CHOICE
+	ThatActorInit				(ACTOR01,?ANIM_AI,16,6,30,6,?_CORE05_STAND_LEFT_ANIM,?_END)
+	ThatActorInit				(ACTOR02,?ANIM_AI,16,5,30,36,?_CORE06_STAND_LEFT_ANIM,?_END)
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+	SetText						(_TXT_PRETTY_HIGH)
+	End							()
+
+/********************************/
+// ACTORS
+_HERO_BLOW_HORN
+	ThisActorLocRelative		(HEROACTOR)
+	ThatActorStop				(HEROACTOR)
+	ThisActorSetAnim			(?_HERO_BLOW_LEFT_ANIM)
+	SongStart					(SONGID_levelup1)
+	Delay						(24)
+	SongStart					(SONGID_getitem)
+	Delay						(44)
+	ThatActorInit				(HEROACTOR,?ANIM_AI,5,6,30,0,_TONY_AFTER_HORN,?_DONT_TALK)
+	ThatActorStart				(HEROACTOR)
+	End							()
+
+_TONY_CHICKEN
+	ThisActorSetAnimDelay		(?_HERO_RUN_RIGHT_ANIM,8)
+								(?_HERO_STAND_LEFT_ANIM,32)
+	ThisActorSetAI				(?HERO_AI)
+	Jump						(?_HERO_STAND_DOWN_ANIM)
+
+_TONY_TRAPPED
+	SongStart					(SONGID_battle)
+	SetText						(_TXT_AIEEGH)
+	ThisActorSetAnimDelay		(?_HERO_STAND_RIGHT_ANIM,8)
+								(?_HERO_HAPPYJUMP_RIGHT,0)
+	ThatActorStart				(ACTOR01)
+	ThatActorStart				(ACTOR02)
+	Sync						(2,1)
+	
+	CameraSeek					(16,5,4)
+	SetText						(_TXT_BLOOORNGH)
+
+	ThatActorSetScript			(ACTOR01,_CORE05_CHASE)
+	ThatActorSetScript			(ACTOR02,_CORE06_CHASE)
+	Delay						(64)
+
+	Sync						(4,2)
+	CameraSeek					(6,5,2)
+
+	SetText						(_TXT_THROW_ME)
+	WaitAnyEventText			()
+
+	ThisActorSetAnimDelay		(?_HERO_RUN_LEFT_ANIM,8)
+								(?_HERO_STAND_LEFT_ANIM,0)
+
+	SetText						(_TXT_DONT_FAIL_ME)
+	WaitAnyEventText			()
+	ThatActorInit				(ACTOR03,?ANIM_AI,5,6,30,76,_HERO_BLOW_HORN,?_END)
+	LoadVRAMTiles				(13,BIT_TONYBLOW,76,0)
+	ThatActorStart				(ACTOR03)
+	End							()
+	
+_TONY_AFTER_HORN
+	ThisActorLocRelative		(ACTOR03)
+	ThatActorStop				(ACTOR03)
+	ThisActorSetAnim			(?_HERO_STAND_LEFT_ANIM)
+	SetMaster					(?_HLDCELL06_BLU_IS_THE_MAN)
+	Delay						(18)
+	ThisActorSetAnimDelay		(?_HERO_JUMP_LEFT_ANIM,23)	
+								(?_HERO_FALLING_GOOFILY_4,24)
+	ThisActorStop				()
+
+
+_CORE05_CHASE
+	ThisActorSetAnimDelay		(?_CORE05_STAND_LEFT_ANIM,32)
+								(?_CORE05_WALK_LEFT_ANIM,16)
+								(?_CORE05_STAND_LEFT_ANIM,0)
+	Sync						(4,2)
+	ThisActorSetAnimDelay		(?_CORE05_WALK_LEFT_ANIM,72)
+								(?_CORE05_STAND_LEFT_ANIM,0)
+	End							()
+
+_CORE06_CHASE
+	ThisActorSetAnimDelay		(?_CORE06_STAND_LEFT_ANIM,48)
+								(?_CORE06_WALK_LEFT_ANIM,16)
+								(?_CORE06_STAND_LEFT_ANIM,0)
+	Sync						(4,2)
+	ThisActorSetAnimDelay		(?_CORE06_WALK_LEFT_ANIM,82)
+								(?_CORE06_STAND_LEFT_ANIM,0)
+	End							()
+
+/********************************/
+// SCROLL
+_SCROLL_THE_OCEAN
+	TextClose					()
+	CameraSeek					(5,22,1)
+	SetText						(_TXT_THE_OCEAN)
+	Delay						(64)
+	CameraSeek					(8,5,1)
+	Sync						(2,0)
+	End							()
+
+/********************************/
+// TEXT
+_TXT_PRETTY_HIGH
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("Wow, this is=") 
+								("pretty high up,")
+								("I wonder if=")
+								("I should go ")
+								("back or try to=")
+								("find my way")
+								("down here?")
+	TextClear					()
+	TextIcon					(ICON_TONY)
+	TextWrite					(" Go back=")
+								(" Look here$")
+	TextMenu					(2)
+								(_TXT_NO_WAY)
+								(_LOOK_HERE)
+
+_TXT_NO_WAY
+	ThatActorSetScript			(HEROACTOR,_TONY_CHICKEN)
+	TextClear					()
+	TextWrite					("No way I'm=")
+								("going to jump")
+								("off that!")
+	TextClose					()
+	End							()
+
+_LOOK_HERE
+	TextClose					()
+	SetScroll					(_SCROLL_THE_OCEAN)
+	End							()
+
+_TXT_THE_OCEAN
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("That's a long=")
+								("way down...")
+								("the water would=")
+								("soften the")
+								("landing, but I=")
+								("can't swim...")
+	TextClose					()
+	Delay						(96)
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("Well, I seem=")
+								("to be in a")
+								("fix, here...")
+								("That guy back=")
+								("at the vault")
+								("said to blow=")
+								("the horn if I")
+								("needed help...=")
+								("maybe this")
+								("would be a good=")
+								("time...")
+	TextClose					()
+	Sync						(2,0)
+	ThatActorSetScript			(HEROACTOR,_TONY_TRAPPED)
+	End							()
+
+_TXT_AIEEGH
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("AIEEGH!!")
+	TextClose					()
+	Sync						(2,1)
+	End							()
+
+_TXT_BLOOORNGH
+	TextOpen					()
+	TextWrite					("BLOOORNGH!")
+								("GRANK!")
+	TextClose					()
+	Sync						(4,2)
+	End							()
+
+_TXT_THROW_ME
+	TextIcon					(ICON_TONY)
+	TextWrite					("They'll throw=")
+								("me back in that")
+								("cell!")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+
+_TXT_DONT_FAIL_ME
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("I hope this=")
+								("works!")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+/********************************//********************************/
+// END LEAP OF FAITH
+/********************************//********************************/
+
+
+/********************************//********************************/
+// BLU IS THE MAN
+/********************************//********************************/
+?_HLDCELL06_BLU_IS_THE_MAN
+	SongFadeOut					(80)
+	ThatActorInit				(ACTOR00,?ANIM_AI,3,22,30,12,?_BLUSWIM_FLOAT_RIGHT_ANIM,?_END)
+	ThatActorStart				(ACTOR00)
+	SetScroll					(_SCROLL)
+	LoadVRAMTiles				(12,BIT_SPLASH,0,0)
+	LoadVRAMTiles				(20,BIT_BLUSWIM,12,0)
+	End							()
+
+/********************************/
+// ACTORS
+_BLU
+	ThisActorSetAnim			(?_BLUSWIM_FLOAT_RIGHT_ANIM)
+
+	SetText						(_TXT_WONDERFUL_DIVIN)
+	WaitAnyEventText			()
+
+	ThisActorSetAnimDelay		(?_BLUSWIM_RIGHT_ANIM,24)
+								(?_BLUSWIM_FLOAT_RIGHT_ANIM,24)
+	ThatActorSetScript			(HEROACTOR,_TONY_TREADS)
+
+	SetText						(_TXT_OROTHEAN_BELT)
+	WaitAnyEventText			()
+	ThisActorSetAnimDelay		(?_BLUSWIM_LEFT_ANIM,24)
+								(?_BLUSWIM_FLOAT_RIGHT_ANIM,16)
+	Delay						(32)
+
+	SetText						(_TXT_BACK_TO_OSCENT)
+	WaitAnyEventText			()
+	ThatActorSetScript			(HEROACTOR,_TONY_DIVES)
+	ThisActorSetVRAMBase		(0)
+	ThisActorSetAnim			(?_SPLASH_ANIM)
+	End							()
+
+_TONY_FALLS
+	ThisActorSetAnimDelay		(?_HERO_FALLING_GOOFILY_4,35)
+								(?_SPLASH_ANIM,0)
+	SFX							(SFXID_SFX_EXPLOSION_SMALL)
+	Delay						(56)
+
+	ThatActorSetScript			(ACTOR00,_BLU)
+
+_TONY_STRUGGLES1
+	ThisActorSetAnimDelay		(?_HERO_TREAD_LEFT_ANIM,4)
+								(?_HERO_TREAD_RIGHT_ANIM,4)
+								(?_HERO_TREAD_LEFT_ANIM,4)
+								(?_HERO_TREAD_RIGHT_ANIM,4)
+_TONY_STRUGGLES2
+	ThisActorSetAnimDelay		(?_HERO_TREAD_DOWN_ANIM,4)
+								(?_HERO_TREAD_LEFT_ANIM,4)
+								(?_HERO_TREAD_RIGHT_ANIM,4)
+								(?_HERO_TREAD_LEFT_ANIM,4)
+								(?_HERO_TREAD_RIGHT_ANIM,4)
+_TONY_STRUGGLES3
+	ThisActorSetAnimDelay		(?_HERO_TREAD_UP_ANIM,4)
+								(?_SPLASH_ANIM,56)
+
+	JumpRandom					(_TONY_STRUGGLES1)
+								(_TONY_STRUGGLES2)
+								(_TONY_STRUGGLES3)
+
+_TONY_TREADS
+	ThisActorSetAnim			(?_HERO_TREAD_LEFT_ANIM)
+	End							()
+
+_TONY_DIVES
+	ThisActorSetAnim			(?_HERO_TREAD_LEFT_ANIM)
+	SetText						(_TXT_THIS_BELT_WORKS)
+	WaitAnyEventText			()
+	Delay						(16)
+	ThisActorSetAnimDelay		(?_SPLASH_ANIM,112)
+	PalClearBase				(0,15,31,31,31)
+	PalFade						(0,15,32,0)
+	Jump 						(?_OVRSURFACE04_INTRO)
+	End							()
+
+/********************************/
+// SCROLL
+_SCROLL
+	CameraSeek					(7,26,3)
+	Delay						(24)
+	SetText						(_TXT_WHO_SOUNDED)
+	WaitAnyEventText			()
+	ThatActorInit				(HEROACTOR,?ANIM_AI,6,13,30,0,_TONY_FALLS,?_END)
+	ThatActorStart				(HEROACTOR)
+	End							()
+
+/********************************/
+// TEXT
+_TXT_WHO_SOUNDED
+	TextOpen					()
+	TextIcon					(ICON_BLU)
+	TextWrite					("Wax me=")
+								("wellisks!")
+								("Toney's tootin'=")
+								("a shanty on")
+								("me horn!")
+								("But whar is=")
+								("the pup?")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+	
+_TXT_WONDERFUL_DIVIN
+	TextOpen					()
+	TextIcon					(ICON_BLU)
+	TextWrite					("Arrr!")
+								("Wonderful=")
+								("divin', Toney!")
+								("A perfect ten!")
+	TextIcon					(ICON_TONY)
+	TextWrite					("ACK!")
+								("Huff...")
+								("bleah!")
+								("I -")
+								("can't -")
+								("swim!")
+	TextIcon					(ICON_BLU)
+	TextWrite					("Yer quite the=")
+								("weirdo, Toney.")
+	TextClose					()
+	Delay						(128)
+	TextOpen					()
+	TextIcon					(ICON_BLU)
+	TextWrite					("Ah, I know...=")
+								("take this.")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+	
+_TXT_OROTHEAN_BELT								
+	TextOpen					()
+	SongStart					(SONGID_end)
+	TextWrite					("Tony got the=")
+								("Orothean Belt!$")
+	Delay						(180)
+	Delay						(180)
+	Delay						(180)
+	TextClose					()
+
+	TextOpen					()
+	TextIcon					(ICON_BLU)
+	TextWrite					("Thar ya go!")
+	TextIcon					(ICON_TONY)
+	TextWrite					("Whew!")
+								("I almost=")
+								("drowned!")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+	
+_TXT_BACK_TO_OSCENT
+	TextOpen					()
+	TextIcon					(ICON_BLU)
+	TextWrite					("Anyways, I'll=")
+								("take ye back te")
+								("Oscent Marrrrr!")
+	TextIcon					(ICON_TONY)
+	TextWrite					("Oscent Marrrrr?")
+	TextIcon					(ICON_BLU)
+	TextWrite					("Arr, the city I=")
+								("hail from. Oh")
+								("yeah, and=")
+								("thar's")
+								("somethin' else=")
+								("ye ought te be")
+								("seein'. Just=")
+								("follow me,")
+								("Toney! The belt=")
+								("will let even")
+								("yer landlubber=")
+								("gills breathe")
+								("underwater.")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+	
+_TXT_THIS_BELT_WORKS
+	TextOpen					()
+	TextIcon					(ICON_TONY)
+	TextWrite					("Well, I guess=")
+								("I'll see how")
+								("well this belt=")
+								("works....")
+	TextClose					()
+	SetAnyEventText				()
+	End							()
+
+/********************************//********************************/
+// END BLU IS THE MAN
+/********************************//********************************/

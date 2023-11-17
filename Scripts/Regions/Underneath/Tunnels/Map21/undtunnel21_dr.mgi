@@ -1,0 +1,53 @@
+/********************************/
+// UNDTUNNEL21
+?_UNDTUNNEL21_DR_1
+		HeroToDoor	(29,15,0,45)
+		Jump		(?_UNDTUNNEL19)
+
+?_UNDTUNNEL21_DR_2
+		HeroSetDoor	(3,10)
+		Jump		(?_OVRSURFACE02)
+
+?_UNDTUNNEL21_DR_3
+		HeroSetDoor	(2,23)
+		Jump		(?_HDNUNDTUN03)
+
+/********************************/
+// HDNUNDTUN03
+?_HDNUNDTUN03_DR_1
+		HeroSetDoor	(15,2)
+		Jump		(?_UNDTUNNEL21)
+
+?_HDNUNDTUN03_DR_2
+		HeroSetDoor	(2,11)
+		Jump		(?_HDNUNDTUN04)
+
+/********************************/
+// HDNUNDTUN04
+?_HDNUNDTUN04_DR_1
+		HeroSetDoor		(21,0)
+		Jump			(?_HDNUNDTUN03)
+		
+?_HDNUNDTUN04_TR_1
+		InitSkip		(_JUST_TREASURE)
+		If				([HDNUNDTUN04_Chest1],_JUST_TREASURE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Ow!")
+						("Hey, there's=")
+						("something here.")
+		TextClose		()
+_JUST_TREASURE
+		TriggerTreasure	(HDNUNDTUN04_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,4,7,12)
+		
+
+?_HDNUNDTUN04_TR_2
+		InitSkip		(_JUST_TREASURE)
+		If				([HDNUNDTUN04_Chest2],_JUST_TREASURE)
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("What's this?")
+		TextClose		()
+_JUST_TREASURE
+		TriggerTreasure	(HDNUNDTUN04_Chest2,INV_TYPE_ITEM,INV_BALOO_ROOT,7,4,12)
+

@@ -1,0 +1,106 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GEYSER\MAP20\ARDGEYSER20_DR.MGI
+
+/********************************/
+?_ARDGEYSER20
+	SceneNew				()
+	LoadMap					(MAP_ARDGEYSER20)
+	LoadHotspots			(HS_ARDGEYSER20)
+	LoadTriggers			(TR_ARDGEYSER20)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,27,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER20)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart		(SONGID_maze)
+	SceneReady				()
+	End						()
+
+?_ARDGEYSER20_LEFT
+	SceneNew				()
+	LoadMap					(MAP_ARDGEYSER20)
+	LoadHotspots			(HS_ARDGEYSER20)
+	LoadTriggers			(TR_ARDGEYSER20)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,11,18,27,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	SetCamera				(4,19)
+	SongStart		(SONGID_maze)
+	SceneReady				()
+	ScrollMap				(43,0,-3)
+	If						([Ardgeyser_Trig2],?_ARDGEYSER20_LEFT_GOTO13)
+	ScrollMap				(28,4,0)
+							(28,0,4)
+	ThatActorStart			(HEROACTOR)	
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER20)
+	WaitEventMaster			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+
+?_ARDGEYSER20_LEFT_GOTO13
+	ScrollMap				(12,4,0)
+	ScrollMap				(12,-4,0)
+	ScrollMap				(43,0,3)
+ 	Jump					(?_ARDGEYSER13_TUBE)
+ 		
+							
+						
+?_ARDGEYSER20_FROM21
+	SceneNew				()
+	LoadMap					(MAP_ARDGEYSER20)
+	LoadHotspots			(HS_ARDGEYSER20)
+	LoadTriggers			(TR_ARDGEYSER20)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,11,18,27,0,?_ARDGEYSER_TONY_OUT,?_DONT_TALK)
+	LoadPalette				(PAL_HERO)
+	SetCamera				(18,0)
+	SongStart		(SONGID_maze)
+	SceneReady				()
+	Delay					(24)
+	ScrollMap				(43,0,3)
+							(12,-4,0)
+	If						([!Ardgeyser_Trig2],?_ARDGEYSER20_GOTO21)
+	ScrollMap				(12,-4,0)
+							(28,0,4)
+	ThatActorStart			(HEROACTOR)	
+	SetEncounter		(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_ARDGEYSER20)
+	WaitEventMaster			(1)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	End						()
+	
+?_ARDGEYSER20_RIGHT
+	SceneNew				()
+	LoadMap					(MAP_ARDGEYSER20)
+	LoadTriggers			(TR_ARDGEYSER20)
+	LoadPalette				(PAL_HERO)
+	SetCamera				(18,17)
+	SongStart		(SONGID_maze)
+	SceneReady				()
+	ScrollMap				(36,4,0)
+	Jump					(?_ARDGEYSER24_TUBE)
+
+?_ARDGEYSER20_FROM24_TO_13
+	SceneNew				()
+	LoadMap					(MAP_ARDGEYSER20)
+	LoadHotspots			(HS_ARDGEYSER20)
+	LoadTriggers			(TR_ARDGEYSER20)
+	LoadPalette				(PAL_HERO)
+	SetCamera				(26,17)
+	SongStart		(SONGID_maze)
+	SceneReady				()
+	ScrollMap				(32,-3,0)
+	Jump					(?_ARDGEYSER13_FROM24)
+
+/*****************************************/
+// Generic Tony coming out of tube script
+/*****************************************/
+?_ARDGEYSER_TONY_OUT
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,12)
+							(?_HERO_WALK_DOWN_ANIM,12)
+	SetEventMaster			(1)
+	End						()

@@ -1,0 +1,180 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_GIRL03_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?GIRL03_WALK01_BACK)
+					(?GIRL03_WALK02_BACK)
+					(?GIRL03_WALK03_BACK)
+					(?GIRL03_WALK02_BACK)
+					
+	JumpLocal:		(?_GIRL03_WALK_UP_ANIM)
+
+/********************************/
+?_GIRL03_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?GIRL03_WALK01_FRONT)
+					(?GIRL03_WALK02_FRONT)
+					(?GIRL03_WALK03_FRONT)
+					(?GIRL03_WALK02_FRONT)
+					
+	JumpLocal:		(?_GIRL03_WALK_DOWN_ANIM)
+
+/********************************/
+?_GIRL03_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?GIRL03_WALK01_LEFT)
+					(?GIRL03_WALK02_LEFT)
+					(?GIRL03_WALK03_LEFT)
+					(?GIRL03_WALK02_LEFT)
+					
+	JumpLocal:		(?_GIRL03_WALK_LEFT_ANIM)
+
+/********************************/
+?_GIRL03_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?GIRL03_WALK01_RIGHT)
+					(?GIRL03_WALK02_RIGHT)
+					(?GIRL03_WALK03_RIGHT)
+					(?GIRL03_WALK02_RIGHT)
+					
+	JumpLocal:		(?_GIRL03_WALK_RIGHT_ANIM)
+
+/********************************/
+?_GIRL03_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?GIRL03_WALK01_BACK)
+					(?GIRL03_WALK02_BACK)
+					(?GIRL03_WALK03_BACK)
+					(?GIRL03_WALK02_BACK)
+					
+	JumpLocal:		(?_GIRL03_RUN_UP_ANIM)
+
+/********************************/
+?_GIRL03_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?GIRL03_WALK01_FRONT)
+					(?GIRL03_WALK02_FRONT)
+					(?GIRL03_WALK03_FRONT)
+					(?GIRL03_WALK02_FRONT)
+					
+	JumpLocal:		(?_GIRL03_RUN_DOWN_ANIM)
+
+/********************************/
+?_GIRL03_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?GIRL03_WALK01_LEFT)
+					(?GIRL03_WALK02_LEFT)
+					(?GIRL03_WALK03_LEFT)
+					(?GIRL03_WALK02_LEFT)
+					
+	JumpLocal:		(?_GIRL03_RUN_LEFT_ANIM)
+
+/********************************/
+?_GIRL03_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?GIRL03_WALK01_RIGHT)
+					(?GIRL03_WALK02_RIGHT)
+					(?GIRL03_WALK03_RIGHT)
+					(?GIRL03_WALK02_RIGHT)
+					
+	JumpLocal:		(?_GIRL03_RUN_RIGHT_ANIM)
+
+/********************************/
+?_GIRL03_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?GIRL03_WALK02_BACK)
+	
+	JumpLocal:		(?_GIRL03_STAND_UP_ANIM)
+
+/********************************/
+?_GIRL03_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?GIRL03_WALK02_FRONT)
+	
+	JumpLocal:		(?_GIRL03_STAND_DOWN_ANIM)
+
+/********************************/
+?_GIRL03_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?GIRL03_WALK02_LEFT)
+	
+	JumpLocal:		(?_GIRL03_STAND_LEFT_ANIM)
+
+/********************************/
+?_GIRL03_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?GIRL03_WALK02_RIGHT)
+	
+	JumpLocal:		(?_GIRL03_STAND_RIGHT_ANIM)
+
+/********************************/
+?_GIRL03_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?GIRL03_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_GIRL03_STAND_UL_ANIM)
+
+/********************************/
+?_GIRL03_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?GIRL03_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_GIRL03_STAND_UR_ANIM)
+
+/********************************/
+?_GIRL03_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?GIRL03_STAND_LEFT)
+	
+	JumpLocal:		(?_GIRL03_STAND_DL_ANIM)
+
+/********************************/
+?_GIRL03_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?GIRL03_STAND_RIGHT)
+	
+	JumpLocal:		(?_GIRL03_STAND_DR_ANIM)
+
+/********************************/
+?_GIRL03_BLINK_UP_ANIM
+
+	Frame:			(1,0,0,?GIRL03_WALK02_BACK)
+	Pass			()
+	
+	JumpLocal:		(?_GIRL03_BLINK_UP_ANIM)
+
+/********************************/
+?_FACE_GIRL03
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_GIRL03_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_GIRL03_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_GIRL03_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_GIRL03_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

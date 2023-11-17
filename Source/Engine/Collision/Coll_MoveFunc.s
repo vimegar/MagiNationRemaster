@@ -1,0 +1,512 @@
+;********************************
+; COLL_MOVEFUNC.S
+;********************************
+;	Author:	Clever Dylan ExoByte Mayo
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?COLL_MOVEFUNC_00
+
+	CALL	?COLL_X_FREEMOVE
+	CALL	?COLL_Y_FREEMOVE
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_01
+
+	CALL	?COLL_X_FREEMOVE
+	CALL	?COLL_HELPER_YCLIP
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_04
+
+	CALL	?COLL_HELPER_XCLIP
+	CALL	?COLL_Y_FREEMOVE
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_05
+
+	CALL	?COLL_HELPER_XCLIP
+	CALL	?COLL_HELPER_YCLIP
+
+	RET
+
+;********************************
+?COLL_MOVEFUNC_21
+
+;IS THERE ANY Y?
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_GOT_Y	
+	
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_YOFF)
+	CP		9
+	JR		C,_LINED_UP
+	
+;NOT LINED UP? THEN NO X FOR YOU INSTEAD
+	LD		A,-1
+	LD		(COLL_YMOVE),A
+	
+_GOT_Y
+	CALL	?COLL_Y_FREEMOVE
+		
+_LINED_UP
+	CALL	?COLL_X_FREEMOVE
+	;NO Y FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_22
+
+;IS THERE ANY Y?
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_GOT_Y	
+	
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_YOFF)
+	CP		8
+	JR		NC,_LINED_UP
+	
+;NOT LINED UP? THEN NO X FOR YOU INSTEAD
+	LD		A,1
+	LD		(COLL_YMOVE),A
+	
+_GOT_Y
+	CALL	?COLL_Y_FREEMOVE
+	
+	RET	
+	
+_LINED_UP
+	CALL	?COLL_X_FREEMOVE
+	;NO Y FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_23
+
+;IS THERE ANY Y?
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_GOT_Y	
+	
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_YOFF)
+	CP		8
+	JR		Z,_LINED_UP
+	
+;NOT LINED UP? THEN NO X FOR YOU INSTEAD
+	JR		NC,_GO_UP	
+	LD		A,1
+	LD		(COLL_YMOVE),A
+	
+_GOT_Y
+	CALL	?COLL_Y_FREEMOVE	
+	
+	RET	
+	
+_GO_UP
+	LD		A,-1
+	LD		(COLL_YMOVE),A
+	CALL	?COLL_Y_FREEMOVE	
+	
+	RET	
+		
+_LINED_UP
+	CALL	?COLL_X_FREEMOVE
+	;NO Y FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_24
+
+	CALL	?COLL_HELPER_XCLIP
+	
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+	
+	CALL	?COLL_HELPER_YCLOSE
+	
+_NO_CHECK
+	CALL	?COLL_Y_FREEMOVE
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_25
+
+;CHECK FOR DIAG
+	LD		HL,COLL_DIAG_FLAG
+	LD		A,(HL)
+	AND		A
+	JR		Z,_NO_DIAG
+	DEC		(HL)
+	JR		_NO_CHECK	
+	
+_NO_DIAG
+	CALL	?COLL_HELPER_XCLIP
+	
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+	
+	LD		A,-1
+	LD		(COLL_YMOVE),A
+	
+_NO_CHECK
+	CALL	?COLL_Y_FREEMOVE
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_26
+
+;CHECK FOR DIAG
+	LD		HL,COLL_DIAG_FLAG
+	LD		A,(HL)
+	AND		A
+	JR		Z,_NO_DIAG
+	DEC		(HL)
+	JR		_NO_CHECK
+	
+_NO_DIAG
+
+	CALL	?COLL_HELPER_XCLIP
+	
+	LD		A,(COLL_YMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+	
+	LD		A,1
+	LD		(COLL_YMOVE),A
+	
+_NO_CHECK
+	CALL	?COLL_Y_FREEMOVE
+
+	RET
+
+;********************************
+;?COLL_MOVEFUNC_27
+;
+;	CALL	?COLL_HELPER_XCLIP
+;	CALL	?COLL_Y_FREEMOVE
+;	
+;	RET
+;	
+;********************************
+?COLL_MOVEFUNC_61
+
+;IS THERE ANY X?
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_GOT_X	
+
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_XOFF)
+	CP		9
+	JR		C,_LINED_UP
+	
+;NOT LINED UP? THEN NO Y FOR YOU INSTEAD
+	LD		A,-1
+	LD		(COLL_XMOVE),A
+	
+_GOT_X
+	CALL	?COLL_X_FREEMOVE
+	
+	RET	
+	
+_LINED_UP
+	CALL	?COLL_Y_FREEMOVE
+	;NO X FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_62
+
+;IS THERE ANY X?
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_GOT_X	
+
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_XOFF)
+	CP		8
+	JR		NC,_LINED_UP
+	
+;NOT LINED UP? THEN NO Y FOR YOU INSTEAD
+	LD		A,1
+	LD		(COLL_XMOVE),A
+	
+_GOT_X
+	CALL	?COLL_X_FREEMOVE
+	
+	RET	
+	
+_LINED_UP
+	CALL	?COLL_Y_FREEMOVE
+	;NO X FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_63
+
+;IS THERE ANY X?
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_GOT_X	
+
+;IF NOT, ARE WE LINED UP?
+	LD		A,(ACTOR_XOFF)
+	CP		8
+	JR		Z,_LINED_UP
+	
+;NOT LINED UP? THEN NO Y FOR YOU INSTEAD
+	JR		NC,_GO_UP	
+	LD		A,1
+	LD		(COLL_XMOVE),A
+	
+_GOT_X
+	CALL	?COLL_X_FREEMOVE	
+	RET	
+	
+_GO_UP
+	LD		A,-1
+	LD		(COLL_XMOVE),A
+	CALL	?COLL_X_FREEMOVE	
+	RET		
+	
+_LINED_UP
+	CALL	?COLL_Y_FREEMOVE
+	;NO X FOR YOU
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_64
+
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+
+	CALL	?COLL_HELPER_XCLOSE
+	
+_NO_CHECK
+	CALL	?COLL_X_FREEMOVE
+	CALL	?COLL_HELPER_YCLIP
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_65
+
+;CHECK FOR DIAG
+	LD		HL,COLL_DIAG_FLAG
+	LD		A,(HL)
+	AND		A
+	JR		Z,_NO_DIAG
+	DEC		(HL)
+	JR		_NO_CHECK
+	
+_NO_DIAG
+
+	CALL	?COLL_HELPER_YCLIP
+
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+	LD		A,-1
+	LD		(COLL_XMOVE),A
+	
+_NO_CHECK
+	CALL	?COLL_X_FREEMOVE	
+
+	RET
+	
+;********************************
+?COLL_MOVEFUNC_66
+
+;CHECK FOR DIAG
+	LD		HL,COLL_DIAG_FLAG
+	LD		A,(HL)
+	AND		A
+	JR		Z,_NO_DIAG
+	DEC		(HL)
+	JR		_NO_CHECK
+	
+_NO_DIAG
+
+	CALL	?COLL_HELPER_YCLIP
+
+	LD		A,(COLL_XMOVE)
+	CP		0
+	JR		NZ,_NO_CHECK
+	LD		A,1
+	LD		(COLL_XMOVE),A
+	
+_NO_CHECK
+	CALL	?COLL_X_FREEMOVE	
+
+	RET		
+
+;********************************
+;?COLL_MOVEFUNC_67
+;
+;	CALL	?COLL_X_FREEMOVE
+;	CALL	?COLL_HELPER_YCLIP
+;	
+;	RET	
+;
+;********************************
+;MOVE YOUR X, BUT STOP IF YOU BREACH THE CURRENT TILE
+?COLL_HELPER_XCLIP	
+
+	LD		HL,ACTOR_XOFF
+	LD		A,(COLL_XMOVE)
+	LD		B,A
+	BIT		7,A
+	JR		Z,_POS
+	
+;NEG
+	LD		A,(HL)
+	ADD		A,B
+	CP		8
+	JR		NC,_NNO_CLIP
+	
+;_NCLIP
+	XOR		A
+	LD		(COLL_XMOVE),A
+	LD		A,$08	
+	
+_NNO_CLIP
+	LD		(HL),A
+	
+	RET		
+
+_POS
+	LD		A,(HL)
+	ADD		A,B	
+	CP		8	
+	JR		C,_PNO_CLIP	
+	
+;_PCLIP
+	XOR		A
+	LD		(COLL_XMOVE),A
+	LD		A,$08	
+	
+_PNO_CLIP
+	LD		(HL),A
+	
+	RET	
+	
+;********************************
+;FIGURE OUT WHICH X YOU'RE CLOSEST TO AND GO 1 PIXEL THAT WAY.
+?COLL_HELPER_XCLOSE
+
+	LD		A,(ACTOR_XOFF)
+	CP		0	
+	JR		Z,_GO_UP	
+	CP		15
+	JR		Z,_GO_DOWN
+	XOR		A
+	LD		(COLL_XMOVE),A
+	RET
+	
+_GO_DOWN
+	LD		A,1
+	LD		(COLL_XMOVE),A	
+	
+	RET	
+	
+_GO_UP
+	LD		A,-1
+	LD		(COLL_XMOVE),A
+
+	RET
+	
+;********************************
+;MOVE YOUR Y, BUT STOP IF YOU BREACH THE CURRENT TILE
+?COLL_HELPER_YCLIP
+
+	LD		HL,ACTOR_YOFF
+	LD		A,(COLL_YMOVE)
+	LD		B,A
+	BIT		7,A
+	JR		Z,_POS
+
+;_NEG
+	LD		A,(HL)
+	ADD		A,B
+	CP		8
+	LD		(COLL_YMOVE),A
+	JR		NC,_NNO_CLIP
+	
+;_NCLIP
+	XOR		A
+	LD		(COLL_YMOVE),A
+	LD		A,$08	
+	
+_NNO_CLIP
+	LD		(HL),A
+	
+	RET		
+	
+_POS
+	LD		A,(HL)
+	ADD		A,B
+	
+	CP		8	
+	LD		(COLL_YMOVE),A
+	JR		C,_PNO_CLIP	
+	
+;_PCLIP
+	XOR		A
+	LD		(COLL_YMOVE),A
+	LD		A,$08	
+	
+_PNO_CLIP
+	LD		(HL),A
+	
+	RET	
+	
+;********************************
+;FIGURE OUT WHICH Y YOU'RE CLOSEST TO AND GO 1 PIXEL THAT WAY.
+;UNLESS YOU ARE W/IN THE "NO SLIP" BORDER
+?COLL_HELPER_YCLOSE
+
+	LD		A,(ACTOR_YOFF)
+	CP		0	
+	JR		Z,_GO_UP	
+	CP		15
+	JR		Z,_GO_DOWN
+	XOR		A
+	LD		(COLL_YMOVE),A
+	RET
+	
+_GO_DOWN
+	LD		A,1
+	LD		(COLL_YMOVE),A	
+	
+	RET	
+	
+_GO_UP
+	LD		A,-1
+	LD		(COLL_YMOVE),A
+
+	RET
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,43 @@
+/********************************/
+?_WVEPATHVALLEY03_DR_1
+		HeroToDoor			(29,20,0,52)
+		Jump				(?_WVEPATHVALLEY02)
+
+?_WVEPATHVALLEY03_DR_2
+		HeroToDoor			(0,34,51,0)
+		Jump				(?_WVEPATHVALLEY05)
+
+?_WVEPATHVALLEY03_DR_3
+		HeroToDoor			(10,0,9,23)
+		Jump				(?_GENERIC_WVEPATHVALLEY01_SWIM)
+
+/********************************/
+?_WVESHORTCUT01_DR_1
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_WALK_DOWN_ANIM)
+		HeroToDoor			(43,24,4,4)
+		PalClearBase		(0,15,31,31,31)
+		PalFade				(0,15,32,0)
+		Jump				(?_NRMGLADE10_FADEIN)
+
+?_WVESHORTCUT01_DR_2
+		HeroSetDoor			(15,5)
+		Jump				(?_HDNROOM02)		
+
+		
+?_WVESHORTCUT01_TR_1
+	TriggerAlways			(WVESHORTCUT01_Chest1,?_TXT_ITS_EMPTY,255,50,8,54)
+	InitSkip				(_SKIP)
+	SetXRAMByte				(Blades_State,1)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("That's funny...=")
+							("what are these?")
+	TextClose				()
+	TextOpen				()
+	TextWrite				("Tony got=")
+							("Crystal Blades")				
+	TextClose				()
+_SKIP
+	End						()
+

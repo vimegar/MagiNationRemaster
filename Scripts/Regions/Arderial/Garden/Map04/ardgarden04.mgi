@@ -1,0 +1,40 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP04\ARDGARDEN04_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP04\ARDGARDEN04_TXT.MGI
+
+/********************************/
+?_ARDGARDEN04
+	SceneNew				()
+	LoadMap					(MAP_ARDGARDEN04)
+	LoadHotspots			(HS_ARDGARDEN04)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,16,0,?_HERO_STAND_UP_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,11,12,16,0,?_ARDGARDEN04_PRISONER8,?_ARDGARDEN04_PRISONER_TXT)
+	LoadVRAMTiles			(27,BIT_ARDCLOAKMAN,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	If						([!HldPrisoner8],?_END)
+	ThatActorStart			(ACTOR00)
+	End						()
+
+?_ARDGARDEN04_PRISONER8
+	ThisActorSetAnimDelay	(?_CLOAKMAN_WALK_UP_ANIM,64)
+							(?_CLOAKMAN_STAND_UP_ANIM,64)
+							(?_CLOAKMAN_WALK_DOWN_ANIM,64)
+							(?_CLOAKMAN_STAND_DOWN_ANIM,144)
+							(?_CLOAKMAN_STAND_DL_ANIM,48)
+	JumpLocal				(?_ARDGARDEN04_PRISONER8)
+
+?_ARDGARDEN04_PRISONER_TXT
+	If						([HldPrisoner8Talk],_TALKED)
+	SetXRAMBit				(HldPrisoner8Talk,TRUE)
+	SetText					(?_ARDGARDEN04_TXT_1)
+	Jump					(?_FACE_CLOAKMAN)
+_TALKED
+	SetText					(?_ARDGARDEN04_TXT_2)
+	Jump					(?_FACE_CLOAKMAN)
+

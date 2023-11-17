@@ -1,0 +1,14 @@
+/********************************/
+//NRMVASH16
+/********************************/
+?_NRMVASH16_ORWIN_GENERATEXT
+	TextOpen				()
+	TextIcon				(ICON_ORWIN)
+	TextWrite				("Don't Follow=")
+							("Eidon on")
+							("some foolish=")
+							("mission!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+

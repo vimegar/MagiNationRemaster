@@ -1,0 +1,104 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP05\NRMGLADE05_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP05\NRMGLADE05_TXT.MGI
+
+/********************************/
+?_NRMGLADE05
+	Switch				([GAMECOUNT])
+						(GC_FIND_ORWIN,?_NRMGLADE05_LOSTORWIN)
+
+?_NRMGLADE05_GENERIC
+	SceneNew			()
+	LoadMap				(MAP_NRMGLADE05)
+?_NRMGLADE05_GEN_RETURN
+	LoadHotspots		(HS_NRMGLADE05)
+	LoadTriggers		(TR_NRMGLADE05)
+	SetBtlReturn		(?_NRMGLADE05_RETURN)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit		(ACTOR1E,?RAINDROP_AI,10,9,30,0,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart		(ACTOR1E)
+	LoadVRAMTiles		(52,BIT_SPARKLE,0,0)
+	ThatActorStart		(HEROACTOR)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	SongStart			(SONGID_glade)
+	End					()
+
+?_NRMGLADE05_RETURN
+	SceneNew			()
+	LoadVRAM			(VRM_NRMGLADE,PAL_NRMGLADE)
+	If					([GC = GC_FIND_ORWIN],?_NRMGLADE05_LOSTORWIN_RET)
+	Jump				(?_NRMGLADE05_GEN_RETURN)
+
+/*******************************/	
+?_NRMGLADE05_LOSTORWIN
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE05)
+?_NRMGLADE05_LOSTORWIN_RET
+	LoadHotspots			(HS_NRMGLADE05)
+	LoadPalette				(PAL_HERO)
+	SetBtlReturn			(?_NRMGLADE05_RETURN)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,19,5,30,0,?_NRMGLADE05_MAN03,?_NRMGLADE05_MAN03_TALKER)
+	ThatActorInit			(ACTOR01,?TALKER_AI,4,20,30,48,?_NRMGLADE05_EIDON,?_NRMGLADE05_EIDON_TALKER)
+	ThatActorInit			(ACTOR02,?TALKER_AI,20,23,30,96,?_NRMGLADE05_GIRL04,?_NRMGLADE05_GIRL04_TALKER)
+	
+	ThatActorInit			(ACTOR1E,?RAINDROP_AI,10,9,12,150,?_RAINER,?_GLADE_RNDBAT)
+	ThatActorStart			(ACTOR1E)
+	LoadVRAMTiles			(52,BIT_SPARKLE,150,0)
+	
+	LoadVRAMTiles			(48,BIT_MAN03,0,0)
+	LoadVRAMTiles			(48,BIT_EIDON,48,0)
+	LoadVRAMTiles			(48,BIT_GIRL04,96,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_forest)
+	SceneReady				()
+	End						()
+
+?_NRMGLADE05_MAN03
+	ThisActorSetAnimDelay	(?_MAN03_WALK_UP_ANIM,16)
+							(?_MAN03_STAND_LEFT_ANIM,100)
+							(?_MAN03_WALK_DOWN_ANIM,16)
+							(?_MAN03_STAND_LEFT_ANIM,100)
+							(?_MAN03_STAND_RIGHT_ANIM,100)
+	Jump					(?_NRMGLADE05_MAN03)
+	End						()
+
+?_NRMGLADE05_MAN03_TALKER
+	SetText					(?_NRMGLADE05_TXT_1)
+	Jump					(?_FACE_MAN03)
+	End						()
+
+?_NRMGLADE05_EIDON
+	ThisActorSetAnimDelay	(?_EIDON_STAND_LEFT_ANIM,70)
+	ThisActorSetAnimDelay	(?_EIDON_STAND_RIGHT_ANIM,70)
+	Jump					(?_NRMGLADE05_EIDON)
+	End						()
+	
+?_NRMGLADE05_EIDON_TALKER
+	SetText					(?_NRMGLADE05_TXT_2)
+	Jump					(?_FACE_EIDON)
+	End						()
+
+
+?_NRMGLADE05_GIRL04
+	ThisActorSetAnimDelay	(?_GIRL04_STAND_LEFT_ANIM,10)
+	ThisActorSetAnimDelay	(?_GIRL04_WALK_RIGHT_ANIM,24)
+	ThisActorSetAnimDelay	(?_GIRL04_STAND_RIGHT_ANIM,10)
+	ThisActorSetAnimDelay	(?_GIRL04_WALK_LEFT_ANIM,24)
+	Jump					(?_NRMGLADE05_GIRL04)
+	End						()	
+
+?_NRMGLADE05_GIRL04_TALKER
+	SetText					(?_NRMGLADE05_TXT_3)
+	Jump					(?_FACE_GIRL04)
+	End						()	
+

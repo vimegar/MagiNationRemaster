@@ -1,0 +1,280 @@
+/********************************//********************************/
+// ORLON IS A SHMUCK
+/********************************//********************************/
+?_OROISLAND04_TXT_1
+	If					([[Orlons_Talked] || [GC > GC_BOOTS_QUEST]],_TALKED)
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite 			("Hello,=")
+	         			("traveler.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Is this Orothe?")
+	TextIcon			(ICON_ORLON)
+	TextWrite 			("Yes it is.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Can you direct=")
+	         			("me to the")
+	         			("vault?")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Vault? I don't=")
+	         			("know any vault.")
+	         			("This is all=")
+	         			("that's left of")
+	         			("Orothe. Yeah.")	
+	TextIcon			(ICON_TONY)
+	TextWrite			("What?")
+	TextIcon			(ICON_ORLON)
+	TextWrite 			("This island,=")
+	         			("that hut, and")
+	         			("me. Yup, that's=")
+	         			("it. Hee hee...")
+	TextClose			()
+	SetXRAMBit			(Orlons_Talked,TRUE)
+	SetEventText		(1)
+	End					()
+_TALKED
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Find anything?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_OROISLAND04_TXT_2
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("I'm all alone,=")
+	         			("yep, that's")
+	         			("right...yep...")
+	TextClose			()	
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END ORLON IS A SHMUCK
+/********************************//********************************/
+/********************************//********************************/
+// RINGSMITH
+/********************************//********************************/
+?_OROISLANDS04_ORLON_SMITH_TXT
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	Switch					([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+_UP
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	JumpLocal				(_CONTINUE)
+_DOWN
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	JumpLocal				(_CONTINUE)
+_RIGHT
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_DOWN_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_LEFT_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	JumpLocal				(_CONTINUE)
+_LEFT
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_DOWN_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_RUN_RIGHT_ANIM)
+	Delay					(8)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+_CONTINUE
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Hey Orlon,=")
+						("can you make")
+						("me a ring?")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("POOF! You're=")
+						("a ring!")
+	TextIcon			(ICON_TONY)
+	TextWrite			(".........")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Kidding!=")
+						("Only kidding!")
+						("So what do=")
+						("you want?")
+_MAIN_MENU
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Forge  Equip=")
+						(" Power  Done$")
+	
+	TextMenu			(4)
+						(_RINGSMITH)
+						(_UPGRADE)
+						(_RINGBANK)
+						(_END)
+
+_UPGRADE
+	TextClose			()
+	MenuRingUpgrade		(SHARBLOOT)
+						(ORPUS)
+						(PARALIT)
+						(ABAQUIST)
+						(BWILL)
+						(PLATHEUS)
+						(SPHOR)
+						(SEA_JILE)
+						(KARAK)
+						(KELTHET)
+						(CORALHYREN)
+						(DEEP_HYREN)
+						(MEGATHAN)
+	Jump				(_MAIN_MENU)
+
+_RINGBANK
+	TextClose			()
+	MenuRingBank		()
+	Jump				(_MAIN_MENU)
+
+_RINGSMITH
+	TextIcon			(ICON_ORLON)
+	JumpRandom			(_JOKE01)
+						(_JOKE02)
+						(_JOKE03)
+_JOKE01
+	TextWrite			("Does your face=")
+						("hurt?")
+						("'Cause it's=")
+						("KILLIN' me!")
+						("AHH HA HA HA!!")
+	JumpLocal			(_RINGSMITH2)
+_JOKE02
+	TextWrite			("Every kid has=")
+						("the right to")
+						("be ugly, but=")
+						("you abused")
+						("the privilege!")
+						("HA HAA HAAA!!")
+	JumpLocal			(_RINGSMITH2)
+_JOKE03
+	TextWrite			("Your mother,=")
+						("does she have")
+						("a loud bark?")
+						("BWAH HAH!!")
+
+_RINGSMITH2
+	TextClose			()
+
+	MenuRingSmith		(_BANK_FULL,_MAIN_MENU)
+						(SHARBLOOT,100,35,SHARBLOOT,2,CREATURE_NULL,0)
+						(ORPUS,100,35,ORPUS,2,AGOVO,1)
+						(PARALIT,100,35,PARALIT,3,PARMALAG,1)
+						(ABAQUIST,100,38,ABAQUIST,4,VULBOR,1)
+						(BWILL,100,35,BWILL,2,BRUB,1)
+						(PLATHEUS,150,38,PLATHEUS,4,CREATURE_NULL,0)
+						(SPHOR,150,38,SPHOR,3,SHARBLOOT,1)
+						(SEA_JILE,150,38,SEA_JILE,2,SABREBACK,1)
+						(KARAK,150,38,KARAK,2,PARALIT,1)
+						(CORALHYREN,500,50,CORALHYREN,3,PARALIT,1)
+						(DEEP_HYREN,600,50,DEEP_HYREN,5,ORPUS,1)
+						(MEGATHAN,650,50,MEGATHAN,5,ORATHAN_F,1)
+_DONE
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Here goes!")
+	TextClose			()
+	ThatActorSetScript	(ACTOR00,?_OROISLANDS04_MAKE_RING)
+	WaitAnyEventMaster	()
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Here's that=")
+						("%X")
+						("freaky!")
+	Jump				(_MAIN_MENU)
+
+_BANK_FULL
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Sorry!")
+						("Your Ring Bank=")
+						("is full.")
+	JumpLocal			(_MAIN_MENU)
+
+_END
+	TextOpen			()
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Be careful.=")
+						("Animite causes")
+						("severe head=")
+						("swelling.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("It does?!")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Sure!")
+	TextIcon			(ICON_TONY)
+	TextWrite			(".........")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	ThisActorRestoreState	()
+	End					()
+/********************************//********************************/
+// END RINGSMITH
+/********************************//********************************/
+
+/********************************//********************************/
+// ORLON'S BUDDY
+/********************************//********************************/
+?_OROISLANDS04_TXT_3
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Hey, the ferry=")
+						("left!")
+						("How do I get=")
+						("back to Cald?")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("I guess you're=")
+						("stuck here with")
+						("me, then!")
+	TextIcon			(ICON_TONY)
+	TextWrite			(".........")
+	TextIcon			(ICON_ORLON)
+	TextWrite			("Geez, don't=")
+						("take it so")
+						("seriously, I'm=")
+						("just kidding!")
+						("Now let me=")
+						("see...")
+						("Hmmm...I know!=")
+						("Come with me!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END ORLON'S BUDDY
+/********************************//********************************/
+/********************************//********************************/
+// EIDON CATCHES UP
+/********************************//********************************/
+?_OROISLAND_EIDON_TXT
+	TextOpen			()
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Tony!")
+	TextClose			()
+	Sync				(2,0)
+	End					()
+
+?_OROISLAND_EIDON_TXT1
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("What is it?")
+	TextIcon			(ICON_EIDON)
+	TextWrite			("Something=")
+						("horrible")
+						("has happened.=")
+						("You must come")
+						("with me.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Lead the way.")
+	TextClose			()
+	Sync				(3,1)
+	End					()
+
+/********************************//********************************/
+// END EIDON CATCHES UP
+/********************************//********************************/

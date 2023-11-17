@@ -1,0 +1,49 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP09B\NRMGLADE09B_DR.MGI
+%INCLUDE			REGIONS\NAROOM\GLADE\MAP09B\NRMGLADE09B_TXT.MGI
+
+/********************************/
+?_NRMGLADE09B
+	SetXRAMByte				(Exit_Disable,0)
+	SetLoadScript			(?_NRMGLADE09A_DR_1)
+
+	SceneNew				()
+	LoadMap					(MAP_NRMGLADE09B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,10,6,18,0,?_NRMGLADE09B_BN_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,1,18,0,?_NRMGLADE09B_BN_MORAG,?_DONT_TALK)
+	LoadVRAMTiles			(39,BIT_MORAG,0,0)
+	ThatActorStart			(HEROACTOR)
+	HeroSetCamera			()
+	SongStart				(SONGID_morag)
+	PalClearAnim			(0,15,31,31,31)	
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	WaitEventMaster			(1)
+	HeroSetDoor				(5,10)
+	Jump					(?_NRMGLADE10)
+	End						()
+
+?_NRMGLADE09B_BN_TONY
+	ThisActorSetAnimScroll	(?_HERO_WALK_DOWN_ANIM,16,0,1)
+	ThatActorStart			(ACTOR00)
+	ThisActorSetAnimScroll	(?_HERO_WALK_DOWN_ANIM,16,0,-1)		
+							(?_HERO_STAND_UP_ANIM,32,0,-1)
+	Delay					(96)
+	ScrollMap				(28,0,2)
+	SetText					(?_NRMGLADE09B_TXT_MORAG)
+	WaitEventText			(1)
+	ThisActorSetAnimScroll	(?_HERO_RUN_UP_ANIM,64,0,-1)
+	SetEventMaster			(1)
+	End						()
+	
+?_NRMGLADE09B_BN_MORAG
+	ThisActorSetAnimDelay	(?_MORAG_HOVER_DOWN_ANIM,128)
+							(?_MORAG_HOVER_DL_ANIM,8)
+							(?_MORAG_HOVER_UL_ANIM,8)
+							(?_MORAG_FLOAT_UP_ANIM,32)
+	ThisActorStop			()
+	End						()
+
+

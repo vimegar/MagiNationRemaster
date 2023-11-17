@@ -1,0 +1,19 @@
+/********************************//********************************/
+// MONKEY MOUTH VACUUM ROOM
+/********************************//********************************/
+?_HDNLAVATUBE03
+	SceneNew				()
+	LoadMap					(MAP_HDNLAVATUBE03)
+	LoadHotspots			(HS_HDNLAVATUBE03)
+	LoadTriggers			(TR_HDNLAVATUBE03)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongFadeOut				(80)
+	SceneReady				()
+	End						()
+/********************************//********************************/
+// END MONKEY MOUTH VACUUM ROOM
+/********************************//********************************/

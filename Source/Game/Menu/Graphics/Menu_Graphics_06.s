@@ -1,0 +1,137 @@
+;********************************
+; MENU_GRPAHICS_06.S
+;********************************
+;	Author:	Dylan "Turf Wound" Mayo
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?MAIN_MENU_COPY_GLYPH
+
+	LD		A,1
+	LD		(VBK),A
+	
+	LD		BC,1120			;(1 GLYPH * 70 TILES * 16 BYTES/TILE)
+	LD		HL,BIT_MENUGLYPH
+	LD		DE,$9000
+	
+	CALL	?MEM_MOV
+	
+	RET
+
+;********************************
+?MAIN_MENU_COPY_RELICS
+
+	LD		A,1
+	LD		(VBK),A
+	
+	LD		BC,720			;(5 RELICS * 9 TILES * 16 BYTES/TILE)
+	LD		HL,BIT_RELIC1
+	LD		DE,$8CB0
+	
+	CALL	?MEM_MOV
+	
+	RET
+
+;********************************
+?MAIN_MENU_COPY_STAT_LBLS
+
+	LD		A,1
+	LD		(VBK),A
+	
+	LD		BC,384			;(6 LABELS * 4 TILES * 16 BYTES/TILE)
+	LD		HL,BIT_STREN
+	LD		DE,$9150
+	
+	CALL	?MEM_MOV
+	
+?MAIN_MENU_COPY_LVL_LBLS
+	LD		A,1
+	LD		(VBK),A
+
+	LD		BC,128				;(2 LABELS * 4 TILES * 16 BYTES/TILE)
+	LD		HL,BIT_LEVEL
+	LD		DE,$92D0
+	
+	CALL	?MEM_MOV
+	
+	RET
+
+;********************************
+?MAIN_MENU_PLOT_TO_BG
+
+;SET VBANK STUFF
+	XOR		A
+	LD		(VBK),A
+	
+;USE LOOKUP TABLE TO FIND START OF CURRENT MENU DATA
+	LD		A,(MENU_CUR_MENU)
+	ADD		A,A		; MULT2	
+	LD		C,A
+	LD		B,$00
+	LD		HL,?MENU_DUMP_TABLE		;TABLE
+	ADD		HL,BC					;+CURRENT MENU
+	LD		A,(HLI)
+	LD		B,(HL)
+	LD		C,A						;=DUMP FILE
+		
+;LD INTO BG
+	LD		HL,$9C20				;START OF MY BG IS $9C00 THIS IS THE START OF 
+									;WHERE THE MENUS ARE GENERATED OUT OF THE DUMP FILES
+	LD		D,10
+
+_NESTY_LUPE
+	LD		E,20
+
+_BG_LOAD_LUPE
+	LD_HLI_BCI
+	DEC		E
+	JR		NZ,_BG_LOAD_LUPE
+	DEC		D
+	JR		Z,_BAIL
+;DONE W/ ONE LINE, JUMP UP HL TO NEXT LINE
+	PUSH	DE
+	LD		DE,12
+	ADD		HL,DE
+	POP		DE
+	JR		_NESTY_LUPE	
+
+_BAIL
+	RET
+	
+;********************************
+?MAIN_MENU_PACK_VRAM
+	
+	LD			A,MENU_VRAM_BANK
+	LD 			(VBK),A				;SET VBANK	
+	
+_NEWTILE
+	FGET16		H,L,MENU_CUR_CHAR
+	LD			A,(HLI)				;LOAD C W/ THE CURRENT CHARACTER'S
+	LD			E,A					;OFFSET FROM START OF FONT_TIL, INC HL TO NEXT
+	SET16		H,L,MENU_CUR_CHAR	;OFFSET, RE-STORE MENU_CUR_CHAR			
+	LD			D,0
+	SLA16		D,E,4				;OFFSET * 16 = ADDRESS
+	
+	FGET16		B,C,MENU_VRAM_PTR	
+	LD			HL,BIT_FONT
+	ADD			HL,DE				;ADD THE OFFSET TO START OF THE F0NT_TIL	
+	
+	LD			D,16
+_TILE_COPY	
+	LD_BCI_HLI
+	DEC			D
+	JR			NZ,_TILE_COPY
+	
+	FSET16 		B,C,MENU_VRAM_PTR
+;DONE?
+	LD			HL,MENU_CHAR_LEFT
+	DEC			(HL)
+	RET			Z
+	
+	JR			_NEWTILE
+	
+	
+;********************************
+	END
+;********************************

@@ -1,0 +1,7117 @@
+;Size:7469
+                     
+;********************************
+; C:\Work\Patrick's Project\scripts\SYSTEM\BATTLE.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_BATTLE_ACTOR_INIT
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0A-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$05
+		DB	$05
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_BATTLE_FADE_IN
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0A&$FFFF)
+		DB	$00
+		DB	$00
+		DB	$40
+		DB	:?_HAND_OF_FATE_ANIM
+		DW	(?_HAND_OF_FATE_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0A-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$00
+		DB	:?_HERO_BATTLE_STAND_ANIM
+		DW	(?_HERO_BATTLE_STAND_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$00
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ONTOP_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$40
+		DB	:?_END
+		DW	(?_END&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$0F
+		DB	$04
+		DB	$05
+		DW	$D036
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$08
+		DB	$04
+		DB	$02
+		DW	$D018
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$0F
+		DB	$04
+		DB	$05
+		DW	$D036
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$0F
+		DB	$00
+		DB	$05
+		DW	$D032
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$08
+		DB	$08
+		DB	$03
+		DB	$05
+		DW	$D035
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$08
+		DB	$08
+		DB	$06
+		DB	$05
+		DW	$D038
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$0F
+		DB	$08
+		DB	$05
+		DW	$D03A
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$00
+		DB	$08
+		DB	$01
+		DB	$02
+		DW	$D015
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$08
+		DB	$08
+		DB	$03
+		DB	$02
+		DW	$D017
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$08
+		DB	$08
+		DB	$06
+		DB	$02
+		DW	$D01A
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$08
+		DB	$08
+		DB	$02
+		DW	$D01C
+
+	DB	CMD_THATACTORSETLOC
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	$0F
+		DB	$08
+		DB	$04
+		DB	$02
+		DW	$D018
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$05
+		DB	$05
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$87
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CANT_CAUSE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$08),(?AL+$0C),(?AL+$0C),(?AL+$14),(?AL+$0D),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?WAIT
+		DB	?GOBBLE,?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CANT_CURE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),?WAIT
+		DB	?GOBBLE,?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CASUE_ALL_STATUS_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),?WAIT
+		DB	(?AL+$0F),(?AL+$0E),(?AL+$12),(?AL+$12),(?AL+$08),(?AL+$01),(?AL+$0B),(?AL+$04),?SPCE,(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$13),(?AL+$14),(?AL+$12),?HURRY
+		DB	(?AL+$0D),(?AL+$0E),(?AL+$16),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CASUE_STATUS_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$0D),(?AL+$0E),(?AL+$16),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CONFUSE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$0D),(?AL+$05),(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CRASH_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$02),(?AL+$11),(?AL+$00),(?AL+$12),(?AL+$07),(?AL+$04),(?AL+$03),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	(?AU+$01),(?AL+$00),(?AL+$13),(?AL+$13),(?AL+$0B),(?AL+$04),?SPCE,(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$08),(?AL+$0D),(?AL+$04),?EXCL,?WAIT
+		DB	(?AU+$02),(?AL+$0E),(?AL+$0D),(?AL+$13),(?AL+$00),(?AL+$02),(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?HURRY
+		DB	(?AL+$0F),(?AL+$08),(?AL+$13),(?AL+$08),(?AL+$05),(?AL+$14),(?AL+$0B),?SPCE,(?AU+$04),(?AL+$17),(?AL+$0E),(?AU+$01),(?AL+$18),(?AL+$13),(?AL+$04),?WAIT
+		DB	(?AU+$0D),(?AU+$0E),(?AU+$16),?EXCL,?SPCE,(?AU+$0C),(?AU+$14),(?AU+$00),(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),(?AU+$07),(?AU+$00),?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_CREATURE_DIES_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$04),(?AL+$0B),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$0D),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_DEFEND_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$03),(?AL+$08),(?AL+$0D),(?AL+$06),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_DEFLATE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$03),(?AL+$04),(?AL+$05),(?AL+$0B),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$12),?WAIT
+		DB	(?AL+$08),(?AL+$13),(?AL+$12),(?AL+$04),(?AL+$0B),(?AL+$05),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_DIVERT_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$13),(?AL+$11),(?AL+$08),(?AL+$04),(?AL+$12),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$03),(?AL+$08),(?AL+$15),(?AL+$04),(?AL+$11),(?AL+$13),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$00),(?AL+$13),(?AL+$13),(?AL+$00),(?AL+$02),(?AL+$0A),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_DRAIN_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$03),(?AL+$11),(?AL+$00),(?AL+$08),(?AL+$0D),(?AL+$12),?WAIT
+		DB	?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_ELEM_STRONG_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),(?AL+$12),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$00),(?AL+$13),(?AL+$13),(?AL+$00),(?AL+$02),(?AL+$0A),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_ELEM_WEAK_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$16),(?AL+$04),(?AL+$00),(?AL+$0A),?SPCE,(?AL+$00),(?AL+$06),(?AL+$00),(?AL+$08),(?AL+$0D),(?AL+$12),(?AL+$13),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$00),(?AL+$13),(?AL+$13),(?AL+$00),(?AL+$02),(?AL+$0A),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_EMPTY_MSG
+	DB	CMD_END
+
+;********************************
+?_BTL_ERUPTED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$04),(?AL+$11),(?AL+$14),(?AL+$0F),(?AL+$13),(?AL+$04),(?AL+$03),?EXCL,?SPCE,(?AU+$00),(?AL+$0B),(?AL+$0B),?WAIT
+		DB	(?AL+$08),(?AL+$13),(?AL+$12),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),(?AL+$08),(?AL+$04),(?AL+$12),?SPCE,(?AL+$00),(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$07),(?AL+$14),(?AL+$11),(?AL+$13),?SPCE,(?AL+$08),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$04),(?AL+$17),(?AL+$0F),(?AL+$0B),(?AL+$0E),(?AL+$12),(?AL+$08),(?AL+$0E),(?AL+$0D),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_ERUPTING_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$04),(?AL+$11),(?AL+$14),(?AL+$0F),(?AL+$13),(?AL+$08),(?AL+$0D),(?AL+$06),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_EXECUTIONER_MSG
+
+	DB	CMD_TEXTICON
+		DW	ICON_AGRAM
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$12),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$04),(?AL+$0D),(?AL+$02),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_EXERT_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$0E),(?AL+$15),(?AL+$04),(?AL+$11),?DASH,(?AL+$04),(?AL+$17),(?AL+$04),(?AL+$11),(?AL+$13),(?AL+$04),(?AL+$03),?WAIT
+		DB	(?AL+$08),(?AL+$13),(?AL+$12),(?AL+$04),(?AL+$0B),(?AL+$05),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_FIGHT_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$05),(?AL+$08),(?AL+$06),(?AL+$07),(?AL+$13),(?AL+$12),?WAIT
+		DB	?GOBBLE,?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_FOCUS_ENEMY_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$05),(?AL+$0E),(?AL+$02),(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$12),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_FOCUS_MSG
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?GOBBLE,(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$06),(?AL+$00),(?AL+$08),(?AL+$0D),(?AL+$12),?HURRY
+		DB	?FORMAT,?SPCE,(?AL+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$06),(?AL+$18),?WAIT
+		DB	(?AL+$01),(?AL+$18),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$02),(?AL+$14),(?AL+$12),(?AL+$08),(?AL+$0D),(?AL+$06),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_FULL_HEAL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$0C),(?AL+$0F),(?AL+$0B),(?AL+$04),(?AL+$13),(?AL+$04),(?AL+$0B),(?AL+$18),?WAIT
+		DB	(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$0B),(?AL+$04),(?AL+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_GOT_HICCUP_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?SPCE,?HURRY
+		DB	(?AL+$06),(?AL+$0E),(?AL+$13),?SPCE,(?AL+$07),(?AL+$08),(?AL+$02),(?AL+$02),(?AL+$14),(?AL+$0F),(?AL+$12),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_GOT_CASH_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$13),?HURRY
+		DB	?FORMAT,?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_GOT_INFUSED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$05),(?AL+$0E),(?AL+$14),(?AL+$0D),(?AL+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_HEAL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$0B),(?AL+$04),(?AL+$03),?WAIT
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$05),(?AL+$0E),(?AL+$11),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_HICCUP_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$08),(?AL+$02),(?AL+$02),(?AL+$14),(?AL+$0F),(?AL+$12),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_HICCUP_CURED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$03),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),?SPCE,(?AL+$07),(?AL+$08),(?AL+$02),(?AL+$02),(?AL+$14),(?AL+$0F),(?AL+$12),?WAIT
+		DB	(?AL+$02),(?AL+$14),(?AL+$11),(?AL+$04),(?AL+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_HIDDEN
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$07),(?AL+$08),(?AL+$03),(?AL+$03),(?AL+$04),(?AL+$0D),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_INSTANT_KILL
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$13),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$08),(?AL+$0D),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$12),?WAIT
+		DB	?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_ITEM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$12),?WAIT
+		DB	?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_JUDGE_MSG
+
+	DB	CMD_TEXTICON
+		DW	ICON_AGRAM
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0C),(?AL+$18),?SPCE,(?AL+$09),(?AL+$14),(?AL+$03),(?AL+$06),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_JURY_MSG
+
+	DB	CMD_TEXTICON
+		DW	ICON_AGRAM
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$06),(?AL+$14),(?AL+$08),(?AL+$0B),(?AL+$13),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_KARMIC_RAISE_ATK_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,(?0+$01),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_KARMIC_RAISE_DEF_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,(?0+$01),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_KARMIC_RAISE_RES_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,(?0+$01),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_KARMIC_RAISE_SPEED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,(?0+$01),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_KARMIC_RAISE_STR_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	(?AU+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,(?0+$01),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOSE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$16),(?AL+$00),(?AL+$12),?HURRY
+		DB	(?AL+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOWER_DEF_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOWER_RES_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOWER_SKILL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOWER_SPEED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LOWER_STR_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?SPCE,?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LUCK_DOWN
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$0B),(?AL+$14),(?AL+$02),(?AL+$0A),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$16),(?AL+$0D),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LUCK_UP
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$0B),(?AL+$14),(?AL+$02),(?AL+$0A),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LVLUP_CREATURE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0B),?SPCE,?FORMAT,?WAIT
+		DB	(?AU+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$06),(?AL+$18),?SPCE,(?AL+$08),(?AL+$12),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LVLUP_CREATURE_MSG2
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0B),?SPCE,?FORMAT,?WAIT
+		DB	(?AU+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$06),(?AL+$18),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$00),(?AL+$01),(?AL+$08),(?AL+$0B),(?AL+$08),(?AL+$13),(?AL+$18),?SPCE,?FORMAT,?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$00),(?AL+$11),(?AL+$0D),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_LVLUP_MAGI_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0B),?SPCE,?FORMAT,?WAIT
+		DB	(?AU+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$06),(?AL+$18),?SPCE,(?AL+$08),(?AL+$12),?SPCE,?FORMAT,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_MIRROR_GONE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$0C),(?AL+$08),(?AL+$11),(?AL+$11),(?AL+$0E),(?AL+$11),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$06),(?AL+$0E),(?AL+$0D),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_MIRROR_USED
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$11),(?AL+$04),(?AL+$05),(?AL+$0B),(?AL+$04),(?AL+$02),(?AL+$13),(?AL+$12),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$14),(?AL+$15),(?AL+$04),(?AL+$11),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_MIRROR_WEAKEN_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$0C),(?AL+$08),(?AL+$11),(?AL+$11),(?AL+$0E),(?AL+$11),?SPCE,(?AL+$08),(?AL+$12),?WAIT
+		DB	(?AL+$16),(?AL+$04),(?AL+$00),(?AL+$0A),(?AL+$04),(?AL+$0D),(?AL+$08),(?AL+$0D),(?AL+$06),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_MISS_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$0C),(?AL+$08),(?AL+$12),(?AL+$12),(?AL+$04),(?AL+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_NORM_DAMAGE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$08),(?AL+$13),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$05),(?AL+$0E),(?AL+$11),?SPCE,?FORMAT,?SPCE,(?AL+$03),(?AL+$00),(?AL+$0C),(?AL+$00),(?AL+$06),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_PLAGUE_CURED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$03),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),?SPCE,(?AL+$0F),(?AL+$0B),(?AL+$00),(?AL+$06),(?AL+$14),(?AL+$04),?WAIT
+		DB	(?AL+$02),(?AL+$14),(?AL+$11),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_PLAGUE_DAMAGE_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$07),(?AL+$14),(?AL+$11),(?AL+$13),?SPCE,(?AL+$01),(?AL+$18),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$0F),(?AL+$0B),(?AL+$00),(?AL+$06),(?AL+$14),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_PLAGUE_DEAD_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$04),(?AL+$0B),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$0D),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$03),?WAIT
+		DB	(?AL+$01),(?AL+$18),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$0F),(?AL+$0B),(?AL+$00),(?AL+$06),(?AL+$14),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RALLY_PT_MSG
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$06),(?AL+$00),(?AL+$08),(?AL+$0D),(?AL+$12),?SPCE,?GOBBLE,?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$06),(?AL+$18),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$11),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?WAIT
+		DB	(?AL+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$00),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_DEF_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_LUCK_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$0B),(?AL+$14),(?AL+$02),(?AL+$0A),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_RES_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_SPEED_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_SKILL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_STR_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_ALL_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),?WAIT
+		DB	(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$13),(?AL+$12),?SPCE,(?AL+$11),(?AL+$00),(?AL+$08),(?AL+$12),(?AL+$04),(?AL+$03),?HURRY
+		DB	(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_SKILL_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0A),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_DEF_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$03),(?AL+$04),(?AL+$05),(?AL+$04),(?AL+$0D),(?AL+$12),(?AL+$04),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_RES_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$11),(?AL+$04),(?AL+$12),(?AL+$08),(?AL+$12),(?AL+$13),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_SPEED_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$0F),(?AL+$04),(?AL+$04),(?AL+$03),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RAISE_STR_PERM_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AU+$12),(?AL+$13),(?AL+$11),(?AL+$04),(?AL+$0D),(?AL+$06),(?AL+$13),(?AL+$07),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$14),(?AL+$0F),?WAIT
+		DB	?FORMAT,?SPCE,(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),(?AL+$0B),(?AL+$18),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RUN_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$04),(?AL+$12),(?AL+$02),(?AL+$00),(?AL+$0F),(?AL+$04),(?AL+$12),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_RUN_FAIL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$04),(?AL+$12),(?AL+$02),(?AL+$00),(?AL+$0F),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_SPELL_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$02),(?AL+$00),(?AL+$12),(?AL+$13),(?AL+$12),?WAIT
+		DB	?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_STATUS_ALL_GONE
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$0D),?WAIT
+		DB	(?AL+$0F),(?AL+$04),(?AL+$11),(?AL+$0C),(?AL+$00),(?AL+$0D),(?AL+$04),(?AL+$0D),(?AL+$13),?SPCE,?HURRY
+		DB	(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$13),(?AL+$14),(?AL+$12),?SPCE,(?AL+$11),(?AL+$04),(?AL+$0C),(?AL+$0E),(?AL+$15),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_STATUS_GONE
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$0D),(?AL+$0E),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$0D),(?AL+$06),(?AL+$04),(?AL+$11),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_STATUS_ROTATE
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$12),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),?SPCE,(?AL+$12),(?AL+$13),(?AL+$00),(?AL+$13),(?AL+$14),(?AL+$12),?WAIT
+		DB	(?AL+$00),(?AL+$05),(?AL+$05),(?AL+$04),(?AL+$02),(?AL+$13),(?AL+$04),(?AL+$03),?HURRY
+		DB	(?AL+$0C),(?AL+$18),(?AL+$12),(?AL+$13),(?AL+$04),(?AL+$11),(?AL+$08),(?AL+$0E),(?AL+$14),(?AL+$12),(?AL+$0B),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_STONE
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$08),(?AL+$12),?SPCE,(?AL+$12),(?AL+$13),(?AL+$0E),(?AL+$0D),(?AL+$04),?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,?WAIT
+		DB	(?AL+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$00),(?AL+$02),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_SUMMON_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$12),(?AL+$14),(?AL+$0C),(?AL+$0C),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_SUMMON_MAGI_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$16),(?AL+$00),(?AL+$12),?SPCE,(?AL+$12),(?AL+$14),(?AL+$0C),(?AL+$0C),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_SUMMON_RND_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?GOBBLE,?FORMAT,?HURRY
+		DB	(?AL+$00),(?AL+$0F),(?AL+$0F),(?AL+$04),(?AL+$00),(?AL+$11),(?AL+$12),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_TARGET_MANY_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$0E),(?AL+$0D),?SPCE,(?AL+$00),?SPCE,(?AL+$06),(?AL+$11),(?AL+$0E),(?AL+$14),(?AL+$0F),?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_TARGET_OTHER_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$0E),(?AL+$0D),?SPCE,?FORMAT,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_TARGET_SELF_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	?FORMAT,?HURRY
+		DB	(?AL+$14),(?AL+$12),(?AL+$04),(?AL+$12),?SPCE,?FORMAT,?WAIT
+		DB	(?AL+$0E),(?AL+$0D),?SPCE,(?AL+$08),(?AL+$13),(?AL+$12),(?AL+$04),(?AL+$0B),(?AL+$05),?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_BTL_WIN_MSG
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$0E),(?AL+$0D),(?AL+$18),?SPCE,(?AL+$16),(?AL+$08),(?AL+$0D),(?AL+$12),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_END
+
+;********************************
+?_TEST_BATTLE
+	DB	CMD_FIGHTNEW
+		DB	UNDERNEATH_ARENA1
+		DB	AGRAM_V1
+		DB	EEBIT
+
+	DB	CMD_JUMP
+		DB	:?_ATK_MELODY
+		DW	(?_ATK_MELODY&$FFFF)
+
+;********************************
+?_ATK_NONE
+	DB	CMD_END
+
+;********************************
+?_ATK_LIFE
+	DB	CMD_END
+
+;********************************
+?_ATK_ERUPT
+	DB	CMD_END
+
+;********************************
+?_ATK_STAR
+	DB	CMD_END
+
+;********************************
+?_ATK_FUROKSTAR
+	DB	CMD_END
+
+;********************************
+?_ATK_ICE
+	DB	CMD_END
+
+;********************************
+?_ATK_SHOOTINGSTAR
+	DB	CMD_END
+
+;********************************
+?_ATK_MELODY
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$32
+		DB	$4C
+		DB	$00
+		DB	:?_MELODY_EIGHTH_ANIM
+		DW	(?_MELODY_EIGHTH_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$64
+		DB	$4C
+		DB	$00
+		DB	:?_MELODY_SHARP_ANIM
+		DW	(?_MELODY_SHARP_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$4C
+		DB	$4C
+		DB	$00
+		DB	:?_MELODY_WHOLE_ANIM
+		DW	(?_MELODY_WHOLE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0E
+		DB	:BIT_MELODY
+		DW	(BIT_MELODY&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_ICE_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_ICE_ATTACK
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SWARM
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$00
+		DB	$3C
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$00
+		DB	$62
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$00
+		DB	$50
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$00
+		DB	$64
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$00
+		DB	$28
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$00
+		DB	$5A
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR13&$FFFF)
+		DB	$00
+		DB	$46
+		DB	$00
+		DB	:?_SWARM_ANIM
+		DW	(?_SWARM_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$16
+		DB	:BIT_SWARM
+		DW	(BIT_SWARM&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_SWARM&$FFFF)
+		DB	:PAL_SWARM
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$3C
+		DB	$01
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$3C
+		DB	$01
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$3C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_PETRIFY
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATUREFADE
+		DB	$C5
+		DW	$2529
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_TIDE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_TIDE_ANIM
+		DW	(?_TIDE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$3C
+		DB	:BIT_TSUNAMI
+		DW	(BIT_TSUNAMI&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_TSUNAMI
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$5A
+		DB	$62
+		DB	$00
+		DB	:?_TSUNAMI_ANIM
+		DW	(?_TSUNAMI_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$3A
+		DB	$62
+		DB	$00
+		DB	:?_TSUNAMI_ANIM
+		DW	(?_TSUNAMI_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$1A
+		DB	$62
+		DB	$00
+		DB	:?_TSUNAMI_ANIM
+		DW	(?_TSUNAMI_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$3C
+		DB	:BIT_TSUNAMI
+		DW	(BIT_TSUNAMI&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$0B
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$0B
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_WIND
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$32
+		DB	$62
+		DB	$00
+		DB	:_TIMER
+		DW	(_TIMER&$FFFF)
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_FIGHTBLOWAWAY
+
+	DB	CMD_END
+
+;********************************
+_TIMER
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_END
+
+;********************************
+?_ATK_HEAL
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALCREATUREFADE
+		DB	$18
+		DW	$03E0
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_HEAL
+
+	DB	CMD_PALCREATUREFADE
+		DB	$08
+		DW	$03E0
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_FLASH
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PANFAST&$FFFF)
+
+	DB	CMD_SETSCROLL
+		DB	:_B
+		DW	(_B&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_DIE
+
+	DB	CMD_PALCLEARANIM
+		DB	$07
+		DW	$7FFF
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+_B
+	DB	CMD_DELAY
+		DB	$1F
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_CLAW
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$05
+		DB	:BIT_CLAW
+		DW	(BIT_CLAW&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CLAW_LEFT_ANIM
+		DW	(?_CLAW_LEFT_ANIM&$FFFF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_HITDEAL
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$84
+		DB	$62
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$74
+		DB	$74
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0D
+		DB	:BIT_HITDEAL
+		DW	(BIT_HITDEAL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$20
+		DW	$0000
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_PASS
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$84
+		DB	$74
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$68
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$68
+		DB	$68
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_PUNCH
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_HIT_ANIM
+		DW	(?_HIT_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0D
+		DB	:BIT_HITDEAL
+		DW	(BIT_HITDEAL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_MUNCH
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_BITE_ANIM
+		DW	(?_BITE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$84
+		DB	$50
+		DB	$00
+		DB	:?_BITE_ANIM
+		DW	(?_BITE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$7C
+		DB	$74
+		DB	$00
+		DB	:?_BITE_ANIM
+		DW	(?_BITE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$09
+		DB	:BIT_BITE
+		DW	(BIT_BITE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$4F
+		DW	$0000
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_PALARENAFADEBASE
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_LAMP
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$64
+		DB	$62
+		DB	$00
+		DB	:?_LAMP_ANIM
+		DW	(?_LAMP_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$14
+		DB	:BIT_LAMP
+		DW	(BIT_LAMP&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$20
+		DW	$0000
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_END
+
+;********************************
+?_ATK_FIREBALL
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_FIREBALL_RIGHT_ANIM
+		DW	(?_FIREBALL_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$16
+		DB	:BIT_FIREBALL
+		DW	(BIT_FIREBALL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0E
+		DB	:BIT_IMPACT
+		DW	(BIT_IMPACT&$FFFF)
+		DW	$8160
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_SFX
+		DB	SFXID_LAVA_FLOW
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$68
+		DB	$64
+		DB	$16
+		DB	:?_IMPACT_RIGHT_ANIM
+		DW	(?_IMPACT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SONIC
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$50
+		DB	$64
+		DB	$00
+		DB	:?_SONIC_OPEN_RIGHT_ANIM
+		DW	(?_SONIC_OPEN_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$50
+		DB	$64
+		DB	$00
+		DB	:?_SONIC_OPEN_RIGHT_ANIM
+		DW	(?_SONIC_OPEN_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$50
+		DB	$64
+		DB	$00
+		DB	:?_SONIC_OPEN_STILL_ANIM
+		DW	(?_SONIC_OPEN_STILL_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$50
+		DB	$64
+		DB	$00
+		DB	:_TIMER
+		DW	(_TIMER&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$04
+		DB	:BIT_SONIC
+		DW	(BIT_SONIC&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_DRAIN
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_SFX
+		DB	SFXID_DRAIN
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_PALCREATURECYCLE
+		DB	$15
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_TIMER
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_SFX
+		DB	SFXID_DRAIN
+
+	DB	CMD_END
+
+;********************************
+?_ATK_BUBBLE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$70
+		DB	$64
+		DB	$00
+		DB	:?_BUBBLE_ANIM
+		DW	(?_BUBBLE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0A
+		DB	:BIT_BUBBLE
+		DW	(BIT_BUBBLE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PANFAST&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$20
+		DW	$1000
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$40
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$40
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_PALCREATUREFADE
+		DB	$E0
+		DW	$1800
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_PALCREATUREFADE
+		DB	$C2
+		DW	$1000
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_CRUSHROCK
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$68
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$64
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$90
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$84
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$7B
+		DB	$00
+		DB	$00
+		DB	:?_CRUSHROCK_CW_ANIM
+		DW	(?_CRUSHROCK_CW_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$14
+		DB	:BIT_CRUSHROCK
+		DW	(BIT_CRUSHROCK&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CRUSHROCK_EXPLODE_ANIM
+		DW	(?_CRUSHROCK_EXPLODE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_EARTHQUAKE_END
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_PALCREATURECYCLE
+		DB	$3C
+		DB	$01
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$15
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_LIGHTNING
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$64
+		DB	$00
+		DB	:?_LIGHTNINGBOLT_ANIM
+		DW	(?_LIGHTNINGBOLT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$82
+		DB	$64
+		DB	$30
+		DB	:?_BLASTWABE_ANIM
+		DW	(?_BLASTWABE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$88
+		DB	$6A
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$82
+		DB	$64
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$82
+		DB	$5E
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$7C
+		DB	$6A
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR13&$FFFF)
+		DB	$88
+		DB	$5E
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR14&$FFFF)
+		DB	$8C
+		DB	$64
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR15&$FFFF)
+		DB	$82
+		DB	$6A
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR16&$FFFF)
+		DB	$88
+		DB	$64
+		DB	$00
+		DB	:?_SLINKY_ANIM
+		DW	(?_SLINKY_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_LIGHTNING
+		DW	(BIT_LIGHTNING&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_BLASTDEAL
+		DW	(BIT_BLASTDEAL&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_PLACE_HOLDER
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_PALCLEARANIM
+		DB	$06
+		DW	$7FFF
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_PALREFRESH
+		DB	$06
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR13-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$0A
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR14-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR15-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR16-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_HIT
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_END
+
+;********************************
+?_ATK_BLASTDEAL
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$74
+		DB	$00
+		DB	:?_BLAST_ANIM
+		DW	(?_BLAST_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_BLASTDEAL
+		DW	(BIT_BLASTDEAL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SHAKE
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PANFAST&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_FIRE_ATTACK
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$32
+
+	DB	CMD_END
+
+;********************************
+?_ATK_MELEE
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_LEAF
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$64
+		DB	$62
+		DB	$00
+		DB	:?_LEAF_ANIM
+		DW	(?_LEAF_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$00
+		DB	$74
+		DB	$00
+		DB	:?_LEAF_FAST_ANIM
+		DW	(?_LEAF_FAST_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$00
+		DB	$50
+		DB	$00
+		DB	:?_LEAF_FAST_ANIM
+		DW	(?_LEAF_FAST_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$00
+		DB	$50
+		DB	$00
+		DB	:_DELAY
+		DW	(_DELAY&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$20
+		DB	:BIT_LEAF
+		DW	(BIT_LEAF&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+_DELAY
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_END
+
+;********************************
+?_ATK_BLOWINGWIND
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$6C
+		DB	$00
+		DB	:?_WIND2_ANIM
+		DW	(?_WIND2_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$37
+		DB	:BIT_WIND
+		DW	(BIT_WIND&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_SFX
+		DB	SFXID_SPLASH
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_FIREBIRD
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$6A
+		DB	$58
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$09
+		DB	:BIT_FIRD
+		DW	(BIT_FIRD&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_DIE
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SUPERSWIRLY
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_SWIRLY_ANIM
+		DW	(?_SWIRLY_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$6C
+		DB	$62
+		DB	$00
+		DB	:?_SWIRLY2_ANIM
+		DW	(?_SWIRLY2_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$20
+		DB	:BIT_SWIRL
+		DW	(BIT_SWIRL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_DELAY
+		DB	$40
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+?_ATK_LIGHTNINGBLAST
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$64
+		DB	$00
+		DB	:?_LIGHTNINGBOLT_ANIM
+		DW	(?_LIGHTNINGBOLT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$82
+		DB	$64
+		DB	$30
+		DB	:?_BLASTWABE_ANIM
+		DW	(?_BLASTWABE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_LIGHTNING
+		DW	(BIT_LIGHTNING&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_BLASTDEAL
+		DW	(BIT_BLASTDEAL&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$0A
+
+	DB	CMD_SFX
+		DB	SFXID_ENEMY_DIE
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_PALCLEARANIM
+		DB	$06
+		DW	$7FFF
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_PALREFRESH
+		DB	$06
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_WHIRLWIND
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$6C
+		DB	$00
+		DB	:?_WIND2_ANIM
+		DW	(?_WIND2_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$37
+		DB	:BIT_WIND
+		DW	(BIT_WIND&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$0A
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$16
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_END
+
+;********************************
+?_ATK_WIMPYWIND
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$6A
+		DB	$6C
+		DB	$00
+		DB	:?_WIND_ANIM
+		DW	(?_WIND_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$37
+		DB	:BIT_WIND
+		DW	(BIT_WIND&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_SFX
+		DB	SFXID_SPLASH
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_FIRD
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$50
+		DB	$78
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$64
+		DB	$6E
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$50
+		DB	$64
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$50
+		DB	$32
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$64
+		DB	$3C
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$50
+		DB	$46
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR13&$FFFF)
+		DB	$50
+		DB	$87
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR14&$FFFF)
+		DB	$64
+		DB	$7D
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR15&$FFFF)
+		DB	$50
+		DB	$73
+		DB	$00
+		DB	:?_FIRD_ANIM
+		DW	(?_FIRD_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$09
+		DB	:BIT_FIRD
+		DW	(BIT_FIRD&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALLOAD
+		DW	(PAL_FIRD&$FFFF)
+		DB	:PAL_FIRD
+		DB	$87
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR13-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR14-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR15-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$28
+		DB	$00
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$3C
+		DB	$0A
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$28
+		DB	$14
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR13&$FFFF)
+		DB	$50
+		DB	$00
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR14&$FFFF)
+		DB	$64
+		DB	$0A
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR15&$FFFF)
+		DB	$50
+		DB	$14
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$0A
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_DELAY
+		DB	$0A
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR13&$FFFF)
+		DB	$50
+		DB	$00
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR14&$FFFF)
+		DB	$64
+		DB	$0A
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR15&$FFFF)
+		DB	$50
+		DB	$14
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$0E
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$28
+		DB	$00
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$3C
+		DB	$0A
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$28
+		DB	$14
+		DB	$00
+		DB	:?_FIRD_DR_ANIM
+		DW	(?_FIRD_DR_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR13-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR14-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR15-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$14
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+?_ATK_MELT
+	DB	CMD_LOADVRAMTILES
+		DB	$24
+		DB	:BIT_ICE
+		DW	(BIT_ICE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_ICECREAM
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$58
+		DB	$62
+		DB	$00
+		DB	:?_ICE_FLAKY_DISSOLVE_ANIM
+		DW	(?_ICE_FLAKY_DISSOLVE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$24
+		DB	:BIT_ICE
+		DW	(BIT_ICE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_JUMP
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$74
+		DB	$62
+		DB	$00
+		DB	:?_ICE_CRUMBLE_ANIM
+		DW	(?_ICE_CRUMBLE_ANIM&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SMOKEYLIGHTNING
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$78
+		DB	$00
+		DB	:?_LIGHTNINGBOLT_ANIM
+		DW	(?_LIGHTNINGBOLT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$82
+		DB	$78
+		DB	$30
+		DB	:?_SMOKEBRAST_ANIM
+		DW	(?_SMOKEBRAST_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_LIGHTNING
+		DW	(BIT_LIGHTNING&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_SMOKEDEAL
+		DW	(BIT_SMOKEDEAL&$FFFF)
+		DW	$8300
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_SFX
+		DB	SFXID_THUNDER
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$14
+
+	DB	CMD_PALCLEARANIM
+		DB	$06
+		DW	$7FFF
+
+	DB	CMD_DELAY
+		DB	$02
+
+	DB	CMD_PALREFRESH
+		DB	$06
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SMOKE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$78
+		DB	$00
+		DB	:?_SMOKEBRAST_ANIM
+		DW	(?_SMOKEBRAST_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_SMOKEDEAL
+		DW	(BIT_SMOKEDEAL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_SMALL
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_BRAMBLE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$72
+		DB	$6C
+		DB	$00
+		DB	:?_BRAMBLE_ANIM
+		DW	(?_BRAMBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$72
+		DB	$5C
+		DB	$00
+		DB	:?_BRAMBLE_ANIM
+		DW	(?_BRAMBLE_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$72
+		DB	$4C
+		DB	$00
+		DB	:?_BRAMBLE_ANIM
+		DW	(?_BRAMBLE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$13
+		DB	:BIT_BRAMBLE
+		DW	(BIT_BRAMBLE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_WINDOW_SLIDE
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_WINDOW_SLIDE
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_WINDOW_SLIDE
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$1C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$18
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_CRACK
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$72
+		DB	$7C
+		DB	$00
+		DB	:?_CRACK_ANIM
+		DW	(?_CRACK_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$1F
+		DB	:BIT_CRACK
+		DW	(BIT_CRACK&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_SFX_EXPLOSION_LARGE
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$26
+
+	DB	CMD_SETSCROLL
+		DB	:_OH
+		DW	(_OH&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$38
+
+	DB	CMD_END
+
+;********************************
+_OH
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_CURSE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$90
+		DB	$48
+		DB	$00
+		DB	:?_CURSE_1_ANIM
+		DW	(?_CURSE_1_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$80
+		DB	$68
+		DB	$00
+		DB	:?_CURSE_2_ANIM
+		DW	(?_CURSE_2_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$60
+		DB	$68
+		DB	$00
+		DB	:?_CURSE_1_ANIM
+		DW	(?_CURSE_1_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$50
+		DB	$48
+		DB	$00
+		DB	:?_CURSE_3_ANIM
+		DW	(?_CURSE_3_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$70
+		DB	$30
+		DB	$00
+		DB	:?_CURSE_4_ANIM
+		DW	(?_CURSE_4_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$40
+		DB	:BIT_CURSE
+		DW	(BIT_CURSE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$4F
+		DW	$0000
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$40
+
+	DB	CMD_SFX
+		DB	SFXID_FIRE_ATTACK
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CURSE_1_BURN_ANIM
+		DW	(?_CURSE_1_BURN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CURSE_2_BURN_ANIM
+		DW	(?_CURSE_2_BURN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CURSE_1_BURN_ANIM
+		DW	(?_CURSE_1_BURN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CURSE_3_BURN_ANIM
+		DW	(?_CURSE_3_BURN_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_CURSE_4_BURN_ANIM
+		DW	(?_CURSE_4_BURN_ANIM&$FFFF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_PALARENAFADEBASE
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_HAUNT
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$72
+		DB	$5C
+		DB	$00
+		DB	:?_HAUNT_ANIM
+		DW	(?_HAUNT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$7D
+		DB	$54
+		DB	$00
+		DB	:?_HAUNT_ANIM
+		DW	(?_HAUNT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$83
+		DB	$58
+		DB	$00
+		DB	:?_HAUNT_ANIM
+		DW	(?_HAUNT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$79
+		DB	$5A
+		DB	$00
+		DB	:?_HAUNT_ANIM
+		DW	(?_HAUNT_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2C
+		DB	:BIT_HAUNT
+		DW	(BIT_HAUNT&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_SETSCROLL
+		DB	:_WEE
+		DW	(_WEE&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_PALARENAFADEBASE
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+_WEE
+	DB	CMD_PALARENAFADEANIM
+		DB	$8F
+		DW	$0000
+
+	DB	CMD_END
+
+;********************************
+?_ATK_BITE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$72
+		DB	$6C
+		DB	$00
+		DB	:?_MUNCH_ANIM
+		DW	(?_MUNCH_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$10
+		DB	:BIT_MUNCH
+		DW	(BIT_MUNCH&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_ROOTS
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$80
+		DB	$60
+		DB	$00
+		DB	:?_ROOTS_ANIM
+		DW	(?_ROOTS_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$07
+		DB	:BIT_ROOTS
+		DW	(BIT_ROOTS&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$12
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_END
+
+;********************************
+?_ATK_STING
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$68
+		DB	$64
+		DB	$00
+		DB	:?_STING_ANIM
+		DW	(?_STING_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$21
+		DB	:BIT_STING
+		DW	(BIT_STING&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_END
+
+;********************************
+?_ATK_TERROR
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$50
+		DB	$48
+		DB	$00
+		DB	:?_TERROR_ANIM
+		DW	(?_TERROR_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$35
+		DB	:BIT_TERROR
+		DW	(BIT_TERROR&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$A0
+		DW	$0000
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_DELAY
+		DB	$68
+
+	DB	CMD_SFX
+		DB	SFXID_VORTEX
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_TERROR_GONE_ANIM
+		DW	(?_TERROR_GONE_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_PALARENAFADEBASE
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_TIMBER
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$78
+		DB	$00
+		DB	$00
+		DB	:?_TIMBER_ANIM
+		DW	(?_TIMBER_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$3E
+		DB	:BIT_TIMBER
+		DW	(BIT_TIMBER&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$40
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_SFX
+		DB	SFXID_DIG
+
+	DB	CMD_DELAY
+		DB	$0E
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_DIG
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_DIG
+
+	DB	CMD_END
+
+;********************************
+?_ATK_TINYFIRE
+	DB	CMD_END
+
+;********************************
+?_ATK_TORNADO
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$80
+		DB	$60
+		DB	$00
+		DB	:?_TORNADO_SLOW_ANIM
+		DW	(?_TORNADO_SLOW_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2B
+		DB	:BIT_TORNADO
+		DW	(BIT_TORNADO&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_SUMMON
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_TORNADO_NORM_ANIM
+		DW	(?_TORNADO_NORM_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_TORNADO_FAST_ANIM
+		DW	(?_TORNADO_FAST_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTBLOWAWAY
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_END
+
+;********************************
+?_ATK_INFERNO
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$64
+		DB	$78
+		DB	$00
+		DB	:?_INFERNO_ANIM
+		DW	(?_INFERNO_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$78
+		DB	$78
+		DB	$00
+		DB	:?_INFERNO_ANIM
+		DW	(?_INFERNO_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$8C
+		DB	$78
+		DB	$00
+		DB	:?_INFERNO_ANIM
+		DW	(?_INFERNO_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$40
+		DB	:BIT_INFERNO
+		DW	(BIT_INFERNO&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$60
+		DW	$0000
+
+	DB	CMD_SFX
+		DB	SFXID_BLOCK_DESTROY
+
+	DB	CMD_FIGHTTREMBLE
+
+	DB	CMD_PALCREATUREFADE
+		DB	$06
+		DW	$001F
+		DB	$01
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$06
+		DB	$01
+
+	DB	CMD_PALCREATUREFADE
+		DB	$0C
+		DW	$0000
+		DB	$01
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$06
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_LAVA
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$68
+		DB	$70
+		DB	$00
+		DB	:?_LAVA_ANIM
+		DW	(?_LAVA_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$62
+		DB	$64
+		DB	$00
+		DB	:?_LAVA_ANIM
+		DW	(?_LAVA_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$6E
+		DB	$69
+		DB	$00
+		DB	:?_LAVA_ANIM
+		DW	(?_LAVA_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$6B
+		DB	$67
+		DB	$00
+		DB	:?_LAVA_ANIM
+		DW	(?_LAVA_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_LAVA
+		DW	(BIT_LAVA&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_SFX
+		DB	SFXID_EARTHQUAKE
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_SFX
+		DB	SFXID_EARTHQUAKE_END
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_MAUL
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$7A
+		DB	$70
+		DB	$00
+		DB	:?_MAUL_ANIM
+		DW	(?_MAUL_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$82
+		DB	$78
+		DB	$00
+		DB	:?_MAUL_ANIM
+		DW	(?_MAUL_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$8A
+		DB	$80
+		DB	$00
+		DB	:?_MAUL_ANIM
+		DW	(?_MAUL_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2D
+		DB	:BIT_MAUL
+		DW	(BIT_MAUL&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_JURY
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$3A
+		DB	$50
+		DB	$00
+		DB	:?_JUDGE_ANIM
+		DW	(?_JUDGE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$38
+		DB	:BIT_JUDGE
+		DW	(BIT_JUDGE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$60
+		DW	$7FFF
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_DELAY
+		DB	$64
+
+	DB	CMD_PALCREATUREFADE
+		DB	$0F
+		DW	$0000
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$2C
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_JUDGE
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$3A
+		DB	$50
+		DB	$00
+		DB	:?_JUDGE_ANIM
+		DW	(?_JUDGE_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$38
+		DB	:BIT_JUDGE
+		DW	(BIT_JUDGE&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALLOAD
+		DW	(PAL_JUDGE&$FFFF)
+		DB	:PAL_JUDGE
+		DB	$87
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$60
+		DW	$7FFF
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_DARK_ATTACK
+
+	DB	CMD_DELAY
+		DB	$64
+
+	DB	CMD_PALCREATUREFADE
+		DB	$0F
+		DW	$7FFF
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$2C
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_GRAVITY
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$82
+		DB	$78
+		DB	$00
+		DB	:?_GRAVITY_ANIM
+		DW	(?_GRAVITY_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$40
+		DB	:BIT_GRAVITY
+		DW	(BIT_GRAVITY&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALCREATUREXOR
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_THUNDER
+
+	DB	CMD_FIGHTSHAKE
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_EXECUTIONER
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$4A
+		DB	$50
+		DB	$00
+		DB	:?_EXECUTIONER_ANIM
+		DW	(?_EXECUTIONER_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$40
+		DB	:BIT_EXECUTIONER
+		DW	(BIT_EXECUTIONER&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$60
+		DW	$0000
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$30
+
+	DB	CMD_PALCREATUREFADE
+		DB	$0F
+		DW	$0000
+		DB	$01
+
+	DB	CMD_PALCREATUREXOR
+		DB	$01
+
+	DB	CMD_FIGHTRECOIL
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$18
+		DB	$01
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_END
+
+;********************************
+?_ATK_HEART
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$32
+		DB	$50
+		DW	$DA32
+		DB	$00
+		DB	:?_HEARTS_ANIM
+		DW	(?_HEARTS_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$05
+		DB	:BIT_HEARTS
+		DW	(BIT_HEARTS&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_ICE_ATTACK
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$38
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PANFAST&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$20
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_PALARENAFADEANIM
+		DB	$60
+		DW	$14BF
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX2
+		DB	SFXID_ICE_ATTACK
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$18
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_PALCREATUREFADE
+		DB	$0F
+		DW	$14BF
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_ATK_PACK
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$78
+		DB	$00
+		DB	$00
+		DB	:?_PACK_FALL_THROUGH_ANIM
+		DW	(?_PACK_FALL_THROUGH_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$3A
+		DB	$62
+		DB	$00
+		DB	:?_PACK_JUMP_RIGHT_ANIM
+		DW	(?_PACK_JUMP_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$1E
+		DB	$50
+		DB	$00
+		DB	:?_PACK_JUMP_RIGHT_ANIM
+		DW	(?_PACK_JUMP_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$40
+		DB	$32
+		DB	$00
+		DB	:?_PACK_JUMP_RIGHT_ANIM
+		DW	(?_PACK_JUMP_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR11&$FFFF)
+		DB	$64
+		DB	$0A
+		DB	$00
+		DB	:?_PACK_FALL_DOWN_ANIM
+		DW	(?_PACK_FALL_DOWN_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR10&$FFFF)
+		DB	$88
+		DB	$14
+		DB	$00
+		DB	:?_PACK_FALL_DOWN_ANIM
+		DW	(?_PACK_FALL_DOWN_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$0C
+		DB	:BIT_PACK
+		DW	(BIT_PACK&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$10
+		DB	$01
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR11-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$10
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR10-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$04
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_CRITICAL_ATTACK
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$50
+		DB	$32
+		DB	$00
+		DB	:?_PACK_JUMP_RIGHT_ANIM
+		DW	(?_PACK_JUMP_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$12
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_DELAY
+		DB	$06
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0F
+		DB	$01
+
+	DB	CMD_SFX
+		DB	SFXID_PHYSICAL_ATTACK
+
+	DB	CMD_END
+
+;********************************
+?_ATK_SQUIRT
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$00
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$30
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$10
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$50
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$2F
+		DB	:BIT_SQUIRT
+		DW	(BIT_SQUIRT&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_BATTLEFX&$FFFF)
+		DB	:PAL_BATTLEFX
+
+	DB	CMD_PALREFRESH
+		DB	$0F
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_DELAY
+		DB	$0C
+
+	DB	CMD_PALCREATURECYCLE
+		DB	$0C
+		DB	$00
+
+	DB	CMD_DELAY
+		DB	$18
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PASS
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_PASS
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SFX
+		DB	SFXID_WIND_START
+
+	DB	CMD_FIGHTPAN
+		DB	$01
+		DW	(FIGHTFX_PAN&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$00
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_RIGHT_ANIM
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$30
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_RIGHT_ANIM
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$10
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_RIGHT_ANIM
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$50
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_RIGHT_ANIM
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_DELAY
+		DB	$05
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0D&$FFFF)
+		DB	$50
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0E&$FFFF)
+		DB	$30
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_PASS
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR0F&$FFFF)
+		DB	$68
+		DB	$62
+		DB	$00
+		DB	:?_SQUIRT_SHOOT_ANIM
+		DW	(?_SQUIRT_SHOOT_ANIM&$FFFF)
+
+	DB	CMD_SETSCROLL
+		DB	:_X
+		DW	(_X&$FFFF)
+
+	DB	CMD_SFX
+		DB	SFXID_PANPOP
+
+	DB	CMD_PASS
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_SQUIRT_SHOOT_RIGHT_ANIM
+		DW	(?_SQUIRT_SHOOT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_OVERLAYINIT
+		DW	(ACTOR12&$FFFF)
+		DB	$68
+		DB	$66
+		DB	$00
+		DB	:?_SQUIRT_SPLASH_ANIM
+		DW	(?_SQUIRT_SPLASH_ANIM&$FFFF)
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0F-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$08
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_DELAY
+		DB	$07
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0D-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$01
+
+	DB	CMD_FIGHTRECOILFAST
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR0E-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$14
+
+	DB	CMD_SFX
+		DB	SFXID_WIND_END
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR12-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_END
+
+;********************************
+_X
+	DB	CMD_PALCREATURECYCLE
+		DB	$30
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	PAL_HERO
+	GLOBAL	ACTOR0A
+	GLOBAL	ACTOR_RAM
+	GLOBAL	ACTOR0B
+	GLOBAL	ACTOR0C
+	GLOBAL	ACTOR00
+	GLOBAL	ACTOR01
+	GLOBAL	ACTOR02
+	GLOBAL	ACTOR03
+	GLOBAL	ACTOR04
+	GLOBAL	ACTOR05
+	GLOBAL	ACTOR06
+	GLOBAL	ACTOR07
+	GLOBAL	ACTOR08
+	GLOBAL	ACTOR09
+	GLOBAL	?_HAND_OF_FATE_ANIM
+	GLOBAL	?ANIM_AI
+	GLOBAL	?_HERO_BATTLE_STAND_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_END
+	GLOBAL	?ONTOP_AI
+	GLOBAL	ACTOR0F
+	GLOBAL	?_MELODY_EIGHTH_ANIM
+	GLOBAL	ACTOR0D
+	GLOBAL	?_MELODY_SHARP_ANIM
+	GLOBAL	ACTOR0E
+	GLOBAL	?_MELODY_WHOLE_ANIM
+	GLOBAL	BIT_MELODY
+	GLOBAL	PAL_BATTLEFX
+	GLOBAL	FIGHTFX_PAN
+	GLOBAL	?_SWARM_ANIM
+	GLOBAL	ACTOR10
+	GLOBAL	ACTOR11
+	GLOBAL	ACTOR12
+	GLOBAL	ACTOR13
+	GLOBAL	BIT_SWARM
+	GLOBAL	PAL_SWARM
+	GLOBAL	?_TIDE_ANIM
+	GLOBAL	BIT_TSUNAMI
+	GLOBAL	?_TSUNAMI_ANIM
+	GLOBAL	FIGHTFX_PANFAST
+	GLOBAL	BIT_CLAW
+	GLOBAL	?_CLAW_LEFT_ANIM
+	GLOBAL	?_HIT_ANIM
+	GLOBAL	BIT_HITDEAL
+	GLOBAL	?_BITE_ANIM
+	GLOBAL	BIT_BITE
+	GLOBAL	?_LAMP_ANIM
+	GLOBAL	BIT_LAMP
+	GLOBAL	?_FIREBALL_RIGHT_ANIM
+	GLOBAL	BIT_FIREBALL
+	GLOBAL	BIT_IMPACT
+	GLOBAL	?_IMPACT_RIGHT_ANIM
+	GLOBAL	?_SONIC_OPEN_RIGHT_ANIM
+	GLOBAL	?_SONIC_OPEN_STILL_ANIM
+	GLOBAL	BIT_SONIC
+	GLOBAL	?_BUBBLE_ANIM
+	GLOBAL	BIT_BUBBLE
+	GLOBAL	?_CRUSHROCK_CW_ANIM
+	GLOBAL	BIT_CRUSHROCK
+	GLOBAL	?_CRUSHROCK_EXPLODE_ANIM
+	GLOBAL	?_LIGHTNINGBOLT_ANIM
+	GLOBAL	?_BLASTWABE_ANIM
+	GLOBAL	?_SLINKY_ANIM
+	GLOBAL	ACTOR14
+	GLOBAL	ACTOR15
+	GLOBAL	ACTOR16
+	GLOBAL	BIT_LIGHTNING
+	GLOBAL	BIT_BLASTDEAL
+	GLOBAL	?_BLAST_ANIM
+	GLOBAL	?_LEAF_ANIM
+	GLOBAL	?_LEAF_FAST_ANIM
+	GLOBAL	BIT_LEAF
+	GLOBAL	?_WIND2_ANIM
+	GLOBAL	BIT_WIND
+	GLOBAL	?_FIRD_ANIM
+	GLOBAL	BIT_FIRD
+	GLOBAL	?_SWIRLY_ANIM
+	GLOBAL	?_SWIRLY2_ANIM
+	GLOBAL	BIT_SWIRL
+	GLOBAL	?_WIND_ANIM
+	GLOBAL	PAL_FIRD
+	GLOBAL	?_FIRD_DR_ANIM
+	GLOBAL	BIT_ICE
+	GLOBAL	?_ICE_FLAKY_DISSOLVE_ANIM
+	GLOBAL	?_ICE_CRUMBLE_ANIM
+	GLOBAL	?_SMOKEBRAST_ANIM
+	GLOBAL	BIT_SMOKEDEAL
+	GLOBAL	?_BRAMBLE_ANIM
+	GLOBAL	BIT_BRAMBLE
+	GLOBAL	?_CRACK_ANIM
+	GLOBAL	BIT_CRACK
+	GLOBAL	?_CURSE_1_ANIM
+	GLOBAL	?_CURSE_2_ANIM
+	GLOBAL	?_CURSE_3_ANIM
+	GLOBAL	?_CURSE_4_ANIM
+	GLOBAL	BIT_CURSE
+	GLOBAL	?_CURSE_1_BURN_ANIM
+	GLOBAL	?_CURSE_2_BURN_ANIM
+	GLOBAL	?_CURSE_3_BURN_ANIM
+	GLOBAL	?_CURSE_4_BURN_ANIM
+	GLOBAL	?_HAUNT_ANIM
+	GLOBAL	BIT_HAUNT
+	GLOBAL	?_MUNCH_ANIM
+	GLOBAL	BIT_MUNCH
+	GLOBAL	?_ROOTS_ANIM
+	GLOBAL	BIT_ROOTS
+	GLOBAL	?_STING_ANIM
+	GLOBAL	BIT_STING
+	GLOBAL	?_TERROR_ANIM
+	GLOBAL	BIT_TERROR
+	GLOBAL	?_TERROR_GONE_ANIM
+	GLOBAL	?_TIMBER_ANIM
+	GLOBAL	BIT_TIMBER
+	GLOBAL	?_TORNADO_SLOW_ANIM
+	GLOBAL	BIT_TORNADO
+	GLOBAL	?_TORNADO_NORM_ANIM
+	GLOBAL	?_TORNADO_FAST_ANIM
+	GLOBAL	?_INFERNO_ANIM
+	GLOBAL	BIT_INFERNO
+	GLOBAL	?_LAVA_ANIM
+	GLOBAL	BIT_LAVA
+	GLOBAL	?_MAUL_ANIM
+	GLOBAL	BIT_MAUL
+	GLOBAL	?_JUDGE_ANIM
+	GLOBAL	BIT_JUDGE
+	GLOBAL	PAL_JUDGE
+	GLOBAL	?_GRAVITY_ANIM
+	GLOBAL	BIT_GRAVITY
+	GLOBAL	?_EXECUTIONER_ANIM
+	GLOBAL	BIT_EXECUTIONER
+	GLOBAL	?_HEARTS_ANIM
+	GLOBAL	BIT_HEARTS
+	GLOBAL	?_PACK_FALL_THROUGH_ANIM
+	GLOBAL	?_PACK_JUMP_RIGHT_ANIM
+	GLOBAL	?_PACK_FALL_DOWN_ANIM
+	GLOBAL	BIT_PACK
+	GLOBAL	?_SQUIRT_SHOOT_ANIM
+	GLOBAL	BIT_SQUIRT
+	GLOBAL	?_SQUIRT_SHOOT_RIGHT_ANIM
+	GLOBAL	?_SQUIRT_SPLASH_ANIM
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,8 @@
+/********************************/
+		FileHotspots	(HS_CLDLAVATUBE09)
+						(HOTSPOT_TRIGGER_EAST,?_CLDLAVATUBE09_DR_1)						
+						
+		FileTriggers 	(TR_CLDLAVATUBE09)
+						(TRIGGER_CONFIG,?_CLDLAVATUBE09_TR_1)
+						(TRIGGER_CONFIG,?_CLDLAVATUBE09_TR_2)
+						(TRIGGER_CONFIG,?_CLDLAVATUBE09_TR_3)

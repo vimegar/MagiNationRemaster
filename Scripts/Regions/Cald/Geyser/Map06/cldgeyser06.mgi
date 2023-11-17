@@ -1,0 +1,21 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\GEYSER\MAP06\CLDGEYSER06_DR.MGI
+%INCLUDE			REGIONS\CALD\GEYSER\MAP06\CLDGEYSER06_TXT.MGI
+
+/********************************/
+?_CLDGEYSER06
+	SceneNew		()
+	LoadMap			(MAP_CLDGEYSER06)
+	LoadPalette		(PAL_HERO)
+	LoadHotspots	(HS_CLDGEYSER06)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SetEncounter	(?_CLDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn	(?_CLDGEYSER06)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	End				()
+	

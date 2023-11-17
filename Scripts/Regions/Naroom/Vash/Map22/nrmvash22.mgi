@@ -1,0 +1,18 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP22\NRMVASH22_DR.MGI
+
+/********************************/
+?_NRMVASH22
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH22)
+	LoadHotspots			(HS_NRMVASH22) 
+	LoadTriggers			(TR_NRMVASH22)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,11,16,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_lesson)
+	SceneReady				()
+	End						()

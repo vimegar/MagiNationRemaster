@@ -1,0 +1,216 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_FOSSIK_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?FOSSIK_WALK01_BACK)
+					(?FOSSIK_WALK02_BACK)
+					(?FOSSIK_WALK03_BACK)
+					(?FOSSIK_WALK02_BACK)
+					
+	JumpLocal:		(?_FOSSIK_WALK_UP_ANIM)
+
+/********************************/
+?_FOSSIK_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?FOSSIK_WALK01_FRONT)
+					(?FOSSIK_WALK02_FRONT)
+					(?FOSSIK_WALK03_FRONT)
+					(?FOSSIK_WALK02_FRONT)
+					
+	JumpLocal:		(?_FOSSIK_WALK_DOWN_ANIM)
+
+/********************************/
+?_FOSSIK_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?FOSSIK_WALK01_LEFT)
+					(?FOSSIK_WALK02_LEFT)
+					(?FOSSIK_WALK03_LEFT)
+					(?FOSSIK_WALK02_LEFT)
+					
+	JumpLocal:		(?_FOSSIK_WALK_LEFT_ANIM)
+
+/********************************/
+?_FOSSIK_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?FOSSIK_WALK01_RIGHT)
+					(?FOSSIK_WALK02_RIGHT)
+					(?FOSSIK_WALK03_RIGHT)
+					(?FOSSIK_WALK02_RIGHT)
+					
+	JumpLocal:		(?_FOSSIK_WALK_RIGHT_ANIM)
+
+/********************************/
+?_FOSSIK_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?FOSSIK_WALK01_BACK)
+					(?FOSSIK_WALK02_BACK)
+					(?FOSSIK_WALK03_BACK)
+					(?FOSSIK_WALK02_BACK)
+					
+	JumpLocal:		(?_FOSSIK_RUN_UP_ANIM)
+
+/********************************/
+?_FOSSIK_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?FOSSIK_WALK01_FRONT)
+					(?FOSSIK_WALK02_FRONT)
+					(?FOSSIK_WALK03_FRONT)
+					(?FOSSIK_WALK02_FRONT)
+					
+	JumpLocal:		(?_FOSSIK_RUN_DOWN_ANIM)
+
+/********************************/
+?_FOSSIK_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?FOSSIK_WALK01_LEFT)
+					(?FOSSIK_WALK02_LEFT)
+					(?FOSSIK_WALK03_LEFT)
+					(?FOSSIK_WALK02_LEFT)
+					
+	JumpLocal:		(?_FOSSIK_RUN_LEFT_ANIM)
+
+/********************************/
+?_FOSSIK_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?FOSSIK_WALK01_RIGHT)
+					(?FOSSIK_WALK02_RIGHT)
+					(?FOSSIK_WALK03_RIGHT)
+					(?FOSSIK_WALK02_RIGHT)
+					
+	JumpLocal:		(?_FOSSIK_RUN_RIGHT_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_WALK02_BACK)
+	
+	JumpLocal:		(?_FOSSIK_STAND_UP_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_WALK02_FRONT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_DOWN_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_WALK02_LEFT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_LEFT_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_WALK02_RIGHT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_RIGHT_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_UL_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_UR_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_STAND_LEFT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_DL_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_STAND_RIGHT)
+	
+	JumpLocal:		(?_FOSSIK_STAND_DR_ANIM)
+
+/********************************/
+?_FOSSIK_MAKE_RING_ANIM
+	
+	Frame:			(32,0,0,?FOSSIK_RING00)
+					(8,0,0,?FOSSIK_RING01)
+					(8,0,0,?FOSSIK_RING02)
+					(16,0,0,?FOSSIK_RING03)
+					(4,0,0,?FOSSIK_RING04)
+					(16,0,0,?FOSSIK_RING05)
+					(4,0,0,?FOSSIK_RING06)
+					(8,0,0,?FOSSIK_RING07)
+					(4,0,0,?FOSSIK_RING08)
+					(8,0,0,?FOSSIK_RING09)
+					(4,0,0,?FOSSIK_RING10)
+					(4,0,0,?FOSSIK_RING09)
+					(2,0,0,?FOSSIK_RING10)
+					(2,0,0,?FOSSIK_RING09)
+					(2,0,0,?FOSSIK_RING10)
+					(2,0,0,?FOSSIK_RING09)
+					(2,0,0,?FOSSIK_RING10)
+					(4,0,0,?FOSSIK_RING09)
+					(4,0,0,?FOSSIK_RING10)
+					(8,0,0,?FOSSIK_RING09)
+					(4,0,0,?FOSSIK_RING08)
+					(8,0,0,?FOSSIK_RING07)
+					(4,0,0,?FOSSIK_RING06)
+					(8,0,0,?FOSSIK_RING05)
+					(8,0,0,?FOSSIK_RING04)
+					(8,0,0,?FOSSIK_RING03)
+					
+/********************************/
+?_FOSSIK_DONE_RING_ANIM
+
+	Frame:			(255,0,0,?FOSSIK_RING11)
+	
+	Jump			(?_FOSSIK_DONE_RING_ANIM)
+
+/********************************/
+?_FOSSIK_STAND_ANIM
+	
+	Frame:			(255,0,0,?FOSSIK_RING00)
+	
+	Jump			(?_FOSSIK_STAND_ANIM)
+
+/********************************/
+?_FACE_FOSSIK
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_FOSSIK_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_FOSSIK_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_FOSSIK_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_FOSSIK_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

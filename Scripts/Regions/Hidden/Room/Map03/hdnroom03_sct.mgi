@@ -1,0 +1,31 @@
+/********************************/
+//	ROUTE TO HYREN'S GLADE
+/********************************/
+?_HDNROOM03B
+	SceneNew				()
+	LoadMap					(MAP_HDNROOM03B)
+	LoadHotspots			(HS_HDNROOM03B)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	SongFadeOut				(80)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_HDNROOM03C
+	SceneNew				()
+	LoadMap					(MAP_HDNROOM03C)
+	LoadHotspots			(HS_HDNROOM03C)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	HeroFromDoor			()
+	SongFadeOut				(80)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+/********************************/
+//	END ROUTE TO HYREN'S GLADE
+/********************************/

@@ -1,0 +1,43 @@
+/********************************/
+?_UNDTOWN_MORAGBAT
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_boss)
+	BtlNew				(UNDERNEATH_ARENA1,MORAG,99,?_BATTLE_FADE_IN)	
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,255)
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,155)
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+						
+	TextWrite			("So, you want to=")
+						("stand up for")
+						("these people?=")
+						("You are not")
+						("even worth my=")
+						("time.")
+	TextClose			()
+	BtlSummonDelay		(BTL_ID_MAGI,KOIL,10,25,0)
+
+_LOOP
+	BtlNextTurn			()
+	If					([:WRAM_BATTLE[BTL_SLOT6 != 0]],_LOOP)
+		
+	TextOpen			()
+	TextIcon			(ICON_MORAG)
+	ThatActorSetScript	(ACTOR0C,?_MORAG_BATTLE_TAUNT_ANIM)
+	TextWrite			("More impressive=")
+						("than I thought")
+						("This should=")
+						("take care of")
+						("you.")
+	TextClose			()
+	ThatActorSetScript	(ACTOR0C,?_MORAG_BATTLE_STAND_ANIM)
+	
+_MORAG_BIGGIE_LOOP
+	BtlSummonDelay		(BTL_ID_MAGI,BORGOR,99,200,0)
+	BtlNextTurn			()
+	BtlSummonDelay		(BTL_ID_MAGI,BORGOR,99,200,0)
+	BtlNextTurn			()	
+	JumpLocal			(_MORAG_BIGGIE_LOOP)
+	

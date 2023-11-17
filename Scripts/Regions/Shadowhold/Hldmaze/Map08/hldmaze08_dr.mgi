@@ -1,0 +1,73 @@
+?_HLDMAZE08_DR_1
+		HeroToDoor	(0,8,23,22)
+		Jump		(?_HLDMAZE07)
+
+?_HLDMAZE08_TR_1
+		TriggerTreasure	(HLDMAZE08Chest1,INV_TYPE_ITEM,INV_RUNEOFWILL,7,5,12)
+
+?_HLDMAZE08_TR_2
+		TriggerTreasure	(HLDMAZE08Chest2,INV_TYPE_RELIC,INV_END_BRINGER,9,7,12)
+
+?_HLDMAZE08_TR_3
+		TriggerAlways	(HLDMAZE08Chest3,?_TXT_ITS_EMPTY,255,7,10,12)
+		InitSkip		(_END)
+		TextOpen		()
+		TextWrite		("ROOOAR!")
+		TextClose		()
+		Jump			(?_HLDMAZE_JINGJACK_BATTLE)	
+_END
+		End				()
+
+?_HLDMAZE08_TR_4			// SCREW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This must have=")
+						("cost at least")
+						("seventy-five=")
+						("dollars or so.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE08_TR_5			// SCREW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Components of=")
+						("a dark,")
+						("heartless=")
+						("place.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE08_TR_6			// SCREW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Looks like they=")
+						("didn't have")
+						("time to finish.")
+						("Something must=")
+						("have happened.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE08_TR_7			// SCREW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A giant,=")
+						("rusted screw.")
+		TextClose		()
+		End				()
+
+?_HLDMAZE08_TR_8			// SCREW DRIVER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Wow!")
+						("That's the=")
+						("second biggest")
+						("screwdriver=")
+						("I've ever seen!")
+		TextClose		()
+		End				()
+
+
+
+

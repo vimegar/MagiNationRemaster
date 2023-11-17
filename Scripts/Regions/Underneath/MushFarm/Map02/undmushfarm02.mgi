@@ -1,0 +1,124 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP02\UNDMUSHFARM02_DR.MGI
+%INCLUDE			REGIONS\UNDERNEATH\MUSHFARM\MAP02\UNDMUSHFARM02_TXT.MGI
+
+/********************************/
+?_UNDMUSHFARM02
+?_UNDMUSHFARM02_GENERIC
+	If				([GAMECOUNT = GC_UND_INTRO && Kidnapping = 1],?_UNDMUSHFARM02_KIDNAPPING)
+	If				([GAMECOUNT = GC_UND_INTRO && Kidnapping < 1],?_UNDMUSHFARM02_UND_INTRO)
+	SceneNew		()
+	LoadMap			(MAP_UNDMUSHFARM02)
+	LoadHotspots	(HS_UNDMUSHFARM02)
+	LoadTriggers	(TR_UNDMUSHFARM02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,10,17,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtown)
+	SceneReady		()	
+	End				()
+
+?_UNDMUSHFARM02_UND_INTRO
+	SceneNew		()
+	LoadMap			(MAP_UNDMUSHFARM02)
+	LoadHotspots	(HS_UNDMUSHFARM02)
+	LoadTriggers	(TR_UNDMUSHFARM02)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,10,17,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	ThatActorInit	(ACTOR00,?TALKER_AI,11,10,20,0,?_GRUK_STAND_DOWN_ANIM,?_UNDMUSHFARM02_GRUK_TALKS)
+	ThatActorStart	(ACTOR00)
+	LoadVRAMTiles	(48,BIT_GRUK,0,0)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_undtown)
+	SceneReady		()	
+	End				()
+	
+?_UNDMUSHFARM02_GRUK_TALKS
+	ThisActorSetAnim	(?_GRUK_STAND_DOWN_ANIM)
+	SetText				(?_UNDMUSHFARM02_STORE_TXT)
+	Jump				(?_FACE_GRUK)
+
+/********************************/
+//UNDMUSHFARM02:  KORG & ZET KIDNAP GRUK
+/********************************/
+
+?_UNDMUSHFARM02_KIDNAPPING
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	SetXRAMByte				(Kidnapping,2)
+	SceneNew				()
+	LoadMap					(MAP_UNDMUSHFARM02)
+	LoadHotspots			(HS_UNDMUSHFARM02)
+	LoadTriggers			(TR_UNDMUSHFARM02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,13,6,20,0,?_UNDMUSHFARM02_KIDNAPPING_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,9,12,20,0,?_UNDMUSHFARM02_KIDNAPPING_GRUK,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,8,12,20,48,?_UNDMUSHFARM02_KORG,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,10,12,20,90,?_UNDMUSHFARM02_ZET,?_DONT_TALK)
+	LoadVRAMTiles			(48,BIT_GRUK,0,0)
+	LoadVRAMTiles			(42,BIT_KORG,48,0)
+	LoadVRAMTiles			(48,BIT_ZET,90,0)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	ThatActorStart			(ACTOR02)
+	SetCamera				(9,12)
+	SongStart				(SONGID_korgzet)
+	SceneReady				()	
+	End						()
+
+?_UNDMUSHFARM02_KIDNAPPING_TONY	
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,8)
+							(?_HERO_STAND_DOWN_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_DOWN_ANIM,16)
+							(?_HERO_STAND_LEFT_ANIM,16)
+							(?_HERO_STAND_DL_ANIM,16)
+	SetEventMaster			(1)
+	End						()
+
+?_UNDMUSHFARM02_KIDNAPPING_GRUK
+	ThisActorSetAnimDelay	(?_GRUK_STAND_DOWN_ANIM,4)
+	SetText					(?_UNDMUSHFARM02_TXT_1)
+	ThisActorSetAnimDelay	(?_GRUK_STAND_RIGHT_ANIM,16)
+							(?_GRUK_STAND_LEFT_ANIM,16)
+							(?_GRUK_STAND_RIGHT_ANIM,16)
+							(?_GRUK_STAND_RIGHT_ANIM,16)
+							(?_GRUK_STAND_LEFT_ANIM,16)
+							(?_GRUK_STAND_LEFT_ANIM,16)
+	Sync					(4,0)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_GRUK_WALK_DOWN_ANIM,64)
+	SongFadeOut				(80)
+	Sync					(2,1)
+	ThisActorStop			()
+	End						()
+
+?_UNDMUSHFARM02_KORG
+	ThisActorSetAnimDelay	(?_KORG_STAND_DOWN_ANIM,4)
+	ThisActorSetAnim		(?_KORG_STAND_RIGHT_ANIM)
+	Sync					(4,0)
+	ThisActorSetAnimDelay	(?_KORG_WALK_UP_ANIM,16)
+							(?_KORG_WALK_RIGHT_ANIM,16)
+							(?_KORG_WALK_DOWN_ANIM,64)
+	ThisActorStop			()
+	End						()
+
+?_UNDMUSHFARM02_ZET
+	ThisActorSetAnimDelay	(?_ZET_STAND_DOWN_ANIM,4)
+	ThisActorSetAnim		(?_ZET_STAND_LEFT_ANIM)
+	Sync					(4,0)
+	ThisActorSetAnimDelay	(?_ZET_WALK_DOWN_ANIM,16)
+							(?_ZET_WALK_LEFT_ANIM,16)
+							(?_ZET_WALK_DOWN_ANIM,64)	
+	ThisActorStop			()
+	End						()
+
+
+/********************************/
+// END UNDMUSHFARM02:  KORG & ZET KIDNAP GRUK
+/********************************/

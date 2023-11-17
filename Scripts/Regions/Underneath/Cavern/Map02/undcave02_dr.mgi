@@ -1,0 +1,14 @@
+/********************************/
+?_UNDCAVERN02_DR_1
+		HeroToDoor	(1,39,21,0)
+		Jump			(?_UNDCAVERN01)
+
+?_UNDCAVERN02_DR_2
+		HeroToDoor	(39,39,11,0)
+		Jump			(?_UNDCAVERN03)
+		
+?_UNDCAVERN02_TR_1
+		TriggerTreasure	(UNDCAVERN02_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,29,25,50)
+		
+?_UNDCAVERN02_TR_2
+		TriggerTreasure	(UNDCAVERN02_Chest2,INV_TYPE_ITEM,INV_BALOO_SAP,39,16,50)

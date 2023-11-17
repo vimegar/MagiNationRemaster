@@ -1,0 +1,33 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP10\HLDMAZE10_DR.MGI
+%INCLUDE			REGIONS\SHADOWHOLD\HLDMAZE\MAP10\HLDMAZE10_TXT.MGI
+
+/********************************/
+
+?_HLDMAZE10
+	SceneNew			()
+	LoadMap				(MAP_HLDMAZE10)
+	//LoadEncounters	(EN_NRMRIVER03,ENCOUNTER_FRQ_FAST,?_HLDMAZE_RE_ENTER)
+	LoadHotspots		(HS_HLDMAZE10)
+?_HLDMAZE10_RETURN
+	LoadVRAM			(VRM_HLDMAZE,PAL_HLDMAZE)
+	LoadTriggers		(TR_HLDMAZE10)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	SongStart			(SONGID_shadowhold)
+	ThatActorStart		(HEROACTOR)
+	SetEncounter		(?_HLDMAZE_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn		(?_HLDMAZE10_RETURN)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	If					([Switch12],_END)
+	CopyTileBlock		(24,0,0,2,6,20,5)
+_END
+	SceneReady			()
+	End					()
+
+
+	
+	
+		

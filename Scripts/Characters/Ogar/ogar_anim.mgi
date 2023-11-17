@@ -1,0 +1,249 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_OGAR_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?OGAR_WALK01_BACK)
+					(?OGAR_WALK02_BACK)
+					(?OGAR_WALK03_BACK)
+					(?OGAR_WALK02_BACK)
+					
+	JumpLocal:		(?_OGAR_WALK_UP_ANIM)
+
+/********************************/
+?_OGAR_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?OGAR_WALK01_FRONT)
+					(?OGAR_WALK02_FRONT)
+					(?OGAR_WALK03_FRONT)
+					(?OGAR_WALK02_FRONT)
+					
+	JumpLocal:		(?_OGAR_WALK_DOWN_ANIM)
+
+/********************************/
+?_OGAR_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?OGAR_WALK01_LEFT)
+					(?OGAR_WALK02_LEFT)
+					(?OGAR_WALK03_LEFT)
+					(?OGAR_WALK02_LEFT)
+					
+	JumpLocal:		(?_OGAR_WALK_LEFT_ANIM)
+
+/********************************/
+?_OGAR_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?OGAR_WALK01_RIGHT)
+					(?OGAR_WALK02_RIGHT)
+					(?OGAR_WALK03_RIGHT)
+					(?OGAR_WALK02_RIGHT)
+					
+	JumpLocal:		(?_OGAR_WALK_RIGHT_ANIM)
+
+/********************************/
+?_OGAR_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?OGAR_WALK01_BACK)
+					(?OGAR_WALK02_BACK)
+					(?OGAR_WALK03_BACK)
+					(?OGAR_WALK02_BACK)
+					
+	JumpLocal:		(?_OGAR_RUN_UP_ANIM)
+
+/********************************/
+?_OGAR_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?OGAR_WALK01_FRONT)
+					(?OGAR_WALK02_FRONT)
+					(?OGAR_WALK03_FRONT)
+					(?OGAR_WALK02_FRONT)
+					
+	JumpLocal:		(?_OGAR_RUN_DOWN_ANIM)
+
+/********************************/
+?_OGAR_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?OGAR_WALK01_LEFT)
+					(?OGAR_WALK02_LEFT)
+					(?OGAR_WALK03_LEFT)
+					(?OGAR_WALK02_LEFT)
+					
+	JumpLocal:		(?_OGAR_RUN_LEFT_ANIM)
+
+/********************************/
+?_OGAR_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?OGAR_WALK01_RIGHT)
+					(?OGAR_WALK02_RIGHT)
+					(?OGAR_WALK03_RIGHT)
+					(?OGAR_WALK02_RIGHT)
+					
+	JumpLocal:		(?_OGAR_RUN_RIGHT_ANIM)
+
+/********************************/
+?_OGAR_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?OGAR_WALK02_BACK)
+	
+	JumpLocal:		(?_OGAR_STAND_UP_ANIM)
+
+/********************************/
+?_OGAR_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?OGAR_WALK02_FRONT)
+	
+	JumpLocal:		(?_OGAR_STAND_DOWN_ANIM)
+
+/********************************/
+?_OGAR_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?OGAR_WALK02_LEFT)
+	
+	JumpLocal:		(?_OGAR_STAND_LEFT_ANIM)
+
+/********************************/
+?_OGAR_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?OGAR_WALK02_RIGHT)
+	
+	JumpLocal:		(?_OGAR_STAND_RIGHT_ANIM)
+
+/********************************/
+?_OGAR_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?OGAR_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_OGAR_STAND_UL_ANIM)
+
+/********************************/
+?_OGAR_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?OGAR_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_OGAR_STAND_UR_ANIM)
+
+/********************************/
+?_OGAR_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?OGAR_STAND_LEFT)
+	
+	JumpLocal:		(?_OGAR_STAND_DL_ANIM)
+
+/********************************/
+?_OGAR_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?OGAR_STAND_RIGHT)
+	
+	JumpLocal:		(?_OGAR_STAND_DR_ANIM)
+
+/********************************/
+?_OGAR_BATTLE_STAND_ANIM
+
+	Frame:			(96,0,0,?OGAR_TAUNT04)
+					(96,0,0,?OGAR_STANDLEFT)
+					(128,0,0,?OGAR_TAUNT04)
+					(96,0,0,?OGAR_STANDRIGHT)
+
+	JumpLocal		(?_OGAR_BATTLE_STAND_ANIM)
+
+/********************************/
+?_OGAR_BATTLE_TAUNT_ANIM
+	
+	Frame:			(32,0,0,?OGAR_TAUNT04)
+					(8,0,0,?OGAR_TAUNT01)
+					(8,0,0,?OGAR_TAUNT02)
+					(8,0,0,?OGAR_TAUNT03)
+					(32,0,0,?OGAR_TAUNT04)
+
+	JumpLocal		(?_OGAR_BATTLE_STAND_ANIM)
+
+/********************************/
+?_OGAR_BATTLE_SUMMON_ANIM
+
+	FrameBlock:	(4,0,0)
+				(?OGAR_SUMMON01)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON03)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON01)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON03)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON01)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON03)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON01)
+				(?OGAR_SUMMON02)
+				(?OGAR_SUMMON03)
+				(?OGAR_SUMMON02)
+	Frame:		(32,0,0,?OGAR_SUMMON01)
+
+	JumpLocal		(?_OGAR_BATTLE_STAND_ANIM)
+
+/********************************/
+?_OGAR_BATTLE_WIN_ANIM
+
+	Frame:			(255,0,0,?OGAR_WIN)
+
+	JumpLocal		(?_OGAR_BATTLE_WIN_ANIM)
+
+/********************************/
+?_OGAR_BATTLE_LOSE_ANIM
+
+	Frame:			(1,0,-1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,-1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,-1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,-1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					(1,0,1,?OGAR_LOSE)
+					(1,0,0,?OGAR_LOSE)
+					
+_LOSE
+	Frame:			(255,0,0,?OGAR_LOSE)
+	
+	JumpLocal		(_LOSE)
+
+/********************************/
+?_FACE_OGAR
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_OGAR_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_OGAR_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_OGAR_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_OGAR_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

@@ -1,0 +1,237 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_ORWIN_WALK_UP_ANIM
+
+	FrameBlock:		(8,0,-1)
+					(?ORWIN_WALK01_BACK)
+					(?ORWIN_WALK02_BACK)
+					(?ORWIN_WALK03_BACK)
+					(?ORWIN_WALK02_BACK)
+					
+	JumpLocal:		(?_ORWIN_WALK_UP_ANIM)
+
+/********************************/
+?_ORWIN_WALK_DOWN_ANIM
+
+	FrameBlock:		(8,0,1)
+					(?ORWIN_WALK01_FRONT)
+					(?ORWIN_WALK02_FRONT)
+					(?ORWIN_WALK03_FRONT)
+					(?ORWIN_WALK02_FRONT)
+					
+	JumpLocal:		(?_ORWIN_WALK_DOWN_ANIM)
+
+/********************************/
+?_ORWIN_WALK_LEFT_ANIM
+
+	FrameBlock:		(8,-1,0)
+					(?ORWIN_WALK01_LEFT)
+					(?ORWIN_WALK02_LEFT)
+					(?ORWIN_WALK01_LEFT)
+					(?ORWIN_WALK02_LEFT)
+					
+	JumpLocal:		(?_ORWIN_WALK_LEFT_ANIM)
+
+/********************************/
+?_ORWIN_WALK_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?ORWIN_WALK01_RIGHT)
+					(?ORWIN_WALK02_RIGHT)
+					(?ORWIN_WALK01_RIGHT)
+					(?ORWIN_WALK02_RIGHT)
+					
+	JumpLocal:		(?_ORWIN_WALK_RIGHT_ANIM)
+
+/********************************/
+?_ORWIN_RUN_UP_ANIM
+
+	FrameBlock:		(8,0,-2)
+					(?ORWIN_WALK01_BACK)
+					(?ORWIN_WALK02_BACK)
+					(?ORWIN_WALK03_BACK)
+					(?ORWIN_WALK02_BACK)
+					
+	JumpLocal:		(?_ORWIN_RUN_UP_ANIM)
+
+/********************************/
+?_ORWIN_RUN_DOWN_ANIM
+
+	FrameBlock:		(8,0,2)
+					(?ORWIN_WALK01_FRONT)
+					(?ORWIN_WALK02_FRONT)
+					(?ORWIN_WALK03_FRONT)
+					(?ORWIN_WALK02_FRONT)
+					
+	JumpLocal:		(?_ORWIN_RUN_DOWN_ANIM)
+
+/********************************/
+?_ORWIN_RUN_LEFT_ANIM
+
+	FrameBlock:		(8,-2,0)
+					(?ORWIN_WALK01_LEFT)
+					(?ORWIN_WALK02_LEFT)
+					(?ORWIN_WALK01_LEFT)
+					(?ORWIN_WALK02_LEFT)
+					
+	JumpLocal:		(?_ORWIN_RUN_LEFT_ANIM)
+
+/********************************/
+?_ORWIN_RUN_RIGHT_ANIM
+
+	FrameBlock:		(8,2,0)
+					(?ORWIN_WALK01_RIGHT)
+					(?ORWIN_WALK02_RIGHT)
+					(?ORWIN_WALK01_RIGHT)
+					(?ORWIN_WALK02_RIGHT)
+					
+	JumpLocal:		(?_ORWIN_RUN_RIGHT_ANIM)
+
+/********************************/
+?_ORWIN_STAND_UP_ANIM
+
+	Frame:			(255,0,0,?ORWIN_WALK02_BACK)
+	
+	JumpLocal:		(?_ORWIN_STAND_UP_ANIM)
+
+/********************************/
+?_ORWIN_STAND_DOWN_ANIM
+
+	Frame:			(255,0,0,?ORWIN_WALK02_FRONT)
+	
+	JumpLocal:		(?_ORWIN_STAND_DOWN_ANIM)
+
+/********************************/
+?_ORWIN_STAND_LEFT_ANIM
+
+	Frame:			(255,0,0,?ORWIN_WALK02_LEFT)
+	
+	JumpLocal:		(?_ORWIN_STAND_LEFT_ANIM)
+
+/********************************/
+?_ORWIN_STAND_RIGHT_ANIM
+
+	Frame:			(255,0,0,?ORWIN_WALK02_RIGHT)
+	
+	JumpLocal:		(?_ORWIN_STAND_RIGHT_ANIM)
+
+/********************************/
+?_ORWIN_STAND_UL_ANIM
+
+	Frame:			(255,0,0,?ORWIN_STAND_BACKLEFT)
+	
+	JumpLocal:		(?_ORWIN_STAND_UL_ANIM)
+
+/********************************/
+?_ORWIN_STAND_UR_ANIM
+
+	Frame:			(255,0,0,?ORWIN_STAND_BACKRIGHT)
+	
+	JumpLocal:		(?_ORWIN_STAND_UR_ANIM)
+
+/********************************/
+?_ORWIN_STAND_DL_ANIM
+
+	Frame:			(255,0,0,?ORWIN_STAND_LEFT)
+	
+	JumpLocal:		(?_ORWIN_STAND_DL_ANIM)
+
+/********************************/
+?_ORWIN_STAND_DR_ANIM
+
+	Frame:			(255,0,0,?ORWIN_STAND_RIGHT)
+	
+	JumpLocal:		(?_ORWIN_STAND_DR_ANIM)
+
+/********************************/
+?_ORWIN_HURT_LEFT_ANIM
+	
+	Frame:			(255,0,0,?ORWINDIE_LEFT)
+	
+	JumpLocal:		(?_ORWIN_HURT_LEFT_ANIM)
+
+/********************************/
+?_ORWIN_HURT_RIGHT_ANIM
+	
+	Frame:			(255,0,0,?ORWINDIE_RIGHT)
+	
+	JumpLocal:		(?_ORWIN_HURT_RIGHT_ANIM)
+
+/********************************/
+?_ORWIN_FLICKER
+
+	Frame:			(1,0,0,?ORWIN_STAND_LEFT)
+	
+	Pass			()
+	
+	JumpLocal:		(?_ORWIN_FLICKER)
+
+/********************************/
+?_ORWIN_SPIN_ANIM_1
+
+	Frame:		(2,-1,-1,?ORWIN_WALK02_BACK)
+				(2,-1,-1,?ORWIN_STAND_LEFT)
+				(2,-1,-1,?ORWIN_WALK02_FRONT)	
+				(2,-1,-1,?ORWIN_STAND_RIGHT)	
+	
+	JumpLocal:		(?_ORWIN_SPIN_ANIM_1)
+
+
+/********************************/
+?_ORWIN_SPIN_ANIM_2
+
+	Frame:		(2,-1,2,?ORWIN_WALK02_BACK)
+				(2,-1,2,?ORWIN_STAND_LEFT)
+				(2,-1,2,?ORWIN_WALK02_FRONT)	
+				(2,-1,2,?ORWIN_STAND_RIGHT)	
+	
+	JumpLocal:		(?_ORWIN_SPIN_ANIM_2)
+
+/********************************/
+?_ORWIN_INBED
+	
+	Frame:		(255,0,0,?ORWIN_BEDRIDDEN01)
+	
+	JumpLocal	(?_ORWIN_INBED)
+
+/********************************/
+?_ORWIN_INBED_RIGHT
+	
+	Frame:		(255,0,0,?ORWIN_BEDRIDDEN02)
+	
+	JumpLocal	(?_ORWIN_INBED_RIGHT)
+
+/********************************/
+?_ORWIN_INBED_LEFT
+	
+	Frame:		(255,0,0,?ORWIN_BEDRIDDEN03)
+	
+	JumpLocal	(?_ORWIN_INBED_LEFT)
+
+/********************************/
+?_FACE_ORWIN
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_UP)
+							(FACE_DOWN,_DOWN)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_UP
+		ThisActorSetAnim		(?_ORWIN_STAND_UP_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_DOWN
+		ThisActorSetAnim		(?_ORWIN_STAND_DOWN_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_LEFT
+		ThisActorSetAnim		(?_ORWIN_STAND_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_ORWIN_STAND_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()

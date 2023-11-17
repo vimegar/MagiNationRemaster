@@ -1,0 +1,26 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GEYSER\MAP01\ARDGEYSER01_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GEYSER\MAP01\ARDGEYSER_BAT.MGI
+
+/********************************/
+?_ARDGEYSER01
+	SceneNew		()
+
+	SetXRAMByte		(ArggeyserReset0,0)
+	SetXRAMByte		(ArggeyserReset1,0)
+
+	LoadMap			(MAP_ARDGEYSER01)
+	LoadHotspots	(HS_ARDGEYSER01)
+	LoadTriggers	(TR_ARDGEYSER01)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SetEncounter	(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn	(?_ARDGEYSER01)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	End				()
+	

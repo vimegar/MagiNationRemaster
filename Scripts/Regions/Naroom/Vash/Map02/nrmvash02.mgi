@@ -1,0 +1,394 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP02\NRMVASH02_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP02\NRMVASH02_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP02\NRMVASH02_PARTY.MGI
+
+/********************************/
+?_NRMVASH02
+	Switch			([GAMECOUNT])
+					(GC_END_FUNERAL,?_NRMVASH02_FUNERAL)
+					(GC_END_PARTY,?_NRMVASH02_PARTY)
+	SceneNew		()
+	LoadMap			(MAP_NRMVASH02)
+	LoadHotspots	(HS_NRMVASH02)
+	LoadPalette		(PAL_HERO)
+	LoadTriggers	(TR_NRMVASH02)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,24,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_naroom)
+
+	If				([GAMECOUNT > GC_NAROOM_GEYSER],_OPEN_DOOR)
+
+	SceneReady		()
+	End				()
+
+_OPEN_DOOR
+	
+	LoadSpareMap	(SCR_NRMVASH02B,COL_NRMVASH02B)
+	CopyTileSpare	(24,16,2,2,2,16,2)
+
+	SceneReady		()
+	End				()
+
+/********************************//********************************/
+//	NRMVASH22 Mini-game shop
+/********************************//********************************/
+?_NRMVASH02_SCT
+
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH02_SCT)
+	LoadHotspots			(HS_NRMVASH02_SCT)
+	LoadTriggers			(TR_NRMVASH02_SCT)
+	LoadPalette				(PAL_HERO)
+	
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,13,0,?_HERO_STANDR_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	
+	ThatActorInit			(ACTOR00,?TALKER_AI,10,6,13,41,?_OLDMAN_STAND_LEFT_ANIM,?_NRMVASH02_SCT_OLDMAN_TALKS)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(38,BIT_OLDMAN,41,0)
+
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady				()
+
+	If						([AvoidAgovo_Played],_GAME_RET)
+	End						()
+
+_GAME_RET
+
+	SetXRAMBit				(AvoidAgovo_Played,FALSE)
+	If						([AvoidAgovo_Win],_WIN)
+	
+	TextOpen				()
+	TextWrite				("You lose!=")
+	TextClose				()	
+
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+_WIN
+
+	TextOpen				()
+	TextWrite				("You win!")
+	InventoryGive			(INV_TYPE_ITEM,INV_TICKET,5)
+	TextClear				()
+	TextWrite				("Tony got 5=")
+	TextWrite				("tickets!")
+	
+	
+	TextClose				()
+
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+?_NRMVASH02_SCT_OLDMAN_TALKS
+	ThatActorSetScript		(ACTOR00,?_FACE_OLDMAN)
+	SetText					(_TEXT)
+	End						()
+
+_TEXT
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Welcome to")
+							("AVOID THE=")
+							("AGOVOS!!!")
+							("Want to play?")
+	TextClear				()
+	TextWrite				(" Yes=")
+							(" No$")
+	TextMenu				(2)
+							(_YES)
+							(_NO)
+
+_YES
+
+	If						([AvoidAgovo_Rules],_SKIP)
+
+	TextClear				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Ok! Here are=")
+							("the rules...")
+							("Get to the=")
+							("treasure chest")
+							("before time=")
+							("runs out...")
+							("but be careful,=")
+							("the Agovos will")
+							("stop ya in yer")
+							("tracks!!!!")
+
+	TextIcon				(ICON_TONY)
+	TextWrite				("I WIN!!!!")
+
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Uh...you need=")
+							("to play the")
+							("game first!")
+
+	TextIcon				(ICON_TONY)
+	TextWrite				("Oh yeah...")
+	TextClose				()
+	
+	SetXRAMBit				(AvoidAgovo_Rules,TRUE)
+
+_SKIP
+	
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Good luck!!!")
+	TextClose				()
+	
+	HeroSetDoor				(1,28)
+	Jump					(?_HDNROOM05)
+
+_NO
+
+	TextClear				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Fine, be a=")
+							("party pooper!")
+	TextClose				()
+	If						([FACEHERO != FACE_LEFT],_SKIP_RESTART)
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+_SKIP_RESTART
+	End						()
+/********************************//********************************/
+//	END HDNROOM05 SHOP
+/********************************//********************************/
+
+
+
+/********************************//********************************/
+//	HDNROOM05 MINI GAME
+/********************************//********************************/
+?_HDNROOM05
+
+	SceneNew				()
+	LoadMap					(MAP_HDNROOM05)
+	LoadHotspots			(HS_HDNROOM05)
+	LoadTriggers			(TR_HDNROOM05)
+	LoadPalette				(PAL_HERO)
+	
+	ThatActorInit			(HEROACTOR,?ANIM_AI,5,5,32,0,?_HERO_STANDR_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+
+	LoadVRAMTiles			(52,BIT_BLACKAGOVE,163,0)
+	
+
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_battle)
+
+	SetXRAMBit				(AvoidAgovo_Played,TRUE)
+
+	JumpLocal				(_INIT_ENEMIES)
+
+/*********************************/
+// Enemy scripts
+_ENEMY_ANIM_RACER
+	ThisActorSetAnim		(?_AGOVE_HOVER_RIGHT_ANIM)
+	Sync					(2,0)
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_ANIM,192)
+							(?_AGOVE_HOVER_LEFT_ANIM,64)
+							(?_AGOVE_MOVE_UP_ANIM,176)
+							(?_AGOVE_HOVER_RIGHT_ANIM,64)
+							(?_AGOVE_MOVE_LEFT_ANIM,144)
+							(?_AGOVE_MOVE_RIGHT_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_ANIM,32)
+							(?_AGOVE_MOVE_UP_ANIM,160)
+							(?_AGOVE_HOVER_RIGHT_ANIM,64)
+							(?_AGOVE_MOVE_RIGHT_ANIM,128)
+							(?_AGOVE_MOVE_UP_ANIM,32)
+							(?_AGOVE_HOVER_RIGHT_ANIM,64)
+	TextOpen				()
+	TextWrite				("You lost the=")
+							("race!")
+	TextClose				()
+	SetXRAMBit				(AvoidAgovo_Win,FALSE)
+	HeroSetDoor				(8,6)
+	Jump					(?_NRMVASH02_SCT)
+
+_ENEMY_ANIM_1
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_ANIM,16)
+							(?_AGOVE_MOVE_DOWN_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_ANIM,16)
+							(?_AGOVE_MOVE_UP_ANIM,32)
+	
+	JumpLocal				(_ENEMY_ANIM_1)
+
+_ENEMY_ANIM_2
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,24)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,8)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,24)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,8)
+	
+	JumpLocal				(_ENEMY_ANIM_2)
+
+_ENEMY_ANIM_3
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,24)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,8)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,24)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,8)
+	
+	JumpLocal				(_ENEMY_ANIM_3)
+
+_ENEMY_ANIM_4
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,8)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,8)
+	
+	JumpLocal				(_ENEMY_ANIM_4)
+
+_ENEMY_ANIM_5
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,8)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,8)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,8)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,8)
+	
+	JumpLocal				(_ENEMY_ANIM_5)
+
+_ENEMY_ANIM_6
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,8)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,8)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,8)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,8)
+	
+	JumpLocal				(_ENEMY_ANIM_6)
+
+_ENEMY_ANIM_7
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_DOWN_FAST_ANIM,24)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_UP_FAST_ANIM,24)
+	
+	JumpLocal				(_ENEMY_ANIM_7)
+
+_ENEMY_ANIM_8
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+	JumpLocal				(_ENEMY_ANIM_8)
+
+_ENEMY_ANIM_9
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+	JumpLocal				(_ENEMY_ANIM_9)
+
+_ENEMY_ANIM_10
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+	JumpLocal				(_ENEMY_ANIM_10)
+
+_ENEMY_ANIM_11
+
+	ThisActorSetAnimDelay	(?_AGOVE_MOVE_RIGHT_FAST_ANIM,32)
+							(?_AGOVE_MOVE_LEFT_FAST_ANIM,32)
+	JumpLocal				(_ENEMY_ANIM_11)
+
+/*********************************/
+// Init enemies
+_INIT_ENEMIES
+
+	ThatActorInit			(ACTOR00,?TRAP_AI,5,27,32,163,_ENEMY_ANIM_1,_HIT_ENEMY)
+	ThatActorStart			(ACTOR00)
+
+	ThatActorInit			(ACTOR01,?TRAP_AI,14,27,32,163,_ENEMY_ANIM_2,_HIT_ENEMY)
+	ThatActorStart			(ACTOR01)
+
+	ThatActorInit			(ACTOR02,?TRAP_AI,15,19,32,163,_ENEMY_ANIM_3,_HIT_ENEMY)
+	ThatActorStart			(ACTOR02)
+
+	ThatActorInit			(ACTOR03,?TRAP_AI,2,13,32,163,_ENEMY_ANIM_4,_HIT_ENEMY)
+	ThatActorStart			(ACTOR03)
+
+	//agovo buddies (right next to each other, but offset intervals)
+	ThatActorInit			(ACTOR04,?TRAP_AI,23,12,32,163,_ENEMY_ANIM_5,_HIT_ENEMY)
+	ThatActorInit			(ACTOR05,?TRAP_AI,26,12,32,163,_ENEMY_ANIM_6,_HIT_ENEMY)
+
+	ThatActorInit			(ACTOR06,?TRAP_AI,12,4,32,163,_ENEMY_ANIM_7,_HIT_ENEMY)
+	ThatActorStart			(ACTOR06)
+
+	ThatActorInit			(ACTOR07,?TRAP_AI,7,16,32,163,_ENEMY_ANIM_8,_HIT_ENEMY)
+	ThatActorStart			(ACTOR07)
+
+	ThatActorInit			(ACTOR08,?TRAP_AI,24,15,32,163,_ENEMY_ANIM_9,_HIT_ENEMY)
+	ThatActorStart			(ACTOR08)
+
+//	ThatActorInit			(ACTOR09,?TRAP_AI,6,8,32,163,_ENEMY_ANIM_10,_HIT_ENEMY)
+//	ThatActorStart			(ACTOR09)
+
+	ThatActorInit			(ACTOR10,?TRAP_AI,2,11,32,163,_ENEMY_ANIM_11,_HIT_ENEMY)
+	ThatActorStart			(ACTOR10)
+
+	ThatActorInit			(ACTOR11,?TRAP_AI,3,27,32,163,_ENEMY_ANIM_RACER,_HIT_ENEMY)
+//	ThatActorStart			(ACTOR11)
+
+	SceneReady				()
+
+	ThatActorStart			(ACTOR04)
+	Delay					(16)
+	ThatActorStart			(ACTOR05)
+	TextOpen				()
+	TextWrite				("Ready!=")
+	Delay					(24)
+	TextWrite				("GO!=")
+	Delay					(16)
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	Delay					(200)
+	Delay					(200)
+	Delay					(200)
+	Delay					(200)
+	Delay					(200)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_FACE_HERO)
+	TextOpen				()
+	TextWrite				("Time's up!!")
+	TextClose				()
+	SetXRAMBit				(AvoidAgovo_Win,FALSE)
+	HeroSetDoor				(8,6)
+	Jump					(?_NRMVASH02_SCT)
+
+/*********************************/
+// Win and lose
+_HIT_ENEMY
+
+	SetXRAMBit				(AvoidAgovo_Win,FALSE)
+	HeroSetDoor				(8,6)
+	Jump					(?_NRMVASH02_SCT)
+
+/********************************//********************************/
+//	END HDNROOM05 MINI GAME
+/********************************//********************************/

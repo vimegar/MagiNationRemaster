@@ -1,0 +1,20 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\DEEP\MAP01\ORODEEP01_DR.MGI
+%INCLUDE			REGIONS\OROTHE\DEEP\MAP01\DEEP_BAT.MGI
+
+/********************************/
+?_ORODEEP01
+	SceneNew				()
+	LoadMap					(MAP_ORODEEP01)
+	LoadHotspots			(HS_ORODEEP01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?PARATHIN_AI,5,5,60,0,?_PARATHIN_STAY_UP_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	LoadVRAMTiles			(113,BIT_PARATHIN,0,1)
+	LoadVRAMTiles			(5,BIT_LITTLETONY,113,1)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_turtleride)
+	SceneReady				()
+	End						()

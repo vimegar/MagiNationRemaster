@@ -1,0 +1,43 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP03\NRMVASH03_DR.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP03\NRMVASH03_TXT.MGI
+%INCLUDE			REGIONS\NAROOM\VASH\MAP03\NRMVASH03_PARTY.MGI
+
+/********************************/
+?_NRMVASH03
+	Switch					([GAMECOUNT])
+							(GC_END_FUNERAL,?_NRMVASH03_FUNERAL)
+							(GC_END_PARTY,?_NRMVASH03_PARTY)
+	SceneNew				()
+	LoadMap					(MAP_NRMVASH03)
+	LoadHotspots			(HS_NRMVASH03)
+	LoadPalette				(PAL_HERO)
+	LoadTriggers			(TR_NRMVASH03)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,7,20,0,?_NRMVASH03_DUDE,?_NRMVASH03_DUDE_TALKS)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_BOY,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_naroom)
+	SceneReady				()
+	End						()
+
+
+?_NRMVASH03_DUDE
+	ThisActorSetAnimDelay	(?_BOY_WALK_RIGHT_ANIM,48)
+							(?_BOY_WALK_UP_ANIM,8)
+							(?_BOY_STAND_UR_ANIM,40)
+							(?_BOY_STAND_UL_ANIM,40)
+							(?_BOY_WALK_DOWN_ANIM,8)
+							(?_BOY_WALK_LEFT_ANIM,48)
+							(?_BOY_WALK_UP_ANIM,16)
+							(?_BOY_WALK_DOWN_ANIM,16)
+	Jump					(?_NRMVASH03_DUDE)
+	
+?_NRMVASH03_DUDE_TALKS
+	SetText					(?_NRMVASH03_DUDE_TXT)
+	Jump					(?_FACE_BOY)
+	

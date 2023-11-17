@@ -1,0 +1,4 @@
+/********************************/
+		FileHotspots	(HS_UNDTUNNEL10)
+						(HOTSPOT_TRIGGER_NORTH,?_UNDTUNNEL10_DR_1)
+						(HOTSPOT_TRIGGER_SOUTH,?_UNDTUNNEL10_DR_2)

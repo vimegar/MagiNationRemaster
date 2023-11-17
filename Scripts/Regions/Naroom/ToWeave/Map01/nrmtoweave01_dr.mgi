@@ -1,0 +1,9 @@
+/********************************/
+?_NRMTOWEAVE01_DR_1
+		HeroToDoor	(5,0,12,19)
+		Jump		(?_NRMFOREST03)
+
+?_NRMTOWEAVE01_DR_2
+		HeroSetDoor			(15,22)
+		Jump				(?_OVRSURFACE01)
+

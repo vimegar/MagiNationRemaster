@@ -1,0 +1,27 @@
+/********************************/
+?_NRMVASH17_TXT_1
+	TextOpen		()
+	TextIcon		(ICON_YOUNGMAN)
+	TextWrite		("You are the=")
+					("one who freed")
+					("me from my=")
+					("prison. Please")
+					("take this item")
+					("as a reward.")
+	InventoryGive	(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
+	TextIcon		(ICON_TONY)
+	TextWrite		("Tony got a=")
+					("%X")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+
+?_NRMVASH17_TXT_2
+	TextOpen		()
+	TextIcon		(ICON_YOUNGMAN)
+	TextWrite		("Thanks again=")
+					("for freeing me!")
+	TextClose		()
+	SetEventText	(1)
+	End				()
+

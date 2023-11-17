@@ -1,0 +1,107 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP12\OROGEYSER12_DR.MGI
+%INCLUDE			REGIONS\OROTHE\GEYSER\MAP12\OROGEYSER12_TXT.MGI
+
+/********************************/
+
+?_OROGEYSER12
+	SetXRAMByte				(Exit_Disable,0)
+	SetLoadScript			(?_OROGEYSER12)
+
+	SceneNew				()
+	LoadMap					(MAP_OROGEYSER12)
+	LoadHotspots			(HS_OROGEYSER12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TRIGGER_AI,10,15,20,0,?_CORE_STONE_ANIM,?_OROGEYSER12_SWITCH_GC)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	SetEncounter			(?_OROGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn			(?_OROGEYSER12)
+	LoadVRAMTiles			(8,BIT_CORESTONE,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_maze)
+	End						()
+	
+?_OROGEYSER12_SWITCH_GC
+	SetScroll				(?_NRMGEYSER_QUAKIN)
+	SetXRAMByte				(GS_Glyph_Count,GLYPH_ORO_STONE)
+	SetGamecount			(GC_BEAT_OROTHE)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,1)
+	Jump					(?_OROGEYSER11_DR_1)
+
+?_OROGEYSER12_WARRADABOSS
+	SceneNew				()
+	LoadMap					(MAP_OROGEYSER12)
+	LoadHotspots			(HS_OROGEYSER12)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,10,8,20,0,?_OROGEYSER12_HERO,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,10,15,20,0,?_CORE_STONE_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,10,13,20,8,?_OROGEYSER12_WARRADA,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	LoadVRAMTiles			(8,BIT_CORESTONE,0,0)
+	LoadVRAMTiles			(48,BIT_WARRADA,8,0)
+	HeroSetCamera			()
+	SceneReady				()
+	SongStart				(SONGID_ororuins)
+	WaitEventMaster			(1)
+	SetBtlReturn			(?_OROGEYSER12)
+	Jump					(?_OROGEYSER_WARRADABAT)
+	End						()
+
+?_OROGEYSER12_HERO
+	ThisActorSetAnimScroll	(?_HERO_WALK_DOWN_ANIM,48,0,1)
+							(?_HERO_STAND_DOWN_ANIM,16,0,1)
+	End						()
+
+?_OROGEYSER12_WARRADA
+	ThisActorSetAnimDelay	(?_WARRADA_STAND_DOWN_ANIM,8)
+							(?_WARRADA_STAND_DR_ANIM,8)
+							(?_WARRADA_STAND_RIGHT_ANIM,8)
+							(?_WARRADA_STAND_UR_ANIM,8)
+							(?_WARRADA_STAND_UP_ANIM,32)
+	SetText					(?_OROGEYSER12_TXT_01)
+	WaitEventText			(1)
+	ThisActorSetAnimDelay	(?_WARRADA_WALK_UP_ANIM,16)
+							(?_WARRADA_STAND_UP_ANIM,0)
+	SetText					(?_OROGEYSER12_TXT_02)
+	WaitEventText			(2)
+	SetText					(?_OROGEYSER12_TXT_03)
+	WaitEventText			(3)
+	If						([Warrada_Easyway],_EASYWAY)
+_FIGHTFORIT
+	ThisActorSetAnimDelay	(?_WARRADA_STAND_UP_ANIM,32)
+							(?_WARRADA_STAND_UL_ANIM,8)
+							(?_WARRADA_STAND_LEFT_ANIM,8)
+							(?_WARRADA_STAND_DL_ANIM,8)
+							(?_WARRADA_WALK_DOWN_ANIM,16)
+							(?_WARRADA_STAND_DOWN_ANIM,0)
+	SetText					(?_OROGEYSER12_TXT_04A)
+	WaitEventText			(4)
+	Delay					(32)
+	ThisActorSetAnimDelay	(?_WARRADA_STAND_RIGHT_ANIM,8)
+							(?_WARRADA_WALK_UP_ANIM,16)
+							(?_WARRADA_STAND_UP_ANIM,0)
+	SetText					(?_OROGEYSER12_TXT_05A)
+	WaitEventText			(5)
+	SetEventMaster			(1)
+	End						()
+
+_EASYWAY
+	SetXRAMByte				(GS_Glyph_Count,GLYPH_ORO_STONE)
+	ThisActorSetAnimScroll	(?_WARRADA_WALK_DOWN_ANIM,32,0,1)
+							(?_WARRADA_STAND_DOWN_ANIM,8,0,0)
+	ThatActorStop			(ACTOR00)
+	ThisActorSetAnimScroll	(?_WARRADA_STAND_DOWN_ANIM,8,0,0)
+							(?_WARRADA_WALK_UP_ANIM,32,0,-1)
+							(?_WARRADA_STAND_UP_ANIM,0,0,0)
+	SetText					(?_OROGEYSER12_TXT_04B)
+	WaitEventText			(4)
+	SetMaster				(?_OROGEYSER12_SWITCH_GC)
+	End						()

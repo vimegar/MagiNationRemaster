@@ -1,0 +1,1446 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_AQUABUBBLES_ANIM
+	JumpRandom		(_SPEED1)
+					(_SPEED2)
+					(_SPEED3)
+					(_SPEED1)
+					(_SPEED2)
+					(_SPEED3)
+
+_SPEED1
+	FrameBlock		(7,0,0)
+					(?AQUABUBBLES01)
+					(?AQUABUBBLES02)
+					(?AQUABUBBLES03)
+					(?AQUABUBBLES04)
+					(?AQUABUBBLES05)
+					(?AQUABUBBLES06)
+					(?AQUABUBBLES07)
+					(?AQUABUBBLES08)
+					(?AQUABUBBLES09)
+					(?AQUABUBBLES10)
+
+	JumpLocal		(?_AQUABUBBLES_ANIM)
+
+_SPEED2
+	FrameBlock		(9,0,0)
+					(?AQUABUBBLES01)
+					(?AQUABUBBLES02)
+					(?AQUABUBBLES03)
+					(?AQUABUBBLES04)
+					(?AQUABUBBLES05)
+					(?AQUABUBBLES06)
+					(?AQUABUBBLES07)
+					(?AQUABUBBLES08)
+					(?AQUABUBBLES09)
+					(?AQUABUBBLES10)
+
+	JumpLocal		(?_AQUABUBBLES_ANIM)
+
+_SPEED3
+	FrameBlock		(11,0,0)
+					(?AQUABUBBLES01)
+					(?AQUABUBBLES02)
+					(?AQUABUBBLES03)
+					(?AQUABUBBLES04)
+					(?AQUABUBBLES05)
+					(?AQUABUBBLES06)
+					(?AQUABUBBLES07)
+					(?AQUABUBBLES08)
+					(?AQUABUBBLES09)
+					(?AQUABUBBLES10)
+
+	JumpLocal		(?_AQUABUBBLES_ANIM)
+
+/********************************/
+?_BOW_DRAWN_ANIM
+
+	Frame:			(255,0,0,?BOW01)
+
+	JumpLocal		(?_BOW_DRAWN_ANIM)
+
+?_BOW_RELEASE_ANIM
+
+	Frame:			(255,0,0,?BOW02)
+
+	JumpLocal		(?_BOW_RELEASE_ANIM)
+
+
+/********************************/
+?_ARROW_FLY_UP_JELLYBEAN
+?_ARROW_FLY_UP
+	
+	Frame:			(16,0,-3,?ARROW01)
+	
+	JumpLocal		(?_ARROW_FLY_UP)
+
+?_ARROW_BULLSEYE
+
+	Frame:			(255,0,0,?ARROWINTARGET)
+
+	JumpLocal		(?_ARROW_BULLSEYE)
+
+/********************************/
+?_BLOCKER_ANIM
+
+	Frame:			(255,0,0,?BLOCKER)
+	
+	JumpLocal		(?_BLOCKER_ANIM)
+
+/********************************/
+?_TARGET_RIGHT_SLOW_ANIM
+
+	Frame:			(16,1,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_RIGHT_SLOW_ANIM)
+
+?_TARGET_RIGHT_FAST_ANIM
+
+	Frame:			(16,2,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_RIGHT_FAST_ANIM)
+
+?_TARGET_RIGHT_VERYFAST_ANIM
+
+	Frame:			(16,3,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_RIGHT_VERYFAST_ANIM)
+
+?_TARGET_LEFT_SLOW_ANIM
+
+	Frame:			(16,-1,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_LEFT_SLOW_ANIM)
+
+?_TARGET_LEFT_FAST_ANIM
+
+	Frame:			(16,-2,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_LEFT_FAST_ANIM)
+
+?_TARGET_LEFT_VERYFAST_ANIM
+
+	Frame:			(16,-3,0,?TARGET_01)
+
+	JumpLocal		(?_TARGET_LEFT_VERYFAST_ANIM)
+
+?_TARGET_HIT_ANIM
+	
+	Frame:			(255,0,0,?TARGET_02)
+	
+	JumpLocal		(?_TARGET_HIT_ANIM)
+
+/********************************/
+?_SMALLWHIRL_ANIM
+	
+	Frame:			(4,0,0,?SMALLWHIRL_1)
+					(4,0,0,?SMALLWHIRL_2)
+					(4,0,0,?SMALLWHIRL_3)
+					(4,0,0,?SMALLWHIRL_4)
+					(4,0,0,?SMALLWHIRL_5)
+					(4,0,0,?SMALLWHIRL_6)
+					(4,0,0,?SMALLWHIRL_7)
+					(4,0,0,?SMALLWHIRL_8)
+	
+	JumpLocal		(?_SMALLWHIRL_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_SLOW_RIGHT_ANIM
+
+	Frame:			(16,1,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_SLOW_RIGHT_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_SLOW_LEFT_ANIM
+
+	Frame:			(16,-1,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_SLOW_LEFT_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_FAST_RIGHT_ANIM
+	
+
+	Frame:			(16,2,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_FAST_RIGHT_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_FAST_LEFT_ANIM
+	
+
+	Frame:			(16,-2,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_FAST_LEFT_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_VERYFAST_RIGHT_ANIM
+	
+
+	Frame:			(16,3,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_VERYFAST_RIGHT_ANIM)
+	
+/********************************/
+?_SLIDEBLOCK_VERYFAST_LEFT_ANIM
+	
+
+	Frame:			(16,-3,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_SLIDEBLOCK_VERYFAST_LEFT_ANIM)
+	
+
+/********************************/
+?_ALGAE_ANIM
+
+	FrameBlock:		(96,0,0)
+					(?ALGAE01)
+					(?ALGAE02)
+	
+	JumpLocal		(?_ALGAE_ANIM)
+
+/********************************/
+?_ANIMITE_GREEN_ANIM
+
+	Frame:			(128,0,0,?ANIMITE_GREEN01)
+					(8,0,0,?ANIMITE_GREEN02)
+					(8,0,0,?ANIMITE_GREEN03)
+					(8,0,0,?ANIMITE_GREEN04)
+
+	JumpLocal		(?_ANIMITE_GREEN_ANIM)
+
+/********************************/
+?_ANIMITE_GREENFALL_ANIM
+
+	Frame:			(1,0,4,?ANIMITE_GREEN01)
+
+	JumpLocal		(?_ANIMITE_GREENFALL_ANIM)
+
+/********************************/
+?_ARROW_FLY_RIGHT_ANIM
+	
+	Frame:			(1,4,0,?ARROW_RIGHT)
+	
+	JumpLocal		(?_ARROW_FLY_RIGHT_ANIM)
+
+/********************************/
+?_ARROW_STOP_RIGHT_ANIM
+
+	Frame:			(1,0,0,?ARROW_RIGHT)
+					(1,0,-1,?ARROW_RIGHT)
+					(1,0,0,?ARROW_RIGHT)
+					(1,0,1,?ARROW_RIGHT)
+					(1,0,0,?ARROW_RIGHT)
+					(1,0,-1,?ARROW_RIGHT)
+					(1,0,0,?ARROW_RIGHT)
+					(1,0,1,?ARROW_RIGHT)
+
+?_ARROW_STOPPED_RIGHT_ANIM
+
+	Frame:			(255,0,0,?ARROW_RIGHT)
+	
+	JumpLocal		(?_ARROW_STOPPED_RIGHT_ANIM)
+
+/********************************/
+?_ARROW_STUCK_RIGHT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?ARROW3_RIGHT)
+					(?ARROW2_RIGHT)
+					(?ARROW_RIGHT)
+					(?ARROW2_RIGHT)
+
+	JumpLocal		(?_ARROW_STUCK_RIGHT_ANIM)
+
+/********************************/
+?_ARROW_FALL_RIGHT_ANIM
+	
+	Frame:			(4,0,1,?ARROW_RIGHT)
+					(6,0,2,?ARROW_RIGHT)
+					(4,0,3,?ARROW_RIGHT)
+					(2,0,0,?ARROW_RIGHT)
+					(2,0,0,?ARROW2_RIGHT)
+	
+	JumpLocal		(?_ARROW_STOPPED_RIGHT_ANIM)
+
+/********************************/
+?_ARROW_STUCK_LEFT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?ARROW3_LEFT)
+					(?ARROW2_LEFT)
+					(?ARROW_LEFT)
+					(?ARROW2_LEFT)
+
+	JumpLocal		(?_ARROW_STUCK_LEFT_ANIM)
+
+/********************************/
+?_ARROW_FLY_LEFT_ANIM
+
+	Frame:			(1,4,0,?ARROW_LEFT)
+	
+	JumpLocal		(?_ARROW_FLY_LEFT_ANIM)
+
+/********************************/
+?_ARROW_STOP_LEFT_ANIM
+
+	Frame:			(255,0,0,?ARROW_LEFT)
+	
+	JumpLocal		(?_ARROW_STOP_LEFT_ANIM)
+
+/********************************/
+?_BIRDSEED_ANIM
+
+	Frame:			(255,0,0,?BIRDSEED01)
+	
+	JumpLocal		(?_BIRDSEED_ANIM)
+
+/********************************/
+?_BOAT_ANIM
+	
+	FrameBlock		(16,0,0)
+					(?BOAT_01)
+					(?BOAT_02)
+					(?BOAT_01)
+					(?BOAT_03)
+
+	JumpLocal		(?_BOAT_ANIM)
+/********************************/
+?_BOAT_NOTMOVING_LEFT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?BOAT_01_COPY)
+					(?BOAT_02_COPY)
+					(?BOAT_01_COPY)
+					(?BOAT_03_COPY)
+
+	JumpLocal		(?_BOAT_NOTMOVING_LEFT_ANIM)
+
+/********************************/
+?_BOAT_RIGHT_ANIM
+	
+	FrameBlock		(16,1,0)
+					(?BOAT_01)
+					(?BOAT_02)
+					(?BOAT_01)
+					(?BOAT_03)
+
+	JumpLocal		(?_BOAT_RIGHT_ANIM)
+
+/********************************/
+?_BOAT_LEFT_ANIM
+	
+	FrameBlock		(16,-1,0)
+					(?BOAT_01_COPY)
+					(?BOAT_02_COPY)
+					(?BOAT_01_COPY)
+					(?BOAT_03_COPY)
+
+	JumpLocal		(?_BOAT_LEFT_ANIM)
+
+/********************************/
+?_BOAT_DEATH_ANIM
+
+	Frame:			(32,0,0,?BOAT_CRASH01)
+					(48,0,0,?BOAT_CRASH02)
+
+?_BOAT_DEAD_ANIM
+
+	Frame:			(1,0,0,?BOAT_CRASH03)
+
+	JumpLocal		(?_BOAT_DEAD_ANIM)
+
+/********************************/
+?_BONE_ANIM
+	
+	Frame			(255,0,0,?BONE01)
+	
+	JumpLocal		(?_BONE_ANIM)
+
+/********************************/
+?_BRUB_INHOLE_ANIM
+
+	Frame:			(32,0,0,?BRUB01)
+
+?_BRUB_OUT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?BRUB02)
+					(?BRUB03)
+					(?BRUB04)
+					(?BRUB03)
+					(?BRUB01)
+					(?BRUB01)
+
+	End				()
+
+?_BRUB_SQUISHED_ANIM
+
+	Frame:			(32,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?BRUB_SPLAT)
+
+	End				()
+	
+/********************************/
+?_REDBRUB_INHOLE_ANIM
+
+	Frame:			(32,0,0,?REDBRUB01)
+
+?_REDBRUB_OUT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?REDBRUB02)
+					(?REDBRUB03)
+					(?REDBRUB04)
+					(?REDBRUB03)
+					(?REDBRUB01)
+					(?REDBRUB01)
+
+	End				()
+
+?_REDBRUB_SQUISHED_ANIM
+
+	Frame:			(32,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+	Pass			()
+	Frame:			(1,0,0,?REDBRUB_SPLAT)
+
+	End				()
+	
+/********************************/
+?_COFFIN_ANIM
+
+	Frame			(255,0,0,?ORWINS_COFFIN01)
+	
+	JumpLocal		(?_COFFIN_ANIM)
+
+?_COFFIN_DOWN_ANIM
+
+	Frame			(1,0,1,?ORWINS_COFFIN01)
+					(1,0,0,?ORWINS_COFFIN01)
+
+	JumpLocal		(?_COFFIN_DOWN_ANIM)
+
+?_COFFIN_DR_ANIM
+
+	Frame			(1,1,1,?ORWINS_COFFIN01)
+					(1,0,0,?ORWINS_COFFIN01)
+
+	JumpLocal		(?_COFFIN_DR_ANIM)
+
+?_COFFIN_DL_ANIM
+
+	Frame			(1,-1,1,?ORWINS_COFFIN01)
+					(1,0,0,?ORWINS_COFFIN01)
+
+	JumpLocal		(?_COFFIN_DL_ANIM)
+
+/********************************/
+?_CORE_STONE_ANIM
+	
+	Frame			(128,0,0,?STONE_1_1)
+					(8,0,0,?STONE_1_2)
+
+	JumpLocal		(?_CORE_STONE_ANIM)
+
+?_CORE_STONE_STILL
+
+	Frame			(255,0,0,?STONE_1_1)
+
+	JumpLocal		(?_CORE_STONE_STILL)
+	
+/********************************/
+?_CORE_STONE_THROWN_ANIM
+	
+	Frame			(32,0,-4,?STONE_1_1)
+					(16,0,-3,?STONE_1_1)
+					(8,0,-2,?STONE_1_1)
+					(4,0,-1,?STONE_1_1)
+					(2,0,0,?STONE_1_1)
+					(1,0,1,?STONE_1_1)
+
+	End				()
+
+/********************************/
+?_CRYSTAL_ANIM
+	
+	Frame:			(128,0,0,?CRYSTAL_01)
+					(8,0,0,?CRYSTAL_02)
+					(8,0,0,?CRYSTAL_03)
+	
+	JumpLocal		(?_CRYSTAL_ANIM)
+	
+/********************************/
+?_CRYSTAL_RISE_ANIM
+
+	Frame:			(16,0,-1,?CRYSTAL_01)
+					(8,0,0,?CRYSTAL_02)
+					(8,0,0,?CRYSTAL_03)
+					(32,0,0,?CRYSTAL_01)
+
+/********************************/
+?_CRYSTAL_SHINE_ANIM
+	
+	FrameBlock:		(4,0,0)
+					(?CRYSTAL_04)
+					(?CRYSTAL_05)
+					(?CRYSTAL_06)
+					(?CRYSTAL_05)
+					(?CRYSTAL_04)
+					(?CRYSTAL_05)
+					(?CRYSTAL_07)
+					(?CRYSTAL_04)
+					(?CRYSTAL_06)
+					(?CRYSTAL_05)
+	
+	JumpLocal		(?_CRYSTAL_SHINE_ANIM)
+
+/********************************/
+?_CRYSTAL_FALL_ANIM
+
+	Frame:			(8,0,2,?CRYSTAL_01)
+	
+	JumpLocal		(?_CRYSTAL_ANIM)
+
+/********************************/
+?_CRYSTAL_STILL
+
+	Frame:			(255,0,0,?CRYSTAL_01)
+	
+	JumpLocal		(?_CRYSTAL_STILL)
+
+/********************************/
+?_DREAMGLOW_BEGIN_ANIM
+	FrameBlock:		(2,0,0)
+					(?SPARKLE01)
+					(?SPARKLE02)
+					(?SPARKLE03)
+					(?SPARKLE04)
+
+_LOOP
+	FrameBlock:		(1,0,0)
+					(?SPARKLE01)
+					(?SPARKLE02)
+					(?SPARKLE03)
+					(?SPARKLE04)
+					(?SPARKLE03)
+					(?SPARKLE02)
+
+	JumpLocal		(_LOOP)
+
+/********************************/
+?_DREAMGLOW_BURST_ANIM
+	FrameBlock:		(2,0,0)
+					(?SPARKLE14)
+					(?SPARKLE15)
+					(?SPARKLE16)
+					(?SPARKLE17)
+					(?SPARKLE18)
+					(?SPARKLE19)
+					(?SPARKLE20)
+
+	End				()
+
+/********************************/
+?_DREAMGLOW_MAIN_ANIM
+	FrameBlock:		(2,0,0)
+					(?SPARKLE15)
+					(?SPARKLE14)
+
+_LOOP
+	FrameBlock:		(1,0,0)
+					(?SPARKLE05)
+					(?SPARKLE06)
+					(?SPARKLE07)
+					(?SPARKLE08)
+					(?SPARKLE09)
+					(?SPARKLE10)
+
+	JumpLocal		(_LOOP)
+
+/********************************/
+?_DREAMGLOW_SMALL_ANIM
+	FrameBlock:		(2,0,0)
+					(?SPARKLE15)
+					(?SPARKLE14)
+
+_LOOP
+	FrameBlock:		(1,0,0)
+					(?SPARKLE24)
+					(?SPARKLE25)
+					(?SPARKLE26)
+					(?SPARKLE27)
+
+	JumpLocal		(_LOOP)
+
+/********************************/
+?_ELDERWORM_LEFT_ANIM
+	
+	FrameBlock:		(8,-1,0)
+					(?ELDERWORM01_LEFT)
+					(?ELDERWORM02_LEFT)
+	
+	JumpLocal		(?_ELDERWORM_LEFT_ANIM)
+
+/********************************/
+?_ELDERWORM_RIGHT_ANIM
+
+	FrameBlock:		(8,1,0)
+					(?ELDERWORM01_RIGHT)
+					(?ELDERWORM02_RIGHT)
+	
+	JumpLocal		(?_ELDERWORM_RIGHT_ANIM)
+
+/********************************/
+?_ELDERWORM_STOP_LEFT_ANIM
+	
+	Frame:			(255,0,0,?ELDERWORM03_LEFT)
+	
+	JumpLocal		(?_ELDERWORM_STOP_LEFT_ANIM)
+
+/********************************/
+?_ELDERWORM_STOP_RIGHT_ANIM
+
+	Frame:			(255,0,0,?ELDERWORM03_RIGHT)
+	
+	JumpLocal		(?_ELDERWORM_STOP_RIGHT_ANIM)
+
+/********************************/
+?_FACE_ELDERWORM
+		
+		Switch				([FACEHERO])
+							(FACE_UP,_LEFT)
+							(FACE_DOWN,_RIGHT)
+							(FACE_RIGHT,_RIGHT)
+							(FACE_LEFT,_LEFT)
+							
+_LEFT
+		ThisActorSetAnim		(?_ELDERWORM_STOP_LEFT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+_RIGHT
+		ThisActorSetAnim		(?_ELDERWORM_STOP_RIGHT_ANIM)
+		WaitEventText			(1)
+		ThisActorRestoreState	()
+		
+/********************************/
+?_FALLING_ROCKS01
+
+	FrameGhost		(10,0,-16)
+	Frame:			(1,0,4,?FALLINGROCKS_07)
+					(4,0,0,?FALLINGROCKS_02)
+					(4,0,0,?FALLINGROCKS_03)
+					(4,0,0,?FALLINGROCKS_04)
+					(4,0,0,?FALLINGROCKS_05)
+	
+	End				()
+
+/********************************/
+?_FALLING_ROCKS_A
+	Frame:			(255,0,0,?FALLINGROCKS_07)
+	JumpLocal		(?_FALLING_ROCKS_A)
+	
+?_FALLING_ROCKS_B
+	Frame:			(255,0,0,?FALLINGROCKS_01)
+	JumpLocal		(?_FALLING_ROCKS_B)
+
+?_FALLING_ROCKS_C
+	Frame:			(255,0,0,?FALLINGROCKS_09)
+	JumpLocal		(?_FALLING_ROCKS_C)
+
+/********************************/
+?_FALLING_ROCKS02
+	
+	FrameGhost		(10,0,-16)
+	Frame:			(40,0,4,?FALLINGROCKS_08)
+	
+	End				()
+
+/********************************/
+?_FALLING_ROCKS03
+	
+	FrameGhost		(10,0,-16)
+	Frame:			(40,0,4,?FALLINGROCKS_09)
+	
+	End				()
+
+/********************************/
+?_FALLING_ROCKS04
+	
+	FrameGhost		(10,0,-16)
+	Frame:			(40,0,4,?FALLINGROCKS_10)
+	
+	End				()
+
+/********************************/
+?_FALLING_ROCKS05
+
+	FrameGhost		(10,0,-16)
+	Frame:			(40,0,4,?FALLINGROCKS_01)
+					(4,0,0,?FALLINGROCKS_02)
+					(4,0,0,?FALLINGROCKS_03)
+					(4,0,0,?FALLINGROCKS_04)
+					(4,0,0,?FALLINGROCKS_05)
+	
+	End				()
+
+/********************************/
+?_FALLING_ROCKS06
+
+	FrameGhost		(10,0,-16)
+	Frame:			(40,0,4,?FALLINGROCKS_06)
+					(4,0,0,?FALLINGROCKS_02)
+					(4,0,0,?FALLINGROCKS_03)
+					(4,0,0,?FALLINGROCKS_04)
+					(4,0,0,?FALLINGROCKS_05)
+	
+	End				()
+
+/********************************/
+?_FATTONY_IN_DA_HOUSE
+
+	Frame:			(255,0,0,?FATTONY01)
+					(16,0,0,?FATTONY02)
+	
+	Jump			(?_FATTONY_IN_DA_HOUSE)
+
+/********************************/
+?_FEATHER_ANIM
+
+	Frame:			(255,0,0,?FEATHER01)
+	
+	JumpLocal		(?_FEATHER_ANIM)
+/********************************/
+?_FLAMEY_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FLAME_1)
+					(?FLAME_2)
+					(?FLAME_3)
+					(?FLAME_4)
+					(?FLAME_5)
+					(?FLAME_6)
+					(?FLAME_7)
+					(?FLAME_8)
+	
+	JumpLocal		(?_FLAMEY_ANIM)
+
+/********************************/
+?_FORCE_FIELD_ANIM
+
+	Frame:			(4,0,0,?FORCE_FIELD_1)
+	Pass			()
+	Frame:			(4,0,0,?FORCE_FIELD_2)
+	Pass			()
+	Frame:			(4,0,0,?FORCE_FIELD_3)
+	Pass			()
+	Frame:			(4,0,0,?FORCE_FIELD_4)
+	Pass			()
+
+	JumpLocal		(?_FORCE_FIELD_ANIM)
+
+/********************************/
+?_KEY_ANIM
+
+	Frame:			(96,0,0,?KEY01)
+					(4,0,0,?KEY02)
+					(4,0,0,?KEY03)
+					(4,0,0,?KEY04)
+	
+	JumpLocal		(?_KEY_ANIM)
+
+/********************************/
+?_OVERWORLD_GEYSER_ANIM
+	
+	FrameBlock		(1,0,0)
+					(?GEYSEROVERWORLD01)
+					(?GEYSEROVERWORLD02)
+	
+	JumpLocal		(?_OVERWORLD_GEYSER_ANIM)
+
+/********************************/
+?_GEYSERPLAY_ANIM
+	
+	Frame			(16,0,0,?GEYSERPLAY01)
+					(4,0,0,?GEYSERPLAY02)
+					(4,0,0,?GEYSERPLAY01)
+					(4,0,0,?GEYSERPLAY02)
+					(4,0,0,?GEYSERPLAY01)
+					(8,0,0,?GEYSERPLAY02)
+					(8,0,0,?GEYSERPLAY01)
+					(8,0,0,?GEYSERPLAY02)
+					(8,0,0,?GEYSERPLAY01)
+					(8,0,0,?GEYSERPLAY02)
+					
+	JumpLocal		(?_GEYSERPLAY_ANIM)
+
+/********************************/
+?_GEYSERSQUASHED_ANIM
+	
+	Frame			(96,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	Pass			()
+	Frame			(1,0,0,?GEYSERPLAY03)
+	
+	End				()
+
+/********************************/
+?_GEYSERPLAY_STILL
+	
+	Frame			(255,0,0,?GEYSERPLAY01)
+					
+	JumpLocal		(?_GEYSERPLAY_STILL)
+
+/********************************/
+?_GLYPH_IN_ANIM
+
+	Frame			(255,0,0,?GLYPH02_01)
+	
+	JumpLocal		(?_GLYPH_IN_ANIM)
+	
+/********************************/
+?_GLYPH_NUDE_ANIM
+
+	Frame			(96,0,0,?GLYPH04_01)
+					(16,0,0,?GLYPH04_02)
+					(16,0,0,?GLYPH04_03)
+					(16,0,0,?GLYPH04_04)
+	
+	JumpLocal		(?_GLYPH_NUDE_ANIM)
+
+/********************************/
+?_GLYPH_OUT_ANIM
+
+	Frame			(255,0,0,?GLYPH02_02)
+	
+	JumpLocal		(?_GLYPH_OUT_ANIM)
+/********************************/
+?_JUKEBOX_ANIM
+
+
+
+	Frame			(255,0,0,?JUKEBOX)
+	
+	JumpLocal		(?_JUKEBOX_ANIM)
+	
+/********************************/
+?_LAVABUBBLE1_ANIM
+	
+	Frame			(8,0,0,?BUBBLE02)
+					(16,0,0,?BUBBLE03)
+					(8,0,0,?BUBBLE01)
+	
+	Reset			(?_LAVABUBBLE1_ANIM)
+
+/********************************/
+?_LAVABUBBLE2_ANIM
+	
+	Frame			(4,0,0,?BUBBLE05)
+					(8,0,0,?BUBBLE06)
+					(4,0,0,?BUBBLE04)
+	
+	Reset			(?_LAVABUBBLE2_ANIM)
+
+/********************************/
+?_OVERBLU_UP_ANIM
+	
+	FrameBlock		(16,0,0)
+					(?OVERBLU_WALK02_BACK)
+					(?OVERBLU_WALK01_BACK)
+					(?OVERBLU_WALK02_BACK)
+					(?OVERBLU_WALK03_BACK)
+
+	JumpLocal		(?_OVERBLU_UP_ANIM)
+
+/********************************/
+?_OVERBLU_DOWN_ANIM
+
+	FrameBlock		(16,0,0)
+					(?OVERBLU_WALK02_FRONT)
+					(?OVERBLU_WALK01_FRONT)
+					(?OVERBLU_WALK02_FRONT)
+					(?OVERBLU_WALK03_FRONT)
+
+	JumpLocal		(?_OVERBLU_DOWN_ANIM)
+
+/********************************/
+?_OVERBLU_LEFT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?OVERBLU_WALK02_LEFT)
+					(?OVERBLU_WALK01_LEFT)
+					(?OVERBLU_WALK02_LEFT)
+					(?OVERBLU_WALK03_LEFT)
+
+	JumpLocal		(?_OVERBLU_LEFT_ANIM)
+
+/********************************/
+?_OVERBLU_RIGHT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?OVERBLU_WALK02_RIGHT)
+					(?OVERBLU_WALK01_RIGHT)
+					(?OVERBLU_WALK02_RIGHT)
+					(?OVERBLU_WALK03_RIGHT)
+
+	JumpLocal		(?_OVERBLU_RIGHT_ANIM)
+
+/********************************/
+?_OVERBLU_SWIMUP_ANIM
+	
+	FrameBlock		(16,0,0)
+					(?BLU_OVERSWIM01_BACK)
+					(?BLU_OVERSWIM02_BACK)
+
+	JumpLocal		(?_OVERBLU_SWIMUP_ANIM)
+
+/********************************/
+?_OVERBLU_SWIMDOWN_ANIM
+
+	FrameBlock		(16,0,0)
+					(?BLU_OVERSWIM01_FRONT)
+					(?BLU_OVERSWIM02_FRONT)
+
+	JumpLocal		(?_OVERBLU_SWIMDOWN_ANIM)
+
+/********************************/
+?_OVERBLU_SWIMLEFT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?BLU_OVERSWIM01_LEFT)
+					(?BLU_OVERSWIM02_LEFT)
+
+	JumpLocal		(?_OVERBLU_SWIMLEFT_ANIM)
+
+/********************************/
+?_OVERBLU_SWIMRIGHT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?BLU_OVERSWIM01_RIGHT)
+					(?BLU_OVERSWIM02_RIGHT)
+
+	JumpLocal		(?_OVERBLU_SWIMRIGHT_ANIM)
+
+/********************************/
+?_OVERBOAT_GO_LEFT_ANIM
+
+	FrameBlock		(8,-1,0)
+					(?OVERBOAT_LEFT01)
+					(?OVERBOAT_LEFT02)
+					(?OVERBOAT_LEFT03)
+	
+	JumpLocal		(?_OVERBOAT_GO_LEFT_ANIM)
+
+/********************************/
+?_OVERBOAT_GO_RIGHT_ANIM
+
+	FrameBlock		(8,1,0)
+					(?OVERBOAT_RIGHT01)
+					(?OVERBOAT_RIGHT02)
+					(?OVERBOAT_RIGHT03)
+	
+	JumpLocal		(?_OVERBOAT_GO_RIGHT_ANIM)
+
+/********************************/
+?_OVERBOAT_GO_UP_ANIM
+
+	FrameBlock		(8,0,-1)
+					(?OVERBOAT_BACK01)
+					(?OVERBOAT_BACK02)
+					(?OVERBOAT_BACK03)
+	
+	JumpLocal		(?_OVERBOAT_GO_UP_ANIM)
+
+/********************************/
+?_OVERBOAT_GO_DOWN_ANIM
+
+	FrameBlock		(8,0,1)
+					(?OVERBOAT_FRONT01)
+					(?OVERBOAT_FRONT02)
+					(?OVERBOAT_FRONT03)
+	
+	JumpLocal		(?_OVERBOAT_GO_DOWN_ANIM)
+
+/********************************/
+?_OVERBOAT_LEFT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?OVERBOAT_LEFT01)
+					(?OVERBOAT_LEFT02)
+					(?OVERBOAT_LEFT03)
+	
+	JumpLocal		(?_OVERBOAT_LEFT_ANIM)
+
+/********************************/
+?_OVERBOAT_RIGHT_ANIM
+
+	FrameBlock		(8,0,0)
+					(?OVERBOAT_RIGHT01)
+					(?OVERBOAT_RIGHT02)
+					(?OVERBOAT_RIGHT03)
+	
+	JumpLocal		(?_OVERBOAT_RIGHT_ANIM)
+
+/********************************/
+?_OVERBOAT_UP_ANIM
+
+	FrameBlock		(8,0,0)
+					(?OVERBOAT_BACK01)
+					(?OVERBOAT_BACK02)
+					(?OVERBOAT_BACK03)
+	
+	JumpLocal		(?_OVERBOAT_UP_ANIM)
+
+/********************************/
+?_OVERBOAT_DOWN_ANIM
+
+	FrameBlock		(8,0,0)
+					(?OVERBOAT_FRONT01)
+					(?OVERBOAT_FRONT02)
+					(?OVERBOAT_FRONT03)
+	
+	JumpLocal		(?_OVERBOAT_DOWN_ANIM)
+
+/********************************/
+?_OVERPARATHIN_SWIM_UP_ANIM
+
+	FrameBlock		(8,0,-1)
+					(?PARATHIN02_SWIM01_UP)
+					(?PARATHIN02_SWIM02_UP)
+	
+	JumpLocal		(?_OVERPARATHIN_SWIM_UP_ANIM)
+
+/********************************/
+?_OVERPARATHIN_SWIM_DOWN_ANIM
+
+	FrameBlock		(8,0,1)
+					(?PARATHIN02_SWIM01_DOWN)
+					(?PARATHIN02_SWIM02_DOWN)
+	
+	JumpLocal		(?_OVERPARATHIN_SWIM_DOWN_ANIM)
+
+/********************************/
+?_OVERPARATHIN_SWIM_LEFT_ANIM
+
+	FrameBlock		(8,-1,0)
+					(?PARATHIN02_SWIM01_LEFT)
+					(?PARATHIN02_SWIM02_LEFT)
+	
+	JumpLocal		(?_OVERPARATHIN_SWIM_LEFT_ANIM)
+
+/********************************/
+?_OVERPARATHIN_SWIM_RIGHT_ANIM
+
+	FrameBlock		(8,1,0)
+					(?PARATHIN02_SWIM01_RIGHT)
+					(?PARATHIN02_SWIM02_RIGHT)
+	
+	JumpLocal		(?_OVERPARATHIN_SWIM_RIGHT_ANIM)
+
+/********************************/
+?_OVERPARATHIN_UP_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN02_SWIM01_UP)
+					(?PARATHIN02_SWIM02_UP)
+	
+	JumpLocal		(?_OVERPARATHIN_UP_ANIM)
+
+/********************************/
+?_OVERPARATHIN_DOWN_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN02_SWIM01_DOWN)
+					(?PARATHIN02_SWIM02_DOWN)
+	
+	JumpLocal		(?_OVERPARATHIN_DOWN_ANIM)
+
+/********************************/
+?_OVERPARATHIN_LEFT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN02_SWIM01_LEFT)
+					(?PARATHIN02_SWIM02_LEFT)
+	
+	JumpLocal		(?_OVERPARATHIN_LEFT_ANIM)
+
+/********************************/
+?_OVERPARATHIN_RIGHT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN02_SWIM01_RIGHT)
+					(?PARATHIN02_SWIM02_RIGHT)
+	
+	JumpLocal		(?_OVERPARATHIN_RIGHT_ANIM)
+
+/********************************/
+?_PARATHIN_STAY_UP_ANIM
+	
+	FrameBlock		(16,0,0)
+					(?PARATHIN_UP04)
+					(?PARATHIN_UP05)
+
+	JumpLocal		(?_PARATHIN_STAY_UP_ANIM)
+	
+/********************************/
+?_PARATHIN_STAY_DOWN_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN_DOWN04)
+					(?PARATHIN_DOWN05)
+
+	JumpLocal		(?_PARATHIN_STAY_DOWN_ANIM)
+
+/********************************/
+?_PARATHIN_STAY_LEFT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN_LEFT04)
+					(?PARATHIN_LEFT05)
+
+	JumpLocal		(?_PARATHIN_STAY_LEFT_ANIM)
+
+/********************************/
+?_PARATHIN_STAY_RIGHT_ANIM
+
+	FrameBlock		(16,0,0)
+					(?PARATHIN_RIGHT04)
+					(?PARATHIN_RIGHT05)
+
+	JumpLocal		(?_PARATHIN_STAY_RIGHT_ANIM)
+
+/********************************/
+?_PARATHIN_MOVE_UP_ANIM
+
+	Frame			(8,0,-1,?PARATHIN_UP01)
+					(12,0,-2,?PARATHIN_UP02)
+					(6,0,-2,?PARATHIN_UP03)
+					(6,0,-1,?PARATHIN_UP03)
+					(8,0,-1,?PARATHIN_UP04)
+					(8,0,-1,?PARATHIN_UP05)
+
+	JumpLocal		(?_PARATHIN_MOVE_UP_ANIM)
+
+/********************************/
+?_PARATHIN_MOVE_DOWN_ANIM
+
+	Frame			(8,0,1,?PARATHIN_DOWN01)
+					(12,0,2,?PARATHIN_DOWN02)
+					(6,0,2,?PARATHIN_DOWN03)
+					(6,0,1,?PARATHIN_DOWN03)
+					(8,0,1,?PARATHIN_DOWN04)
+					(8,0,1,?PARATHIN_DOWN05)
+
+	JumpLocal		(?_PARATHIN_MOVE_DOWN_ANIM)
+
+/********************************/
+?_PARATHIN_MOVE_LEFT_ANIM
+
+	Frame			(8,-1,0,?PARATHIN_LEFT01)
+					(12,-2,0,?PARATHIN_LEFT02)
+					(6,-2,0,?PARATHIN_LEFT03)
+					(6,-1,0,?PARATHIN_LEFT03)
+					(8,-1,0,?PARATHIN_LEFT04)
+					(8,-1,0,?PARATHIN_LEFT05)
+
+	JumpLocal		(?_PARATHIN_MOVE_LEFT_ANIM)
+
+/********************************/
+?_PARATHIN_MOVE_RIGHT_ANIM
+
+	Frame			(8,1,0,?PARATHIN_RIGHT01)
+					(12,2,0,?PARATHIN_RIGHT02)
+					(6,2,0,?PARATHIN_RIGHT03)
+					(6,1,0,?PARATHIN_RIGHT03)
+					(8,1,0,?PARATHIN_RIGHT04)
+					(8,1,0,?PARATHIN_RIGHT05)
+
+	JumpLocal		(?_PARATHIN_MOVE_RIGHT_ANIM)
+
+/********************************/
+?_PRESS_START_ANIM
+	
+	Frame			(255,0,0,?PRESTA01)
+
+	JumpLocal		(?_PRESS_START_ANIM)
+
+/********************************/
+?_PRESS_START_BLINK_ANIM
+
+	Frame			(12,0,0,?PRESTA01)
+	Delay			(10)
+
+	JumpLocal		(?_PRESS_START_BLINK_ANIM)
+
+/********************************/
+?_RIPPLE_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?RIPPLE_1)
+					(?RIPPLE_2)
+					(?RIPPLE_3)
+					(?RIPPLE_4)
+	
+	End				()
+
+/********************************/
+?_SHROOM_ANIM
+
+	Frame:			(255,0,0,?SHROOM01)
+	
+	JumpLocal		(?_SHROOM_ANIM)
+
+?_SHROOM_EXPLODE_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?SHROOM01)
+					(?SHROOM02)
+					(?SHROOM03)
+					(?SHROOM04)
+					(?SHROOM05)
+					(?SHROOM06)
+
+	End				()
+
+/********************************/
+?_STAR_SPARKLE_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?STARSPARKLE01)
+					(?STARSPARKLE02)
+					(?STARSPARKLE03)
+					(?STARSPARKLE02)
+
+	JumpLocal		(?_STAR_SPARKLE_ANIM)
+
+/********************************/
+?_STONE_GOGOR_ANIM
+
+	Frame:			(255,0,0,?STONEGOGOR)
+
+	JumpLocal		(?_STONE_GOGOR_ANIM)
+
+/********************************/
+?_STONE_VALKAN_ANIM
+
+	Frame:			(255,0,0,?STONEVALKAN)
+
+	JumpLocal		(?_STONE_VALKAN_ANIM)
+
+/********************************/
+?_STONE_GIRL03_ANIM
+
+	Frame:			(255,0,0,?STONEGIRL03)
+
+	JumpLocal		(?_STONE_GIRL03_ANIM)
+
+/********************************/
+?_STONE_WYLOCE_ANIM
+
+	Frame:			(255,0,0,?STONEWYLOCE)
+
+	JumpLocal		(?_STONE_WYLOCE_ANIM)
+
+/********************************/
+?_URN_STILL_ANIM
+
+	Frame:			(255,0,0,?URN01)
+	
+	JumpLocal		(?_URN_STILL_ANIM)
+
+?_URN_EXPLODE_ANIM
+
+	Frame:			(32,0,0,?URN02)
+	FrameBlock:		(4,0,0)
+					(?URN03)
+					(?URN04)
+					(?URN05)
+					(?URN06)
+					(?URN07)
+					(?URN08)
+					(?URN09)
+					(?URN10)
+	
+	End				()
+
+/********************************/
+?_WATER_SHIMMER1_ANIM
+	
+	FrameBlock		(2,0,0)
+					(?SHIMMER01)
+					(?SHIMMER02)
+					(?SHIMMER03)
+					(?SHIMMER04)
+					(?SHIMMER05)
+					(?SHIMMER06)
+					(?SHIMMER07)
+					(?SHIMMER08)
+					(?SHIMMER09)
+					(?SHIMMER10)
+					(?SHIMMER11)
+					(?SHIMMER12)
+	
+	End				()
+
+/********************************/
+?_WATER_SHIMMER2_ANIM
+	
+	FrameBlock		(1,0,0)
+					(?SHIMMER01)
+					(?SHIMMER03)
+					(?SHIMMER02)
+					(?SHIMMER04)
+					(?SHIMMER03)
+					(?SHIMMER05)
+					(?SHIMMER04)
+					(?SHIMMER06)
+					(?SHIMMER05)
+					(?SHIMMER07)
+					(?SHIMMER06)
+					(?SHIMMER08)
+					(?SHIMMER07)
+					(?SHIMMER09)
+					(?SHIMMER08)
+					(?SHIMMER10)
+					(?SHIMMER09)
+					(?SHIMMER11)
+					(?SHIMMER10)
+					(?SHIMMER12)
+					(?SHIMMER11)
+	
+	End				()
+
+/********************************/
+?_WAVE_SMALL_ANIM
+
+	FrameBlock		(4,0,0)
+					(?WAVE01)
+					(?WAVE02)
+					(?WAVE03)
+					(?WAVE07)
+					(?WAVE08)
+
+	End				()
+
+/********************************/
+?_WAVE_MEDIUM_ANIM
+
+	FrameBlock		(4,0,0)
+					(?WAVE01)
+					(?WAVE02)
+					(?WAVE03)
+					(?WAVE04)
+					(?WAVE05)
+					(?WAVE06)
+					(?WAVE07)
+					(?WAVE08)
+
+	End				()
+
+/********************************/
+?_WAVE_LARGE_ANIM
+
+	FrameBlock		(4,0,0)
+					(?WAVE01)
+					(?WAVE02)
+					(?WAVE03)
+					(?WAVE09)
+					(?WAVE10)
+					(?WAVE11)
+					(?WAVE07)
+					(?WAVE08)
+	
+	End				()
+
+/********************************/
+?_WHIRLPOOL_ANIM
+	
+	FrameBlock:		(4,0,0)
+					(?WHIRLPOOL_1)
+					(?WHIRLPOOL_2)
+					(?WHIRLPOOL_3)
+					(?WHIRLPOOL_4)
+					(?WHIRLPOOL_5)
+					(?WHIRLPOOL_6)
+					(?WHIRLPOOL_7)
+					(?WHIRLPOOL_8)
+	
+	JumpLocal		(?_WHIRLPOOL_ANIM)
+
+/********************************/
+?_BUCKETOPINK_ANIM
+
+	Frame:			(255,0,0,?BUCKETOPINK)
+	
+	JumpLocal		(?_BUCKETOPINK_ANIM)
+
+/********************************/
+?_THREEHEADCOIN_ANIM
+
+	Frame:			(128,0,0,?THREEHEADCOIN02_01)
+					(4,0,0,?THREEHEADCOIN02_02)
+					(4,0,0,?THREEHEADCOIN02_03)
+					(4,0,0,?THREEHEADCOIN02_04)
+
+	JumpLocal		(?_THREEHEADCOIN_ANIM)
+
+/********************************/
+?_SCALE_ANIM
+
+	Frame:			(255,0,0,?SCALE_1)
+
+	JumpLocal		(?_SCALE_ANIM)
+
+/********************************/
+?_RABBAGEFOOT_ANIM
+
+	Frame:			(255,0,0,?RABBAGEFOOT01)
+
+	JumpLocal		(?_RABBAGEFOOT_ANIM)
+
+/********************************/

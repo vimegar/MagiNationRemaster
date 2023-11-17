@@ -1,0 +1,37 @@
+/***************************************/
+
+?_ARDGEYSER06_DR_1
+	HeroToDoor					(11,23,11,0)
+	Jump						(?_ARDGEYSER05)
+
+?_ARDGEYSER06_DR_2
+	HeroToDoor					(23,15,0,14)
+	Jump						(?_ARDGEYSER10)
+	
+?_ARDGEYSER06_DR_3
+	HeroToDoor					(4,0,9,23)
+	Jump						(?_ARDGEYSER07)
+
+/***************************************/
+
+?_ARDGEYSER06_TR_1
+	ThatActorSetAI				(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript			(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	ToggleAlways				(Ardgeyser_Trig9,_EMPTY,200,184,19,6,24)
+	LoadSpareMap				(SCR_ARDGEYSER06,COL_ARDGEYSER06)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	CopyTileSpare				(24,13,5,5,14,13,5)
+	CopyTileSpare				(24,2,9,11,10,2,9)
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+	
+_EMPTY
+	LoadSpareMap				(SCR_ARDGEYSER06B,COL_ARDGEYSER06B)
+	SetScroll					(?_CALD_GEYSER_QUAKE)
+	CopyTileSpare				(24,13,5,5,14,13,5)
+	CopyTileSpare				(24,2,9,11,10,2,9)
+	Jump						(?_CLDGEYSER_HERO_AI_SET)
+	
+?_ARDGEYSER06_TR_2
+	TriggerTreasure	(ARDGEYSER06_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,11,6,24)
+
+

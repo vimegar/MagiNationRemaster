@@ -1,0 +1,64 @@
+/********************************/
+?_NRMVASH18_DR_1
+		HeroToDoor	(4,17,25,8)
+		Jump		(?_NRMVASH05)
+
+?_NRMVASH18_TR_1
+		TriggerTreasure	(NRMVASH18_Chest1,INV_TYPE_ITEM,INV_BALOO_LEAF,7,3,11)
+
+?_NRMVASH18_TR_2
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It doesn't=")
+					("respond.")
+					("It's just a=")
+					("'door'.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH18_TR_3
+		TextOpen		()
+		TextIcon		(ICON_DINGO)
+		TextWrite		("MROW")
+		TextClose		()
+		End				()
+		
+?_NRMVASH18_TR_4
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It doesn't=")
+					("respond.")
+					("It's just a=")
+					("'fireplace'.")
+		TextClose	()
+		End			()
+		
+?_NRMVASH18_TR_5
+		If			([GAMECOUNT != GC_END_PARTY],_SKIP)
+		If			([Worveline_Hiding != 3],_SKIP)
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It doesn't=")
+					("respond.")
+					("It's just a=")
+		TextIcon	(ICON_WORVELINE)
+		TextWrite	("GRRRROWLLL!!!")
+		TextIcon	(ICON_TONY)
+		TextWrite	("AAAAAAAAGH!!!")
+		TextClose	()
+		TextOpen	()
+		TextWrite	("-Worveline=")
+					(" found!-")
+		TextClose	()
+		SetXRAMByte	(Worveline_Hiding,0)
+		SetXRAMBit	(Worveline_Caught,TRUE)
+		End			()
+_SKIP
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("It doesn't=")
+					("respond.")
+					("It's just a=")
+					("'chair'.")
+		TextClose	()
+		End			()

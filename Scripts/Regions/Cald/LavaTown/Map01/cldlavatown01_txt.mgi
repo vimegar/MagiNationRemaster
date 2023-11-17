@@ -1,0 +1,1097 @@
+/********************************//********************************/
+// PARTY
+/********************************//********************************/
+?_CLDLVTN01_PARTY_CHOICE_TXT
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Sorry. We=")
+						("started without")
+						("you, Tony.")
+						("Once the=")
+						("preparations")
+						("were made and=")
+						("the whole town")
+						("gathered,=")
+						("we just")
+						("couldn't wait!")
+						("Anyway, take a=")
+						("look around the")
+						("town. When=")
+						("you are ready,")
+						("we have a=")
+						("surprise for")
+						("you.")
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Party more=")
+						(" Go with Elder$")
+	TextMenu			(2)
+						(_PLAY_NO2)
+						(_PLAY_YES2)
+_PLAY_NO2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Thanks, but I'm=")
+						("still checking")
+						("the party out.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+_PLAY_YES2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Alright, let's=")
+						("see the")
+						("surprise!")
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Okay, follow=")
+						("me.")
+	TextClose			()
+	SetEventText		(1)
+	Delay				(6)
+	SetEventText		(67)
+	End					()
+
+?_CLDLVTN01_DANCE_TXT
+	TextOpen			()
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Hey... hey you=")
+						("with the Glyph!")
+						("Wanna dance?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Ummmm....")
+	TextClear			()
+	TextWrite			(" I guess so=")
+						(" No thanks$")
+	TextMenu			(2)
+						(_DANCE_YES2)
+						(_DANCE_NO2)
+_DANCE_YES2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("I guess so...")
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Well let's see=")
+						("what ya got!")
+	TextClose			()
+
+	SongStart			(SONGID_shop)
+	
+//  Change the music to dance music
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_CLDLVTN_TONY_DANCES)
+	WaitEventText		(95)
+//  Change music back to the background music
+
+	SongStart			(SONGID_oroisland)
+
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("WHO'S BAD!!!")
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Ummmm....=")
+						("you are???...")
+	TextClose			()
+	SetEventText		(1)
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+	End					()								
+	
+_DANCE_NO2
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("No thanks...")
+	TextIcon			(ICON_GIRL)
+	TextWrite			("Spoilsport!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+?_CLDLVTN01_GRUMBLE_TXT
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("...grumble...=")
+						("You kids and")
+						("your loud=")
+						("music.")
+						("Keep it down!!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+/********************************//********************************/
+// END PARTY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDLAVATOWN01_APOLOGY_TXT01
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("I guess I=")
+						("was wrong ")
+						("about you,=")
+						("young man...")
+						("What did you=")
+						("say your name")
+						("was again?")
+	TextIcon			(ICON_TONY)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("My name is=")
+						("Tony Jones.")
+	TextIcon			(ICON_ASHGAR)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("Well, Tony...")
+						("It seems we=")
+						("owe you an")
+						("apology.")
+						("I am sure=")
+						("you aren't")
+						("responsible=")
+						("for that thing")
+						("outside of=")
+						("town...")
+	TextIcon			(ICON_TONY)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("Morag has=")
+						("been creating")
+						("those Shadow=")
+						("Geysers all")
+						("over the=")
+						("place.")
+	TextIcon			(ICON_YOUNGMAN)
+	SetEventText		(4)
+	TextWrite			("Morag?!")
+	TextIcon			(ICON_OLDWOMAN)
+	SetEventText		(5)
+	SetEventText		(52)
+	TextWrite			("Shadow=")
+						("Geysers?")
+	TextIcon			(ICON_OLDMAN)
+	SetEventText		(6)
+	SetEventText		(62)
+	SetEventText		(63)
+	SetEventText		(64)
+	TextWrite			("What do you=")
+						("know of these")
+						("things?")
+	TextIcon			(ICON_TONY)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("I know=")
+						("enough to")
+						("stop them...")
+						("but I need=")
+						("to get over")
+						("that lava=")
+						("flow.")
+	TextIcon			(ICON_ASHGAR)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("Well....")
+						("Perhaps Valkan=")
+						("can help you.")
+						("He is Cald's=")
+						("Master Bridge")
+						("Builder.")
+	TextIcon			(ICON_TONY)
+	SetEventText		(12)
+	SetEventText		(13)
+	SetEventText		(14)
+	TextWrite			("I guess=")
+						("I'll give")
+						("him a try.")
+	TextIcon			(ICON_YOUNGMAN)
+	Delay				(6)
+	SetEventText		(4)
+	TextWrite			("You go Tony!")
+	TextIcon			(ICON_OLDWOMAN)
+	SetEventText		(52)
+	SetEventText		(5)
+	TextWrite			("That's the=")
+						("spirit!")
+	TextIcon			(ICON_OLDMAN)
+	SetEventText		(6)
+	SetEventText		(62)
+	SetEventText		(63)
+	SetEventText		(64)
+	TextWrite			("And...")
+						("I'm out!")
+	TextClose			()
+	Delay				(6)
+	SetEventText		(10)
+	End					()
+?_CLDLAVATOWN01_APOLOGY_TXT02
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Weird.")
+	TextClose			()
+	SetEventText		(11)
+	End					()
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COWARDICE
+/********************************//********************************/
+?_TXT_CLDLAVATOWN01_COWARDICE
+	ExprXRAMByte		(Cald_Cowardice,[Cald_Cowardice + 1])
+	Switch				([Cald_Cowardice])
+						(1,_ONE)
+						(2,_TWO)
+						(3,_THREE)
+						(4,_FOUR)
+						(5,_FIVE)
+_ONE
+	TextOpen			()
+	TextIcon			(ICON_TONY)		
+	TextWrite			("I can't=")
+						("leave while")
+						("the town is=")
+						("under attack!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_TWO
+	TextOpen			()
+	TextIcon			(ICON_TONY)		
+	TextWrite			("They need=")
+						("my help!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_THREE
+	TextOpen			()
+	TextIcon			(ICON_TONY)		
+	TextWrite			("This town=")
+						("will be")
+						("destroyed=")
+						("without me.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_FOUR
+	TextOpen			()
+	TextIcon			(ICON_TONY)		
+	TextWrite			("There are=")
+						("still evil")
+						("Magi running=")
+						("loose!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+_FIVE
+	SetXRAMByte			(Cald_Cowardice,0)
+	TextOpen			()	
+	TextWrite			("Hey Coward!")
+	TextClose			()
+	LoadVRAMTiles		(39,BIT_CORE03,0,0)
+	ThatActorStart		(ACTOR01)
+	SetAnyEventText		()
+	End					()
+	
+?_TXT_CLDLAVATOWN01_NIGHTMARE
+	TextOpen			()
+	TextWrite			("Trying to=")
+						("escape your")
+						("fate, huh?")
+	TextIcon			(ICON_TONY)
+	TextWrite			("Wha....?")
+						("Who are you?")
+	TextClose			()
+	TextOpen			()
+	TextWrite			("I'm your=")
+						("worst")
+						("nightmare.")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+/********************************//********************************/
+// END COWARDICE
+/********************************//********************************/
+
+/********************************//********************************/
+// HOUSE DOORS DURING BATTLE
+/********************************//********************************/
+?_TXT_CLDLAVATOWN01_GET_OUT
+	JumpRandom			(_GET_OUT)
+						(_BARRICADED)
+
+_GET_OUT
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("GET OUT=")
+						("YOU FIEND!!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+_BARRICADED
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("The door is=")
+						("barricaded")
+						("from the=")
+						("inside...")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+
+?_TXT_CLDLAVATOWN01_HOUSE_BATTLE
+	TextOpen			()
+	TextWrite			("GRAAAAARR!!!")
+	TextClose			()
+	SetAnyEventText		()
+	End					()
+/********************************//********************************/
+// END HOUSE DOORS DURING BATTLE
+/********************************//********************************/
+
+/********************************//********************************/
+// GEN INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT01
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Thanks for=")
+						("defeating the")
+						("Shadow Magi.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT01
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("I am so foolish=")
+						("for ever")
+						("doubting you.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT01
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Valkan knows=")
+						("everything!")
+						("You should=")
+						("talk to him.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END GEN INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT02
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Lava Arboll?")
+						("Weren't you=")
+						("going to build")
+						("a bridge or=")
+						("something?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT02
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Lava Arbolls=")
+						("make loyal")
+						("companions.")
+						("If you can=")
+						("find them.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT02
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Hey, did you=")
+						("know?")
+						("Lava Arbolls=")
+						("like the smell")
+						("of those lava=")
+						("vents North of")
+						("here.")
+						("They follow=")
+						("Arbolits")
+						("around, looking=")
+						("for easy prey.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT03
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Hi...")
+	TextWrite			("Bye...")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT03
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Don't you have=")
+						("something else")
+						("to do?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT03
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("What are you=")
+						("doing here?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT04
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Go and deal=")
+						("with the")
+						("geyser.")
+						("NOW!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT04
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Hurry up!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT04
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Aren't you=")
+						("supposed to")
+						("stop that=")
+						("geyser?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT05
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("Valkan is the=")
+						("best bridge")
+						("builder in=")
+						("our town.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT05
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Praise Valkan!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT05
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Valkan is a=")
+						("hero in our")
+						("town.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDTOWN01_OLDMAN04_TXT06
+	TextOpen			()
+	TextIcon			(ICON_OLDMAN)
+	TextWrite			("You escaped!")
+						("You are the=")
+						("man, Tony!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_OLDLADY04_TXT06
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Praise TONY!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+?_CLDTOWN01_MAN04_TXT06
+	TextOpen			()
+	TextIcon			(ICON_YOUNGMAN)
+	TextWrite			("Tony is a=")
+						("hero in our")
+						("town.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE TOWN IS ATTACKED
+/********************************//********************************/
+?_CLDLAVATOWN01_WEL_TXT_1
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Well, what=")
+							("did you find?")
+							("Who's this?")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_CLDLAVATOWN01_WEL_TXT_2
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("There's this=")
+							("huge black")
+							("mass coming=")
+							("out of the")
+							("lava pool up=")
+							("there!")
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("We found this=")
+							("kid hanging")
+							("around where=")
+							("it appeared.")
+							("We'll let you=")
+							("handle it. Bye!")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+?_CLDLAVATOWN01_WEL_TXT_3
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("I'll deal with=")
+							("you later. I'm")
+							("going to have=")
+							("a look at this")
+							("'black mass'.")
+							("Don't you dare=")
+							("go anywhere!")
+	TextClose				()
+	SetEventText			(3)
+	End						()
+
+?_CLDLAVATOWN01_WEL_TXT_4
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("EEEEK! SHADOW=")
+							("MAGI ARE LAYING")
+							("WASTE TO THE=")
+							("TOWN! HELP!!")
+	TextClose				()
+	SetEventText			(4)
+	End						()
+
+?_CLDLAVATOWN01_WEL_TXT_5
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("RUN FOR YOUR=")
+							("LIIIIIIIVES!!!=")
+	Delay					(64)
+	TextClose				()
+	SetEventText			(5)
+	End						()
+
+?_CLDLAVATOWN01_WEL_TXT_6
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("You unleashed=")
+							("this upon us")
+							("you fiend!=")
+							("You'll pay for")
+							("this crime!=")
+	Delay					(48)
+	TextClose				()
+	SetEventText			(6)
+	Delay					(64)
+	SetEventText			(10)
+	End						()
+
+
+/********************************//********************************/
+//	END THE TOWN IS ATTACKED
+/********************************//********************************/
+
+/********************************//********************************/
+//	The most valuable object
+/********************************//********************************/
+?_CLDLAVATOWN01_VIA_TXT_1
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("I really can't=")
+							("believe that")
+							("happened. That=")
+							("has NEVER EVER")
+							("happened to me=")
+							("before!")
+							("Where are you=")
+							("going, anyway?")
+	TextIcon				(ICON_TONY)
+	TextWrite				("I'm going to=")
+							("see the Elder,")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Y-you're not...")
+							("gonna tell him=")
+							("about the")
+							("bridge, are=")
+							("you?")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_2
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Of course I=")
+							("am! How else")
+							("am I going to=")
+							("get his help?")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_3
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("N-NO! Y-you=")
+							("can't! My... my")
+							("reputation will=")
+							("be ruined! I'll")
+							("never get a=")
+							("job here again!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Sorry, there's=")
+							("nothing I can")
+							("do about that.")
+	TextClose				()
+	SetEventText			(3)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_4
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Hey! Cut that=")
+							("out!")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("I have another=")
+							("idea! Hear me=")
+							("out! Please!!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Fine! Just let=")
+							("go of me!")
+	TextClose				()
+	SetEventText			(4)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_5
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("In Orothe,=")
+							("there is a")
+							("vault that=")
+							("contains the")
+							("most valuable=")
+							("treasure of")
+							("Cald... a pair=")
+							("of Agadon's")
+							("boots!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Footwear?")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Not just any=")
+							("footwear. These")
+							("boots allow the=")
+							("person who is")
+							("wearing them to=")
+							("jump great")
+							("distances!=")
+							("With them you")
+							("should be able=")
+							("to make it")
+							("across the pool=")
+							("of lava!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("JUMP across?!")
+							("Do I look=")
+							("crazy to you?!")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("I know it may=")
+							("sound a bit")
+							("crazy but...=")
+							("I'm not lying!")
+							("Just trust me,=")
+							("you'll see!")
+	TextClose				()
+	SetEventText			(5)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_6
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("So what do you=")
+							("say?")
+	TextClose				()
+	Delay					(64)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Okay, I'll give=")
+							("you another")
+							("chance. So how=")
+							("do I get these")
+							("boots?")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Well, like I=")
+							("said they're in")
+							("a vault in=")
+							("Orothe. You'll=")
+							("need a key to")
+							("get in, but=")
+							("I'll take care")
+							("of that.")
+	TextClose				()
+	SetEventText			(6)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_7
+	SongFadeOut				(80)
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Okay, here's=")
+							("the plan...")
+							("I'm going to=")
+							("cause a little")
+							("disturbance in=")
+							("the town center")
+							("while you sneak=")
+							("into Ashgar's")
+							("house and grab=")
+							("the key!")
+							("Good luck!")
+	TextClose				()
+	SetEventText			(7)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_8
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("WHAT?! ME?=")
+							("Why me?!")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("You can do it!")
+							("I believe in=")
+							("you!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("No, that's not=")
+							("what I meant!")
+	TextClose				()
+	Delay					(32)
+	SetEventText			(80)
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(".........")
+							("Oh forget it...")
+	TextClose				()
+	SetEventText			(8)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_9
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Aaagh! Fire!!")
+							("FIRE!!!!!!")
+							("There's FIRE=")
+							("everywhere!!")
+							("Noo! Oh, the=")
+							("humanity! The")
+							("sorrow!! It's=")
+							("spreading!!")
+							("We'll all be")
+							("burnt to a")
+							("cinder! Our=")
+							("flesh will be")
+							("seared to the=")
+							("very bone!")
+							("HOT HOT HOT!!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("...they're=")
+							("never going to")
+							("buy this...")
+	TextClose				()
+	SetEventText			(90)
+
+	SongStart				(SONGID_random)
+	Delay					(64)
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("What?! What=")
+							("is going on")
+							("out here?!")
+	TextClose				()
+	Delay					(64)
+	SetEventText			(9)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_10
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				(".........")
+							("Unbelievable.")
+	TextClose				()
+	SetEventText			(10)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_11
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("No, it's fire!")
+							("I mean, look=")
+							("at it!")
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("How many times=")
+							("must I explain")
+							("it to you?!=")
+							("It is nothing")
+							("more than a=")
+							("small pool of")
+							("magma, the same=")
+							("one that has")
+							("been in that=")
+							("spot for over")
+							("40 years!")
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("Spare me your=")
+							("dog and pony")
+							("show! I know=")
+							("what I see, and")
+							("right there, I=")
+							("see FIRE!")
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Oh, for crying=")
+							("out loud...")
+	TextClose				()
+	SetEventText			(11)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_12
+	TextOpen				()
+	TextIcon				(ICON_VALKAN)
+	TextWrite				("OHHHH!! I get=")
+							("it, this is a")
+							("pool of magma!=")
+							("Well thanks my")
+							("man Ashgar! I=")
+							("had no idea!")
+	SetEventText			(12)
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("??")
+							("Uh...")
+							("yeah. Sure.")
+	TextClose				()
+	SetEventText			(120)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_13
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Sheesh, what=")
+							("a weirdo.")
+	TextClose				()
+	SetEventText			(13)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_14
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("You know, it=")
+							("does kind of")
+							("look like fire=")
+							("if you look")
+							("close enough...")
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Hey, I think=")
+							("you're right!")
+	TextClose				()
+	SetEventText			(14)
+	End						()
+
+?_CLDLAVATOWN01_VIA_TXT_15
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Oh, quiet you.")
+	TextClose				()
+	SetEventText			(15)
+	End						()
+
+/********************************//********************************/
+//	END The most valuable object
+/********************************//********************************/
+
+/********************************//********************************/
+//	Beat the Geyser, continued
+/********************************//********************************/
+?_CLDLAVATOWN01_BG_TXT_1
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("Hey Elder!")
+	TextClose				()
+	Delay					(96)
+	TextOpen				()
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("ASHGAR!!!!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+?_CLDLAVATOWN01_BG_TXT_2
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("I was eating my=")
+							("porridge!! What")
+							("is it?!")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+?_CLDLAVATOWN01_BG_TXT_3
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("The geyser=")
+							("is gone! We")
+							("found this kid=")
+							("out by where")
+							("it was.")
+	TextIcon				(ICON_OLDMAN)
+	TextWrite				("We trust that=")
+							("you will handle")
+							("this. Bye!")
+	TextClose				()
+	SetEventText			(3)
+	End						()
+
+?_CLDLAVATOWN01_BG_TXT_4
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("You stopped it?")
+	TextClose				()
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				(".........")
+							("I'm... sorry.")
+							("We should not=")
+							("have doubted")
+							("you.")
+	TextClose				()
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Please let us=")
+							("make this up")
+							("to you.")
+	TextClose				()
+	SetEventText			(4)
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Let me see...")
+							("what can we=")
+							("do...")
+	TextClose				()
+	Delay					(128)
+	SetEventText			(5)
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("I've got it!")
+							("We'll have a=")
+							("celebration!")
+							("You'll be our=")
+							("guest of honor!")
+	TextClose				()
+	TextOpen				()
+	TextIcon				(ICON_ASHGAR)
+	TextWrite				("Okay, now that=")
+							("that's settled,")
+							("I need to go=")
+							("handle the")
+							("preparations.")
+							("You may stay=")
+							("here in my home")
+							("until it's all=")
+							("ready. You're")
+							("probably tired=")
+							("anyway.")
+	TextClose				()
+	SetEventText			(6)
+	End						()
+
+/********************************//********************************/
+//	END Beat the Geyser, continued
+/********************************//********************************/

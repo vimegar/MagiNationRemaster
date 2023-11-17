@@ -1,0 +1,2003 @@
+;Size:3646
+                     
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\CALD\FERRY\MAP01\FERRY01.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_FERRY01_WEAVE_DR_1
+	DB	CMD_SETLOADSCRIPT
+		DB	:?_FERRY01_WEAVE_DR_1
+		DW	(?_FERRY01_WEAVE_DR_1&$FFFF)
+
+	DB	CMD_HEROSETDOOR
+		DB	$14
+		DB	$28
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01
+		DW	(?_OVRSURFACE01&$FFFF)
+
+;********************************
+?_FERRY01_CALD_DR_1
+	DB	CMD_SETLOADSCRIPT
+		DB	:?_FERRY01_CALD_DR_1
+		DW	(?_FERRY01_CALD_DR_1&$FFFF)
+
+	DB	CMD_HEROSETDOOR
+		DB	$26
+		DB	$37
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01
+		DW	(?_OVRSURFACE01&$FFFF)
+
+;********************************
+?_TXT_FERRY_INTRO
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AU+$08),?SPCE,(?AL+$07),(?AL+$04),(?AL+$0B),(?AL+$0F),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AU+$08),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?HURRY
+		DB	(?AL+$00),?SPCE,(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?WAIT
+		DB	(?AU+$0E),(?AL+$11),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$05),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$14),(?AL+$11),(?AL+$12),(?AL+$04),?EXCL,?HURRY
+		DB	(?AU+$13),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$01),(?AL+$04),?SPCE,(?0+$03),(?0+$00),(?0+$00),?HURRY
+		DB	(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?0+$03),(?0+$00),(?0+$00),?QUST,?EXCL,?SPCE,(?AU+$08),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?HURRY
+		DB	(?AL+$01),(?AL+$00),(?AL+$11),(?AL+$04),(?AL+$0B),(?AL+$18),?SPCE,(?AL+$02),(?AL+$00),(?AL+$11),(?AL+$11),(?AL+$18),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$0C),(?AL+$14),(?AL+$02),(?AL+$07),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$00),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?SPCE,(?AL+$0E),(?AL+$11),?HURRY
+		DB	(?AL+$0B),(?AL+$04),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?COMM,?SPCE,(?AL+$08),(?AL+$13),?APST,(?AL+$12),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),(?AL+$11),?SPCE,(?AL+$02),(?AL+$07),(?AL+$0E),(?AL+$08),(?AL+$02),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$03),(?0+$00),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY
+		DW	(_PAY&$FFFF)
+		DB	:_DONT_PAY
+		DW	(_DONT_PAY&$FFFF)
+
+;********************************
+_PAY
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_IF
+		DB	EXPR_LESS
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_WORDCONST
+		DW	$012C
+		DB	:_POOR
+		DW	(_POOR&$FFFF)
+
+	DB	CMD_EXPRXRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_SUB
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_WORDCONST
+		DW	$012C
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$00),(?AL+$0D),(?AL+$0A),(?AL+$12),?COMM,?SPCE,(?AU+$00),(?AU+$0B),(?AU+$0B),?HURRY
+		DB	(?AU+$00),(?AU+$01),(?AU+$0E),(?AU+$00),(?AU+$11),(?AU+$03),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$0F
+
+	DB	CMD_JUMP
+		DB	:?_FERRY03_KZBOMB_TRANSIT
+		DW	(?_FERRY03_KZBOMB_TRANSIT&$FFFF)
+
+;********************************
+_DONT_PAY
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0D),(?AL+$08),(?AL+$02),(?AL+$04),?SPCE,(?AL+$13),(?AL+$00),(?AL+$0B),(?AL+$0A),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$13),(?AL+$0E),?HURRY
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?COMM,?SPCE,(?AL+$04),(?AL+$0D),(?AL+$09),(?AL+$0E),(?AL+$18),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AU+$02),(?AL+$00),(?AL+$0B),(?AL+$03),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_POOR
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$04),(?AL+$0D),(?AL+$0E),(?AL+$14),(?AL+$06),(?AL+$07),?WAIT
+		DB	(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_TXT_FERRY_HAGGLE
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$00),(?AL+$06),(?AL+$00),(?AL+$08),(?AL+$0D),?QUST,?WAIT
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$13),?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),?SPCE,(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?WAIT
+		DB	(?AL+$00),(?AL+$05),(?AL+$13),(?AL+$04),(?AL+$11),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$00),(?AL+$15),(?AL+$08),(?AL+$0D),(?AL+$06),?HURRY
+		DB	(?AL+$0C),(?AL+$04),?SPCE,(?AL+$07),(?AL+$00),(?AL+$0D),(?AL+$06),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$08),(?AL+$0D),?WAIT
+		DB	(?AU+$0E),(?AL+$11),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$18),(?AL+$04),(?AL+$12),?HURRY
+		DB	?SPCE,(?AU+$0D),(?AL+$0E)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_YES1
+		DW	(_YES1&$FFFF)
+		DB	:_NO1
+		DW	(_NO1&$FFFF)
+
+;********************************
+_NO1
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),(?AL+$0D),?SPCE,(?AL+$06),(?AL+$0E),?SPCE,(?AL+$00),(?AL+$16),(?AL+$00),(?AL+$18),?PERD,?HURRY
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$01),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$11),?SPCE,(?AL+$0C),(?AL+$04),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_YES1
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$0E),(?AL+$0A),?COMM,?SPCE,(?AL+$12),(?AL+$08),(?AL+$0D),(?AL+$02),(?AL+$04),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	(?AL+$05),(?AL+$04),(?AL+$11),(?AL+$11),(?AL+$18),?SPCE,(?AL+$08),(?AL+$12),?SPCE,(?AL+$0C),(?AL+$18),?WAIT
+		DB	(?AL+$0B),(?AL+$08),(?AL+$15),(?AL+$04),(?AL+$0B),(?AL+$08),(?AL+$07),(?AL+$0E),(?AL+$0E),(?AL+$03),?HURRY
+		DB	(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$06),(?AL+$08),(?AL+$15),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$00),?WAIT
+		DB	(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?COMM,?SPCE,(?AL+$01),(?AL+$14),(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$12),?HURRY
+		DB	(?AL+$13),(?AL+$08),(?AL+$0C),(?AL+$04),?SPCE,(?AU+$08),?SPCE,(?AL+$16),(?AL+$00),(?AL+$0D),(?AL+$13),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),?WAIT
+		DB	(?AL+$0C),(?AL+$18),?SPCE,(?AL+$0C),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$18),?SPCE,(?AL+$14),(?AL+$0F),?HURRY
+		DB	(?AL+$05),(?AL+$11),(?AL+$0E),(?AL+$0D),(?AL+$13),?PERD,?SPCE,(?AU+$08),(?AL+$13),?APST,(?AL+$0B),(?AL+$0B),?WAIT
+		DB	(?AL+$02),(?AL+$0E),(?AL+$12),(?AL+$13),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?0+$06),(?0+$00),(?0+$00),?HURRY
+		DB	(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$11),?WAIT
+		DB	(?AL+$00),?SPCE,(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$06),(?0+$00),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY1
+		DW	(_PAY1&$FFFF)
+		DB	:_DONT_PAY1
+		DW	(_DONT_PAY1&$FFFF)
+
+;********************************
+_PAY1
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$0258
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY1
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$0C),(?AL+$0C),(?AL+$0C),?PERD,?PERD,?PERD,?WAIT
+		DB	(?AU+$16),(?AL+$04),(?AL+$0B),(?AL+$0B),?COMM,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$12),(?AL+$04),(?AL+$04),(?AL+$0C),?HURRY
+		DB	(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$00),?SPCE,(?AL+$0D),(?AL+$08),(?AL+$02),(?AL+$04),?WAIT
+		DB	(?AL+$04),(?AL+$0D),(?AL+$0E),(?AL+$14),(?AL+$06),(?AL+$07),?SPCE,(?AL+$0A),(?AL+$08),(?AL+$03),?PERD,?WAIT
+		DB	(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$0C),(?AL+$00),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?HURRY
+		DB	(?0+$05),(?0+$05),(?0+$00),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$05),(?0+$05),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY2
+		DW	(_PAY2&$FFFF)
+		DB	:_DONT_PAY2
+		DW	(_DONT_PAY2&$FFFF)
+
+;********************************
+_PAY2
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$0226
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY2
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AU+$07),(?AU+$00),(?AU+$13),?EXCL,?QUST,?WAIT
+		DB	(?AU+$07),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$11),(?AL+$04),(?AL+$05),(?AL+$14),(?AL+$12),(?AL+$04),?SPCE,(?AL+$0C),(?AL+$18),?WAIT
+		DB	(?AL+$06),(?AL+$04),(?AL+$0D),(?AL+$04),(?AL+$11),(?AL+$0E),(?AL+$12),(?AL+$08),(?AL+$13),(?AL+$18),?QUST,?WAIT
+		DB	(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$13),(?AL+$04),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$16),(?AL+$07),(?AL+$00),(?AL+$13),?PERD,?PERD,?PERD,?WAIT
+		DB	(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?AL+$0C),(?AL+$04),?SPCE,(?0+$04),(?0+$07),(?0+$05),?SPCE,(?AL+$0D),(?AL+$0E),(?AL+$16),?COMM,?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AU+$08),?SPCE,(?AL+$16),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?WAIT
+		DB	(?AL+$02),(?AL+$07),(?AL+$00),(?AL+$11),(?AL+$06),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$16),(?AL+$00),(?AL+$08),(?AL+$13),?PERD,?WAIT
+		DB	(?AU+$13),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?SPCE,(?AL+$0C),(?AL+$18),?SPCE,(?AL+$05),(?AL+$08),(?AL+$0D),(?AL+$00),(?AL+$0B),?HURRY
+		DB	(?AL+$0E),(?AL+$05),(?AL+$05),(?AL+$04),(?AL+$11),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$04),(?0+$07),(?0+$05),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY3
+		DW	(_PAY3&$FFFF)
+		DB	:_DONT_PAY3
+		DW	(_DONT_PAY3&$FFFF)
+
+;********************************
+_PAY3
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$01DB
+
+	DB	CMD_JUMP
+		DB	:?_TXT_FERRY_DESTINATION
+		DW	(?_TXT_FERRY_DESTINATION&$FFFF)
+
+;********************************
+_DONT_PAY3
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$11),(?AL+$04),(?AL+$00),(?AL+$0B),(?AL+$0B),(?AL+$18),?QUST,?WAIT
+		DB	?PERD,?PERD,?PERD,?PERD,?WAIT
+		DB	(?AU+$0B),(?AL+$0E),(?AL+$0E),(?AL+$0A),?PERD,?PERD,?PERD,?WAIT
+		DB	(?AU+$08),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$00),?SPCE,(?AL+$16),(?AL+$08),(?AL+$05),(?AL+$04),?HURRY
+		DB	(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$12),(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0D),?SPCE,(?AL+$0A),(?AL+$08),(?AL+$03),(?AL+$12),?WAIT
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$05),(?AL+$04),(?AL+$04),(?AL+$03),?PERD,?WAIT
+		DB	(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$13),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$01),(?AL+$18),?SPCE,(?AL+$0E),(?AL+$0D),?SPCE,(?0+$03),(?0+$00),(?0+$00),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$03),(?0+$00),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY4
+		DW	(_PAY4&$FFFF)
+		DB	:_DONT_PAY4
+		DW	(_DONT_PAY4&$FFFF)
+
+;********************************
+_PAY4
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$012C
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY4
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),?APST,(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$01),(?AL+$04),?HURRY
+		DB	(?AL+$07),(?AL+$0E),(?AL+$0D),(?AL+$04),(?AL+$12),(?AL+$13),?PERD,?WAIT
+		DB	(?AU+$05),(?AL+$0E),(?AL+$11),(?AL+$06),(?AL+$04),(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	(?AL+$16),(?AL+$08),(?AL+$05),(?AL+$04),?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$0A),(?AL+$08),(?AL+$03),(?AL+$12),?PERD,?WAIT
+		DB	(?AU+$08),?APST,(?AL+$0C),?SPCE,(?AL+$01),(?AL+$11),(?AL+$0E),(?AL+$0A),(?AL+$04),?PERD,?WAIT
+		DB	(?AU+$08),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$12),(?AL+$13),?SPCE,(?AL+$00),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$0C),(?AL+$18),?HURRY
+		DB	(?AL+$03),(?AL+$0E),(?AL+$14),(?AL+$06),(?AL+$07),?SPCE,(?AL+$0F),(?AL+$0B),(?AL+$00),(?AL+$18),(?AL+$08),(?AL+$0D),(?AL+$06),?WAIT
+		DB	(?AL+$02),(?AL+$00),(?AL+$11),(?AL+$03),(?AL+$12),?SPCE,(?AL+$16),(?AL+$08),(?AL+$13),(?AL+$07),?HURRY
+		DB	(?AU+$0E),(?AL+$11),(?AL+$0B),(?AL+$0E),(?AL+$0D),?PERD,?WAIT
+		DB	(?AU+$09),(?AL+$14),(?AL+$12),(?AL+$13),?SPCE,(?AL+$03),(?AL+$0E),?SPCE,(?AL+$0C),(?AL+$04),?HURRY
+		DB	(?AL+$0E),(?AL+$0D),(?AL+$04),?SPCE,(?AL+$05),(?AL+$00),(?AL+$15),(?AL+$0E),(?AL+$11),?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?WAIT
+		DB	(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?SPCE,(?AL+$0C),(?AL+$18),?SPCE,(?AL+$05),(?AL+$04),(?AL+$11),(?AL+$11),(?AL+$18),?HURRY
+		DB	(?AL+$05),(?AL+$0E),(?AL+$11),?SPCE,(?0+$02),(?0+$00),(?0+$00),?PERD,?WAIT
+		DB	(?AU+$08),?APST,(?AL+$03),?SPCE,(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$0B),(?AL+$0B),(?AL+$18),?HURRY
+		DB	(?AL+$00),(?AL+$0F),(?AL+$0F),(?AL+$11),(?AL+$04),(?AL+$02),(?AL+$08),(?AL+$00),(?AL+$13),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$02),(?0+$00),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY8
+		DW	(_PAY8&$FFFF)
+		DB	:_DONT_PAY8
+		DW	(_DONT_PAY8&$FFFF)
+
+;********************************
+_PAY8
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$00C8
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY8
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?0+$01),(?0+$09),(?0+$09),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$01),(?0+$09),(?0+$09),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY5
+		DW	(_PAY5&$FFFF)
+		DB	:_DONT_PAY5
+		DW	(_DONT_PAY5&$FFFF)
+
+;********************************
+_PAY5
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$00C7
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY5
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$0E),(?AL+$16),?SPCE,(?AL+$00),(?AL+$01),(?AL+$0E),(?AL+$14),(?AL+$13),?SPCE,(?0+$01),(?0+$00),(?0+$00),?QUST,?HURRY
+		DB	(?AU+$00),(?AL+$0D),(?AL+$18),(?AL+$13),(?AL+$07),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$0B),(?AL+$04),(?AL+$12),(?AL+$12),?WAIT
+		DB	(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?HURRY
+		DB	(?AU+$08),?APST,(?AL+$0C),?SPCE,(?AL+$13),(?AL+$00),(?AL+$0A),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$00),?WAIT
+		DB	(?AL+$07),(?AL+$04),(?AL+$00),(?AL+$15),(?AL+$18),?SPCE,(?AL+$0B),(?AL+$0E),(?AL+$12),(?AL+$12),?PERD,?SPCE,(?AU+$08),?APST,(?AL+$0C),?WAIT
+		DB	(?AL+$01),(?AL+$04),(?AL+$06),(?AL+$06),(?AL+$08),(?AL+$0D),(?AL+$06),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$01),(?0+$00),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY6
+		DW	(_PAY6&$FFFF)
+		DB	:_DONT_PAY6
+		DW	(_DONT_PAY6&$FFFF)
+
+;********************************
+_PAY6
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$0064
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY6
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$00),(?AL+$0B),(?AL+$11),(?AL+$08),(?AL+$06),(?AL+$07),(?AL+$13),?COMM,?SPCE,(?0+$05),(?0+$00),?HURRY
+		DB	(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?EXCL,?SPCE,(?AU+$0F),(?AL+$0B),(?AL+$04),(?AL+$00),(?AL+$12),(?AL+$04),?WAIT
+		DB	(?AL+$13),(?AL+$00),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$08),(?AL+$13),?PERD,?SPCE,(?AU+$08),(?AL+$13),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AL+$01),(?AL+$04),(?AL+$12),(?AL+$13),?SPCE,(?AL+$03),(?AL+$04),(?AL+$00),(?AL+$0B),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$16),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$11),?HURRY
+		DB	(?AL+$06),(?AL+$04),(?AL+$13),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?SPCE,(?0+$05),(?0+$00),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY7
+		DW	(_PAY7&$FFFF)
+		DB	:_DONT_PAY7
+		DW	(_DONT_PAY7&$FFFF)
+
+;********************************
+_PAY7
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$0032
+
+	DB	CMD_JUMP
+		DB	:_CHECK_MONEY
+		DW	(_CHECK_MONEY&$FFFF)
+
+;********************************
+_DONT_PAY7
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$00),(?AL+$13),?QUST,?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$16),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$06),(?AL+$08),(?AL+$15),(?AL+$04),?SPCE,(?AL+$0C),(?AL+$04),?SPCE,(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0D),?SPCE,(?0+$05),(?0+$00),?WAIT
+		DB	(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?SPCE,(?AL+$05),(?AL+$0E),(?AL+$11),?SPCE,(?AL+$00),?HURRY
+		DB	(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?QUST,?SPCE,(?AU+$13),(?AL+$11),(?AL+$18),?SPCE,(?AL+$0C),(?AL+$04),?WAIT
+		DB	(?AL+$0B),(?AL+$00),(?AL+$13),(?AL+$04),(?AL+$11),?SPCE,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$12),(?AL+$04),(?AL+$04),?HURRY
+		DB	(?AL+$16),(?AL+$07),(?AL+$00),(?AL+$13),?SPCE,(?AL+$0A),(?AL+$08),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$0E),(?AL+$05),?WAIT
+		DB	(?AL+$0F),(?AL+$11),(?AL+$08),(?AL+$02),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$06),(?AL+$04),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)
+		DB	$03
+
+	DB	CMD_SETXRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DW	$01DB
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_CHECK_MONEY
+	DB	CMD_IF
+		DB	EXPR_LESS
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DB	:_POOR
+		DW	(_POOR&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TXT_FERRY_DESTINATION&$FFFF)
+
+;********************************
+_POOR
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$01),(?AL+$00),(?AL+$07),?EXCL,?SPCE,(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$04),(?AL+$15),(?AL+$04),(?AL+$0D),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?WAIT
+		DB	(?AL+$0C),(?AL+$14),(?AL+$02),(?AL+$07),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?HURRY
+		DB	(?AU+$01),(?AL+$14),(?AL+$13),?SPCE,(?AL+$00),?SPCE,(?AL+$03),(?AL+$04),(?AL+$00),(?AL+$0B),?APST,(?AL+$12),?WAIT
+		DB	(?AL+$00),?SPCE,(?AL+$03),(?AL+$04),(?AL+$00),(?AL+$0B),?PERD,?HURRY
+		DB	(?AU+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),?SPCE,(?AL+$01),(?AL+$00),(?AL+$0D),(?AL+$0A),?SPCE,(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$0D),?WAIT
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$00),(?AL+$05),(?AL+$05),(?AL+$0E),(?AL+$11),(?AL+$03),?HURRY
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_TXT_FERRY_NORMAL
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$04),?APST,(?AL+$11),(?AL+$04),?SPCE,(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$03),(?AL+$18),?HURRY
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$12),(?AL+$00),(?AL+$08),(?AL+$0B),?COMM,?WAIT
+		DB	(?AL+$16),(?AL+$0E),(?AL+$14),(?AL+$0B),(?AL+$03),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?HURRY
+		DB	(?AL+$00),?SPCE,(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0D),(?AL+$0E),?HURRY
+		DB	?SPCE,(?AU+$18),(?AL+$04),(?AL+$12)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_NO
+		DW	(_NO&$FFFF)
+		DB	:_YES
+		DW	(_YES&$FFFF)
+
+;********************************
+_NO
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$04),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$13),(?AL+$07),(?AL+$04),(?AL+$0D),?COMM,?HURRY
+		DB	(?AL+$0D),(?AL+$08),(?AL+$02),(?AL+$04),?SPCE,(?AL+$13),(?AL+$00),(?AL+$0B),(?AL+$0A),(?AL+$08),(?AL+$0D),(?AL+$06),?WAIT
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_YES
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$08),(?AL+$13),?SPCE,(?AL+$16),(?AL+$08),(?AL+$0B),(?AL+$0B),?SPCE,(?AL+$02),(?AL+$0E),(?AL+$12),(?AL+$13),?HURRY
+		DB	?EOF
+
+	DB	CMD_SWITCH
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DB	:_PRICE_1
+		DW	$0258
+		DW	(_PRICE_1&$FFFF)
+		DB	:_PRICE_2
+		DW	$0226
+		DW	(_PRICE_2&$FFFF)
+		DB	:_PRICE_3
+		DW	$01DB
+		DW	(_PRICE_3&$FFFF)
+		DB	:_PRICE_4
+		DW	$012C
+		DW	(_PRICE_4&$FFFF)
+		DB	:_PRICE_5
+		DW	$00C8
+		DW	(_PRICE_5&$FFFF)
+		DB	:_PRICE_6
+		DW	$00C7
+		DW	(_PRICE_6&$FFFF)
+		DB	:_PRICE_7
+		DW	$0064
+		DW	(_PRICE_7&$FFFF)
+		DB	:_PRICE_8
+		DW	$0032
+		DW	(_PRICE_8&$FFFF)
+		DB	$FF
+
+;********************************
+_PRICE_1
+	DB	CMD_TEXTWRITE
+		DB	(?0+$06),(?0+$00),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_2
+	DB	CMD_TEXTWRITE
+		DB	(?0+$05),(?0+$05),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_3
+	DB	CMD_TEXTWRITE
+		DB	(?0+$04),(?0+$07),(?0+$05),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_4
+	DB	CMD_TEXTWRITE
+		DB	(?0+$03),(?0+$00),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_5
+	DB	CMD_TEXTWRITE
+		DB	(?0+$02),(?0+$00),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_6
+	DB	CMD_TEXTWRITE
+		DB	(?0+$01),(?0+$09),(?0+$09),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_7
+	DB	CMD_TEXTWRITE
+		DB	(?0+$01),(?0+$00),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_PRICE_8
+	DB	CMD_TEXTWRITE
+		DB	(?0+$05),(?0+$00),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_JUMPLOCAL
+		DW	(_SKIP&$FFFF)
+
+;********************************
+_SKIP
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0F),(?AL+$00),(?AL+$18),?HURRY
+		DB	?SPCE,(?AU+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_PAY
+		DW	(_PAY&$FFFF)
+		DB	:_DONT_PAY
+		DW	(_DONT_PAY&$FFFF)
+
+;********************************
+_DONT_PAY
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$04),(?AL+$0D),?SPCE,(?AU+$08),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$06),(?AL+$08),(?AL+$15),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$00),?WAIT
+		DB	(?AL+$11),(?AL+$08),(?AL+$03),(?AL+$04),?PERD,?SPCE,(?AU+$06),(?AL+$0E),(?AL+$0E),(?AL+$03),(?AL+$01),(?AL+$18),(?AL+$04),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+_PAY
+	DB	CMD_IF
+		DB	EXPR_LESS
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+		DB	:_POOR
+		DW	(_POOR&$FFFF)
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_TXT_FERRY_DESTINATION&$FFFF)
+
+;********************************
+_POOR
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$07),(?AL+$00),(?AL+$15),(?AL+$04),?HURRY
+		DB	(?AL+$04),(?AL+$0D),(?AL+$0E),(?AL+$14),(?AL+$06),(?AL+$07),?SPCE,(?AU+$00),(?AL+$0D),(?AL+$08),(?AL+$0C),(?AL+$08),(?AL+$13),(?AL+$04),?PERD,?WAIT
+		DB	(?AU+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),?SPCE,(?AL+$01),(?AL+$00),(?AL+$0D),(?AL+$0A),?SPCE,(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$0D),?HURRY
+		DB	(?AL+$18),(?AL+$0E),(?AL+$14),?SPCE,(?AL+$02),(?AL+$00),(?AL+$0D),?SPCE,(?AL+$00),(?AL+$05),(?AL+$05),(?AL+$0E),(?AL+$11),(?AL+$03),?WAIT
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$0F),(?AL+$00),(?AL+$18),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_END
+
+;********************************
+?_TXT_FERRY_DESTINATION
+	DB	CMD_EXPRXRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_SUB
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_INVENTORY_ANIMITE+$0000)&$FFFF
+		DB	EXPR_XRAMWORD
+		DW	(XRAM_SAVEVARS+$0085)&$FFFF
+
+	DB	CMD_TEXTICON
+		DW	ICON_GUY03
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$16),(?AL+$0E),(?AL+$14),(?AL+$0B),(?AL+$03),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?HURRY
+		DB	(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?SPCE,(?AL+$06),(?AL+$0E),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLEAR
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_SWITCH
+		DB	EXPR_XRAMBYTE
+		DW	(XRAM_SAVEVARS+$0087)&$FFFF
+		DB	:_CALD_DOCK
+		DW	$0000
+		DW	(_CALD_DOCK&$FFFF)
+		DB	:_OROTHE_DOCK
+		DW	$0001
+		DW	(_OROTHE_DOCK&$FFFF)
+		DB	:_WEAVE_DOCK
+		DW	$0002
+		DW	(_WEAVE_DOCK&$FFFF)
+		DB	$FF
+
+;********************************
+_CALD_DOCK
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$0E),(?AL+$11),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04),?HURRY
+		DB	?SPCE,(?AU+$16),(?AL+$04),(?AL+$00),(?AL+$15),(?AL+$04)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_OROTHE_FROM_CALD
+		DW	(_OROTHE_FROM_CALD&$FFFF)
+		DB	:_WEAVE_FROM_CALD
+		DW	(_WEAVE_FROM_CALD&$FFFF)
+
+;********************************
+_OROTHE_FROM_CALD
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+_WEAVE_FROM_CALD
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$01
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+_OROTHE_DOCK
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$02),(?AL+$00),(?AL+$0B),(?AL+$03),?HURRY
+		DB	?SPCE,(?AU+$16),(?AL+$04),(?AL+$00),(?AL+$15),(?AL+$04)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_CALD_FROM_OROTHE
+		DW	(_CALD_FROM_OROTHE&$FFFF)
+		DB	:_WEAVE_FROM_OROTHE
+		DW	(_WEAVE_FROM_OROTHE&$FFFF)
+
+;********************************
+_CALD_FROM_OROTHE
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$02
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+_WEAVE_FROM_OROTHE
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$03
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+_WEAVE_DOCK
+	DB	CMD_TEXTWRITE
+		DB	?SPCE,(?AU+$02),(?AL+$00),(?AL+$0B),(?AL+$03),?HURRY
+		DB	?SPCE,(?AU+$0E),(?AL+$11),(?AL+$0E),(?AL+$13),(?AL+$07),(?AL+$04)
+		DB	?EOF
+
+	DB	CMD_TEXTMENU
+		DB	$02
+		DB	:_CALD_FROM_WEAVE
+		DW	(_CALD_FROM_WEAVE&$FFFF)
+		DB	:_OROTHE_FROM_WEAVE
+		DW	(_OROTHE_FROM_WEAVE&$FFFF)
+
+;********************************
+_CALD_FROM_WEAVE
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$04
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+_OROTHE_FROM_WEAVE
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0088)
+		DB	$05
+
+	DB	CMD_JUMP
+		DB	:?_OVRSURFACE01_BOAT_ANIMS
+		DW	(?_OVRSURFACE01_BOAT_ANIMS&$FFFF)
+
+;********************************
+?_FERRY1_OB_TXT_1
+
+	DB	CMD_TEXTICON
+		DW	ICON_ORLONSBUDDY
+
+	DB	CMD_TEXTWRITE
+		DB	?PERD,?PERD,?PERD,(?AL+$00),(?AL+$0D),(?AL+$03),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?APST,(?AL+$12),?HURRY
+		DB	(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$12),(?AL+$0E),(?AL+$00),(?AL+$0F),?WAIT
+		DB	(?AL+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),(?AL+$12),?SPCE,(?AL+$05),(?AL+$11),(?AL+$0E),(?AL+$0C),?EXCL,?HURRY
+		DB	(?AU+$08),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?SPCE,(?AL+$13),(?AL+$07),(?AL+$00),(?AL+$13),?WAIT
+		DB	(?AL+$02),(?AL+$0E),(?AL+$0E),(?AL+$0B),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$04),(?AL+$11),?COMM,?SPCE,(?AL+$18),(?AL+$04),(?AL+$00),(?AL+$07),?COMM,?HURRY
+		DB	(?AL+$06),(?AL+$11),(?AL+$04),(?AL+$00),(?AL+$13),?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$01
+
+	DB	CMD_DELAY
+		DB	$40
+
+
+	DB	CMD_TEXTICON
+		DW	ICON_ORLONSBUDDY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$07),(?AL+$04),(?AL+$18),?COMM,?SPCE,(?AL+$16),(?AL+$07),(?AL+$04),(?AL+$11),(?AL+$04),?SPCE,(?AL+$00),(?AL+$11),(?AL+$04),?HURRY
+		DB	(?AL+$16),(?AL+$04),?QUST,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$16),(?AU+$07),(?AU+$00),(?AU+$13),?QUST,?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_SETEVENTTEXT
+		DB	$03
+
+	DB	CMD_TEXTICON
+		DW	ICON_ORLONSBUDDY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$14),(?AL+$07),?PERD,?PERD,?PERD,?SPCE,(?AU+$08),?SPCE,(?AL+$0C),(?AL+$04),(?AL+$00),(?AL+$0D),?PERD,?PERD,?PERD,?WAIT
+		DB	(?AL+$16),(?AL+$04),(?AL+$0B),(?AL+$02),(?AL+$0E),(?AL+$0C),(?AL+$04),?SPCE,(?AL+$13),(?AL+$0E),?HURRY
+		DB	(?AL+$13),(?AL+$07),(?AL+$04),?SPCE,(?AU+$02),(?AL+$00),(?AL+$0B),(?AL+$03),?EXCL,?WAIT
+		DB	(?AU+$16),(?AL+$04),(?AL+$0B),(?AL+$0B),?COMM,?SPCE,(?AL+$12),(?AL+$04),(?AL+$04),?SPCE,(?AL+$18),(?AL+$0E),(?AL+$14),?EXCL,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SETEVENTTEXT
+		DB	$05
+
+	DB	CMD_END
+
+;********************************
+?_FERRY1_OB_TXT_2
+
+	DB	CMD_TEXTICON
+		DW	ICON_TONY
+
+	DB	CMD_TEXTWRITE
+		DB	(?AU+$13),(?AL+$07),(?AL+$08),(?AL+$12),?SPCE,(?AL+$03),(?AL+$0E),(?AL+$04),(?AL+$12),(?AL+$0D),?APST,(?AL+$13),?HURRY
+		DB	(?AL+$0B),(?AL+$0E),(?AL+$0E),(?AL+$0A),?SPCE,(?AL+$0B),(?AL+$08),(?AL+$0A),(?AL+$04),?SPCE,(?AU+$02),(?AL+$00),(?AL+$0B),(?AL+$03),?WAIT
+		DB	(?AL+$13),(?AL+$0E),?SPCE,(?AL+$0C),(?AL+$04),?PERD,?PERD,?PERD,?WAIT
+		DB	?EOF
+
+	DB	CMD_TEXTCLOSE
+
+	DB	CMD_SYNC
+		DB	$01
+		DB	$03
+
+	DB	CMD_END
+
+;********************************
+?_FERRY01_AT_WEAVE
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$008E)
+		DB	$01
+
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_FERRY01_AT_WEAVE&$FFFF)
+
+	DB	CMD_IF
+		DB	EXPR_LESS
+		DB	EXPR_XRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)&$FFFF
+		DB	EXPR_BYTECONST,$03
+		DB	:?_FERRY01_FERRY_NOT_THERE
+		DW	(?_FERRY01_FERRY_NOT_THERE&$FFFF)
+
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0087)
+		DB	$02
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FERRY01&$FFFF)
+
+;********************************
+?_FERRY01_AT_CALD
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$008E)
+		DB	$01
+
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_FERRY01_AT_CALD&$FFFF)
+
+	DB	CMD_IF
+		DB	EXPR_NOT
+		DB	EXPR_XRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)&$FFFF
+		DB	:?_FERRY01_FERRY_NOT_THERE
+		DW	(?_FERRY01_FERRY_NOT_THERE&$FFFF)
+
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$0087)
+		DB	$00
+
+	DB	CMD_JUMPLOCAL
+		DW	(?_FERRY01&$FFFF)
+
+;********************************
+?_FERRY01
+	DB	CMD_LOADMAP
+		DW	(MAP_FERRY01B&$FFFF)
+		DB	:MAP_FERRY01B
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$00
+		DB	$00
+		DW	$D000
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?TALKER_AI&$FFFF)
+		DB	$10
+		DB	$08
+		DW	$D100
+		DB	$00
+		DB	:?_MAN05_STAND_DOWN_ANIM
+		DW	(?_MAN05_STAND_DOWN_ANIM&$FFFF)
+		DB	:_FERRY_MAN_TALK
+		DW	(_FERRY_MAN_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$30
+		DB	:BIT_MAN05
+		DW	(BIT_MAN05&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_oroisland
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+_FERRY_MAN_TALK
+	DB	CMD_THISACTORSETANIM
+		DB	:?_MAN05_STAND_DOWN_ANIM
+		DW	(?_MAN05_STAND_DOWN_ANIM&$FFFF)
+
+	DB	CMD_SWITCH
+		DB	EXPR_XRAMBYTE
+		DW	(XRAM_SAVEVARS+$0089)&$FFFF
+		DB	:_INTRO_FERRY
+		DW	$0001
+		DW	(_INTRO_FERRY&$FFFF)
+		DB	:_HAGGLE_FERRY
+		DW	$0002
+		DW	(_HAGGLE_FERRY&$FFFF)
+		DB	:_NORMAL_FERRY
+		DW	$0003
+		DW	(_NORMAL_FERRY&$FFFF)
+		DB	$FF
+
+;********************************
+_NORMAL_FERRY
+	DB	CMD_SETTEXT
+		DB	:?_TXT_FERRY_NORMAL
+		DW	(?_TXT_FERRY_NORMAL&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_MAN05
+		DW	(?_FACE_MAN05&$FFFF)
+
+;********************************
+_INTRO_FERRY
+	DB	CMD_SETTEXT
+		DB	:?_TXT_FERRY_INTRO
+		DW	(?_TXT_FERRY_INTRO&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_MAN05
+		DW	(?_FACE_MAN05&$FFFF)
+
+;********************************
+_HAGGLE_FERRY
+	DB	CMD_SETTEXT
+		DB	:?_TXT_FERRY_HAGGLE
+		DW	(?_TXT_FERRY_HAGGLE&$FFFF)
+
+	DB	CMD_JUMP
+		DB	:?_FACE_MAN05
+		DW	(?_FACE_MAN05&$FFFF)
+
+;********************************
+?_FERRY01_FERRY_NOT_THERE
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_FERRY01&$FFFF)
+		DB	:MAP_FERRY01
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D09B
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_oroisland
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+?_WVEPATHVALLEY09_ARRIVAL
+	DB	CMD_SETXRAMBYTE
+		DW	(XRAM_SAVEVARS+$008E)
+		DB	$01
+
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_FERRY01&$FFFF)
+		DB	:MAP_FERRY01
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_FERRY01_AT_WEAVE&$FFFF)
+
+	DB	CMD_PALCLEARANIM
+		DB	$07
+		DW	$7FFF
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$16
+		DB	$09
+		DW	$D124
+		DB	$00
+		DB	:?_WVEPV09_ARRIVAL_TONY
+		DW	(?_WVEPV09_ARRIVAL_TONY&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$15
+		DB	$09
+		DW	$D123
+		DB	$00
+		DB	:?_WVEPV09_ARRIVAL_OLDGUY
+		DW	(?_WVEPV09_ARRIVAL_OLDGUY&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$15
+		DB	$07
+		DW	$D0E7
+		DB	$26
+		DB	:?_BOAT_ANIM
+		DW	(?_BOAT_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$26
+		DB	:BIT_OLDMAN04
+		DW	(BIT_OLDMAN04&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$15
+		DB	:BIT_BOAT
+		DW	(BIT_BOAT&$FFFF)
+		DW	$8260
+		DB	$00
+
+	DB	CMD_SONGSTART
+		DB	SONGID_oroisland
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETCAMERA
+		DB	$05
+		DB	$0B
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$20
+		DB	$07
+
+	DB	CMD_SCROLLMAP
+		DB	$7C
+		DB	$02
+		DB	$00
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+?_WVEPV09_ARRIVAL_TONY
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_RUN_LEFT_ANIM
+		DW	(?_HERO_RUN_LEFT_ANIM&$FFFF)
+		DB	$05
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$6E
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_FERRY1_OB_TXT_1
+		DW	(?_FERRY1_OB_TXT_1&$FFFF)
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$03
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$05
+
+	DB	CMD_SYNC
+		DB	$00
+		DB	$02
+
+	DB	CMD_DELAY
+		DB	$04
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_RUN_DOWN_ANIM
+		DW	(?_HERO_RUN_DOWN_ANIM&$FFFF)
+		DB	$02
+		DB	:?_HERO_JUMP_DOWN_ANIM
+		DW	(?_HERO_JUMP_DOWN_ANIM&$FFFF)
+		DB	$1A
+		DB	:?_HERO_SLOSHED_LEFT
+		DW	(?_HERO_SLOSHED_LEFT&$FFFF)
+		DB	$18
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$10
+		DB	:?_HERO_STAND_UR_ANIM
+		DW	(?_HERO_STAND_UR_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_RIGHT_ANIM
+		DW	(?_HERO_STAND_RIGHT_ANIM&$FFFF)
+		DB	$40
+		DB	$00
+
+	DB	CMD_SETTEXT
+		DB	:?_FERRY1_OB_TXT_2
+		DW	(?_FERRY1_OB_TXT_2&$FFFF)
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_DOWN_ANIM
+		DW	(?_HERO_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_UP_ANIM
+		DW	(?_HERO_STAND_UP_ANIM&$FFFF)
+		DB	$20
+		DB	:?_HERO_STAND_LEFT_ANIM
+		DW	(?_HERO_STAND_LEFT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SYNC
+		DB	$01
+		DB	$03
+
+	DB	CMD_END
+
+;********************************
+?_WVEPV09_ARRIVAL_OLDGUY
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_OLDMAN04_RUN_LEFT_ANIM
+		DW	(?_OLDMAN04_RUN_LEFT_ANIM&$FFFF)
+		DB	$05
+		DB	:?_OLDMAN04_STAND_RIGHT_ANIM
+		DW	(?_OLDMAN04_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$01
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_OLDMAN04_STAND_UP_ANIM
+		DW	(?_OLDMAN04_STAND_UP_ANIM&$FFFF)
+		DB	$40
+		DB	:?_OLDMAN04_STAND_DOWN_ANIM
+		DW	(?_OLDMAN04_STAND_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_OLDMAN04_STAND_LEFT_ANIM
+		DW	(?_OLDMAN04_STAND_LEFT_ANIM&$FFFF)
+		DB	$20
+		DB	:?_OLDMAN04_STAND_DOWN_ANIM
+		DW	(?_OLDMAN04_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_WAITEVENTTEXT
+		DB	$03
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_OLDMAN04_STAND_LEFT_ANIM
+		DW	(?_OLDMAN04_STAND_LEFT_ANIM&$FFFF)
+		DB	$60
+		DB	:?_OLDMAN04_STAND_RIGHT_ANIM
+		DW	(?_OLDMAN04_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_SYNC
+		DB	$00
+		DB	$02
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_OLDMAN04_RUN_RIGHT_ANIM
+		DW	(?_OLDMAN04_RUN_RIGHT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_OLDMAN04_RUN_DOWN_ANIM
+		DW	(?_OLDMAN04_RUN_DOWN_ANIM&$FFFF)
+		DB	$04
+		DB	:?_OLDMAN04_RUN_UP_ANIM
+		DW	(?_OLDMAN04_RUN_UP_ANIM&$FFFF)
+		DB	$04
+		DB	:?_OLDMAN04_RUN_LEFT_ANIM
+		DW	(?_OLDMAN04_RUN_LEFT_ANIM&$FFFF)
+		DB	$08
+		DB	:?_OLDMAN04_STAND_DOWN_ANIM
+		DW	(?_OLDMAN04_STAND_DOWN_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_BOAT_RIGHT_ANIM
+		DW	(?_BOAT_RIGHT_ANIM&$FFFF)
+
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_OLDMAN04_MOVE_RIGHT_ANIM
+		DW	(?_OLDMAN04_MOVE_RIGHT_ANIM&$FFFF)
+		DB	$50
+		DB	:?_OLDMAN04_STAND_RIGHT_ANIM
+		DW	(?_OLDMAN04_STAND_RIGHT_ANIM&$FFFF)
+		DB	$00
+		DB	$00
+
+	DB	CMD_THATACTORSTOP
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SYNC
+		DB	$01
+		DB	$03
+
+	DB	CMD_THATACTORSETAI
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+
+	DB	CMD_THATACTORSETSCRIPT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DB	:?_HERO_STANDR_ANIM
+		DW	(?_HERO_STANDR_ANIM&$FFFF)
+
+	DB	CMD_THISACTORSTOP
+
+	DB	CMD_END
+
+;********************************
+?_FERRY01_END
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_FERRY01&$FFFF)
+		DB	:MAP_FERRY01
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$00
+		DW	$D00B
+		DB	$00
+		DB	:?_FERRY01_COFFINFLOAT
+		DW	(?_FERRY01_COFFINFLOAT&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$08
+		DB	$03
+		DW	$D062
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0A
+		DB	$0B
+		DW	$D154
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$04
+		DW	$D07D
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$07
+		DB	$08
+		DW	$D0F7
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$06
+		DB	$05
+		DW	$D09C
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0B
+		DB	$02
+		DW	$D047
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$04
+		DB	$06
+		DW	$D0B8
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$02
+		DB	$07
+		DW	$D0D4
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$03
+		DB	$01
+		DW	$D021
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0A-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$08
+		DB	$05
+		DW	$D09E
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$0C
+		DB	$0A
+		DW	$D138
+		DB	$03
+		DB	:?_WATER_SHIMMER1_ANIM
+		DW	(?_WATER_SHIMMER1_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_THATACTORINIT
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?ANIM_AI&$FFFF)
+		DB	$05
+		DB	$03
+		DW	$D05F
+		DB	$03
+		DB	:?_WATER_SHIMMER2_ANIM
+		DW	(?_WATER_SHIMMER2_ANIM&$FFFF)
+		DB	:?_END
+		DW	(?_END&$FFFF)
+
+	DB	CMD_LOADVRAMTILES
+		DB	$03
+		DB	:BIT_COFFIN
+		DW	(BIT_COFFIN&$FFFF)
+		DW	$8000
+		DB	$00
+
+	DB	CMD_LOADVRAMTILES
+		DB	$04
+		DB	:BIT_WATERSHIMMER
+		DW	(BIT_WATERSHIMMER&$FFFF)
+		DW	$8030
+		DB	$00
+
+	DB	CMD_SETCAMERA
+		DB	$08
+		DB	$06
+
+	DB	CMD_PALCLEARANIM
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_PALFADE
+		DB	$A0
+		DB	$0F
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR01-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR02-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR03-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR00-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR04-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$50
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR05-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR06-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR07-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR08-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$50
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR09-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0A-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0B-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$10
+
+	DB	CMD_THATACTORSTART
+		DB	(((ACTOR0C-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_DELAY
+		DB	$50
+
+	DB	CMD_PALCLEARBASE
+		DB	$0F
+		DW	$7FFF
+
+	DB	CMD_PALFADE
+		DB	$E0
+		DB	$0F
+
+	DB	CMD_JUMP
+		DB	:?_CREDITS
+		DW	(?_CREDITS&$FFFF)
+
+	DB	CMD_END
+
+;********************************
+?_FERRY01_COFFINFLOAT
+	DB	CMD_THISACTORSETANIMDELAY
+		DB	:?_COFFIN_DOWN_ANIM
+		DW	(?_COFFIN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DOWN_ANIM
+		DW	(?_COFFIN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DL_ANIM
+		DW	(?_COFFIN_DL_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DL_ANIM
+		DW	(?_COFFIN_DL_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DOWN_ANIM
+		DW	(?_COFFIN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DL_ANIM
+		DW	(?_COFFIN_DL_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DOWN_ANIM
+		DW	(?_COFFIN_DOWN_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DL_ANIM
+		DW	(?_COFFIN_DL_ANIM&$FFFF)
+		DB	$20
+		DB	:?_COFFIN_DL_ANIM
+		DW	(?_COFFIN_DL_ANIM&$FFFF)
+		DB	$20
+		DB	$00
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_OVRSURFACE01
+	GLOBAL	XRAM_INVENTORY_ANIMITE
+	GLOBAL	?_FERRY03_KZBOMB_TRANSIT
+	GLOBAL	XRAM_SAVEVARS
+	GLOBAL	?_OVRSURFACE01_BOAT_ANIMS
+	GLOBAL	HS_FERRY01_AT_WEAVE
+	GLOBAL	HS_FERRY01_AT_CALD
+	GLOBAL	MAP_FERRY01B
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_END
+	GLOBAL	ACTOR00
+	GLOBAL	?TALKER_AI
+	GLOBAL	?_MAN05_STAND_DOWN_ANIM
+	GLOBAL	BIT_MAN05
+	GLOBAL	?_FACE_MAN05
+	GLOBAL	MAP_FERRY01
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?ANIM_AI
+	GLOBAL	ACTOR01
+	GLOBAL	?_BOAT_ANIM
+	GLOBAL	BIT_OLDMAN04
+	GLOBAL	BIT_BOAT
+	GLOBAL	?_HERO_RUN_LEFT_ANIM
+	GLOBAL	?_HERO_STAND_LEFT_ANIM
+	GLOBAL	?_HERO_STAND_UP_ANIM
+	GLOBAL	?_HERO_STAND_DOWN_ANIM
+	GLOBAL	?_HERO_STAND_RIGHT_ANIM
+	GLOBAL	?_HERO_RUN_DOWN_ANIM
+	GLOBAL	?_HERO_JUMP_DOWN_ANIM
+	GLOBAL	?_HERO_SLOSHED_LEFT
+	GLOBAL	?_HERO_STAND_UR_ANIM
+	GLOBAL	?_OLDMAN04_RUN_LEFT_ANIM
+	GLOBAL	?_OLDMAN04_STAND_RIGHT_ANIM
+	GLOBAL	?_OLDMAN04_STAND_UP_ANIM
+	GLOBAL	?_OLDMAN04_STAND_DOWN_ANIM
+	GLOBAL	?_OLDMAN04_STAND_LEFT_ANIM
+	GLOBAL	?_OLDMAN04_RUN_RIGHT_ANIM
+	GLOBAL	?_OLDMAN04_RUN_DOWN_ANIM
+	GLOBAL	?_OLDMAN04_RUN_UP_ANIM
+	GLOBAL	?_BOAT_RIGHT_ANIM
+	GLOBAL	?_OLDMAN04_MOVE_RIGHT_ANIM
+	GLOBAL	?_HERO_STANDR_ANIM
+	GLOBAL	?_WATER_SHIMMER1_ANIM
+	GLOBAL	ACTOR02
+	GLOBAL	?_WATER_SHIMMER2_ANIM
+	GLOBAL	ACTOR03
+	GLOBAL	ACTOR04
+	GLOBAL	ACTOR05
+	GLOBAL	ACTOR06
+	GLOBAL	ACTOR07
+	GLOBAL	ACTOR08
+	GLOBAL	ACTOR09
+	GLOBAL	ACTOR0A
+	GLOBAL	ACTOR0B
+	GLOBAL	ACTOR0C
+	GLOBAL	BIT_COFFIN
+	GLOBAL	BIT_WATERSHIMMER
+	GLOBAL	?_CREDITS
+	GLOBAL	?_COFFIN_DOWN_ANIM
+	GLOBAL	?_COFFIN_DL_ANIM
+
+;********************************
+	END
+;********************************

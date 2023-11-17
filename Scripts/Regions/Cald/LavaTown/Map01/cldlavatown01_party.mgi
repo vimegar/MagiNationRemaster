@@ -1,0 +1,103 @@
+/********************************//********************************/
+// PARTY
+/********************************//********************************/
+?_CLDLAVATOWN01_PARTY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN01)
+	LoadHotspots			(HS_CLDLAVATOWN01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,24,28,40,0,?_HERO_STAND_DOWN_ANIM,?_DONT_TALK)
+	ThatActorStart			(HEROACTOR)
+	ThatActorInit			(ACTOR01,?TALKER_AI,32,32,40,26,?_GIRL02_STAND_LEFT_ANIM,?_CLDLVTN01_DANCER)
+	ThatActorStart			(ACTOR01)
+	ThatActorInit			(ACTOR02,?TALKER_AI,10,29,40,65,?_CLDLVTN01_RANDOM,?_CLDLVTN01_RANDOM2)
+	ThatActorStart			(ACTOR02)
+	ThatActorInit			(ACTOR06,?TALKER_AI,9,26,40,0,?_CLDLVTN01_PARTY_ELDER,?_CLDLVTN01_PARTY_ELDER2)
+	ThatActorInit			(ACTOR07,?RAINDROP_AI,1,1,40,110,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR08,?RAINDROP_AI,1,1,40,110,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorInit			(ACTOR09,?RAINDROP_AI,1,1,40,110,?_CLD_LAVABUBBLE,?_DONT_TALK)
+	ThatActorStart			(ACTOR06)	
+	ThatActorStart			(ACTOR07)
+	ThatActorStart			(ACTOR08)
+	ThatActorStart			(ACTOR09)
+	LoadVRAMTiles			(26,BIT_OLDMAN03,0,0)
+	LoadVRAMTiles			(39,BIT_GIRL02,26,0)
+	LoadVRAMTiles			(45,BIT_OLDLADY02,65,0)
+	LoadVRAMTiles			(6,BIT_LAVABUBBLE,110,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_oroisland)
+	SceneReady 				()
+	DrawTile				(33,32,40,195,COLLCODE_BOXXLE)
+	End	     				()
+
+?_CLDLVTN01_PARTY_ELDER
+	ThisActorSetAnim		(?_OLDMAN03_STAND_DOWN_ANIM)
+	WaitEventText			(67)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,4)
+	Jump					(?_CLDLAVATOWN03_THEPLAY)
+	End						()
+	
+?_CLDLVTN01_PARTY_ELDER2
+	SetText					(?_CLDLVTN01_PARTY_CHOICE_TXT)
+	Jump					(?_FACE_OLDMAN03)
+
+?_CLDLVTN03_GUARD
+	ThisActorSetAnim		(?_GUARD_STAND_DOWN_ANIM)
+	End						()
+	
+?_CLDLVTN03_GUARD_TALKS
+	SetText					(?_CLDLVTN03_GUARD_SPEAKS)
+	Jump					(?_FACE_GUARD)
+
+?_CLDLVTN01_RANDOM
+	ThisActorSetAnimDelay	(?_OLDLADY02_WALK_RIGHT_ANIM,56)
+							(?_OLDLADY02_WALK_UP_ANIM,32)
+							(?_OLDLADY02_WALK_DOWN_ANIM,64)
+							(?_OLDLADY02_WALK_UP_ANIM,32)
+							(?_OLDLADY02_WALK_LEFT_ANIM,56)
+	Jump					(?_CLDLVTN01_RANDOM)
+	
+?_CLDLVTN01_RANDOM2
+	SetText					(?_CLDLVTN01_GRUMBLE_TXT)
+	Jump					(?_FACE_OLDLADY02)
+	
+?_CLDLVTN01_DANCER
+	ThisActorSetAnim		(?_GIRL02_STAND_LEFT_ANIM)
+	SetText					(?_CLDLVTN01_DANCE_TXT)
+	WaitEventText			(1)
+	ThisActorRestoreState	()
+	End						()
+
+?_CLDLVTN_TONY_DANCES
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,12)
+							(?_HERO_SLOSHED_RIGHT,12)
+							(?_HERO_SLOSHED_LEFT,12)
+							(?_HERO_SLOSHED_RIGHT,12)
+							(?_HERO_SLOSHED_LEFT,12)
+							(?_HERO_SLOSHED_RIGHT,12)
+							(?_HERO_SLOSHED_LEFT,12)
+							(?_HERO_DIGGING_DOWN_ANIM,32)
+							(?_HERO_FLAILING,64)
+							(?_HERO_TOE_TAP_RIGHT,32)
+							(?_HERO_TOE_TAP_LEFT,32)
+	ThisActorSetAnimScroll	(?_HERO_BACK_DOWN_ANIM,64,0,1)
+	SetScroll				(?_CLDLVTN_DANCE_SCROLL)
+	ThisActorSetAnimDelay	(?_HERO_JUMP_UP_ANIM,32)
+							(?_HERO_JUMP_UP2_ANIM,32)
+							(?_HERO_HAPPYJUMP_LEFT,21)
+							(?_HERO_HAPPYJUMP_RIGHT,21)
+							(?_HERO_WALK_RIGHT_ANIM,24)
+							(?_HERO_STAND_RIGHT_ANIM,56)
+							(?_HERO_SLOSHED_LEFT,0)
+	SetEventText			(95)
+	End						()
+							
+?_CLDLVTN_DANCE_SCROLL
+	ScrollMap				(64,0,-1)
+	End						()		
+	
+/******************************//********************************/
+// END PARTY
+/********************************//********************************/

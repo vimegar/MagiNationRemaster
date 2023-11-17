@@ -1,0 +1,124 @@
+/********************************/
+?_UNDTOWN08_DR_1
+		HeroToDoor	(6,9,13,44)
+		Jump		(?_UNDTOWN01)
+
+?_UNDTOWN08B_DR_1
+		HeroSetDoor	(21,10)
+		Jump		(?_OVRSURFACE03)
+
+/********************************/
+?_UNDTOWN08_TR_1		// BOOKS
+		TextOpen	()
+		TextWrite	("According to=")
+					("myth, the")
+					("world above is=")
+					("inhabited by")
+					("people shaped=")
+					("like giant feet")
+					("who stomp back=")
+					("and forth to")
+					("gather=")
+					("nutrients.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08_TR_2		// BOOKS
+		TextOpen	()
+		TextWrite	("Legend of the=")
+					("Great Fireball:")
+					("A horrific=")
+					("tale of the")
+					("sphere of light=")
+					("that torments")
+					("all who dwell=")
+					("above.")
+					("Beware!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08_TR_3		// COUCH
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Another comfy=")
+					("chair.")
+					("They really=")
+					("know how to sit")
+					("in style down=")
+					("here!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08_TR_4		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Maybe the beds=")
+					("are seeds of")
+					("the houses...")
+					("One day this=")
+					("bed will grow")
+					("up to be a=")
+					("house.")
+					("Yes you will!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08_TR_5		// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Another bin=")
+					("of deals.")
+		TextClose	()
+		End			()
+
+/********************************/
+?_UNDTOWN08B_TR_1		// BOOKS
+		TextOpen	()
+		TextWrite	("Paradwyn=")
+					("and Other")
+					("Regions You=")
+					("Can't Afford")
+					("a Ticket To")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08B_TR_2		// BOOKS
+		TextOpen	()
+		TextWrite	("In the Belly=")
+					("of the Beast:")
+					("The horrible=")
+					("truth about")
+					("the Cald")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08B_TR_3		// COUCH
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("There are wisps=")
+					("of steam rising")
+					("from this=")
+					("chair...")
+					("It's actually=")
+					("boiling!")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08B_TR_4		// BED
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("The heat has=")
+					("dried it out")
+					("like burnt=")
+					("toast.")
+		TextClose	()
+		End			()
+
+?_UNDTOWN08B_TR_5		// DEALS
+		TextOpen	()
+		TextIcon	(ICON_TONY)
+		TextWrite	("Ugh!")
+					("Sticky, melted=")
+					("deals.")
+		TextClose	()
+		End			()

@@ -1,0 +1,36 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP08\ARDGARDEN08_DR.MGI
+%INCLUDE			REGIONS\ARDERIAL\GARDEN\MAP08\ARDGARDEN08_TXT.MGI
+
+/********************************/
+?_ARDGARDEN08
+	SceneNew				()
+	LoadMap					(MAP_ARDGARDEN08)
+	LoadHotspots			(HS_ARDGARDEN08)
+	LoadTriggers			(TR_ARDGARDEN08)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,20,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,14,10,20,0,?_LASADA_STAND_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,5,12,20,48,?_MAN02_STAND_RIGHT_ANIM,?_DONT_TALK)
+	LoadVRAMTiles			(48,BIT_LASADARING,0,0)
+	LoadVRAMTiles			(43,BIT_MAN02,48,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_orotunnels)
+	SceneReady				()
+	End						()
+	
+?_ARDGARDEN08_MAKE_RING
+	ThisActorSetAnimDelay	(?_LASADA_MAKE_RING_ANIM,208)
+							(?_LASADA_DONE_RING_ANIM,0)
+	SetAnyEventMaster		()
+	ThisActorSetAnimDelay	(?_LASADA_DONE_RING_ANIM,128)
+							(?_LASADA_STAND_ANIM,0)
+	End						()
+
+
+

@@ -1,0 +1,77 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP03\HMTCAVE03_DR.MGI
+%INCLUDE			REGIONS\HOMETOWN\CAVE\MAP03\HMTCAVE03_TXT.MGI
+
+/********************************/
+?_HMTCAVE03
+	If				([Got_Crystal],?_HMTCAVE03_FALL_DOWN)
+	SceneNew		()
+	SetXRAMByte		(MENU_Disable,1)
+	LoadMap			(MAP_HMTCAVE03)
+	LoadHotspots	(HS_HMTCAVE03)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,40,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SongStart		(SONGID_orwin)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SceneReady		()
+	End				()
+
+/********************************//********************************/
+// QUAKE
+/********************************//********************************/
+?_HMTCAVE03_FALL_DOWN
+	SceneNew			()
+	SetXRAMByte			(MENU_Disable,1)
+	SetXRAMByte			(First_Creature,1)
+	LoadMap				(MAP_HMTCAVE03)
+	LoadHotspots		(HS_HMTCAVE03)
+	LoadPalette			(PAL_HERO)
+	ThatActorInit		(HEROACTOR,?SCROLLER_AI,5,5,40,0,?_HMTCAVE_RUNFORIT,?_DONT_TALK)
+	ThatActorInit		(ACTOR00,?RAINDROP_AI,0,0,40,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR01,?RAINDROP_AI,0,0,40,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	ThatActorInit		(ACTOR02,?RAINDROP_AI,0,0,40,0,?_HMTCAVE_ROCKS,?_DONT_TALK)
+	LoadVRAMTiles		(16,BIT_FALLINGROCKS,0,0)
+	ThatActorStart		(HEROACTOR)
+	ThatActorStart		(ACTOR00)
+	ThatActorStart		(ACTOR01)
+	SongStart			(SONGID_arderial)
+	ThatActorStart		(ACTOR02)
+	HeroFromDoor		()
+	HeroSetCamera		()
+	SceneReady			()
+	SetScroll			(?_HMTCAVE_QUAKE_LOOP)
+	SetText				(_FLOOR_FALL)
+	End					()
+
+_FLOOR_FALL
+	Delay				(56)
+	CopyTileBlock		(40,0,6,3,5,35,1)
+	SetAnyEventText		()
+	Delay				(64)
+	SetAnyEventText		()
+	Delay				(64)
+	CopyTileBlock		(40,0,18,3,3,34,21)
+	SetAnyEventText		()
+	Delay				(16)
+	CopyTileBlock		(40,0,14,4,4,33,22)
+	SetAnyEventText		()
+	Delay				(96)
+	CopyTileBlock		(40,0,11,5,3,19,10)
+	SetAnyEventText		()
+	Delay				(32)
+	CopyTileBlock		(40,0,26,6,4,21,19)
+	SetAnyEventText		()
+	Delay				(16)
+	CopyTileBlock		(40,0,21,6,5,21,21)
+	SetAnyEventText		()
+	Delay				(64)
+	CopyTileBlock		(40,0,6,3,5,14,23)
+	SetAnyEventText		()
+	Delay				(198)
+	Jump				(?_HMTCAVE_TIMESUP)
+/********************************//********************************/
+// END QUAKE
+/********************************//********************************/

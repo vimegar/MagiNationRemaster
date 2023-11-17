@@ -1,0 +1,254 @@
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT01
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Sorry about=")
+						("what I said")
+						("earlier.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+/********************************//********************************/
+// PARTY INTRO
+/********************************//********************************/
+?_CLDLVTN09_PARTY_TXT_1
+	TextOpen			()
+	TextIcon			(ICON_TONY)
+	TextWrite			("Oh no, I=")
+						("overslept! They")
+						("started the=")
+						("party without")
+						("me!")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_DOWN_ANIM)
+	End					()
+
+
+/********************************//********************************/
+// END PARTY INTRO
+/********************************//********************************/
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT02
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Ha ha ha... if=")
+						("you want help")
+						("finding a Lava=")
+						("Arboll, I doubt")
+						("you'll get it=")
+						("from anyone in")
+						("town. Nobody")
+						("except Valkan=")
+						("has ever caught")
+						("one.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT03
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("YOU! I knew you=")
+						("stole that key.")
+						("Get out of my=")
+						("town! You make")
+						("me sick!")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT04
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Haven't you=")
+						("closed that")
+						("geyser yet?")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT05
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("Go away. I'm=")
+						("trying to read.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// WARM REUNION
+/********************************//********************************/
+?_CLDTOWN09_ELDER_TXT06
+	TextOpen			()
+	TextIcon			(ICON_ASHGAR)
+	TextWrite			("You made it!=")
+						("Wonderful!")
+						("Please stay in=")
+						("town as long")
+						("as you'd like.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+	
+/********************************//********************************/
+// END WARM REUNION
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE MOST VALUABLE ITEM
+/********************************//********************************/
+
+?_CLDLAVATOWN09_NOKEY
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("That key must=")
+							("be around here")
+							("somewhere...")
+	TextClose				()
+	SetEventText			(3)
+	End						()
+
+?_CLDLAVATOWN09_GOTKEY
+	TextOpen				()
+	TextWrite				("Tony got=")
+							("Ashgar's Key!")
+	TextClose				()
+	SetEventText			(2)
+	ThatActorStart			(ACTOR00)
+	End						()
+	
+?_CLDLAVATOWN09_MAN03_TXT
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Hey, what are=")
+							("you doing here?")
+	TextIcon				(ICON_TONY)
+	TextWrite				("I... uh...=")
+							("err...")
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Oh, I get it.")
+							("You're taking=")
+							("the key, huh?")
+							("Don't worry, I")
+							("won't rat you=")
+							("out.")
+	TextClose				()
+	Delay					(32)
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("In fact, if I=")
+							("were you, I'd")
+							("hold on to=")
+							("that! That key")
+							("unlocks almost=")
+							("every locked")
+							("door in the=")
+							("world! Too")
+							("bad you got=")
+							("it before me,")
+							("but that's=")
+							("life. See ya!")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+
+/********************************//********************************/
+// END THE MOST VALUABLE ITEM
+/********************************//********************************/
+
+?_CLDLAVATOWN09_RETURNKEY
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Here's my=")
+							("chance to")
+							("return that=")
+							("key...")
+	TextClose				()
+	TextOpen				()
+	TextWrite				(" Return it=")
+							(" Wait longer$")
+	TextMenu				(2)
+							(_RETURNIT)
+							(_WAITLONGER)
+_RETURNIT
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I'll just put=")
+							("this back.")
+	TextClose				()
+	TextOpen				()
+	TextWrite				("Tony lost=")
+							("Ashgar's Key!")
+	SetXRAMBit				(I_Specialkey,FALSE)
+	InventoryTake			(INV_TYPE_ITEM,INV_ASHGARS_KEY,1)
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+_WAITLONGER
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I'll just hang=")
+							("on to this a")
+							("bit longer.")
+	TextClose				()
+	SetEventText			(2)
+	End						()
+
+?_CLDLAVATOWN09_NOWANNADO
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("I already=")
+							("gave it back.")
+							("My conscience=")
+							("prevents me")
+							("from stealing=")
+							("it again.")
+	TextClose				()
+	SetEventText			(1)
+	End						()

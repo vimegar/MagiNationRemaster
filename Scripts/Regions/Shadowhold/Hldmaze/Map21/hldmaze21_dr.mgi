@@ -1,0 +1,18 @@
+?_HLDMAZE21_DR_1
+		HeroToDoor	(0,20,35,7)
+		Jump		(?_HLDMAZE19)
+
+?_HLDMAZE21_DR_2
+		HeroToDoor	(22,29,22,0)
+		Jump		(?_HLDMAZE20)
+
+?_HLDMAZE21_DR_3
+		HeroToDoor	(28,29,28,0)
+		Jump		(?_HLDMAZE20)
+
+?_HLDMAZE21_DR_4
+		HeroToDoor	(34,26,0,19)
+		Jump		(?_HLDMAZE22)
+
+?_HLDMAZE21_TR_1
+		TriggerTreasure	(HLDMAZE21Chest1,INV_TYPE_RELIC,INV_STONEOFDOOM,1,10,35)

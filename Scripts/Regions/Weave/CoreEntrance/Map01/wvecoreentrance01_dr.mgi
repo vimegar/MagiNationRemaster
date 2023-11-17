@@ -1,0 +1,8 @@
+/********************************/
+?_WVECOREENTRANCE01_DR_1
+		HeroSetDoor				(6,41)
+		Jump					(?_OVRSURFACE01)
+
+?_WVECOREENTRANCE01_DR_2
+		HeroSetDoor				(23,6)
+		Jump					(?_CREGATE01)

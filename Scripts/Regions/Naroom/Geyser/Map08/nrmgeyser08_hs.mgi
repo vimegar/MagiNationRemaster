@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_NRMGEYSER08)
+						(HOTSPOT_TRIGGER_EAST,?_NRMGEYSER08_DR_1)
+						(HOTSPOT_TRIGGER_WEST,?_NRMGEYSER08_DR_2)
+
+		FileTriggers	(TR_NRMGEYSER08)
+						(TRIGGER_CONFIG,?_NRMGEYSER08_TR_1)

@@ -1,0 +1,5 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH01)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH01_DR_1)
+						(HOTSPOT_TRIGGER_NORTH,?_NRMVASH01_DR_2)
+						(HOTSPOT_TRIGGER_ALL,?_NRMVASH01_DR_3)

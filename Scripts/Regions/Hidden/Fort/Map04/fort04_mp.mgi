@@ -1,0 +1,5 @@
+/********************************/
+	FileMapLayout		(MAP_HDNFORT04,PAL_FORT,VRM_FORT,PAT_FORT,SCR_FORT04,COL_FORT04)
+
+/********************************/
+	FileMapLayout		(MAP_HDNFORT04B,PAL_HDNROOM,VRM_HDNROOM,PAT_HDNROOM,SCR_WARP04,COL_WARP04)

@@ -1,0 +1,9 @@
+/********************************/
+?_UNDTUNNEL03_DR_1
+		HeroToDoor	(24,7,0,31)
+		Jump		(?_UNDTUNNEL02)
+
+?_UNDTUNNEL03_DR_2
+		HeroSetDoor	(13,6)
+		Jump		(?_HDNROOM03)
+

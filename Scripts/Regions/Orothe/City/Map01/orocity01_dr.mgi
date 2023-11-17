@@ -1,0 +1,37 @@
+/********************************/
+?_OROCITY01_DR_1
+	If						([GC = GC_BACK_IN_OROTHE && Oro_Plot_Byte = 0],?_OVRSURFACE04_NO_PARATHIN)
+		ThatActorInit			(ACTOR02,?OVERPARA_AI,21,21,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor				(21,21)
+		Jump					(?_OVRSURFACE04_PARATHIN)
+
+?_OROCITY01_DR_2
+	If						([GC = GC_BACK_IN_OROTHE && Oro_Plot_Byte = 0],?_OVRSURFACE04_NO_PARATHIN)
+		ThatActorInit			(ACTOR02,?OVERPARA_AI,24,23,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor				(24,23)
+		Jump					(?_OVRSURFACE04_PARATHIN)
+
+?_OROCITY01_DR_3
+		HeroSetDoor				(10,19)
+		Jump					(?_OROCITY02)
+		
+?_OROCITY01_DR_4
+		HeroSetDoor				(9,29)
+		Jump					(?_OROCITY03)
+		
+?_OROCITY01_DR_5
+		HeroSetDoor				(14,19)
+		Jump					(?_OROCITY04)
+		
+?_OROCITY01_DR_6
+	If						([GC = GC_BACK_IN_OROTHE && Oro_Plot_Byte = 0],?_OVRSURFACE04_NO_PARATHIN)
+		ThatActorInit			(ACTOR02,?OVERPARA_AI,21,25,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor				(21,25)
+		Jump					(?_OVRSURFACE04_PARATHIN)
+		
+?_OROCITY01_DR_7
+	If						([GC = GC_BACK_IN_OROTHE && Oro_Plot_Byte = 0],?_OVRSURFACE04_NO_PARATHIN)
+		ThatActorInit			(ACTOR02,?OVERPARA_AI,19,23,33,16,?_OVERPARATHIN_UP_ANIM,?_OVERPARA_MOUNT)
+		HeroSetDoor				(19,23)
+		Jump					(?_OVRSURFACE04_PARATHIN)
+

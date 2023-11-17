@@ -1,0 +1,2590 @@
+;********************************
+; BTLCMD_FUNC.S
+;********************************
+;	Author:	Patrick Meehan/Dylan "Ab-so-fucking-lutly clever" Mayo,Emory Georges
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?BATTLE_ATK_WRAPPER
+
+	;0: setup vars
+	;-------------------------------
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	XOR		A
+	LD		(BTL_PENDING_DAMAGE),A
+	LD		(BTL_PENDING_MSG),A
+	LD		(BTL_HEAL_FLAG),A
+	LD		(BTL_CLEAR_CARD_FLAG),A
+	LD		(BTL_DEATH_FLAG),A
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		(BTL_DRAIN_FLAG),A
+	LD		(BTL_RALLY_PT),A
+	
+;********************************
+	;.5: Print X uses X on X	
+	;------------------------------
+	LD		A,(BTL_MULTI_FLAG)
+	AND		A
+	JP		NZ,_NORMAL_START
+	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	AND		A
+	JP		Z,_NORMAL_START
+	CP		BTL_ID_MAGI
+	JP		Z,_NORMAL_START
+	
+	LD		A,(BTL_CREATURE_OTHER)
+	AND		A
+	JP		NZ,_NORMAL_START
+	
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_TARGET_ME
+	JP		NC,_NORMAL_START
+	LD		HL,BTL_PROCESS_ACTIVE
+	CP		(HL)
+	JR		Z,_ME
+	
+	FGET16	H,L,BTL_CREATURE_FUNC_PTR
+	LD		BC,?CMD_FUNC_MELEE
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,H
+	OR		L
+	JR		Z,_FIGHT
+	
+_OTHER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_TARGET_OTHER_MSG
+	JR		_TARGET_BOTH
+	
+_FIGHT
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_FIGHT_MSG
+	JR		_TARGET_BOTH
+
+_ME
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_TARGET_SELF_MSG
+
+_TARGET_BOTH
+	
+	CALL_FOREIGN	?BTL_MSG_TARGET_PARAMS	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	
+	BTL_ACTOR_SET_SCRIPT	(BTL_PROCESS_ACTIVE),?_BOX_ANIM
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	BTL_ACTOR_END	(BTL_PROCESS_ACTIVE)	
+	
+;********************************
+	;1: go for the normal damage if any
+	;---------------------------------	
+_NORMAL_START
+	LD		A,(BTL_CREATURE_DAMAGE)
+	AND		A
+	JR		Z,_ATK_FUNC_START
+
+	LD		A,(BTL_TARGET_SPEED)
+	LD		B,A
+	LD		A,(BTL_CREATURE_CHANCE)
+	LD		C,A
+	CALL	?BTL_DETERMINE_HIT	
+	AND		A
+	JR		Z,_ATK_FUNC_START	
+		
+	;calc % (BASE 255) of max damage to do
+	;----------------------------------
+_CALC_DAMAGE
+	;first see if Melee or non-melee attack
+	;--------------------------
+	FGET16	H,L,BTL_CREATURE_FUNC_PTR
+	LD		BC,?CMD_FUNC_MELEE
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,H
+	OR		L
+	JR		NZ,_CALC_SKILL
+	
+_CALC_STR
+	CALL	?ATK_FUNC_STANDARD
+	JR		_CALC_CONTINUE
+	
+_CALC_SKILL
+	;See if we want to go off of the phys
+	;damage ratings
+	;------------------------------------
+	LD		A,(BTL_CREATURE_RATING)
+	BIT		7,A
+	JR		NZ,_CALC_STR
+
+	CALL	?SKILL_FUNC_STANDARD
+	
+_CALC_CONTINUE
+	LD		B,A
+	LD		A,(BTL_CREATURE_DAMAGE)
+	LD		C,A
+	CALL	?MULT
+	LD		A,$FF
+	CALL	?DIV16	
+	INC		A
+	LD		(BTL_PENDING_DAMAGE),A
+
+;********************************
+	;2 call atk func
+	;----------------------	
+_ATK_FUNC_START	
+	LD		HL,BTL_CREATURE_FUNC_PTR
+	DEREF_HL
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	CALL_HL
+	
+;********************************
+	;3 call relics
+	;------------------------
+_RELIC_START
+	LD		A,(BTL_CREATURE_RELIC0)
+	AND		A
+	JR		Z,_2ND_RELIC	
+	
+	;Copy the relic to memory
+	;--------------------
+	LD		A,(BTL_CREATURE_RELIC0)
+	LD		(INV_OBJ_INDEX),A
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,INV_ADDR
+	CALL_FOREIGN	?INV_COPY_RELIC_INDEX
+	
+	;Call the XTRA func
+	;-------------------------
+	LD		HL,BTL_TABLE_COPY_BUFFER+RELIC_XTRA_OFFSET
+	DEREF_HL
+	LD		E,RELIC_FUNC_BANK
+	CALL	?CALL_FOREIGN		
+	
+_2ND_RELIC
+	LD		A,(BTL_CREATURE_RELIC1)
+	AND		A
+	JR		Z,_ELEM_START	
+	
+	;Copy the relic to memory
+	;--------------------
+	LD		A,(BTL_CREATURE_RELIC1)
+	LD		(INV_OBJ_INDEX),A
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,INV_ADDR
+	CALL_FOREIGN	?INV_COPY_RELIC_INDEX
+	
+	;Call the XTRA func
+	;-------------------------
+	LD		HL,BTL_TABLE_COPY_BUFFER+RELIC_XTRA_OFFSET
+	DEREF_HL
+	LD		E,RELIC_FUNC_BANK
+	CALL	?CALL_FOREIGN	
+
+;********************************
+	;4 call elem
+	;-------------------------
+_ELEM_START
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	JP		Z,_OVERRIDE_START
+
+	LD		HL,BTL_PENDING_DAMAGE
+	LD		A,(BTL_CREATURE_CMDELEM)
+	LD		B,A
+	LD		A,(BTL_TARGET_ELEMSTRONG)
+	AND		B
+	JR		Z,_CHECK_WEAK	
+	
+	LD		A,(HL)
+	LD		B,A
+	SRL		B
+	SRL		B
+	SUB		B
+	JR		C,_CARRY_STRONG
+	JR		NZ,_STRONG_MSG
+	
+_CARRY_STRONG
+	LD		A,1
+	
+_STRONG_MSG
+	LD		(HL),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_ELEM_STRONG_MSG	
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+
+_CHECK_WEAK
+	LD		HL,BTL_PENDING_DAMAGE
+	LD		A,(BTL_CREATURE_CMDELEM)
+	LD		B,A
+	LD		A,(BTL_TARGET_ELEMWEAK)
+	AND		B
+	JR		Z,_DEFEND_CHECK
+	
+	LD		A,(HL)
+	LD		B,A
+	SRL		B
+	SRL		B
+	ADD		A,B
+	JR		NC,_WEAK_MSG
+	LD		A,$FF
+	
+_WEAK_MSG
+	LD		(HL),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_ELEM_WEAK_MSG	
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+_DEFEND_CHECK
+	LD		HL,BTL_PENDING_DAMAGE
+	LD		A,(BTL_TARGET_OTHER)
+	AND		A
+	JR		Z,_OVERRIDE_START	
+	
+	LD		HL,BTL_PENDING_DAMAGE
+	SRL		(HL)
+	INC		(HL)	
+	
+;********************************
+	;5 check override
+	;---------------------------
+_OVERRIDE_START
+	LD		A,(BTL_OVERRIDE_FLAG)
+	AND		A
+	JR		Z,_APPLY_START
+	CP		2
+	JR		NZ,_NORMAL_OVERRIDE
+	XOR		A
+	LD		(BTL_PENDING_DAMAGE),A		
+	JR		_APPLY_START
+	
+_NORMAL_OVERRIDE
+	LD		A,(BTL_OVERRIDE_DAMAGE)
+	LD		(BTL_PENDING_DAMAGE),A		
+
+;********************************	
+	;6 apply damage
+	;--------------------------
+_APPLY_START
+	LD		A,(BTL_DEATH_FLAG)
+	AND		A
+	JR		NZ,_DEAD
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	JP		Z,_MSG_START
+	
+	;Call ?BTL_STATUS_COMBOS
+	;-------------------------------
+	CALL	?BTL_STATUS_COMBOS
+	
+	LD		A,(BTL_DEATH_FLAG)
+	AND		A
+	JR		NZ,_DEAD
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	JP		Z,_MSG_START
+	
+	LD		C,A
+	LD		B,0
+	LD		A,(BTL_TARGET_ENGH)
+	LD		H,A
+	LD		A,(BTL_TARGET_ENGL)
+	LD		L,A
+	LD		A,(BTL_HEAL_FLAG)
+	AND		A
+	JR		NZ,_HEAL_CMD
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	JR		_DEATH_START
+	
+_HEAL_CMD
+	ADD		HL,BC
+	;CHECK FOR UPPER BOUND
+	;------------------------
+	LD		A,(BTL_TARGET_ENGMAXH)
+	LD		B,A
+	LD		A,(BTL_TARGET_ENGMAXL)
+	LD		C,A
+	
+	LD		A,C
+	SUB		L
+	LD		A,B
+	SBC		A,H
+	JP		NC,_NOT_DEAD
+	
+	;SET UPPER BOUND AS NEW TOTAL
+	;------------------------
+	LD		H,B
+	LD		L,C
+	JP		_NOT_DEAD	
+	
+;********************************
+	;7 death check
+	;------------------------
+_DEATH_START
+	JR		NC,_DEAD
+	LD		A,H
+	OR		L
+	JP		Z,_DEAD
+	LD		A,(BTL_DEATH_FLAG)
+	AND		A
+	JP		Z,_NOT_DEAD
+	
+_DEAD
+	;Set energy to exactly 0 just in case
+	;(magi, tony, what have you)
+	;----------------------------
+	LD		A,(BTL_TARGET_ENGL)
+	SRL		A
+	INC		A
+	LD		(BTL_RALLY_PT),A
+	
+	LD		BC,0
+	FSET16	B,C,BTL_TARGET_ENGH
+
+	;Is tony now @ 0?
+	;------------------------------
+_DEAD_CONTINUE
+	FGET16	B,C,BTL_TARGET_SLOT
+	LD		HL,BTL_HERO
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,H
+	OR		L
+	JR		NZ,_TONY_LIVES
+	
+	;See if tony has any creatures left
+	;-----------------------------
+	CALL	?BTL_LOSE_CHECK
+	
+	AND		A
+	JR		Z,_YOU_LOSE
+	
+	LD		HL,0	
+	JP		_NOT_DEAD	
+	
+_YOU_LOSE
+	LD		A,BTL_EXIT_LOSE
+	LD		(BTL_EXIT_CODE),A
+	JP		_MSG_START
+	
+_TONY_LIVES
+	;Is enemy now @ 0?
+	;------------------------------
+	FGET16	B,C,BTL_TARGET_SLOT
+	LD		HL,BTL_ENEMY
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,H
+	OR		L
+	JR		NZ,_MAGI_LIVES
+	
+	;See if enemy has any creatures left
+	;-----------------------------
+	CALL	?BTL_WIN_CHECK	
+	
+	AND		A
+	JR		Z,_YOU_WIN
+	
+	LD		HL,0	
+	JP		_NOT_DEAD	
+	
+_YOU_WIN
+	LD		A,BTL_EXIT_WIN
+	LD		(BTL_EXIT_CODE),A
+	JP		_MSG_START
+		
+_MAGI_LIVES
+	; set the flag to Clear the card
+	;-----------------------------
+	LD		A,1
+	LD		(BTL_CLEAR_CARD_FLAG),A	
+	
+	;clear the slot
+	;-------------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_CREATURE_SLOTS
+	ADD		HL,BC
+	XOR		A
+	LD		(HL),A	
+	
+	;set up the recent dead array
+	;-----------------------------
+	LD		HL,BTL_RECENT_DEAD_ARRAY
+	ADD		HL,BC
+	LD		A,1
+	LD		(HL),A
+	
+	;CHECK FOR TONY'S CREATURE, 
+	;IF SO, clear slot	
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	CP		BTL_ID_ENEMY0
+	JR		NC,_DEAD_ENEMY_CREATURE
+	
+	DEC		A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_ACTIVE_RINGS
+	ADD		HL,BC
+	LD		C,(HL)
+	LD		HL,BTL_HERO_USED_RINGS
+	ADD		HL,BC
+	LD		A,BTL_RING_USED
+	LD		(HL),A
+	
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_XRAM0
+	ADD		HL,BC
+	ADD		HL,BC
+	PUSH	HL
+	
+	BTL_SET_MAGI_ANIM	(BTL_ENEMY_ID),TAUNT_ANIM,BTL_ID_MAGI_ACTOR
+	
+	;CLEAR OUT HERO XRAM SLOT
+	;---------------------------
+	POP		HL
+	XOR		A
+	LD		(HLI),A
+	LD		(HL),A	
+	LD		(BTL_RALLY_PT),A
+	
+	JR		_DEATH_MSG
+	
+_DEAD_ENEMY_CREATURE
+	;Give cash
+	;------------------------
+	LD		A,(BTL_TARGET_LVL)
+	LD		HL,BTL_CASH_PENDING
+	ADD		A,(HL)
+	JR		NC,_NOT_MAX
+	LD		A,$FF
+	
+_NOT_MAX
+	LD		(HL),A
+	
+	;GIVE rally pt to tony unless tony
+	;-------------------------
+	LD		A,(BTL_CREATURE_TEAM)
+	AND		A
+	JP		NZ,_SET_DEAD_TYPE
+	
+	LD		A,(BTL_PROCESS_ACTIVE)
+	AND		A
+	JR		Z,_SET_DEAD_TYPE	
+	
+	;GIVE TONY "RALLY POINT" ENERGY	
+	LD		A,(BTL_RALLY_PT)
+	LD		E,A
+	LD		D,0
+	LD		A,(BTL_HERO_ENGH)
+	LD		H,A
+	LD		A,(BTL_HERO_ENGL)
+	LD		L,A
+	ADD		HL,DE
+	;CHECK FOR UPPER BOUND
+	;------------------------
+	LD		A,(BTL_HERO_ENGMAXH)
+	LD		B,A
+	LD		A,(BTL_HERO_ENGMAXL)
+	LD		C,A
+	
+	LD		A,C
+	SUB		L
+	LD		A,B
+	SBC		A,H
+	JP		NC,_SET_TONY_ENERGY
+	
+	;SET UPPER BOUND AS NEW TOTAL
+	;------------------------
+	LD		H,B
+	LD		L,C
+	
+_SET_TONY_ENERGY
+	LD		A,H
+	LD		(BTL_HERO_ENGH),A
+	LD		A,L
+	LD		(BTL_HERO_ENGL),A	
+	
+_SET_DEAD_TYPE
+	
+	;Put in the list of dead
+	;creature types
+	;-----------------------
+	LD		A,(BTL_TARGET_ID)
+	LD		HL,BTL_DEAD_CREATURE_TYPES
+	LD		D,8
+	
+_DEAD_TYPE_LOOP
+	CP		(HL)
+	JR		NZ,_NEW_DEAD_TYPE
+	DEC		D
+	JR		Z,_WIN_CHECK
+	INC		HL
+	JR		_DEAD_TYPE_LOOP	
+	
+_NEW_DEAD_TYPE
+	LD		(HL),A
+
+	;CHECK TO SEE IF THAT WAS THE LAST CREATURE
+	;AND NO MAGI
+	;--------------------------------------
+_WIN_CHECK
+	LD		HL,BTL_CREATURE_SLOTS+BTL_ID_MAGI
+	LD		A,(HL)
+	AND		A
+	JR		NZ,_DEATH_MSG
+	
+	;See if enemy has any creatures left
+	;-----------------------------
+	CALL	?BTL_WIN_CHECK	
+	
+	AND		A
+	JP		Z,_YOU_WIN
+	
+	;set the death msg
+	;------------------------
+_DEATH_MSG
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+
+	LD		A,(BTL_DEATH_FLAG)
+	AND		A
+	JR		Z,_NORM_DEATH_MSG
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_INSTANT_KILL
+	JR		_DEATH_MSG_CONT
+	
+_NORM_DEATH_MSG
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_CREATURE_DIES_MSG	
+	
+_DEATH_MSG_CONT
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A	
+	JR		_MSG_START	
+		
+_NOT_DEAD
+	LD		A,H
+	LD		(BTL_TARGET_ENGH),A
+	LD		A,L
+	LD		(BTL_TARGET_ENGL),A	
+	
+	
+;********************************
+	;8 play msg(s)
+	;------------------------
+	;First set up the normal params
+_MSG_START
+	LD		A,(BTL_PENDING_MSG)
+	AND		A
+	JR		NZ,_NON_STANDARD_MSG
+	
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	JR		NZ,_STANDARD_MSG
+	
+_MISS_MSG
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_MISS_MSG	
+	JR		_TXT_LOOP
+	
+_STANDARD_MSG	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+;	LD		A,(BTL_CREATURE_TARGET)
+;	CP		BTL_ID_HERO
+;	JR		Z,_MAGI
+;	CP		BTL_ID_MAGI
+;	JR		NZ,_BOUNCY_NUM
+	
+;_MAGI
+;	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+;	SCRIPT_SET		TEXT_SCRIPT,?_BTL_NORM_DAMAGE_MSG	
+;	JR		_TXT_LOOP
+	
+_BOUNCY_NUM
+	LD		A,(BTL_EXIT_CODE)
+	AND		A
+	JR		NZ,_FINAL_UPDATES
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_NUMBERBOUNCE_ANIM
+	CALL_FOREIGN	?BTL_DAMAGE_TO_VRAM
+	XOR		A
+	LD		(BTL_ANIM_DONE),A
+
+_BOUNCY_LOOP
+	CALL	?SYSTEM_UPDATE_GAME
+	LD		A,(BTL_ANIM_DONE)
+	AND		A
+	JR		Z,_BOUNCY_LOOP
+	JR		_FINAL_UPDATES		
+	
+_NON_STANDARD_MSG
+	;CHECK FOR "NO MSG"
+	;--------------------------
+	LD		A,(BTL_PENDING_MSG)
+	CP		2
+	JR		Z,_FINAL_UPDATES
+	
+	;make sure params and script are set
+	;------------------------------
+_TXT_LOOP
+		CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+;********************************
+	;9 Final updates
+	;----------------------
+_FINAL_UPDATES
+	LD		A,(BTL_EXIT_CODE)
+	AND		A
+	JR		NZ,_LEAVE_MAGI
+	
+	BTL_SET_MAGI_ANIM	(BTL_ENEMY_ID),STAND_ANIM,BTL_ID_MAGI_ACTOR
+	BTL_SET_MAGI_ANIM	TONY,STAND_ANIM,BTL_ID_HERO_ACTOR
+
+_LEAVE_MAGI
+	LD		A,(BTL_CLEAR_CARD_FLAG)
+	AND		A
+	RET		Z
+	
+	;Clear the card
+	;----------------------------	
+	BTL_ACTOR_SET_SCRIPT	(BTL_CREATURE_TARGET),?_FLAME_ANIM
+	
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	LD		B,A
+
+	BTL_LOAD_CARD_VRAM	BLANK_CARD_TILE,B
+	
+	XOR		A
+	LD		(BTL_ANIM_DONE),A
+
+_FLAMEY_LOOP
+	CALL	?SYSTEM_UPDATE_GAME
+	LD		A,(BTL_ANIM_DONE)
+	AND		A
+	JR		Z,_FLAMEY_LOOP
+	CALL	?SYSTEM_UPDATE_GAME
+	
+	;Disply rally pt msg if any
+	;---------------------------
+	XOR		A
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		A,(BTL_RALLY_PT)
+	AND		A
+	RET		Z
+	
+	LD		(BTL_PENDING_DAMAGE),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS	
+	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_RALLY_PT_MSG	
+	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+	
+	RET
+
+;********************************
+;HL: BASE CREATURE PTR
+;A: STATUS TRYING TO SET
+;A <- SUCESS  
+?BTL_ATTEMPT_SET_STATUS
+	
+	LD		E,A			;SAVE SETTING STATUS
+	
+	LD		BC,CREATURE_IMMUNE
+	ADD		HL,BC
+	LD		A,(HLI)
+	AND		E
+	JR		NZ,_FAIL
+	
+	LD		A,(HL)
+	AND		E
+	JR		NZ,_FAIL
+	ADD		A,E
+	LD		(HL),A
+	LD		A,1
+	RET	
+	
+_FAIL
+	XOR		A
+	RET
+	
+;********************************
+?BTL_COMMON_SUMMON
+
+	LD		A,(BTL_MAGI_SUMMON_CREATURE)
+	LD		B,A
+	LD		C,CREATURE_TEMPLATE_SIZE
+	
+	CALL	?MULT
+	
+	LD		BC,CREATURE_TEMPLATE_TABLE
+	ADD		HL,BC
+	
+	SET16	H,L,BTL_TABLE_COPY_FROM
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,BTL_TABLE_COPY_TO
+	
+	CALL_FOREIGN	?CREATURE_TABLE_COPY_NO_GFX
+	
+	;Now copy from template to btl_target
+	;getting the info we need, skipping what
+	;we dont and manufacture the info that isnt there
+	;------------------------------
+	FGET16	B,C,BTL_TABLE_COPY_TO
+	LD		HL,BTL_TARGET
+		
+	LD		A,1
+	LD		(HLI),A			;TEAM BYTE
+	XOR		A
+	LD		(HLI),A			;COUNTER BYTE
+	
+		
+	LD		A,(BTL_MAGI_SUMMON_CREATURE)	;ID
+	LD		(HLI),A
+	LD_HLI_BCI								;TYPE
+	INC		BC
+	INC		BC
+	INC		BC								;GET BC UP TO ATK
+	XOR		A
+	LD		(HLI),A							;LVL
+	LD		(HLI),A
+	LD		(HLI),A							;EXP
+	LD		(HLI),A							
+	LD		(HLI),A							;ENG
+	LD		(HLI),A
+	LD		(HLI),A							;ENG MAX
+	
+	LD		D,10							;ATK-IMMUNE
+_MID_LOOP
+	LD_HLI_BCI
+	DEC		D
+	JR		NZ,_MID_LOOP
+	
+	XOR		A
+	LD		(HLI),A							;STATUS
+	
+	LD_HLI_BCI								;PERMSTAT
+	LD_HLI_BCI								;AI
+	
+	INC		BC								;GET BC TO CMDS
+	INC		BC
+	
+	LD		D,12
+_CMD_LOOP
+	LD_HLI_BCI
+	DEC		D
+	JR		NZ,_CMD_LOOP					;CMD0-CMD3LVL
+	
+	XOR		A
+	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A							;RELIC0-OTHER
+	
+		
+	;Level up the creature to its current form
+	;--------------------------------
+	SET		0,A
+	RES		1,A
+	LD		(LVL_UP_FLAGS),A
+	LD		A,(BTL_MAGI_SUMMON_LVL)
+	
+_LVLUP_LOOP
+	LD		HL,BTL_TARGET
+	PUSH	AF
+	CALL	?LEVELUP_CREATURE
+	POP		AF
+	DEC		A
+	JR		NZ,_LVLUP_LOOP
+	
+_NO_LVLUP
+	;Set the energy
+	;-------------------------------
+	LD		A,(BTL_MAGI_SUMMON_ENERGY)
+	LD		(BTL_TARGET_ENGL),A
+	LD		(BTL_TARGET_ENGMAXL),A	
+	
+	;Set any permstat
+	;--------------------------------
+	LD		A,(BTL_TARGET_PERMSTAT)
+	LD		B,A
+	LD		HL,BTL_TARGET_STATUS
+	OR		(HL)
+	LD		A,(HL)
+
+	
+	; Call ?BTL_CREATURE_CLOSE to put the creature into play
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		B,A
+	LD		C,CREATURE_BTL_SIZE
+	
+	CALL	?MULT
+	
+	LD		BC,BTL_CREATURES
+	ADD		HL,BC
+	
+	SET16	H,L,BTL_TARGET_SLOT	
+	
+	RET
+	
+;********************************
+;A: STATUS TO DO MSG ON
+?BTL_GOT_STATUS_MSG
+	
+	PUSH	AF
+	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	
+	POP		AF
+	LD		(BTL_TABLE_COPY_BUFFER+ITEM_AILMENT_OFFSET),A
+	CALL_FOREIGN	?INV_SET_AILMENT_NAME
+	
+	SCRIPT_SET	TEXT_SCRIPT,?_BTL_CASUE_STATUS_MSG
+	
+_TXT_LOOP
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+
+	RET
+	
+;********************************
+?BTL_NORMAL_FIGHTSCENE
+
+	LD		D,A
+
+	LD		A,(BTL_PROCESS_ACTIVE)
+	LD		HL,BTL_CREATURE_TARGET
+	CP		(HL)
+	RET		Z
+	
+	LD		A,D
+
+	BTL_START_FIGHTSCENE_ABC	(ARENA_INDEX),(BTL_CREATURE_ID),(BTL_TARGET_ID)
+	BTL_RESET_CARDSCENE	
+
+	RET
+	
+;********************************
+?BTL_STAT_MSG
+
+	CALL_FOREIGN	?BTL_MSG_STAT_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER	
+	CALL_FOREIGN	?BTL_TEXT_LOOP
+
+	RET
+	
+;********************************
+;Setup tony and clear his equipped ring ptrs
+?BATTLE_XRAM_SETUP
+
+	LD			BC,BTL_TST_TONY
+	LD			HL,CREATURETONY
+	
+	BATTERY_SET_BANK	RAMB_CREATURES
+	BATTERY_ON
+	
+	LD		D,31
+	
+_TONY_LOOP
+	LD_HLI_BCI
+	DEC		D
+	JR		NZ,_TONY_LOOP
+	
+	;SET UP RINGS
+	BATTERY_SET_BANK	RAMB_GAMESTATE
+	
+	LD		HL,XRAM_INVENTORY_RINGS
+	LD		A,$FF
+	LD		(HLI),A	
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A	
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A
+	LD		(HLI),A	
+	
+	BATTERY_OFF
+	
+	RET
+
+;/***********************************************************/
+;//	Below this line are the creature attack functions
+;/***********************************************************/
+
+;********************************
+?CMD_FUNC_BARRAGE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MAUL
+
+	RET
+
+;********************************
+?CMD_FUNC_BEAM
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LAMP
+
+	RET
+
+;********************************
+?CMD_FUNC_BITE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BITE
+
+	RET
+
+;********************************
+?CMD_FUNC_BLAST
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_WHIRLWIND
+	
+	RET
+
+;********************************
+?CMD_FUNC_BLAZE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FIREBALL
+
+	RET
+
+;********************************
+?CMD_FUNC_BOOST
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Skill +20 (100%)
+
+	RAISE_SKILL_STAT 	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_RAISE_SKILL_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_BRAMBLE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BRAMBLE
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_BURROW
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Adds Hidden (100%)
+
+	LD		A,HIDDEN
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,HIDDEN
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_CARNAGE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MUNCH
+	
+	RET
+
+;********************************
+?CMD_FUNC_CHARGE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Skill +20 (100%)
+
+	RAISE_SKILL_STAT 	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_RAISE_SKILL_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_CHOKE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HITDEAL
+
+	;Skill -20 (75%)
+
+	RANDVAL	E
+	CP		192
+	RET		NC
+	
+	LOWER_SKILL_STAT	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_LOWER_SKILL_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_CLAW
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CLAW
+	
+	RET
+
+;********************************
+?CMD_FUNC_COIL
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SUPERSWIRLY
+
+	;Speed -20 (100%)
+
+	LOWER_SPEED_STAT	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_LOWER_SPEED_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_CONSUME
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MUNCH
+
+	;Drains Energy
+
+	BTL_DRAIN_ATTACK	16
+	
+	;Terminates Target (25%)
+	
+	RANDVAL	E
+	CP		64
+	RET		NC	
+	
+	BTL_KILL_TARGET
+	
+	RET
+
+;********************************
+?CMD_FUNC_CRACK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CRACK
+
+	RET
+
+;********************************
+?CMD_FUNC_CREMATE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_INFERNO
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+	
+	BTL_KILL_TARGET
+	
+	RET
+
+;********************************
+?CMD_FUNC_CRUMBLE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CRUSHROCK	
+
+	RET
+
+;********************************
+?CMD_FUNC_CRUSH
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BLASTDEAL
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+	
+	BTL_KILL_TARGET
+	
+	RET
+
+;********************************
+?CMD_FUNC_CURSE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CURSE
+	
+	RET
+
+;********************************
+?CMD_FUNC_CUTE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HEART
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_CYCLONE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_WHIRLWIND
+
+	RET
+
+;********************************
+?CMD_FUNC_DEVOUR
+	
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MUNCH
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+	
+	BTL_KILL_TARGET
+	
+	RET
+
+;********************************
+?CMD_FUNC_DREAM
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Focus
+
+	RANDOM8
+	INC		A
+	ADD		A,A
+	ADD		A,A
+	
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	LD		A,1
+	LD		(BTL_HEAL_FLAG),A
+	LD		(BTL_OVERRIDE_FLAG),A
+
+	RET
+
+;********************************
+?CMD_FUNC_DROWN
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BUBBLE
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+	
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_FANG
+	
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BITE
+
+	RET
+
+;********************************
+?CMD_FUNC_FLAME
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FIREBALL
+
+	RET
+
+;********************************
+?CMD_FUNC_FLASH
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FLASH
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_FLOCK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FIRD
+	RET
+
+;********************************
+?CMD_FUNC_FORTUNE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Luck +50 (100%)
+
+	RAISE_LUCK_STAT 	BTL_TARGET,50
+	BTL_STAT_MSG		(BTL_TARGET_ID),50,?_BTL_RAISE_LUCK_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_FRENZY
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HITDEAL
+
+	RET
+
+;********************************
+?CMD_FUNC_GALE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BLOWINGWIND
+
+	RET
+
+;********************************
+?CMD_FUNC_GOO
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Imagine Goo
+
+	;Speed -20 (100%)
+
+	LOWER_SPEED_STAT	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_LOWER_SPEED_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_GRAVITY
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_GRAVITY
+
+	RET
+
+;********************************
+?CMD_FUNC_GUST
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_WIMPYWIND
+
+	RET
+
+;********************************
+?CMD_FUNC_HAUNT
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HAUNT
+
+	RET
+
+;********************************
+?CMD_FUNC_HEAL
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HEAL
+
+	;Recovers Enegy
+
+	;RANDOM8
+	;INC		A
+	;ADD		A,A
+	
+	CALL    ?SKILL_FUNC_NORES
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	LD		A,1
+	LD		(BTL_HEAL_FLAG),A
+	LD		(BTL_OVERRIDE_FLAG),A
+	
+	RET
+
+;********************************
+?CMD_FUNC_IGNITE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FIREBALL
+
+	;Adds Erupt (50%)
+
+	RANDVAL	E
+	CP		128
+	RET		NC	
+	
+	LD		A,ERUPT
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,$30
+	LD		HL,BTL_CREATURE_COUNTER
+	OR		(HL)
+	LD		(HL),A	
+	
+	LD		A,ERUPT
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_IMPALE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_STING
+
+	RET
+
+;********************************
+?CMD_FUNC_INFECT
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BITE
+
+	;Adds Plague (100%)
+	
+	LD		A,PLAGUE
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,PLAGUE
+	CALL	?BTL_GOT_STATUS_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_INFERNO
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_INFERNO
+
+	RET
+
+;********************************
+?CMD_FUNC_INK
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Adds Divert (100%)
+
+	LD		A,DIVERT
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,DIVERT
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_JIGGLE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SHAKE
+
+	RET
+
+;********************************
+?CMD_FUNC_JOLT
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LIGHTNING
+	
+	RET
+
+;********************************
+?CMD_FUNC_LAMP
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LAMP
+
+	;Resist -10 (100%)
+
+	LOWER_RESIST_STAT	BTL_TARGET,10
+	BTL_STAT_MSG		(BTL_TARGET_ID),10,?_BTL_LOWER_RES_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_LEAF
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LEAF
+
+	RET
+
+;********************************
+?CMD_FUNC_MAGMA
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LAVA
+
+	RET
+
+;********************************
+?CMD_FUNC_MAUL
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MAUL
+
+	RET
+
+;********************************
+?CMD_FUNC_MELODY
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MELODY
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_MEND
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Cures Status (100%)
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HEAL
+	
+	CALL_FOREIGN	?ITEM_CMD_CURE_STATUS_ALL
+
+	RET
+
+;********************************
+?CMD_FUNC_MIST
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Defense +10 (100%)
+
+	RAISE_DEFENSE_STAT 	BTL_TARGET,10
+	BTL_STAT_MSG		(BTL_TARGET_ID),10,?_BTL_RAISE_DEF_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_MUNCH
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MUNCH
+
+	RET
+
+;********************************
+?CMD_FUNC_PACK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_PACK
+
+	RET
+
+;********************************
+?CMD_FUNC_PETRIFY
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_PETRIFY
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_PINCH
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MAUL
+
+	RET
+
+;********************************
+?CMD_FUNC_POLLEN
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SMOKE
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_PRISM
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Adds Mirror (100%)
+
+	LD		A,MIRROR
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,MIRROR
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_PUMMEL
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_HITDEAL
+
+	RET
+
+;********************************
+?CMD_FUNC_PUNCH
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_PUNCH
+
+	RET
+
+;********************************
+?CMD_FUNC_QUAKE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CRACK
+
+	RET
+
+;********************************
+?CMD_FUNC_ROAR
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SONIC
+
+	;Defense -10 (100%)
+
+	LOWER_DEFENSE_STAT	BTL_TARGET,10
+	BTL_STAT_MSG		(BTL_TARGET_ID),10,?_BTL_LOWER_DEF_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_ROOTS
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_ROOTS
+
+	RET
+
+;********************************
+?CMD_FUNC_SCRATCH
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_CLAW
+
+	RET
+
+;********************************
+?CMD_FUNC_SEVER
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MAUL
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_SHADE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FLASH
+
+	RET
+
+;********************************
+?CMD_FUNC_SHAKE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SHAKE
+
+	RET
+
+;********************************
+?CMD_FUNC_SHIELD
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Defense +20 (100%)
+
+	RAISE_DEFENSE_STAT 	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_RAISE_DEF_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SHOCK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LIGHTNINGBLAST
+
+	RET
+
+;********************************
+?CMD_FUNC_SHRED
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_MAUL
+	
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_SLIDE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Adds Divert (100%)
+
+	LD		A,DIVERT
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,DIVERT
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SOAR
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Speed +20 (100%)
+
+	RAISE_SPEED_STAT 	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_RAISE_SPEED_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SONIC
+
+	RET	Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SONIC
+
+	;Resist -20 (100%)
+	
+	LOWER_RESIST_STAT	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_LOWER_RES_MSG	
+
+	RET
+
+;********************************
+?CMD_FUNC_SPARK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_FLASH
+
+	RET
+
+;********************************
+?CMD_FUNC_SPONGE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Defense +10 (100%)
+
+	RAISE_DEFENSE_STAT 	BTL_TARGET,10
+	BTL_STAT_MSG		(BTL_TARGET_ID),10,?_BTL_RAISE_DEF_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SPORE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SMOKE
+
+	;Adds Plague (75%)
+
+	RANDVAL	E
+	CP		192
+	RET		NC	
+	
+	LD		A,PLAGUE
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,PLAGUE
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SQUIRT
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SQUIRT
+
+	RET
+
+;********************************
+?CMD_FUNC_STING
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_STING
+	;Adds Plague (75%)
+
+	RANDVAL	E
+	CP		192
+	RET		NC	
+	
+	LD		A,PLAGUE
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,PLAGUE
+	CALL	?BTL_GOT_STATUS_MSG	
+	
+	RET
+
+;********************************
+?CMD_FUNC_STORM
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_LIGHTNING
+
+	RET
+
+;********************************
+?CMD_FUNC_SWARM
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SWARM
+	
+	RET
+
+;********************************
+?CMD_FUNC_SWING
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_SYPHON
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SUPERSWIRLY
+
+	;Drains Energy
+
+	BTL_DRAIN_ATTACK	16
+	
+	RET
+
+;********************************
+?CMD_FUNC_TACKLE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BLASTDEAL
+
+	RET
+
+;********************************
+?CMD_FUNC_TANGLE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_ROOTS
+
+	RET
+
+;********************************
+?CMD_FUNC_TEMPEST
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TSUNAMI
+
+	RET
+
+;********************************
+?CMD_FUNC_TERROR
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TERROR
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC
+	
+	BTL_KILL_TARGET	
+
+	RET
+
+;********************************
+?CMD_FUNC_THORNS
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_STING
+		
+	RET
+
+;********************************
+?CMD_FUNC_THRUST
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_STING
+
+	RET
+
+;********************************
+?CMD_FUNC_THUNDER
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SMOKEYLIGHTNING
+
+	;Terminates Target (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC
+	
+	BTL_KILL_TARGET	
+
+	RET
+
+;********************************
+?CMD_FUNC_TIC_TOC
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Imagine Roman Numerals
+
+	;Adds Confuse (100%)
+
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_TIDE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TIDE
+
+	RET
+
+;********************************
+?CMD_FUNC_TIMBER
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TIMBER
+
+	RET
+
+;********************************
+?CMD_FUNC_TSUNAMI
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TSUNAMI
+
+	RET
+
+;********************************
+?CMD_FUNC_TURTLE
+
+	LD	A,2
+	LD	(BTL_PENDING_MSG),A
+
+	;Defense +10 (100%)
+
+	RAISE_DEFENSE_STAT 	BTL_TARGET,10
+	BTL_STAT_MSG		(BTL_TARGET_ID),10,?_BTL_RAISE_DEF_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_VAMPIRE
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BITE
+
+	;Drains Energy
+
+	BTL_DRAIN_ATTACK	16
+	
+	RET
+
+;********************************
+?CMD_FUNC_VORTEX
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_TORNADO
+
+	;Terminates Target (25%)
+
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;********************************
+?CMD_FUNC_WHIRL
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_SUPERSWIRLY
+
+	;Speed -20 (100%)
+
+	LOWER_SPEED_STAT	BTL_TARGET,20
+	BTL_STAT_MSG		(BTL_TARGET_ID),20,?_BTL_LOWER_SPEED_MSG
+
+	;Adds Confuse (50%)
+
+	RANDVAL	E
+	CP		128
+	RET		NC	
+	
+	LD		A,CONFUSED
+	LD		HL,BTL_TARGET
+
+	CALL	?BTL_ATTEMPT_SET_STATUS
+	AND		A
+	RET		Z
+	
+	LD		A,CONFUSED
+	CALL	?BTL_GOT_STATUS_MSG
+
+	RET
+
+;********************************
+?CMD_FUNC_WRECK
+
+	RET Z
+
+	BTL_NORMAL_FIGHTSCENE   ?_ATK_BLASTDEAL
+
+	;Terminates Target  (25%)
+
+	RANDVAL	E
+	CP		64
+	RET		NC	
+
+	BTL_KILL_TARGET
+
+	RET
+
+;/***********************************************************/
+;//	Below this line are the special battle engine functions
+;/***********************************************************/
+
+;********************************
+?CMD_FUNC_FOCUS
+
+	LD		A,(BTL_PROCESS_COUNT)
+	AND		A
+	JR		Z,_NORMAL_FOCUS
+
+	LD		A,(BTL_CREATURE_SLOTS+BTL_ID_MAGI)
+	AND		A
+	JR		NZ,_NORMAL_FOCUS
+	
+	;INVISIBLE MAGI FOCUS SHOULD BE NOTHING
+	LD		A,2
+	LD		(BTL_PENDING_MSG),A
+	RET
+
+_NORMAL_FOCUS
+	;DEFAULT CMD DO NOTHING (gets back random 1-8 HP)
+	LD		A,(BTL_PROCESS_ACTIVE)
+	CP		BTL_ID_MAGI
+	JR		Z,_ENEMY	
+		
+	RANDOM8
+	INC		A
+	
+	LD		(BTL_PENDING_DAMAGE),A
+	LD		A,1
+	LD		(BTL_HEAL_FLAG),A
+	
+	LD		A,(BTL_PROCESS_COUNT)
+	AND		A
+	JR		Z,_TONY_FOCUS
+	
+_ENEMY
+	FGET16	H,L,BTL_TARGET_ENGH
+	LD		A,H
+	OR		L
+	JR		NZ,_NORMAL_ENEMY
+	LD		A,1
+	JR		_BOTH_ENEMY
+
+_NORMAL_ENEMY
+	XOR		A
+	
+_BOTH_ENEMY
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	LD		A,1
+	LD		(BTL_OVERRIDE_FLAG),A
+	LD		(BTL_HEAL_FLAG),A
+
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_FOCUS_ENEMY_MSG
+	JR		_BOTH	
+
+_TONY_FOCUS
+	BTL_SET_MAGI_ANIM	TONY,FOCUS_ANIM,BTL_ID_HERO_ACTOR
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_FOCUS_MSG
+	
+
+	;setup FOCUS msg
+	;----------------------
+_BOTH
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A	
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+				
+	RET
+
+;********************************
+?CMD_FUNC_ITEM
+
+	;GET AND CALL THE ITEM FUNC
+	;-------------------------
+	FGET16	B,C,BTL_CREATURE_ITEM
+	FSET16	B,C,INV_OBJ_PTR
+	
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,INV_ADDR
+	
+	CALL_FOREIGN	?INV_COPY_ITEM_ARRAY
+
+	CALL_FOREIGN	?BTL_MSG_SPELL_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_ITEM_MSG
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+	LD		HL,BTL_TABLE_COPY_BUFFER	;BTL FUNC IS START OF ITEM STRUCT
+	DEREF_HL						
+	
+	LD		E,ITEM_FUNC_BANK
+	CALL	?CALL_FOREIGN	
+	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	
+	;IF TONY, DEC ITEM AMOUNT
+	;CAN BE FAIRLY "BLIND" ABOUT IT
+	;AS THERE ARE SO MANY CHECKS BEFORE WE GET 
+	;HERE	
+	LD		A,(BTL_PROCESS_COUNT)
+	AND		A
+	RET		NZ
+	
+	FGET16	H,L,BTL_CREATURE_ITEM
+	LD		BC,ITEM_TABLE
+	TWOS_COMP	B,C
+	ADD		HL,BC
+	LD		A,ITEM_SIZE
+	CALL	?DIV16
+	LD		L,A
+	LD		H,0
+	LD		BC,XRAM_INVENTORY_ITEMS
+	ADD		HL,BC
+
+	BATTERY_ON
+	BATTERY_SET_BANK	RAMB_GAMESTATE	
+	DEC		(HL)
+	BATTERY_OFF
+	
+	XOR		A
+	LD		(BTL_CREATURE_DAMAGE),A
+	
+	RET
+	
+;********************************
+?CMD_FUNC_MELEE
+
+	LD		A,(BTL_CREATURE_OTHER)
+	AND		A
+	JR		NZ,_DEFEND
+	
+	LD		A,(BTL_PENDING_DAMAGE)
+	AND		A
+	
+	RET		Z
+	
+	BTL_NORMAL_FIGHTSCENE	?_ATK_MELEE
+		
+	RET
+	
+_DEFEND
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A
+	LD		(BTL_OVERRIDE_FLAG),A
+	XOR		A
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_DEFEND_MSG
+	
+	RET
+
+;********************************
+?CMD_FUNC_NONE
+
+	LD		A,2
+	LD		(BTL_PENDING_MSG),A
+
+	LD		A,BTL_OVERRIDE_NODAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	
+	LD		A,2
+	LD		(BTL_PENDING_MSG),A
+
+	RET	
+
+;********************************
+?CMD_FUNC_RUN
+
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A	
+	
+	XOR		A
+	LD		(BTL_OVERRIDE_DAMAGE),A
+
+	RANDVAL	E
+	AND		3
+	CP		3
+	JR		NZ,_RUN
+	
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_RUN_FAIL_MSG
+	RET
+	
+
+_RUN
+	LD		A,BTL_EXIT_RUN
+	LD		(BTL_EXIT_CODE),A	
+	
+	LD		A,2
+	LD		(BTL_PENDING_MSG),A
+
+	RET
+	
+;********************************
+?CMD_FUNC_SPELL
+
+	;GET AND CALL THE SPELL FUNC
+	;-------------------------
+	FGET16	B,C,BTL_CREATURE_ITEM
+	FSET16	B,C,INV_OBJ_PTR
+	
+	LD		BC,BTL_TABLE_COPY_BUFFER
+	FSET16	B,C,INV_ADDR
+	
+	CALL_FOREIGN	?INV_COPY_SPELL_ARRAY
+	
+	CALL_FOREIGN	?BTL_MSG_SPELL_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_SPELL_MSG
+	CALL_FOREIGN	?BTL_TEXT_LOOP	
+	
+	;Show cutscene
+	;------------------------------
+	FGET16	B,C,BTL_TABLE_COPY_BUFFER+SPELL_CUT_SCRIPT_FUNC_OFFSET
+	LD		A,(BTL_TABLE_COPY_BUFFER+SPELL_CUT_SCRIPT_BANK_OFFSET)
+	CALL	?BTL_NORMAL_FIGHTSCENE
+	
+	
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	
+	LD		HL,BTL_TABLE_COPY_BUFFER
+	LD		A,(HLI)
+	LD		H,(HL)
+	LD		L,A						;BTL FUNC IS START OF ITEM STRUCT
+	
+	LD		E,SPELL_FUNC_BANK
+	CALL	?CALL_FOREIGN	
+	
+
+	RET
+	
+;********************************
+?CMD_FUNC_SUMMON	
+
+	CALL_FOREIGN	?BTL_ADD_NEW_SUMMON
+	
+	;Inc the counter for tony's total summoned
+	;--------------------------------------
+	LD		HL,BTL_EXP_ALLY_SUMMONED
+	INC		(HL)
+
+	FGET16	B,C,BTL_CREATURE_SUMMON
+	LD		HL,BTL_TARGET
+	CALL	?BTL_SUMMON_CREATURE
+	
+	;Clear status to make double-dog sure
+	;----------------------
+	XOR		A
+	LD		(BTL_TARGET_STATUS),A
+	
+	CALL_FOREIGN	?BTL_APPLY_RELICS		
+
+	;Set permstat
+	;---------------------------
+	
+_PERMSTAT
+	LD		A,(BTL_TARGET_PERMSTAT)
+	LD		HL,BTL_TARGET_STATUS
+	OR		(HL)
+	LD		(HL),A
+	
+	;SET DAMAGE OVERRIDE FLAG
+	;--------------------------
+_OVERRIDE_START
+	LD		A,BTL_OVERRIDE_DAM
+	LD		(BTL_OVERRIDE_FLAG),A
+	XOR		A
+	LD		(BTL_OVERRIDE_DAMAGE),A
+	
+	;SAVE WHERE IN XRAM THIS CAME FROM
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	ADD		A,A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_XRAM0
+	ADD		HL,BC
+	LD		BC,BTL_CREATURE_SUMMON
+	LD_HLI_BCI
+	LD_HLI_BCI	
+	
+	;UPDATE BTL_HERO_ACTIVE_RINGS
+	;-------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_ACTIVE_RINGS
+	ADD		HL,BC
+	LD		A,(BTL_RING_USING)
+	LD		(HL),A
+	
+	;UPDATE BTL_HERO_USED_RINGS
+	;-------------------------
+	LD		C,A
+	LD		B,0
+	LD		HL,BTL_HERO_USED_RINGS
+	ADD		HL,BC
+	LD		A,BTL_RING_INUSE
+	LD		(HL),A	
+	
+	;Clear the sparkle
+	;-------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	CALL	?BTL_ACTOR_END	
+	
+	;Set the creatures card graphics
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	LD		B,A
+	
+	BTL_LOAD_CARD_VRAM	(BTL_TARGET_ID),B
+	
+	; Call ?BTL_CREATURE_CLOSE to put the creature into play
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	LD		B,A
+	LD		C,CREATURE_BTL_SIZE
+	
+	CALL	?MULT
+	
+	LD		BC,BTL_CREATURES
+	ADD		HL,BC
+	
+	SET16	H,L,BTL_TARGET_SLOT
+	
+	;setup summon msg
+	;----------------------
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_SUMMON_MSG
+
+	RET
+	
+;********************************
+;THIS IS USED WHEN AN ENEMY MAGI SUMMONS A CREATURE
+?CMD_FUNC_SUMMON_MAGI
+
+	SWITCH_RAM_BANK		WRAM_BATTLE
+	
+	CALL_FOREIGN	?BTL_ADD_NEW_SUMMON
+
+	CALL		?BTL_COMMON_SUMMON
+	
+	;Set the creatures card graphics
+	;-----------------------------
+	LD		A,(BTL_CREATURE_TARGET)
+	DEC		A
+	LD		B,A
+	
+	BTL_LOAD_CARD_VRAM	(BTL_TARGET_ID),B	
+	
+	;setup summon msg
+	;----------------------
+	LD		A,1
+	LD		(BTL_PENDING_MSG),A
+	CALL_FOREIGN	?BTL_MSG_NORM_PARAMS
+	TEXT_SET_PARAMS	TEXT_PARAM_BUFFER
+	LD		A,(BTL_CREATURE_SLOTS+BTL_ID_MAGI)
+	AND		A
+	JR		Z,_RND_SUMMON
+	
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_SUMMON_MAGI_MSG
+	RET
+	
+_RND_SUMMON
+	SCRIPT_SET		TEXT_SCRIPT,?_BTL_SUMMON_RND_MSG
+	
+	RET
+
+;********************************
+	END
+;********************************

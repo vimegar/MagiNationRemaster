@@ -1,0 +1,112 @@
+/********************************/
+%INCLUDE					INCLUDES\INCLUDES.MGI
+%INCLUDE					REGIONS\HIDDEN\ROOM\MAP03\HDNROOM03_DR.MGI
+%INCLUDE					REGIONS\HIDDEN\ROOM\MAP03\HDNROOM03_TXT.MGI
+%INCLUDE					REGIONS\HIDDEN\ROOM\MAP03\HDNROOM03_SCT.MGI
+
+/********************************/
+?_HDNROOM03
+	SceneNew				()
+	LoadMap					(MAP_HDNROOM03)
+	LoadHotspots			(HS_HDNROOM03)
+	LoadTriggers			(TR_HDNROOM03)
+	LoadPalette				(PAL_HERO)
+	SetItemScript			(_BOMB)
+	ThatActorInit			(HEROACTOR,?HERO_AI,5,5,15,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,8,3,15,0,?_END,?_END)
+	ThatActorInit			(ACTOR02,?TALKER_AI,8,5,15,50,?_MAN04_STAND_UP_ANIM,_HUNTER_TALKS)
+	LoadVRAMTiles			(48,BIT_MAN04,50,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	If						([Hunter_Hyren > 0],_SKIP)
+	ThatActorStart			(ACTOR02)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongFadeOut				(80)
+	If						([HdnRoom03_Bombed], _ACTOR00_BOMBED_HDNWALL)
+	SceneReady				()
+	End						()
+
+_BOMB
+	If						([[USEITEM_ID == INV_BLAST_URN] && [USEITEM_CollCode == COLLCODE_ITEM01]],_BOMB01)
+	Jump					(?_TXT_NOTHING_HAPPENED)
+
+_BOMB01
+	SetXRAMBit				(HdnRoom03_Bombed, TRUE)
+	Jump					(_BOMB_HDNWALL)
+
+/********************************/
+_BOMB_HDNWALL
+	InventoryTake			(INV_TYPE_ITEM,INV_BLAST_URN,1)
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,_TONY_BOMB_DROP)
+	ThatActorInit			(ACTOR01,?ANIM_AI,0,0,15,0,_BOMB_ACT,?_END)
+	LoadVRAMTiles			(32,BIT_URN,0,0)
+	End						()
+
+_TONY_BOMB_DROP
+	// Tony runs down, waits for bomb w/ delay
+	ThisActorSetAnimDelay	(?_HERO_STAND_UP_ANIM,16)
+	ThatActorStart			(ACTOR01)		
+	ThisActorSetAnimDelay	(?_HERO_RUN_DOWN_ANIM,24)
+							(?_HERO_STAND_UP_ANIM,16)
+	SetScroll				(_BLAM)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_UP_ANIM)
+
+_BOMB_ACT
+	ThisActorLocRelative	(HEROACTOR)
+	SFX						(SFXID_SFX_EXPLOSION_SMALL)
+	ThisActorSetAnimDelay	(?_URN_EXPLODE_ANIM,64)
+	End						()
+
+_BLAM
+	ScrollMap				(1,3,0)
+	ScrollMap				(1,-3,0)
+	ScrollMap				(1,3,-3)
+	ScrollMap				(1,-3,3)
+	ScrollMap				(1,0,-3)
+	ScrollMap				(1,0,3)
+	ThatActorSetScript		(ACTOR00,_ACTOR_BOMB_HDNWALL)
+	End						()
+
+_ACTOR_BOMB_HDNWALL
+	ThisActorDrawTile		(0,0,15,70,COLLCODE_HS03)
+	ThisActorDrawTile		(1,0,15,71,COLLCODE_HS03)
+	ThisActorDrawTile		(0,-1,15,54,COLLCODE_WALL)
+	ThisActorDrawTile		(1,-1,15,55,COLLCODE_WALL)
+	End						()
+
+_ACTOR00_BOMBED_HDNWALL
+	//ThatActorDrawTile
+	ThatActorDrawTile		(ACTOR00,0,0,15,70,COLLCODE_HS03)
+	ThatActorDrawTile		(ACTOR00,1,0,15,71,COLLCODE_HS03)
+	ThatActorDrawTile		(ACTOR00,0,-1,15,54,COLLCODE_WALL)
+	ThatActorDrawTile		(ACTOR00,1,-1,15,55,COLLCODE_WALL)
+	SceneReady				()
+	End						()
+
+
+/********************************/
+//	HUNTER
+_HUNTER_TALKS
+	SetText					(_HYREN_TXT)
+	Jump					(?_FACE_MAN04)
+
+//	TEXT FOR HUNTER
+_HYREN_TXT
+	TextOpen				()
+	TextIcon				(ICON_YOUNGMAN)
+	TextWrite				("Did you know=")
+							("that Greater")
+							("Hyrens=")
+							("are only found")
+							("in hidden=")
+							("areas?")
+	TextClose				()
+	SetXRAMByte				(Hunter_Hyren,1)
+	SetEventText			(1)
+	End						()
+/********************************/
+

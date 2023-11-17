@@ -1,0 +1,88 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\ARDERIAL\GEYSER\MAP26\ARDGEYSER26_DR.MGI
+
+/********************************/
+?_ARDGEYSER26
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER26)
+	LoadHotspots	(HS_ARDGEYSER26)
+	LoadTriggers	(TR_ARDGEYSER26)
+	LoadPalette		(PAL_HERO)
+	ThatActorInit	(HEROACTOR,?HERO_AI,5,5,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart	(HEROACTOR)
+	SetEncounter	(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn	(?_ARDGEYSER26)
+	HeroFromDoor	()
+	HeroSetCamera	()
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	End				()
+	
+?_ARDGEYSER26_FROM15
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER26)
+	LoadHotspots	(HS_ARDGEYSER26)
+	LoadTriggers	(TR_ARDGEYSER26)
+	SetEncounter	(?_ARDGEYSER_RNDBAT,ENCOUNTER_FRQ_SLOW)
+	SetBtlReturn	(?_ARDGEYSER26)
+	LoadPalette		(PAL_HERO)
+	SetCamera		(21,29)
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	ScrollMap		(48,-4,0)
+					(39,0,-3)
+	If				([!Ardgeyser_Trig6],?_26_GOTO_15_C)
+	If				([!Ardgeyser_Trig5],?_ARDGEYSER26_FROM15_T1)
+	ScrollMap		(24,4,0)
+					(38,0,-3)
+	If				([!Ardgeyser_Trig7],?_ARDGEYSER26_FROM15_T2)					
+	Jump			(?_ARDGEYSER26_GOTO21A)
+
+?_ARDGEYSER26_FROM15_T2
+	ScrollMap		(16,-3,0)
+					(16,3,0)
+					(28,0,4)
+					(16,-3,0)
+	Jump			(?_26_GOTO_15_C)
+
+?_ARDGEYSER26_FROM15_T1
+	ScrollMap		(16,-3,0)
+					(16,3,0)
+	Jump			(?_26_GOTO_15_C)
+	
+?_ARDGEYSER26_TUBE
+	SceneNew		()
+	LoadMap			(MAP_ARDGEYSER26)
+	LoadHotspots	(HS_ARDGEYSER26)
+	LoadTriggers	(TR_ARDGEYSER26)
+	LoadPalette		(PAL_HERO)
+	SetCamera		(29,13)
+	SongStart		(SONGID_maze)
+	SceneReady		()
+	Delay			(24)
+	ScrollMap		(30,-3,0)
+	If				([!Ardgeyser_Trig7],?_ARDGEYSER26_GOTO21A)
+	ScrollMap		(16,-3,0)
+					(32,0,3)
+					(16,-3,0)
+	If				([!Ardgeyser_Trig5],?_ARDGEYSER26_GOTO21B)
+	ScrollMap		(20,-3,0)
+	If				([!Ardgeyser_Trig6],?_ARDGEYSER26_GOTO21C)
+
+?_26_GOTO_15_C
+	ScrollMap		(43,0,3)
+					(64,3,0)
+	Jump			(?_OROTUNNEL15_FROM26)
+
+?_ARDGEYSER26_GOTO21C
+	ScrollMap		(27,0,-3)
+					(27,0,3)
+					(20,3,0)
+?_ARDGEYSER26_GOTO21B
+	ScrollMap		(16,3,0)
+					(32,0,-3)
+					(16,3,0)
+?_ARDGEYSER26_GOTO21A
+	ScrollMap		(38,3,0)
+	Jump			(?_ARDGEYSER21_FROM26)

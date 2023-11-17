@@ -1,0 +1,105 @@
+/********************************/
+?_CLDLAVATOWN12_DR_1
+	HeroToDoor				(5,12,7,34)
+	Jump					(?_CLDLAVATOWN02)
+		
+?_CLDLAVATOWN12_TR_1
+	If						([Cold_Shoulder],_COLD)
+	SetText					(?_CLDLAVATOWN12_TXT_RINGSMITH)
+	End						()
+_COLD
+	TextOpen				()
+	TextIcon				(ICON_MAGAM)
+	TextWrite				("Get out.")
+							("Thieves have=")
+							("no business")
+							("with me.")
+	TextClose				()
+	End						()
+
+?_CLDLAVATOWN12_TR_2
+	If						([Cold_Shoulder],_COLD)
+	SetText					(?_CLDLAVATOWN12_TXT_SHOP)
+	End						()
+_COLD
+	TextOpen				()
+	TextIcon				(ICON_GUY01)
+	TextWrite				("You are not=")
+							("welcome here.")
+	TextClose				()
+	End						()
+
+
+?_CLDLAVATOWN12_TR_3			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A ginourmously=")
+						("big bed.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN12_TR_4			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Big hammers.")
+						("Tiny hammers.")
+						("Furry=")
+						("hammers.")
+						("Squishy=")
+						("hammers.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN12_TR_5			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Round hammers,=")
+						("flat hammers,")
+						("hammers with=")
+						("points.")
+						("Geeze...")
+		TextClose		()
+		End				()
+		
+?_CLDLAVATOWN12_TR_6			// DRESSER
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Hmm...")
+						("Hammers...")
+						("Hammers...")
+						("...")
+						("More hammers...")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN12_TR_7			// BOOKCASE
+		TextOpen		()
+		TextWrite		("Forge Like You=")
+						("Mean It!")
+						("Feel like=")
+						("you're putting")
+						("the most into=")
+						("your forging")
+						("and make others=")
+						("feel it too.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN12_TR_8			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("An iddy biddy=")
+						("diddy bed.")
+		TextClose		()
+		End				()
+
+?_CLDLAVATOWN12_TR_9			// WINDOW
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This lavafront=")
+						("property must")
+						("really be in=")
+						("demand.")
+		TextClose		()
+		End				()
+

@@ -1,0 +1,159 @@
+/********************************//********************************/
+// INTRO AND APOLOGY
+/********************************//********************************/
+?_CLDLAVATOWN07_APOLOGY
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_INTRO)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_INTRO
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT01)	
+	Jump				(?_FACE_OLDMAN02)			
+
+/********************************//********************************/
+// END INTRO AND APOLOGY
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ARBOLL QUEST
+/********************************//********************************/
+?_CLDLAVATOWN07_ARBOLLQUEST
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_HUNT)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_HUNT
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT02)	
+	Jump				(?_FACE_OLDMAN02)			
+				
+/********************************//********************************/
+// END ARBOLL QUEST
+/********************************//********************************/
+
+
+/********************************//********************************/
+// COLD SHOULDER
+/********************************//********************************/
+?_CLDLAVATOWN07_COLDSHOULDER
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_CHILL)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_CHILL
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT03)	
+	Jump				(?_FACE_OLDMAN02)			
+	
+
+/********************************//********************************/
+// END COLD SHOULDER
+/********************************//********************************/
+
+
+/********************************//********************************/
+// HURRY UP
+/********************************//********************************/
+?_CLDLAVATOWN07_HURRYUP
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_HURRY)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_HURRY
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT04)	
+	Jump				(?_FACE_OLDMAN02)			
+	
+/********************************//********************************/
+// END HURRY UP
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE BEST BRIDGE BUILDER
+/********************************//********************************/
+?_CLDLAVATOWN07_BESTBRIDGE
+	SceneNew				()
+	LoadMap					(MAP_CLDLAVATOWN07)
+	LoadHotspots			(HS_CLDLAVATOWN07)
+	LoadTriggers			(TR_CLDLAVATOWN07)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,14,1,12,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,3,12,0,?_CLDTOWN07_OLDMAN02,?_CLDTOWN07_OLDMAN02_BRIDGE)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(32,BIT_OLDMAN02,0,0)
+	HeroFromDoor			()
+	HeroSetCamera			()
+	SongStart				(SONGID_caldtown)
+	SceneReady				()
+	End						()
+
+?_CLDTOWN07_OLDMAN02_BRIDGE
+	SetText				(?_CLDTOWN07_OLDMAN02_TXT05)	
+	Jump				(?_FACE_OLDMAN02)			
+
+/********************************//********************************/
+// END THE BEST BRIDGE BUILDER
+/********************************//********************************/
+
+
+
+
+/********************************//********************************/
+// MULTI-SCENE
+/********************************//********************************/
+?_CLDTOWN07_OLDMAN02
+	ThisActorSetAnimDelay	(?_OLDMAN02_STAND_LEFT_ANIM,64)
+	Jump					(?_CLDTOWN07_OLDMAN02)
+
+
+/********************************//********************************/
+// END MULTI-SCENE
+/********************************//********************************/

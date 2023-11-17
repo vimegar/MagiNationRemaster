@@ -1,0 +1,7 @@
+/********************************/
+		FileHotspots	(HS_OROTUNNEL05)
+						(HOTSPOT_TRIGGER_SOUTH,?_OROTUNNEL05_DR_1)						
+						(HOTSPOT_TRIGGER_ALL,?_OROTUNNEL05_DR_2)						
+		FileTriggers	(TR_OROTUNNEL05)
+						(TRIGGER_CONFIG,?_OROTUNNEL05_TR_1)
+						(TRIGGER_CONFIG,?_OROTUNNEL05_TR_2)

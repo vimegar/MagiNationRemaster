@@ -1,0 +1,15 @@
+?_NRMGEYSER04_DR_1
+	HeroToDoor		(15,19,9,0)
+	Jump			(?_NRMGEYSER03)
+
+?_NRMGEYSER04_DR_2
+	HeroToDoor		(25,8,0,7)
+	Jump			(?_NRMGEYSER05)
+
+?_NRMGEYSER04_DR_3
+	HeroToDoor		(15,0,7,21)
+	Jump			(?_NRMGEYSER09)
+
+?_NRMGEYSER04_TR_1
+	TriggerTreasure	(NRMGEYSER04_Chest1,INV_TYPE_RELIC,INV_SHIELD_ORB,7,15,26)
+	

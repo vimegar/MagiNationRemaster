@@ -1,0 +1,38 @@
+/**************************************/
+
+?_ARDGEYSER01_DR_1
+	SetLoadScript	(?_ARDGEYSER01_DR_1)
+	HeroSetDoor		(16,9)
+	Jump			(?_OVRSURFACE05)
+
+?_ARDGEYSER01_DR_2
+	HeroToDoor		(0,14,23,15)
+	Jump			(?_ARDGEYSER03)
+	
+?_ARDGEYSER01_DR_3
+	HeroToDoor		(23,14,0,14)
+	Jump			(?_ARDGEYSER05)
+
+?_ARDGEYSER01_DR_4
+	HeroSetDoor		(28,47)
+	Jump			(?_ARDGEYSER02)
+
+/**************************************/
+
+?_ARDGEYSER01_TR_1
+	TriggerTreasure	(ARDGEYSER01_Chest1,INV_TYPE_ITEM,INV_STAR_KEY,11,16,24)
+
+?_ARDGEYSER01_TR_2
+	InitSkip			(_SKIP)
+	ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript	(HEROACTOR,?_HERO_STAND_UP_ANIM)
+	If					([INV_ITEM_StarKey > 0],_SKIP)
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)
+_SKIP
+	TriggerAlways		(ARDGEYSER01_Door1,?_END,190,11,5,24)
+	LoadSpareMap		(SCR_ARDGEYSER01B,COL_ARDGEYSER01B)
+	CopyTileSpare		(24,10,3,3,4,10,3)
+	InitSkip			(_END)
+	ExprXRAMByte		(INV_ITEM_StarKey,[INV_ITEM_StarKey - 1])
+_END
+	Jump				(?_ARDGEYSER02_HERO_AI_SET)

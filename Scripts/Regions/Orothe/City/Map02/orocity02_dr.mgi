@@ -1,0 +1,63 @@
+/********************************/
+?_OROCITY02_DR_1
+		HeroSetDoor		(11,35)
+		Jump			(?_OROCITY01)
+
+?_OROCITY02_TR_1
+		SetText			(?_OROCITY02_SHOP_TXT)
+		End				()
+
+?_OROCITY02_TR_2
+		ThatActorSetAI		(HEROACTOR,?ANIM_AI)
+		ThatActorSetScript	(HEROACTOR,?_HERO_STAND_LEFT_ANIM)
+		SetText				(?_OROCITY02_INN_TXT)
+		WaitEventText		(1)
+		ThatActorSetAI		(HEROACTOR,?HERO_AI)
+		End					()
+
+?_OROCITY02_TR_3			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Smells like...")
+						("like...")
+						("halibut!?")
+		TextClose		()
+		End				()
+
+?_OROCITY02_TR_4			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("A water bed.")
+						("Go figure.")
+		TextClose		()
+		End				()
+
+?_OROCITY02_TR_5			// BED
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("This bed=")
+						("ripples like")
+						("the tide.")
+		TextClose		()
+		End				()
+
+?_OROCITY02_TR_6			// END TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Guh!=")
+						("Sea urchin!")
+		TextClose		()
+		End				()
+
+?_OROCITY02_TR_7			// END TABLE
+		TextOpen		()
+		TextIcon		(ICON_TONY)
+		TextWrite		("Bandages=")
+						("and wrappings.")
+						("Hmm...")
+		TextClose		()
+		End				()
+
+
+
+

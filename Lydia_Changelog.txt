@@ -1,0 +1,8 @@
+Source/Game/Battle/Tables/CreatureName_Table.s:232
+Changed "Sabreback" to "Magma Jile"
+
+Soruce/Game/Battle/Commands/BtlCmd_Formula.s:85
+Added new SKILL_FUNC_NORES function that calculates skill-based damage, ignoring resistance 
+
+Source/Game/Battle/Commands/BtlCmd_Func.s:1382
+Changed CMD_FUNC_HEAL's damage override calculation to be the result of SKILL_FUNC_NORES instead of a random number.

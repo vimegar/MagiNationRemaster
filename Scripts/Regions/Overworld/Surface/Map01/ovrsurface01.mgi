@@ -1,0 +1,234 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP01\OVRSURFACE01_DR.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP01\OVRSURFACE01_TXT.MGI
+%INCLUDE			REGIONS\OVERWORLD\SURFACE\MAP01\OVRSURFACE01_SCT.MGI
+
+/********************************/
+// Naroom area
+?_OVRSURFACE01_OPENING_LOAD
+	HeroSetDoor				(33,14)
+?_OVRSURFACE01_LOAD
+?_OVRSURFACE01
+	SongFadeOut				(30)
+	SceneNew				()
+
+	SetXRAMByte				(Exit_Disable,0)
+	SetXRAMByte				(MENU_SaveEnable,1)
+	SetXRAMByte				(Overworld_Load,1)
+
+	LoadMap					(MAP_OVRSURFACE01)
+	LoadHotspots			(HS_OVERSURFACE01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?OVERWORLD_AI,26,12,64,0,?_HERO_OVER_DOWN_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TRAP_AI,37,8,64,0,?_OVERWORLD_GEYSER_ANIM,?_OVRSURFACE_NRMGEYSER)
+	ThatActorInit			(ACTOR02,?ANIM_AI,40,54,64,64,?_OVERBOAT_RIGHT_ANIM,?_DONT_TALK)	// Cald
+	ThatActorInit			(ACTOR03,?ANIM_AI,55,45,64,64,?_OVERBOAT_RIGHT_ANIM,?_DONT_TALK)	// Orothe
+	ThatActorInit			(ACTOR04,?ANIM_AI,21,39,64,64,?_OVERBOAT_RIGHT_ANIM,?_DONT_TALK)	// Weave
+	LoadVRAMTiles			(15,BIT_OVERBOAT,64,1)
+	LoadVRAMTiles			(7,BIT_GEYSEROVER,0,0)
+	
+	ThatActorStart			(HEROACTOR)
+
+	If						([!Ferry_State],_SKIP2)
+	ThatActorStart			(ACTOR02)
+_SKIP2
+	If						([Ferry_State < 3],_SKIP1)
+	ThatActorStart			(ACTOR03)
+	ThatActorStart			(ACTOR04)
+_SKIP1
+	If						([GAMECOUNT > GC_NAROOM_GEYSER || GAMECOUNT < GC_FIND_ORWIN],_SKIP)
+	ThatActorStart			(ACTOR00)
+_SKIP
+	HeroFromDoor			()
+	HeroSetCamera			()
+	PalClearAnim			(0,7,31,31,31)
+	SceneReady				()
+	PalFade					(0,7,32,0)
+	//SongStart				(SONGID_orwin)
+	SongStart				(SONGID_overworld)
+	End						()
+
+?_OVRSURFACE_NRMGEYSER
+	HeroSetDoor				(9,15)
+	Jump					(?_NRMGLADE09A_FADEIN)
+
+/********************************//********************************/
+// THE FERRY DEPARTS TRANSIT PRE-KZBOMB
+/********************************//********************************/
+?_FERRY03_KZBOMB_TRANSIT
+	SceneNew				()
+	LoadMap					(MAP_OVRSURFACE01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(ACTOR00,?ANIM_AI,40,54,64,48,?_FERRY_TRANSIT_FERRY,?_DONT_TALK)
+	LoadVRAMTiles			(15,BIT_OVERBOAT,48,1)
+	ThatActorStart			(ACTOR00)
+	SetCamera				(40,54)
+	SongStart				(SONGID_overworld)
+//	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+//	PalFade					(0,15,32,2)
+	Sync					(2,0)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,2)
+	Jump					(?_FERRY03_KZBOMB)
+
+?_FERRY_TRANSIT_FERRY
+	ThisActorSetAnimDelay	(?_OVERBOAT_RIGHT_ANIM,32)
+	ThisActorSetAnimScroll	(?_OVERBOAT_GO_RIGHT_ANIM,64,1,0)
+	Sync					(2,0)
+	ThisActorSetAnimScroll	(?_OVERBOAT_GO_RIGHT_ANIM,64,1,0)
+	End						()
+
+/********************************//********************************/
+// END THE FERRY DEPARTS TRANSIT PRE-KZBOMB
+/********************************//********************************/
+
+
+/********************************//********************************/
+// THE FERRY DEPARTS TRANSIT POST-KZBOMB
+/********************************//********************************/
+?_FERRY03_KZBOMB_TRANPOST
+	SceneNew				()
+	LoadMap					(MAP_OVRSURFACE01)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(ACTOR00,?ANIM_AI,48,45,64,48,?_FERRY_TRANSIT_FERRYX,?_DONT_TALK)
+	LoadVRAMTiles			(15,BIT_OVERBOAT,48,1)
+	ThatActorStart			(ACTOR00)
+	SetCamera				(48,45)
+	SongStart				(SONGID_overworld)
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,2)
+	Sync					(2,0)
+	Jump					(?_FERRY02_FERRYARRIVES)
+
+?_FERRY_TRANSIT_FERRYX
+	ThisActorSetAnimScroll	(?_OVERBOAT_GO_RIGHT_ANIM,110,1,0)
+	ThisActorSetAnimDelay	(?_OVERBOAT_RIGHT_ANIM,32)
+	Sync					(2,0)
+	End						()
+
+/********************************//********************************/
+// END THE FERRY DEPARTS TRANSIT POST-KZBOMB
+/********************************//********************************/
+/********************************//********************************/
+// THE FERRY MOVEMENT ANIMATIONS:  total: 6 different movements.  uses global Ferry_Destination
+/********************************//********************************/
+
+?_OVRSURFACE01_BOAT_ANIMS
+	SceneNew				()
+	LoadMap					(MAP_OVRSURFACE01)
+	LoadPalette				(PAL_HERO)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(15,BIT_OVERBOAT,48,1)
+	PalClearAnim			(0,15,31,31,31)
+	SongStart				(SONGID_overworld)
+	Switch					([Ferry_Destination])
+							(0,_DESTINATION_0)
+							(1,_DESTINATION_1)
+							(2,_DESTINATION_2)
+							(3,_DESTINATION_3)
+							(4,_DESTINATION_4)
+							(5,_DESTINATION_5)
+_DESTINATION_0
+	ThatActorInit			(ACTOR00,?ANIM_AI,40,54,64,48,?_FERRY_TRANSIT_ANIM_0,?_DONT_TALK)
+	SetCamera				(40,54)
+	Jump					(_SKIP)
+_DESTINATION_1
+	ThatActorInit			(ACTOR00,?ANIM_AI,40,54,64,48,?_FERRY_TRANSIT_ANIM_1,?_DONT_TALK)
+	SetCamera				(40,54)
+	Jump					(_SKIP)
+_DESTINATION_2
+	ThatActorInit			(ACTOR00,?ANIM_AI,55,45,64,48,?_FERRY_TRANSIT_ANIM_2,?_DONT_TALK)
+	SetCamera				(55,45)
+	Jump					(_SKIP)
+_DESTINATION_3
+	ThatActorInit			(ACTOR00,?ANIM_AI,55,45,64,48,?_FERRY_TRANSIT_ANIM_3,?_DONT_TALK)
+	SetCamera				(55,45)
+	Jump					(_SKIP)
+_DESTINATION_4
+	ThatActorInit			(ACTOR00,?ANIM_AI,21,39,64,48,?_FERRY_TRANSIT_ANIM_4,?_DONT_TALK)
+	SetCamera				(21,39)
+	Jump					(_SKIP)
+_DESTINATION_5
+	ThatActorInit			(ACTOR00,?ANIM_AI,21,39,64,48,?_FERRY_TRANSIT_ANIM_5,?_DONT_TALK)
+	SetCamera				(21,39)
+	Jump					(_SKIP)
+_SKIP
+	ThatActorStart			(ACTOR00)
+	SceneReady				()
+	PalFade					(0,15,32,2)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_0
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_RIGHT_ANIM,128,1,0)
+							(?_OVERBOAT_GO_UP_ANIM,142,0,-1)
+							(?_OVERBOAT_GO_RIGHT_ANIM,112,1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY02)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_1
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_RIGHT_ANIM,16,1,0)
+							(?_OVERBOAT_GO_UP_ANIM,142,0,-1)
+							(?_OVERBOAT_GO_LEFT_ANIM,250,-1,0)
+							(?_OVERBOAT_GO_UP_ANIM,96,0,-1)
+							(?_OVERBOAT_GO_LEFT_ANIM,64,-1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY01_AT_WEAVE)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_2
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_LEFT_ANIM,128,-1,0)
+							(?_OVERBOAT_GO_DOWN_ANIM,142,0,1)
+							(?_OVERBOAT_GO_LEFT_ANIM,112,-1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY01_AT_CALD)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_3
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_LEFT_ANIM,250,-1,0)
+							(?_OVERBOAT_GO_UP_ANIM,48,0,-1)
+							(?_OVERBOAT_GO_LEFT_ANIM,250,-1,0)
+							(?_OVERBOAT_GO_UP_ANIM,47,0,-1)
+							(?_OVERBOAT_GO_LEFT_ANIM,46,-1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY01_AT_WEAVE)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_4
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_RIGHT_ANIM,64,1,0)
+							(?_OVERBOAT_GO_DOWN_ANIM,96,0,1)
+							(?_OVERBOAT_GO_RIGHT_ANIM,250,1,0)
+							(?_OVERBOAT_GO_DOWN_ANIM,142,0,1)
+							(?_OVERBOAT_GO_LEFT_ANIM,16,-1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY01_AT_CALD)
+	End						()
+
+?_FERRY_TRANSIT_ANIM_5
+	ThisActorSetAnimScroll	(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+							(?_OVERBOAT_GO_RIGHT_ANIM,46,1,0)
+							(?_OVERBOAT_GO_DOWN_ANIM,48,0,1)
+							(?_OVERBOAT_GO_RIGHT_ANIM,250,1,0)
+							(?_OVERBOAT_GO_DOWN_ANIM,47,0,1)
+							(?_OVERBOAT_GO_RIGHT_ANIM,250,1,0)
+							(?_OVERBOAT_RIGHT_ANIM,32,0,0)
+	HeroSetDoor				(19,7)
+	Jump					(?_FERRY02)
+	End						()
+
+/********************************//********************************/
+// END:  THE FERRY MOVEMENT ANIMATIONS:  total: 6 different movements.  uses global Ferry_Destination
+/********************************//********************************/

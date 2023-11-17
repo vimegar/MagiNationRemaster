@@ -1,0 +1,6 @@
+/********************************/
+		FileHotspots	(HS_NRMVASH22)
+						(HOTSPOT_TRIGGER_SOUTH,?_NRMVASH22_DR_1)
+
+		FileTriggers	(TR_NRMVASH22)
+						(TRIGGER_CONFIG,?_NRMVASH22_TR_1)

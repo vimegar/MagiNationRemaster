@@ -1,0 +1,41 @@
+/********************************/
+//UNDTOWN03
+/********************************/
+?_UNDTOWN03_INN	
+	TextOpen			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Welcome to=")
+						("Underneath Inn.")
+						("Would you like=")
+						("to record your")
+						("journey and=")
+						("recover lost")
+						("energy?")
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Yes=")
+						(" No$")
+	TextMenu			(2)
+						(?_UNDINN_YES)
+						(?_UNDINN_NO)
+						
+?_UNDINN_YES
+	SetLoadScript			(?_LOAD_UNDTOWN03)
+	TextClear				()
+	TextIcon				(ICON_OLDWOMAN)
+	TextWrite				("Sleep well!")
+	TextClose				()
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	SaveGame				(1)
+	Delay					(64)
+	Jump					(?_UNDTOWN03_TONY_WAKING)
+?_UNDINN_NO
+	TextClear			()
+	TextIcon			(ICON_OLDWOMAN)
+	TextWrite			("Try our=")
+						("fabulous")
+						("mushrooms!")
+	TextClose			()
+	SetEventText		(1)
+	End					()

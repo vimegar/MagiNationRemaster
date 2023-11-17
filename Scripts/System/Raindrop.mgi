@@ -1,0 +1,66 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+/*********************************/
+?_CLD_LAVABUBBLE
+	ThisActorSetAnim		(?_END)
+	ThisActorRaindrop		(COLLCODE_ITEM01)
+	JumpRandom				(_BUBBLE01)
+							(_BUBBLE02)
+
+_BUBBLE01
+	ThisActorSetAnim		(?_LAVABUBBLE1_ANIM)
+	Delay					(32)
+	JumpLocal				(?_CLD_LAVABUBBLE)
+_BUBBLE02
+	ThisActorSetAnim		(?_LAVABUBBLE2_ANIM)
+	Delay					(32)
+	JumpLocal				(?_CLD_LAVABUBBLE)
+
+/*********************************/
+?_SHIMMER
+	ThisActorSetAnim		(?_END)
+	ThisActorRaindrop		(COLLCODE_WATER)
+	JumpRandom				(_BUBBLE01)
+							(_BUBBLE02)
+
+_BUBBLE01
+	ThisActorSetAnim		(?_WATER_SHIMMER1_ANIM)
+	Delay					(41)
+	JumpLocal				(?_SHIMMER)
+
+_BUBBLE02
+	ThisActorSetAnim		(?_WATER_SHIMMER2_ANIM)
+	Delay					(27)
+	JumpLocal				(?_SHIMMER)
+
+/*********************************/
+?_ARD_SPARKLE
+	ThisActorSetAnim		(?_END)
+	ThisActorRaindrop		(COLLCODE_JUMP)
+	JumpRandom				(_SPARKLE01)
+							(_SPARKLE02)
+
+_SPARKLE01
+	ThisActorSetAnim		(?_STAR_SPARKLE_ANIM)
+	Delay					(32)
+	JumpLocal				(?_ARD_SPARKLE)
+_SPARKLE02
+	ThisActorSetAnim		(?_STAR_SPARKLE_ANIM)
+	Delay					(32)
+	JumpLocal				(?_ARD_SPARKLE)
+
+/*********************************
+?_ORO_AIRBUBBLE
+	ThisActorSetAnim		(?_END)
+	ThisActorRaindrop		(COLLCODE_SPACE)
+	JumpRandom				(_BUBBLE01)
+							(_BUBBLE02)
+
+_BUBBLE01
+	ThisActorSetAnim		(?_AIRBUBBLE1_ANIM)
+	Delay					(32)
+	JumpLocal				(?_ORO_AIRBUBBLE)
+_BUBBLE02
+	ThisActorSetAnim		(?_AIRBUBBLE2_ANIM)
+	Delay					(32)
+	JumpLocal				(?_ORO_AIRBUBBLE)

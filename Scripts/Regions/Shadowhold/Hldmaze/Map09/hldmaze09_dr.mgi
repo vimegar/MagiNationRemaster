@@ -1,0 +1,11 @@
+?_HLDMAZE09_DR_1
+		HeroToDoor	(0,22,39,9)
+		
+		Jump		(?_HLDMAZE04)
+
+?_HLDMAZE09_DR_2
+		HeroToDoor	(7,0,11,39)
+		Jump		(?_HLDMAZE10)
+
+?_HLDMAZE09_TR_1
+		TriggerTreasure		(HldChest1,INV_TYPE_ITEM,INV_SHADOW_KEY,13,11,20)

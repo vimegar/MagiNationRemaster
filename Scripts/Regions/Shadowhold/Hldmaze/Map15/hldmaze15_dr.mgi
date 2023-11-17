@@ -1,0 +1,11 @@
+?_HLDMAZE15_DR_1
+		HeroToDoor	(5,0,32,24)
+		Jump		(?_HLDMAZE14)
+
+?_HLDMAZE15_DR_2
+		HeroToDoor	(5,39,1,0)
+		Jump		(?_HLDMAZE16)
+
+
+?_HLDMAZE15_TR_1
+		TriggerTreasure		(HldChest4,INV_TYPE_ITEM,INV_SHADOW_KEY,10,27,16)

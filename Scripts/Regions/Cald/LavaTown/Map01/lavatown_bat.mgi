@@ -1,0 +1,111 @@
+/********************************/
+?_CLDLAVATOWN_BAT01
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE1,15,?_BATTLE_FADE_IN)
+	BtlNextTurn			()	
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,100)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,SHADWVINOC,13,25,0)
+	BtlNextTurn			()	
+	
+	BtlSummonDelay		(BTL_ID_MAGI,KOIL,13,25,0)
+	BtlNextTurn			()
+	
+	BtlCastSpell		(BTL_ID_MAGI,SPELL_FIREBALL,BTLSCR_ALLYWEAKEST_ABSOLUTE)
+	BtlNextTurn			()
+	
+_CORE1_BIGGIE_LOOP
+	BtlSummonDelay		(BTL_ID_MAGI,SHADWVINOC,12,30,0)
+	BtlNextTurn			()	
+	JumpLocal			(_CORE1_BIGGIE_LOOP)
+	
+/********************************/
+?_CLDLAVATOWN_BAT02
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE2,16,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,150)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,14,28,0)
+	BtlNextTurn			()	
+	BtlSummonDelay		(BTL_ID_MAGI,KOIL,14,25,0)
+	BtlNextTurn			()
+	BtlAuto				()
+
+/********************************/
+?_CLDLAVATOWN_BAT03
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE3,15,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,150)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,HOOK_WING,13,26,0)
+	BtlNextTurn			()
+	BtlSummonDelay		(BTL_ID_MAGI,VILE_YOGU,13,24,0)
+	BtlNextTurn			()	
+	
+_BAT03_LOOP
+	BtlUseItem			(BTL_ID_MAGI,ITEM_POWER_GEM,BTLSCR_ENEMYRANDOM)
+	BtlNextTurn			()	
+	BtlSummonDelay		(BTL_ID_MAGI,DRYTEFIEND,13,24,0)
+	BtlNextTurn			()	
+	BtlUseItem			(BTL_ID_MAGI,ITEM_STRENGTH_GEM,BTLSCR_ENEMYRANDOM)
+	BtlNextTurn			()
+	Jump				(_BAT03_LOOP)
+
+/********************************/
+?_CLDLAVATOWN_BAT04
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE4,15,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,150)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,13,30,0)
+	BtlNextTurn			()
+	BtlSummonDelay		(BTL_ID_MAGI,VILE_YOGU,16,32,0)
+	BtlNextTurn			()
+	BtlAuto				()
+
+/********************************/
+?_CLDLAVATOWN_BAT05
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE5,15,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,150)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,CORE_GRAG,15,30,0)
+	BtlNextTurn			()
+	BtlSummonDelay		(BTL_ID_MAGI,SHRYQUE,14,28,0)
+	BtlNextTurn			()
+	BtlAuto				()
+
+/********************************/	
+?_CLDLAVATOWN_BAT06
+	HeroToDoor			(0,0,0,0)
+	ScreenWipe			(?DO_SCREENFX_SWIRL,SONGID_battle)
+	BtlNew				(CALD_ARENA1,CORE6,20,?_BATTLE_FADE_IN)
+	BtlNextTurn			()
+	
+	SetWRAMByte			(BTL_ENEMY_ENGH,WRAM_BATTLE,0)
+	SetWRAMByte			(BTL_ENEMY_ENGL,WRAM_BATTLE,150)
+	
+	BtlSummonDelay		(BTL_ID_MAGI,HOOK_WING,20,40,0)
+	BtlNextTurn			()
+	BtlSummonDelay		(BTL_ID_MAGI,KOIL,18,35,0)
+	BtlNextTurn			()
+	BtlAuto				()

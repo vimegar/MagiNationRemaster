@@ -1,0 +1,30 @@
+/********************************/
+
+?_UNDMUSHFARM03_DR_1
+		HeroSetDoor	(12,6)
+		Jump		(?_UNDMUSHFARM02)
+
+?_UNDMUSHFARM03_DR_2
+		Jump		(?_UNDMUSHFARM03_KIDNAPPIN)
+
+?_UNDMUSHFARM03_DR_3
+		HeroToDoor	(6,23,2,29)
+		Jump		(?_HDNROOM01)
+		End			()
+
+/********************************/
+
+?_UNDMUSHFARM03_TR_1
+		TextOpen	()
+		TextWrite	("It's rusted=")
+					("shut.")
+		TextClose	()
+		End			()
+
+
+?_UNDMUSHFARM03_TR_2
+		SetText		(?_TXT_ITS_EMPTY)
+		End			()		
+		
+?_UNDMUSHFARM03_TR_3
+		TriggerTreasure	(UNDMUSHFARM03_Chest1,INV_TYPE_RELIC,INV_OMBORSAMULET,3,7,10)

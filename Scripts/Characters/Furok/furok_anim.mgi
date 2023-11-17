@@ -1,0 +1,102 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+
+/********************************/
+?_FUROK_STAND_RIGHT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK01_RIGHT)
+					(?FUROK02_RIGHT)
+
+	JumpLocal		(?_FUROK_STAND_RIGHT_ANIM)
+
+/********************************/
+?_FUROK_STAND_RIGHT_STILL
+	
+	Frame			(255,0,0,?FUROK01_RIGHT)
+
+	JumpLocal		(?_FUROK_STAND_RIGHT_STILL)
+
+/********************************/
+?_FUROK_STAND_LEFT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?FUROK01_LEFT)
+					(?FUROK02_LEFT)
+
+	JumpLocal		(?_FUROK_STAND_LEFT_ANIM)
+
+/********************************/
+?_FUROK_BIRDIE_RIGHT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK03_RIGHT)
+					(?FUROK04_RIGHT)
+
+	JumpLocal		(?_FUROK_BIRDIE_RIGHT_ANIM)
+
+/********************************/
+?_FUROK_BIRDIE_LEFT_ANIM
+
+	FrameBlock:		(8,0,0)
+					(?FUROK03_LEFT)
+					(?FUROK04_LEFT)
+
+	JumpLocal		(?_FUROK_BIRDIE_LEFT_ANIM)
+
+/********************************/
+?_FUROK_APPEAR_RIGHT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK_SHRINK05_RIGHT)
+					(?FUROK_SHRINK04_RIGHT)
+					(?FUROK_SHRINK03_RIGHT)
+					(?FUROK_SHRINK02_RIGHT)
+					(?FUROK_SHRINK01_RIGHT)
+
+	JumpLocal		(?_FUROK_STAND_RIGHT_ANIM)
+	
+/********************************/
+?_FUROK_APPEAR_LEFT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK_SHRINK05_LEFT)
+					(?FUROK_SHRINK04_LEFT)
+					(?FUROK_SHRINK03_LEFT)
+					(?FUROK_SHRINK02_LEFT)
+					(?FUROK_SHRINK01_LEFT)
+
+	JumpLocal		(?_FUROK_STAND_LEFT_ANIM)
+
+/********************************/
+?_FUROK_DISAPPEAR_RIGHT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK_SHRINK01_RIGHT)
+					(?FUROK_SHRINK02_RIGHT)
+					(?FUROK_SHRINK03_RIGHT)
+					(?FUROK_SHRINK04_RIGHT)
+					(?FUROK_SHRINK05_RIGHT)
+
+	End				()
+	
+/********************************/
+?_FUROK_DISAPPEAR_LEFT_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?FUROK_SHRINK01_LEFT)
+					(?FUROK_SHRINK02_LEFT)
+					(?FUROK_SHRINK03_LEFT)
+					(?FUROK_SHRINK04_LEFT)
+					(?FUROK_SHRINK05_LEFT)
+
+	End				()
+
+/********************************/
+?_BIRDIE_ANIM
+	
+	FrameBlock:		(8,0,0)
+					(?BIRDIE_FLY01_RIGHT)
+					(?BIRDIE_FLY02_RIGHT)
+
+	JumpLocal		(?_BIRDIE_ANIM)

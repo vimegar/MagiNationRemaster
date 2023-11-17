@@ -1,0 +1,9 @@
+?_HLDMAZE18_DR_1
+		HeroToDoor	(24,15,0,12)
+		Jump		(?_HLDMAZE17)
+
+?_HLDMAZE18_TR_1
+		TriggerTreasure		(HldChest7,INV_TYPE_ITEM,INV_SCREWDRIVER,20,25,25)
+		
+?_HLDMAZE18_TR_2
+		TriggerTreasure		(HldChest5,INV_TYPE_ITEM,INV_SHADOW_KEY,3,7,25)

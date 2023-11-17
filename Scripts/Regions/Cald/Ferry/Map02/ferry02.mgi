@@ -1,0 +1,481 @@
+/********************************/
+%INCLUDE			INCLUDES\INCLUDES.MGI
+%INCLUDE			REGIONS\CALD\FERRY\MAP02\FERRY02_DR.MGI
+%INCLUDE			REGIONS\CALD\FERRY\MAP02\FERRY02_TXT.MGI
+
+/********************************/
+?_FERRY02
+	SetXRAMByte					(Exit_Disable,1)
+	If							([Ferry_State < 3],?_FERRY02_FERRY_NOT_THERE)
+	SetXRAMByte					(Ferry_Location,1)
+	JumpLocal					(?_FERRY02_TRANSPORT)
+
+/********************************//********************************/
+// FERRY NOT THERE
+/********************************//********************************/
+?_FERRY02_FERRY_NOT_THERE
+	If							([GAMECOUNT = GC_CALD_GEYSER],?_FERRY02_TONY_STRANDED)
+	SceneNew					()
+	LoadMap						(MAP_FERRY02)
+	LoadHotspots				(HS_FERRY02)
+	LoadPalette					(PAL_HERO)
+	ThatActorInit				(HEROACTOR,?HERO_AI,11,3,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorStart				(HEROACTOR)
+	ThatActorInit				(ACTOR00,?TALKER_AI,10,11,30,0,?_FERRY02_BUDDY_WANDER,?_FERRY02_BUDDY_CONFUSED)
+	ThatActorInit				(ACTOR01,?TALKER_AI,6,11,12,38,?_FERRY02_PRISONER7,?_FERRY02_PRISONER_TALKER)
+	LoadVRAMTiles				(38,BIT_OLDMAN04,0,0)
+	LoadVRAMTiles				(43,BIT_MAN04,38,0)
+	ThatActorStart				(ACTOR00)
+	HeroFromDoor				()
+	SongStart					(SONGID_oroisland)
+	HeroSetCamera				() 
+	SceneReady					()
+	If							([!HldPrisoner7],?_END)
+	ThatActorStart				(ACTOR01)
+	End							()
+
+?_FERRY02_BUDDY_WANDER
+	ThisActorSetAnimDelay		(?_OLDMAN04_WALK_RIGHT_ANIM,40)
+								(?_OLDMAN04_STAND_DL_ANIM,32)
+								(?_OLDMAN04_STAND_UL_ANIM,16)
+								(?_OLDMAN04_STAND_DOWN_ANIM,24)
+								(?_OLDMAN04_WALK_LEFT_ANIM,24)
+								(?_OLDMAN04_STAND_UL_ANIM,16)
+								(?_OLDMAN04_STAND_UP_ANIM,32)
+								(?_OLDMAN04_STAND_RIGHT_ANIM,24)
+								(?_OLDMAN04_WALK_LEFT_ANIM,16)
+	Jump						(?_FERRY02_BUDDY_WANDER)
+
+?_FERRY02_BUDDY_CONFUSED
+	SetText						(_TXT_CONFUSED)
+	Jump						(?_FACE_OLDMAN04)
+
+/********************************/
+// TEXT
+_TXT_CONFUSED
+	TextOpen				()
+	TextIcon				(ICON_ORLONSBUDDY)
+	TextWrite				("Swab the sails!=")
+							("Wax the parrot!")
+							("I refuse to=")
+							("walk the plank!")
+	TextIcon				(ICON_TONY)
+	TextWrite				("Just for once=")
+							("could I please")
+							("meet someone=")
+							("who is normal?")
+	TextClose				()
+	SetEventText			(1)
+	End						()
+/********************************//********************************/
+// END FERRY NOT THERE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ORLON'S BUDDY NO FERRY SCENE
+/********************************//********************************/
+?_FERRY02_TONY_STRANDED
+	SceneNew				()
+	LoadMap					(MAP_FERRY02)
+	LoadHotspots			(HS_FERRY02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,11,3,30,0,_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,9,11,30,0,?_FERRY02_BUDDY_WANDER,?_FERRY02_BUDDY_CONFUSED)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,0,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	SetXRAMBit				(OroIsl_TonyStranded,TRUE)
+	End						()
+
+_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,48)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	CameraSeek				(17,8,3)
+	SetText					(_TXT_FERRYGONE)
+	WaitAnyEventText		()
+	CameraSeekActor			(HEROACTOR,3)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_DOWN_ANIM)
+
+/********************************/
+// TEXT
+_TXT_FERRYGONE
+	TextOpen				()
+	TextIcon				(ICON_TONY)
+	TextWrite				("Hey! The=")
+							("ferry's gone!")
+							("How will I")
+							("get back!?")
+	TextClose				()
+	SetAnyEventText			()
+	End						()
+
+/********************************//********************************/
+// END ORLON'S BUDDY NO FERRY SCENE
+/********************************//********************************/
+
+
+/********************************//********************************/
+// TRANSPORT
+/********************************//********************************/
+?_FERRY02_TRANSPORT
+	SceneNew				()
+	LoadMap					(MAP_FERRY02B)
+	LoadHotspots			(HS_FERRY02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?HERO_AI,11,3,30,0,?_HERO_STANDL_ANIM,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,17,7,30,0,?_MAN05_STAND_DOWN_ANIM,_FERRY02_RETURN_MAN)
+	ThatActorInit			(ACTOR01,?TALKER_AI,6,11,12,48,?_FERRY02_PRISONER7,?_FERRY02_PRISONER_TALKER)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	LoadVRAMTiles			(48,BIT_MAN05,0,0)
+	LoadVRAMTiles			(43,BIT_MAN04,48,0)
+	HeroFromDoor			()
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	PalClearAnim			(0,15,31,31,31)
+	SceneReady				()
+	PalFade					(0,15,32,0)
+	If						([!HldPrisoner7],?_END)
+	ThatActorStart			(ACTOR01)
+	End						()
+
+_FERRY02_RETURN_MAN
+	SetText					(?_TXT_FERRY_NORMAL)
+	Jump					(?_FACE_MAN05)	
+/********************************//********************************/
+// END TRANSPORT
+/********************************//********************************/
+
+
+/********************************//********************************/
+// FERRY ARRIVES AFTER K&Z BOMB
+/********************************//********************************/
+?_FERRY02_FERRYARRIVES
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	SetXRAMByte				(Ferry_State,2)
+	LoadMap					(MAP_FERRY02B)
+	LoadHotspots			(HS_FERRY02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,18,7,30,0,_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?TALKER_AI,17,7,30,0,?_MAN05_STAND_RIGHT_ANIM,_FERRYMAN_TALK)
+	ThatActorInit			(ACTOR01,?TALKER_AI,9,11,30,43,?_FERRY02_BUDDY_WANDER,?_FERRY02_BUDDY_CONFUSED)
+	LoadVRAMTiles			(43,BIT_MAN05,0,0)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,43,0)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)
+	ThatActorStart			(ACTOR01)
+	SongStart				(SONGID_oroisland)
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+_TONY
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	SetText					(_TXT_EXTORT)
+	WaitEventText			(1)
+	ThisActorSetAI			(?HERO_AI)
+	Jump					(?_HERO_STAND_LEFT_ANIM)
+
+_FERRYMAN_TALK
+	SetText					(_TXT_CHANGE_MIND)
+	Jump					(?_FACE_MAN05)
+
+_FERRYMAN_SNIDE
+	SetText					(_TXT_ENJOY_THE_SWIM)
+	Jump					(?_FACE_MAN05)
+
+_FERRYMAN_WAIT
+	SetText					(_TXT_I_WILL_WAIT)
+	Jump					(?_FACE_MAN05)
+
+_INIT_PAID
+	Delay					(5)
+	ThatActorInit			(ACTOR00,?TALKER_AI,17,7,30,0,?_MAN05_STAND_RIGHT_ANIM,_FERRYMAN_WAIT)	
+	End						()
+
+_INIT_POOR
+	Delay					(5)
+	ThatActorInit			(ACTOR00,?TALKER_AI,17,7,30,0,?_MAN05_STAND_RIGHT_ANIM,_FERRYMAN_SNIDE)	
+	End						()
+
+/********************************/
+// TEXT
+_TXT_EXTORT
+	TextOpen			()
+	TextIcon			(ICON_GUY03)
+	TextWrite			("It will=")
+						("be 300 more")
+						("Animite for us=")
+						("to wait for")
+						("you.")
+	TextIcon			(ICON_TONY)
+	TextWrite			("What!?")						
+	TextIcon			(ICON_GUY03)
+	TextWrite			("My time is=")
+						("valuable.")
+						("I can't afford=")
+						("to wait around")
+						("for buffoons.")
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Pay 300=")
+						(" Don't pay$")
+	TextMenu			(2)
+						(_PAY)
+						(_DONT_PAY)
+			
+_DONT_PAY
+	TextIcon			(ICON_GUY03)
+	TextWrite			("What? You're=")
+						("not giving me")
+						("the money?=")
+						("Let's see if")
+						("you ever get=")
+						("another ferry")
+						("ride from me=")
+						("again.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+_PAY
+	If					([GS_Animite < 300],_POOR)
+	ExprXRAMWord		(GS_Animite,[GS_Animite - 300])
+	SetXRAMByte			(Ferry_State,3)
+	SetXRAMWord			(Ferry_Price,300)	
+
+	TextIcon			(ICON_TONY)
+	TextWrite			("Fine. Take it.")
+	TextIcon			(ICON_GUY03)
+	TextWrite			("Ok, I'll wait.=")
+						("Be quick!")
+	TextClose			()
+	SetEventText		(1)
+	SetScroll			(_INIT_PAID)
+	End					()
+
+_POOR
+	TextIcon			(ICON_GUY03)
+	TextWrite			("I'm sorry.=")
+						("It seems")
+						("you don't=")
+						("have enough")
+						("Animite.")
+	TextClose			()
+
+_TXT_ENJOY_THE_SWIM
+	TextOpen			()
+	TextIcon			(ICON_GUY03)
+	TextWrite			("Enjoy the swim=")
+						("back.")
+	TextClose			()
+	SetEventText		(1)
+	SetScroll			(_INIT_POOR)
+	End					()
+	
+	
+_TXT_CHANGE_MIND
+	TextOpen			()
+	TextIcon			(ICON_GUY03)
+	TextWrite			("Change your=")
+						("mind?")
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Pay 300=")
+						(" Don't pay$")
+	TextMenu			(2)
+						(_PAY)
+						(_DONT_PAY)
+
+_TXT_I_WILL_WAIT
+	TextOpen			()
+	TextIcon			(ICON_GUY03)
+	TextWrite			("I'll wait for")
+						("you here.=")
+						("Be quick.")
+	TextClose			()
+	SetEventText		(1)
+	End					()
+
+/********************************//********************************/
+// END FERRY ARRIVES AFTER K&Z BOMB
+/********************************//********************************/
+
+
+/********************************//********************************/
+// ORLON'S BUDDY
+/********************************//********************************/
+?_FERRY02_ORLONSBUDDY
+	SetXRAMByte				(Exit_Disable,1)
+	SceneNew				()
+	LoadMap					(MAP_FERRY02)
+	LoadHotspots			(HS_FERRY02)
+	LoadPalette				(PAL_HERO)
+	ThatActorInit			(HEROACTOR,?ANIM_AI,22,11,30,0,?_FERRY02_BTC_TONY,?_DONT_TALK)
+	ThatActorInit			(ACTOR00,?ANIM_AI,8,11,30,0,?_FERRY02_BTC_ORLON,?_DONT_TALK)
+	ThatActorInit			(ACTOR01,?ANIM_AI,8,9,30,42,?_FERRY02_BTC_OLDGUY,?_DONT_TALK)
+	ThatActorInit			(ACTOR02,?ANIM_AI,8,7,30,80,?_FERRY02_BTC_BOAT,?_DONT_TALK)
+	LoadVRAMTiles			(42,BIT_ORLON,0,0)
+	LoadVRAMTiles			(38,BIT_OLDMAN04,42,0)
+	LoadVRAMTiles			(21,BIT_BOAT,80,0)
+	SongStart				(SONGID_oroisland)
+	ThatActorStart			(HEROACTOR)
+	ThatActorStart			(ACTOR00)	
+	ThatActorStart			(ACTOR01)	
+	ThatActorStart			(ACTOR02)	
+	HeroSetCamera			()
+	SceneReady				()
+	End						()
+
+?_FERRY02_BTC_TONY
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,32)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	ScrollMap				(96,-2,0)
+	Delay					(40)
+	ThisActorSetAnimDelay	(?_HERO_RUN_LEFT_ANIM,84)
+							(?_HERO_STAND_LEFT_ANIM,0)
+	SetEventMaster			(1)
+	SetText					(?_FERRY02_TXT_5)
+	WaitEventText			(24)
+	ThisActorSetAnim		(?_HERO_STAND_UL_ANIM)
+	WaitEventText			(5)
+	Delay					(56)
+	ThisActorSetAnim		(?_HERO_STAND_LEFT_ANIM)
+	WaitEventText			(6)
+	ThisActorSetAnimDelay	(?_HERO_WALK_LEFT_ANIM,14)
+							(?_HERO_JUMP_UP_ANIM,23)
+							(?_HERO_RUN_UP_ANIM,1)
+							(?_HERO_STAND_UP_ANIM,24)
+							(?_HERO_STAND_DR_ANIM,16)
+							(?_HERO_STAND_RIGHT_ANIM,24)
+							(?_HERO_STAND_DR_ANIM,3)
+							(?_HERO_STAND_DOWN_ANIM,3)
+							(?_HERO_STAND_DL_ANIM,3)
+							(?_HERO_STAND_LEFT_ANIM,16)
+	Sync					(3,0)
+	ThisActorSetAnim		(?_HERO_MOVE_LEFT_ANIM)
+	End						()
+
+?_FERRY02_BTC_BOAT
+	ThisActorSetAnim		(?_BOAT_ANIM)
+	Sync					(3,0)
+	ThisActorSetAnimDelay	(?_BOAT_LEFT_ANIM,64)
+	PalClearBase			(0,15,31,31,31)
+	PalFade					(0,15,32,0)
+	Jump					(?_OROISLANDS03_ORLONSBUDDY1)
+
+?_FERRY02_BTC_ORLON
+	ThisActorSetAnimDelay	(?_ORLON_STAND_UP_ANIM,116)
+							(?_ORLON_WALK_LEFT_ANIM,16)
+							(?_ORLON_STAND_UP_ANIM,32)
+							(?_ORLON_WALK_RIGHT_ANIM,16)
+							(?_ORLON_STAND_RIGHT_ANIM,32)
+							(?_ORLON_STAND_UP_ANIM,32)
+							(?_ORLON_STAND_RIGHT_ANIM,32)
+	WaitEventText			(24)
+	Delay					(24)
+	ThisActorSetAnim		(?_ORLON_STAND_UP_ANIM)
+	WaitEventText			(5)
+	ThisActorSetAnim		(?_ORLON_STAND_RIGHT_ANIM)
+	WaitEventText			(6)
+	ThisActorSetAnimDelay	(?_ORLON_WALK_DOWN_ANIM,12)
+							(?_ORLON_WALK_RIGHT_ANIM,0)
+	End						()
+
+?_FERRY02_BTC_OLDGUY
+	ThisActorSetAnimDelay	(?_OLDMAN04_RUN_LEFT_ANIM,4)
+							(?_OLDMAN04_STAND_DOWN_ANIM,0)
+	WaitEventMaster			(1)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_DR_ANIM)
+	WaitEventText			(6)
+	Delay					(36)
+	ThisActorSetAnim		(?_OLDMAN04_STAND_RIGHT_ANIM)
+	Sync					(3,0)
+	ThisActorSetAnim		(?_OLDMAN04_MOVE_LEFT_ANIM)
+	End						()
+
+/********************************//********************************/
+// END ORLON'S BUDDY
+/********************************//********************************/
+
+/********************************//********************************/
+// OFLARDT'S SON
+/********************************//********************************/
+?_FERRY02_PRISONER7
+	ThisActorSetAnimDelay		(?_MAN04_STAND_LEFT_ANIM,240)
+								(?_MAN04_STAND_DL_ANIM,4)
+								(?_MAN04_STAND_DOWN_ANIM,4)
+								(?_MAN04_STAND_DR_ANIM,4)
+								(?_MAN04_STAND_RIGHT_ANIM,4)
+								(?_MAN04_STAND_UR_ANIM,4)
+								(?_MAN04_STAND_UP_ANIM,4)
+								(?_MAN04_STAND_UL_ANIM,4)
+								(?_MAN04_STAND_LEFT_ANIM,4)
+								(?_MAN04_STAND_DL_ANIM,4)
+								(?_MAN04_STAND_DOWN_ANIM,4)
+								(?_MAN04_STAND_DR_ANIM,4)
+								(?_MAN04_STAND_RIGHT_ANIM,4)
+								(?_MAN04_STAND_UR_ANIM,4)
+								(?_MAN04_STAND_UP_ANIM,4)
+								(?_MAN04_STAND_UL_ANIM,4)
+								(?_MAN04_STAND_LEFT_ANIM,4)
+								(?_MAN04_STAND_DL_ANIM,4)
+								(?_MAN04_STAND_DOWN_ANIM,4)
+								(?_MAN04_STAND_DR_ANIM,4)
+								(?_MAN04_STAND_RIGHT_ANIM,4)
+								(?_MAN04_STAND_UR_ANIM,4)
+								(?_MAN04_STAND_UP_ANIM,4)
+								(?_MAN04_STAND_UL_ANIM,4)
+								(?_MAN04_STAND_LEFT_ANIM,240)
+								(?_MAN04_RUN_RIGHT_ANIM,8)
+								(?_MAN04_RUN_LEFT_ANIM,8)
+								(?_MAN04_RUN_RIGHT_ANIM,8)
+								(?_MAN04_RUN_LEFT_ANIM,8)
+								(?_MAN04_RUN_RIGHT_ANIM,8)
+								(?_MAN04_RUN_LEFT_ANIM,8)
+								(?_MAN04_RUN_RIGHT_ANIM,8)
+								(?_MAN04_RUN_LEFT_ANIM,8)
+	JumpLocal					(?_FERRY02_PRISONER7)
+
+?_FERRY02_PRISONER_TALKER
+	SetText						(?_FERRY02_TXT_PRISON)
+	Jump						(?_FACE_MAN04)
+
+/********************************/
+// TEXT
+?_FERRY02_TXT_PRISON
+	TextOpen		()
+	If							([HldPrisoner7Talk],_TALKED)
+	SetXRAMBit					(HldPrisoner7Talk,TRUE)
+	TextIcon					(ICON_GUY02)
+	TextWrite					("Ahh, the smell=")
+								("of the sea.")
+								("Hey, you're the=")
+								("guy who freed me")
+								("from that=")
+								("horrible place.")
+								("Take this.")
+	InventoryGive				(INV_TYPE_ITEM,INV_MASTER_RUNE,1)
+	TextIcon					(ICON_TONY)
+	TextWrite					("Tony got a=")
+								("%X")
+	TextClose					()
+	ThisActorRestoreState		()
+
+_TALKED
+	TextIcon					(ICON_GUY02)
+	TextWrite					("Thanks again=")
+								("for freeing me!")
+	TextClose					()
+	ThisActorRestoreState		()
+
+/********************************//********************************/
+// END OFLARDT'S SON
+/********************************//********************************/

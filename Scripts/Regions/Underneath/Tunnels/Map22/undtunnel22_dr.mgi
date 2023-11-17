@@ -1,0 +1,29 @@
+/********************************/
+// UNDTUNNEL22
+?_UNDTUNNEL22_DR_1
+		HeroSetDoor		(16,5)
+		Jump			(?_OVRSURFACE02)
+
+?_UNDTUNNEL22_DR_2
+		HeroToDoor		(2,0,37,19)
+		Jump			(?_UNDTUNNEL24)
+		
+?_UNDTUNNEL22_DR_3
+		HeroToDoor		(28,0,3,29)
+		Jump			(?_UNDTUNNEL23)
+
+?_UNDTUNNEL22_DR_4
+		HeroSetDoor		(5,11)
+		Jump			(?_HDNUNDTUN01)
+
+/********************************/
+// HDNUNDTUN01
+?_HDNUNDTUN01_DR_1
+		HeroSetDoor		(16,18)
+		Jump			(?_UNDTUNNEL22)
+
+?_HDNUNDTUN01_TR_1
+		TriggerTreasure	(HDNUNDTUN01_Chest1,INV_TYPE_ITEM,INV_WATER_OF_LIFE,5,5,12)
+
+?_HDNUNDTUN01_TR_2
+		TriggerTreasure	(HDNUNDTUN01_Chest2,INV_TYPE_ITEM,INV_MASTER_RUNE,6,5,12)

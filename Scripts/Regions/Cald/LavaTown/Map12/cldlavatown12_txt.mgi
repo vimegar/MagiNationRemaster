@@ -1,0 +1,140 @@
+/********************************//********************************/
+// RINGSMITH
+/********************************//********************************/
+?_CLDLAVATOWN12_TXT_RINGSMITH
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_UP_ANIM)
+
+	TextOpen			()
+	TextIcon			(ICON_MAGAM)
+	TextWrite			("Welcome to=")
+						("Magam's Ring")
+						("Shop.")
+_MAIN_MENU
+	TextClear			()
+	TextIcon			(ICON_TONY)
+	TextWrite			(" Forge  Equip=")
+						(" Power  Done$")
+	
+	TextMenu			(4)
+						(_RINGSMITH)
+						(_UPGRADE)
+						(_RINGBANK)
+						(_END)
+
+_UPGRADE
+	TextClose			()
+	MenuRingUpgrade		(ARBOLIT)
+						(DIOBOR)
+						(LAVA_AQ)
+						(LAVAARBOLL)
+						(QUOR)
+						(RAXIS)
+						(GRAW)
+						(SABREBACK)
+						(DRAKAN)
+						(KELTHET)
+						(LAVABALMNT)
+						(MAGMAHYREN)
+						(FLAMEHYREN)
+	Jump				(_MAIN_MENU)
+
+_RINGBANK
+	TextClose			()
+	MenuRingBank		()
+	JumpLocal			(_MAIN_MENU)
+
+_RINGSMITH
+	TextIcon			(ICON_MAGAM)
+	TextWrite			("What ring=")
+						("shall I make?")
+	TextClose			()
+
+	MenuRingSmith		(_BANK_FULL,_MAIN_MENU)
+						(ARBOLIT,100,20,ARBOLIT,3,CREATURE_NULL,0)
+						(DIOBOR,100,20,DIOBOR,4,CREATURE_NULL,0)
+						(LAVA_AQ,100,20,LAVA_AQ,2,CREATURE_NULL,0)
+						(LAVAARBOLL,100,20,LAVAARBOLL,1,CREATURE_NULL,0)
+						(QUOR,100,20,QUOR,3,CREATURE_NULL,0)
+						(RAXIS,100,20,RAXIS,3,AGOVO,1)
+						(GRAW,150,25,GRAW,3,RUDWOT,1)
+						(SABREBACK,150,25,SABREBACK,3,PORKUSLIME,1)
+						(DRAKAN,150,25,DRAKAN,2,ARBOLIT,1)
+						(KELTHET,150,25,KELTHET,3,VINOC,1)
+						(LAVABALMNT,150,25,LAVABALMNT,4,CREATURE_NULL,0)
+						(MAGMAHYREN,450,50,MAGMAHYREN,3,LAVAARBOLL,1)
+						(FLAMEHYREN,550,50,FLAMEHYREN,5,AYEBAW,1)
+_DONE
+	ThatActorSetScript	(ACTOR00,?_CLDLAVATOWN12_SMITHY)
+	WaitAnyEventMaster	()
+	
+	TextOpen			()
+	TextIcon			(ICON_MAGAM)
+	TextWrite			("There. Your=")
+						("%X")
+						("is ready.")
+
+	If					([GC != GC_ARBOLL_HUNT],_EQUIP_OR_NO)
+	If					([MENU_RingMade != LAVAARBOLL],_EQUIP_OR_NO)
+	SetGamecount		(GC_LAVA_BRIDGE)
+
+	TextClose			()
+	TextOpen			()
+	TextIcon			(ICON_MAGAM)
+	TextWrite			("Valkan was here=")
+						("looking for you")
+						("a moment ago.=")
+						("You should go")
+						("see him.")
+_EQUIP_OR_NO
+	JumpLocal			(_MAIN_MENU)
+
+_BANK_FULL
+	TextOpen			()
+	TextIcon			(ICON_FOSSIK)
+	TextWrite			("Your Ring Bank=")
+						("is full.")
+	JumpLocal			(_MAIN_MENU)
+
+_END
+	TextOpen			()
+	TextIcon			(ICON_MAGAM)
+	TextWrite			("Come again.")
+	TextClose			()
+	ThatActorSetAI		(HEROACTOR,?HERO_AI)
+	End					()
+/********************************//********************************/
+// END RINGSMITH
+/********************************//********************************/
+
+
+?_CLDLAVATOWN12_TXT_SHOP
+	ThatActorSetAI			(HEROACTOR,?ANIM_AI)
+	ThatActorSetScript		(HEROACTOR,?_HERO_STAND_RIGHT_ANIM)
+
+	TextOpen				()
+	TextIcon				(ICON_GUY01)
+	TextWrite				("Go ahead...=")
+							("Buy something!")
+	TextClose				()
+
+	MenuShop				(_DONE)
+							(INV_BALOO_LEAF,15)
+							(INV_BALOO_SAP,35)
+							(INV_BALOO_ROOT,60)
+							(INV_GUARD_GEM,5)
+							(INV_REMEDY_DRINK,20)
+
+_DONE
+	TextOpen				()
+	TextIcon				(ICON_GUY01)
+	TextWrite				("Come back soon!")
+	TextClose				()
+	ThatActorSetAI			(HEROACTOR,?HERO_AI)
+	End						()
+
+
+
+
+
+

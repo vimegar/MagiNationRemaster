@@ -1,0 +1,124 @@
+;Size:85
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\SHADOWHOLD\HLDMAZE\MAP05\HLDMAZE05.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_HLDMAZE05_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$03
+		DB	$11
+		DB	$0D
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE04
+		DW	(?_HLDMAZE04&$FFFF)
+
+;********************************
+?_HLDMAZE05_DR_2
+	DB	CMD_HEROTODOOR
+		DB	$03
+		DB	$12
+		DB	$00
+		DB	$17
+
+	DB	CMD_JUMP
+		DB	:?_HLDMAZE06
+		DW	(?_HLDMAZE06&$FFFF)
+
+;********************************
+?_HLDMAZE05
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_HLDMAZE05&$FFFF)
+		DB	:MAP_HLDMAZE05
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_HLDMAZE05&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D037
+		DB	$00
+		DB	:?_HERO_STANDL_ANIM
+		DW	(?_HERO_STANDL_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_SONGSTART
+		DB	SONGID_shadowhold
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_SETENCOUNTER
+		DB	:?_HLDMAZE_RNDBAT
+		DW	(?_HLDMAZE_RNDBAT&$FFFF)
+		DW	(ENCOUNTER_FRQ_SLOW&$FFFF)
+
+	DB	CMD_SETBTLRETURN
+		DB	:?_HLDMAZE05
+		DW	(?_HLDMAZE05&$FFFF)
+		DB	(:?_BATTLE_LOST&$FF)
+		DW	(?_BATTLE_LOST&$FFFF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_IF
+		DB	EXPR_NOT
+		DB	EXPR_XRAMBIT
+		DW	(XRAM_SAVEBITS+$0003)&$FFFF
+		DB	$80
+		DB	:_END
+		DW	(_END&$FFFF)
+
+	DB	CMD_COPYTILEBLOCK
+		DW	$D04A
+		DB	$02
+		DB	$03
+		DW	$D02C
+		DB	$04
+		DB	$04
+
+;********************************
+_END
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_HLDMAZE04
+	GLOBAL	?_HLDMAZE06
+	GLOBAL	MAP_HLDMAZE05
+	GLOBAL	HS_HLDMAZE05
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI
+	GLOBAL	?_HERO_STANDL_ANIM
+	GLOBAL	?_DONT_TALK
+	GLOBAL	?_HLDMAZE_RNDBAT
+	GLOBAL	ENCOUNTER_FRQ_SLOW
+	GLOBAL	?_BATTLE_LOST
+	GLOBAL	XRAM_SAVEBITS
+
+;********************************
+	END
+;********************************

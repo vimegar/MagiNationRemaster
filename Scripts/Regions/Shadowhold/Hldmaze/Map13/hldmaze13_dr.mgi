@@ -1,0 +1,15 @@
+?_HLDMAZE13_DR_1
+		HeroToDoor	(18,0,10,24)
+		Jump		(?_HLDMAZE12)
+
+?_HLDMAZE13_TR_1
+		TriggerAlways	(HLDMAZE13Chest1,?_TXT_ITS_EMPTY,255,22,26,26)
+		InitSkip		(_END)
+		TextOpen		()
+		TextWrite		("ROOOAR!")
+		TextClose		()
+		Jump			(?_HLDMAZE_JINGJACK_BATTLE)	
+_END
+		End				()
+
+

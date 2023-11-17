@@ -1,0 +1,78 @@
+;Size:44
+                       
+;********************************
+; C:\Work\Patrick's Project\scripts\REGIONS\OROTHE\CORAL\MAP06\OROCORAL06.s
+;********************************
+;	Author:	MGI PARSE
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+?_OROCORAL06_DR_1
+	DB	CMD_HEROTODOOR
+		DB	$1D
+		DB	$3B
+		DB	$0F
+		DB	$00
+
+	DB	CMD_JUMP
+		DB	:?_OROCORAL05
+		DW	(?_OROCORAL05&$FFFF)
+
+;********************************
+?_OROCORAL06
+	DB	CMD_SCENENEW
+
+	DB	CMD_LOADMAP
+		DW	(MAP_OROCORAL06&$FFFF)
+		DB	:MAP_OROCORAL06
+
+	DB	CMD_LOADHOTSPOTS
+		DW	(HS_OROCORAL06&$FFFF)
+
+	DB	CMD_LOADPALETTE
+		DW	(PAL_HERO&$FFFF)
+		DB	:PAL_HERO
+
+	DB	CMD_THATACTORINIT
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+		DW	(?HERO_AI_UNDERSWIM&$FFFF)
+		DB	$05
+		DB	$05
+		DW	$D0B9
+		DB	$00
+		DB	:?_HERO_UNDTREAD_RIGHT_ANIM
+		DW	(?_HERO_UNDTREAD_RIGHT_ANIM&$FFFF)
+		DB	:?_DONT_TALK
+		DW	(?_DONT_TALK&$FFFF)
+
+	DB	CMD_THATACTORSTART
+		DB	(((HEROACTOR-ACTOR_RAM)/ACTOR_STRUCT_SIZE)&$FF)
+
+	DB	CMD_HEROFROMDOOR
+
+	DB	CMD_HEROSETCAMERA
+
+	DB	CMD_SONGSTART
+		DB	SONGID_ororuins
+
+	DB	CMD_SCENEREADY
+
+	DB	CMD_END
+
+;********************************
+; 	GLOBALS
+;********************************
+	GLOBAL	?_OROCORAL05
+	GLOBAL	MAP_OROCORAL06
+	GLOBAL	HS_OROCORAL06
+	GLOBAL	PAL_HERO
+	GLOBAL	HEROACTOR
+	GLOBAL	ACTOR_RAM
+	GLOBAL	?HERO_AI_UNDERSWIM
+	GLOBAL	?_HERO_UNDTREAD_RIGHT_ANIM
+	GLOBAL	?_DONT_TALK
+
+;********************************
+	END
+;********************************
