@@ -13,9 +13,13 @@
 	BtlRingGive			(EEBIT,98)
 	BtlRingGive			(EEBIT,98)
 	BtlRingGive			(EEBIT,98)
-	BtlRingGive         (SPHOR,40)
-	BtlRingGive         (SPHOR,27)
-	BtlRingGive         (PLATHEUS,40)
+	BtlRingGive         (FUROK,1)
+	BtlRingGive         (FUROK,20)
+	BtlRingGive			(FUROK,20)
+	BtlRingGive			(FUROK,20)
+
+	InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,255)
+	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,255)
 
 	SetGamecount		(GC_UND_GEYSER)
 

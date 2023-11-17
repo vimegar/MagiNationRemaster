@@ -176,20 +176,23 @@ _UNUSED
 	CP		BTL_EXP_ALLY_LOWER_1
 	JR		C,_SS_DONE
 	
+	
+; Commenting these out to make the XP curve less punishing - Lydia
 	LD		B,BTL_EXP_ZONE_2
-	CP		BTL_EXP_ALLY_LOWER_2
-	JR		C,_SS_DONE
+	JR		_SS_DONE   ; Jump straight to end with our phatty XP
+;	CP		BTL_EXP_ALLY_LOWER_2
+;	JR		C,_SS_DONE
 	
-	LD		B,BTL_EXP_ZONE_3
-	CP		BTL_EXP_ALLY_LOWER_3
-	JR		C,_SS_DONE
+;	LD		B,BTL_EXP_ZONE_3
+;	CP		BTL_EXP_ALLY_LOWER_3
+;	JR		C,_SS_DONE
 	
-	LD		B,BTL_EXP_ZONE_4
-	CP		BTL_EXP_ALLY_LOWER_4
-	JR		C,_SS_DONE
+;	LD		B,BTL_EXP_ZONE_4
+;	CP		BTL_EXP_ALLY_LOWER_4
+;	JR		C,_SS_DONE
 	
-	LD		B,BTL_EXP_ZONE_5
-	JR		_SS_DONE	
+;	LD		B,BTL_EXP_ZONE_5
+;	JR		_SS_DONE	
 	
 _ALLY_HIGHER
 	CPL
