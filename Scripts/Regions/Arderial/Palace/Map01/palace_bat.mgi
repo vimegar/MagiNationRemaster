@@ -1,16 +1,17 @@
 /********************************/
 ?_ARDPALACE_RNDBAT
 	HeroToDoor		(0,0,0,0)
-	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_battle)
+	ScreenWipe		(?DO_SCREENFX_SWIRL,SONGID_lavavents)
 
-	JumpRandom		(_BTL1)
+	JumpRandom		(_BTL9)
 					(_BTL2)
 					(_BTL3)
 					(_BTL4)
-					(_BTL5)
 					(_BTL6)
 					(_BTL7)
 					(_BTL8)
+
+// Disabled because Orathan Flyer has its own spawn location
 _BTL1
 	BtlNew		(ARDERIAL_ARENA1,MAGI_RND1,67,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,ORATHAN_F,67,92,1)
@@ -35,6 +36,7 @@ _BTL4
 	BtlSummonDelay	(BTL_ID_MAGI,ORISH,69,88,1)
 	BtlAuto		()
 
+// Disabled because Orathan Flyer has its own spawn location
 _BTL5
 	BtlNew		(ARDERIAL_ARENA1,MAGI_RND1,68,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,ORATHAN_F,67,92,1)
@@ -64,6 +66,7 @@ _BTL7
 	BtlSummonDelay	(BTL_ID_MAGI,THUNDRHYRN,74,110,1)
 	BtlAuto		()
 
+// Disabled because Orathan Flyer already has its own spawn
 _BTL8
 	BtlNew		(ARDERIAL_ARENA1,MAGI_RND1,64,?_BATTLE_FADE_IN)
 	BtlSummonDelay	(BTL_ID_MAGI,ORISH,69,88,1)
@@ -75,3 +78,10 @@ _BTL8
 	BtlSummonDelay	(BTL_ID_MAGI,ORATHAN_F,67,92,1)
 	BtlAuto		()
 
+// Added because Bolt Hyren and Xyx didn't have a spawn
+_BTL9
+	BtlNew		(ARDERIAL_ARENA1,MAGI_RND1,64,?_BATTLE_FADE_IN)
+	BtlSummonDelay	(BTL_ID_MAGI,XYX,60,80,1)
+	BtlSummonDelay	(BTL_ID_MAGI,BOLT_HYREN,70,100,3)
+	BtlSummonDelay	(BTL_ID_MAGI,XYX,60,80,1)
+	BtlAuto		()
