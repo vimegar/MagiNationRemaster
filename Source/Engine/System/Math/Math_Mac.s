@@ -35,7 +35,9 @@ RANDOM255	MACRO
 ; E:	Is molested
 RANDVAL		MACRO	scratch
 
-	CALL	?RANDVAL
+; ?RANDVAL is broken and doesnt produce a proper distribution. for now we just replace this with a better 0-255 RNG
+;	CALL	?RANDVAL
+	CALL    ?RANDOM_NOMASK
 
 	ENDM
 	

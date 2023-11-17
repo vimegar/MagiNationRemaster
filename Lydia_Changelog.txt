@@ -1,3 +1,4 @@
+Pre-git repo changes:
 Source/Game/Battle/Tables/CreatureName_Table.s:232
 Changed "Sabreback" to "Magma Jile"
 
@@ -6,3 +7,9 @@ Added new SKILL_FUNC_NORES function that calculates skill-based damage, ignoring
 
 Source/Game/Battle/Commands/BtlCmd_Func.s:1382
 Changed CMD_FUNC_HEAL's damage override calculation to be the result of SKILL_FUNC_NORES instead of a random number.
+
+RANDVAL changes:
+These are also in git but I'm keeping notes here for quick reference.
+
+Battle_Helpers.s ?BTL_BOOTY
+Added a SWAP A after the call to RANDVAL in _NO_CASH because the first animite drop seemed to break with the improved RANDOM.
