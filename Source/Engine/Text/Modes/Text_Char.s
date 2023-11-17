@@ -28,10 +28,10 @@
 	;RET
 	;********************************
 
-_SLOW
-	LD			A,TEXT_SPEED
-	LD			(TEXT_DELAY),A
-	MOVADDR		TEXT_FUNC,_WAIT
+;_SLOW
+;	LD			A,TEXT_SPEED
+;	LD			(TEXT_DELAY),A
+;	MOVADDR		TEXT_FUNC,_WAIT
 
 _WAIT
 	LD			A,(TEXT_DELAY)
