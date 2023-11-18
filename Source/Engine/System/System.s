@@ -219,6 +219,14 @@ _VISIBLE
 	LD		HL,AI_HEROFLAGS_NEXT
 	LD		(HLI),A
 	LD		(HLI),A
+
+; Initialize random seed
+	LD		 B,$78
+	LD		 C,$56
+	SET16_FF B,C,RANDSEED
+	LD		 B,$34
+	LD		 C,$12
+	SET16_FF B,C,RANDSEED+2
 	
 	RET
 

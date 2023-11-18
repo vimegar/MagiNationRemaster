@@ -450,6 +450,7 @@ _P_NUMBER_CALC
 ; Output:	A == random number (0 .. MASK)
 ;********************************
 ?RANDOM
+
 	LD			A,(DIV)
 	RRA
 	BIT			0,A
@@ -498,35 +499,21 @@ _LOOP
 ;
 ?RANDOM_NOMASK
 	PUSH		HL
-	PUSH		BC
-	LDA_FF      RANDCOUNT
+	LD			HL,RANDSEED
+; Additional alteration: XOR with DIV
+	LDA_FF      DIV
+	XOR			(HL)
 ; Add $B3
 	ADD         A,$B3
-; Additional alteration: Divide by clock
-	LD          B,A
-	LDA_FF      TICKER
-	LD          C,A
-	CALL		?DIV
-	LD          A,H
 ; Multiply by 0x01010101
-	LD			HL,RANDCOUNT
-	INC			HL
-	LD			(HL),A
-	DEC         HL
-	ADC         A,(HL)
-	INC			HL
-	LD			(HL),A
-	DEC         HL
-	ADC         A,(HL)
-	INC			HL
-	LD			(HL),A
-	DEC         HL
-	LD          C,A
-	ADC         A,(HL)
-	LD			(HL),A
-	POP			BC
+	LD			(HLI),A
+	ADC			A,(HL)
+	LD			(HLI),A
+	ADC			A,(HL)
+	LD			(HLI),A
+	ADC			A,(HL)
+	LD			(HLI),A
 	POP			HL
-	LDFF_A      RANDCOUNT
 	RET
 
 ;********************************
