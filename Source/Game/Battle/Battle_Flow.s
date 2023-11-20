@@ -391,7 +391,7 @@ _4CMD_LOOP
 _STR_LUPE
 
 	;figure out if each command has been learned yet
-	;-----------------------------------------------	
+	;-----------------------------------------------
 	LD		HL,BTL_CREATURE_CMD0LVL
 	ADD		HL,DE
 	LD		A,(HL)

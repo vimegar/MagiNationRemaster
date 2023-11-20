@@ -979,10 +979,10 @@ _GOT_SLOT
 	LD		(HLI),A				;ENGL
 	LD		(HLI),A				;ENGMAXH
 	LD_HLI_BCI					;ENGMAXL
-	INC		BC
-	INC		BC
+	INC		BC					;Skip templates ENGMAXH
+	INC		BC					;Skip templates ENGMAXL
 	
-	LD		D,10
+	LD		D,12
 _STATS	
 	LD_HLI_BCI					;ATK-IMMUNE
 	DEC		D
@@ -992,8 +992,8 @@ _STATS
 	LD		(HLI),A				;STATUS
 	LD_HLI_BCI					;PERMSTAT
 	LD_HLI_BCI					;AI
-	INC		BC
-	INC		BC
+	INC		BC					;Skip templates COST
+	INC		BC					;Why are we skipping here? (I still dont know)
 	
 	LD		D,12
 _CMDS	

@@ -9,17 +9,119 @@
 	SceneNew			()
 	NewGame				(SCRIPT_NEWGAME_VANILLA)	
 
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive			(EEBIT,98)
-	BtlRingGive         (FUROK,1)
-	BtlRingGive         (FUROK,20)
-	BtlRingGive			(FUROK,20)
-	BtlRingGive			(FUROK,20)
+// Low-E attackers
+//	BtlRingGive			(ABAQUIST,60)
+//	BtlRingGive			(AGOVO,60)
+//	BtlRingGive			(BISIWOG,60)
+//	BtlRingGive			(BLACKAGOVO,60)
+//	BtlRingGive			(BWILL,60)
+//	BtlRingGive			(TWEE,60)
+//	BtlRingGive			(TREEBIT,60)
+//	BtlRingGive			(XYX,60)
+//	BtlRingGive			(DARKVELLUP,60)
+//	BtlRingGive			(KLETCH,60)
 
-	InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,255)
-	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,255)
+//	BtlRingGive			(HOOK_WING,60)
+//	BtlRingGive			(DIOBOR,60)
+//	BtlRingGive			(LAVAARBOLL,60)
+//	BtlRingGive			(PARMALAG,60)
+//	BtlRingGive			(SHARBLOOT,60)
+//	BtlRingGive			(ORPUS,60)
+	
+// AoE
+//	BtlRingGive			(ARBOLL,60)
+//	BtlRingGive			(EEBIT,60)
+//	BtlRingGive			(VELLUP,60)
+
+// Utility
+//	BtlRingGive			(BRUB,60)
+//	BtlRingGive			(GUM_GUM,60)
+//	BtlRingGive			(WEEBAT,60)
+//	BtlRingGive			(EPIK,60)
+//	BtlRingGive			(SHRYQUE,60)
+
+// Healer
+//	BtlRingGive			(PLITH,60)
+//	BtlRingGive			(RABBAGE,60)
+//	BtlRingGive			(WEEBO,60)
+//	BtlRingGive			(GHOSTBWISP,60)
+//	BtlRingGive			(ARBOLIT,60)
+
+// Balanced attacker
+//	BtlRingGive			(FUROK,60)
+//	BtlRingGive			(LEAF_CHOGO,60)
+//	BtlRingGive			(VINOC,60)
+//	BtlRingGive			(VULBOR,60)
+//	BtlRingGive			(DRAKAN,60)
+//	BtlRingGive			(AYEBAW,60)
+//	BtlRingGive			(KELTHET,60)
+//	BtlRingGive			(KARAK,60)
+//	BtlRingGive			(KAZOR,60)
+//	BtlRingGive			(JINGJACK,60)
+
+//	BtlRingGive			(LAVA_AQ,60)
+//	BtlRingGive			(LAVABALMNT,60)
+//	BtlRingGive			(CORE_GRAG,60)
+//	BtlRingGive			(DARKAYEBAW,60)
+//	BtlRingGive			(KOIL,60)
+//	BtlRingGive			(PLATHEUS,60)
+//	BtlRingGive			(SHADWKARAK,60)
+//	BtlRingGive			(SHADWVINOC,60)
+//	BtlRingGive			(SPINDLE,60)
+//	BtlRingGive			(YVOHCNA,60)
+
+// AoE attacker
+//	BtlRingGive			(CAVERUDWOT,60)
+//	BtlRingGive			(ORISH,60)
+//	BtlRingGive			(PORKUSLIME,60)
+//	BtlRingGive			(RUDWOT,60)
+//	BtlRingGive			(GRAX,60)
+
+// Tanky attacker
+//	BtlRingGive			(ALABAN,60)
+//	BtlRingGive			(BHATAR,60)
+//	BtlRingGive			(BORGOR,60)
+//	BtlRingGive			(DRYTEFIEND,60)
+//	BtlRingGive			(GIANTKORIT,60)
+//	BtlRingGive			(PARALIT,60)
+//	BtlRingGive			(SPHOR,60)
+//	BtlRingGive			(QUOR,60)
+
+// Glass cannon
+//	BtlRingGive			(CHAOS_JILE,60)
+//	BtlRingGive			(GRAW,60)
+//	BtlRingGive			(RAXIS,60)
+//	BtlRingGive			(SABREBACK,60)
+//	BtlRingGive			(SARBIL,60)
+//	BtlRingGive			(SEA_JILE,60)
+//	BtlRingGive			(TUSK_BWISP,60)
+//	BtlRingGive			(VASHP,60)
+//	BtlRingGive			(VILE_YOGU,60)
+//	BtlRingGive			(WASPERINE,60)
+
+// Hyren
+//	BtlRingGive			(BOLT_HYREN,60)
+//	BtlRingGive			(CAVE_HYREN,60)
+//	BtlRingGive			(CORALHYREN,60)
+//	BtlRingGive			(CORE_HYREN,60)
+//	BtlRingGive			(DEEP_HYREN,60)
+//	BtlRingGive			(FLAMEHYREN,60)
+//	BtlRingGive			(LEAF_HYREN,60)
+//	BtlRingGive			(MAGMAHYREN,60)
+//	BtlRingGive			(MUSH_HYREN,60)
+//	BtlRingGive			(THUNDRHYRN,60)
+
+//	BtlRingGive			(TIMBERHYRN,60)
+
+// Mega
+//	BtlRingGive			(MEGATHAN,60)
+//	BtlRingGive			(ORATHAN_F,60)
+//	BtlRingGive			(ORMAGON,60)
+
+	//InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,255)
+	//InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,255)
+	//InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,255)
+	//InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,255)
 	InventoryGive	(INV_TYPE_ITEM,INV_BALOO_LEAF,5)
 	InventoryGive	(INV_TYPE_ITEM,INV_BALOO_ROOT,5)
 	InventoryGive	(INV_TYPE_ITEM,INV_HASTE_GEM,5)
@@ -27,14 +129,14 @@
 	InventoryGive	(INV_TYPE_ITEM,INV_POWER_GEM,5)
 	InventoryGive	(INV_TYPE_ITEM,INV_STRENGTH_GEM,5)
 
-	SetGamecount		(GC_UND_GEYSER)
+	//SetGamecount		(GC_UND_GEYSER)
 
 	//SetXRAMByte			(ANIMITE_LavaArboll, 20)
-	SetXRAMWord			(GS_Animite,999)
+	SetXRAMWord			(GS_Animite,500)
 
 	//SetXRAMByte			(INV_ITEM_CloudFrond,1)
 	//SetXRAMBit			(I_Specialkey,TRUE)
-	SetXRAMBit			(Sick_Orwin,TRUE)
+	//SetXRAMBit			(Sick_Orwin,TRUE)
 
 	SetXRAMByte			(GS_Hero_Ability,5)
 

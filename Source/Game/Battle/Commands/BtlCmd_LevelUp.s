@@ -281,6 +281,7 @@ _CHECK_CMD0
 	JR			Z,_CHECK_CMD1
 	
 	; if CREATURE_CMD0LVL < (LVL_UP_STAT_LEVEL)
+	LD			A,(HL)
 	LD			A,(LVL_UP_STAT_LEVEL)
 	CP			(HL)
 	JR			C,_RET_NO_CMD
@@ -301,6 +302,7 @@ _CHECK_CMD1
 	JR			Z,_CHECK_CMD2
 	
 	; if CREATURE_CMD1LVL < (LVL_UP_STAT_LEVEL)
+	LD			A,(HL)
 	LD			A,(LVL_UP_STAT_LEVEL)
 	CP			(HL)
 	JR			C,_RET_NO_CMD
@@ -320,6 +322,7 @@ _CHECK_CMD2
 	JR			Z,_CHECK_CMD3
 	
 	; if CREATURE_CMD2LVL < (LVL_UP_STAT_LEVEL)
+	LD			A,(HL)
 	LD			A,(LVL_UP_STAT_LEVEL)
 	CP			(HL)
 	JR			C,_RET_NO_CMD
@@ -339,6 +342,7 @@ _CHECK_CMD3
 	JR			Z,_RET_NO_CMD
 		
 	; if CREATURE_CMD3LVL < (LVL_UP_STAT_LEVEL)
+	LD			A,(HL)
 	LD			A,(LVL_UP_STAT_LEVEL)
 	CP			(HL)
 	JR			C,_RET_NO_CMD
@@ -751,20 +755,44 @@ _STORE_SPECIAL_DEFENSE
 	;get back base pointer
 	POP			HL
 	PUSH		HL
-		
+
+	; Old logic:
 	;5.a get the energy increment from xram
-	LD			BC,CREATURE_ENERGYUP
-	ADD			HL,BC
-	LD			A,(HL)
-	LD			L,A
-	LD			H,0
-	LD			D,H
+	;LD			BC,CREATURE_ENERGYUP
+	;ADD			HL,BC
+	;LD			A,(HL)
+	;LD			L,A
+	;LD			H,0
+	;LD			D,H
 		
 	;5.b add the energy_stat scalar (0..4)
-	LD			A,(LVL_UP_ENERGY_INDEX)
-	LD			E,A
-	ADD			HL,DE
-	LD			E,L				;store incremental in 'E' reg (D is 0)
+	;LD			A,(LVL_UP_ENERGY_INDEX)
+	;LD			E,A
+	;ADD			HL,DE
+	;LD			E,L				;store incremental in 'E' reg (D is 0)
+
+; Our new logic needs to end with the gain in reg E
+	RANDVAL	E
+	LD		C,A
+	LD		B,10
+	CALL	?DIV
+	LD		C,L
+	LD		B,0
+	PUSH    BC
+
+	; Energy is in the TYPE field
+	LD		A,(BTL_TARGET_TYPE)
+	; Energy is in the lower 4 bits so we dont need to bit shift and can just mask
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_ENERGY_TABLES
+	ADD		HL,DE
+	POP		BC
+	ADD		HL,BC
+	LD		D,0
+	LD		E,(HL)
 	
 	;get back base pointer
 	POP			HL
@@ -985,33 +1013,20 @@ _DISPLAY_TEXT
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
+	PUSH    BC
 
-	LD		A,(BTL_TARGET_TYPE)
-	CP		CREATURE_TYPE_SMALL
-	JR		NZ,_NOT_SMALL
-	LD		HL,LVLUP_SMALL_SKILL_TABLE
-	JR		_READY
-	
-_NOT_SMALL
-	CP		CREATURE_TYPE_LARGE
-	JR		NZ,_NOT_LARGE
-	LD		HL,LVLUP_LARGE_SKILL_TABLE
-	JR		_READY
-	
-_NOT_LARGE
-	CP		CREATURE_TYPE_MED
-	JR		NZ,_NOT_MED
-	LD		HL,LVLUP_MED_TABLE
-	JR		_READY
-	
-_NOT_MED
-	CP		CREATURE_TYPE_WEAK
-	JR		NZ,_NOT_WEAK
-	LD		HL,LVLUP_WEAK_TABLE
-	JR		_READY
-	
-_NOT_WEAK
-	LD		HL,LVLUP_BEATDOWN_TABLE
+; Begin new logic
+	; Skill is in the TYPE2 field
+	LD		A,(BTL_TARGET_TYPE2)
+	; Skill is in the lower 4 bits so we dont need to bit shift and can just mask
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_STAT_TABLES
+	ADD		HL,DE
+	POP		BC
+	JR      _READY
 
 _READY
 	ADD		HL,BC
@@ -1028,33 +1043,23 @@ _READY
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
+	PUSH BC
 
+	; Speed is in the TYPE field
 	LD		A,(BTL_TARGET_TYPE)
-	CP		CREATURE_TYPE_SMALL
-	JR		NZ,_NOT_SMALL
-	LD		HL,LVLUP_SMALL_SPEED_TABLE
-	JR		_READY
-	
-_NOT_SMALL
-	CP		CREATURE_TYPE_LARGE
-	JR		NZ,_NOT_LARGE
-	LD		HL,LVLUP_LARGE_SPEED_TABLE
-	JR		_READY
-	
-_NOT_LARGE
-		CP		CREATURE_TYPE_MED
-	JR		NZ,_NOT_MED
-	LD		HL,LVLUP_MED_TABLE
-	JR		_READY
-	
-_NOT_MED
-	CP		CREATURE_TYPE_WEAK
-	JR		NZ,_NOT_WEAK
-	LD		HL,LVLUP_WEAK_TABLE
-	JR		_READY
-	
-_NOT_WEAK
-	LD		HL,LVLUP_BEATDOWN_TABLE
+	; Speed is in the upper 4 bits so we shift then mask
+	SRL		A
+	SRL		A
+	SRL		A
+	SRL		A
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_STAT_TABLES
+	ADD		HL,DE
+	POP		BC
+	JR      _READY
 
 _READY
 	ADD		HL,BC
@@ -1072,50 +1077,27 @@ _READY
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
+	PUSH BC
 
-	LD		A,(BTL_TARGET_TYPE)
-	CP		CREATURE_TYPE_SMALL
-	JR		NZ,_NOT_SMALL
-	LD		HL,LVLUP_SMALL_DEF_TABLE
-	JR		_READY
-	
-_NOT_SMALL
-	CP		CREATURE_TYPE_LARGE
-	JR		NZ,_NOT_LARGE
-	LD		HL,LVLUP_LARGE_DEF_TABLE
-	JR		_READY
-	
-_NOT_LARGE
-	CP		CREATURE_TYPE_MED
-	JR		NZ,_NOT_MED
-	LD		HL,LVLUP_MED_TABLE
-	JR		_READY
-	
-_NOT_MED
-	CP		CREATURE_TYPE_WEAK
-	JR		NZ,_NOT_WEAK
-	LD		HL,LVLUP_WEAK_TABLE
-	JR		_READY
-	
-_NOT_WEAK
-	LD		HL,LVLUP_BEATDOWN_TABLE
+	; Def is in the ENERGYUP field
+	LD		A,(BTL_TARGET_ENERGYUP)
+	; Def is in the upper 4 bits so we shift then mask
+	SRL		A
+	SRL		A
+	SRL		A
+	SRL		A
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_STAT_TABLES
+	ADD		HL,DE
+	POP		BC
+	JR      _READY
 
 _READY
 	ADD		HL,BC
 	LD		A,(HL)
-	
-	PUSH	AF
-	RANDVAL	E
-	LD		C,A
-	LD		B,3
-	CALL	?DIV
-	LD		A,L
-	AND		2
-	SRL		A
-	LD		B,A	
-	POP		AF
-	ADD		A,B
-	
 	RET
 
 ;********************************	
@@ -1127,50 +1109,24 @@ _READY
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
+	PUSH	BC
 
-	LD		A,(BTL_TARGET_TYPE)
-	CP		CREATURE_TYPE_SMALL
-	JR		NZ,_NOT_SMALL
-	LD		HL,LVLUP_SMALL_RESIST_TABLE
-	JR		_READY
-	
-_NOT_SMALL
-	CP		CREATURE_TYPE_LARGE
-	JR		NZ,_NOT_LARGE
-	LD		HL,LVLUP_LARGE_RESIST_TABLE
-	JR		_READY
-	
-_NOT_LARGE
-	CP		CREATURE_TYPE_MED
-	JR		NZ,_NOT_MED
-	LD		HL,LVLUP_MED_TABLE
-	JR		_READY
-	
-_NOT_MED
-	CP		CREATURE_TYPE_WEAK
-	JR		NZ,_NOT_WEAK
-	LD		HL,LVLUP_WEAK_TABLE
-	JR		_READY
-	
-_NOT_WEAK
-	LD		HL,LVLUP_BEATDOWN_TABLE
+	; Res is in the ENERGYUP field
+	LD		A,(BTL_TARGET_ENERGYUP)
+	; Res is in the lower 4 bits so just mask
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_STAT_TABLES
+	ADD		HL,DE
+	POP		BC
+	JR      _READY
 
 _READY
 	ADD		HL,BC
 	LD		A,(HL)
-	
-	PUSH	AF
-	RANDVAL	E
-	LD		C,A
-	LD		B,3
-	CALL	?DIV
-	LD		A,L
-	AND		2
-	SRL		A
-	LD		B,A	
-	POP		AF
-	ADD		A,B
-	
+
 	RET
 
 ;********************************	
@@ -1178,17 +1134,35 @@ _READY
 
 	RANDVAL	E
 	
-	LD		B,A
-	RANDVAL	E
-	SWAP	A
-	AND		B
-	AND		7
+; Note that for this one we have to copy over the index generation
+; because the OG function uses a different one
 	LD		C,A
-	LD		B,0
-	LD		HL,LVLUP_STR_TABLE
+	LD		B,10
+	CALL	?DIV
+	LD		C,L
+	LD		B,0	
+	PUSH    BC
+
+	; Str is in the TYPE2 field
+	LD		A,(BTL_TARGET_TYPE2)
+	; Str is in the upper 4 bits so we shift and then mask
+	SRL		A
+	SRL		A
+	SRL		A
+	SRL		A
+	AND     %00001111
+	LD		B,A
+	LD		C,10
+	CALL	?MULT
+	LD		DE,LVLUP_STAT_TABLES
+	ADD		HL,DE
+	POP		BC
+	JR      _READY
+
+_READY
 	ADD		HL,BC
 	LD		A,(HL)
-
+	
 	RET
 	
 LVLUP_STR_TABLE
@@ -1213,6 +1187,87 @@ LVLUP_SMALL_SKILL_TABLE
 LVLUP_BEATDOWN_TABLE
 LVLUP_99_TABLE
 	DB		0,3,1,1,1,1,0,1,2,0
+
+; New level up tables
+
+LVLUP_STAT_TABLES
+	DB 0,0,0,1,0,0,0,0,0,0 ; 0.1
+	DB 0,0,0,1,1,0,0,0,0,0 ; 0.2 
+	DB 0,0,1,1,1,0,0,0,0,0 ; 0.3
+	DB 0,0,1,1,1,1,0,0,0,0 ; 0.4  
+	DB 0,0,1,1,1,1,1,0,0,0 ; 0.5
+	DB 0,0,1,1,1,1,1,1,0,0 ; 0.6
+	DB 0,0,1,1,1,1,1,2,0,0 ; 0.7
+	DB 0,0,1,1,1,1,1,1,2,0 ; 0.8   
+	DB 0,1,1,1,1,1,1,1,2,0 ; 0.9
+	DB 0,1,1,1,1,1,1,2,2,0 ; 1.0
+	DB 0,1,1,1,1,1,1,2,3,0 ; 1.1 
+	DB 0,2,1,1,1,1,1,2,3,0 ; 1.2
+	DB 0,2,2,1,1,1,1,2,3,0 ; 1.3
+	DB 0,3,2,1,1,1,1,2,3,0 ; 1.4
+	DB 0,3,2,1,1,1,2,2,3,0 ; 1.5
+	DB 0,3,2,2,1,1,2,2,3,0 ; 1.6
+
+LVLUP_ENERGY_TABLES 
+	DB 0,1,1,1,1,1,1,1,1,2 ; 1.0
+	DB 0,1,1,1,1,1,1,2,2,2 ; 1.2
+	DB 0,1,1,1,1,1,1,2,3,3 ; 1.4
+	DB 0,1,1,1,1,1,2,2,3,3 ; 1.6
+	DB 0,1,1,1,1,2,2,2,3,4 ; 1.8
+	DB 0,1,1,1,2,2,2,3,3,4 ; 2.0
+	DB 0,1,1,1,2,2,3,3,4,4 ; 2.2
+	DB 0,1,1,2,2,3,3,3,4,4 ; 2.4
+	DB 0,1,2,2,2,3,3,4,4,4 ; 2.6
+	DB 0,1,2,2,3,3,3,4,4,5 ; 2.8
+	DB 1,2,2,2,3,3,3,4,4,5 ; 3.0
+	DB 2,2,2,3,3,3,3,4,4,5 ; 3.2
+	DB 2,2,2,3,3,3,4,4,4,5 ; 3.4
+	DB 2,2,3,3,3,4,4,4,4,5 ; 3.6
+	DB 2,2,3,3,3,4,4,4,5,5 ; 3.8
+	DB 2,3,3,3,4,4,4,4,5,5 ; 4.0
+
+; Speed tables: Range from 0.2 gain at worst up to 1.2 gain at best
+LVLUP_SPD_LOW_TABLE ; 0.2 gain
+	DB 0,0,0,1,1,0,0,0,0,0
+LVLUP_SPD_MED_TABLE ; 0.5 gain
+	DB 0,0,1,1,1,1,1,0,0,0
+LVLUP_SPD_BIG_TABLE ; 0.9 gain
+	DB 0,1,1,1,1,1,1,1,2,0
+LVLUP_SPD_MGA_TABLE ; 1.2 gain
+	DB 0,1,1,1,1,1,1,2,3,0
+
+; Attack tables: Range from 0.2 gain at worst up to 1.4 gain at best
+LVLUP_ATK_LOW_TABLE ; 0.2 gain
+	DB 0,0,0,1,1,0,0,0,0,0
+LVLUP_ATK_MED_TABLE ; 0.6 gain
+	DB 0,0,1,1,1,1,1,0,1,0
+LVLUP_ATK_BIG_TABLE ; 1.0 gain
+	DB 0,1,1,1,1,1,1,2,2,0
+LVLUP_ATK_MGA_TABLE ; 1.4 gain
+	DB 0,1,1,1,2,2,2,2,3,0
+
+; Defense tables: Range from 0.2 gain at worst up to 1.2 gain at best 
+LVLUP_DEF_LOW_TABLE ; 0.2 gain
+	DB 0,0,0,0,1,1,0,0,0,0
+LVLUP_DEF_MED_TABLE ; 0.5 gain
+	DB 0,0,1,1,1,1,0,0,1,0
+LVLUP_DEF_BIG_TABLE ; 0.9 gain
+	DB 0,1,1,1,1,1,0,2,2,0
+LVLUP_DEF_MGA_TABLE ; 1.2 gain
+	DB 0,1,1,1,1,1,1,2,3,0
+
+; Resist tables: Range from 0.1 gain at worst up to 0.8 gain at best
+; Note that we give lower resist numbers across the board to make up for SKL-
+; based attackers relying on energy to do anything useful. Gains are weighted
+; toward the bottom end.
+LVLUP_RES_LOW_TABLE ; 0.1 gain
+	DB 0,0,0,1,0,0,0,0,0,0
+LVLUP_RES_MED_TABLE ; 0.2 gain
+	DB 0,0,0,1,0,1,0,0,0,0
+LVLUP_RES_BIG_TABLE ; 0.4 gain
+	DB 0,0,0,1,1,1,0,0,1,0
+LVLUP_RES_MGA_TABLE ; 0.8 gain
+	DB 0,0,1,1,1,1,1,1,2,0
 
 	
 ;********************************	

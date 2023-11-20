@@ -124,6 +124,7 @@ BTL_TEXTUPDATE		MACRO
 ;BYTE		SPEED
 ;BYTE		DEF
 ;BYTE		RESIST
+;BYTE		OTHER
 ;BYTE		LUCK		; CREATURE_FLAVOR_TEMPLATE
 ;BYTE		ENERGYUP	
 ;BYTE		ELEMSTONG
@@ -140,10 +141,10 @@ BTL_TEXTUPDATE		MACRO
 ;BYTE		CMD1LVL
 ;BYTE		CMD2LVL
 ;BYTE		CMD3LVL
-; 26 bytes
+; 25 bytes
 
 ;********************************
-;CURRENT SIZE 2 + (XRAM)37 + (BTL)16 = 51BYTES 
+;CURRENT SIZE 2 + (XRAM)39 + (BTL)16 = 57BYTES 
 CREATURE_BTL	MACRO	name
 
 name&_TEAM		DS		$01		; Which magi summoned this creature
@@ -178,7 +179,7 @@ name&_CMD3LVL	DB		lvl3
 CREATURE_FLAVOR_TEMPLATE	MACRO	name,luck,energyup,elemstrong,elemweak,immune,permstat,ai,cost
 
 name&_LUCK			DB		luck
-name&_ENERGYUP		DB		energyup
+name&_ENERGYUP		DB		energyup    ; Hijacking to use as a third type field
 name&_ELEMSTRONG	DB		elemstrong	; Strong against these elements
 name&_ELEMWEAK		DB		elemweak	; Weak against these elements
 name&_IMMUNE		DB		immune		; Immune to status ailments
@@ -189,7 +190,7 @@ name&_COST			DW		cost		; How much the creature costs to make into a ring
 	ENDM
 
 ;********************************
-CREATURE_STATS_TEMPLATE	MACRO	name,creature_type,engstart,engmaxh,engmaxl,str,def,skill,resist,speed
+CREATURE_STATS_TEMPLATE	MACRO	name,creature_type,engstart,engmaxh,engmaxl,str,def,skill,resist,speed,creature_type2
 name&_TYPE		DB		creature_type
 name&_ENGSTART	DB		engstart
 name&_ENGMAXH	DB		engmaxh
@@ -200,6 +201,8 @@ name&_SKILL		DB		skill
 name&_SPEED		DB		speed
 name&_DEF		DB		def
 name&_RESIST	DB		resist
+name&_TYPE2     DB      creature_type2  ; Hijacking the other field as a second type field
+name&_OTHER2    DB      $01             ; Adding an extra byte to keep alignment
 
 	ENDM
 
@@ -223,6 +226,8 @@ name&_SKILL		DS		$01
 name&_SPEED		DS		$01
 name&_DEF		DS		$01
 name&_RESIST	DS		$01
+name&_TYPE2     DS      $01
+name&_OTHER2    DS      $01
 
 name&_LUCK			DS		$01
 name&_ENERGYUP		DS		$01

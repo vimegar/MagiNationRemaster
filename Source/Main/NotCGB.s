@@ -43,7 +43,6 @@ _FOREVER
 	
 ?NCGMB_TEST
 ;//EXO
-	LD		B,B
 ;	LD		HL,$9C00
 ;	LD		DE,$233
 ;	
