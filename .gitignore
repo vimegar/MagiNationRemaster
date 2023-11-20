@@ -1,15 +1,8 @@
 .vs
-AutoPack
-Manual
-ROM
-Yuk
 *.ISX
 *.gbc
 *.sav
 *.sym
-*.dat
-*.exe
-*.lnk
 lnk.txt
 *.err
 
