@@ -175,7 +175,7 @@ _ARD
 
 /********************************/
 ?_MAIN
-//	Jump						(?_WARPPORTAL)
+	Jump						(?_WARPPORTAL)
 	Jump						(?_MAIN_TITLES)
 
 /********************************/
