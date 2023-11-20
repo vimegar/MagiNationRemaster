@@ -1,0 +1,137 @@
+ACTOR COMMANDS:
+	HeroFromDoor		()
+	HeroToDoor		()
+	ThatActorInit		()
+	ThatActorSetAI		()
+	ThatActorSetScript		()
+	ThatActorStart		()
+	ThatActorStop		()
+	ThisActorNewState		()
+	ThisActorRestoreState		()
+	ThisActorSetAI		()
+	ThisActorSetAnim		()
+	ThisActorSetAnimDelay		()
+	ThisActorSetAnimScroll		()
+	ThisActorStop		()
+
+AUDIO COMMANDS:
+	Fanfare		(fanfareID)
+	SFX		(sfxID)
+	SFX2		(sfxID)
+	SongFadeIn		(delay)
+	SongFadeOut		(delay)
+	SongPause		()
+	SongResume		()
+	SongSetVolume		(volume)
+	SongStart		(songID)
+	SongStop		()
+
+FILE FORMAT COMMANDS:
+	FileHotspots		(fileName)(direction,script)
+	FileMapLayout		(fileName,PAL,VRM,PAT,SCR,COL)
+	FileTreasure		(fileName)(type,script)
+	FileVRAMLayout		()
+
+FIGHT FX CONTROL COMMANDS:
+	FightBlowAway		()
+	FightNew		(arena,creature0,creature1)
+	FightPan		(direction,panTable)
+	FightRecoil		()
+	FightShake		()
+	FightSink		()
+	FightTremble		()
+
+FLOW CONTROL COMMANDS:
+	Delay		()
+	End		()
+	If		()
+	Jump		()
+	JumpLocal		()
+	Pass		()
+	Reset		()
+	Switch		()
+
+FRAME COMMANDS:
+	Frame		()
+	FrameBlock		()
+	FrameGhost		()
+	OverlayFrame		()
+	OverlayInit		()
+	OverlayGhost		()
+
+GLOBAL SCRIPT COMMANDS:
+	SetAnyEventMaster		()
+	SetAnyEventScroll		()
+	SetAnyEventText		()
+	SetEventMaster		()
+	SetEventScroll		()
+	SetEventText		()
+	SetMaster		()
+	SetScroll		()
+	SetText		()
+	WaitAnyEventMaster		()
+	WaitAnyEventScroll		()
+	WaitAnyEventText		()
+	WaitEventMaster		()
+	WaitEventScroll		()
+	WaitEventText		()
+
+LOAD COMMANDS:
+	LoadEncounters		()
+	LoadHotspots		(hotspots)
+	LoadMap		()
+	LoadPalette		()
+	LoadTriggers		(triggers)
+	LoadVRAM		()
+	LoadVRAMTiles		()
+
+PAL FX COMMANDS:
+	PalClearAnim		(startPal,totalPals,red,green,blue)
+	PalClearBase		(startPal,totalPals,red,green,blue)
+	PalCreatureCycle		(creature,frames,delay)
+	PalCreatureFade		(creature,frames,delay,red,green,blue)
+	PalCreatureLoad		(creature,palette)
+	PalCreatureFlash		(creature,frames,delay,flashType)
+	PalCycle		(startPal,totalPals,frames,delay,cycleType)
+	PalFade		(startPal,totalPals,frames,delay)
+	PalLoad		(startPal,totalPals,palette)
+	PalRefresh		(startPal,totalPals)
+
+SCROLL COMMANDS:
+	CameraSeek		()
+	CameraSeekActor		()
+	CopyTileBlock		()
+	CopyTilePath		()
+	HeroSetCamera		()
+	ScrollMap		()
+	SetCamera		()
+
+SYSTEM COMMANDS:
+	EraseGame		()
+	LoadGame		()
+	SaveGame		()
+	SceneNew		()
+	SceneReady		()
+	VerifySave		()
+
+TEXT COMMANDS:
+	TextClear		()
+	TextClose		()
+	TextIcon		()
+	TextMenu		()
+	TextOpen		()
+	TextWrite		()
+
+TRIGGER COMMANDS:
+	TriggerTreasure		(XRAMByte,xTile,yTile,mapWidth)
+
+XRAM COMMANDS:
+	ExprXRAMBit		()
+	ExprXRAMByte		()
+	ExprXRAMWord		()
+	NextGamecount		()
+	SetGamecount		()
+	SetXRAMBit		()
+	SetXRAMByte		()
+	SetXRAMWord		()
+

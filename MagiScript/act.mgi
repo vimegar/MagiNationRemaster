@@ -1,0 +1,168 @@
+/********************************/
+?_HERO_WALK_UP_ANIM
+
+	Frame:			(8,0,-1,?WALK_BACK_1)
+					(8,0,-1,?WALK_BACK_2)
+					(8,0,-1,?WALK_BACK_3)
+					(8,0,-1,?WALK_BACK_4)
+	Jump:			(?_HERO_WALK_UP_ANIM)
+
+/********************************/
+?_HERO_WALK_DOWN_ANIM
+
+	Frame:			(8,0,1,?WALK_FRONT_1)
+					(8,0,1,?WALK_FRONT_2)
+					(8,0,1,?WALK_FRONT_3)
+					(8,0,1,?WALK_FRONT_4)
+
+	Jump:			(?_HERO_WALK_DOWN_ANIM)
+
+/********************************/
+?_HERO_WALK_LEFT_ANIM
+
+	Frame:			(8,-1,0,?COPY_WALK_RIGHT_1)
+					(8,-1,0,?COPY_WALK_RIGHT_2)
+					(8,-1,0,?COPY_WALK_RIGHT_3)
+					(8,-1,0,?COPY_WALK_RIGHT_4)
+
+	Jump:			(?_HERO_WALK_LEFT_ANIM)
+
+/********************************/
+?_HERO_WALK_RIGHT_ANIM
+
+	Frame:			(8,1,0,?WALK_RIGHT_1)
+					(8,1,0,?WALK_RIGHT_2)
+					(8,1,0,?WALK_RIGHT_3)
+					(8,1,0,?WALK_RIGHT_4)
+
+	Jump:			(?_HERO_WALK_RIGHT_ANIM)
+
+/********************************/
+?_HERO_RUN_UP_ANIM
+
+	Frame:			(8,0,-2,?RUN_BACK_1)
+					(8,0,-2,?RUN_BACK_2)
+					(8,0,-2,?RUN_BACK_3)
+					(8,0,-2,?RUN_BACK_4)
+
+	Jump:			(?_HERO_RUN_UP_ANIM)
+
+/********************************/
+?_HERO_RUN_DOWN_ANIM
+
+	Frame:			(8,0,2,?RUN_FRONT_1)
+					(8,0,2,?RUN_FRONT_2)
+					(8,0,2,?RUN_FRONT_3)
+					(8,0,2,?RUN_FRONT_4)
+
+	Jump:			(?_HERO_RUN_DOWN_ANIM)
+
+/********************************/
+?_HERO_RUN_LEFT_ANIM
+
+	Frame:			(8,-2,0,?COPY_RUN_RIGHT_1)
+					(8,-2,0,?COPY_RUN_RIGHT_2)
+					(8,-2,0,?COPY_RIGHT_RUN_3)
+					(8,-2,0,?COPY_RUN_RIGHT_4)
+
+	Jump:			(?_HERO_RUN_LEFT_ANIM)
+
+/********************************/
+?_HERO_RUN_RIGHT_ANIM
+
+	Frame:			(8,2,0,?RUN_RIGHT_1)
+					(8,2,0,?RUN_RIGHT_2)
+					(8,2,0,?RIGHT_RUN_3)
+					(8,2,0,?RUN_RIGHT_4)
+
+	Jump:			(?_HERO_RUN_RIGHT_ANIM)
+
+/********************************/
+?_HERO_STANDR_ANIM
+
+	Frame:			(255,0,0,?HERO_STAND_RIGHT)
+					(160,0,0,?STAND_STILL_R_2)
+					(8,0,0,?BLINK_R)
+					(160,0,0,?STAND_STILL_R_2)
+					(8,0,0,?BLINK_R)
+					(80,0,0,?STAND_STILL_R_2)
+					(80,0,0,?LOOK_AT_WATCH_R)
+					(80,0,0,?STAND_STILL_R_2)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					(16,0,0,?TOE_TAP_2_R)
+					(16,0,0,?TOE_TAP_1_R)
+					
+	Jump:			(?_HERO_STANDR_ANIM)
+
+/********************************/
+?_HERO_STANDL_ANIM
+
+	Frame:			(255,0,0,?HERO_STAND_LEFT)
+					(160,0,0,?STAND_STILL_L_2)
+					(8,0,0,?BLINK_L)
+					(160,0,0,?STAND_STILL_L_2)
+					(8,0,0,?BLINK_L)
+					(80,0,0,?STAND_STILL_L_2)
+					(80,0,0,?LOOK_AT_WATCH_L)
+					(80,0,0,?STAND_STILL_L_2)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					(16,0,0,?TOE_TAP_2_L)
+					(16,0,0,?TOE_TAP_1_L)
+					
+	Jump:			(?_HERO_STANDL_ANIM)
+
+/********************************/
+?_TEST_SCROLL_RIGHT
+
+	ScrollMap:		(255,1,0)
+
+	End:			( )
+	
+/********************************/
+?_TEST_SCROLL_LEFT
+
+	ScrollMap:		(255,-1,0)
+
+	End:			( )
+
+/********************************/
+?_TEST_QUAKESCROLL
+
+	ScrollMap:		(1,1,1)
+					(2,-1,1)
+					(1,-1,-1)
+					(2,1,-1)
+					
+	Jump:			(?_TEST_QUAKESCROLL)
