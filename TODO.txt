@@ -1,8 +1,6 @@
 *** BUGS ***
 
-* Fix water of life so it boosts your current energy by 5 as well as max
-
-* Fix the speed+luck turn order bug: https://github.com/GauChoob/magination/blob/main/source/banks/bank_003.asm#L6084
+None known!
 
 *** FEATURES ***
 

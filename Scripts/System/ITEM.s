@@ -1,7 +1,7 @@
-;Size:198
+;Size:202
                       
 ;********************************
-; C:\Work\Patrick's Project\scripts\SYSTEM\ITEM.s
+; C:\Users\vimegar\Documents\Dev\MagiNationSource\SCRIPTS\SYSTEM\ITEM.s
 ;********************************
 ;	Author:	MGI PARSE
 ;	(c)2000	Interactive Imagination
@@ -92,6 +92,11 @@
 	DB	CMD_INVENTORYGIVE
 		DB	INV_TYPE_HERO_ENERGYMAX
 		DB	INV_TYPE_HERO_ENERGYMAX
+		DB	$05
+
+	DB	CMD_INVENTORYGIVE
+		DB	INV_TYPE_HERO_ENERGY
+		DB	INV_TYPE_HERO_ENERGY
 		DB	$05
 
 	DB	CMD_END

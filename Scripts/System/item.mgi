@@ -44,6 +44,7 @@
 	TextClose		()
 	InventoryTake	(INV_TYPE_ITEM,INV_WATER_OF_LIFE,1)
 	InventoryGive	(INV_TYPE_HERO_ENERGYMAX,INV_TYPE_HERO_ENERGYMAX,5)
+	InventoryGive	(INV_TYPE_HERO_ENERGY,INV_TYPE_HERO_ENERGY,5)
 	End				()
 
 /********************************/
