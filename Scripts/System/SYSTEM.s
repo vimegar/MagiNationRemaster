@@ -1,4 +1,4 @@
-;Size:431
+;Size:427
                       
 ;********************************
 ; C:\Users\vimegar\Documents\Dev\MagiNationSource\SCRIPTS\SYSTEM\SYSTEM.s
@@ -373,10 +373,6 @@ _ARD
 ;********************************
 ?_MAIN
 	DB	CMD_JUMP
-		DB	:?_WARPPORTAL
-		DW	(?_WARPPORTAL&$FFFF)
-
-	DB	CMD_JUMP
 		DB	:?_MAIN_TITLES
 		DW	(?_MAIN_TITLES&$FFFF)
 
@@ -432,7 +428,6 @@ _ARD
 	GLOBAL	?_OVRSURFACE03_LOAD
 	GLOBAL	?_OVRSURFACE04_LOAD
 	GLOBAL	?_OVRSURFACE05_LOAD
-	GLOBAL	?_WARPPORTAL
 	GLOBAL	?_MAIN_TITLES
 	GLOBAL	PAL_HERO
 	GLOBAL	?HERO_AI
