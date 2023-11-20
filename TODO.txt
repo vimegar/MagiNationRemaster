@@ -1,7 +1,33 @@
-Fix creature energy logic so max energy >250 is allowed
+*** BUGS ***
 
-Fix water of life so it boosts your current energy by 5 as well as max
+* Fix water of life so it boosts your current energy by 5 as well as max
 
-Make XP numbers show up in battle somehow (bouncing numbers)?
+* Fix the speed+luck turn order bug: https://github.com/GauChoob/magination/blob/main/source/banks/bank_003.asm#L6084
 
-Fix the speed+luck turn order bug: https://github.com/GauChoob/magination/blob/main/source/banks/bank_002.asm#L6084
+*** FEATURES ***
+
+* Fix creature energy logic so max energy >250 is allowed
+
+* Make XP numbers show up in battle somehow (bouncing numbers)?
+
+
+*** CREATURE IDENTITY AND BALANCE ***
+Gum-Gum: Some sort of obnoxious utility to make its redirect ability a source of pressure
+- low-chance, low-damage OHKO?
+
+Karak/Shadow Karak: Raise ATK but low EN and DEF--make reliant on redirect for survivability
+
+*** ABILITY IDENTITY AND BALANCE ***
+
+Shade: Higher EN cost, but small chance of confuse?
+
+Root: Small drain
+Leaf: maybe also gets a drain? doesn't make too much sense...
+
+
+*** NEW ABILITY IDEAS ***
+
+Diversion: Grant an ally redirect
+
+
+
