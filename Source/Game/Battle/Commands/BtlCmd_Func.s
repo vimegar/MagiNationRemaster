@@ -1383,6 +1383,16 @@ _TONY_LOOP
 	;ADD		A,A
 	
 	CALL    ?SKILL_FUNC_NORES
+	; Straight skill scaling is way too big. Knock it down to 2/5ths
+	PUSH	BC
+	PUSH	HL
+	LD		C,A
+	LD		B,5
+	CALL	?DIV
+	LD		A,H
+	ADD		A,A
+	POP		HL
+	POP		BC
 	LD		(BTL_OVERRIDE_DAMAGE),A
 	LD		A,1
 	LD		(BTL_HEAL_FLAG),A
@@ -2285,6 +2295,15 @@ _END
 	;ADD		A,A
 	
 	CALL    ?SKILL_FUNC_NORES
+	; Straight skill scaling is way too big. Knock it down to 1/3
+	PUSH	BC
+	PUSH	HL
+	LD		C,A
+	LD		B,3
+	CALL	?DIV
+	LD		A,H
+	POP		HL
+	POP		BC
 	LD		(BTL_OVERRIDE_DAMAGE),A
 	LD		A,1
 	LD		(BTL_HEAL_FLAG),A
