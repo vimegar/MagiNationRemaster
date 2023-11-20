@@ -1,0 +1,112 @@
+[ Error List]
+Tile 04, 02 does not match a palette.
+Tile 04, 03 does not match a palette.
+Tile 10, 06 does not match a palette.
+Tile 11, 06 does not match a palette.
+Tile 02, 07 does not match a palette.
+Tile 08, 07 does not match a palette.
+Tile 09, 07 does not match a palette.
+
+
+[ Error List]
+Tile 00, 00 does not match a palette.
+Tile 01, 00 does not match a palette.
+Tile 05, 00 does not match a palette.
+Tile 06, 00 does not match a palette.
+Tile 07, 00 does not match a palette.
+Tile 08, 00 does not match a palette.
+Tile 09, 00 does not match a palette.
+Tile 10, 00 does not match a palette.
+Tile 11, 00 does not match a palette.
+Tile 04, 01 does not match a palette.
+Tile 08, 01 does not match a palette.
+Tile 04, 02 does not match a palette.
+Tile 05, 02 does not match a palette.
+Tile 06, 02 does not match a palette.
+Tile 07, 02 does not match a palette.
+Tile 08, 02 does not match a palette.
+Tile 10, 02 does not match a palette.
+Tile 04, 03 does not match a palette.
+Tile 05, 03 does not match a palette.
+Tile 08, 03 does not match a palette.
+Tile 10, 03 does not match a palette.
+Tile 11, 03 does not match a palette.
+Tile 12, 03 does not match a palette.
+Tile 13, 03 does not match a palette.
+Tile 00, 04 does not match a palette.
+Tile 01, 04 does not match a palette.
+Tile 00, 05 does not match a palette.
+Tile 01, 05 does not match a palette.
+Tile 00, 06 does not match a palette.
+Tile 01, 06 does not match a palette.
+
+
+[ Error List]
+Tile 04, 02 does not match a palette.
+Tile 04, 03 does not match a palette.
+Tile 02, 07 does not match a palette.
+
+
+[ Error List]
+Tile 00, 00 does not match a palette.
+Tile 01, 00 does not match a palette.
+
+
+[ Error List]
+Tile 04, 02 does not match a palette.
+Tile 04, 03 does not match a palette.
+Tile 02, 07 does not match a palette.
+
+
+[ Error List]
+Tile 00, 08 does not match a palette.
+
+
+[ Error List]
+Tile 20, 00 does not match a palette.
+Tile 21, 00 does not match a palette.
+Tile 22, 00 does not match a palette.
+Tile 23, 00 does not match a palette.
+Tile 02, 09 does not match a palette.
+Tile 10, 09 does not match a palette.
+Tile 11, 10 does not match a palette.
+Tile 10, 11 does not match a palette.
+Tile 04, 13 does not match a palette.
+Tile 12, 13 does not match a palette.
+
+
+[ Error List]
+There are 5 colors in tile 22, 10.
+There are 5 colors in tile 23, 10.
+There are 5 colors in tile 24, 10.
+There are 5 colors in tile 25, 10.
+There are 5 colors in tile 23, 12.
+There are 5 colors in tile 24, 12.
+There are 5 colors in tile 25, 12.
+There are 5 colors in tile 24, 13.
+Tile 22, 10 does not match a palette.
+Tile 23, 10 does not match a palette.
+Tile 24, 10 does not match a palette.
+Tile 25, 10 does not match a palette.
+Tile 22, 11 does not match a palette.
+Tile 23, 11 does not match a palette.
+Tile 24, 11 does not match a palette.
+Tile 25, 11 does not match a palette.
+Tile 23, 12 does not match a palette.
+Tile 24, 12 does not match a palette.
+Tile 25, 12 does not match a palette.
+Tile 23, 13 does not match a palette.
+Tile 24, 13 does not match a palette.
+Tile 25, 13 does not match a palette.
+
+
+[ Error List]
+Tile 20, 04 does not match a palette.
+Tile 21, 04 does not match a palette.
+Tile 23, 04 does not match a palette.
+Tile 20, 05 does not match a palette.
+Tile 21, 05 does not match a palette.
+Tile 22, 05 does not match a palette.
+Tile 23, 05 does not match a palette.
+
+

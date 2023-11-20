@@ -1,0 +1,14 @@
+[ Error List]
+There are 5 colors in tile 07, 00.
+There are 5 colors in tile 07, 02.
+Tile 07, 00 does not match a palette.
+Tile 07, 02 does not match a palette.
+
+
+[ Error List]
+There are 5 colors in tile 07, 00.
+There are 5 colors in tile 07, 02.
+Tile 07, 00 does not match a palette.
+Tile 07, 02 does not match a palette.
+
+

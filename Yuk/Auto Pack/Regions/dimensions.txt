@@ -1,0 +1,24 @@
+[PAT_HOME Size]
+ 32 
+ 32 
+
+[UNDR Size]
+ 32 
+ 32 
+
+[UNDR Size]
+ 32 
+ 32 
+
+[patpool Size]
+ 32 
+ 32 
+
+[CREGATE Size]
+ 32 
+ 32 
+
+[CREGATE Size]
+ 32 
+ 32 
+

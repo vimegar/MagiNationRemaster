@@ -1,0 +1,132 @@
+[TITLE1 Size]
+ 16 
+ 7 
+
+[PATTITL Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[PATTITL Size]
+ 32 
+ 32 
+
+[PATLOAD Size]
+ 32 
+ 32 
+
+[PATLOAD Size]
+ 32 
+ 32 
+
+[PATLOAD Size]
+ 32 
+ 32 
+
+[PATLOAD Size]
+ 32 
+ 32 
+
+[PATTITL Size]
+ 32 
+ 32 
+
+[VERSION Size]
+ 32 
+ 32 
+
+[BG_GLYPH Size]
+ 18 
+ 8 
+
+[Credit13 Size]
+ 32 
+ 32 
+
+[BG_GLYPH Size]
+ 18 
+ 8 
+
+[BG_GLYPH Size]
+ 18 
+ 8 
+
+[BG_GLYPH Size]
+ 18 
+ 8 
+
+[MUSYLOGO Size]
+ 32 
+ 32 
+
+[MUSYLOGO Size]
+ 32 
+ 32 
+
+[PATLOGO Size]
+ 32 
+ 32 
+
+[Credit01 Size]
+ 32 
+ 32 
+
+[Credit15 Size]
+ 32 
+ 32 
+
+[Credit19 Size]
+ 32 
+ 32 
+
+[Credit25 Size]
+ 32 
+ 32 
+
+[Credit01 Size]
+ 32 
+ 32 
+
+[Credit15 Size]
+ 32 
+ 32 
+
+[Credit25 Size]
+ 32 
+ 32 
+
+[Credit19 Size]
+ 32 
+ 32 
+
+[PATTITL Size]
+ 32 
+ 32 
+

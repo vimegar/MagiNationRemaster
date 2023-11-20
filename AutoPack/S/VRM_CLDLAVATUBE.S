@@ -1,0 +1,61 @@
+;Size:44
+;********************************
+; VRM_CLDLAVATUBE.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_CLDLAVATUBE3
+	GLOBAL		BIT_CLDLAVATUBE2
+	GLOBAL		BIT_CLDLAVATUBE1
+	GLOBAL		BIT_HERO
+	GLOBAL		BIT_TREASURECHEST
+
+VRM_CLDLAVATUBE
+	DB		$02
+
+	DEFW	$8800
+	DEFW	(BIT_CLDLAVATUBE3&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_CLDLAVATUBE3
+
+	DEFW	$9000
+	DEFW	(BIT_CLDLAVATUBE1&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_CLDLAVATUBE1
+
+	DB		$04
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$9000
+	DEFW	(BIT_CLDLAVATUBE2&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_CLDLAVATUBE2
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+	DEFW	$8EB0
+	DEFW	(BIT_TREASURECHEST&$FFFF)
+	DB		$03
+	DB		$02
+	DB		:BIT_TREASURECHEST
+
+;********************************
+	END
+;********************************

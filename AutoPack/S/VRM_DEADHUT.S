@@ -1,0 +1,75 @@
+;Size:58
+;********************************
+; VRM_DEADHUT.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_DEADHUT1
+	GLOBAL		BIT_DEADHUT2
+	GLOBAL		BIT_WVEVAL
+	GLOBAL		BIT_WVESHRUB
+	GLOBAL		BIT_WVEPATH
+	GLOBAL		BIT_TRIGGERS
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_HERO
+
+VRM_DEADHUT
+	DB		$02
+
+	DEFW	$8800
+	DEFW	(BIT_DEADHUT1&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_DEADHUT1
+
+	DEFW	$9000
+	DEFW	(BIT_DEADHUT2&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_DEADHUT2
+
+	DB		$06
+
+	DEFW	$9200
+	DEFW	(BIT_WVEVAL&$FFFF)
+	DB		$10
+	DB		$06
+	DB		:BIT_WVEVAL
+
+	DEFW	$9000
+	DEFW	(BIT_WVESHRUB&$FFFF)
+	DB		$0C
+	DB		$02
+	DB		:BIT_WVESHRUB
+
+	DEFW	$90C0
+	DEFW	(BIT_WVEPATH&$FFFF)
+	DB		$04
+	DB		$02
+	DB		:BIT_WVEPATH
+
+	DEFW	$8EB0
+	DEFW	(BIT_TRIGGERS&$FFFF)
+	DB		$03
+	DB		$02
+	DB		:BIT_TRIGGERS
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+;********************************
+	END
+;********************************

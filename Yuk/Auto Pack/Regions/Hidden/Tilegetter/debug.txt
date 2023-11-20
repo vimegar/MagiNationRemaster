@@ -1,0 +1,15 @@
+[HDNROOM Error List]
+Tile 12, 06 does not match the VRAM.
+Tile 13, 06 does not match the VRAM.
+Tile 14, 06 does not match the VRAM.
+Tile 15, 06 does not match the VRAM.
+Tile 12, 07 does not match the VRAM.
+Tile 15, 07 does not match the VRAM.
+Tile 12, 08 does not match the VRAM.
+Tile 15, 08 does not match the VRAM.
+Tile 12, 09 does not match the VRAM.
+Tile 13, 09 does not match the VRAM.
+Tile 14, 09 does not match the VRAM.
+Tile 15, 09 does not match the VRAM.
+
+

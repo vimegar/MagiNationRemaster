@@ -1,0 +1,7 @@
+[UNDR Error List]
+Tile 28, 18 does not match the VRAM.
+Tile 31, 18 does not match the VRAM.
+Tile 24, 19 does not match the VRAM.
+Tile 27, 19 does not match the VRAM.
+
+

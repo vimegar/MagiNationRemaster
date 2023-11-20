@@ -1,0 +1,82 @@
+;Size:65
+;********************************
+; VRM_SEWER.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_BLOCK
+	GLOBAL		BIT_FLOATINGBLOCK
+	GLOBAL		BIT_SWITCH
+	GLOBAL		BIT_SEWER01
+	GLOBAL		BIT_SEWER02
+	GLOBAL		BIT_SEWER03
+	GLOBAL		BIT_SWITCH
+	GLOBAL		BIT_HERO
+
+VRM_SEWER
+	DB		$02
+
+	DEFW	$9000
+	DEFW	(BIT_SEWER01&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_SEWER01
+
+	DEFW	$8B00
+	DEFW	(BIT_SEWER03&$FFFF)
+	DB		$10
+	DB		$05
+	DB		:BIT_SEWER03
+
+	DB		$07
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$8F00
+	DEFW	(BIT_BLOCK&$FFFF)
+	DB		$03
+	DB		$01
+	DB		:BIT_BLOCK
+
+	DEFW	$8F30
+	DEFW	(BIT_FLOATINGBLOCK&$FFFF)
+	DB		$05
+	DB		$01
+	DB		:BIT_FLOATINGBLOCK
+
+	DEFW	$8E00
+	DEFW	(BIT_SWITCH&$FFFF)
+	DB		$02
+	DB		$01
+	DB		:BIT_SWITCH
+
+	DEFW	$9000
+	DEFW	(BIT_SEWER02&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_SEWER02
+
+	DEFW	$8EB0
+	DEFW	(BIT_SWITCH&$FFFF)
+	DB		$02
+	DB		$01
+	DB		:BIT_SWITCH
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+;********************************
+	END
+;********************************

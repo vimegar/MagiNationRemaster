@@ -1,0 +1,193 @@
+[OVER Error List]
+Tile 15, 12 does not match the VRAM.
+Tile 15, 13 does not match the VRAM.
+
+
+[OVER Error List]
+Tile 14, 12 does not match the VRAM.
+Tile 15, 12 does not match the VRAM.
+Tile 14, 13 does not match the VRAM.
+Tile 15, 13 does not match the VRAM.
+Tile 18, 14 does not match the VRAM.
+Tile 19, 14 does not match the VRAM.
+Tile 20, 14 does not match the VRAM.
+Tile 22, 14 does not match the VRAM.
+Tile 23, 14 does not match the VRAM.
+Tile 24, 14 does not match the VRAM.
+Tile 25, 14 does not match the VRAM.
+Tile 17, 15 does not match the VRAM.
+Tile 18, 15 does not match the VRAM.
+Tile 19, 15 does not match the VRAM.
+Tile 20, 15 does not match the VRAM.
+Tile 22, 15 does not match the VRAM.
+Tile 23, 15 does not match the VRAM.
+Tile 24, 15 does not match the VRAM.
+Tile 25, 15 does not match the VRAM.
+Tile 17, 16 does not match the VRAM.
+Tile 18, 16 does not match the VRAM.
+Tile 19, 16 does not match the VRAM.
+Tile 20, 16 does not match the VRAM.
+Tile 21, 16 does not match the VRAM.
+Tile 24, 16 does not match the VRAM.
+Tile 26, 16 does not match the VRAM.
+Tile 27, 16 does not match the VRAM.
+Tile 28, 16 does not match the VRAM.
+Tile 30, 16 does not match the VRAM.
+Tile 31, 16 does not match the VRAM.
+Tile 16, 17 does not match the VRAM.
+Tile 17, 17 does not match the VRAM.
+Tile 18, 17 does not match the VRAM.
+Tile 20, 17 does not match the VRAM.
+Tile 21, 17 does not match the VRAM.
+Tile 26, 17 does not match the VRAM.
+Tile 27, 17 does not match the VRAM.
+Tile 28, 17 does not match the VRAM.
+Tile 29, 17 does not match the VRAM.
+Tile 30, 17 does not match the VRAM.
+Tile 31, 17 does not match the VRAM.
+Tile 01, 18 does not match the VRAM.
+
+
+[UNDR Error List]
+Tile 26, 03 does not match a palette.
+Tile 00, 16 does not match a palette.
+Tile 03, 16 does not match a palette.
+Tile 00, 17 does not match a palette.
+Tile 01, 17 does not match a palette.
+Tile 02, 17 does not match a palette.
+Tile 03, 17 does not match a palette.
+Tile 12, 18 does not match a palette.
+Tile 13, 18 does not match a palette.
+Tile 28, 00 does not match the VRAM.
+Tile 29, 00 does not match the VRAM.
+Tile 28, 02 does not match the VRAM.
+Tile 29, 02 does not match the VRAM.
+Tile 27, 03 does not match the VRAM.
+Tile 28, 03 does not match the VRAM.
+Tile 29, 03 does not match the VRAM.
+Tile 10, 07 does not match the VRAM.
+Tile 09, 11 does not match the VRAM.
+Tile 04, 12 does not match the VRAM.
+Tile 07, 12 does not match the VRAM.
+Tile 04, 13 does not match the VRAM.
+Tile 07, 13 does not match the VRAM.
+Tile 12, 14 does not match the VRAM.
+Tile 15, 14 does not match the VRAM.
+Tile 20, 14 does not match the VRAM.
+Tile 12, 15 does not match the VRAM.
+Tile 13, 15 does not match the VRAM.
+Tile 14, 15 does not match the VRAM.
+Tile 15, 15 does not match the VRAM.
+Tile 04, 16 does not match the VRAM.
+Tile 07, 16 does not match the VRAM.
+Tile 12, 16 does not match the VRAM.
+Tile 15, 16 does not match the VRAM.
+Tile 04, 17 does not match the VRAM.
+Tile 05, 17 does not match the VRAM.
+Tile 06, 17 does not match the VRAM.
+Tile 07, 17 does not match the VRAM.
+
+
+[UNDR Error List]
+Tile 26, 03 does not match a palette.
+Tile 08, 18 does not match a palette.
+Tile 09, 18 does not match a palette.
+Tile 28, 00 does not match the VRAM.
+Tile 29, 00 does not match the VRAM.
+Tile 27, 03 does not match the VRAM.
+Tile 04, 07 does not match the VRAM.
+Tile 04, 12 does not match the VRAM.
+Tile 07, 12 does not match the VRAM.
+Tile 04, 13 does not match the VRAM.
+Tile 07, 13 does not match the VRAM.
+Tile 20, 14 does not match the VRAM.
+Tile 04, 16 does not match the VRAM.
+Tile 07, 16 does not match the VRAM.
+Tile 04, 17 does not match the VRAM.
+Tile 05, 17 does not match the VRAM.
+Tile 06, 17 does not match the VRAM.
+Tile 07, 17 does not match the VRAM.
+
+
+[UNDR Error List]
+Tile 08, 18 does not match a palette.
+Tile 09, 18 does not match a palette.
+Tile 04, 13 does not match the VRAM.
+Tile 07, 13 does not match the VRAM.
+Tile 20, 14 does not match the VRAM.
+Tile 04, 16 does not match the VRAM.
+Tile 07, 16 does not match the VRAM.
+Tile 05, 17 does not match the VRAM.
+Tile 06, 17 does not match the VRAM.
+
+
+[UNDR Error List]
+Tile 04, 13 does not match the VRAM.
+Tile 07, 13 does not match the VRAM.
+Tile 20, 14 does not match the VRAM.
+Tile 04, 16 does not match the VRAM.
+Tile 07, 16 does not match the VRAM.
+Tile 05, 17 does not match the VRAM.
+Tile 06, 17 does not match the VRAM.
+
+
+[UNDR Error List]
+Tile 20, 14 does not match the VRAM.
+
+
+[CALD Error List]
+Tile 25, 14 does not match the VRAM.
+Tile 25, 15 does not match the VRAM.
+Tile 30, 17 does not match the VRAM.
+Tile 31, 17 does not match the VRAM.
+
+
+[ORO Error List]
+Tile 29, 00 does not match the VRAM.
+Tile 30, 00 does not match the VRAM.
+Tile 28, 01 does not match the VRAM.
+Tile 31, 01 does not match the VRAM.
+Tile 29, 02 does not match the VRAM.
+Tile 30, 02 does not match the VRAM.
+Tile 28, 03 does not match the VRAM.
+Tile 31, 03 does not match the VRAM.
+Tile 29, 04 does not match the VRAM.
+Tile 30, 04 does not match the VRAM.
+Tile 28, 05 does not match the VRAM.
+Tile 31, 05 does not match the VRAM.
+Tile 29, 06 does not match the VRAM.
+Tile 30, 06 does not match the VRAM.
+Tile 28, 07 does not match the VRAM.
+Tile 31, 07 does not match the VRAM.
+Tile 28, 08 does not match the VRAM.
+Tile 29, 08 does not match the VRAM.
+Tile 30, 08 does not match the VRAM.
+Tile 31, 08 does not match the VRAM.
+Tile 29, 09 does not match the VRAM.
+Tile 30, 09 does not match the VRAM.
+
+
+[ARD Error List]
+Tile 10, 04 does not match the VRAM.
+Tile 10, 06 does not match the VRAM.
+Tile 01, 13 does not match the VRAM.
+Tile 03, 13 does not match the VRAM.
+Tile 04, 13 does not match the VRAM.
+Tile 06, 13 does not match the VRAM.
+Tile 01, 14 does not match the VRAM.
+Tile 03, 14 does not match the VRAM.
+Tile 04, 14 does not match the VRAM.
+Tile 06, 14 does not match the VRAM.
+
+
+[ARD Error List]
+Tile 01, 13 does not match the VRAM.
+Tile 03, 13 does not match the VRAM.
+Tile 04, 13 does not match the VRAM.
+Tile 06, 13 does not match the VRAM.
+Tile 01, 14 does not match the VRAM.
+Tile 03, 14 does not match the VRAM.
+Tile 04, 14 does not match the VRAM.
+Tile 06, 14 does not match the VRAM.
+
+

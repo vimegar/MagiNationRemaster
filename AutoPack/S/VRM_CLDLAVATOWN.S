@@ -1,0 +1,61 @@
+;Size:44
+;********************************
+; VRM_CLDLAVATOWN.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_CLDLAVATOWN1
+	GLOBAL		BIT_CLDLAVATOWN2
+	GLOBAL		BIT_CLDLAVATOWN3
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_CLDLAVATOWNSIGNS
+	GLOBAL		BIT_HERO
+
+VRM_CLDLAVATOWN
+	DB		$02
+
+	DEFW	$9000
+	DEFW	(BIT_CLDLAVATOWN2&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_CLDLAVATOWN2
+
+	DEFW	$8F00
+	DEFW	(BIT_CLDLAVATOWNSIGNS&$FFFF)
+	DB		$0A
+	DB		$01
+	DB		:BIT_CLDLAVATOWNSIGNS
+
+	DB		$04
+
+	DEFW	$9000
+	DEFW	(BIT_CLDLAVATOWN1&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_CLDLAVATOWN1
+
+	DEFW	$8E00
+	DEFW	(BIT_CLDLAVATOWN3&$FFFF)
+	DB		$0F
+	DB		$02
+	DB		:BIT_CLDLAVATOWN3
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+;********************************
+	END
+;********************************

@@ -1,0 +1,68 @@
+;Size:51
+;********************************
+; VRM_UNDCAVERN01.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_UNDCAVERN01
+	GLOBAL		BIT_UNDCAVERN02
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_UNDCAVERNALGAE
+	GLOBAL		BIT_UNDCAVERNTREASURE
+	GLOBAL		BIT_UNDCAVERN03
+	GLOBAL		BIT_HERO
+
+VRM_UNDCAVERN01
+	DB		$02
+
+	DEFW	$9000
+	DEFW	(BIT_UNDCAVERN01&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_UNDCAVERN01
+
+	DEFW	$8D00
+	DEFW	(BIT_UNDCAVERN03&$FFFF)
+	DB		$10
+	DB		$03
+	DB		:BIT_UNDCAVERN03
+
+	DB		$05
+
+	DEFW	$9000
+	DEFW	(BIT_UNDCAVERN02&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_UNDCAVERN02
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$8F00
+	DEFW	(BIT_UNDCAVERNALGAE&$FFFF)
+	DB		$0E
+	DB		$01
+	DB		:BIT_UNDCAVERNALGAE
+
+	DEFW	$8E80
+	DEFW	(BIT_UNDCAVERNTREASURE&$FFFF)
+	DB		$06
+	DB		$01
+	DB		:BIT_UNDCAVERNTREASURE
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+;********************************
+	END
+;********************************

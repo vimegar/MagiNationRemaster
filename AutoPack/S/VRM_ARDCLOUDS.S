@@ -1,0 +1,75 @@
+;Size:58
+;********************************
+; VRM_ARDCLOUDS.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_ARDBIG
+	GLOBAL		BIT_ARDWHITE
+	GLOBAL		BIT_ARDWALK
+	GLOBAL		BIT_ARDPROP
+	GLOBAL		BIT_ARDYELLOW
+	GLOBAL		BIT_HERO
+	GLOBAL		BIT_TRIGGERS
+	GLOBAL		BIT_FOURCOLOR
+
+VRM_ARDCLOUDS
+	DB		$03
+
+	DEFW	$8800
+	DEFW	(BIT_ARDBIG&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_ARDBIG
+
+	DEFW	$9400
+	DEFW	(BIT_ARDWHITE&$FFFF)
+	DB		$10
+	DB		$04
+	DB		:BIT_ARDWHITE
+
+	DEFW	$9000
+	DEFW	(BIT_ARDYELLOW&$FFFF)
+	DB		$10
+	DB		$04
+	DB		:BIT_ARDYELLOW
+
+	DB		$05
+
+	DEFW	$9000
+	DEFW	(BIT_ARDWALK&$FFFF)
+	DB		$10
+	DB		$05
+	DB		:BIT_ARDWALK
+
+	DEFW	$9500
+	DEFW	(BIT_ARDPROP&$FFFF)
+	DB		$10
+	DB		$03
+	DB		:BIT_ARDPROP
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+	DEFW	$8EB0
+	DEFW	(BIT_TRIGGERS&$FFFF)
+	DB		$03
+	DB		$02
+	DB		:BIT_TRIGGERS
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+;********************************
+	END
+;********************************

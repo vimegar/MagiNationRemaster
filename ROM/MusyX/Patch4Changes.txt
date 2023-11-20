@@ -1,0 +1,44 @@
+Patch 4 supercedes all prior patches. Patches are not incremental. Patch 4 includes
+all changes from earlier versions.
+
+Patch 4 adds three new functions that allow to influence sound effects as they are
+playing. You may change the pitch of the effect, its volume and query if the effect
+for which you have an ID is still active (unless the same ID has been reassigned to
+a new sound effect, which is a rare case).
+
+
+snd_SFXActive	(+69)
+	In:
+		A <- FX ID to check for
+	Out:
+		ZF <- 1  (Z) if not active
+		      0 (NZ) if active
+
+
+
+snd_SFXPitch	(+72)
+	In:
+		A <- FX ID to set pitch for
+		DE <- Pitch to set.
+		      D is the key number (36-119, key 36 is C-0, 119 is H#6)
+			  E is the cent detune (0-99 mapped onto 0-255)
+
+			  A steady increase of DE as a 16 bit value is acceptable
+
+	Out:
+		Nothing
+
+	Note: Can safely be called on Sound4 (noise generator), but has no effect there of course.
+
+
+
+snd_SFXVolume	(+75)
+	In:
+		A <- FX ID to set new volume for
+		E <- Volume to set (0-15)
+			 This will be scaled with the SFX master volume
+
+	Out:
+		Nothing
+
+

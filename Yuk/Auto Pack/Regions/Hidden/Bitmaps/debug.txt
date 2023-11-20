@@ -1,0 +1,79 @@
+[ Error List]
+There are 5 colors in tile 17, 00.
+There are 5 colors in tile 18, 00.
+There are 5 colors in tile 19, 00.
+There are 5 colors in tile 19, 03.
+There are 5 colors in tile 12, 05.
+There are 5 colors in tile 19, 05.
+There are 5 colors in tile 02, 11.
+There are 5 colors in tile 05, 11.
+Tile 17, 00 does not match a palette.
+Tile 18, 00 does not match a palette.
+Tile 19, 00 does not match a palette.
+Tile 24, 00 does not match a palette.
+Tile 29, 00 does not match a palette.
+Tile 25, 01 does not match a palette.
+Tile 28, 01 does not match a palette.
+Tile 19, 03 does not match a palette.
+Tile 20, 03 does not match a palette.
+Tile 23, 03 does not match a palette.
+Tile 12, 05 does not match a palette.
+Tile 19, 05 does not match a palette.
+Tile 02, 11 does not match a palette.
+Tile 05, 11 does not match a palette.
+
+
+[ Error List]
+There are 5 colors in tile 00, 01.
+There are 5 colors in tile 03, 01.
+There are 5 colors in tile 01, 02.
+There are 5 colors in tile 02, 02.
+There are 5 colors in tile 00, 03.
+There are 5 colors in tile 03, 03.
+There are 5 colors in tile 17, 06.
+There are 5 colors in tile 18, 07.
+There are 5 colors in tile 07, 08.
+There are 5 colors in tile 08, 08.
+Tile 00, 01 does not match a palette.
+Tile 03, 01 does not match a palette.
+Tile 01, 02 does not match a palette.
+Tile 02, 02 does not match a palette.
+Tile 00, 03 does not match a palette.
+Tile 03, 03 does not match a palette.
+Tile 17, 06 does not match a palette.
+Tile 18, 06 does not match a palette.
+Tile 19, 06 does not match a palette.
+Tile 18, 07 does not match a palette.
+Tile 20, 07 does not match a palette.
+Tile 07, 08 does not match a palette.
+Tile 08, 08 does not match a palette.
+Tile 07, 11 does not match a palette.
+Tile 08, 11 does not match a palette.
+
+
+[ Error List]
+Tile 12, 02 does not match a palette.
+Tile 07, 05 does not match a palette.
+
+
+[ Error List]
+Tile 08, 00 does not match a palette.
+Tile 08, 01 does not match a palette.
+Tile 08, 02 does not match a palette.
+Tile 08, 03 does not match a palette.
+Tile 04, 06 does not match a palette.
+
+
+[ Error List]
+Tile 12, 02 does not match a palette.
+Tile 07, 05 does not match a palette.
+
+
+[ Error List]
+Tile 08, 00 does not match a palette.
+Tile 08, 01 does not match a palette.
+Tile 08, 02 does not match a palette.
+Tile 08, 03 does not match a palette.
+Tile 04, 06 does not match a palette.
+
+

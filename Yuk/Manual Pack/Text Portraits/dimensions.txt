@@ -1,0 +1,944 @@
+[ADIS_ICON Size]
+ 5 
+ 5 
+
+[AGRAM_ICON Size]
+ 5 
+ 5 
+
+[ASHGAR_ICON Size]
+ 5 
+ 5 
+
+[BLU_ICON Size]
+ 5 
+ 5 
+
+[BLUMOM_ICON Size]
+ 5 
+ 5 
+
+[BOY_ICON Size]
+ 5 
+ 5 
+
+[CLOAK_ICON Size]
+ 5 
+ 5 
+
+[EIDON_ICON Size]
+ 5 
+ 5 
+
+[EVU_ICON Size]
+ 5 
+ 5 
+
+[FOSSIK_ICON Size]
+ 5 
+ 5 
+
+[GIA_ICON Size]
+ 5 
+ 5 
+
+[GIRL_ICON Size]
+ 5 
+ 5 
+
+[GOGOR_ICON Size]
+ 5 
+ 5 
+
+[GRUK_ICON Size]
+ 5 
+ 5 
+
+[GUARD01_ICON Size]
+ 5 
+ 5 
+
+[GUARD02_ICON Size]
+ 5 
+ 5 
+
+[KID01_ICON Size]
+ 5 
+ 5 
+
+[KID02_ICON Size]
+ 5 
+ 5 
+
+[KID03_ICON Size]
+ 5 
+ 5 
+
+[KORG_ICON Size]
+ 5 
+ 5 
+
+[KORREMAR_ICON Size]
+ 5 
+ 5 
+
+[LASADA_ICON Size]
+ 5 
+ 5 
+
+[LOGAN_ICON Size]
+ 5 
+ 5 
+
+[MAGAM_ICON Size]
+ 5 
+ 5 
+
+[MAN_ICON Size]
+ 5 
+ 5 
+
+[MOBIS_ICON Size]
+ 5 
+ 5 
+
+[MORAG_ICON Size]
+ 5 
+ 5 
+
+[MOTASH_ICON Size]
+ 5 
+ 5 
+
+[OGAR_ICON Size]
+ 5 
+ 5 
+
+[OLDMAN_ICON Size]
+ 5 
+ 5 
+
+[OLDWOMAN_ICON Size]
+ 5 
+ 5 
+
+[ORLON_ICON Size]
+ 5 
+ 5 
+
+[ORLONSBUDDY_ICON Size]
+ 5 
+ 5 
+
+[ORWIN_ICON Size]
+ 5 
+ 5 
+
+[POAD_ICON Size]
+ 5 
+ 5 
+
+[POLLY_ICON Size]
+ 5 
+ 5 
+
+[PRUITT_ICON Size]
+ 5 
+ 5 
+
+[SALAFY_ICON Size]
+ 5 
+ 5 
+
+[SEER_ICON Size]
+ 5 
+ 5 
+
+[SHIMMER_ICON Size]
+ 5 
+ 5 
+
+[STRADUS_ICON Size]
+ 5 
+ 5 
+
+[TOGOTH_ICON Size]
+ 5 
+ 5 
+
+[TONYJONES_ICON Size]
+ 5 
+ 5 
+
+[TRYN_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN01_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN02_ICON Size]
+ 5 
+ 5 
+
+[ULK_ICON Size]
+ 5 
+ 5 
+
+[VALKAN_ICON Size]
+ 5 
+ 5 
+
+[WARRADA_ICON Size]
+ 5 
+ 5 
+
+[WENCE_ICON Size]
+ 5 
+ 5 
+
+[WOMAN_ICON Size]
+ 5 
+ 5 
+
+[WORVELINE_ICON Size]
+ 5 
+ 5 
+
+[WYLOCE_ICON Size]
+ 5 
+ 5 
+
+[YAKI_ICON Size]
+ 5 
+ 5 
+
+[YOUNGMAN_ICON Size]
+ 5 
+ 5 
+
+[ZET_ICON Size]
+ 5 
+ 5 
+
+[ADIS_ICON Size]
+ 5 
+ 5 
+
+[AGRAM_ICON Size]
+ 5 
+ 5 
+
+[ASHGAR_ICON Size]
+ 5 
+ 5 
+
+[BLU_ICON Size]
+ 5 
+ 5 
+
+[BLUMOM_ICON Size]
+ 5 
+ 5 
+
+[BOY_ICON Size]
+ 5 
+ 5 
+
+[CLOAK Size]
+ 5 
+ 5 
+
+[CLOAK_ICON Size]
+ 5 
+ 5 
+
+[EIDON_ICON Size]
+ 5 
+ 5 
+
+[EVU_ICON Size]
+ 5 
+ 5 
+
+[FOSSIK_ICON Size]
+ 5 
+ 5 
+
+[GIA_ICON Size]
+ 5 
+ 5 
+
+[GIRL_ICON Size]
+ 5 
+ 5 
+
+[GOGOR_ICON Size]
+ 5 
+ 5 
+
+[GRUK_ICON Size]
+ 5 
+ 5 
+
+[GUARD01_ICON Size]
+ 5 
+ 5 
+
+[GUARD02_ICON Size]
+ 5 
+ 5 
+
+[KID01_ICON Size]
+ 5 
+ 5 
+
+[KID02_ICON Size]
+ 5 
+ 5 
+
+[KID03_ICON Size]
+ 5 
+ 5 
+
+[KORG_ICON Size]
+ 5 
+ 5 
+
+[KORREMAR_ICON Size]
+ 5 
+ 5 
+
+[LASADA_ICON Size]
+ 5 
+ 5 
+
+[LOGAN_ICON Size]
+ 5 
+ 5 
+
+[MAGAM_ICON Size]
+ 5 
+ 5 
+
+[MAN_ICON Size]
+ 5 
+ 5 
+
+[MOBIS_ICON Size]
+ 5 
+ 5 
+
+[MORAG_ICON Size]
+ 5 
+ 5 
+
+[MOTASH_ICON Size]
+ 5 
+ 5 
+
+[OGAR_ICON Size]
+ 5 
+ 5 
+
+[OLDMAN_ICON Size]
+ 5 
+ 5 
+
+[OLDWOMAN_ICON Size]
+ 5 
+ 5 
+
+[ORLON_ICON Size]
+ 5 
+ 5 
+
+[ORLONSBUDDY_ICON Size]
+ 5 
+ 5 
+
+[ORWIN_ICON Size]
+ 5 
+ 5 
+
+[POAD_ICON Size]
+ 5 
+ 5 
+
+[POLLY_ICON Size]
+ 5 
+ 5 
+
+[PRUITT_ICON Size]
+ 5 
+ 5 
+
+[SALAFY_ICON Size]
+ 5 
+ 5 
+
+[SEER_ICON Size]
+ 5 
+ 5 
+
+[SHIMMER_ICON Size]
+ 5 
+ 5 
+
+[STRADUS_ICON Size]
+ 5 
+ 5 
+
+[TOGOTH_ICON Size]
+ 5 
+ 5 
+
+[TONYJONES_ICON Size]
+ 5 
+ 5 
+
+[TRYN_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN01_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN02_ICON Size]
+ 5 
+ 5 
+
+[ULK_ICON Size]
+ 5 
+ 5 
+
+[VALKAN_ICON Size]
+ 5 
+ 5 
+
+[WARRADA_ICON Size]
+ 5 
+ 5 
+
+[WENCE_ICON Size]
+ 5 
+ 5 
+
+[WOMAN_ICON Size]
+ 5 
+ 5 
+
+[WORVELINE_ICON Size]
+ 5 
+ 5 
+
+[WYLOCE_ICON Size]
+ 5 
+ 5 
+
+[YAKI_ICON Size]
+ 5 
+ 5 
+
+[YOUNGMAN_ICON Size]
+ 5 
+ 5 
+
+[ZET_ICON Size]
+ 5 
+ 5 
+
+[ADIS_ICON Size]
+ 5 
+ 5 
+
+[AGRAM_ICON Size]
+ 5 
+ 5 
+
+[ASHGAR_ICON Size]
+ 5 
+ 5 
+
+[BLU_ICON Size]
+ 5 
+ 5 
+
+[BLUMOM_ICON Size]
+ 5 
+ 5 
+
+[BOY_ICON Size]
+ 5 
+ 5 
+
+[CLOAK Size]
+ 5 
+ 5 
+
+[CLOAK_ICON Size]
+ 5 
+ 5 
+
+[DINGO_ICON Size]
+ 5 
+ 5 
+
+[EIDON_ICON Size]
+ 5 
+ 5 
+
+[EVU_ICON Size]
+ 5 
+ 5 
+
+[FOSSIK_ICON Size]
+ 5 
+ 5 
+
+[GIA_ICON Size]
+ 5 
+ 5 
+
+[GIRL_ICON Size]
+ 5 
+ 5 
+
+[GOGOR_ICON Size]
+ 5 
+ 5 
+
+[GRUK_ICON Size]
+ 5 
+ 5 
+
+[GUARD01_ICON Size]
+ 5 
+ 5 
+
+[GUARD02_ICON Size]
+ 5 
+ 5 
+
+[GUY01_ICON Size]
+ 5 
+ 5 
+
+[GUY02_ICON Size]
+ 5 
+ 5 
+
+[GUY03_ICON Size]
+ 5 
+ 5 
+
+[KID01_ICON Size]
+ 5 
+ 5 
+
+[KID02_ICON Size]
+ 5 
+ 5 
+
+[KID03_ICON Size]
+ 5 
+ 5 
+
+[KORG_ICON Size]
+ 5 
+ 5 
+
+[KORREMAR_ICON Size]
+ 5 
+ 5 
+
+[LASADA_ICON Size]
+ 5 
+ 5 
+
+[LOGAN_ICON Size]
+ 5 
+ 5 
+
+[MAGAM_ICON Size]
+ 5 
+ 5 
+
+[MAN_ICON Size]
+ 5 
+ 5 
+
+[MOBIS_ICON Size]
+ 5 
+ 5 
+
+[MORAG_ICON Size]
+ 5 
+ 5 
+
+[MOTASH_ICON Size]
+ 5 
+ 5 
+
+[OGAR_ICON Size]
+ 5 
+ 5 
+
+[OLDMAN_ICON Size]
+ 5 
+ 5 
+
+[OLDWOMAN_ICON Size]
+ 5 
+ 5 
+
+[ORLON_ICON Size]
+ 5 
+ 5 
+
+[ORLONSBUDDY_ICON Size]
+ 5 
+ 5 
+
+[ORWIN_ICON Size]
+ 5 
+ 5 
+
+[POAD_ICON Size]
+ 5 
+ 5 
+
+[POLLY_ICON Size]
+ 5 
+ 5 
+
+[PRUITT_ICON Size]
+ 5 
+ 5 
+
+[SALAFY_ICON Size]
+ 5 
+ 5 
+
+[SEER_ICON Size]
+ 5 
+ 5 
+
+[SHIMMER_ICON Size]
+ 5 
+ 5 
+
+[STRADUS_ICON Size]
+ 5 
+ 5 
+
+[TOGOTH_ICON Size]
+ 5 
+ 5 
+
+[TONYJONES_ICON Size]
+ 5 
+ 5 
+
+[TRYN_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN01_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN02_ICON Size]
+ 5 
+ 5 
+
+[ULK_ICON Size]
+ 5 
+ 5 
+
+[VALKAN_ICON Size]
+ 5 
+ 5 
+
+[WARRADA_ICON Size]
+ 5 
+ 5 
+
+[WENCE_ICON Size]
+ 5 
+ 5 
+
+[WOMAN_ICON Size]
+ 5 
+ 5 
+
+[WORVELINE_ICON Size]
+ 5 
+ 5 
+
+[WYLOCE_ICON Size]
+ 5 
+ 5 
+
+[YAKI_ICON Size]
+ 5 
+ 5 
+
+[YOUNGMAN_ICON Size]
+ 5 
+ 5 
+
+[ZET_ICON Size]
+ 5 
+ 5 
+
+[ADIS_ICON Size]
+ 5 
+ 5 
+
+[AGRAM_ICON Size]
+ 5 
+ 5 
+
+[ARDGUARD Size]
+ 5 
+ 5 
+
+[ASHGAR_ICON Size]
+ 5 
+ 5 
+
+[BLU_ICON Size]
+ 5 
+ 5 
+
+[BLUMOM_ICON Size]
+ 5 
+ 5 
+
+[BOY_ICON Size]
+ 5 
+ 5 
+
+[CLOAK Size]
+ 5 
+ 5 
+
+[CLOAK_ICON Size]
+ 5 
+ 5 
+
+[DINGO_ICON Size]
+ 5 
+ 5 
+
+[EIDON_ICON Size]
+ 5 
+ 5 
+
+[EVU_ICON Size]
+ 5 
+ 5 
+
+[FOSSIK_ICON Size]
+ 5 
+ 5 
+
+[GIA_ICON Size]
+ 5 
+ 5 
+
+[GIRL_ICON Size]
+ 5 
+ 5 
+
+[GOGOR_ICON Size]
+ 5 
+ 5 
+
+[GRUK_ICON Size]
+ 5 
+ 5 
+
+[GUARD01_ICON Size]
+ 5 
+ 5 
+
+[GUARD02_ICON Size]
+ 5 
+ 5 
+
+[GUY01_ICON Size]
+ 5 
+ 5 
+
+[GUY02_ICON Size]
+ 5 
+ 5 
+
+[GUY03_ICON Size]
+ 5 
+ 5 
+
+[KID01_ICON Size]
+ 5 
+ 5 
+
+[KID02_ICON Size]
+ 5 
+ 5 
+
+[KID03_ICON Size]
+ 5 
+ 5 
+
+[KORG_ICON Size]
+ 5 
+ 5 
+
+[KORREMAR_ICON Size]
+ 5 
+ 5 
+
+[LASADA_ICON Size]
+ 5 
+ 5 
+
+[LOGAN_ICON Size]
+ 5 
+ 5 
+
+[MAGAM_ICON Size]
+ 5 
+ 5 
+
+[MAN_ICON Size]
+ 5 
+ 5 
+
+[MOBIS_ICON Size]
+ 5 
+ 5 
+
+[MORAG_ICON Size]
+ 5 
+ 5 
+
+[MOTASH_ICON Size]
+ 5 
+ 5 
+
+[OGAR_ICON Size]
+ 5 
+ 5 
+
+[OLDMAN_ICON Size]
+ 5 
+ 5 
+
+[OLDWOMAN_ICON Size]
+ 5 
+ 5 
+
+[ORLON_ICON Size]
+ 5 
+ 5 
+
+[ORLONSBUDDY_ICON Size]
+ 5 
+ 5 
+
+[ORWIN_ICON Size]
+ 5 
+ 5 
+
+[POAD_ICON Size]
+ 5 
+ 5 
+
+[POLLY_ICON Size]
+ 5 
+ 5 
+
+[PRUITT_ICON Size]
+ 5 
+ 5 
+
+[SALAFY_ICON Size]
+ 5 
+ 5 
+
+[SEER_ICON Size]
+ 5 
+ 5 
+
+[SHIMMER_ICON Size]
+ 5 
+ 5 
+
+[STRADUS_ICON Size]
+ 5 
+ 5 
+
+[TOGOTH_ICON Size]
+ 5 
+ 5 
+
+[TONYJONES_ICON Size]
+ 5 
+ 5 
+
+[TRYN_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN01_ICON Size]
+ 5 
+ 5 
+
+[TRYNCOUSIN02_ICON Size]
+ 5 
+ 5 
+
+[ULK_ICON Size]
+ 5 
+ 5 
+
+[VALKAN_ICON Size]
+ 5 
+ 5 
+
+[WARRADA_ICON Size]
+ 5 
+ 5 
+
+[WENCE_ICON Size]
+ 5 
+ 5 
+
+[WOMAN_ICON Size]
+ 5 
+ 5 
+
+[WORVELINE_ICON Size]
+ 5 
+ 5 
+
+[WYLOCE_ICON Size]
+ 5 
+ 5 
+
+[YAKI_ICON Size]
+ 5 
+ 5 
+
+[YOUNGMAN_ICON Size]
+ 5 
+ 5 
+
+[ZET_ICON Size]
+ 5 
+ 5 
+

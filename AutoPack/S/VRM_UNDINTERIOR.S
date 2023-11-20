@@ -1,0 +1,61 @@
+;Size:44
+;********************************
+; VRM_UNDINTERIOR.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_UNDINTERIOR2
+	GLOBAL		BIT_UNDINTERIOR1
+	GLOBAL		BIT_UNDINTERIOR3
+	GLOBAL		BIT_TREASURECHEST
+	GLOBAL		BIT_HERO
+	GLOBAL		BIT_FOURCOLOR
+
+VRM_UNDINTERIOR
+	DB		$02
+
+	DEFW	$9000
+	DEFW	(BIT_UNDINTERIOR1&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_UNDINTERIOR1
+
+	DEFW	$8800
+	DEFW	(BIT_UNDINTERIOR3&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_UNDINTERIOR3
+
+	DB		$04
+
+	DEFW	$9000
+	DEFW	(BIT_UNDINTERIOR2&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_UNDINTERIOR2
+
+	DEFW	$8EB0
+	DEFW	(BIT_TREASURECHEST&$FFFF)
+	DB		$03
+	DB		$02
+	DB		:BIT_TREASURECHEST
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+;********************************
+	END
+;********************************

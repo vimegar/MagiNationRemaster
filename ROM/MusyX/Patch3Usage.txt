@@ -1,0 +1,164 @@
+Patch3Usage.txt
+
+
+
+Patch 3 addresses an issue that arises when your game requires the horizontal blank interrupt
+with IRQ nesting enabled.
+
+If you are using HBL interrupts you may have enabled IRQ nesting in order for your HBL IRQ
+to be raised as soon as it occurs. If this happens from within a timer IRQ handling a call
+to snd_DoSample there is a fair chance that if your HBL code had to switch banks, MusyX
+will not retrieve correct sample data from ROM. This is caused by your game not being aware
+which bank MusyX had selected to get sample data from at the time the HBL IRQ occurred.
+Even worse, if your HBL interrupted the VBL while serving a call to snd_Handle there might
+be a very slight chance that MusyX will retrieve the wrong sound data if the bank got
+switched in the HBL, potentially crashing the sound driver.
+
+This fix addresses this issue, but the required changes are not transparent to the user.
+Because there are changes involved in the game application you might want to see if this
+potential problem applies to your situation before using this patch.
+
+You do NOT need this patch if:
+
+* Your game requires nested interrupts only for the timer IRQ which will NOT be interrupted
+  by any other IRQs.
+
+OR
+
+* Your game does not require nested interrupts at all because you are not playing back
+  samples using MusyX.
+
+
+If you determined that you do not need this patch we recommend not to use it since it does
+not otherwise differ from Patch 2 which you already have.
+
+
+
+
+
+IF you have determined that you NEED this patch because your game makes further use of
+nested interrupts, please continue reading to learn what has changed and what you need
+to do:
+
+Previously the MusyX sound driver was not designed to be interrupted during a call to
+snd_DoSample because of performance reasons. The drawback to this is that you might
+not receive an interrupt from a different source, like the HBL or SIO in time to process
+them right away. While this might be ok for SIO or KEY interrupts it is usually not
+desireable for the HBL.
+If you allowed snd_DoSample() to be interrupted, you had to make sure not to switch ROM
+banks. Typically, whenever you receive an interrupt you have to retrieve the current
+ROM bank selection, push it onto the stack, call the IRQ handler, restore the previous
+bank setting and return.
+Since neither MBC allows the current bank to be read you cannot know which bank MusyX
+selected to access data, therefore you are unable to restore the bank selection if your
+IRQ handler had to select a specific bank itself.
+
+Requirement #1:
+  The variable you use in your game to reflect your current bank setting needs to be
+  located in the CPU internal RAM ($ff80 through $fffe).
+Requirement #2:
+  Upon calling snd_Init(), pass the lower 8 bits of this address ($80 through $fe)
+  in register C to MusyX.
+  MusyX will update the contents of your mirror register whenever it switches banks
+  in order for your IRQ code to be able to restore the present configuration.
+
+
+Example:
+
+
+Somewhere you'll have defined something like this:
+...
+BankMirror	EQU	$ffa7
+...
+
+
+Somewhere in your startup code:
+...
+		ld		a, $01					; Set MusyX operation mode
+		ld		c, <BankMirror			; Load lower 8 bits of mirror address to C
+		call	snd_Init				; Initialize MusyX sound driver
+...
+
+Whereever you're dealing with IRQs:
+
+VBLIRQ:	push	af						; Save all registers
+		push	bc
+		push	de
+		push	hl
+		ld		a,(BankMirror)			; Get current bank mirror
+		push	af						; Save it on stack
+		
+		ei								; Enable IRQ nesting
+		....							; Do whatever processing you normally do in VBL
+		
+		ld		a,:snd_Init				; Switch to MusyX code bank
+		ld		(BankMirror),a
+		ld		($2100),a
+		call	snd_Handle				; Update MusyX
+		
+		pop		af						; Restore previous bank configuration
+		ld		(BankMirror),a
+		ld		($2100),a
+		pop		hl
+		pop		de
+		pop		bc
+		pop		af
+		reti
+
+TIMIRQ:	push	af
+		push	bc
+		push	de
+		push	hl
+		ld		a,(BankMirror)			; Get current bank mirror
+		push	af						; Save it on stack
+		
+		ei								; Enable IRQ nesting
+		....							; Do whatever processing you normally do in VBL
+		
+		call	snd_DoSample			; Process MusyX samples
+		
+		pop		af						; Restore previous bank configuration
+		ld		(BankMirror),a
+		ld		($2100),a
+		pop		hl
+		pop		de
+		pop		bc
+		pop		af
+		reti
+
+HBLIRQ:	push	af						; Save all registers
+		push	bc
+		push	de
+		push	hl
+		ld		a,(BankMirror)			; Get current bank mirror
+		push	af						; Save it on stack
+
+		; Do NOT enable IRQ nesting since we have little time as it is...
+		....							; Do whatever you do for HBL processing
+		
+		pop		af						; Restore previous bank configuration
+		ld		(BankMirror),a
+		ld		($2100),a
+		pop		hl
+		pop		de
+		pop		bc
+		pop		af
+		reti
+
+
+
+This procedure will ensure that at any given point the current ROM bank selection
+can be stored and restored.
+
+
+As you can imagine overall CPU performance of the sound driver is slightly slower
+because it has to update your mirror register, but there is no alternative.
+
+
+
+
+Regards,
+Your technical support team
+
+
+

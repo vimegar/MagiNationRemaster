@@ -1,0 +1,27 @@
+[ Error List]
+Tile 00, 00 does not match a palette.
+Tile 01, 00 does not match a palette.
+Tile 04, 00 does not match a palette.
+Tile 05, 00 does not match a palette.
+Tile 07, 00 does not match a palette.
+Tile 08, 00 does not match a palette.
+Tile 09, 00 does not match a palette.
+Tile 10, 00 does not match a palette.
+Tile 11, 00 does not match a palette.
+Tile 12, 00 does not match a palette.
+Tile 13, 00 does not match a palette.
+Tile 14, 00 does not match a palette.
+Tile 15, 00 does not match a palette.
+Tile 00, 01 does not match a palette.
+Tile 01, 01 does not match a palette.
+Tile 02, 01 does not match a palette.
+Tile 03, 01 does not match a palette.
+Tile 04, 01 does not match a palette.
+Tile 08, 01 does not match a palette.
+Tile 09, 01 does not match a palette.
+Tile 10, 01 does not match a palette.
+Tile 11, 01 does not match a palette.
+Tile 12, 01 does not match a palette.
+Tile 13, 01 does not match a palette.
+
+

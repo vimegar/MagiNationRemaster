@@ -1,0 +1,52 @@
+[BG_GLYPH Error List]
+Tile 16, 03 does not match a palette.
+Tile 17, 03 does not match a palette.
+Tile 16, 04 does not match a palette.
+Tile 17, 04 does not match a palette.
+Tile 12, 05 does not match a palette.
+Tile 13, 05 does not match a palette.
+Tile 14, 05 does not match a palette.
+Tile 15, 05 does not match a palette.
+Tile 16, 05 does not match a palette.
+Tile 17, 05 does not match a palette.
+Tile 12, 06 does not match a palette.
+Tile 13, 06 does not match a palette.
+Tile 14, 06 does not match a palette.
+Tile 15, 06 does not match a palette.
+Tile 16, 06 does not match a palette.
+Tile 17, 06 does not match a palette.
+Tile 12, 07 does not match a palette.
+Tile 13, 07 does not match a palette.
+Tile 14, 07 does not match a palette.
+Tile 15, 07 does not match a palette.
+Tile 16, 07 does not match a palette.
+Tile 17, 07 does not match a palette.
+Tile 17, 07 does not match the VRAM.
+
+
+[BG_GLYPH Error List]
+Tile 16, 03 does not match a palette.
+Tile 17, 03 does not match a palette.
+Tile 16, 04 does not match a palette.
+Tile 17, 04 does not match a palette.
+Tile 12, 05 does not match a palette.
+Tile 13, 05 does not match a palette.
+Tile 14, 05 does not match a palette.
+Tile 15, 05 does not match a palette.
+Tile 16, 05 does not match a palette.
+Tile 17, 05 does not match a palette.
+Tile 12, 06 does not match a palette.
+Tile 13, 06 does not match a palette.
+Tile 14, 06 does not match a palette.
+Tile 15, 06 does not match a palette.
+Tile 16, 06 does not match a palette.
+Tile 17, 06 does not match a palette.
+Tile 12, 07 does not match a palette.
+Tile 13, 07 does not match a palette.
+Tile 14, 07 does not match a palette.
+Tile 15, 07 does not match a palette.
+Tile 16, 07 does not match a palette.
+Tile 17, 07 does not match a palette.
+Tile 17, 07 does not match the VRAM.
+
+

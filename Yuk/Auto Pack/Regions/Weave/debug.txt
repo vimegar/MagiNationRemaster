@@ -1,0 +1,36 @@
+[PAT_BURN Error List]
+Tile 31, 00 does not match the VRAM.
+Tile 13, 03 does not match the VRAM.
+Tile 17, 04 does not match the VRAM.
+Tile 20, 04 does not match the VRAM.
+Tile 15, 07 does not match the VRAM.
+Tile 16, 07 does not match the VRAM.
+Tile 17, 07 does not match the VRAM.
+Tile 18, 07 does not match the VRAM.
+Tile 15, 08 does not match the VRAM.
+Tile 16, 08 does not match the VRAM.
+Tile 15, 09 does not match the VRAM.
+Tile 16, 09 does not match the VRAM.
+Tile 15, 10 does not match the VRAM.
+Tile 16, 10 does not match the VRAM.
+Tile 17, 10 does not match the VRAM.
+Tile 18, 10 does not match the VRAM.
+Tile 20, 10 does not match the VRAM.
+Tile 21, 10 does not match the VRAM.
+Tile 20, 11 does not match the VRAM.
+Tile 21, 11 does not match the VRAM.
+Tile 10, 18 does not match the VRAM.
+Tile 11, 18 does not match the VRAM.
+
+
+[PAT_BURN Error List]
+Tile 13, 03 does not match the VRAM.
+Tile 17, 04 does not match the VRAM.
+Tile 20, 04 does not match the VRAM.
+Tile 20, 10 does not match the VRAM.
+Tile 21, 10 does not match the VRAM.
+Tile 20, 11 does not match the VRAM.
+Tile 21, 11 does not match the VRAM.
+Tile 23, 12 does not match the VRAM.
+
+

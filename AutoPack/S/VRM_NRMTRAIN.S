@@ -1,0 +1,68 @@
+;Size:51
+;********************************
+; VRM_NRMTRAIN.S
+;********************************
+;	Author:	Mr. Yuk
+;	(c)2000	Interactive Imagination
+;	All rights reserved
+
+;********************************
+
+	GLOBAL		BIT_NRMTRAINFACES
+	GLOBAL		BIT_NRMTRAINWALL
+	GLOBAL		BIT_NRMROCKS
+	GLOBAL		BIT_FOURCOLOR
+	GLOBAL		BIT_NRMTRAINPATH
+	GLOBAL		BIT_HERO
+	GLOBAL		BIT_TRIGGERS
+
+VRM_NRMTRAIN
+	DB		$03
+
+	DEFW	$9000
+	DEFW	(BIT_NRMTRAINWALL&$FFFF)
+	DB		$10
+	DB		$04
+	DB		:BIT_NRMTRAINWALL
+
+	DEFW	$9600
+	DEFW	(BIT_NRMROCKS&$FFFF)
+	DB		$10
+	DB		$02
+	DB		:BIT_NRMROCKS
+
+	DEFW	$9400
+	DEFW	(BIT_NRMTRAINPATH&$FFFF)
+	DB		$10
+	DB		$02
+	DB		:BIT_NRMTRAINPATH
+
+	DB		$04
+
+	DEFW	$9000
+	DEFW	(BIT_NRMTRAINFACES&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_NRMTRAINFACES
+
+	DEFW	$8EE0
+	DEFW	(BIT_FOURCOLOR&$FFFF)
+	DB		$02
+	DB		$02
+	DB		:BIT_FOURCOLOR
+
+	DEFW	$8000
+	DEFW	(BIT_HERO&$FFFF)
+	DB		$10
+	DB		$08
+	DB		:BIT_HERO
+
+	DEFW	$8EB0
+	DEFW	(BIT_TRIGGERS&$FFFF)
+	DB		$03
+	DB		$02
+	DB		:BIT_TRIGGERS
+
+;********************************
+	END
+;********************************
