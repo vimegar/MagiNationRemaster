@@ -175,6 +175,16 @@ RAISE_STAT_BY_PERCENT_SCALAR	MACRO data_ptr, stat_offset, percent_scalar, max_st
 	CALL	?INCREMENT_STAT_BY_PERCENT		
 	ENDM
 
+; New macros to help with levelup logic
+GET_STAT_GAIN_INDEX				MACRO stat_offset
+	LD		B,stat_offset
+	LD		A,(LVL_UP_STAT_LEVEL)
+	ADD     A,B
+	AND		%00000111
+	LD		C,A
+	LD		B,0
+	ENDM
+
 
 ;*********************************
 ; GET 16-BIT WORD (HL order byte) 

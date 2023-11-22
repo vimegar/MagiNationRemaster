@@ -772,20 +772,15 @@ _STORE_SPECIAL_DEFENSE
 	;LD			E,L				;store incremental in 'E' reg (D is 0)
 
 ; Our new logic needs to end with the gain in reg E
-	RANDVAL	E
-	LD		C,A
-	LD		B,10
-	CALL	?DIV
-	LD		C,L
-	LD		B,0
-	PUSH    BC
+	GET_STAT_GAIN_INDEX	CREATURE_ENGMAXH
+	PUSH				BC
 
 	; Energy is in the TYPE field
 	LD		A,(BTL_TARGET_TYPE)
 	; Energy is in the lower 4 bits so we dont need to bit shift and can just mask
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_ENERGY_TABLES
 	ADD		HL,DE
@@ -1007,21 +1002,28 @@ _DISPLAY_TEXT
 ;********************************	
 ?LEVELUP_SKILLDELTA
 
+	GET_STAT_GAIN_INDEX CREATURE_SKILL
+	PUSH				BC
+	JR					_LOOKUP
+
+_RANDOM
 	RANDVAL	E
 	LD		C,A
-	LD		B,10
+	LD		B,8
 	CALL	?DIV
 	LD		C,L
+
 	LD		B,0
 	PUSH    BC
 
 ; Begin new logic
+_LOOKUP
 	; Skill is in the TYPE2 field
 	LD		A,(BTL_TARGET_TYPE2)
 	; Skill is in the lower 4 bits so we dont need to bit shift and can just mask
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_STAT_TABLES
 	ADD		HL,DE
@@ -1037,24 +1039,27 @@ _READY
 ;********************************	
 ?LEVELUP_SPEEDDELTA
 
+	GET_STAT_GAIN_INDEX CREATURE_SPEED
+	PUSH				BC
+	JR					_LOOKUP
+
+_RANDOM
 	RANDVAL	E
 	LD		C,A
-	LD		B,10
+	LD		B,8
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
-	PUSH BC
+	PUSH	BC
 
 	; Speed is in the TYPE field
+_LOOKUP
 	LD		A,(BTL_TARGET_TYPE)
-	; Speed is in the upper 4 bits so we shift then mask
-	SRL		A
-	SRL		A
-	SRL		A
-	SRL		A
+	; Speed is in the upper 4 bits so we swap then mask
+	SWAP	A
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_STAT_TABLES
 	ADD		HL,DE
@@ -1070,25 +1075,29 @@ _READY
 
 ;********************************	
 ?LEVELUP_DEFDELTA
-	
+
+	LD		B,B
+	GET_STAT_GAIN_INDEX CREATURE_DEF
+	PUSH				BC
+	JR					_LOOKUP
+
+_RANDOM
 	RANDVAL	E
 	LD		C,A
-	LD		B,10
+	LD		B,8
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
 	PUSH BC
 
 	; Def is in the ENERGYUP field
+_LOOKUP
 	LD		A,(BTL_TARGET_ENERGYUP)
 	; Def is in the upper 4 bits so we shift then mask
-	SRL		A
-	SRL		A
-	SRL		A
-	SRL		A
+	SWAP    A
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_STAT_TABLES
 	ADD		HL,DE
@@ -1103,20 +1112,27 @@ _READY
 ;********************************	
 ?LEVELUP_RESISTDELTA
 	
+
+	GET_STAT_GAIN_INDEX CREATURE_RESIST
+	PUSH				BC
+	JR					_LOOKUP
+
+_RANDOM
 	RANDVAL	E
 	LD		C,A
-	LD		B,10
+	LD		B,8
 	CALL	?DIV
 	LD		C,L
 	LD		B,0
 	PUSH	BC
 
 	; Res is in the ENERGYUP field
+_LOOKUP
 	LD		A,(BTL_TARGET_ENERGYUP)
 	; Res is in the lower 4 bits so just mask
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_STAT_TABLES
 	ADD		HL,DE
@@ -1132,27 +1148,31 @@ _READY
 ;********************************	
 ?LEVELUP_STRDELTA
 
+
+	GET_STAT_GAIN_INDEX CREATURE_STR
+	PUSH				BC
+	JR					_LOOKUP
+
+_RANDOM
 	RANDVAL	E
 	
 ; Note that for this one we have to copy over the index generation
 ; because the OG function uses a different one
 	LD		C,A
-	LD		B,10
+	LD		B,8
 	CALL	?DIV
 	LD		C,L
 	LD		B,0	
 	PUSH    BC
 
 	; Str is in the TYPE2 field
+_LOOKUP
 	LD		A,(BTL_TARGET_TYPE2)
 	; Str is in the upper 4 bits so we shift and then mask
-	SRL		A
-	SRL		A
-	SRL		A
-	SRL		A
+	SWAP	A
 	AND     %00001111
 	LD		B,A
-	LD		C,10
+	LD		C,8
 	CALL	?MULT
 	LD		DE,LVLUP_STAT_TABLES
 	ADD		HL,DE
@@ -1191,40 +1211,40 @@ LVLUP_99_TABLE
 ; New level up tables
 
 LVLUP_STAT_TABLES
-	DB 0,0,0,1,0,0,0,0,0,0 ; 0.1
-	DB 0,0,0,1,1,0,0,0,0,0 ; 0.2 
-	DB 0,0,1,1,1,0,0,0,0,0 ; 0.3
-	DB 0,0,1,1,1,1,0,0,0,0 ; 0.4  
-	DB 0,0,1,1,1,1,1,0,0,0 ; 0.5
-	DB 0,0,1,1,1,1,1,1,0,0 ; 0.6
-	DB 0,0,1,1,1,1,1,2,0,0 ; 0.7
-	DB 0,0,1,1,1,1,1,1,2,0 ; 0.8   
-	DB 0,1,1,1,1,1,1,1,2,0 ; 0.9
-	DB 0,1,1,1,1,1,1,2,2,0 ; 1.0
-	DB 0,1,1,1,1,1,1,2,3,0 ; 1.1 
-	DB 0,2,1,1,1,1,1,2,3,0 ; 1.2
-	DB 0,2,2,1,1,1,1,2,3,0 ; 1.3
-	DB 0,3,2,1,1,1,1,2,3,0 ; 1.4
-	DB 0,3,2,1,1,1,2,2,3,0 ; 1.5
-	DB 0,3,2,2,1,1,2,2,3,0 ; 1.6
+	DB 0,0,0,1,0,0,0,0 ; 0.125
+	DB 0,0,1,0,0,1,0,0 ; 0.25
+	DB 0,1,1,0,0,0,1,0 ; 0.375
+	DB 1,0,1,0,1,1,0,0 ; 0.5
+	DB 0,1,0,1,1,1,0,1 ; 0.625
+	DB 0,1,1,1,0,1,1,1 ; 0.75
+	DB 0,1,1,0,1,1,2,1 ; 0.875
+	DB 0,1,2,1,1,1,1,1 ; 1.0 
+	DB 0,1,1,1,2,1,1,2 ; 1.125
+	DB 0,1,1,2,1,2,1,2 ; 1.25
+	DB 0,3,1,2,1,1,2,1 ; 1.475
+	DB 0,2,1,3,1,2,2,1 ; 1.5
+	DB 0,2,2,1,3,2,2,1 ; 1.625
+	DB 0,2,2,3,2,1,2,3 ; 1.75
+	DB 0,3,1,2,1,2,3,3 ; 1.875
+	DB 0,2,3,1,2,3,2,3 ; 2.0
 
 LVLUP_ENERGY_TABLES 
-	DB 0,1,1,1,1,1,1,1,1,2 ; 1.0
-	DB 0,1,1,1,1,1,1,2,2,2 ; 1.2
-	DB 0,1,1,1,1,1,1,2,3,3 ; 1.4
-	DB 0,1,1,1,1,1,2,2,3,3 ; 1.6
-	DB 0,1,1,1,1,2,2,2,3,4 ; 1.8
-	DB 0,1,1,1,2,2,2,3,3,4 ; 2.0
-	DB 0,1,1,1,2,2,3,3,4,4 ; 2.2
-	DB 0,1,1,2,2,3,3,3,4,4 ; 2.4
-	DB 0,1,2,2,2,3,3,4,4,4 ; 2.6
-	DB 0,1,2,2,3,3,3,4,4,5 ; 2.8
-	DB 1,2,2,2,3,3,3,4,4,5 ; 3.0
-	DB 2,2,2,3,3,3,3,4,4,5 ; 3.2
-	DB 2,2,2,3,3,3,4,4,4,5 ; 3.4
-	DB 2,2,3,3,3,4,4,4,4,5 ; 3.6
-	DB 2,2,3,3,3,4,4,4,5,5 ; 3.8
-	DB 2,3,3,3,4,4,4,4,5,5 ; 4.0
+	DB 1,2,0,1,1,2,1,0 ; 1.0
+	DB 1,0,1,2,1,1,2,2 ; 1.25
+	DB 0,2,1,2,1,1,2,3 ; 1.5
+	DB 0,2,3,1,1,2,2,3 ; 1.75
+	DB 1,2,3,2,2,1,2,3 ; 2.0
+	DB 2,3,1,2,3,2,3,2 ; 2.25
+	DB 3,1,3,2,3,3,2,4 ; 2.5
+	DB 4,1,2,2,3,3,3,4 ; 2.75
+	DB 2,4,4,2,3,3,4,2 ; 3.0
+	DB 3,3,2,4,3,3,4,4 ; 3.25
+	DB 4,2,4,4,2,5,2,5 ; 3.5
+	DB 3,5,4,5,3,4,2,4 ; 3.75
+	DB 4,2,5,3,5,4,3,6 ; 4.0
+	DB 2,6,4,5,4,3,6,4 ; 4.25
+	DB 6,5,4,6,6,3,4,2 ; 4.5
+	DB 5,6,4,6,3,4,6,4 ; 4.75
 
 ; Speed tables: Range from 0.2 gain at worst up to 1.2 gain at best
 LVLUP_SPD_LOW_TABLE ; 0.2 gain

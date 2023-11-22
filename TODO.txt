@@ -1,6 +1,10 @@
 *** BUGS ***
 
-None known!
+- Game freeze during the first dialogue with Gia
+
+- When saving with Gia, it shows Tony's portrait when it should show Gia's
+
+- After Pruitt forges you a ring, she remains in the "holding ring" animation until you talk to her again or leave
 
 *** FEATURES ***
 
@@ -8,20 +12,18 @@ None known!
 
 * Make XP numbers show up in battle somehow (bouncing numbers)?
 
+* Swap stat gain index selection to LEVEL + STAT_INDEX % 10
+-- maybe % 8 would be better? make the stat gain tables length 8
+
 
 *** CREATURE IDENTITY AND BALANCE ***
-Gum-Gum: Some sort of obnoxious utility to make its redirect ability a source of pressure
-- low-chance, low-damage OHKO?
+Gum-Gum: Maybe Trip should deal damage based on the enemy's max energy instead?
 
-Karak/Shadow Karak: Raise ATK but low EN and DEF--make reliant on redirect for survivability
+Borgor: Give a low-accuracy ability that halves target's HP
 
 *** ABILITY IDENTITY AND BALANCE ***
 
-Shade: Higher EN cost, but small chance of confuse?
-
-Root: Small drain
-Leaf: maybe also gets a drain? doesn't make too much sense...
-
+None atm...
 
 *** NEW ABILITY IDEAS ***
 
